@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools" href="examples_tools.html" />
+    <link rel="prev" title="CODE REFERENCE – node CLuedo aRMOR interface" href="../_code_reference/cluedo-armor-interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-old-schematics.html">aRMOR UML CLASS – old schematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CODE REFERENCE – class aRMOR CLuedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CODE REFERENCE – class aRMOR Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">CODE REFERENCE – node CLuedo aRMOR interface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_examples/examples_cluedo.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="armor-cluedo-examples-1-working-on-individuals">
+<h1>ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals<a class="headerlink" href="#armor-cluedo-examples-1-working-on-individuals" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this code was written only for your understanding. Probably it won’t compile.</p>
+</div>
+<div class="section" id="working-on-individuals">
+<h2>Working on Individuals<a class="headerlink" href="#working-on-individuals" title="Permalink to this heading"></a></h2>
+<p>The class ArmorCluedo provides some powerful methods, specific for individuals. RCL requeires a limited numer of operations right now.</p>
+<p>Here is a simple usage of this class, employed in manipulating</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools/armor_tools.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools_armor_cluedo.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirective.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveReq.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveRes.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example_armor_cluedo_1&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span><span class="w"> </span><span class="n">nh</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === INIT</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// instanciation and connection</span>
+<span class="w">	</span><span class="n">ArmorCluedo</span><span class="w"> </span><span class="n">armor</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/root/ontologies/my_super_ontology.owl&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === ADDING INDIVIDUALS</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// add individuals</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Broccoli&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;SmartHypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HYPOTHESIS&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// REMEMBER TO UPDATE!</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === INFORMATIONS about the individuals</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// get the classes an individual belongs to</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">classes_of_john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetClassOfIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// get the individuals belonging to a class</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">indiv_of_class_weapon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetIndivOfClass</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// check if an individual exists</span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">ExistsIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Tower&quot;</span><span class="w"> </span><span class="p">)</span><span class="w">   </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">)</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&#39;Tower&#39; not defined.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">ExistsIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;&#39;Stadium&#39; exists!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="armor-cluedo-examples-2-working-with-properties">
+<h1>ARMOR CLUEDO EXAMPLES – 2 – Working with properties<a class="headerlink" href="#armor-cluedo-examples-2-working-with-properties" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this code was written only for your understanding. Probably it won’t compile.</p>
+</div>
+<div class="section" id="working-with-properties">
+<h2>Working with properties<a class="headerlink" href="#working-with-properties" title="Permalink to this heading"></a></h2>
+<p>RCL requires not only adding individuals, but also working with the properties of the individuals. You can get all the available methods from this small example.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools/armor_tools.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools_armor_cluedo.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirective.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveReq.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveRes.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example_armor_cluedo_2&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span><span class="w"> </span><span class="n">nh</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === before starting...</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">ArmorCluedo</span><span class="w"> </span><span class="n">armor</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/root/ontologies/my_super_ontology.owl&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Broccoli&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;SmartHypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HYPOTHESIS&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// REMEMBER TO UPDATE!</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === ADD SOME PROPERTIES</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Smarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;who&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Smarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;what&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Smarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Broccoli&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// REMEMBER TO UPDATE!</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === CHECKINGS ON PROPERTIES</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// the main function is</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetValuedOfIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SmartHypothesis&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="armor-tools-examples-3-reasoning-workflow">
+<h1>ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow<a class="headerlink" href="#armor-tools-examples-3-reasoning-workflow" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this code was written only for your understanding. Probably it won’t compile.</p>
+</div>
+<div class="section" id="reasoning-workflow">
+<h2>Reasoning Workflow<a class="headerlink" href="#reasoning-workflow" title="Permalink to this heading"></a></h2>
+<p>In this example I’m going to show how the combination of the two classes ArmorTools and ArmorCluedo structure the reasoning process, which is at the base of how RCL works.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools/armor_tools.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools_armor_cluedo.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirective.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveReq.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveRes.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example_armor_cluedo_3&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span><span class="w"> </span><span class="n">nh</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === before starting (see the previous examples)</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">ArmorCluedo</span><span class="w"> </span><span class="n">armor</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/root/ontologies/my_super_ontology.owl&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Pippo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Broccoli&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;AK-47&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Bathroom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;SmartHypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HYPOTHESIS&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Smarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;who&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Smarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;what&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Smarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Broccoli&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === QUERYING HYPOTHESES</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// find the tags of the complete hypotheses</span>
+<span class="w">	</span><span class="c1">//    in this example, the tag &#39;SmartHypothesis&#39; is complete</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">complete_hypotheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindCompleteHypotheses</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === INCONSISTENT HYPOTHESES</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// you can also find the inconsistent hypotheses</span>
+<span class="w">	</span><span class="c1">//    ATTENTION! In this implementation there&#39;s a difference between</span>
+<span class="w">	</span><span class="c1">//       &quot;discarded&quot; hypotheses and &quot;inconsistent&quot; hypotheses, due to</span>
+<span class="w">	</span><span class="c1">//       some issues inside aRMOR.</span>
+<span class="w">	</span><span class="c1">//    in any case, using FindCompleteHypotheses() is recommended. </span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inconsistent_hypotheses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindCompleteHypotheses</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// let&#39;s make &#39;SmartHypothesis&#39; inconsistent</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SmatHypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bathroom&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// now the hypothesis doesn&#39;t appear when calling FindCompleteHypotheses( )</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// === DISCARD HYPOTHESES</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// the implementation of ArmorCluedo contains a workaroud, due to an </span>
+<span class="w">	</span><span class="c1">//    issue in the implementation of aRMOR in &quot;REMOVE&quot; commands. </span>
+<span class="w">	</span><span class="c1">// let&#39;s suppose that there&#39;s another hypothesis, completed, but</span>
+<span class="w">	</span><span class="c1">//    discarded due to a negative answer by the oracle</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;AnotherSmartHypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HYPOTHESIS&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AnotherSmarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;who&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AnotherSmarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SetObjectProperty</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;what&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AnotherSmarthypothesis&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Broccoli&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// let&#39;s discard it with the function</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">RemoveHypothesis</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;AnotherSmarthypothesis&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// THE HYPOTHESIS IS STILL PRESENT IN THE ONTOLOGY! </span>
+<span class="w">	</span><span class="c1">//    but now it is tracked as deleted, so the FindCompleteHypotheses()</span>
+<span class="w">	</span><span class="c1">//    won&#39;t return it later. </span>
+<span class="w">	</span><span class="c1">// you cannot de-discard hypotheses. </span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../_code_reference/cluedo-armor-interface.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node CLuedo aRMOR interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples_tools.html" class="btn btn-neutral float-right" title="ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

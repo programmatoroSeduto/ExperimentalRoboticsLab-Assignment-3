@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_armor__docs_armor-how-to-use" kind="page">
+    <compoundname>md_robocluedo_armor__docs_armor-how-to-use</compoundname>
+    <title>DOCS – HOW TO use RoboCLuedo aRMOR interface</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">./armor-services.md</highlight></codeline>
+</programlisting></para>
+<para>the interface provides 4 main directives:</para>
+<para><itemizedlist>
+<listitem><para><bold>ADD</bold> <ndash/> put a hint into the aRMOR ontology</para>
+</listitem><listitem><para><bold>FIND</bold> <ndash/> find the hypotheses which are CONSISTENT (i.e. COMPLETE but not INCONSISTENT)</para>
+</listitem><listitem><para><bold>DEL</bold> <ndash/> mark a hypothesis as wrong, i.e. <emphasis>discard it</emphasis></para>
+</listitem><listitem><para><bold>BACKUP</bold> <ndash/> save the ontology on file.</para>
+</listitem></itemizedlist>
+</para>
+<sect1 id="md_robocluedo_armor__docs_armor-how-to-use_1autotoc_md173">
+<title>services schematics</title>
+<para>```{uml}  <programlisting><codeline><highlight class="normal">##<sp/>ADD<sp/>--<sp/>register<sp/>a<sp/>new<sp/>hint<sp/>into<sp/>the<sp/>Ontology</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>add<sp/>a<sp/>new<sp/>hint<sp/>(from<sp/>the<sp/>Oracle?)<sp/>the<sp/>node<sp/>provides<sp/>the<sp/>service<sp/>`/cluedo_armor/add_hint`<sp/>of<sp/>type<sp/>`robocluedo_armor_msgs/AddHint`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Note<sp/>that**<sp/>adding<sp/>the<sp/>same<sp/>hint<sp/>twice<sp/>*doesn&apos;t<sp/>affect<sp/>the<sp/>content<sp/>of<sp/>the<sp/>ontology*.<sp/>The<sp/>request<sp/>will<sp/>retur<sp/>true<sp/>even<sp/>in<sp/>this<sp/>case.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>the<sp/>format<sp/>of<sp/>the<sp/>service:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>file<sp/>&apos;AddHint.srv&apos;</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>it<sp/>represents<sp/>a<sp/>hint<sp/>of<sp/>the<sp/>type<sp/>-&gt;<sp/>(Aelem,<sp/>Belem):property</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>numeric<sp/>ID<sp/>of<sp/>the<sp/>hint</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>hypID</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>fields<sp/>of<sp/>the<sp/>property</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>property</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>Belem</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bool<sp/>success</highlight></codeline>
+</programlisting></para>
+<para>fields:</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>hypID</computeroutput> is the integer identifier of the hypothesis ID</para>
+</listitem><listitem><para><computeroutput>property</computeroutput> indicates the role to define: it corresponds to the &apos;key&apos; element of the hint message</para>
+</listitem><listitem><para><computeroutput>Belem</computeroutput> is the content of the property: it corresponds to the field <computeroutput>value</computeroutput> from the Oracle</para>
+</listitem></itemizedlist>
+</para>
+<para>the ontology allows to define three roles: (<computeroutput>Aelem</computeroutput> is always the label of the hypothesis, whereas <computeroutput>Belem</computeroutput> is the value of the property)</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>(who &quot;HP&lt;hypID&gt;&quot; ?Belem)</computeroutput></para>
+</listitem><listitem><para><computeroutput>(where &quot;HP&lt;hypID&gt;&quot; ?Belem)</computeroutput></para>
+</listitem><listitem><para><computeroutput>(what &quot;HP&lt;hypID&gt;&quot; ?Belem)</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para><bold>very important: the node allows only these properties!</bold> it will raise an error if the property hasn&apos;t one of the abovementioned keys; remember to check the <computeroutput>success</computeroutput> flag of the message.</para>
+<para><bold>property names must be written in lowercase!</bold></para>
+</sect1>
+<sect1 id="md_robocluedo_armor__docs_armor-how-to-use_1autotoc_md174">
+<title>FIND – ask for a consistent hint</title>
+<para>the service <computeroutput>/cluedo_armor/find_consistent_h</computeroutput> of type <computeroutput>robocluedo_armor_msgs/FindConsistentHypotheses</computeroutput> is what you need to ask the Ontology for a admissible solution.</para>
+<para>here&apos;s the service file employed by the service:</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">##<sp/>file<sp/>&apos;FindConsistentHypotheses.srv&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>empty<sp/>request</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>list<sp/>of<sp/>consistent<sp/>hypotheses<sp/>from<sp/>the<sp/>ontology</highlight></codeline>
+<codeline><highlight class="normal">Hypothesis[]<sp/>hyp</highlight></codeline>
+</programlisting></para>
+<para>when called, the service returns the entire list of the hypotheses <emphasis>belonging to the COMPLETED set and not belonging to the INCONSISTENT one</emphasis>. Remember that the ontology has the following structure:</para>
+<para><itemizedlist>
+<listitem><para>THINGs <ndash/> <computeroutput>owl:thing</computeroutput><itemizedlist>
+<listitem><para>HYPOTHESIS <ndash/> <computeroutput>(what only WEAPON) and (where only PLACE) and (who only PERSON)</computeroutput><itemizedlist>
+<listitem><para>COMPLETED <ndash/> <computeroutput>(what min 1 WEAPON) and (where min 1 PLACE) and (who min 1 PERSON)</computeroutput><itemizedlist>
+<listitem><para>INCONSISTENT <ndash/> <computeroutput>(what min 2 WEAPON) or (where min 2 PLACE) or (who min 2 PERSON)</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>WHO</para>
+</listitem><listitem><para>WHERE</para>
+</listitem><listitem><para>WHAT</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>Hence the <emphasis>COMPLETED</emphasis> set will contain not only the complete hypotheses, but also the <emphasis>INCONSISTENT</emphasis> ones. The service performs a set difference <emphasis>COMPLETED - INCONSISTENT</emphasis> which is the set of the admissible solutions, if any.</para>
+<para><bold>don&apos;t forget to check the length of the list!</bold> The method could return a empty list of complete hypotheses.</para>
+<para>here&apos;s the type <computeroutput>robocluedo_armor_msgs/Hypothesis</computeroutput>:</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">##<sp/>file<sp/>&apos;Hypothesis.msg&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>DEPRECATED</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>tag</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>integer<sp/>identifier<sp/>of<sp/>the<sp/>hypothesis<sp/>(-1<sp/>if<sp/>the<sp/>identifier<sp/>is<sp/>not<sp/>standard)</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>who<sp/>killed<sp/>Dr.<sp/>Black</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>who</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>where<sp/>the<sp/>murder<sp/>happened</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>where</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>what<sp/>is<sp/>the<sp/>murder<sp/>weapon</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>what</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_armor__docs_armor-how-to-use_1autotoc_md175">
+<title>DEL – discard a hypothesis</title>
+<para>use the service <computeroutput>/cluedo_armor/wrong_hypothesis</computeroutput> of type <computeroutput>robocluedo_armor_msgs/DiscardHypothesis</computeroutput>, whose structure is reported here below:</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">##<sp/>file<sp/>&apos;DiscardHypothesis.srv&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bool<sp/>success</highlight></codeline>
+</programlisting></para>
+<para><bold>the request could fail</bold> due to, for instance, the unexistence of the indicated hypothesis. </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOCS – how to run robocluedo armor &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DOCS – HOW TO use RoboCLuedo aRMOR interface" href="armor-how-to-use.html" />
+    <link rel="prev" title="aRMOR commands" href="armor-commands.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-old-schematics.html">aRMOR UML CLASS – old schematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CODE REFERENCE – class aRMOR CLuedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CODE REFERENCE – class aRMOR Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">CODE REFERENCE – node CLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>DOCS – how to run robocluedo armor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_docs/armor-how-to-run.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="docs-how-to-run-robocluedo-armor">
+<h1>DOCS – how to run robocluedo armor<a class="headerlink" href="#docs-how-to-run-robocluedo-armor" title="Permalink to this heading"></a></h1>
+<div class="section" id="ontology-paths-configuration">
+<h2>Ontology paths configuration<a class="headerlink" href="#ontology-paths-configuration" title="Permalink to this heading"></a></h2>
+<p>the package contains a file called <em>parameters.launch</em> inside the <em>config</em> folder.</p>
+<p>from there, you can set</p>
+<ul class="simple">
+<li><p>cluedo_path_owlfile : the path where the base ontology is located</p></li>
+<li><p>cluedo_path_owlfile_backup : the path where to export the actual ontology</p></li>
+</ul>
+</div>
+<div class="section" id="launch-file">
+<h2>launch file<a class="headerlink" href="#launch-file" title="Permalink to this heading"></a></h2>
+<p>in order to run the package, my advice is to use the launch file <code class="docutils literal notranslate"><span class="pre">run.launch</span></code> inside the package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_armor run.launch
+</pre></div>
+</div>
+<p>it runs two compoennts:</p>
+<ul class="simple">
+<li><p>aRMOR</p></li>
+<li><p>and the node implementing the services of the interface</p></li>
+</ul>
+<div class="section" id="expected-output">
+<h3>expected output<a class="headerlink" href="#expected-output" title="Permalink to this heading"></a></h3>
+<p>you should see a output which is similar to this one:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>... logging to /root/.ros/log/fdcd8fc4-1c7f-11ed-a0ec-0242ac110002/roslaunch-3b17871017fd-3138.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is &lt;1GB.
+
+started roslaunch server http://3b17871017fd:39871/
+
+SUMMARY
+========
+
+PARAMETERS
+ * /cluedo_path_owlfile: /root/ros_ws/src/...
+ * /cluedo_path_owlfile_backup: /root/ros_ws/src/...
+ * /rosdistro: noetic
+ * /rosversion: 1.15.14
+
+NODES
+  /
+    armor_service (armor/execute)
+    robocluedo_armor_interface (robocluedo_armor/robocluedo_armor_interface)
+
+auto-starting new master
+process[master]: started with pid [3176]
+ROS_MASTER_URI=http://localhost:11311
+
+setting /run_id to fdcd8fc4-1c7f-11ed-a0ec-0242ac110002
+process[rosout-1]: started with pid [3201]
+started core service [/rosout]
+process[armor_service-2]: started with pid [3204]
+process[robocluedo_armor_interface-3]: started with pid [3212]
+[ INFO] [1660557157.044513400]: [cluedo_armor_interface] Ontology found! [/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl] 
+[ INFO] [1660557157.045186400]: [cluedo_armor_interface] loading armor ...
+[ INFO] [1660557157.045285200]: [armor_tools] Requiring client [/armor_interface_srv] ...
+[ INFO] [1660557157.045629100]: waitForService: Service [/armor_interface_srv] has not been advertised, waiting...
+Loading node class: it.emarolab.armor.ARMORMainService
+log4j:WARN No appenders could be found for logger (org.ros.internal.node.client.Registrar).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[ INFO] [1660557157.457678500]: waitForService: Service [/armor_interface_srv] is now available.
+[ INFO] [1660557157.457737900]: [armor_tools] -&gt; OK
+ 15/08/22_09:52:37,645 -&gt; Class OWLReferencesInterface$OWLReferencesContainer : Create a new prefix manager for References: OWLReferencesInterface &quot;cluedo&quot;
+ 15/08/22_09:52:38,058 -&gt; Class OWLReferencesInterface$OWLReferencesContainer : Ontology OWL manager created for References: OWLReferencesInterface &quot;cluedo&quot;
+ 15/08/22_09:52:38,200 -&gt; Class OWLReferencesInterface$OWLReferencesContainer : Ontology loaded from file  for References: OWLReferencesInterface &quot;cluedo&quot;
+ 15/08/22_09:52:38,200 -&gt; Class OWLReferencesInterface$OWLReferencesContainer : Create a OWL Data Factory for References: OWLReferencesInterface &quot;cluedo&quot;
+ 15/08/22_09:52:38,273 -&gt; Class OWLReferencesInterface$OWLReferencesContainer : Reasoner (com.clarkparsia.pellet.owlapi.PelletReasonerFactory) created in: 73000900 [ns] for the References: OWLReferencesInterface &quot;cluedo&quot;
+ 15/08/22_09:52:38,282 -&gt; OWLReferences OWLReferencesInterface &quot;cluedo&quot; : new OWL References initialised in: 780012400 [ns] for the Object OWLReferencesInterface &quot;cluedo&quot;
+[ INFO] [1660557158.369155800]: [cluedo_armor_interface] OK!
+[ INFO] [1660557158.369224200]: [cluedo_armor_interface] opening server [/cluedo_armor/add_hint]  ...
+[ INFO] [1660557158.369796400]: [cluedo_armor_interface] OK!
+[ INFO] [1660557158.369854300]: [cluedo_armor_interface] opening server [/cluedo_armor/find_consistent_h]  ...
+[ INFO] [1660557158.370445800]: [cluedo_armor_interface] OK!
+[ INFO] [1660557158.370497300]: [cluedo_armor_interface] opening server [/cluedo_armor/wrong_hypothesis]  ...
+[ INFO] [1660557158.370983600]: [cluedo_armor_interface] OK!
+[ INFO] [1660557158.371037500]: [cluedo_armor_interface] opening server [/cluedo_armor/backup]  ...
+[ INFO] [1660557158.371432900]: [cluedo_armor_interface] OK!
+[ INFO] [1660557158.371482100]: [cluedo_armor_interface] ready!
+</pre></div>
+</div>
+<p>here’s also the output from <code class="docutils literal notranslate"><span class="pre">rosservice</span> <span class="pre">list</span></code> command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new# rosservice list
+/armor_interface_serialized_srv
+/armor_interface_srv
+/cluedo_armor/add_hint
+/cluedo_armor/backup
+/cluedo_armor/find_consistent_h
+/cluedo_armor/wrong_hypothesis
+/robocluedo_armor_interface/get_loggers
+/robocluedo_armor_interface/set_logger_level
+/rosout/get_loggers
+/rosout/set_logger_level
+</pre></div>
+</div>
+<p>ready to use!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="armor-commands.html" class="btn btn-neutral float-left" title="aRMOR commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="armor-how-to-use.html" class="btn btn-neutral float-right" title="DOCS – HOW TO use RoboCLuedo aRMOR interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+# file 'UpdateGoal.srv'
+
+int32 LANDMARK_REPLAN = 0
+int32 LANDMARK_COLLECT = 1
+int32 LANDMARK_SOLVE = 2
+
+# the type of goal to set
+int32 landmark
+
+---
+
+# remember to check success first!
+bool success
+
+# sometimes that landmark is not applicable (it doesn't meet the current status)
+bool applicable

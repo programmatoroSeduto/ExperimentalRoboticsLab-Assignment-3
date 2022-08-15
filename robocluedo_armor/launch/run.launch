@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+	<include file="$(find robocluedo_armor)/config/parameters.launch"></include>
+	
+	<node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService" output="screen" required="true"/>
+	<node pkg="robocluedo_armor" type="robocluedo_armor_interface" name="robocluedo_armor_interface" output="screen" required="true" />
+	
+	
+</launch>

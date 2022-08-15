@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__docs_cpp-docs-template" kind="page">
+    <compoundname>md__docs_cpp-docs-template</compoundname>
+    <title>Documentation for c++ nodes and libraries</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md__docs_cpp-docs-template_1autotoc_md5">
+<title>conventions</title>
+<para><itemizedlist>
+<listitem><para>the header contains the big part of the documentation</para>
+</listitem><listitem><para>the cpp file contains a reference to the documentation in the header</para>
+</listitem><listitem><para><bold>use the header documentation both for nodes and for header files</bold></para>
+</listitem><listitem><para>where possible, better to use javadoc supported by many other doc systems instead of the (horrible) doxygen statement, poorly supported except by doxygen itself.</para>
+</listitem><listitem><para><bold>use HTML</bold> to alter the markup inside the documentation text</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__docs_cpp-docs-template_1autotoc_md6">
+<title>file documentation</title>
+<para>documentation of a node or a library.</para>
+<para><itemizedlist>
+<listitem><para>delete the unused fields</para>
+</listitem><listitem><para>use the name of the macro to make a reference to a interface</para>
+</listitem><listitem><para>remember to use <computeroutput>\ref</computeroutput> when you&apos;re referring to a name of the code</para>
+</listitem></itemizedlist>
+</para>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md7">
+<title>Header documentation / node documentation</title>
+<para><bold>use this both for nodes and for header files</bold></para>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\file<sp/>file.ext</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;div&gt;&lt;b&gt;ROS<sp/>Node<sp/>Name&lt;/b&gt;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;ul&gt;&lt;li&gt;???ros_node???&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>...brief...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\authors<sp/>???</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\version<sp/>v1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Description:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;p&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/p&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;UML<sp/>component&lt;/b&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>(See<sp/>...<sp/>the<sp/>overal<sp/>architecture,<sp/>for<sp/>further<sp/>informations)&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;img<sp/>src=&quot;&quot;<sp/>alt=&quot;TODO<sp/>uml&quot;/&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Publishers:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/topic&lt;/i&gt;<sp/>:<sp/>file.msg<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Subscribers:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/topic&lt;/i&gt;<sp/>:<sp/>file.msg<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Services:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/service&lt;/i&gt;<sp/>:<sp/>file.srv<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Clients:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/serv&lt;/i&gt;<sp/>:<sp/>file.srv<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>reference<sp/>to<sp/>the<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Providing<sp/>actions&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;action_name&lt;/i&gt;<sp/>:<sp/>file.action<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Using<sp/>actions&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;action_name&lt;/i&gt;<sp/>:<sp/>file.action<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Hidden<sp/>Services<sp/>and<sp/>Topics:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>from<sp/>...<sp/>:<sp/>type<sp/>)<sp/>&lt;i&gt;/channel&lt;/i&gt;<sp/>:<sp/>type.format<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>reference<sp/>to<sp/>page</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Parameters:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[GET/SET]<sp/>&lt;i&gt;/parameter&lt;/i&gt;<sp/>:<sp/>type<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Test<sp/>the<sp/>code&lt;/b&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;code&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/code&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;TODOs&lt;/b&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md8">
+<title>Cpp file documentation</title>
+<para>this file simply makes a reference to the header.</para>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal">*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>@file<sp/>filename</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>@brief<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">*<sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>@authors<sp/>...lista<sp/>di<sp/>autori<sp/>separati<sp/>da<sp/>virgola...</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>@version<sp/>v1.0</highlight></codeline>
+<codeline><highlight class="normal">*<sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal">*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>@see<sp/>header<sp/>the<sp/>Header</highlight></codeline>
+<codeline><highlight class="normal">*<sp/></highlight></codeline>
+<codeline><highlight class="normal">***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md__docs_cpp-docs-template_1autotoc_md9">
+<title>Code Elements Documentation</title>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md10">
+<title>naive doc</title>
+<para>the most free template.</para>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md11">
+<title>classical function documentation</title>
+<para>use this also for class methods!</para>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>param<sp/>...<sp/>description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@returns<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md12">
+<title>MAIN FUNCTION documentation</title>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>ROS<sp/>node<sp/>main<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md13">
+<title>service implementation documentation</title>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>implementation<sp/>of<sp/>service<sp/>\ref<sp/>SERVICE_MACRO_OF_THE_SERVICE</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>request<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>response<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>file.srv</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md14">
+<title>publisher-callback documentation</title>
+<para>this template can be used to document a function callback which also publishes something.</para>
+<para><programlisting filename=".html"><codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>subscriber<sp/>to<sp/>\ref<sp/>SUBSCRIBER_HINT_SIGNAL<sp/>and<sp/>publisher<sp/>of<sp/>\ref<sp/>PUBLISHER_HINT</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>emptySignal<sp/>empty<sp/>&apos;request&apos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>subscriber.msg<sp/>[IN]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>publisher.msg<sp/>[OUT]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md__docs_cpp-docs-template_1autotoc_md15">
+<title>useful doxygen statements</title>
+<para>see <ulink url="https://www.doxygen.nl/manual/commands.html">doxygen statements</ulink></para>
+<para>see also <ulink url="https://www.oracle.com/it/technical-resources/articles/java/javadoc-tool.html">javadoc official giude</ulink></para>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md16">
+<title>TODO remarks</title>
+<para><programlisting><codeline><highlight class="normal">@todo<sp/>something<sp/>still<sp/>to<sp/>do</highlight></codeline>
+<codeline><highlight class="normal">@bug<sp/>describe<sp/>the<sp/>bug<sp/>here<sp/>...</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md17">
+<title>annotations and remarks</title>
+<para><programlisting><codeline><highlight class="normal">\note</highlight></codeline>
+<codeline><highlight class="normal">...your<sp/>annotation...</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\remark</highlight></codeline>
+<codeline><highlight class="normal">...your<sp/>annotation...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">===AN<sp/>EXAMPLE===</highlight></codeline>
+<codeline><highlight class="normal">\note</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>note<sp/>consists<sp/>of<sp/>two<sp/>paragraphs.<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>the<sp/>first<sp/>paragraph.</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__docs_cpp-docs-template_1autotoc_md18">
+<title>warnings and limitations</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">@warning<sp/>this<sp/>is<sp/>a<sp/>warning</highlight></codeline>
+<codeline><highlight class="normal">@deprecated<sp/>...deprecation<sp/>notice<sp/>here...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\attention</highlight></codeline>
+<codeline><highlight class="normal">\warning</highlight></codeline>
+</programlisting> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

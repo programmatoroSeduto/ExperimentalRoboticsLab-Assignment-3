@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<robot name="robocluedo_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <link name="cluedo_link">
+        
+		<inertial>
+            <mass value="0.015" />
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.000010279" ixy="0" ixz="0" iyy="0.000010279" iyz="0" izz="0.000007225" />
+        </inertial>
+
+        <collision>
+            <origin rpy="0 0 1.57" xyz="0 0 0.04" />
+            <geometry>
+                <box size="0.034 0.2 0.08" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 0 1.57" xyz="0 0 0.04" />
+            <geometry>
+                <box size="0.034 0.2 0.08" />
+            </geometry>
+            <material name="red" />
+        </visual>
+    </link>
+    <joint name="arm_joint_04" type="revolute">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="-1.8" upper="1.8" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.3" />
+        <parent link="arm_link_03" />
+        <child link="cluedo_link" />
+    </joint>
+    
+<!--
+    <link name="right_grip_link">
+        
+<inertial>
+            <mass value="0.01" />
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.000010279" ixy="0" ixz="0" iyy="0.000010279" iyz="0" izz="0.000007225" />
+        </inertial>
+
+        <collision>
+            <origin rpy="0 3.1415 -1.57" xyz="-0.032 0.048 0.04" />
+            <geometry>
+                <box size="0.06 0.02 0.08" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 3.1415 -1.57" xyz="-0.032 0.048 0.04" />
+            <geometry>
+                <box size="0.06 0.02 0.08" />
+            </geometry>
+            <material name="white" />
+        </visual>
+    </link>
+    <joint name="right_grip_joint" type="prismatic">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="-0.04" upper="0.035" velocity="6.5" />
+        <origin rpy="0 0 0" xyz="-0.015 0 0.0" />
+        <parent link="cluedo_link" />
+        <child link="right_grip_link" />
+    </joint>
+    <link name="left_grip_link">
+        
+<inertial>
+            <mass value="0.01" />
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.000010279" ixy="0" ixz="0" iyy="0.000010279" iyz="0" izz="0.000007225" />
+        </inertial>
+
+        <collision>
+            <origin rpy="0 3.1415 -1.57" xyz="0.06 0.048 0.04" />
+            <geometry>
+                <box size="0.06 0.02 0.08" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0 3.1415 -1.57" xyz="0.06 0.048 0.04" />
+            <geometry>
+                <box size="0.06 0.02 0.08" />
+            </geometry>
+            <material name="white" />
+        </visual>
+    </link>
+    <joint name="left_grip_joint" type="prismatic">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="-0.035" upper="0.04" velocity="6.5" />
+        <origin rpy="0 0 0" xyz="-0.015 0 0.0" />
+        <parent link="cluedo_link" />
+        <child link="left_grip_link" />
+    </joint>
+-->
+</robot>

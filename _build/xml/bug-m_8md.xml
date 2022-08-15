@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="bug-m_8md" kind="file" language="Markdown">
+    <compoundname>bug-m.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>bug_m<sp/>PY<sp/>node</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}<sp/></highlight></codeline>
+<codeline><highlight class="normal">./bug-m.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bug_m<sp/>combines<sp/>the<sp/>two<sp/>behaviours<sp/>`go_to_point.py`<sp/>ans<sp/>`wall_follow.py`<sp/>in<sp/>order<sp/>to<sp/>reach<sp/>a<sp/>given<sp/>position<sp/>in<sp/>a<sp/>indoor<sp/>environment<sp/>with<sp/>walls.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">IN<sp/>particular,</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>(state<sp/>2)<sp/>the<sp/>robot<sp/>is<sp/>still,<sp/>waiting<sp/>for<sp/>a<sp/>target</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(a<sp/>target<sp/>distant<sp/>at<sp/>minimum<sp/>0.35m<sp/>comes...)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(<sp/>**state<sp/>0**<sp/>:<sp/>go<sp/>to<sp/>point<sp/>)<sp/>go<sp/>ahead<sp/>in<sp/>straight<sp/>line<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>state<sp/>1<sp/>if<sp/>the<sp/>robot<sp/>encounters<sp/>an<sp/>obstacle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>state<sp/>0<sp/>if<sp/>the<sp/>robot<sp/>reaches<sp/>the<sp/>target<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(<sp/>**state<sp/>1**<sp/>:<sp/>wall<sp/>following<sp/>)<sp/>find<sp/>and<sp/>follow<sp/>the<sp/>wall<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>0<sp/>if<sp/>the<sp/>robot<sp/>cannot<sp/>go<sp/>on<sp/>(*the<sp/>robot<sp/>could<sp/>get<sp/>stuck<sp/>in<sp/>a<sp/>blind<sp/>corner*)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>state<sp/>2<sp/>if<sp/>the<sp/>robot<sp/>is<sp/>in<sp/>the<sp/>target</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>robot<sp/>reaches<sp/>a<sp/>target<sp/>with<sp/>a<sp/>threshold<sp/>distance<sp/>of<sp/>**0.35m<sp/>from<sp/>the<sp/>marker**.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>SCHEMA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>NODE<sp/>bug_m</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;ROS<sp/>parameter<sp/>server&quot;<sp/>as<sp/>PARAMETERS<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;des_pos_x&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;des_pos_y&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;des_yaw&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;bug_m&quot;<sp/>&lt;&lt;ROSPy<sp/>node&gt;&gt;<sp/>as<sp/>NODE_BUG_M<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;clbk_odom&quot;<sp/>as<sp/>NODE_BUG_M.READ_ODOM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;clbk_laser&quot;<sp/>as<sp/>NODE_BUG_M.LISTENER_LASER</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;bug_switch&quot;<sp/>as<sp/>NODE_BUG_M.SWITCH</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;get&quot;<sp/>&lt;--<sp/>PARAMETERS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/odom&quot;<sp/>as<sp/>TOPIC_ODOM</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M.READ_ODOM<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_ODOM</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>nav_msgs/Odometry.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/scan&quot;<sp/>as<sp/>TOPIC_LASER</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M.LISTENER_LASER<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_LASER</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>sensor_msgs/LaserScan.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cmd_vel&quot;<sp/>as<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>geometry_msgs/Twist.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/bug_m_signal&quot;<sp/>as<sp/>TOPIC_BUG_M_SIGNAL</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>TOPIC_BUG_M_SIGNAL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Empty.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/go_to_point_switch&quot;<sp/>as<sp/>SRV_GOTO_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_GOTO_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/wall_follower_switch&quot;<sp/>as<sp/>SRV_WALL_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_WALL_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/head_orient_switch&quot;<sp/>as<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/bug_switch&quot;<sp/>as<sp/>SRV_BUG_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">NODE_BUG_M.SWITCH<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_BUG_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>use<sp/>the<sp/>node<sp/>--<sp/>basic<sp/>way</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">it<sp/>requires<sp/>another<sp/>node<sp/>listening<sp/>for<sp/>the<sp/>odom<sp/>channel<sp/>and<sp/>checking<sp/>when<sp/>to<sp/>deactivate<sp/>the<sp/>service</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>set<sp/>`des_pos_x`,<sp/>`des_pos_y`<sp/>and<sp/>`des_yaw`<sp/>into<sp/>the<sp/>paramater<sp/>server</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>activate<sp/>the<sp/>service<sp/>with<sp/>a<sp/>request<sp/>to<sp/>`/bug_m_switch`<sp/>of<sp/>type<sp/>`std_srvs/SetBool`<sp/>(flag<sp/>`SetBool.Request.data=True`)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>...<sp/>wait<sp/>until<sp/>the<sp/>robot<sp/>is<sp/>near<sp/>enough<sp/>to<sp/>the<sp/>point</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>turn<sp/>off<sp/>the<sp/>node<sp/>(flag<sp/>`SetBool.Request.data=False`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>use<sp/>the<sp/>node<sp/>--<sp/>user<sp/>interface</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>node<sp/>can<sp/>signal<sp/>another<sp/>node<sp/>when<sp/>the<sp/>final<sp/>position<sp/>hasn&apos;t<sp/>been<sp/>reached.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>set<sp/>`des_pos_x`,<sp/>`des_pos_y`<sp/>and<sp/>`des_yaw`<sp/>into<sp/>the<sp/>paramater<sp/>server</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>activate<sp/>the<sp/>service<sp/>with<sp/>a<sp/>request<sp/>to<sp/>`/bug_m_switch`<sp/>of<sp/>type<sp/>`std_srvs/SetBool`<sp/>(flag<sp/>`SetBool.Request.data=True`)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>open<sp/>a<sp/>client<sp/>with<sp/>`/bug_m_signal`<sp/>of<sp/>type<sp/>`std_srvs/Empty`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>...<sp/>wait<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>when<sp/>the<sp/>robot<sp/>is<sp/>near<sp/>to<sp/>the<sp/>target<sp/>point,<sp/>the<sp/>node<sp/>bug_m<sp/>calls<sp/>the<sp/>service</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>from<sp/>this,<sp/>the<sp/>node<sp/>can<sp/>infer<sp/>that<sp/>the<sp/>node<sp/>has<sp/>reached<sp/>the<sp/>final<sp/>position</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/_uml/bug-m.md"/>
+  </compounddef>
+</doxygen>

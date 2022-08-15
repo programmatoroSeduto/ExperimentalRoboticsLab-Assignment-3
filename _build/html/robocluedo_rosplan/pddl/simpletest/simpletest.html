@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Test &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Simple Test</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/robocluedo_rosplan/pddl/simpletest/simpletest.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="simple-test">
+<h1>Simple Test<a class="headerlink" href="#simple-test" title="Permalink to this heading"></a></h1>
+<p>A PDDL2.1 domain to test the ROSplan in a very simple case.</p>
+<div class="section" id="first-version-very-simple">
+<h2>First version – very simple<a class="headerlink" href="#first-version-very-simple" title="Permalink to this heading"></a></h2>
+<div class="section" id="domanin">
+<h3>Domanin<a class="headerlink" href="#domanin" title="Permalink to this heading"></a></h3>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">domain</span> <span class="nv">dom</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:requirements</span> 
+	<span class="ss">:typing</span>
+	<span class="ss">:adl</span>
+	<span class="ss">:durative-actions</span>
+	<span class="ss">:disjunctive-preconditions</span>
+	<span class="ss">:universal-preconditions</span>
+	<span class="ss">:fluents</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:types</span> 
+	<span class="nv">boolobj</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:predicates</span>
+	<span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span><span class="p">)</span>
+	<span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:functions</span>
+	
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">make-true</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span> <span class="p">)</span>
+
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span><span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span><span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span><span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">make-false</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span> <span class="p">)</span>
+
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span><span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span><span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span><span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="problem">
+<h3>Problem<a class="headerlink" href="#problem" title="Permalink to this heading"></a></h3>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">problem</span> <span class="nv">task</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:domain</span> <span class="nv">dom</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:objects</span>
+	<span class="nv">b1</span> <span class="nv">b2</span> <span class="nv">b3</span> <span class="nb">-</span> <span class="nv">boolobj</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:init</span>
+	<span class="p">(</span><span class="nv">b-true</span> <span class="nv">b1</span><span class="p">)</span>
+	<span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">b2</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span>
+	<span class="p">(</span><span class="nv">b-true</span> <span class="nv">b1</span><span class="p">)</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">b1</span><span class="p">))</span>
+	<span class="p">(</span><span class="nv">b-true</span> <span class="nv">b2</span><span class="p">)</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">b2</span><span class="p">))</span>
+	<span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">b3</span><span class="p">)</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">b3</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-more-sophisticated-version-of-the-problem">
+<h2>A more sophisticated version of the problem<a class="headerlink" href="#a-more-sophisticated-version-of-the-problem" title="Permalink to this heading"></a></h2>
+<div class="section" id="domain-file">
+<h3>Domain file<a class="headerlink" href="#domain-file" title="Permalink to this heading"></a></h3>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">domain</span> <span class="nv">dom</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:requirements</span> 
+	<span class="ss">:strips</span> 
+	<span class="ss">:typing</span> 
+	<span class="ss">:equality</span> 
+	<span class="ss">:universal-preconditions</span> 
+	<span class="ss">:fluents</span>
+	<span class="ss">:durative-actions</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:types</span> 
+	<span class="nv">boolobj</span>
+	<span class="nv">key</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:predicates</span>
+	<span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span><span class="p">)</span>
+	<span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span><span class="p">)</span>
+	<span class="p">(</span><span class="nv">start</span> <span class="p">)</span> <span class="p">(</span><span class="nv">stop</span> <span class="p">)</span> <span class="p">(</span><span class="nv">signal-stop</span> <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:functions</span>
+	<span class="p">(</span><span class="nv">f-non-zero</span><span class="p">)</span>
+	<span class="p">(</span><span class="nv">f-zero</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">set-start</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="p">)</span>
+
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">stop</span> <span class="p">))</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">stop</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">start</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">make-true</span>
+	<span class="ss">:parameters</span> <span class="p">(</span><span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span><span class="p">)</span>
+
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span><span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">start</span><span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span><span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span><span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">make-false</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?b</span> <span class="nb">-</span> <span class="nv">boolobj</span> <span class="p">)</span>
+
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span><span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">start</span><span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">b-true</span> <span class="nv">?b</span><span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">?b</span><span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">set-signal-stop</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">start</span> <span class="p">))</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">signal-stop</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">set-stop</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="p">)</span>
+
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mi">1</span><span class="p">)</span>
+
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span> 
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">start</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">signal-stop</span> <span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">start</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">stop</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">signal-stop</span> <span class="p">)))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="problem-file">
+<h3>Problem file<a class="headerlink" href="#problem-file" title="Permalink to this heading"></a></h3>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">problem</span> <span class="nv">task</span><span class="p">)</span>
+<span class="p">(</span><span class="ss">:domain</span> <span class="nv">dom</span><span class="p">)</span>
+<span class="p">(</span><span class="ss">:objects</span>
+    <span class="nv">b1</span> <span class="nv">b2</span> <span class="nv">b3</span> <span class="nb">-</span> <span class="nv">boolobj</span>
+<span class="p">)</span>
+<span class="p">(</span><span class="ss">:init</span>
+    <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">b2</span><span class="p">)</span>
+
+    <span class="p">(</span><span class="nv">b-true</span> <span class="nv">b1</span><span class="p">)</span>
+    
+    <span class="p">(</span><span class="nv">b-true</span> <span class="nv">b3</span><span class="p">)</span>
+
+
+    <span class="p">(</span><span class="nv">stop</span><span class="p">)</span>
+
+
+    <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nv">f-non-zero</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nv">f-zero</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="p">)</span>
+<span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span>
+    <span class="p">(</span><span class="nv">b-true</span> <span class="nv">b1</span><span class="p">)</span>
+    <span class="c1">;; (not(b-not-true b1))</span>
+    <span class="p">(</span><span class="nv">b-true</span> <span class="nv">b2</span><span class="p">)</span>
+    <span class="c1">;; (not(b-not-true b2))</span>
+    <span class="p">(</span><span class="nv">b-not-true</span> <span class="nv">b3</span><span class="p">)</span>
+    <span class="c1">;; (not(b-true b3))</span>
+    <span class="p">(</span><span class="nv">stop</span><span class="p">)</span>
+    <span class="c1">;; (not(start))</span>
+<span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

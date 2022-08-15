@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE REFERENCE – node manipulation controller &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CODE REFERENCE – node navigation_manager" href="navigation_manager.html" />
+    <link rel="prev" title="CODE REFERENCE – node head_orientation" href="head_orientation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/wall-follow.html">UML – wall follow PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_m.html">CODE REFERENCE – node bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wall_follow.html">CODE REFERENCE – node wall_follow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
+      <li>CODE REFERENCE – node manipulation controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_movement_controller/_code_reference/manipulation_controller.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="code-reference-node-manipulation-controller">
+<h1>CODE REFERENCE – node manipulation controller<a class="headerlink" href="#code-reference-node-manipulation-controller" title="Permalink to this heading"></a></h1>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NODE_NAME">
+<span class="target" id="manipulation__controller_8cpp_1a8cc8d559acdd2f74085b20977182d5b7"></span><span class="sig-name descname"><span class="n"><span class="pre">NODE_NAME</span></span></span><a class="headerlink" href="#c.NODE_NAME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOGSQUARE">
+<span class="target" id="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0"></span><span class="sig-name descname"><span class="n"><span class="pre">LOGSQUARE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">str</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OUTLABEL">
+<span class="target" id="manipulation__controller_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643"></span><span class="sig-name descname"><span class="n"><span class="pre">OUTLABEL</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TLOG">
+<span class="target" id="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c"></span><span class="sig-name descname"><span class="n"><span class="pre">TLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.TLOG" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TWARN">
+<span class="target" id="manipulation__controller_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643"></span><span class="sig-name descname"><span class="n"><span class="pre">TWARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.TWARN" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TERR">
+<span class="target" id="manipulation__controller_8cpp_1a59b71c836719259a2e9b1428ec35504c"></span><span class="sig-name descname"><span class="n"><span class="pre">TERR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.TERR" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SS">
+<span class="target" id="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d"></span><span class="sig-name descname"><span class="n"><span class="pre">SS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">chr</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SSS">
+<span class="target" id="manipulation__controller_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33"></span><span class="sig-name descname"><span class="n"><span class="pre">SSS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">el</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ARM_PLANNING_GROUP">
+<span class="target" id="manipulation__controller_8cpp_1af017b1456268e518866d2c2dcc8a6b70"></span><span class="sig-name descname"><span class="n"><span class="pre">ARM_PLANNING_GROUP</span></span></span><a class="headerlink" href="#c.ARM_PLANNING_GROUP" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_MANIP">
+<span class="target" id="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_MANIP</span></span></span><a class="headerlink" href="#c.SERVICE_MANIP" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_HOME">
+<span class="target" id="manipulation__controller_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_HOME</span></span></span><a class="headerlink" href="#c.POSE_HOME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_EXTENDED">
+<span class="target" id="manipulation__controller_8cpp_1a1a91a5c6eb5f9d956907ef99a55fde46"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_EXTENDED</span></span></span><a class="headerlink" href="#c.POSE_EXTENDED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_LOW">
+<span class="target" id="manipulation__controller_8cpp_1af3cf1ad007e09eff2b8209586939a3a6"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_LOW</span></span></span><a class="headerlink" href="#c.POSE_LOW" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_FRONT_LOW">
+<span class="target" id="manipulation__controller_8cpp_1a0c261af135c0942669dbb3861532e2b1"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_FRONT_LOW</span></span></span><a class="headerlink" href="#c.POSE_FRONT_LOW" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_FRONT_HIGH">
+<span class="target" id="manipulation__controller_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_FRONT_HIGH</span></span></span><a class="headerlink" href="#c.POSE_FRONT_HIGH" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_NAME_HOME">
+<span class="target" id="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_NAME_HOME</span></span></span><a class="headerlink" href="#c.POSE_NAME_HOME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_NAME_EXTENDED">
+<span class="target" id="manipulation__controller_8cpp_1a944208b9d465d5576abe01e658bb7e4a"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_NAME_EXTENDED</span></span></span><a class="headerlink" href="#c.POSE_NAME_EXTENDED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_NAME_LOW">
+<span class="target" id="manipulation__controller_8cpp_1a4dac7fdce1aa6f68047132b579efbcad"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_NAME_LOW</span></span></span><a class="headerlink" href="#c.POSE_NAME_LOW" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_NAME_FRONT_LOW">
+<span class="target" id="manipulation__controller_8cpp_1a05867d1976b01f30e107a897c81eab1b"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_NAME_FRONT_LOW</span></span></span><a class="headerlink" href="#c.POSE_NAME_FRONT_LOW" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.POSE_NAME_FRONT_HIGH">
+<span class="target" id="manipulation__controller_8cpp_1aed64b60baca3db44b4f6f1672b66aef3"></span><span class="sig-name descname"><span class="n"><span class="pre">POSE_NAME_FRONT_HIGH</span></span></span><a class="headerlink" href="#c.POSE_NAME_FRONT_HIGH" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48shut_msgi">
+<span id="_CPPv38shut_msgi"></span><span id="_CPPv28shut_msgi"></span><span id="shut_msg__i"></span><span class="target" id="manipulation__controller_8cpp_1ac55116ccd10a2e3bfb144277f960d79e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shut_msg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48shut_msgi" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiA_Pc">
+<span id="_CPPv34mainiA_Pc"></span><span id="_CPPv24mainiA_Pc"></span><span id="main__i.cPA"></span><span class="target" id="manipulation__controller_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv428node_manipulation_controller">
+<span id="_CPPv328node_manipulation_controller"></span><span id="_CPPv228node_manipulation_controller"></span><span id="node_manipulation_controller"></span><span class="target" id="classnode__manipulation__controller"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_manipulation_controller</span></span></span><a class="headerlink" href="#_CPPv428node_manipulation_controller" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller28node_manipulation_controllerEv">
+<span id="_CPPv3N28node_manipulation_controller28node_manipulation_controllerEv"></span><span id="_CPPv2N28node_manipulation_controller28node_manipulation_controllerEv"></span><span id="node_manipulation_controller::node_manipulation_controller"></span><span class="target" id="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_manipulation_controller</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller28node_manipulation_controllerEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller4spinEv">
+<span id="_CPPv3N28node_manipulation_controller4spinEv"></span><span id="_CPPv2N28node_manipulation_controller4spinEv"></span><span id="node_manipulation_controller::spin"></span><span class="target" id="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller4spinEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE">
+<span id="_CPPv3N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE"></span><span id="_CPPv2N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE"></span><span id="node_manipulation_controller::cbk_manip__robocluedo_movement_controller_msgs::ManipulatorPosition::RequestR.robocluedo_movement_controller_msgs::ManipulatorPosition::ResponseR"></span><span class="target" id="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_manip</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ManipulatorPosition</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ManipulatorPosition</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller2nhE">
+<span id="_CPPv3N28node_manipulation_controller2nhE"></span><span id="_CPPv2N28node_manipulation_controller2nhE"></span><span id="node_manipulation_controller::nh__ros::NodeHandle"></span><span class="target" id="classnode__manipulation__controller_1a88fe3c1a8e2c9c533b50526bf2aab127"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS node handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller14planning_groupE">
+<span id="_CPPv3N28node_manipulation_controller14planning_groupE"></span><span id="_CPPv2N28node_manipulation_controller14planning_groupE"></span><span id="node_manipulation_controller::planning_group__ss"></span><span class="target" id="classnode__manipulation__controller_1af8a203283645588bc3278c17c4f437af"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">planning_group</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller14planning_groupE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>moveIt group name </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller3mgiE">
+<span id="_CPPv3N28node_manipulation_controller3mgiE"></span><span id="_CPPv2N28node_manipulation_controller3mgiE"></span><span id="node_manipulation_controller::mgi__moveit::planning_interface::MoveGroupInterface"></span><span class="target" id="classnode__manipulation__controller_1adaa9cdcaf929964b801a0620062eb736"></span><span class="n"><span class="pre">moveit</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">planning_interface</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MoveGroupInterface</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mgi</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller3mgiE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>planning interface </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller4planE">
+<span id="_CPPv3N28node_manipulation_controller4planE"></span><span id="_CPPv2N28node_manipulation_controller4planE"></span><span id="node_manipulation_controller::plan__moveit::planning_interface::MoveGroupInterface::Plan"></span><span class="target" id="classnode__manipulation__controller_1a97f72659165b7939674e08c4b3297b02"></span><span class="n"><span class="pre">moveit</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">planning_interface</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MoveGroupInterface</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Plan</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">plan</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller4planE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>previously generated plan </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller9srv_manipE">
+<span id="_CPPv3N28node_manipulation_controller9srv_manipE"></span><span id="_CPPv2N28node_manipulation_controller9srv_manipE"></span><span id="node_manipulation_controller::srv_manip__ros::ServiceServer"></span><span class="target" id="classnode__manipulation__controller_1a36d5d558f4937c26b2aab842b79cd19a"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_manip</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller9srv_manipE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>moveit service </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="head_orientation.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node head_orientation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="navigation_manager.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node navigation_manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

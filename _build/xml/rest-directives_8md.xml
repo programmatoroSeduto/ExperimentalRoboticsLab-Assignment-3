@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="rest-directives_8md" kind="file" language="Markdown">
+    <compoundname>rest-directives.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>ReStructured<sp/>Directives<sp/>--<sp/>practical<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:link:<sp/>more<sp/>about<sp/>the<sp/>reST<sp/>syntax<sp/>[here](https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/Index.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:link:<sp/>[a<sp/>quick<sp/>reference](https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/CheatSheet.html)<sp/>about<sp/>reST</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:link:<sp/>a<sp/>excellent<sp/>reference<sp/>about<sp/>reST<sp/>and<sp/>sphinx<sp/>[here](https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/index.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Include<sp/>a<sp/>file<sp/>into<sp/>another<sp/>file</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:warning:<sp/>NOt<sp/>working<sp/>for<sp/>.md<sp/>files!<sp/>:warning:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>include::<sp/>&lt;yourfile.format&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>MarkDown<sp/>Vs.<sp/>reStructured</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sintassi<sp/>reST:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>directivename::<sp/>arguments</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>:key1:<sp/>val1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>:key2:<sp/>val2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>This<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>directive<sp/>content</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">in<sp/>MarkDown<sp/>diventa</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">\```{directivename}<sp/>arguments</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">key1:<sp/>val1</highlight></codeline>
+<codeline><highlight class="normal">key2:<sp/>val2</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">directive<sp/>content</highlight></codeline>
+<codeline><highlight class="normal">\```</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>TocTree<sp/>directive</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:point_up:<sp/>a<sp/>reST<sp/>file<sp/>can<sp/>contain<sp/>more<sp/>than<sp/>one<sp/>`..<sp/>toctree::`<sp/>directive.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">general<sp/>syntax:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>toctree::</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:option:<sp/>value</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>file.name</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file<sp/>name<sp/>syntax:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`path/of/the/file.tp`<sp/>prints<sp/>the<sp/>title<sp/>of<sp/>the<sp/>page<sp/>and<sp/>the<sp/>link</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`this<sp/>page<sp/>&lt;path/of/the/file.tp&gt;`<sp/>print<sp/>*this<sp/>page*<sp/>with<sp/>the<sp/>link<sp/>to<sp/>the<sp/>page</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>ToC<sp/>tree<sp/>in<sp/>markdown</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">\```{toctree}<sp/></highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>this<sp/>is<sp/>a<sp/>toc</highlight></codeline>
+<codeline><highlight class="normal">glob:</highlight></codeline>
+<codeline><highlight class="normal">hidden:</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">...<sp/>link<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">link<sp/>name<sp/>&lt;/link/path&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\```</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Index<sp/>Template</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:point_up:<sp/>reSt<sp/>is<sp/>truly<sp/>horrible.<sp/>Use<sp/>the<sp/>reST<sp/>only<sp/>for<sp/>indexing<sp/>the<sp/>documentation.<sp/>And<sp/>nothing<sp/>else.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>_your-tag:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">page<sp/>title</highlight></codeline>
+<codeline><highlight class="normal">==========</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">..<sp/>toctree::</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:maxdepth:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:caption:<sp/>ToC<sp/>title</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:titlesonly:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:glob:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:hidden:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link<sp/>text<sp/>&lt;./path/link.format&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>page<sp/>can<sp/>be<sp/>referred<sp/>using<sp/>both<sp/>`:ref:&lt;your-tag&gt;`<sp/>and<sp/>`:any:&lt;your-tag&gt;`.<sp/>**WITH<sp/>BACKTICKS!**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Add<sp/>some<sp/>code</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>from<sp/>Python</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>directive<sp/>inserts<sp/>the<sp/>entire<sp/>documentation<sp/>related<sp/>to<sp/>the<sp/>py<sp/>file<sp/>you&apos;re<sp/>referring<sp/>to.<sp/>Just<sp/>one<sp/>instructor<sp/>for<sp/>generating<sp/>the<sp/>documentation.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:point_up:<sp/>in<sp/>Sphinx,<sp/>you<sp/>say<sp/>where<sp/>to<sp/>generate<sp/>the<sp/>documentation,<sp/>pointing<sp/>the<sp/>page<sp/>with<sp/>this<sp/>directive.<sp/>In<sp/>Doxygen<sp/>instead,<sp/>the<sp/>file<sp/>system<sp/>is<sp/>fixed.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>automodule::<sp/>your_py_file</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:members:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:noindex:</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>from<sp/>Doxygen/Breathe</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">same<sp/>observations<sp/>as<sp/>before<sp/>for<sp/>what<sp/>concerns<sp/>the<sp/>cpp<sp/>files.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>doxygenfile::<sp/>your-cpp-file.cpp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:project:<sp/>your-project-name</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Images</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>image::<sp/>someimage.png</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>:class:<sp/>with-border<sp/>with-shadow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>:alt:<sp/>Textual<sp/>alternative<sp/>to<sp/>the<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>tabs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">:link:<sp/>see<sp/>[tabs<sp/>in<sp/>reST](https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/CheatSheet.html#tabs)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">..<sp/>tabs::</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>..<sp/>group-tab::<sp/>bash</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>..<sp/>code-block::<sp/>bash</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>touch<sp/>example-project-directory/public/FIRST_INSTALL</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>..<sp/>group-tab::<sp/>powershell</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>..<sp/>code-block::<sp/>powershell</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>echo<sp/>$null<sp/>&gt;&gt;<sp/>public/FIRST_INSTALL</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>UML<sp/>diagrams</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[here](https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagramsInSphinx.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Graphs<sp/>with<sp/>graphiz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```py</highlight></codeline>
+<codeline><highlight class="normal">extensions<sp/>=<sp/>[&apos;sphinx.ext.graphviz&apos;]</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>the<sp/>example<sp/>on<sp/>the<sp/>Internet.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Graphs<sp/>with<sp/>plantUML</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>in<sp/>particular<sp/>[plantUML<sp/>on<sp/>gitHub](https://github.com/sphinx-contrib/plantuml)<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">install<sp/>the<sp/>extension:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">pip<sp/>install<sp/>sphinxcontrib-plantuml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">extension:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```py</highlight></codeline>
+<codeline><highlight class="normal">extensions<sp/>=<sp/>[&apos;sphinxcontrib.plantuml&apos;]</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>plantUML<sp/>and<sp/>markdown</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">\```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@endtuml</highlight></codeline>
+<codeline><highlight class="normal">\```</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Links</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```rst</highlight></codeline>
+<codeline><highlight class="normal">`anchor<sp/>text<sp/>&lt;URL&gt;`__</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="_docs/rest-directives.md"/>
+  </compounddef>
+</doxygen>

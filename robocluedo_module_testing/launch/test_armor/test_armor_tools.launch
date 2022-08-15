@@ -1,0 +1,10 @@
+<!-- this script is meant to test the base interface ArmorTools and ArmorCluedo -->
+
+<launch>
+	
+	<include file="$(find robocluedo_armor)/config/parameters.launch"></include>
+	
+	<node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService" required="true"/>
+	<node pkg="robocluedo_module_testing" type="test_armor_tools" name="test_armor_tools" output="screen" required="true"></node>
+	
+</launch>

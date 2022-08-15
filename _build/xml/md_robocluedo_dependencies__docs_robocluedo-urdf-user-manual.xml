@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual" kind="page">
+    <compoundname>md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual</compoundname>
+    <title>the RoboCLuedo Project no.2 – robot URDF model – User Manual</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">./robocluedo-urdf-user-manual.md</highlight></codeline>
+</programlisting></para>
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md208">
+<title>Model file structure</title>
+<para>inside the folder <computeroutput>robocluedo_urdf_model</computeroutput> there are these files:</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>generate_model.sh</computeroutput> is a script to tect the correctness of the model; it also generates a <computeroutput>.pdf</computeroutput> schematic of the model</para>
+</listitem><listitem><para><computeroutput>robocluedo_xacro.xacro</computeroutput> is (as the name suggests) the XACRO model of a robot labeled <bold>robocluedo_robot</bold>. the model is split into three files:<itemizedlist>
+<listitem><para><computeroutput>robocluedo_gazebo_materials</computeroutput> : graphical appearance of the robot</para>
+</listitem><listitem><para><computeroutput>robocluedo_chassis</computeroutput> : the moving platform of the robot</para>
+</listitem><listitem><para><computeroutput>robocluedo_arm</computeroutput> : the robotics arm</para>
+</listitem><listitem><para><computeroutput>robocluedo_arm_gripper</computeroutput> : the gripper of the robotic arm; it includes the link labeled <emphasis>cluedo_link</emphasis></para>
+</listitem><listitem><para><computeroutput>robocluedo_gazebo_sensing</computeroutput> : definition of the Gazebo pluging related to the sensing; vision, laser, everything inside this file</para>
+</listitem><listitem><para><computeroutput>robocluedo_sensing</computeroutput> : this file contains the sensors mounted on the robot</para>
+</listitem><listitem><para><computeroutput>robocluedo_gazebo_plugins</computeroutput> : definition of the Gazebo plugins, without the sensing part</para>
+</listitem><listitem><para><computeroutput>robocluedo_transmission</computeroutput> : Gazebo controllers</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md209">
+<title>HOW TO generate the model</title>
+<para>execute the file <computeroutput>generate_model.sh</computeroutput>; the URDF and its schematic will be located into the folder <computeroutput>model</computeroutput> with names</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>robocluedo_urdf.urdf</computeroutput> for the URDF model,</para>
+</listitem><listitem><para>and <computeroutput>robocluedo_urdf.pdf</computeroutput> for the schematic</para>
+</listitem></itemizedlist>
+</para>
+<para>the output should be like the following:</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">robot<sp/>name<sp/>is:<sp/>robocluedo_robot</highlight></codeline>
+<codeline><highlight class="normal">----------<sp/>Successfully<sp/>Parsed<sp/>XML<sp/>---------------</highlight></codeline>
+<codeline><highlight class="normal">root<sp/>Link:<sp/>base_link<sp/>has<sp/>4<sp/>child(ren)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>child(1):<sp/><sp/>arm_base_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child(1):<sp/><sp/>arm_link_01</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child(1):<sp/><sp/>arm_link_02</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child(1):<sp/><sp/>arm_link_03</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child(1):<sp/><sp/>cluedo_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child(1):<sp/><sp/>left_grip_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child(2):<sp/><sp/>right_grip_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>child(2):<sp/><sp/>laser</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>child(3):<sp/><sp/>link_left_wheel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>child(4):<sp/><sp/>link_right_wheel</highlight></codeline>
+<codeline><highlight class="normal">Created<sp/>file<sp/>robocluedo_robot.gv</highlight></codeline>
+<codeline><highlight class="normal">Created<sp/>file<sp/>robocluedo_robot.pdf</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md210">
+<title>HOW TO generate the package with Moveit</title>
+<para>first of all, use the setup assistant to generate the package. Inside the project, <computeroutput>robocluedo_robot</computeroutput>.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>moveit_setup_assistant<sp/>setup.assistant.launch</highlight></codeline>
+</programlisting></para>
+<para>the code generated by the setup assistant won&apos;t work at the beginning. Here are the fixes:</para>
+<para><itemizedlist>
+<listitem><para>In trajectory_execution.launch.xml, we need to comment line 21</para>
+</listitem><listitem><para>In config/ros_controllers.yaml, let&apos;s modify the gain of the proportional controllers</para>
+</listitem><listitem><para>In config/joint_limits.yaml let&apos;s set to 1 the scaling factor.</para>
+</listitem></itemizedlist>
+</para>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md211">
+<title>file ros_controllers.yaml</title>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>Simulation<sp/>settings<sp/>for<sp/>using<sp/>moveit_sim_controllers</highlight></codeline>
+<codeline><highlight class="normal">moveit_sim_hw_interface:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>joint_model_group:<sp/>arm_group</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>joint_model_group_pose:<sp/>extended</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Settings<sp/>for<sp/>ros_control_boilerplate<sp/>control<sp/>loop</highlight></codeline>
+<codeline><highlight class="normal">generic_hw_control_loop:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>loop_hz:<sp/>300</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cycle_time_error_threshold:<sp/>0.01</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Settings<sp/>for<sp/>ros_control<sp/>hardware<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">hardware_interface:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>joints:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_01</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_02</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_03</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_04</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>joint_a_left_wheel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>joint_a_right_wheel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>joint_left_wheel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>joint_right_wheel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sim_control_mode:<sp/>1<sp/><sp/>#<sp/>0:<sp/>position,<sp/>1:<sp/>velocity</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Publish<sp/>all<sp/>joint<sp/>states</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Creates<sp/>the<sp/>/joint_states<sp/>topic<sp/>necessary<sp/>in<sp/>ROS</highlight></codeline>
+<codeline><highlight class="normal">joint_state_controller:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>type:<sp/>joint_state_controller/JointStateController</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>publish_rate:<sp/>50</highlight></codeline>
+<codeline><highlight class="normal">controller_list:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>name:<sp/>arm_group_controller</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>action_ns:<sp/>follow_joint_trajectory</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>default:<sp/>True</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>type:<sp/>FollowJointTrajectory</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>joints:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>arm_joint_01</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>arm_joint_02</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>arm_joint_03</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>arm_joint_04</highlight></codeline>
+<codeline><highlight class="normal">arm_group_controller:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>type:<sp/>effort_controllers/JointTrajectoryController</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>joints:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_01</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_02</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_03</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>arm_joint_04</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gains:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arm_joint_01:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>p:<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arm_joint_02:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>p:<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arm_joint_03:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>p:<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>arm_joint_04:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>p:<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>d:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md212">
+<title>file joint_limits.yaml</title>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>joint_limits.yaml<sp/>allows<sp/>the<sp/>dynamics<sp/>properties<sp/>specified<sp/>in<sp/>the<sp/>URDF<sp/>to<sp/>be<sp/>overwritten<sp/>or<sp/>augmented<sp/>as<sp/>needed</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>For<sp/>beginners,<sp/>we<sp/>downscale<sp/>velocity<sp/>and<sp/>acceleration<sp/>limits.</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>You<sp/>can<sp/>always<sp/>specify<sp/>higher<sp/>scaling<sp/>factors<sp/>(&lt;=<sp/>1.0)<sp/>in<sp/>your<sp/>motion<sp/>requests.<sp/><sp/>#<sp/>Increase<sp/>the<sp/>values<sp/>below<sp/>to<sp/>1.0<sp/>to<sp/>always<sp/>move<sp/>at<sp/>maximum<sp/>speed.</highlight></codeline>
+<codeline><highlight class="normal">default_velocity_scaling_factor:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">default_acceleration_scaling_factor:<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Specific<sp/>joint<sp/>properties<sp/>can<sp/>be<sp/>changed<sp/>with<sp/>the<sp/>keys<sp/>[max_position,<sp/>min_position,<sp/>max_velocity,<sp/>max_acceleration]</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Joint<sp/>limits<sp/>can<sp/>be<sp/>turned<sp/>off<sp/>with<sp/>[has_velocity_limits,<sp/>has_acceleration_limits]</highlight></codeline>
+<codeline><highlight class="normal">joint_limits:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arm_joint_01:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_velocity_limits:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_velocity:<sp/>0.2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_acceleration_limits:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arm_joint_02:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_velocity_limits:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_velocity:<sp/>0.2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_acceleration_limits:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arm_joint_03:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_velocity_limits:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_velocity:<sp/>0.2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_acceleration_limits:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>arm_joint_04:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_velocity_limits:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_velocity:<sp/>0.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has_acceleration_limits:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md213">
+<title>Gazebo world files fix</title>
+<para>apply this code into the file <bold>gazebo.launch</bold> :</para>
+<para><programlisting filename=".xml"><codeline><highlight class="comment">&lt;!--<sp/>world<sp/>file<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;square_room.world&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>worlds)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)/$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">&lt;!--<sp/>startup<sp/>simulated<sp/>world<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>gazebo_ros)/launch/empty_world.launch&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;paused&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>paused)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;gui&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo_gui)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
+</programlisting></para>
+<para>and apply this fix in the <bold>demo_gazebo.launch</bold> :</para>
+<para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>worlds)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;square_room.world&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)/$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">&lt;!--<sp/>launch<sp/>the<sp/>gazebo<sp/>simulator<sp/>and<sp/>spawn<sp/>the<sp/>robot<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot)/launch/gazebo.launch&quot;</highlight><highlight class="normal"><sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;paused&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>paused)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;gazebo_gui&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo_gui)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;urdf_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>urdf_path)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md214">
+<title>HOW TO test the model with Gazebo</title>
+<para>launch this:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch</highlight></codeline>
+</programlisting></para>
+<para>it should appear the robot, similar to this:</para>
+<para><image type="html" name="robot_gazebo.png" inline="yes"></image>
+</para>
+<para><image type="html" name="robot_rviz.png" inline="yes"></image>
+</para>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md215">
+<title>HOW TO Launch the simulation with other worlds file</title>
+<para>the package takes the world files from the package <emphasis>worlds</emphasis> located into the <emphasis>robocluedo_depedencied</emphasis> folder. The default world file is <emphasis>square_room.world</emphasis>.</para>
+<para>here&apos;s the syntax of the command:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch<sp/>world_name:=indoor.world</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md216">
+<title>HOW TO launch a world &lt;em&gt;outside the package worlds&lt;/em&gt;</title>
+<para>in case the world file is not included in the <emphasis>worlds</emphasis> package, you have two possibilities.</para>
+<para>the first one is to specify both path and name in this way:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>demo_gazebo.launch<sp/>world_name:=indoor.world<sp/>world_file:=/root/ros_ws/src/erl2-new/robocluedo_dependencies/worlds</highlight></codeline>
+</programlisting></para>
+<para>the second one is to directly specify the path with the variable <computeroutput>world_file_path</computeroutput>:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>demo_gazebo.launch<sp/>world_file_path:=/root/ros_ws/src/erl2-new/robocluedo_dependencies/worlds/indoor.world</highlight></codeline>
+</programlisting> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

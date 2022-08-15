@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="wall-follow_8md" kind="file" language="Markdown">
+    <compoundname>wall-follow.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>wall<sp/>follow<sp/>PY<sp/>node</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}<sp/></highlight></codeline>
+<codeline><highlight class="normal">./wall-follow.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>SCHEMA</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>NODE<sp/>wall_follow_service</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;wall_follow_service&quot;<sp/>&lt;&lt;ROSPy<sp/>node&gt;&gt;<sp/>as<sp/>NODE_WALL_FOLLOW<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;wall_follower_switch&quot;<sp/>as<sp/>NODE_WALL_FOLLOW.WALL_FOLLOW_SWITCH</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;clbk_laser&quot;<sp/>as<sp/>NODE_WALL_FOLLOW.LISTENER_LASER</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cmd_vel&quot;<sp/>as<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">NODE_WALL_FOLLOW<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>geometry_msgs/Twist.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/scan&quot;<sp/>as<sp/>TOPIC_LASER</highlight></codeline>
+<codeline><highlight class="normal">NODE_WALL_FOLLOW.LISTENER_LASER<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_LASER</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>sensor_msgs/LaserScan.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/wall_follower_switch&quot;<sp/>as<sp/>SRV_WALL_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">NODE_WALL_FOLLOW.WALL_FOLLOW_SWITCH<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_WALL_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>it<sp/>works</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>node,<sp/>when<sp/>active,<sp/>makes<sp/>the<sp/>robot<sp/>to<sp/>go<sp/>along<sp/>the<sp/>wall<sp/>*in<sp/>counter-clockwise<sp/>direction*.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>find<sp/>a<sp/>wall</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>follow<sp/>it</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>if<sp/>there&apos;s<sp/>no<sp/>longer<sp/>a<sp/>wall<sp/>to<sp/>follow,<sp/>turn<sp/>left<sp/>until<sp/>the<sp/>robot<sp/>isn&apos;t<sp/>able<sp/>to<sp/>find<sp/>the<sp/>wall,<sp/>then<sp/>continue<sp/>following<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>always<sp/>*go<sp/>straight<sp/>along<sp/>the<sp/>wall*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>until<sp/>the<sp/>node<sp/>is<sp/>active</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>activate<sp/>or<sp/>deactivate<sp/>the<sp/>node</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>node<sp/>can<sp/>be<sp/>neabled<sp/>or<sp/>disabled<sp/>using<sp/>the<sp/>service<sp/>`wall_follower_switch`<sp/>of<sp/>type<sp/>`std_srvs/SetBool`.<sp/>the<sp/>service<sp/>returns<sp/>immediately.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>flag<sp/>`SetBool.Request.data`<sp/>will<sp/>be<sp/>the<sp/>new<sp/>activity<sp/>state<sp/>of<sp/>the<sp/>node</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/_uml/wall-follow.md"/>
+  </compounddef>
+</doxygen>

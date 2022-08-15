@@ -1,0 +1,18 @@
+## file 'Algorithm.srv'
+# this service file is meant to choose an algorithm to use
+# the algorithm is expressed as integer number
+# the service can be used by every interface which needs to select a algorithm among a set
+
+# the algorithm, indicated as integer number
+int32 algorithm
+
+# wether the algorithm is enabled or not (it could be also the running one)
+bool enabled
+
+---
+
+# if the operation succeeded or no (i.e. if the algorithm exists)
+bool success
+
+# in case of error, the node could return a explaination of the error
+string details

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE REFERENCE – node mission_manager &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CODE REFERENCE – node navigation_unit" href="nagivation_unit.html" />
+    <link rel="prev" title="CODE REFERENCE – node manipulation_unit" href="manipulation_unit.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_mission_manager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manipulation_unit.html">CODE REFERENCE – node manipulation_unit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node mission_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nagivation_unit.html">CODE REFERENCE – node navigation_unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_mission_manager</a> &raquo;</li>
+      <li>CODE REFERENCE – node mission_manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_mission_manager/_code_reference/mission_manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="code-reference-node-mission-manager">
+<h1>CODE REFERENCE – node mission_manager<a class="headerlink" href="#code-reference-node-mission-manager" title="Permalink to this heading"></a></h1>
+<p>the main node of the architecture, launched at last, and combining the ROSPlan flow with the aRMOR ontology. </p>
+<p><dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NODE_NAME">
+<span class="target" id="mission__manager_8cpp_1a8cc8d559acdd2f74085b20977182d5b7"></span><span class="sig-name descname"><span class="n"><span class="pre">NODE_NAME</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOGSQUARE">
+<span class="target" id="mission__manager_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0"></span><span class="sig-name descname"><span class="n"><span class="pre">LOGSQUARE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">str</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OUTLABEL">
+<span class="target" id="mission__manager_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643"></span><span class="sig-name descname"><span class="n"><span class="pre">OUTLABEL</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TLOG">
+<span class="target" id="mission__manager_8cpp_1a4c242fea9a3b706e637163f8b0eed95c"></span><span class="sig-name descname"><span class="n"><span class="pre">TLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TWARN">
+<span class="target" id="mission__manager_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643"></span><span class="sig-name descname"><span class="n"><span class="pre">TWARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TERR">
+<span class="target" id="mission__manager_8cpp_1a59b71c836719259a2e9b1428ec35504c"></span><span class="sig-name descname"><span class="n"><span class="pre">TERR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WAITKEY_ENABLED">
+<span class="target" id="mission__manager_8cpp_1a78d2d73e2e7d4f0d40720190efa53f77"></span><span class="sig-name descname"><span class="n"><span class="pre">WAITKEY_ENABLED</span></span></span><a class="headerlink" href="#c.WAITKEY_ENABLED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WAITKEY">
+<span class="target" id="mission__manager_8cpp_1a8a9bdfb2d1bf4dd388f35c1bfa853892"></span><span class="sig-name descname"><span class="n"><span class="pre">WAITKEY</span></span></span><a class="headerlink" href="#c.WAITKEY" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEVELOP_PRINT_ENABLED">
+<span class="target" id="mission__manager_8cpp_1aaca526c913510d304e334a05fa17de7b"></span><span class="sig-name descname"><span class="n"><span class="pre">DEVELOP_PRINT_ENABLED</span></span></span><a class="headerlink" href="#c.DEVELOP_PRINT_ENABLED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WTLOG">
+<span class="target" id="mission__manager_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1"></span><span class="sig-name descname"><span class="n"><span class="pre">WTLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WTLOG" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WTWARN">
+<span class="target" id="mission__manager_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2"></span><span class="sig-name descname"><span class="n"><span class="pre">WTWARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WTWARN" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WTERR">
+<span class="target" id="mission__manager_8cpp_1ab54fe75f2d341266c97d92509779e2f7"></span><span class="sig-name descname"><span class="n"><span class="pre">WTERR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WTERR" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_ROSPLAN_PIPELINE">
+<span class="target" id="mission__manager_8cpp_1a497eb2fcadf2e7f5380b65d6edc24bfa"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_ROSPLAN_PIPELINE</span></span></span><a class="headerlink" href="#c.SERVICE_ROSPLAN_PIPELINE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_ARMOR_ADD">
+<span class="target" id="mission__manager_8cpp_1a0b75b3a0b29b223aa6317a043386d4b7"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_ARMOR_ADD</span></span></span><a class="headerlink" href="#c.SERVICE_ARMOR_ADD" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_ARMOR_FIND">
+<span class="target" id="mission__manager_8cpp_1ae7d7101314e5beb85bb693ff3accc67d"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_ARMOR_FIND</span></span></span><a class="headerlink" href="#c.SERVICE_ARMOR_FIND" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_ARMOR_DEL">
+<span class="target" id="mission__manager_8cpp_1a0981d5507d2883f2bea4d7d80b55aa42"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_ARMOR_DEL</span></span></span><a class="headerlink" href="#c.SERVICE_ARMOR_DEL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_ARMOR_BACKUP">
+<span class="target" id="mission__manager_8cpp_1afe289e29c3fd9b68631c14b258790100"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_ARMOR_BACKUP</span></span></span><a class="headerlink" href="#c.SERVICE_ARMOR_BACKUP" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_ORACLE_SOLUTION">
+<span class="target" id="mission__manager_8cpp_1aa2b57d2ee6e8903abdb592bf5345b706"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_ORACLE_SOLUTION</span></span></span><a class="headerlink" href="#c.SERVICE_ORACLE_SOLUTION" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TOPIC_ORACLE_HINT">
+<span class="target" id="mission__manager_8cpp_1a07769807eae9ad352141589f3e6fcb6b"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_ORACLE_HINT</span></span></span><a class="headerlink" href="#c.TOPIC_ORACLE_HINT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MAX_FAULT_COUNT">
+<span class="target" id="mission__manager_8cpp_1a14dd36508d648635f33bfe4c3506a879"></span><span class="sig-name descname"><span class="n"><span class="pre">MAX_FAULT_COUNT</span></span></span><a class="headerlink" href="#c.MAX_FAULT_COUNT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>how many times the system can fail something </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LANDMARK_REPLAN">
+<span class="target" id="mission__manager_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8"></span><span class="sig-name descname"><span class="n"><span class="pre">LANDMARK_REPLAN</span></span></span><br /></dt>
+<dd><p>landmar REPLAN identifier </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LANDMARK_COLLECT">
+<span class="target" id="mission__manager_8cpp_1a24358e49160550a847f87e20cbae2755"></span><span class="sig-name descname"><span class="n"><span class="pre">LANDMARK_COLLECT</span></span></span><br /></dt>
+<dd><p>landmark COLLECT identifier </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LANDMARK_SOLVE">
+<span class="target" id="mission__manager_8cpp_1aeba69fa9266c50170be8cd6c57e4f2ef"></span><span class="sig-name descname"><span class="n"><span class="pre">LANDMARK_SOLVE</span></span></span><br /></dt>
+<dd><p>landmark SOLVE identifier </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_REPLAN">
+<span class="target" id="mission__manager_8cpp_1a2ce63008cc07bc6a6893f29a282a7830"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_REPLAN</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_REPLAN" title="Permalink to this definition"></a><br /></dt>
+<dd><p>landmark REPLAN &amp;#8212; the system is restarting the exploration </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_COLLECT">
+<span class="target" id="mission__manager_8cpp_1ab09398cdd7a42f5405fae795bc106db5"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_COLLECT</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_COLLECT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>landmark COLLECT &amp;#8212; the system is sill looking for hypotheses </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_SOLVE">
+<span class="target" id="mission__manager_8cpp_1a463f713aa5573b0d056e6c0922377ba8"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_SOLVE</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_SOLVE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>landmark SOLVE &amp;#8212; the system has a solution to prsent </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_ASK_ORACLE">
+<span class="target" id="mission__manager_8cpp_1a153fe0ac6e7bea9120a086a44783de17"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_ASK_ORACLE</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_ASK_ORACLE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>propose the solution to the Oracle ans check if the mystery has been solved </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_ASK_ONTOLOGY">
+<span class="target" id="mission__manager_8cpp_1a929085a001cea3d1edb3a22d907fa302"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_ASK_ONTOLOGY</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_ASK_ONTOLOGY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>look for a complete hypothesis inside the ontology </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_GET_HINT">
+<span class="target" id="mission__manager_8cpp_1a2901d28e3cb5448e75ebcc96a8a3062f"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_GET_HINT</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_GET_HINT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>receive hints from the Oracle (simple wait) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_COUNT_FAULT">
+<span class="target" id="mission__manager_8cpp_1a9b544dbbc5627b739c42aebc62a5d284"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_COUNT_FAULT</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_COUNT_FAULT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>simple wait: the system could fail at most MAX_FAULT_COUNT times </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MISSION_STATUS_FAULT">
+<span class="target" id="mission__manager_8cpp_1a86a8f413c460407b21686a0f68c7a11a"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_FAULT</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_FAULT" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the mission has failed </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48shut_msgi">
+<span id="_CPPv38shut_msgi"></span><span id="_CPPv28shut_msgi"></span><span id="shut_msg__i"></span><span class="target" id="mission__manager_8cpp_1ac55116ccd10a2e3bfb144277f960d79e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shut_msg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiA_Pc">
+<span id="_CPPv34mainiA_Pc"></span><span id="_CPPv24mainiA_Pc"></span><span id="main__i.cPA"></span><span class="target" id="mission__manager_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv420node_mission_manager">
+<span id="_CPPv320node_mission_manager"></span><span id="_CPPv220node_mission_manager"></span><span id="node_mission_manager"></span><span class="target" id="classnode__mission__manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_mission_manager</span></span></span><a class="headerlink" href="#_CPPv420node_mission_manager" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager20node_mission_managerEv">
+<span id="_CPPv3N20node_mission_manager20node_mission_managerEv"></span><span id="_CPPv2N20node_mission_manager20node_mission_managerEv"></span><span id="node_mission_manager::node_mission_manager"></span><span class="target" id="classnode__mission__manager_1aad994f8fbf26d35e540ae1f6476143b0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_mission_manager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager20node_mission_managerEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>node class constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager4spinEv">
+<span id="_CPPv3N20node_mission_manager4spinEv"></span><span id="_CPPv2N20node_mission_manager4spinEv"></span><span id="node_mission_manager::spin"></span><span class="target" id="classnode__mission__manager_1aa2d1e70fe39f8f16bf82bd29393ad3a2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager4spinEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>node working cycle </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager9make_planEi">
+<span id="_CPPv3N20node_mission_manager9make_planEi"></span><span id="_CPPv2N20node_mission_manager9make_planEi"></span><span id="node_mission_manager::make_plan__i"></span><span class="target" id="classnode__mission__manager_1ac968210cc999a221c57e610812618456"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RosplanPipelineManagerService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">make_plan</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">landmark</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager9make_planEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>make a plan ready to be executed (and call the service) </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager12execute_planEi">
+<span id="_CPPv3N20node_mission_manager12execute_planEi"></span><span id="_CPPv2N20node_mission_manager12execute_planEi"></span><span id="node_mission_manager::execute_plan__i"></span><span class="target" id="classnode__mission__manager_1a82c3de859737d4354f8e8b0bd8910c06"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RosplanPipelineManagerService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute_plan</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">landmark</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager12execute_planEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>execute the plan </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE">
+<span id="_CPPv3N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE"></span><span id="_CPPv2N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE"></span><span id="node_mission_manager::cbk_oracle_hint__erl2::ErlOracle::ConstPtrCR"></span><span class="target" id="classnode__mission__manager_1a2009dd0ef3eafac889a2d088bcff2ec4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_oracle_hint</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">erl2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ErlOracle</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">hint</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>receive a hint from the Oracle </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager13is_valid_hintERKN4erl29ErlOracle8ConstPtrE">
+<span id="_CPPv3N20node_mission_manager13is_valid_hintERKN4erl29ErlOracle8ConstPtrE"></span><span id="_CPPv2N20node_mission_manager13is_valid_hintERKN4erl29ErlOracle8ConstPtrE"></span><span id="node_mission_manager::is_valid_hint__erl2::ErlOracle::ConstPtrCR"></span><span class="target" id="classnode__mission__manager_1a4ffc224cc6e25730f1e633d8fd9aeeaf"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_valid_hint</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">erl2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ErlOracle</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">hint</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager13is_valid_hintERKN4erl29ErlOracle8ConstPtrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>check wether the hint is valid or not </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager23create_planning_requestEi">
+<span id="_CPPv3N20node_mission_manager23create_planning_requestEi"></span><span id="_CPPv2N20node_mission_manager23create_planning_requestEi"></span><span id="node_mission_manager::create_planning_request__i"></span><span class="target" id="classnode__mission__manager_1aad923693ed0d555dbf95e3a7a73f91b7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RosplanPipelineManagerService</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">create_planning_request</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">landmark</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager23create_planning_requestEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>make a planning request without parsing and execution </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager19create_exec_requestEi">
+<span id="_CPPv3N20node_mission_manager19create_exec_requestEi"></span><span id="_CPPv2N20node_mission_manager19create_exec_requestEi"></span><span id="node_mission_manager::create_exec_request__i"></span><span class="target" id="classnode__mission__manager_1a43a9e09ce2f7b8a1aa7d3604177791c0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RosplanPipelineManagerService</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">create_exec_request</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">landmark</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager19create_exec_requestEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>make a planning request without loading and solving </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager21set_standard_responseERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEb">
+<span id="_CPPv3N20node_mission_manager21set_standard_responseERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEb"></span><span id="_CPPv2N20node_mission_manager21set_standard_responseERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEb"></span><span id="node_mission_manager::set_standard_response__robocluedo_rosplan_msgs::RosplanPipelineManagerServiceR.b"></span><span class="target" id="classnode__mission__manager_1a70e397271e6aa260c8953714cb425abc"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_standard_response</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RosplanPipelineManagerService</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">cmd</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">failure</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager21set_standard_responseERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set a standard response for the service planning pipeline request </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager11set_requestERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEbbbbi">
+<span id="_CPPv3N20node_mission_manager11set_requestERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEbbbbi"></span><span id="_CPPv2N20node_mission_manager11set_requestERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEbbbbi"></span><span id="node_mission_manager::set_request__robocluedo_rosplan_msgs::RosplanPipelineManagerServiceR.b.b.b.b.i"></span><span class="target" id="classnode__mission__manager_1a7f426607b21ebfade0a55c30ebd55647"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_request</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RosplanPipelineManagerService</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">cmd</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">load</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">solve</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parse</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">exec</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">landmark</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager11set_requestERN23robocluedo_rosplan_msgs29RosplanPipelineManagerServiceEbbbbi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>quick set request </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN20node_mission_manager11open_clientEbNSt6stringERN3ros13ServiceClientE">
+<span id="_CPPv3I0EN20node_mission_manager11open_clientENSt6stringERN3ros13ServiceClientE"></span><span id="_CPPv2I0EN20node_mission_manager11open_clientENSt6stringERN3ros13ServiceClientE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classnode__mission__manager_1a767743411d4ca1ee6c7d7e510949220a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">open_client</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cl_name</span></span>, <span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">cl_handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN20node_mission_manager11open_clientEbNSt6stringERN3ros13ServiceClientE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>open a client </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager2nhE">
+<span id="_CPPv3N20node_mission_manager2nhE"></span><span id="_CPPv2N20node_mission_manager2nhE"></span><span id="node_mission_manager::nh__ros::NodeHandle"></span><span class="target" id="classnode__mission__manager_1ae80c55f44c63fb7cf826fe154234032b"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the node handle </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager19cl_rosplan_pipelineE">
+<span id="_CPPv3N20node_mission_manager19cl_rosplan_pipelineE"></span><span id="_CPPv2N20node_mission_manager19cl_rosplan_pipelineE"></span><span id="node_mission_manager::cl_rosplan_pipeline__ros::ServiceClient"></span><span class="target" id="classnode__mission__manager_1a68390e83274eee5e56e2285b9aa93731"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_rosplan_pipeline</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager19cl_rosplan_pipelineE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client rosplan pipeline manager </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager12cl_armor_addE">
+<span id="_CPPv3N20node_mission_manager12cl_armor_addE"></span><span id="_CPPv2N20node_mission_manager12cl_armor_addE"></span><span id="node_mission_manager::cl_armor_add__ros::ServiceClient"></span><span class="target" id="classnode__mission__manager_1a591487ef8cb9d2b26e37cd6e55fc0878"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_armor_add</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager12cl_armor_addE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client for armor add hint </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager13cl_armor_findE">
+<span id="_CPPv3N20node_mission_manager13cl_armor_findE"></span><span id="_CPPv2N20node_mission_manager13cl_armor_findE"></span><span id="node_mission_manager::cl_armor_find__ros::ServiceClient"></span><span class="target" id="classnode__mission__manager_1a8bab762c14e78ed38de8e1f9eff2e2cb"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_armor_find</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager13cl_armor_findE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client for armor find consistent hypotheses </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager12cl_armor_delE">
+<span id="_CPPv3N20node_mission_manager12cl_armor_delE"></span><span id="_CPPv2N20node_mission_manager12cl_armor_delE"></span><span id="node_mission_manager::cl_armor_del__ros::ServiceClient"></span><span class="target" id="classnode__mission__manager_1aa089f474c485d065ed483df68cf2fdfc"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_armor_del</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager12cl_armor_delE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client for armor discard hypotheses </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager15cl_armor_backupE">
+<span id="_CPPv3N20node_mission_manager15cl_armor_backupE"></span><span id="_CPPv2N20node_mission_manager15cl_armor_backupE"></span><span id="node_mission_manager::cl_armor_backup__ros::ServiceClient"></span><span class="target" id="classnode__mission__manager_1a6332261f4037f289d557de2a39825751"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_armor_backup</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager15cl_armor_backupE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client for armo backup request </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager18cl_oracle_solutionE">
+<span id="_CPPv3N20node_mission_manager18cl_oracle_solutionE"></span><span id="_CPPv2N20node_mission_manager18cl_oracle_solutionE"></span><span id="node_mission_manager::cl_oracle_solution__ros::ServiceClient"></span><span class="target" id="classnode__mission__manager_1a37c4b9d24b5427b42591df5c81d0a120"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_oracle_solution</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager18cl_oracle_solutionE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client for requiring the solution to the oracle </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager15sub_oracle_hintE">
+<span id="_CPPv3N20node_mission_manager15sub_oracle_hintE"></span><span id="_CPPv2N20node_mission_manager15sub_oracle_hintE"></span><span id="node_mission_manager::sub_oracle_hint__ros::Subscriber"></span><span class="target" id="classnode__mission__manager_1a6d83dfd8579fc3bfb624158297d9e59e"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Subscriber</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sub_oracle_hint</span></span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager15sub_oracle_hintE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>subscription oracle hints </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager14mission_statusE">
+<span id="_CPPv3N20node_mission_manager14mission_statusE"></span><span id="_CPPv2N20node_mission_manager14mission_statusE"></span><span id="node_mission_manager::mission_status__i"></span><span class="target" id="classnode__mission__manager_1a866bb75bf2609733dd3cb3d4ca2f2381"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mission_status</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">MISSION_STATUS_REPLAN</span></span><a class="headerlink" href="#_CPPv4N20node_mission_manager14mission_statusE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>state of the mission </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="manipulation_unit.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node manipulation_unit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nagivation_unit.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node navigation_unit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

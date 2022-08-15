@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_armor__examples_examples_tools" kind="page">
+    <compoundname>md_robocluedo_armor__examples_examples_tools</compoundname>
+    <title>ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><programlisting filename=".warning"><codeline><highlight class="normal">this<sp/>code<sp/>was<sp/>written<sp/>only<sp/>for<sp/>your<sp/>understanding.<sp/>Probably<sp/>it<sp/>won&apos;t<sp/>compile.</highlight></codeline>
+</programlisting></para>
+<sect1 id="md_robocluedo_armor__examples_examples_tools_1autotoc_md183">
+<title>Essential usage of ArmorTools</title>
+<para>In this little example I want to show you which are the main features of the class <ref refid="class_armor_tools" kindref="compound">ArmorTools</ref>. It can speed up really the usage of aRMOR, making easier the coding phase.</para>
+<para>The proposed workflow is always the same:</para>
+<para><orderedlist>
+<listitem><para>Constructor, setting the user infos</para>
+</listitem><listitem><para>Connection to the service</para>
+</listitem><listitem><para>Loading the ontology</para>
+</listitem><listitem><para>(optional) check the calidity of the connection</para>
+</listitem></orderedlist>
+</para>
+<para>Done this, using armor is simple: just call a function!</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ros/ros.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_tools/armor_tools.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_msgs/ArmorDirective.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_msgs/ArmorDirectiveReq.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_msgs/ArmorDirectiveRes.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;iostream&gt;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;string&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(<sp/>int<sp/>argc,<sp/>char*<sp/>argv[]<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/>&quot;example_armor_tools_1&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>STEP<sp/>0<sp/>===<sp/>CONSTRUCTOR</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>constructor<sp/>with<sp/>no<sp/>arguments:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>set<sp/>default<sp/>client<sp/>name<sp/>and<sp/>reference<sp/>name</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>debug<sp/>mode<sp/>is<sp/>off<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>infos<sp/>are<sp/>stored<sp/>for<sp/>later<sp/>in<sp/>the<sp/>load<sp/>step</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ArmorTools<sp/>armor;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>another<sp/>way:<sp/>set<sp/>your<sp/>client<sp/>name<sp/>and<sp/>reference</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ArmorTools<sp/>armor2(<sp/>&quot;my_client&quot;,<sp/>&quot;my_reference&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>only<sp/>debug<sp/>mode,<sp/>with<sp/>default<sp/>infos</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ArmorTools<sp/>armorDBmode(<sp/>true<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>you<sp/>can<sp/>toggle<sp/>the<sp/>debug<sp/>mode<sp/>in<sp/>any<sp/>time<sp/>using</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.SwitchDebugMode(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>STEP<sp/>1<sp/>===<sp/>CONNECTION</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>the<sp/>connection<sp/>to<sp/>the<sp/>server<sp/>is<sp/>stored<sp/>inside<sp/>the<sp/>class</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>using<sp/>the<sp/>default<sp/>timeout</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(<sp/>!armor.Connect(<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;connection<sp/>error!&quot;<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>if<sp/>you<sp/>want<sp/>to<sp/>set<sp/>another<sp/>timeout,<sp/>use<sp/>this:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>armor.Connect(<sp/>ros::Duration(<sp/>36<sp/>)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>STEP<sp/>2<sp/>===<sp/>LOAD<sp/>ONTOLOGY<sp/>FROM<sp/>FILE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>straightforward:<sp/>use<sp/>the<sp/>dedicated<sp/>function</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>alternatively,<sp/>you<sp/>can<sp/>load<sp/>manually<sp/>the<sp/>ontology;<sp/>there<sp/>are<sp/>several<sp/>ways</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(<sp/>!armor.LoadOntology(<sp/>&quot;/root/ontology/my_pizza_ontology.owl&quot;<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>something<sp/>went<sp/>wrong...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>see<sp/>ArmorTools::LoadOntology()<sp/>for<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>check<sp/>the<sp/>calidity<sp/>of<sp/>the<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(<sp/>!armor.TestInterface(<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>something<sp/>went<sp/>wrong...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>STEP<sp/>3<sp/>===<sp/>REQUEST<sp/>&amp;<sp/>CALLS</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>quickest<sp/>way<sp/>to<sp/>call<sp/>aRMOR</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;Giampiero&quot;,<sp/>&quot;PERSON&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>manual<sp/>aRMOR<sp/>call</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor_msgs::ArmorDirective<sp/>srvmsg<sp/>=<sp/>armor.GetRequest(<sp/>&quot;ADD&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;Susanna&quot;,<sp/>&quot;PERSON&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.CallArmor(<sp/>srvmsg<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>get<sp/>the<sp/>success<sp/>flag</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/>WARNING:<sp/>sometimes<sp/>it<sp/>doesn&apos;t<sp/>indicate<sp/>a<sp/>failure,<sp/>but<sp/>a<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/><sp/><sp/>common<sp/>response<sp/>of<sp/>the<sp/>aRMOR<sp/>service<sp/>(i.e.<sp/>testing<sp/>existence</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>an<sp/>individual<sp/>which<sp/>doesn&apos;t<sp/>exist<sp/>makes<sp/>the<sp/>success<sp/>flag<sp/>false.)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(<sp/>!armor.Success(<sp/>)<sp/>)<sp/>{<sp/>/*<sp/>...<sp/>*/<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>REMEMBER<sp/>TO<sp/>UPDATE<sp/>after<sp/>the<sp/>callings!</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.UpdateOntology(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>STEP<sp/>4<sp/>===<sp/>RESPONSE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>check<sp/>the<sp/>last<sp/>request</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor_msgs::ArmorDirectiveReq&amp;<sp/>req<sp/>=<sp/>armor.GetLastReq(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor_msgs::ArmorDirectiveRes&amp;<sp/>res<sp/>=<sp/>armor.GetLastRes(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>print<sp/>one<sp/>of<sp/>the<sp/>sections<sp/>of<sp/>the<sp/>last<sp/>service<sp/>message</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.PrintLastReq(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.PrintLastRes(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>generic<sp/>prints</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.PrintRequest(<sp/>req<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.PrintResponse(<sp/>res<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>error<sp/>checking</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>last_err_code<sp/>=<sp/>armor.GetLastErrorCode(<sp/>);<sp/>//<sp/>0:success</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>error_description<sp/>=<sp/>armor.GetLastErrorDescription(<sp/>);<sp/>//<sp/>&quot;&quot;:success<sp/>...<sp/>or<sp/>strange<sp/>error</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_armor__examples_examples_tools_1autotoc_md184">
+<title>a more advanced example</title>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">std::string<sp/>ontology_file_path<sp/>=<sp/>&quot;/where/is/your/owl/file.owl&quot;;</highlight></codeline>
+<codeline><highlight class="normal">ArmorTools<sp/>armor(<sp/>true<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">if(<sp/>!armor.ConnectAndLoad(<sp/>ontology_file_path<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>&quot;ERROR:<sp/>unable<sp/>to<sp/>ConnectAndLoad()<sp/>aRMOR<sp/>tools&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;DISJOINT&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;&quot;,<sp/>&quot;PERSON&quot;,<sp/>&quot;WEAPON&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;DISJOINT&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;&quot;,<sp/>&quot;WEAPON&quot;,<sp/>&quot;PLACE&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;DISJOINT&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;&quot;,<sp/>&quot;PERSON&quot;,<sp/>&quot;PLACE&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.UpdateOntology(<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;Jim&quot;,<sp/>&quot;PERSON&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;OBJECTPROP&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;who&quot;,<sp/>&quot;HP3&quot;,<sp/>&quot;Jim&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;Gun&quot;,<sp/>&quot;WEAPON&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;OBJECTPROP&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;what&quot;,<sp/>&quot;HP3&quot;,<sp/>&quot;Gun&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;Stadium&quot;,<sp/>&quot;PLACE&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;OBJECTPROP&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;where&quot;,<sp/>&quot;HP3&quot;,<sp/>&quot;Stadium&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.UpdateOntology(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.SendCommand(<sp/>&quot;QUERY&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;COMPLETED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">ROS_INFO_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>&quot;(1)<sp/>completed<sp/>hypotheses:&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">armor.PrintLastRes(<sp/>);</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_armor__examples_examples_tools_1autotoc_md185">
+<title>ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</title>
+<para><programlisting filename=".warning"><codeline><highlight class="normal">this<sp/>code<sp/>was<sp/>written<sp/>only<sp/>for<sp/>your<sp/>understanding.<sp/>Probably<sp/>it<sp/>won&apos;t<sp/>compile.</highlight></codeline>
+</programlisting></para>
+<sect2 id="md_robocluedo_armor__examples_examples_tools_1autotoc_md186">
+<title>The quickest way to use ArmorTools</title>
+<para>This class is a very powerful tool, as I want to show you here. Instead of writing hundreds of lines of code, you can interact with aRMOR in few function calls. The most of times you&apos;ll use this interface in this way.</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;ros/ros.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_tools/armor_tools.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_msgs/ArmorDirective.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_msgs/ArmorDirectiveReq.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;armor_msgs/ArmorDirectiveRes.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>main(<sp/>int<sp/>argc,<sp/>char*<sp/>argv[]<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/>&quot;example_armor_tools_2&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>preparing<sp/>the<sp/>client</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ArmorTools<sp/>armor(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(<sp/>!armor.ConnectAndLoad(<sp/>&quot;/root/ontologies/civetta_ontology.owl&quot;<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>something<sp/>went<sp/>wrong...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>call<sp/>aRMOR</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.SendCommand(<sp/>&quot;ADD&quot;,<sp/>&quot;IND&quot;,<sp/>&quot;CLASS&quot;,<sp/>&quot;pizza&quot;,<sp/>&quot;WEAPON&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>REMEMBER<sp/>TO<sp/>UPDATE<sp/>after<sp/>the<sp/>callings!</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor.UpdateOntology(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

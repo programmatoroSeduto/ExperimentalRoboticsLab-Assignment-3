@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_movement_controller__uml_wall-follow" kind="page">
+    <compoundname>md_robocluedo_movement_controller__uml_wall-follow</compoundname>
+    <title>UML – wall follow PY node</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">./wall-follow.md</highlight></codeline>
+</programlisting></para>
+<sect1 id="md_robocluedo_movement_controller__uml_wall-follow_1autotoc_md232">
+<title>SCHEMA</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>NODE<sp/>wall_follow_service</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;wall_follow_service&quot;<sp/>&lt;&lt;ROSPy<sp/>node&gt;&gt;<sp/>as<sp/>NODE_WALL_FOLLOW<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;wall_follower_switch&quot;<sp/>as<sp/>NODE_WALL_FOLLOW.WALL_FOLLOW_SWITCH</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;clbk_laser&quot;<sp/>as<sp/>NODE_WALL_FOLLOW.LISTENER_LASER</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cmd_vel&quot;<sp/>as<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">NODE_WALL_FOLLOW<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>geometry_msgs/Twist.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/scan&quot;<sp/>as<sp/>TOPIC_LASER</highlight></codeline>
+<codeline><highlight class="normal">NODE_WALL_FOLLOW.LISTENER_LASER<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_LASER</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>sensor_msgs/LaserScan.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/wall_follower_switch&quot;<sp/>as<sp/>SRV_WALL_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">NODE_WALL_FOLLOW.WALL_FOLLOW_SWITCH<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_WALL_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_movement_controller__uml_wall-follow_1autotoc_md233">
+<title>HOW it works</title>
+<para>the node, when active, makes the robot to go along the wall <emphasis>in counter-clockwise direction</emphasis>.</para>
+<para><itemizedlist>
+<listitem><para>find a wall</para>
+</listitem><listitem><para>follow it<itemizedlist>
+<listitem><para>if there&apos;s no longer a wall to follow, turn left until the robot isn&apos;t able to find the wall, then continue following it</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>always <emphasis>go straight along the wall</emphasis><itemizedlist>
+<listitem><para>until the node is active</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_robocluedo_movement_controller__uml_wall-follow_1autotoc_md234">
+<title>HOW TO activate or deactivate the node</title>
+<para>the node can be neabled or disabled using the service <computeroutput>wall_follower_switch</computeroutput> of type <computeroutput>std_srvs/SetBool</computeroutput>. the service returns immediately.</para>
+<para>the flag <computeroutput>SetBool.Request.data</computeroutput> will be the new activity state of the node </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,313 @@
+... logging to /root/.ros/log/8627dcc4-3f10-11ec-8087-0242ac110002/roslaunch-5f02b92139ad-6642.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+
+started roslaunch server http://5f02b92139ad:38443/
+
+SUMMARY
+========
+
+PARAMETERS
+ * /cluedo_max_hypotheses: 4
+ * /cluedo_path_owlfile: /root/ws_experime...
+ * /cluedo_path_owlfile_backup: /root/ws_experime...
+ * /cluedo_path_what: /root/ws_experime...
+ * /cluedo_path_where: /root/ws_experime...
+ * /cluedo_path_who: /root/ws_experime...
+ * /rosdistro: noetic
+ * /rosversion: 1.15.13
+
+NODES
+  /
+    armor_service (armor/execute)
+    cluedo_armor_interface (robocluedo/cluedo_armor_interface)
+    cluedo_movement_controller (robocluedo/cluedo_movement_controller)
+    cluedo_oracle (robocluedo/cluedo_oracle)
+    cluedo_random_room (robocluedo/cluedo_random_room)
+    robocluedo_main (robocluedo/robocluedo_main.py)
+
+auto-starting new master
+process[master]: started with pid [6650]
+ROS_MASTER_URI=http://localhost:11311
+
+setting /run_id to 8627dcc4-3f10-11ec-8087-0242ac110002
+process[rosout-1]: started with pid [6660]
+started core service [/rosout]
+process[armor_service-2]: started with pid [6667]
+process[cluedo_armor_interface-3]: started with pid [6670]
+process[cluedo_movement_controller-4]: started with pid [6674]
+process[cluedo_random_room-5]: started with pid [6679]
+process[cluedo_oracle-6]: started with pid [6690]
+process[robocluedo_main-7]: started with pid [6703]
+[cluedo_oracle]  reading from fiile [/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/config/cluedo_items/cluedo_who.txt] 
+[cluedo_oracle]  line[1] READ [green] 
+[cluedo_oracle]  line[2] READ [plum] 
+[cluedo_oracle]  line[3] READ [mustard] 
+[cluedo_oracle]  line[4] READ [peacock] 
+[cluedo_oracle]  line[5] READ [scarlett] 
+[cluedo_oracle]  line[6] READ [white] 
+[cluedo_oracle]  closing file ...
+[cluedo_oracle]  reading from fiile [/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/config/cluedo_items/cluedo_where.txt] 
+[cluedo_oracle]  line[1] READ [conservatory] 
+[cluedo_oracle]  line[2] READ [lounge] 
+[cluedo_oracle]  line[3] READ [kitchen] 
+[cluedo_oracle]  line[4] READ [library] 
+[cluedo_oracle]  line[5] READ [hall] 
+[cluedo_oracle]  line[6] READ [study] 
+[cluedo_oracle]  line[7] READ [bathroom] 
+[cluedo_oracle]  line[8] READ [diningRoom] 
+[cluedo_oracle]  line[9] READ [billiardRoom] 
+[cluedo_oracle]  closing file ...
+[cluedo_oracle]  reading from fiile [/root/ws_experimental_robotics_lab_assignment_1/src/assignment_1/robocluedo/config/cluedo_items/cluedo_what.txt] 
+[cluedo_oracle]  line[1] READ [candlestick] 
+[cluedo_oracle]  line[2] READ [dagger] 
+[cluedo_oracle]  line[3] READ [leadPipe] 
+[cluedo_oracle]  line[4] READ [revolver] 
+[cluedo_oracle]  line[5] READ [rope] 
+[cluedo_oracle]  line[6] READ [spanner] 
+[cluedo_oracle]  closing file ...
+[ INFO] [1636210075.085848700]: [cluedo_oracle] found a max number of hypotheses: 4
+[ INFO] [1636210075.086816700]: [cluedo_oracle] case generation started 
+[ INFO] [1636210075.086915800]: [cluedo_oracle] the solution is (where:conservatory, who:mustard, what:candlestick)
+[ INFO] [1636210075.086993700]: [cluedo_oracle] the solution has ID:1
+[ INFO] [1636210075.087081900]: [cluedo_oracle] hints generation finished. Generated: 9 hints
+[cluedo_oracle]  subscribing to the topic [/hint_signal] ...
+[cluedo_oracle]  subscribing to the topic [/hint_signal] ... OK
+[cluedo_oracle]  Creating publisher [/hint] ...
+[cluedo_oracle]  Creating publisher [/hint] ... OK
+[cluedo_oracle]  Advertising service [/check_solution] ...
+[cluedo_oracle]  Advertising service [/check_solution] ... OK
+[cluedo_oracle]  ready!
+log4j:WARN No appenders could be found for logger (org.ros.internal.node.client.Registrar).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] [1636210075.788490]: [robocluedo_main] calling service /go_to ...
+[INFO] [1636210075.790802]: [robocluedo_main] OK
+[INFO] [1636210075.791597]: [robocluedo_main] calling service /random_room ...
+[INFO] [1636210075.794497]: [robocluedo_main] OK
+[INFO] [1636210075.795643]: [robocluedo_main] subscribing to /hint ...
+[INFO] [1636210075.798316]: [robocluedo_main] OK
+[INFO] [1636210075.799899]: [robocluedo_main] calling service /check_solution ...
+[INFO] [1636210075.802225]: [robocluedo_main] OK
+[INFO] [1636210075.803124]: [robocluedo_main] calling service /cluedo_armor/add_hint ...
+[INFO] [1636210076.708296]: [robocluedo_main] OK
+[INFO] [1636210076.709556]: [robocluedo_main] calling service /cluedo_armor/find_consistent_h ...
+[INFO] [1636210076.711429]: [robocluedo_main] OK
+[INFO] [1636210076.712213]: [robocluedo_main] calling service /cluedo_armor/wrong_hypothesis ...
+[INFO] [1636210076.714530]: [robocluedo_main] OK
+[INFO] [1636210076.715435]: [robocluedo_main] asking for service [/cluedo_armor/backup] ...
+[INFO] [1636210076.717115]: [robocluedo_main] OK!
+[INFO] [1636210076.720879]: [robocluedo_main] starting the FSM...
+[INFO] [1636210076.721662]: State machine starting in initial state 'robocluedo_random_target' with userdata: 
+	[]
+[INFO] [1636210076.724288]: [state:random_target] actual position: lounge | random target: lounge
+[INFO] [1636210076.725076]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[INFO] [1636210077.728296]: [state:moving] reached position: lounge 
+[ INFO] [1636210077.728364800]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210077.729538]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210077.730558]: [state:listening_for_hints] no new hints
+[INFO] [1636210077.731416]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210077.770468]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210077.773841]: [state:random_target] actual position: lounge | random target: library
+[INFO] [1636210077.774807]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210078.777485700]: [cluedo_oracle] publishing hint (ID:3, PROP:what, VALUE:rope)
+[INFO] [1636210078.777531]: [state:moving] reached position: library 
+[INFO] [1636210078.778851]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210078.779953]: [state:listening_for_hints] received a hint
+[INFO] [1636210078.780765]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210078.781603]: [state:update_ontology] received hint: HP3(what:rope)
+[INFO] [1636210078.845232]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210078.955660]: [state:update_ontology] ontology saved
+[INFO] [1636210078.956854]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210078.979058]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210078.982235]: [state:random_target] actual position: library | random target: bathroom
+[INFO] [1636210078.983497]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210079.987487100]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210079.987626]: [state:moving] reached position: bathroom 
+[INFO] [1636210079.989059]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210079.990048]: [state:listening_for_hints] no new hints
+[INFO] [1636210079.990980]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210080.013208]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210080.015823]: [state:random_target] actual position: bathroom | random target: kitchen
+[INFO] [1636210080.016747]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210081.019913700]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210081.020027]: [state:moving] reached position: kitchen 
+[INFO] [1636210081.021180]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210081.022117]: [state:listening_for_hints] no new hints
+[INFO] [1636210081.023160]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210081.043883]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210081.046874]: [state:random_target] actual position: kitchen | random target: kitchen
+[INFO] [1636210081.047827]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210082.050598700]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210082.050803]: [state:moving] reached position: kitchen 
+[INFO] [1636210082.052168]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210082.053123]: [state:listening_for_hints] no new hints
+[INFO] [1636210082.053969]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210082.091899]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210082.095568]: [state:random_target] actual position: kitchen | random target: study
+[INFO] [1636210082.096613]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210083.099401100]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210083.099465]: [state:moving] reached position: study 
+[INFO] [1636210083.100743]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210083.102055]: [state:listening_for_hints] no new hints
+[INFO] [1636210083.103116]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210083.122771]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210083.125588]: [state:random_target] actual position: study | random target: library
+[INFO] [1636210083.126606]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210084.129322500]: [cluedo_oracle] publishing hint (ID:0, PROP:what, VALUE:spanner)
+[INFO] [1636210084.129354]: [state:moving] reached position: library 
+[INFO] [1636210084.130574]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210084.131769]: [state:listening_for_hints] received a hint
+[INFO] [1636210084.132733]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210084.133709]: [state:update_ontology] received hint: HP0(what:spanner)
+[INFO] [1636210084.185592]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210084.216741]: [state:update_ontology] ontology saved
+[INFO] [1636210084.217889]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210084.243858]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210084.247625]: [state:random_target] actual position: library | random target: conservatory
+[INFO] [1636210084.248984]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210085.252121200]: [cluedo_oracle] publishing hint (ID:3, PROP:who, VALUE:white)
+[INFO] [1636210085.252249]: [state:moving] reached position: conservatory 
+[INFO] [1636210085.253475]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210085.254493]: [state:listening_for_hints] received a hint
+[INFO] [1636210085.255272]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210085.256102]: [state:update_ontology] received hint: HP3(who:white)
+[INFO] [1636210085.310332]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210085.345801]: [state:update_ontology] ontology saved
+[INFO] [1636210085.347277]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210085.363753]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210085.366484]: [state:random_target] actual position: conservatory | random target: diningRoom
+[INFO] [1636210085.367434]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210086.370413700]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210086.370563]: [state:moving] reached position: diningRoom 
+[INFO] [1636210086.372951]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210086.374466]: [state:listening_for_hints] no new hints
+[INFO] [1636210086.375770]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210086.391464]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210086.394357]: [state:random_target] actual position: diningRoom | random target: lounge
+[INFO] [1636210086.395422]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210087.398684900]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210087.398688]: [state:moving] reached position: lounge 
+[INFO] [1636210087.399860]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210087.400790]: [state:listening_for_hints] no new hints
+[INFO] [1636210087.401589]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210087.415223]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210087.417859]: [state:random_target] actual position: lounge | random target: study
+[INFO] [1636210087.419487]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210088.422037900]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210088.422220]: [state:moving] reached position: study 
+[INFO] [1636210088.423572]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210088.424422]: [state:listening_for_hints] no new hints
+[INFO] [1636210088.425296]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210088.439189]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210088.442021]: [state:random_target] actual position: study | random target: bathroom
+[INFO] [1636210088.443030]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210089.445523900]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210089.445712]: [state:moving] reached position: bathroom 
+[INFO] [1636210089.447045]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210089.448083]: [state:listening_for_hints] no new hints
+[INFO] [1636210089.449172]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210089.472217]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210089.475156]: [state:random_target] actual position: bathroom | random target: study
+[INFO] [1636210089.476427]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210090.479633000]: [cluedo_oracle] publishing hint (ID:1, PROP:who, VALUE:mustard)
+[INFO] [1636210090.479649]: [state:moving] reached position: study 
+[INFO] [1636210090.480851]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210090.481762]: [state:listening_for_hints] received a hint
+[INFO] [1636210090.482489]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210090.483350]: [state:update_ontology] received hint: HP1(who:mustard)
+[INFO] [1636210090.531594]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210090.561904]: [state:update_ontology] ontology saved
+[INFO] [1636210090.563103]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210090.578576]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210090.581823]: [state:random_target] actual position: study | random target: library
+[INFO] [1636210090.583067]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210091.586779000]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210091.587123]: [state:moving] reached position: library 
+[INFO] [1636210091.588389]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210091.589586]: [state:listening_for_hints] no new hints
+[INFO] [1636210091.590450]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210091.604170]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210091.606788]: [state:random_target] actual position: library | random target: conservatory
+[INFO] [1636210091.607670]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210092.610068500]: [cluedo_oracle] publishing hint (ID:1, PROP:where, VALUE:conservatory)
+[INFO] [1636210092.610132]: [state:moving] reached position: conservatory 
+[INFO] [1636210092.611202]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210092.612094]: [state:listening_for_hints] received a hint
+[INFO] [1636210092.613008]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210092.613939]: [state:update_ontology] received hint: HP1(where:conservatory)
+[INFO] [1636210092.660334]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210092.692690]: [state:update_ontology] ontology saved
+[INFO] [1636210092.694437]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210092.711570]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210092.714842]: [state:random_target] actual position: conservatory | random target: diningRoom
+[INFO] [1636210092.716064]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210093.718908300]: [cluedo_oracle] publishing hint (ID:2, PROP:where, VALUE:lounge)
+[INFO] [1636210093.719001]: [state:moving] reached position: diningRoom 
+[INFO] [1636210093.720257]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210093.721181]: [state:listening_for_hints] received a hint
+[INFO] [1636210093.721962]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210093.723142]: [state:update_ontology] received hint: HP2(where:lounge)
+[INFO] [1636210093.769294]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210093.798609]: [state:update_ontology] ontology saved
+[INFO] [1636210093.800095]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210093.816246]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210093.819524]: [state:random_target] actual position: diningRoom | random target: kitchen
+[INFO] [1636210093.820596]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[INFO] [1636210094.823509]: [state:moving] reached position: kitchen 
+[ INFO] [1636210094.823835600]: [cluedo_oracle] publishing hint (ID:2, PROP:who, VALUE:peacock)
+[INFO] [1636210094.825104]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210094.826134]: [state:listening_for_hints] received a hint
+[INFO] [1636210094.827083]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210094.828140]: [state:update_ontology] received hint: HP2(who:peacock)
+[INFO] [1636210094.893596]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210094.931880]: [state:update_ontology] ontology saved
+[INFO] [1636210094.933690]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210094.947345]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210094.950916]: [state:random_target] actual position: kitchen | random target: billiardRoom
+[INFO] [1636210094.951988]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[ INFO] [1636210095.954577100]: [cluedo_oracle] hint requeste refused. 
+[INFO] [1636210095.954695]: [state:moving] reached position: billiardRoom 
+[INFO] [1636210095.956031]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210095.957130]: [state:listening_for_hints] no new hints
+[INFO] [1636210095.958817]: State machine transitioning 'robocluedo_listening_for_hints':'no_hints'-->'robocluedo_reasoning'
+[INFO] [1636210095.973806]: State machine transitioning 'robocluedo_reasoning':'no_consistent_hp'-->'robocluedo_random_target'
+[INFO] [1636210095.976740]: [state:random_target] actual position: billiardRoom | random target: conservatory
+[INFO] [1636210095.977647]: State machine transitioning 'robocluedo_random_target':'move_robot'-->'robocluedo_moving'
+[INFO] [1636210096.980106]: [state:moving] reached position: conservatory 
+[ INFO] [1636210096.980161800]: [cluedo_oracle] publishing hint (ID:1, PROP:what, VALUE:candlestick)
+[INFO] [1636210096.981352]: State machine transitioning 'robocluedo_moving':'target_reached_no_charge'-->'robocluedo_listening_for_hints'
+[INFO] [1636210096.982304]: [state:listening_for_hints] received a hint
+[INFO] [1636210096.983259]: State machine transitioning 'robocluedo_listening_for_hints':'received_a_hint'-->'robocluedo_update_ontology'
+[INFO] [1636210096.984294]: [state:update_ontology] received hint: HP1(what:candlestick)
+[INFO] [1636210097.034785]: [state:update_ontology] writing backup of the ontology...
+[INFO] [1636210097.072418]: [state:update_ontology] ontology saved
+[INFO] [1636210097.074436]: State machine transitioning 'robocluedo_update_ontology':'done'-->'robocluedo_reasoning'
+[INFO] [1636210097.102926]: [state:reasoning] complete hypotheses found: 1
+[INFO] [1636210097.104296]: [state:reasoning] HP1(who:mustard, where:conservatory, what:candlestick)
+[INFO] [1636210097.105488]: [state:reasoning] selected hyp. with tag: HP1 | actual position: conservatory
+[INFO] [1636210097.107023]: State machine transitioning 'robocluedo_reasoning':'ready_for_charge'-->'robocluedo_charge'
+[INFO] [1636210097.108071]: [state:charge] asking to the oracle: (who:mustard, where:conservatory, what:candlestick)
+[ INFO] [1636210097.110375800]: [cluedo_oracle] evaluating the solution WHERE[conservatory]  WHO [mustard]  WHAT [candlestick] 
+[ INFO] [1636210097.110434500]: [cluedo_oracle] SUCCESS! Found the solution. 
+[INFO] [1636210097.110712]: [state:charge] mystery solved!
+[INFO] [1636210097.112603]: State machine terminating 'robocluedo_charge':'case_solved':'mystery_solved'
+[INFO] [1636210097.114166]: [robocluedo_main] elementary, Whatson. 
+[INFO] [1636210098.779618]: [robocluedo_main] closing...
+================================================================================REQUIRED process [robocluedo_main-7] has died!
+process has finished cleanly
+log file: /root/.ros/log/8627dcc4-3f10-11ec-8087-0242ac110002/robocluedo_main-7*.log
+Initiating shutdown!
+================================================================================
+[robocluedo_main-7] killing on exit
+[cluedo_oracle-6] killing on exit
+[cluedo_random_room-5] killing on exit
+[cluedo_movement_controller-4] killing on exit
+[cluedo_armor_interface-3] killing on exit
+[armor_service-2] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+done

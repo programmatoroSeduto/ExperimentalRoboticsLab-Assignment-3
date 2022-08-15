@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<!--PDDL domain and problem -->
+<arg name="domain_path" default="$(find robocluedo_rosplan)/pddl/robocluedo/robocluedo_domain.pddl"/>
+<arg name="problem_path" default="$(find robocluedo_rosplan)/pddl/robocluedo/robocluedo_problem.pddl"/>
+
+<arg name="output_problem_path"
+	default="$(find robocluedo_rosplan)/data/OUT.pddl" />
+<param name="output_problem_path" value="$(arg output_problem_path)" />
+
+<!-- other options -->
+<arg name="output" default="screen" />
+<arg name="problem_instance_topic" default="problem_instance" />
+<arg name="planner_out_topic" default="planner_output" />
+<arg name="planner_node_name" default="popf_planner_interface" />
+<arg name="data_path" default="$(find robocluedo_rosplan)/data" />
+<arg name="planning_timeout" default="10"/>
+
+
+
+<node name="rosplan_knowledge_base" pkg="rosplan_knowledge_base" type="knowledgeBase" 
+	respawn="false" output="$(arg output)" required="false">
+	
+	<param name="domain_path" value="$(arg domain_path)" />
+	<param name="problem_path" value="$(arg problem_path)" />
+	<param name="use_unknowns" value="false" />
+	
+</node>
+
+
+
+<!-- problem generation -->
+<include file="$(find rosplan_planning_system)/launch/includes/problem_interface.launch">
+
+	<arg name="knowledge_base"   value="rosplan_knowledge_base" />
+	<arg name="domain_path"      value="$(arg domain_path)" />
+	<arg name="problem_path"     value="$(arg output_problem_path)" />
+	
+	<arg name="problem_topic"    value="$(arg problem_instance_topic)" />
+
+</include>
+
+
+
+<include file="$(find rosplan_planning_system)/launch/includes/planner_interface.launch">
+	
+	<arg name="domain_path"          value="$(arg domain_path)" />
+	<arg name="problem_path"         value="$(arg output_problem_path)" />
+	
+	<arg name="use_problem_topic"    value="true" />
+	<arg name="problem_topic"        value="/rosplan_problem_interface/$(arg problem_instance_topic)" />
+	<arg name="planner_topic"        value="$(arg planner_out_topic)" />
+	<arg name="data_path"            value="$(arg data_path)" />
+	<arg name="planner_command"      value="timeout $(arg planning_timeout) $(find rosplan_planning_system)/common/bin/popf -T DOMAIN PROBLEM" />
+	
+</include>
+<node name="$(arg planner_node_name)" pkg="rosplan_planning_system" type="popf_planner_interface" 
+	respawn="false" output="$(arg output)" />
+
+
+
+<node name="rosplan_parsing_interface" pkg="rosplan_planning_system" type="pddl_simple_plan_parser" 
+respawn="false" output="$(arg output)">
+	
+	<param name="knowledge_base" value="rosplan_knowledge_base" />
+	<param name="planner_topic"  value="/rosplan_planner_interface/planner_output" />
+	<param name="plan_topic"     value="complete_plan" />
+
+</node>
+
+
+
+
+<!-- run the arch -->
+<!-- <node pkg="robocluedo_rosplan" name="test_load_and_run" type="test_load_and_run" required="true" output="screen"/> -->
+<!--
+rosservice call /rosplan_problem_interface/problem_generation_server
+rostopic echo /rosplan_problem_interface/problem_instance -n 1 -p
+
+rosservice call /rosplan_planner_interface/planning_server
+rostopic echo /rosplan_planner_interface/planner_output -p
+
+rosservice call /rosplan_parsing_interface/parse_plan
+rostopic echo /rosplan_parsing_interface/complete_plan -n 1
+-->
+
+
+
+<!--dispatcher -->
+<node name="rosplan_plan_dispatcher" pkg="rosplan_planning_system" type="pddl_simple_plan_dispatcher" respawn="false" output="$(arg output)" >
+	<param name="knowledge_base"        value="rosplan_knowledge_base" />
+	<param name="plan_topic"            value="/rosplan_parsing_interface/complete_plan" />
+	<param name="action_dispatch_topic" value="action_dispatch" />
+	<param name="action_feedback_topic" value="action_feedback" />
+</node>
+
+<!-- simulated actions --> 
+<!--
+<node name="rosplan_interface_replan" pkg="rosplan_planning_system" type="simulatedAction" respawn="false" output="screen">
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="replan" />
+	<param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="1.0" />
+	<param name="action_probability"	value="1.0" />
+</node> -->
+<node name="rosplan_interface_replan" pkg="robocluedo_rosplan" type="node_replan" respawn="false" output="screen">
+
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="replan" />
+	<param name="action_dispatch_topic"	value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic"	value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="0.99" />
+	<param name="action_probability"	value="1.0" />
+
+</node>
+<!--
+<node name="rosplan_interface_move_to" pkg="rosplan_planning_system" type="simulatedAction" respawn="false" output="screen">
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="move-to" />
+	<param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="1.0" />
+	<param name="action_probability"	value="1.0" />
+</node>
+-->
+<node name="rosplan_interface_move_to" pkg="robocluedo_rosplan" type="node_move_to" respawn="false" output="screen">
+
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="move-to" />
+	<param name="action_dispatch_topic"	value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic"	value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="0.99" />
+	<param name="action_probability"	value="1.0" />
+
+</node>
+<node name="rosplan_interface_signal_collect_hint" pkg="rosplan_planning_system" type="simulatedAction" respawn="false" output="screen">
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="signal-collect-hint" />
+	<param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="1.0" />
+	<param name="action_probability"	value="1.0" />
+</node>
+<!--
+<node name="rosplan_interface_collect_hint" pkg="rosplan_planning_system" type="simulatedAction" respawn="false" output="screen">
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="collect-hint" />
+	<param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="1.0" />
+	<param name="action_probability"	value="1.0" />
+</node>
+-->
+<node name="rosplan_interface_collect_hint" pkg="robocluedo_rosplan" type="node_collect_hint" respawn="false" output="screen">
+
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="collect-hint" />
+	<param name="action_dispatch_topic"	value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic"	value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="0.99" />
+	<param name="action_probability"	value="1.0" />
+
+</node>
+<!--
+<node name="rosplan_interface_move_to_center" pkg="rosplan_planning_system" type="simulatedAction" respawn="false" output="screen">
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="move-to-center" />
+	<param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="1.0" />
+	<param name="action_probability"	value="1.0" />
+</node>
+-->
+<node name="rosplan_interface_move_to_center" pkg="robocluedo_rosplan" type="node_move_to_center" respawn="false" output="screen">
+
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="move-to-center" />
+	<param name="action_dispatch_topic"	value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic"	value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="0.99" />
+	<param name="action_probability"	value="1.0" />
+
+</node>
+<node name="rosplan_interface_solve" pkg="rosplan_planning_system" type="simulatedAction" respawn="false" output="screen">
+	<param name="knowledge_base"		value="rosplan_knowledge_base" />
+	<param name="pddl_action_name"		value="solve" />
+	<param name="action_dispatch_topic" value="/rosplan_plan_dispatcher/action_dispatch" />
+	<param name="action_feedback_topic" value="/rosplan_plan_dispatcher/action_feedback" />
+	
+	<param name="action_duration"		value="1.0" />
+	<param name="action_probability"	value="1.0" />
+</node>
+
+<node pkg="robocluedo_rosplan" name="kb_interface" type="kb_interface" required="true" output="screen" />
+<!-- <node pkg="robocluedo_rosplan" name="rosplan_simulated_motion_system." type="rosplan_simulated_motion_system.py" /> -->
+<node pkg="robocluedo_rosplan" name="rosplan_pipeline_manager" type="rosplan_pipeline_manager.py" required="true" output="screen" />
+
+</launch>

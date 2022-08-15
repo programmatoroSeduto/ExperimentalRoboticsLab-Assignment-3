@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="rosplan__simulated__motion__system_8py" kind="file" language="Python">
+    <compoundname>rosplan_simulated_motion_system.py</compoundname>
+    <innernamespace refid="namespacerosplan__simulated__motion__system">rosplan_simulated_motion_system</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacerosplan__simulated__motion__system" refkind="compound"><highlight class="comment">#!<sp/>/usr/bin/env<sp/>python</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>robocluedo_rosplan_msgs.srv<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>NavigationCommand,<sp/>NavigationCommandRequest,<sp/>NavigationCommandResponse</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>robocluedo_rosplan_msgs.srv<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ManipulationCommand,<sp/>ManipulationCommandRequest,<sp/>ManipulationCommandResponse</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="namespacerosplan__simulated__motion__system_1a9f351afe0fd866abb13e77d74af4bed3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacerosplan__simulated__motion__system_1a9f351afe0fd866abb13e77d74af4bed3" kindref="member">simulated_navigation</ref>(<sp/>cmd<sp/>):</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>simulate<sp/>the<sp/>service<sp/>for<sp/>the<sp/>navigation</highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(f</highlight><highlight class="stringliteral">&quot;navigation<sp/>SIMULATED<sp/>{cmd.waypoint}&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NavigationCommandResponse(<sp/>success=</highlight><highlight class="keyword">True</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespacerosplan__simulated__motion__system_1a0f12af47de380a544ae698c737bcab28" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacerosplan__simulated__motion__system_1a0f12af47de380a544ae698c737bcab28" kindref="member">simulated_manipulation</ref>(<sp/>cmd<sp/>):</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>simulate<sp/>the<sp/>service<sp/>for<sp/>the<sp/>manipulation</highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cmd.home_position:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(</highlight><highlight class="stringliteral">&quot;manipulation<sp/>SIMULATED<sp/>-&gt;<sp/>home<sp/>position&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(</highlight><highlight class="stringliteral">&quot;manipulation<sp/>SIMULATED<sp/>-&gt;<sp/>near<sp/>the<sp/>marker&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ManipulationCommandResponse(<sp/>success=</highlight><highlight class="keyword">True</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="namespacerosplan__simulated__motion__system_1ac71378f71c951dfce8118c36abea4d7f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacerosplan__simulated__motion__system_1ac71378f71c951dfce8118c36abea4d7f" kindref="member">open_srv</ref>(<sp/>srv_name,<sp/>srv_type,<sp/>srv_callback<sp/>):</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>handful<sp/>utility<sp/>to<sp/>open<sp/>a<sp/>service</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(f</highlight><highlight class="stringliteral">&quot;(rosplan_simulated_motion_system)<sp/>service:<sp/>{srv_name}<sp/>...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>srv_this<sp/>=<sp/>rospy.Service(<sp/>srv_name,<sp/>srv_type,<sp/>srv_callback<sp/>)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(0.75)<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(f</highlight><highlight class="stringliteral">&quot;(rosplan_simulated_motion_system)<sp/>service:<sp/>{srv_name}<sp/>...<sp/>OK&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>srv_this</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="namespacerosplan__simulated__motion__system_1af5fd428b9d93362e270153ffb36f1d76" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacerosplan__simulated__motion__system_1af5fd428b9d93362e270153ffb36f1d76" kindref="member">shut_msg</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>called<sp/>at<sp/>the<sp/>shutdown<sp/>of<sp/>the<sp/>node,<sp/>just<sp/>a<sp/>message</highlight></codeline>
+<codeline lineno="39"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/></highlight><highlight class="stringliteral">&quot;(simulated_motion_controller)<sp/>stopping<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;__main__&quot;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.init_node(<sp/></highlight><highlight class="stringliteral">&quot;simulated_motion_controller&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.on_shutdown(<sp/>shut_msg<sp/>)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(</highlight><highlight class="stringliteral">&quot;(rosplan_simulated_motion_system)<sp/>starting...&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacerosplan__simulated__motion__system_1ac71378f71c951dfce8118c36abea4d7f" kindref="member">open_srv</ref>(<sp/></highlight><highlight class="stringliteral">&quot;/robocluedo/manipulator_command&quot;</highlight><highlight class="normal">,<sp/>ManipulationCommand,<sp/>simulated_manipulation<sp/>)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacerosplan__simulated__motion__system_1ac71378f71c951dfce8118c36abea4d7f" kindref="member">open_srv</ref>(<sp/></highlight><highlight class="stringliteral">&quot;/robocluedo/navigation_command&quot;</highlight><highlight class="normal">,<sp/>NavigationCommand,<sp/>simulated_navigation<sp/>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(</highlight><highlight class="stringliteral">&quot;(rosplan_simulated_motion_system)<sp/>ready&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.spin()</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_module_testing/scripts/rosplan_simulated_motion_system.py"/>
+  </compounddef>
+</doxygen>

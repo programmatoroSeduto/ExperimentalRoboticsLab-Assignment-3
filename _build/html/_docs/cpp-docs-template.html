@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation for c++ nodes and libraries &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RoboCLuedo – Development Log" href="dev-log.html" />
+    <link rel="prev" title="Notes about Catkin" href="catkin-notes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Documentation for c++ nodes and libraries</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_docs/cpp-docs-template.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="documentation-for-c-nodes-and-libraries">
+<h1>Documentation for c++ nodes and libraries<a class="headerlink" href="#documentation-for-c-nodes-and-libraries" title="Permalink to this heading"></a></h1>
+<div class="section" id="conventions">
+<h2>conventions<a class="headerlink" href="#conventions" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>the header contains the big part of the documentation</p></li>
+<li><p>the cpp file contains a reference to the documentation in the header</p></li>
+<li><p><strong>use the header documentation both for nodes and for header files</strong></p></li>
+<li><p>where possible, better to use javadoc supported by many other doc systems instead of the (horrible) doxygen statement, poorly supported except by doxygen itself.</p></li>
+<li><p><strong>use HTML</strong> to alter the markup inside the documentation text</p></li>
+</ul>
+</div>
+<div class="section" id="file-documentation">
+<h2>file documentation<a class="headerlink" href="#file-documentation" title="Permalink to this heading"></a></h2>
+<p>documentation of a node or a library.</p>
+<ul class="simple">
+<li><p>delete the unused fields</p></li>
+<li><p>use the name of the macro to make a reference to a interface</p></li>
+<li><p>remember to use <code class="docutils literal notranslate"><span class="pre">\ref</span></code> when you’re referring to a name of the code</p></li>
+</ul>
+<div class="section" id="header-documentation-node-documentation">
+<h3>Header documentation / node documentation<a class="headerlink" href="#header-documentation-node-documentation" title="Permalink to this heading"></a></h3>
+<p><strong>use this both for nodes and for header files</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+ *  
+ * \file file.ext
+ * <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>ROS Node Name<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> 
+ *      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;&lt;</span><span class="nt">li</span><span class="p">&gt;</span>???ros_node???<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;&lt;/</span><span class="nt">ul</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+ * \brief ...brief...
+ * 
+ * \authors ???
+ * \version v1.0
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Description:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+ * ...description
+ * <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>UML component<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * (See ... the overal architecture, for further informations)<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;TODO uml&quot;</span><span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Publishers:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ *     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>/topic<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : file.msg <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... description 
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Subscribers:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ *     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>/topic<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : file.msg <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... description 
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Services:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ *     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>/service<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : file.srv <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... description 
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Clients:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ *     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>/serv<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : file.srv <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... reference to the implementation
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Providing actions<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ *     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>action_name<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : file.action <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... description 
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Using actions<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ *     <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			<span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>action_name<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : file.action <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... description 
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Hidden Services and Topics:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 		<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			( from ... : type ) <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>/channel<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : type.format <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... reference to page
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Parameters:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 		<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+ * 			[GET/SET] <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span>/parameter<span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> : type <span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 			... description 
+ * 		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ * <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Test the code<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>
+ * ...
+ * <span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>
+ * 
+ * <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>TODOs<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+ * 
+ ***********************************************/
+</pre></div>
+</div>
+</div>
+<div class="section" id="cpp-file-documentation">
+<h3>Cpp file documentation<a class="headerlink" href="#cpp-file-documentation" title="Permalink to this heading"></a></h3>
+<p>this file simply makes a reference to the header.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+*  
+* @file filename
+* @brief ...
+* 
+* @authors ...lista di autori separati da virgola...
+* @version v1.0
+* 
+* ... more details
+*  
+* @see header the Header
+* 
+***********************************************/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="code-elements-documentation">
+<h2>Code Elements Documentation<a class="headerlink" href="#code-elements-documentation" title="Permalink to this heading"></a></h2>
+<div class="section" id="naive-doc">
+<h3>naive doc<a class="headerlink" href="#naive-doc" title="Permalink to this heading"></a></h3>
+<p>the most free template.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+ *  
+ * \brief ...
+ * 
+ * ... more details
+ * 
+ ***********************************************/
+</pre></div>
+</div>
+</div>
+<div class="section" id="classical-function-documentation">
+<h3>classical function documentation<a class="headerlink" href="#classical-function-documentation" title="Permalink to this heading"></a></h3>
+<p>use this also for class methods!</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+ *  
+ * \brief ...
+ * 
+ * ... more details
+ * 
+ * @param param ... description
+ * 
+ * @returns ...description
+ * 
+ ***********************************************/
+</pre></div>
+</div>
+</div>
+<div class="section" id="main-function-documentation">
+<h3>MAIN FUNCTION documentation<a class="headerlink" href="#main-function-documentation" title="Permalink to this heading"></a></h3>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+ *  
+ * \brief ROS node main - 
+ * 
+ * ... more details
+ * 
+ ***********************************************/
+</pre></div>
+</div>
+</div>
+<div class="section" id="service-implementation-documentation">
+<h3>service implementation documentation<a class="headerlink" href="#service-implementation-documentation" title="Permalink to this heading"></a></h3>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+ *  
+ * \brief implementation of service \ref SERVICE_MACRO_OF_THE_SERVICE
+ * 
+ * ... more details
+ * 
+ * @param request ...description
+ * @param response ...description
+ * 
+ * @see file.srv
+ * 
+ ***********************************************/
+</pre></div>
+</div>
+</div>
+<div class="section" id="publisher-callback-documentation">
+<h3>publisher-callback documentation<a class="headerlink" href="#publisher-callback-documentation" title="Permalink to this heading"></a></h3>
+<p>this template can be used to document a function callback which also publishes something.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>/********************************************//**
+ *  
+ * \brief subscriber to \ref SUBSCRIBER_HINT_SIGNAL and publisher of \ref PUBLISHER_HINT
+ * 
+ * ... more details
+ * 
+ * @param emptySignal empty &#39;request&#39;
+ * 
+ * @see subscriber.msg [IN]
+ * @see publisher.msg [OUT]
+ * 
+ ***********************************************/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="useful-doxygen-statements">
+<h2>useful doxygen statements<a class="headerlink" href="#useful-doxygen-statements" title="Permalink to this heading"></a></h2>
+<p>see <a class="reference external" href="https://www.doxygen.nl/manual/commands.html">doxygen statements</a></p>
+<p>see also <a class="reference external" href="https://www.oracle.com/it/technical-resources/articles/java/javadoc-tool.html">javadoc official giude</a></p>
+<div class="section" id="todo-remarks">
+<h3>TODO remarks<a class="headerlink" href="#todo-remarks" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="nv">@todo</span><span class="w"> </span><span class="n">something</span><span class="w"> </span><span class="n">still</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">do</span><span class="w"></span>
+<span class="nv">@bug</span><span class="w"> </span><span class="k">describe</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">bug</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotations-and-remarks">
+<h3>annotations and remarks<a class="headerlink" href="#annotations-and-remarks" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>\note
+...your annotation...
+
+
+\remark
+...your annotation...
+
+===AN EXAMPLE===
+\note
+This note consists of two paragraphs. &lt;br&gt;
+This is the first paragraph.
+</pre></div>
+</div>
+</div>
+<div class="section" id="warnings-and-limitations">
+<h3>warnings and limitations<a class="headerlink" href="#warnings-and-limitations" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@warning this is a warning
+@deprecated ...deprecation notice here...
+
+\attention
+\warning
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="catkin-notes.html" class="btn btn-neutral float-left" title="Notes about Catkin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev-log.html" class="btn btn-neutral float-right" title="RoboCLuedo – Development Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

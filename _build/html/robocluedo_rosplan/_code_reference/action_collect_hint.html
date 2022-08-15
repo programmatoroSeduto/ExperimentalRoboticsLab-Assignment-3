@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE REFERENCE – ROSPlan action collect_hint &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CODE REFERENCE – class feedback manager" href="feedback_manager.html" />
+    <link rel="prev" title="UML – ROSPlan pipeline" href="../_uml/rosplan-pipeline.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/new-robocluedo.html">PDDL description – the new RoboCLuedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/pddl-and-rosplan.html">PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – ROSPlan action collect_hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feedback_manager.html">CODE REFERENCE – class feedback manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_interface.html">CODE REFERENCE – node kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_tools.html">CODE REFERENCE – class kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to.html">CODE REFERENCE – ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to_center.html">CODE REFERENCE – ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replan.html">CODE REFERENCE – ROSPlan action replan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosplan_pipeline_manager.html">CODE REFERENCE – node rosplan_pipeline_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
+      <li>CODE REFERENCE – ROSPlan action collect_hint</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_rosplan/_code_reference/action_collect_hint.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="code-reference-rosplan-action-collect-hint">
+<h1>CODE REFERENCE – ROSPlan action collect_hint<a class="headerlink" href="#code-reference-rosplan-action-collect-hint" title="Permalink to this heading"></a></h1>
+<div class="section" id="action-header">
+<h2>Action Header<a class="headerlink" href="#action-header" title="Permalink to this heading"></a></h2>
+<p>ROSPlan action implementation. </p>
+<p><dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ROSPLAN_ACTION_NAME">
+<span class="target" id="collect__hint_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50"></span><span class="sig-name descname"><span class="n"><span class="pre">ROSPLAN_ACTION_NAME</span></span></span><a class="headerlink" href="#c.ROSPLAN_ACTION_NAME" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SRV_MANIPULATION">
+<span class="target" id="collect__hint_8h_1ad42f6ba1d41da3db4903f3dc93bda287"></span><span class="sig-name descname"><span class="n"><span class="pre">SRV_MANIPULATION</span></span></span><a class="headerlink" href="#c.SRV_MANIPULATION" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv411KCL_rosplan">
+<span id="_CPPv311KCL_rosplan"></span><span id="_CPPv211KCL_rosplan"></span><span id="KCL_rosplan"></span><span class="target" id="namespace_k_c_l__rosplan"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">KCL_rosplan</span></span></span><a class="headerlink" href="#_CPPv411KCL_rosplan" title="Permalink to this definition"></a><br /></dt>
+<dd><dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hintE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hintE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hintE"></span><span id="KCL_rosplan::RP_rcl_collect_hint"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RP_rcl_collect_hint</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">RPActionInterface</span></span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hintE" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;collect_hint.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hint19RP_rcl_collect_hintERN3ros10NodeHandleE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hint19RP_rcl_collect_hintERN3ros10NodeHandleE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hint19RP_rcl_collect_hintERN3ros10NodeHandleE"></span><span id="KCL_rosplan::RP_rcl_collect_hint::RP_rcl_collect_hint__ros::NodeHandleR"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1ad0cee1d462813d1af3fa4f09f02e1bcb"></span><span class="sig-name descname"><span class="n"><span class="pre">RP_rcl_collect_hint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">nh_</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hint19RP_rcl_collect_hintERN3ros10NodeHandleE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hintD0Ev">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hintD0Ev"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hintD0Ev"></span><span id="KCL_rosplan::RP_rcl_collect_hint::~RP_rcl_collect_hint"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1a159d907fc401464367e142818f6521cc"></span><span class="sig-name descname"><span class="n"><span class="pre">~RP_rcl_collect_hint</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hintD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hint16concreteCallbackERKN21rosplan_dispatch_msgs14ActionDispatch8ConstPtrE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hint16concreteCallbackERKN21rosplan_dispatch_msgs14ActionDispatch8ConstPtrE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hint16concreteCallbackERKN21rosplan_dispatch_msgs14ActionDispatch8ConstPtrE"></span><span id="KCL_rosplan::RP_rcl_collect_hint::concreteCallback__rosplan_dispatch_msgs::ActionDispatch::ConstPtrCR"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1a1875c3481b554787f348877ed63fd507"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">concreteCallback</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">rosplan_dispatch_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ActionDispatch</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hint16concreteCallbackERKN21rosplan_dispatch_msgs14ActionDispatch8ConstPtrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROSPlan concrete callback </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hint2nhE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hint2nhE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hint2nhE"></span><span id="KCL_rosplan::RP_rcl_collect_hint::nh__ros::NodeHandleR"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1a70dd4b99a309de4a1ed2822cbda35f11"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hint2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>node handle </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hint2fbE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hint2fbE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hint2fbE"></span><span id="KCL_rosplan::RP_rcl_collect_hint::fb__action_feedback_manager"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1ad1a8fee5e7edb729072ef41f0eec5d95"></span><a class="reference internal" href="feedback_manager.html#_CPPv423action_feedback_manager" title="action_feedback_manager"><span class="n"><span class="pre">action_feedback_manager</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fb</span></span></span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hint2fbE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>action feedback manager (as object instance) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hint11action_nameE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hint11action_nameE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hint11action_nameE"></span><span id="KCL_rosplan::RP_rcl_collect_hint::action_name__ss"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1a57e4a023b163cbd7a97a8add75b99c17"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action_name</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">ROSPLAN_ACTION_NAME</span></span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hint11action_nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the implemented action </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11KCL_rosplan19RP_rcl_collect_hint8cl_manipE">
+<span id="_CPPv3N11KCL_rosplan19RP_rcl_collect_hint8cl_manipE"></span><span id="_CPPv2N11KCL_rosplan19RP_rcl_collect_hint8cl_manipE"></span><span id="KCL_rosplan::RP_rcl_collect_hint::cl_manip__ros::ServiceClient"></span><span class="target" id="class_k_c_l__rosplan_1_1_r_p__rcl__collect__hint_1a47db5ea007521c28d345beea156d0896"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_manip</span></span></span><a class="headerlink" href="#_CPPv4N11KCL_rosplan19RP_rcl_collect_hint8cl_manipE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>manipulation client </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="action-implementation">
+<h2>Action Implementation<a class="headerlink" href="#action-implementation" title="Permalink to this heading"></a></h2>
+<p>ROSPlan action implementation. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>feedback_manager.h </p>
+</div>
+<dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="namespace_k_c_l__rosplan"></span><span class="k"><span class="pre">namespace</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">KCL_rosplan</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="node-implementation">
+<h2>Node implementation<a class="headerlink" href="#node-implementation" title="Permalink to this heading"></a></h2>
+<p>ROSPlan action implementation as ROS node. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>feedback_manager.h </p>
+</div>
+<dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48shut_msgi">
+<span id="_CPPv38shut_msgi"></span><span id="_CPPv28shut_msgi"></span><span id="shut_msg__i"></span><span class="target" id="collect__hint__node_8cpp_1ac55116ccd10a2e3bfb144277f960d79e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shut_msg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiPPc">
+<span id="_CPPv34mainiPPc"></span><span id="_CPPv24mainiPPc"></span><span id="main__i.cPP"></span><span class="target" id="collect__hint__node_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../_uml/rosplan-pipeline.html" class="btn btn-neutral float-left" title="UML – ROSPlan pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="feedback_manager.html" class="btn btn-neutral float-right" title="CODE REFERENCE – class feedback manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

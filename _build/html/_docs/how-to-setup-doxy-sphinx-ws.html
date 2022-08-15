@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to setup a Doxygen/Sphinx workspace &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ReStructured Directives – practical documentation" href="rest-directives.html" />
+    <link rel="prev" title="RoboCLuedo – Development Log" href="dev-log.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>How to setup a Doxygen/Sphinx workspace</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_docs/how-to-setup-doxy-sphinx-ws.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="how-to-setup-a-doxygen-sphinx-workspace">
+<h1>How to setup a Doxygen/Sphinx workspace<a class="headerlink" href="#how-to-setup-a-doxygen-sphinx-workspace" title="Permalink to this heading"></a></h1>
+<div class="section" id="setup-sphinx">
+<h2>1 – setup Sphinx<a class="headerlink" href="#setup-sphinx" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> without separating the documentation and the code</p></li>
+<li><p>configuration file (see the specific section about it)</p></li>
+<li><p>…</p></li>
+</ol>
+</div>
+<div class="section" id="setup-doxygen">
+<h2>2 – setup Doxygen<a class="headerlink" href="#setup-doxygen" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>create a configuration file inside the root folder of the project using <code class="docutils literal notranslate"><span class="pre">doxywizard</span></code></p></li>
+<li><p>output as XML file in the folder <code class="docutils literal notranslate"><span class="pre">_build/xml</span></code> inside the root</p></li>
+<li><p>(optional) output as HTML file in the folder <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> inside the root</p></li>
+<li><p><em>… other config options?</em></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="sphinx-config-file-configuration">
+<h1>Sphinx – config file configuration<a class="headerlink" href="#sphinx-config-file-configuration" title="Permalink to this heading"></a></h1>
+<p>Here’s the procedure I followed to configure this workspace.</p>
+<p>First lines, section <code class="docutils literal notranslate"><span class="pre">path</span> <span class="pre">setup</span></code>, copy and paste this:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Path setup --------------------------------------------------------------</span>
+
+<span class="c1"># If extensions (or modules to document with autodoc) are in another directory,</span>
+<span class="c1"># add these directories to sys.path here. If the directory is relative to the</span>
+<span class="c1"># documentation root, use os.path.abspath to make it absolute, like shown here.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>section <code class="docutils literal notranslate"><span class="pre">general</span> <span class="pre">configuration</span></code>: copy and paste this. Here are the most significant plugins:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">myst_parser</span></code></a> : it enables Sphinx to parse the <code class="docutils literal notranslate"><span class="pre">.md</span></code> files. <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/configuration.html">Here</a> you can fnd many other configuration settings for myst parser.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.autodoc</span></code> : a very useful tool for generating automatically the documentation from source code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx.ext.napoleon</span></code> : this project uses Google Docstrings for the code documentation, when feasible. This is useful especially for the Python code</p></li>
+<li><p><a class="reference external" href="https://breathe.readthedocs.io/en/latest/quickstart.html"><code class="docutils literal notranslate"><span class="pre">breathe</span></code></a> : Sphinx works well for Python code, but it not so good for C++ code. This plugin takes the XML generated from Doxygen, then translates it into a format usable in Sphinx.</p></li>
+</ul>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- General configuration ---------------------------------------------------</span>
+
+<span class="c1"># Add any Sphinx extension module names here, as strings. They can be</span>
+<span class="c1"># extensions coming with Sphinx (named &#39;sphinx.ext.*&#39;) or your custom</span>
+<span class="c1"># ones.</span>
+<span class="c1"># set completo</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="s1">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.napoleon&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.autosummary&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.viewcode&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.githubpages&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.mathjax&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.ifconfig&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.inheritance_diagram&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;sphinx.ext.duration&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;myst_parser&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;breathe&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># Add any paths that contain templates here, relative to this directory.</span>
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">]</span>
+
+<span class="c1"># List of patterns, relative to source directory, that match files and</span>
+<span class="c1"># directories to ignore when looking for source files.</span>
+<span class="c1"># This pattern also affects html_static_path and html_extra_path.</span>
+<span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_build&#39;</span><span class="p">,</span> <span class="s1">&#39;Thumbs.db&#39;</span><span class="p">,</span> <span class="s1">&#39;.DS_Store&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Section <code class="docutils literal notranslate"><span class="pre">Options</span> <span class="pre">for</span> <span class="pre">HTML</span> <span class="pre">output</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for HTML output -------------------------------------------------</span>
+
+<span class="c1"># The theme to use for HTML and HTML Help pages.  See the documentation for</span>
+<span class="c1"># a list of builtin themes.</span>
+<span class="c1">#</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx-rtd-theme&#39;</span>
+
+<span class="c1"># Add any paths that contain custom static files (such as style sheets) here,</span>
+<span class="c1"># relative to this directory. They are copied after the builtin static files,</span>
+<span class="c1"># so a file named &quot;default.css&quot; will overwrite the builtin &quot;default.css&quot;.</span>
+<span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+
+<span class="c1"># name of the main document (it will be the homepage of the docs)</span>
+<span class="n">master_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
+
+<span class="c1"># how to interpret the files</span>
+<span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;.rst&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.txt&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Add a new section <code class="docutils literal notranslate"><span class="pre">Syntax</span> <span class="pre">Hilighting</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Syntax Hilighting -------------------------------------------------------</span>
+
+<span class="c1"># allow Pygments to guess the language</span>
+<span class="n">highlight_language</span> <span class="o">=</span> <span class="s1">&#39;guess&#39;</span>
+</pre></div>
+</div>
+<p>Add a new section for the todo list plugin:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for todo extension ----------------------------------------------</span>
+
+<span class="c1"># If true, `todo` and `todoList` produce output, else they produce nothing.</span>
+<span class="n">todo_include_todos</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p><strong>Breathe Options</strong>, add it to the config file (remember to replace <strong>???</strong> with the name of the project you gave in Doxygen)</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for breathe -----------------------------------------------------</span>
+
+<span class="c1"># generate the Doxygen XML documentation</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span> <span class="s1">&#39;doxygen Doxyfile&#39;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+
+<span class="c1"># path of the doxygen generated HTML</span>
+<span class="n">breathe_projects</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;???&quot;</span><span class="p">:</span> <span class="s2">&quot;_build/xml/&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># title of the Doxygen project</span>
+<span class="n">breathe_default_project</span> <span class="o">=</span> <span class="s2">&quot;robocluedo&quot;</span>
+<span class="n">breathe_default_members</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;members&#39;</span><span class="p">,</span> <span class="s1">&#39;undoc-members&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>PlantUML</strong> : first modify the extensions, …</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="c1"># ...</span>
+	<span class="s1">&#39;sphinx.ext.graphviz&#39;</span><span class="p">,</span> 
+	<span class="s1">&#39;sphinxcontrib.plantuml&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>… then add the module for PlantUML.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- plantUML extension ------------------------------------------------------</span>
+
+<span class="n">plantuml</span> <span class="o">=</span> <span class="s1">&#39;java -Djava.awt.headless=true -jar ./_ext/plantuml.jar&#39;</span>
+
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dev-log.html" class="btn btn-neutral float-left" title="RoboCLuedo – Development Log" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rest-directives.html" class="btn btn-neutral float-right" title="ReStructured Directives – practical documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

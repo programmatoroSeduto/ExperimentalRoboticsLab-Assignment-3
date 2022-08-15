@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_armor__uml_armor-uml" kind="page">
+    <compoundname>md_robocluedo_armor__uml_armor-uml</compoundname>
+    <title>UML – aRMOR elements</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md191">
+<title>aRMOR interface services</title>
+<para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SRV_ARMOR_ADD<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SRV_ARMOR_ADD<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SRV_ARMOR_FIND<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SRV_ARMOR_FIND<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Trigger.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md192">
+<title>aRMOR services</title>
+<para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/armor_interface_srv&quot;<sp/>as<sp/>SRV_ARMOR_DIRECTIVE</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SRV_ARMOR_DIRECTIVE<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SRV_ARMOR_DIRECTIVE<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_???</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>armor_msgs/ArmorDirective.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md193">
+<title>aRMOR interfaces structure</title>
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md194">
+<title>package aRMOR</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>database<sp/>&quot;knowledge<sp/>base&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>ARMOR.KB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>component<sp/>&quot;services&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ARMOR.KB<sp/>&lt;--<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ARMOR.KB<sp/>--&gt;<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/armor_interface_srv&quot;<sp/>as<sp/>SRV_ARMOR_DIRECTIVE</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DIRECTIVE<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>armor_msgs/ArmorDirective.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md195">
+<title>aRMOR interface component</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;aRMOR<sp/>Interface&quot;<sp/>as<sp/>NODE_RCL_ARMOR<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>&quot;aRMOR<sp/>Tools&quot;<sp/>as<sp/>NODE_RCL_ARMOR.ARMOR_TOOLS<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>ConnectAndLoad(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>LoadOntology(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>Connect(<sp/>float<sp/>timeout<sp/>=<sp/>ARMOR_DEFAULT_TIMEOUT<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>Success(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>LoadedOntology(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>TestInterface(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>SendCommand(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>armor_msgs::ArmorDirective<sp/>GetRequest(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>CallArmor(<sp/>armor_msgs::ArmorDirective&amp;<sp/>data<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>UpdateOntology(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>SaveOntology(<sp/>std::string<sp/>path<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>void<sp/>SwitchDebugMode(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>int<sp/>GetLastErrorCode(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::string<sp/>GetLastErrorDescription(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>&quot;aRMOR<sp/>CLuedo&quot;<sp/>as<sp/>NODE_RCL_ARMOR.ARMOR_CLUEDO<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>Init(<sp/>std::string<sp/>ontologyPath<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>AddIndiv(<sp/>std::string<sp/>indivname,<sp/>std::string<sp/>classname,<sp/>bool<sp/>makeDisjoint<sp/>=<sp/>true<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>GetClassOfIndiv(<sp/>std::string<sp/>indivname,<sp/>bool<sp/>deep<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>GetIndivOfClass(<sp/>std::string<sp/>classname<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>ExistsIndiv(<sp/>std::string<sp/>indivname<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>SetObjectProperty(<sp/>std::string<sp/>prop,<sp/>std::string<sp/>Aelem,<sp/>std::string<sp/>Belem<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>GetValuedOfIndiv(<sp/>std::string<sp/>prop,<sp/>std::string<sp/>indivname<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>FindCompleteHypotheses(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>FindInconsistentHypotheses(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>RemoveHypothesis(<sp/>std::string<sp/>hypTag<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::string<sp/>FilterValue(<sp/>std::string<sp/>raw<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>FilterVector(<sp/>std::vector&lt;std::string&gt;&amp;<sp/>itemlist<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NODE_RCL_ARMOR.ARMOR_TOOLS<sp/>--|&gt;<sp/>NODE_RCL_ARMOR.ARMOR_CLUEDO</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/armor_interface_srv&quot;<sp/>as<sp/>SRV_ARMOR_DIRECTIVE</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DIRECTIVE<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_RCL_ARMOR.ARMOR_CLUEDO</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Trigger.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md196">
+<title>THE COMPLETE SCHEMATIC</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>database<sp/>&quot;knowledge<sp/>base&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>ARMOR.KB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>component<sp/>&quot;services&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ARMOR.KB<sp/>&lt;--<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ARMOR.KB<sp/>--&gt;<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;aRMOR<sp/>Interface&quot;<sp/>as<sp/>NODE_RCL_ARMOR<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>&quot;aRMOR<sp/>Tools&quot;<sp/>as<sp/>NODE_RCL_ARMOR.ARMOR_TOOLS<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>ConnectAndLoad(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>LoadOntology(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>Connect(<sp/>float<sp/>timeout<sp/>=<sp/>ARMOR_DEFAULT_TIMEOUT<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>Success(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>LoadedOntology(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>TestInterface(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>SendCommand(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>armor_msgs::ArmorDirective<sp/>GetRequest(<sp/>...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>CallArmor(<sp/>armor_msgs::ArmorDirective&amp;<sp/>data<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>UpdateOntology(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>SaveOntology(<sp/>std::string<sp/>path<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>void<sp/>SwitchDebugMode(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>int<sp/>GetLastErrorCode(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::string<sp/>GetLastErrorDescription(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>&quot;aRMOR<sp/>CLuedo&quot;<sp/>as<sp/>NODE_RCL_ARMOR.ARMOR_CLUEDO<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>Init(<sp/>std::string<sp/>ontologyPath<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>AddIndiv(<sp/>std::string<sp/>indivname,<sp/>std::string<sp/>classname,<sp/>bool<sp/>makeDisjoint<sp/>=<sp/>true<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>GetClassOfIndiv(<sp/>std::string<sp/>indivname,<sp/>bool<sp/>deep<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>GetIndivOfClass(<sp/>std::string<sp/>classname<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>ExistsIndiv(<sp/>std::string<sp/>indivname<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>SetObjectProperty(<sp/>std::string<sp/>prop,<sp/>std::string<sp/>Aelem,<sp/>std::string<sp/>Belem<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>GetValuedOfIndiv(<sp/>std::string<sp/>prop,<sp/>std::string<sp/>indivname<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>FindCompleteHypotheses(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>FindInconsistentHypotheses(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>bool<sp/>RemoveHypothesis(<sp/>std::string<sp/>hypTag<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::string<sp/>FilterValue(<sp/>std::string<sp/>raw<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>std::vector&lt;std::string&gt;<sp/>FilterVector(<sp/>std::vector&lt;std::string&gt;&amp;<sp/>itemlist<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NODE_RCL_ARMOR.ARMOR_TOOLS<sp/>--|&gt;<sp/>NODE_RCL_ARMOR.ARMOR_CLUEDO</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/armor_interface_srv&quot;<sp/>as<sp/>SRV_ARMOR_DIRECTIVE</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DIRECTIVE<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NODE_RCL_ARMOR.ARMOR_CLUEDO</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DIRECTIVE<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>ARMOR.NODE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>armor_msgs/ArmorDirective.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>&lt;-up-<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>&lt;-up-<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>&lt;-up-<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>&lt;-up-<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Trigger.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

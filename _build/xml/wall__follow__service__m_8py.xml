@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="wall__follow__service__m_8py" kind="file" language="Python">
+    <compoundname>wall_follow_service_m.py</compoundname>
+    <innernamespace refid="namespacewall__follow__service__m">wall_follow_service_m</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacewall__follow__service__m" refkind="compound"><highlight class="comment">#!<sp/>/usr/bin/env<sp/>python</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>find<sp/>a<sp/>wall,<sp/>and<sp/>follow<sp/>it.<sp/>the<sp/>robot<sp/>can<sp/>only<sp/>turn<sp/>right.<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>sensor_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>LaserScan</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>geometry_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Twist</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>nav_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Odometry</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>tf<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>transformations</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacestd__srvs_1_1srv" kindref="compound">std_srvs.srv</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>math</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespacewall__follow__service__m_1ae80ea3e1537280d2311f2fc113a60bc7" refkind="member"><highlight class="normal">active_<sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="namespacewall__follow__service__m_1aa66ff19a5a11afad8ec15143f733bea2" refkind="member"><highlight class="normal">pub_<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="namespacewall__follow__service__m_1a30a3b79a68496f06646ee64d67423f36" refkind="member"><highlight class="normal">regions_<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;right&apos;</highlight><highlight class="normal">:<sp/>0,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">:<sp/>0,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">:<sp/>0,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">:<sp/>0,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;left&apos;</highlight><highlight class="normal">:<sp/>0,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25" refid="namespacewall__follow__service__m_1a1f1e8197a7b86b64c5c2c256173e371d" refkind="member"><highlight class="normal">state_<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="26" refid="namespacewall__follow__service__m_1a723d03e512b26cc484d9299418b2773d" refkind="member"><highlight class="normal">state_dict_<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>0:<sp/></highlight><highlight class="stringliteral">&apos;find<sp/>the<sp/>wall&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>1:<sp/></highlight><highlight class="stringliteral">&apos;turn<sp/>left&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>2:<sp/></highlight><highlight class="stringliteral">&apos;follow<sp/>the<sp/>wall&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="namespacewall__follow__service__m_1a8367ccc5f1456166406c0d577d019baf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1a8367ccc5f1456166406c0d577d019baf" kindref="member">wall_follower_switch</ref>(req):</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>active_,<sp/>pub_</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>active_<sp/>=<sp/>req.data</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>req.data:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>Twist()</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.linear.x<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.angular.z<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_.publish(msg)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>SetBoolResponse()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>res.message<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;Done!&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="namespacewall__follow__service__m_1ab07be9226f1ee837e03f25d282336b09" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1ab07be9226f1ee837e03f25d282336b09" kindref="member">clbk_laser</ref>(msg):</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>regions_</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>regions_<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;right&apos;</highlight><highlight class="normal">:<sp/><sp/>min(min(msg.ranges[0:143]),<sp/>10),</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">:<sp/>min(min(msg.ranges[144:287]),<sp/>10),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">:<sp/><sp/>min(min(msg.ranges[288:431]),<sp/>10),</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">:<sp/><sp/>min(min(msg.ranges[432:575]),<sp/>10),</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;left&apos;</highlight><highlight class="normal">:<sp/><sp/><sp/>min(min(msg.ranges[576:713]),<sp/>10),</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1a027e1db38933af0544136a5c84de5a83" kindref="member">take_action</ref>()</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(state):</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>state_,<sp/>state_dict_</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>state<sp/></highlight><highlight class="keywordflow">is</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>state_:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>print<sp/>(&apos;Wall<sp/>follower<sp/>-<sp/>[%s]<sp/>-<sp/>%s&apos;<sp/>%<sp/>(state,<sp/>state_dict_[state]))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_<sp/>=<sp/>state</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="namespacewall__follow__service__m_1a027e1db38933af0544136a5c84de5a83" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1a027e1db38933af0544136a5c84de5a83" kindref="member">take_action</ref>():</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>regions_</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>regions<sp/>=<sp/>regions_</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>Twist()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>linear_x<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>angular_z<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>d0<sp/>=<sp/>0.5</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>=<sp/>0.75</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>1<sp/>-<sp/>nothing&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(0)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>2<sp/>-<sp/>front&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(1)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>3<sp/>-<sp/>fright&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(2)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>4<sp/>-<sp/>fleft&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(0)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d:</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>5<sp/>-<sp/>front<sp/>and<sp/>fright&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(1)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>6<sp/>-<sp/>front<sp/>and<sp/>fleft&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(1)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>7<sp/>-<sp/>front<sp/>and<sp/>fleft<sp/>and<sp/>fright&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(1)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;front&apos;</highlight><highlight class="normal">]<sp/>&gt;<sp/>d0<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fleft&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>regions[</highlight><highlight class="stringliteral">&apos;fright&apos;</highlight><highlight class="normal">]<sp/>&lt;<sp/>d:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;case<sp/>8<sp/>-<sp/>fleft<sp/>and<sp/>fright&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ad99900df1d3fa5dd0683d507b2253b17" kindref="member">change_state</ref>(2)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_description<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;unknown<sp/>case&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(regions)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>print(state_description)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="namespacewall__follow__service__m_1ae65476bf2d8bd9007fda22eaea1ed2b1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1ae65476bf2d8bd9007fda22eaea1ed2b1" kindref="member">find_wall</ref>():</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>Twist()</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.linear.x<sp/>=<sp/>0.2</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.angular.z<sp/>=<sp/>-0.3</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="namespacewall__follow__service__m_1aa4262b4e6e90a36c0226c9b90ee97d14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1aa4262b4e6e90a36c0226c9b90ee97d14" kindref="member">turn_left</ref>():</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>Twist()</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.angular.z<sp/>=<sp/>0.3</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="namespacewall__follow__service__m_1a2f9f1202ed1e75ee80471a9dff56fdbe" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1a2f9f1202ed1e75ee80471a9dff56fdbe" kindref="member">follow_the_wall</ref>():</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>regions_</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>Twist()</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.linear.x<sp/>=<sp/>0.35</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="namespacewall__follow__service__m_1ab4dbc79e32b45a381737fb7b3c126edf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacewall__follow__service__m_1ab4dbc79e32b45a381737fb7b3c126edf" kindref="member">main</ref>():</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>pub_,<sp/>active_,<sp/>state_</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.init_node(</highlight><highlight class="stringliteral">&apos;wall_follow_service_m&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(</highlight><highlight class="stringliteral">&quot;(wall<sp/>follow)<sp/>starting&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(2))</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>pub_<sp/>=<sp/>rospy.Publisher(</highlight><highlight class="stringliteral">&apos;/cmd_vel&apos;</highlight><highlight class="normal">,<sp/>Twist,<sp/>queue_size=1)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>sub<sp/>=<sp/>rospy.Subscriber(</highlight><highlight class="stringliteral">&apos;/scan&apos;</highlight><highlight class="normal">,<sp/>LaserScan,<sp/>clbk_laser)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>srv<sp/>=<sp/>rospy.Service(</highlight><highlight class="stringliteral">&apos;/wall_follower_switch&apos;</highlight><highlight class="normal">,<sp/>SetBool,<sp/>wall_follower_switch)</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(2))</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(</highlight><highlight class="stringliteral">&quot;(wall<sp/>follow)<sp/>ready&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>rate<sp/>=<sp/>rospy.Rate(20)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.is_shutdown():</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>active_:</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>rospy.loginfo(<sp/>&quot;wall<sp/>follow<sp/>is<sp/>OFF&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rate.sleep()</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>Twist()</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>0:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>=<sp/><ref refid="namespacewall__follow__service__m_1ae65476bf2d8bd9007fda22eaea1ed2b1" kindref="member">find_wall</ref>()</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>1:</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>=<sp/><ref refid="namespacewall__follow__service__m_1aa4262b4e6e90a36c0226c9b90ee97d14" kindref="member">turn_left</ref>()</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>2:</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>=<sp/><ref refid="namespacewall__follow__service__m_1a2f9f1202ed1e75ee80471a9dff56fdbe" kindref="member">follow_the_wall</ref>()</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.logerr(</highlight><highlight class="stringliteral">&apos;Unknown<sp/>state!&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_.publish(msg)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rate.sleep()</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;__main__&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacewall__follow__service__m_1ab4dbc79e32b45a381737fb7b3c126edf" kindref="member">main</ref>()</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/scripts/wall_follow_service_m.py"/>
+  </compounddef>
+</doxygen>

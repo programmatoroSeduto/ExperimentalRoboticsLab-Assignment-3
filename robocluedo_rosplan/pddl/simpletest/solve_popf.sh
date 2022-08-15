@@ -1,0 +1,3 @@
+#! /bin/bash
+
+timeout 10 /root/ros_ws/src/ROSPlan/rosplan_planning_system/common/bin/popf -l3 /root/ros_ws/src/ExperimentalRoboticsLab-Assignment-2/robocluedo_rosplan_interface/pddl/simpletest/simple_domain.pddl /root/ros_ws/src/ExperimentalRoboticsLab-Assignment-2/robocluedo_rosplan_interface/pddl/simpletest/simple_problem.pddl timeout 10 /root/ros_ws/src/ROSPlan/rosplan_planning_system/common/bin/popf -l2 /root/ros_ws/src/ExperimentalRoboticsLab-Assignment-2/robocluedo_rosplan_interface/pddl/simpletest/simple_domain.pddl /root/ros_ws/src/ExperimentalRoboticsLab-Assignment-2/robocluedo_rosplan_interface/pddl/simpletest/outplan.txt > popf_plan.pddl

@@ -1,0 +1,507 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="manipulation__controller_8cpp" kind="file" language="C++">
+    <compoundname>manipulation_controller.cpp</compoundname>
+    <includes local="yes">ros/ros.h</includes>
+    <includes local="yes">moveit/move_group_interface/move_group_interface.h</includes>
+    <includes local="yes">moveit/planning_scene_interface/planning_scene_interface.h</includes>
+    <includes local="yes">robocluedo_movement_controller_msgs/ManipulatorPosition.h</includes>
+    <includes local="yes">signal.h</includes>
+    <includes local="no">string</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>moveit/move_group_interface/move_group_interface.h</label>
+      </node>
+      <node id="1">
+        <label>robocluedo_movement_controller/src/manipulation_controller.cpp</label>
+        <link refid="manipulation__controller_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>signal.h</label>
+      </node>
+      <node id="5">
+        <label>robocluedo_movement_controller_msgs/ManipulatorPosition.h</label>
+      </node>
+      <node id="2">
+        <label>ros/ros.h</label>
+      </node>
+      <node id="4">
+        <label>moveit/planning_scene_interface/planning_scene_interface.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classnode__manipulation__controller" prot="public">node_manipulation_controller</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" prot="public" static="no">
+        <name>NODE_NAME</name>
+        <initializer>&quot;manipulation_controller&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="2" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="2" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" prot="public" static="no">
+        <name>LOGSQUARE</name>
+        <param><defname>str</defname></param>
+        <initializer>&quot;[&quot; &lt;&lt; str &lt;&lt; &quot;] &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="4" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" prot="public" static="no">
+        <name>OUTLABEL</name>
+        <initializer><ref refid="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>( <ref refid="kb__interface_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref> )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="5" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" prot="public" static="no">
+        <name>TLOG</name>
+        <param><defname>msg</defname></param>
+        <initializer><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="6" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643" prot="public" static="no">
+        <name>TWARN</name>
+        <param><defname>msg</defname></param>
+        <initializer>ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; &quot;WARNING: &quot; &lt;&lt; msg )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="7" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a59b71c836719259a2e9b1428ec35504c" prot="public" static="no">
+        <name>TERR</name>
+        <param><defname>msg</defname></param>
+        <initializer>ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; &quot;ERROR: &quot; &lt;&lt; msg )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="8" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" prot="public" static="no">
+        <name>SS</name>
+        <param><defname>chr</defname></param>
+        <initializer>std::string( chr )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="23" column="10" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" prot="public" static="no">
+        <name>SSS</name>
+        <param><defname>el</defname></param>
+        <initializer>std::to_string( el )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="24" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1af017b1456268e518866d2c2dcc8a6b70" prot="public" static="no">
+        <name>ARM_PLANNING_GROUP</name>
+        <initializer>&quot;arm_group&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="26" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" prot="public" static="no">
+        <name>SERVICE_MANIP</name>
+        <initializer>&quot;/tip_pos&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="28" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" prot="public" static="no">
+        <name>POSE_HOME</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="30" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a1a91a5c6eb5f9d956907ef99a55fde46" prot="public" static="no">
+        <name>POSE_EXTENDED</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="31" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1af3cf1ad007e09eff2b8209586939a3a6" prot="public" static="no">
+        <name>POSE_LOW</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="32" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a0c261af135c0942669dbb3861532e2b1" prot="public" static="no">
+        <name>POSE_FRONT_LOW</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="33" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062" prot="public" static="no">
+        <name>POSE_FRONT_HIGH</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="34" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" prot="public" static="no">
+        <name>POSE_NAME_HOME</name>
+        <initializer>&quot;home&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="36" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a944208b9d465d5576abe01e658bb7e4a" prot="public" static="no">
+        <name>POSE_NAME_EXTENDED</name>
+        <initializer>&quot;extended&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="37" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a4dac7fdce1aa6f68047132b579efbcad" prot="public" static="no">
+        <name>POSE_NAME_LOW</name>
+        <initializer>&quot;low&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="38" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1a05867d1976b01f30e107a897c81eab1b" prot="public" static="no">
+        <name>POSE_NAME_FRONT_LOW</name>
+        <initializer>&quot;front_low&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="39" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__controller_8cpp_1aed64b60baca3db44b4f6f1672b66aef3" prot="public" static="no">
+        <name>POSE_NAME_FRONT_HIGH</name>
+        <initializer>&quot;front_high&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="40" column="9" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="manipulation__controller_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void shut_msg</definition>
+        <argsstring>(int sig)</argsstring>
+        <name>shut_msg</name>
+        <param>
+          <type>int</type>
+          <declname>sig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="154" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="154" bodyend="158"/>
+        <references refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" compoundref="manipulation__controller_8cpp" startline="6">TLOG</references>
+        <referencedby refid="manipulation__controller_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="manipulation__controller_8cpp" startline="161" endline="180">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="manipulation__controller_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="161" column="5" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="161" bodyend="180"/>
+        <references refid="manipulation__controller_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" compoundref="manipulation__controller_8cpp" startline="2">NODE_NAME</references>
+        <references refid="manipulation__controller_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="manipulation__controller_8cpp" startline="154" endline="158">shut_msg</references>
+        <references refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" compoundref="examples__tools_8md_8txt" startline="35">nh</references>
+        <references refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" compoundref="manipulation__controller_8cpp" startline="6">TLOG</references>
+        <references refid="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6" compoundref="manipulation__controller_8cpp" startline="65" endline="68">node_manipulation_controller::spin</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2" refid="manipulation__controller_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NODE_NAME<sp/>&quot;manipulation_controller&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGSQUARE(<sp/>str<sp/>)<sp/><sp/>&quot;[&quot;<sp/>&lt;&lt;<sp/>str<sp/>&lt;&lt;<sp/>&quot;]<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="manipulation__controller_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OUTLABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOGSQUARE(<sp/>NODE_NAME<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TLOG(<sp/>msg<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>msg<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="manipulation__controller_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TWARN(<sp/>msg<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>&quot;WARNING:<sp/>&quot;<sp/>&lt;&lt;<sp/>msg<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="manipulation__controller_8cpp_1a59b71c836719259a2e9b1428ec35504c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TERR(<sp/>msg<sp/>)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>&quot;ERROR:<sp/>&quot;<sp/>&lt;&lt;<sp/>msg<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ros/ros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;moveit/move_group_interface/move_group_interface.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;moveit/planning_scene_interface/planning_scene_interface.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_movement_controller_msgs/ManipulatorPosition.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//include<sp/>&lt;moveit_visual_tools/moveit_visual_tools.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//include<sp/>&lt;moveit_msgs/DisplayRobotState.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//include<sp/>&lt;moveit_msgs/DisplayTrajectory.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//include<sp/>&lt;moveit_msgs/AttachedCollisionObject.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//include<sp/>&lt;moveit_msgs/CollisionObject.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;signal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SS(chr)<sp/>std::string(<sp/>chr<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="manipulation__controller_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SSS(el)<sp/>std::to_string(<sp/>el<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="manipulation__controller_8cpp_1af017b1456268e518866d2c2dcc8a6b70" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARM_PLANNING_GROUP<sp/>&quot;arm_group&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVICE_MANIP<sp/>&quot;/tip_pos&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="manipulation__controller_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_HOME<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="manipulation__controller_8cpp_1a1a91a5c6eb5f9d956907ef99a55fde46" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_EXTENDED<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="manipulation__controller_8cpp_1af3cf1ad007e09eff2b8209586939a3a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_LOW<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="manipulation__controller_8cpp_1a0c261af135c0942669dbb3861532e2b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_FRONT_LOW<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="manipulation__controller_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_FRONT_HIGH<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_NAME_HOME<sp/>&quot;home&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="manipulation__controller_8cpp_1a944208b9d465d5576abe01e658bb7e4a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_NAME_EXTENDED<sp/>&quot;extended&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="manipulation__controller_8cpp_1a4dac7fdce1aa6f68047132b579efbcad" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_NAME_LOW<sp/>&quot;low&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="manipulation__controller_8cpp_1a05867d1976b01f30e107a897c81eab1b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_NAME_FRONT_LOW<sp/>&quot;front_low&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="manipulation__controller_8cpp_1aed64b60baca3db44b4f6f1672b66aef3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_NAME_FRONT_HIGH<sp/>&quot;front_high&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classnode__manipulation__controller" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classnode__manipulation__controller" kindref="compound">node_manipulation_controller</ref></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46" refid="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39" kindref="member">node_manipulation_controller</ref>(<sp/><sp/>)<sp/>:<sp/>mgi(<sp/><ref refid="manipulation__controller_8cpp_1af017b1456268e518866d2c2dcc8a6b70" kindref="member">ARM_PLANNING_GROUP</ref><sp/>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>srv_manip<sp/>=<sp/>nh.advertiseService(<sp/><ref refid="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref>,<sp/>&amp;<ref refid="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b" kindref="member">node_manipulation_controller::cbk_manip</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(ros::Duration(1.0)).sleep(<sp/>);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>MoveIt<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mgi.setPlanningTime(10.0);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>moveit<sp/>infos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(</highlight><highlight class="stringliteral">&quot;Planning<sp/>frame:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mgi.getPlanningFrame().c_str());</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>initial<sp/>position<sp/>of<sp/>the<sp/>arm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mgi.setNamedTarget(<sp/><ref refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" kindref="member">POSE_NAME_HOME</ref><sp/>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mgi.move(<sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65" refid="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6" kindref="member">spin</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::waitForShutdown(<sp/>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70" refid="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b" kindref="member">cbk_manip</ref>(<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::ManipulatorPosition::Request&amp;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>,<sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::ManipulatorPosition::Response&amp;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref><sp/>)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>cmd<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(<ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.command)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" kindref="member">POSE_HOME</ref>:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd<sp/>=<sp/><ref refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" kindref="member">POSE_NAME_HOME</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1a1a91a5c6eb5f9d956907ef99a55fde46" kindref="member">POSE_EXTENDED</ref>:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd<sp/>=<sp/><ref refid="manipulation__controller_8cpp_1a944208b9d465d5576abe01e658bb7e4a" kindref="member">POSE_NAME_EXTENDED</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1af3cf1ad007e09eff2b8209586939a3a6" kindref="member">POSE_LOW</ref>:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd<sp/>=<sp/><ref refid="manipulation__controller_8cpp_1a4dac7fdce1aa6f68047132b579efbcad" kindref="member">POSE_NAME_LOW</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1a0c261af135c0942669dbb3861532e2b1" kindref="member">POSE_FRONT_LOW</ref>:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd<sp/>=<sp/><ref refid="manipulation__controller_8cpp_1a05867d1976b01f30e107a897c81eab1b" kindref="member">POSE_NAME_FRONT_LOW</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062" kindref="member">POSE_FRONT_HIGH</ref>:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd<sp/>=<sp/><ref refid="manipulation__controller_8cpp_1aed64b60baca3db44b4f6f1672b66aef3" kindref="member">POSE_NAME_FRONT_HIGH</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.details<sp/>=<sp/><ref refid="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" kindref="member">SS</ref>(</highlight><highlight class="stringliteral">&quot;pose<sp/>code<sp/>unknown<sp/>(received<sp/>POSE=&quot;</highlight><highlight class="normal">)<sp/>+<sp/><ref refid="manipulation__controller_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" kindref="member">SSS</ref>(<ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.command)<sp/>+<sp/><ref refid="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" kindref="member">SS</ref>(</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.details<sp/>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mgi.setNamedTarget(<sp/>cmd<sp/>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>motion<sp/>plan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>mgi.plan(<sp/>plan<sp/>)<sp/>!=<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS<sp/>)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.details<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;motion<sp/>planning<sp/>phase<sp/>failed<sp/>--<sp/>unable<sp/>to<sp/>make<sp/>a<sp/>plan&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.details<sp/>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>plan<sp/>execution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mgi.execute(<sp/>plan<sp/>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.details<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>planning_group;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>moveit::planning_interface::MoveGroupInterface<sp/>mgi;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>moveit::planning_interface::MoveGroupInterface::Plan<sp/>plan;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>srv_manip;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="manipulation__controller_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sig<sp/>)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;stopping...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::shutdown(<sp/>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="manipulation__controller_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="manipulation__controller_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[]<sp/>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/><ref refid="manipulation__controller_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(<sp/>SIGINT,<sp/><ref refid="manipulation__controller_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref><sp/>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>required<sp/>by<sp/>moveIt:<sp/>run<sp/>the<sp/>node<sp/>as<sp/>AsyncSpinner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::AsyncSpinner<sp/>spinner(<sp/>2<sp/>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>spinner.start(<sp/>);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;starting<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__manipulation__controller" kindref="compound">node_manipulation_controller</ref><sp/>node;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__controller_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>node.<ref refid="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6" kindref="member">spin</ref>(<sp/>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/src/manipulation_controller.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="feedback__manager_8cpp" kind="file" language="C++">
+    <compoundname>feedback_manager.cpp</compoundname>
+    <includes refid="feedback__manager_8h" local="yes">knowledge_base_tools/feedback_manager.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>robocluedo_rosplan_msgs/ActionFeedback.h</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>knowledge_base_tools/feedback_manager.h</label>
+        <link refid="feedback__manager_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>map</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="4">
+        <label>diagnostic_msgs/KeyValue.h</label>
+      </node>
+      <node id="3">
+        <label>ros/ros.h</label>
+      </node>
+      <node id="1">
+        <label>robocluedo_rosplan/src/knowledge_base_tools/feedback_manager.cpp</label>
+        <link refid="feedback__manager_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>additional informations from the PDDL action implementations as topic </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="authors"><para>Francesco Ganci </para>
+</simplesect>
+<simplesect kind="version"><para>v1.0</para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="feedback__manager_8h" kindref="compound">feedback_manager.h</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/********************************************/</highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="feedback__manager_8h" kindref="compound">knowledge_base_tools/feedback_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>BASE<sp/>METHODS<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>class<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classaction__feedback__manager_1a1e39f6b9fbe49dd45d48010c48968a66" refkind="member"><highlight class="normal"><ref refid="classaction__feedback__manager_1a1e39f6b9fbe49dd45d48010c48968a66" kindref="member">action_feedback_manager::action_feedback_manager</ref>(<sp/>std::string<sp/>act_name<sp/>)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf" kindref="member">action_name</ref><sp/>=<sp/>act_name;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>open<sp/>the<sp/>action<sp/>feedback<sp/>topic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf" kindref="member">action_name</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;::feedback_manager]<sp/>creating<sp/>feedback<sp/>publisher...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pub_action_feedback<sp/>=<sp/>nh.advertise&lt;robocluedo_rosplan_msgs::ActionFeedback&gt;(<sp/><ref refid="feedback__manager_8h_1a56390d2d0f99e7a63ae2e7ea05a9b53e" kindref="member">TOPIC_ACTION_FEEDBACK</ref>,<sp/>10<sp/>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf" kindref="member">action_name</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;::feedback_manager]<sp/>OK&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>class<sp/>destructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classaction__feedback__manager_1a03578c1ddea3134821802d1a9f751db4" refkind="member"><highlight class="normal"><ref refid="classaction__feedback__manager_1a03578c1ddea3134821802d1a9f751db4" kindref="member">action_feedback_manager::~action_feedback_manager</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>FEEDBACK<sp/>SYSTEM<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>other<sp/>failures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classaction__feedback__manager_1a8c9c45679421da4398b37b87eab9fe67" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaction__feedback__manager_1a8c9c45679421da4398b37b87eab9fe67" kindref="member">action_feedback_manager::fb_failure</ref>(<sp/>std::vector&lt;diagnostic_msgs::KeyValue&gt;<sp/>parameters,<sp/>std::string<sp/>details<sp/>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>this-&gt;build_msg(<sp/>parameters,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>details<sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pub(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>unspecified<sp/>hardware<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classaction__feedback__manager_1a0aa1a67b824bf3f1ada4e2dd28262415" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaction__feedback__manager_1a0aa1a67b824bf3f1ada4e2dd28262415" kindref="member">action_feedback_manager::fb_hw_failure</ref>(<sp/>std::vector&lt;diagnostic_msgs::KeyValue&gt;<sp/>parameters,<sp/>std::string<sp/>details<sp/>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>this-&gt;build_msg(<sp/>parameters,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>details<sp/>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pub(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>hardware<sp/>manipulation<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classaction__feedback__manager_1a41faa38f3cea2f4c19fd2694368d4ff5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaction__feedback__manager_1a41faa38f3cea2f4c19fd2694368d4ff5" kindref="member">action_feedback_manager::fb_hw_manipulation_failure</ref>(<sp/>std::vector&lt;diagnostic_msgs::KeyValue&gt;<sp/>parameters,<sp/>std::string<sp/>details<sp/>)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>this-&gt;build_msg(<sp/>parameters,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>details<sp/>);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pub(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>hardware<sp/>navigation<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classaction__feedback__manager_1accdda1a95b8e6c1545e49f3c38c386f6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaction__feedback__manager_1accdda1a95b8e6c1545e49f3c38c386f6" kindref="member">action_feedback_manager::fb_hw_navigation_failure</ref>(<sp/>std::vector&lt;diagnostic_msgs::KeyValue&gt;<sp/>parameters,<sp/>std::string<sp/>details<sp/>)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>msg<sp/>=<sp/>this-&gt;build_msg(<sp/>parameters,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>details<sp/>)<sp/>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pub(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>PRIVATE<sp/>METHODS<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/>build<sp/>a<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">robocluedo_rosplan_msgs::ActionFeedback<sp/>action_feedback_manager::build_msg(<sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;diagnostic_msgs::KeyValue&gt;<sp/>parameters,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>goal_achieved,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>failure,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hw_failure,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>failure_nav_system,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>failure_manipulation,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>details<sp/>)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>this-&gt;<ref refid="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf" kindref="member">action_name</ref><sp/>==<sp/><ref refid="feedback__manager_8h_1a7fde9014c619ef02f705989a9032a8a5" kindref="member">ACTION_NAME_UNKNOWN</ref><sp/>)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf" kindref="member">action_name</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;::feedback_manager]<sp/>WARNING:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;</highlight><highlight class="stringliteral">&quot;action<sp/>name<sp/>of<sp/>the<sp/>feedback<sp/>manager<sp/>is<sp/>UNKNOWN&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::ActionFeedback<sp/>msg;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.action_name<sp/>=<sp/><ref refid="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf" kindref="member">action_name</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.parameters<sp/>=<sp/>parameters;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>feedback<sp/>properties</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.goal_achieved<sp/>=<sp/>goal_achieved;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.failure<sp/>=<sp/>failure;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.hw_failure<sp/>=<sp/>hw_failure;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.failure_nav_system<sp/>=<sp/>failure_nav_system;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.details<sp/>=<sp/>details;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>msg;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>publish<sp/>the<sp/>feedback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>action_feedback_manager::pub(<sp/>robocluedo_rosplan_msgs::ActionFeedback&amp;<sp/>msg<sp/>)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pub_action_feedback.publish(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_rosplan/src/knowledge_base_tools/feedback_manager.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="replan_8h" kind="file" language="C++">
+    <compoundname>replan.h</compoundname>
+    <includes local="yes">ros/ros.h</includes>
+    <includes local="yes">std_srvs/Empty.h</includes>
+    <includes local="yes">rosplan_action_interface/RPActionInterface.h</includes>
+    <includes refid="feedback__manager_8h" local="yes">knowledge_base_tools/feedback_manager.h</includes>
+    <includes local="yes">rosplan_dispatch_msgs/ActionDispatch.h</includes>
+    <includedby refid="replan_8cpp" local="yes">robocluedo_rosplan/src/robocluedo_rosplan_actions/replan.cpp</includedby>
+    <includedby refid="replan__node_8cpp" local="yes">robocluedo_rosplan/src/robocluedo_rosplan_actions/replan_node.cpp</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>robocluedo_rosplan_msgs/ActionFeedback.h</label>
+      </node>
+      <node id="3">
+        <label>std_srvs/Empty.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>knowledge_base_tools/feedback_manager.h</label>
+        <link refid="feedback__manager_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>map</label>
+      </node>
+      <node id="4">
+        <label>rosplan_action_interface/RPActionInterface.h</label>
+      </node>
+      <node id="11">
+        <label>rosplan_dispatch_msgs/ActionDispatch.h</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+      <node id="1">
+        <label>robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h</label>
+        <link refid="replan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>diagnostic_msgs/KeyValue.h</label>
+      </node>
+      <node id="2">
+        <label>ros/ros.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>robocluedo_rosplan/src/robocluedo_rosplan_actions/replan_node.cpp</label>
+        <link refid="replan__node_8cpp"/>
+      </node>
+      <node id="1">
+        <label>robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h</label>
+        <link refid="replan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>robocluedo_rosplan/src/robocluedo_rosplan_actions/replan.cpp</label>
+        <link refid="replan_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_k_c_l__rosplan_1_1_r_p__rcl__replan" prot="public">KCL_rosplan::RP_rcl_replan</innerclass>
+    <innernamespace refid="namespace_k_c_l__rosplan">KCL_rosplan</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="replan_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" prot="public" static="no">
+        <name>ROSPLAN_ACTION_NAME</name>
+        <initializer>&quot;replan&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h" line="15" column="9" bodyfile="robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="replan_8h_1ac62d611007560a363e737ed381abab60" prot="public" static="no">
+        <name>SRV_REPLAN</name>
+        <initializer>&quot;/replan&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h" line="23" column="9" bodyfile="robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>ROSPlan action implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="authors"><para>Francesco Ganci </para>
+</simplesect>
+<simplesect kind="version"><para>v1.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/********************************************/</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor">#ifndef<sp/>__H_REPLAN_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__H_REPLAN_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="replan_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ROSPLAN_ACTION_NAME<sp/>&quot;replan&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ros/ros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;std_srvs/Empty.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rosplan_action_interface/RPActionInterface.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="feedback__manager_8h" kindref="compound">knowledge_base_tools/feedback_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rosplan_dispatch_msgs/ActionDispatch.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="replan_8h_1ac62d611007560a363e737ed381abab60" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SRV_REPLAN<sp/>&quot;/replan&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_k_c_l__rosplan" kindref="compound">KCL_rosplan</ref><sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="class_k_c_l__rosplan_1_1_r_p__rcl__replan" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__replan" kindref="compound">RP_rcl_replan</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>RPActionInterface</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__replan_1a1beb4fbe01f4f554f541f633d29d86d9" kindref="member">RP_rcl_replan</ref>(<sp/>ros::NodeHandle&amp;<sp/>nh_<sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__replan_1a60c822a2b3c95f8f6cdaf9aafce13adf" kindref="member">~RP_rcl_replan</ref>(<sp/>);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__replan_1a6574542a6a62bae28d6bf0d74b94c4d7" kindref="member">concreteCallback</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rosplan_dispatch_msgs::ActionDispatch::ConstPtr&amp;<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle&amp;<sp/>nh;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaction__feedback__manager" kindref="compound">action_feedback_manager</ref><sp/>fb;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceClient<sp/>cl_replan;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>action_name<sp/>=<sp/><ref refid="replan_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/replan.h"/>
+  </compounddef>
+</doxygen>

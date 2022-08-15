@@ -1,0 +1,2988 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoboCLuedo – Development Log &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to setup a Doxygen/Sphinx workspace" href="how-to-setup-doxy-sphinx-ws.html" />
+    <link rel="prev" title="Documentation for c++ nodes and libraries" href="cpp-docs-template.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RoboCLuedo – Development Log</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>RoboCLuedo – Development Log</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_docs/dev-log.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="robocluedo-development-log">
+<h1>RoboCLuedo – Development Log<a class="headerlink" href="#robocluedo-development-log" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RoboCLuedo – Development Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup-della-documentazione-e-project-refactoring">08/08/2022 – setup della documentazione e project refactoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modello-pddl-e-rosplan-package">09/08/2022 – modello PDDL e ROSPlan package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rosplan-pipeline-manager-planning-e-replanning">10/08/2021 – rosplan pipeline manager – planning e replanning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementazione-rosplan-action-navigation-system-improving-the-robot-model">11/08/2022 – implementazione rosplan action – navigation system – improving the robot model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ancora-sul-movement-controller">12/08/2022 – ancora sul movement controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mission-manager-module-testing-test-completo">13/08/2022 – mission manager – module testing – test completo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prova-del-sistema-completo">14/08/2022 – prova del sistema completo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ultime-issues-documentazione-del-codice-e-deploy">15/08/2022 – ultime issues – documentazione del codice e deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#todo">TODO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#note">NOTE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#una-nota-su-rosplan-e-il-mission-manager">una nota su rosplan e il mission manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vantaggi-e-svantaggi-dell-approccio-per-landmarks">vantaggi (e svantaggi) dell’approccio per landmarks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.plantuml.com/plantuml/uml/VLNlQkGs4F-kfvWB77NWuetthd-Q3-NI59h0fLt8XdufB8eqNelOaf7acAKK-XfzlJv9PoHxDybo-M2FD7z-C_ERyUxd4AMFGzSAyKvZRIo22t952cXYxCF5Ok7bM6vDR8Q78Q1NpaQqiLIkMrnv6HhKdR5wiMgbZVUtNyvSZpQW6ho9E-bLOoAgE7XSdXcA3OjEXeXUl3DMjOFUfrjSkQvpjkpfV6oyfymBsRPVCLzBhqVfyGsNMnFK6-Oxz4zlfhWpyHcy-AQ4M-btO098-0MViAM-FHWBiK5OUQS75I6Yx4gu8qqZsV4FOigD0QfpM5s1j9eUkBJQEwEXRvp5af5_TWyP-5PQkJt0NYhb1Xl3X7kTOCb9pL1cjSUuUU9xOEtD6hR33iR6GUlS8-dgY3uXXjHs2HonRd07D2ABNBbBTejnTFuHQFWVKf8d8q52RJoEHCRiTcC9a7nBGSm03ok8wBP8DWz_2U9mmxkpsNf4kz4pNGLJ-05EM9oGV4uRt_Uydfo-nc2jZCRPK72dvCo2WwZRzHIVXmgNlA774BJEnc88cowpN13j54HlZdt1DIkcMH3EtzmarMOK7hMfCJn6rnUzef3gnsLPVVT3MPNLEKCSnf-wlPfgQcNF8Pry5RFCQTKiidUUSM5w5apIpihEABXPiL-sGbNn9PrVXicyR4Tnqn9IQQy3yueKMRngAZdVFn1F0qnaBy_Byq_mPNrt642cZ3ZxBM-Jc9XY0ZUZyTZo5BmR8kKPJMqkLo_pCDGKEnL5-rZGG_hVwvfWW2xiTKqYUymhMim7idvRbH-_BvUVgFAFnvYgTOCkqfjiyqg_z1CYVVLdPpz1houWkC5JSkKq7WmJnMnLHhRGeJPI2DghPEua1TR6IfkinjPkRyj3lO0aG57LWLBoPYTpdi45VwIrsGxv0n0YHoMFp9wOIdYkoe8rp9KG6Mj_fwhsv_vm58BUwJRJACHyIkf45-cSYuJslZOjqbfXSGeUhKQFcWg83Sn_3q190rKDxwT3SVgdNJS8roQgfZ6FwF_xvzy0lmv68qIt3nIV2I_zz0hnFm00">plantUML online</a></p></li>
+<li><p><a class="reference external" href="https://www.planttext.com/">un altro editor motlo carino per PlantText</a></p></li>
+<li><p><a class="reference external" href="https://www.onlinegdb.com/online_c++_compiler">onlineGDB</a></p></li>
+</ul>
+<p>template:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>## data
+
+- ...fatto...
+- ...fatto...
+- ...
+</pre></div>
+</div>
+<div class="section" id="setup-della-documentazione-e-project-refactoring">
+<h2>08/08/2022 – setup della documentazione e project refactoring<a class="headerlink" href="#setup-della-documentazione-e-project-refactoring" title="Permalink to this heading"></a></h2>
+<p>la versione precedente del progetto ha parecchi difetti:</p>
+<ul class="simple">
+<li><p>veramente poco intuitiva</p></li>
+<li><p>mancanza di un module testing serio</p></li>
+<li><p>codice poco chiaro ed eccessivo</p></li>
+<li><p>usare ROSPlan come KB è una pessima idea: complica il PDDL e potrebbe dare strani errori</p></li>
+</ul>
+<p>link alla vecchia versione del progetto: <a class="reference external" href="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git">ExperimentalRoboticsLab-Assignment-2-OLD</a></p>
+<hr class="docutils" />
+<p>prima del primo commit,</p>
+<ul class="simple">
+<li><p>creazione di una nuova repository per il progetto, link <a class="reference external" href="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2.git">qui</a></p></li>
+<li><p>craeazione di un template di repository che permetta di usare plantUML (è finito il tempo di scrivere gli UML su draw.io) vedi <a class="reference external" href="https://github.com/programmatoroSeduto/plantuml-sphinx">qui (privata)</a></p></li>
+<li><p><strong>primo setup dell’area di lavoro</strong> con plantUML e Sphinx funzionante</p></li>
+<li><p>struttura readme, solo elenco puntato per il momento (estendere man mano che andiamo avanti)</p></li>
+<li><p><strong>COMMIT</strong> creazione di un branch vuoto per la copia degli altri eventuali pacchetti da scaricare</p></li>
+<li><p><strong>COMMIT</strong> con tutto il materiale iniziale funzionante</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>ora siamo pronti per iniziare a lavorare con ROS</em>. Prima di tutto, il package per il module testing:</p>
+<ul>
+<li><p><strong>NUOVO PACKAGE</strong> creazione package per il module testing:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_module_testing roscpp rospy std_msgs geometry_msgs nav_msgs std_srvs
+</pre></div>
+</div>
+</li>
+<li><p>documentazione interna al module testing con index e tutto il resto</p></li>
+<li><p>creazione template per la pagina index di un package</p></li>
+<li><p>qualche check prima del commit:</p>
+<ul class="simple">
+<li><p>prova a compilare .. .OK</p></li>
+<li><p>make documentazione .. OK</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “module testing package”</p></li>
+<li><p>nuova todolist (stavolta su carta)</p></li>
+</ul>
+<hr class="docutils" />
+<p>lavoro su aRMOR, estrazione del codice dal vecchio assignment, vedi <a class="reference external" href="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1.git">erl1</a>:</p>
+<ul>
+<li><p>download codice sul desktop</p></li>
+<li><p><strong>NUOVO PACKAGE</strong> armor msgs</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_armor_msgs std_msgs armor_msgs std_srvs
+</pre></div>
+</div>
+</li>
+<li><p>senza perdere tempo, prima documentazione</p></li>
+<li><p><strong>NUOVO PACKAGE</strong> armor</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_armor roscpp rospy armor_msgs robocluedo_armor_msgs srd_msgs std_srvs
+</pre></div>
+</div>
+</li>
+<li><p>e prima documentazione anche qui senza perdere tempo</p></li>
+<li><p>giusto per, proviamo a compilare, non si sa mai</p></li>
+<li><p><strong>COMMIT</strong> : “armor packages setup”</p></li>
+<li><p>importazione del codice delle interfacce aRMOR</p>
+<ul class="simple">
+<li><p>(header) armor tools</p></li>
+<li><p>(header) armor cluedo</p></li>
+<li><p>(codice) armor tools e armor cluedo</p></li>
+<li><p>(codice nodo) cluedo armor interface</p></li>
+</ul>
+</li>
+<li><p>il primo lavoro è quello di creare i messaggi da compilare, guardando che cosa richiede l’interfaccia nodo armor</p>
+<ul class="simple">
+<li><p>AddHint srv</p></li>
+<li><p>DiscardHypothesis srv</p></li>
+<li><p>Hypothesis msg</p></li>
+<li><p>FindConsistentHypotheses srv</p></li>
+</ul>
+</li>
+<li><p>compilaziione messaggi con catkin</p></li>
+<li><p>ora devo “solo” aggiornare il codice C++ del nodo ROS e scrivere il catkin</p></li>
+<li><p>ora mancano cose tipo … la ontology … e tutto il resto</p></li>
+<li><p>selezione dei vecchi diagrammi UML riferiti ad aRMOR</p></li>
+<li><p>prima di fare altro, proviamo a compilare … OK! perfetto</p></li>
+<li><p>e aggiornamento docs</p></li>
+<li><p><strong>COMMIT</strong> : “armor package first re-adaptation”</p></li>
+<li><p>template per le pagine di documentazione con UML</p></li>
+<li><p>nuovi diagrammi per aRMOR (quelli che ci sono sono sbagliati…)</p>
+<ul class="simple">
+<li><p>class diagram iniziale</p></li>
+<li><p>vediamo se genera…</p></li>
+<li><p>ho dovuto risolvere uno <em>stupido problema di padding</em>, vedi <code class="docutils literal notranslate"><span class="pre">skinparam</span> <span class="pre">Padding</span> <span class="pre">&lt;tot&gt;</span></code></p></li>
+<li><p>per il momento ci accontentiamo di semplici blocchi</p></li>
+</ul>
+</li>
+<li><p>voglio provare un po’ la compilazione esterna di una libreria</p>
+<ul>
+<li><p>module testing dal vecchio modulo … in quello del module testing</p></li>
+<li><p>proviamo a compiare … non va</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CMake Error at /opt/ros/noetic/share/catkin/cmake/catkinConfig.cmake:83 (find_package):
+  Could not find a package configuration file provided by &quot;armor_tools&quot; with
+  any of the following names:
+
+	armor_toolsConfig.cmake
+	armor_tools-config.cmake
+
+  Add the installation prefix of &quot;armor_tools&quot; to CMAKE_PREFIX_PATH or set
+  &quot;armor_tools_DIR&quot; to a directory containing one of the above files.  If
+  &quot;armor_tools&quot; provides a separate development package or SDK, be sure it
+  has been installed.
+Call Stack (most recent call first):
+  ExperimentalRoboticsLab-Assignment-2/robocluedo_module_testing/CMakeLists.txt:10 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also &quot;/root/ros_ws/build/CMakeFiles/CMakeOutput.log&quot;.
+See also &quot;/root/ros_ws/build/CMakeFiles/CMakeError.log&quot;.
+make: *** [Makefile:17330: cmake_check_build_system] Error 1
+Invoking &quot;make cmake_check_build_system&quot; failed
+</pre></div>
+</div>
+</li>
+<li><p><em>per usare le librerie di un package A in un package B basta riferirsi al package A nel package B</em></p></li>
+<li><p>proviamo un po’ questo test, giusto per essere sicuri</p>
+<ul>
+<li><p>questo … OK (dopo qualche fortissima bestemmia … prossima volta controlla anche i file inclusi)</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_module_testing test_armor.launch
+</pre></div>
+</div>
+</li>
+<li><p>questo … OK (ci è voluto poco stavolta, per fortuna)</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="n">roslaunch</span> <span class="n">robocluedo_module_testing</span> <span class="n">test_armor_tools</span><span class="o">.</span><span class="n">launch</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>voglio un attimo documentare i test in UML, per avere sempre presenti come sono fatti</p></li>
+<li><p><strong>COMMIT</strong> : “testing armor and first documentation”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="modello-pddl-e-rosplan-package">
+<h2>09/08/2022 – modello PDDL e ROSPlan package<a class="headerlink" href="#modello-pddl-e-rosplan-package" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>serve uno <em>schema completo</em> dell’applicazione prima di iniziare</p>
+<ul>
+<li><p>components robocluedo rosplan (solo bozza)</p></li>
+<li><p><em>meglio lavorare in MD</em> : nessuna tabulazione fastidiosa, è più facile lavorarci su</p></li>
+<li><p>components armor</p>
+<ul>
+<li><p>(ricorda di usare l’opzione <code class="docutils literal notranslate"><span class="pre">allow_mixing</span></code> all’inizio del codice per poter usare diversi tipi di UML nello stesso schema)</p></li>
+</ul>
+</li>
+<li><p>component movement controller</p></li>
+<li><p><strong>il mission manager non lo faccio adesso</strong> perchè è il nodo che va a “legare” tutte le parti dell’architettura. quindi, meglio lasciarlo a quando avrò un’idea chiara</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “uml arch first draft”</p></li>
+</ul>
+<hr class="docutils" />
+<p>ora, iniziamo a lavorare su rosplan:</p>
+<ul>
+<li><p><strong>NUOVO PACKAGE</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_rosplan_msgs std_msgs std_srvs diagnostic_msgs geometry_msgs nav_msgs rosplan_dispatch_msgs rosplan_knowledge_msgs
+</pre></div>
+</div>
+</li>
+<li><p>documentazione del package e prima configurazione (penso userò quello che ho fatto nella precedente versione, inutile reinventare chissà che)</p></li>
+<li><p>e trasferimento dei messaggi nel nuovo package (copia incolla facile facile)</p>
+<ul class="simple">
+<li><p>e compilazione … OK</p></li>
+</ul>
+</li>
+<li><p><strong>NUOVO PACKAGE</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_rosplan roscpp rospy std_msgs std_srvs diagnostic_msgs rosplan_dispatch_msgs rosplan_knowledge_msgs rosplan_dependencies robocluedo_rosplan_msgs
+</pre></div>
+</div>
+</li>
+<li><p>e primo setup del package</p></li>
+<li><p>compilazione da vuoto … OK</p></li>
+<li><p><strong>COMMIT</strong> : “rosplan first setup”</p></li>
+</ul>
+<hr class="docutils" />
+<p>è il momento di rifare il PDDL</p>
+<ul>
+<li><p>iniziamo col prendere l’environment dal precedente progetto</p></li>
+<li><p>mi converrà progettare prima di fiondarmi sul codice…</p>
+<ul class="simple">
+<li><p>nuovo documento sul PDDL</p></li>
+<li><p>una lista delle azioni PDDL e dei landmarks</p></li>
+<li><p>(ho dovuto aggiornare l’UML di robocluedo rosplan, mi serviva un componente che non avevo ancora menzionato)</p></li>
+<li><p>(l’idea è di fare il design dell’intero PDDL sul documento, in modo da non dover fare due cose assieme, design e implementazione, nella fase di implementazione, <em>perchè so quanto romperà il planner</em>)</p></li>
+<li><p>pddl delle varie azioni</p></li>
+</ul>
+</li>
+<li><p>e ora, implementazione</p>
+<ul>
+<li><p>prima versione <em>completamente vuota</em></p></li>
+<li><p>parse … OK (però bisogna vedere se fa il plan o no)</p></li>
+<li><p>plan … NO … OK
+domain:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">domain</span> <span class="nv">robocluedo</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:requirements</span> 
+	<span class="c1">;; === PDDL1.1 === ;;</span>
+	<span class="ss">:strips</span> 
+	<span class="ss">:typing</span> 
+	<span class="ss">:equality</span> 
+	<span class="ss">:existential-preconditions</span>
+	<span class="ss">:universal-preconditions</span> 
+	<span class="ss">:conditional-effects</span>
+	<span class="ss">:quantified-preconditions</span>
+	
+	<span class="c1">;; === PDDL2.1 === ;;</span>
+	<span class="ss">:numeric-fluents</span>
+	<span class="ss">:durative-actions</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:types</span>
+	<span class="c1">;; navigation system</span>
+	<span class="nv">waypoint</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:predicates</span>
+	<span class="p">(</span><span class="nv">stub</span> <span class="p">)</span> <span class="p">(</span><span class="nv">not-stub</span> <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:functions</span>
+	
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">stub-true</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span> 
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-stub</span> <span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">not-stub</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">stub</span><span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>problem:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">problem</span> <span class="nv">robocluedo-task</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:domain</span> <span class="nv">robocluedo</span><span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:objects</span>
+	
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:init</span>
+	<span class="p">(</span><span class="nv">not-stub</span> <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nv">stub</span> <span class="p">))</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>plan (fino ad ora):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo# ./solve_popf.sh 
+Number of literals: 2
+Constructing lookup tables:
+Post filtering unreachable actions: 
+No analytic limits found, not considering limit effects of goal-only operators
+All the ground actions in this problem are compression-safe
+Initial heuristic = 1.000
+;;;; Solution Found
+; States evaluated: 2
+; Cost: 0.990
+; Time 0.00
+0.000: (stub-true)  [0.990]
+</pre></div>
+</div>
+</li>
+<li><p>(ora, una sola azione alla volta)</p></li>
+<li><p>replan</p>
+<ul class="simple">
+<li><p>importazione</p></li>
+<li><p>parse … OK</p></li>
+<li><p>plan … OK</p>
+<ul>
+<li><p><em>precondition e effect richiedono comunque l’operatore and, anche se hanno un solo predicato al loro interno</em></p></li>
+</ul>
+</li>
+<li><p>uml del replan</p></li>
+</ul>
+</li>
+<li><p>move-to</p>
+<ul class="simple">
+<li><p>importazione</p>
+<ul>
+<li><p>meglio separare <code class="docutils literal notranslate"><span class="pre">move-to</span></code> dall’ottenere l’hint … nuova azione <code class="docutils literal notranslate"><span class="pre">signal-collect-hint</span></code></p></li>
+</ul>
+</li>
+<li><p>parse …</p></li>
+<li><p>plan …</p></li>
+<li><p>uml dell’azione implementata in ROS</p></li>
+</ul>
+</li>
+<li><p>signal-collect-hint</p>
+<ul class="simple">
+<li><p>importazione</p></li>
+<li><p>parse …</p></li>
+<li><p>plan … OK</p></li>
+</ul>
+<p>plan finora:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>; States evaluated: 14
+; Cost: 9.909
+; Time 0.00
+0.000: (replan)  [0.990]
+0.991: (move-to center wp1)  [0.990]
+1.982: (signal-collect-hint wp1)  [0.990]
+2.973: (collect-hint wp1)  [0.990]
+3.964: (move-to wp1 wp2)  [0.990]
+4.955: (move-to wp2 wp3)  [0.990]
+5.946: (signal-collect-hint wp3)  [0.990]
+6.937: (collect-hint wp3)  [0.990]
+7.928: (move-to wp3 wp4)  [0.990]
+8.919: (signal-collect-hint wp4)  [0.990]
+</pre></div>
+</div>
+<p>per il goal</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">wp4</span> <span class="p">)</span> <span class="p">(</span><span class="nv">hint-ready</span> <span class="p">)</span> <span class="p">(</span><span class="nv">hint-collected</span> <span class="nv">wp1</span><span class="p">)</span> <span class="p">(</span><span class="nv">hint-collected</span> <span class="nv">wp3</span> <span class="p">)))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>uml</p></li>
+</ul>
+</li>
+<li><p>move to center</p>
+<ul class="simple">
+<li><p>importazione</p></li>
+<li><p>solve</p></li>
+</ul>
+<p>ultimo output:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># ./solve_popf.sh 
+Number of literals: 28
+Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%]
+Post filtering unreachable actions:  [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%]
+No analytic limits found, not considering limit effects of goal-only operators
+93% of the ground temporal actions in this problem are compression-safe
+Initial heuristic = 8.000
+b (7.000 | 0.990)b (6.000 | 0.990)b (5.000 | 2.972)b (4.000 | 5.945)b (3.000 | 6.936)b (2.000 | 7.927)b (1.000 | 8.918);;;; Solution Found
+; States evaluated: 15
+; Cost: 9.909
+; Time 0.00
+0.000: (replan)  [0.990]
+0.991: (move-to center wp1)  [0.990]
+1.982: (signal-collect-hint wp1)  [0.990]
+2.973: (collect-hint wp1)  [0.990]
+3.964: (move-to wp1 wp2)  [0.990]
+4.955: (move-to wp2 wp3)  [0.990]
+5.946: (signal-collect-hint wp3)  [0.990]
+6.937: (collect-hint wp3)  [0.990]
+7.928: (move-to wp3 wp4)  [0.990]
+8.919: (move-to-center wp4 center)  [0.990]
+</pre></div>
+</div>
+<p>per il goal:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span> <span class="p">(</span><span class="nv">hint-collected</span> <span class="nv">wp1</span><span class="p">)</span> <span class="p">(</span><span class="nv">hint-collected</span> <span class="nv">wp3</span> <span class="p">)</span> <span class="p">(</span><span class="nv">at-center</span> <span class="p">)))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on PDDL (not yet finished)”</p></li>
+<li><p>ancora lavoro sul PDDL</p>
+<ul class="simple">
+<li><p>azione solve</p></li>
+</ul>
+</li>
+<li><p>ora chiariamo la questione dei landmark</p></li>
+<li><p><strong>COMMIT</strong> : “working on PDDL (end of the job)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>il pddl di base è pronto. adesso, passiamo al package:</p>
+<ul>
+<li><p>una descrizione formale della KB</p>
+<ul class="simple">
+<li><p>un UML sistemato della KB di ROSPlan</p></li>
+<li><p>senza dovermi reinventare nulla, dovrei avere del codice già pronto dalla vecchia repo…</p></li>
+</ul>
+</li>
+<li><p><strong>ancora meglio</strong> : ho direttamente le classi!</p>
+<ul class="simple">
+<li><p>importo il codice nella repo nuova allora, e lo rivedo un attimino</p></li>
+<li><p>il codice va un attimino semplificato… ma soprattutto reso più comprensibile</p></li>
+</ul>
+</li>
+<li><p>kb tools pezzo per pezzo</p>
+<ul>
+<li><p>le macro per il log non mi piacciono molto…</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NODE_NAME &quot;kb_tools&quot;</span>
+
+<span class="cp">#ifndef __DEBUG_MACROS__</span>
+<span class="cp">#define __DEBUG_MACROS__</span>
+
+<span class="cp">#define LOGSQUARE( str )  &quot;[&quot; &lt;&lt; str &lt;&lt; &quot;] &quot;</span>
+<span class="cp">#define OUTLABEL          LOGSQUARE( NODE_NAME )</span>
+<span class="cp">#define TLOG( msg )       ROS_INFO_STREAM( OUTLABEL &lt;&lt; msg )</span>
+<span class="cp">#define TWARN( msg )      ROS_WARN_STREAM( OUTLABEL &lt;&lt; &quot;WARNING: &quot; &lt;&lt; msg )</span>
+<span class="cp">#define TERR( msg )       ROS_WARN_STREAM( OUTLABEL &lt;&lt; &quot;ERROR: &quot; &lt;&lt; msg )</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>non mi piacciono perchè fanno spuntare troppi warning inutili…</p>
+</li>
+<li><p>via la db mode!</p>
+<ul class="simple">
+<li><p>un compromesso: piuttosto che avere la variabile al costruttore, posso definire una macro…</p></li>
+</ul>
+</li>
+<li><p>meglio fare anche il codice in parallelo oltre che l’header</p></li>
+<li><p>per il momento, meglio <em>eliminare la parte dei fluents</em> dato che comunque per l’attuale progetto non mi servono. Posso pensare di reintrodurli più avanti.</p></li>
+<li><p>anche la sezione <em>other queries</em> si può eliminare, non mi è mai servita nemmeno per il precedente progetto</p>
+<ul class="simple">
+<li><p>già che ci sono, documento la lettura di un predicate da codice</p></li>
+</ul>
+</li>
+<li><p>escluderei l’altra libreria… non mi sembra molto utile, e comunque voglio mantenere tutto sul semplice</p></li>
+</ul>
+</li>
+<li><p>prima di andare avanti, <em>prova a compilare la libreria</em></p></li>
+<li><p>assumiamo che kb tools funzioni a dovere (dovrebbe, l’ho usata nel vecchio progetto e andava bene)</p>
+<ul class="simple">
+<li><p>UML di kb_tools</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “re-adaptation of kb_tools”</p></li>
+<li><p>manca ancora una cosa prima di poter implementare ad esempio il sistema di landmark: <em>come settare un goal</em> ?</p>
+<ul class="simple">
+<li><p>documentazione sui goal</p></li>
+<li><p>implementazione dei due metodi per i goal … anzi, solo il setter, il getter è noioso da fare e probabilmente non mi servirà</p></li>
+<li><p>aggiornamento degli uml di ROSplan</p></li>
+</ul>
+</li>
+<li><p>compila? compila.</p></li>
+<li><p><strong>COMMIT</strong> : “set goal method”</p></li>
+</ul>
+<hr class="docutils" />
+<p>implementazione dell’interfaccia minima con la kb</p>
+<ul class="simple">
+<li><p>launch file per ROSPlan</p>
+<ul>
+<li><p>copiato dal vecchio progetto</p></li>
+<li><p>avviare si avvia senza problemi</p></li>
+</ul>
+</li>
+<li><p>già che ci sono voglio fare qualche prova sui goals</p></li>
+</ul>
+<p>problem instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosservice call /rosplan_problem_interface/problem_generation_server
+rostopic <span class="nb">echo</span> /rosplan_problem_interface/problem_instance -n <span class="m">1</span> -p
+</pre></div>
+</div>
+<p>ottenere l’attuale goal:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rosservice call /rosplan_knowledge_base/state/goals &quot;predicate_name: &#39;&#39;&quot; 
+attributes: 
+  - 
+    knowledge_type: 1
+    initial_time: 
+      secs: 0
+      nsecs:         0
+    is_negative: False
+    instance_type: &#39;&#39;
+    instance_name: &#39;&#39;
+    attribute_name: &quot;dirty&quot;
+    values: []
+    function_value: 0.0
+    optimization: &#39;&#39;
+    expr: 
+      tokens: []
+    ineq: 
+      comparison_type: 0
+      LHS: 
+        tokens: []
+      RHS: 
+        tokens: []
+      grounded: False
+  - 
+    knowledge_type: 1
+    initial_time: 
+      secs: 0
+      nsecs:         0
+    is_negative: False
+    instance_type: &#39;&#39;
+    instance_name: &#39;&#39;
+    attribute_name: &quot;hint-collected&quot;
+    values: 
+      - 
+        key: &quot;wp&quot;
+        value: &quot;wp1&quot;
+    function_value: 0.0
+    optimization: &#39;&#39;
+    expr: 
+      tokens: []
+    ineq: 
+      comparison_type: 0
+      LHS: 
+        tokens: []
+      RHS: 
+        tokens: []
+      grounded: False
+  - 
+    knowledge_type: 1
+    initial_time: 
+      secs: 0
+      nsecs:         0
+    is_negative: False
+    instance_type: &#39;&#39;
+    instance_name: &#39;&#39;
+    attribute_name: &quot;hint-collected&quot;
+    values: 
+      - 
+        key: &quot;wp&quot;
+        value: &quot;wp3&quot;
+    function_value: 0.0
+    optimization: &#39;&#39;
+    expr: 
+      tokens: []
+    ineq: 
+      comparison_type: 0
+      LHS: 
+        tokens: []
+      RHS: 
+        tokens: []
+      grounded: False
+  - 
+    knowledge_type: 1
+    initial_time: 
+      secs: 0
+      nsecs:         0
+    is_negative: False
+    instance_type: &#39;&#39;
+    instance_name: &#39;&#39;
+    attribute_name: &quot;at-center&quot;
+    values: []
+    function_value: 0.0
+    optimization: &#39;&#39;
+    expr: 
+      tokens: []
+    ineq: 
+      comparison_type: 0
+      LHS: 
+        tokens: []
+      RHS: 
+        tokens: []
+      grounded: False
+</pre></div>
+</div>
+<ul>
+<li><p>(altre prove più avanti, mi rifiuto di scrivere chissà che sulla shell)</p></li>
+<li><p><strong>NUOVO NODO</strong> : (c++) <code class="docutils literal notranslate"><span class="pre">kb_interface</span></code></p>
+<ul class="simple">
+<li><p>uml del nuovo nodo</p></li>
+<li><p>template del codice</p></li>
+<li><p>apertura dell’unico servizio del nodo</p></li>
+</ul>
+</li>
+<li><p>compila? compila.</p></li>
+<li><p>ora occupiamoci di fare il replan. l’idea sarebbe di fare un ciclo “stupido” su un tot di predicati con parametri.</p>
+<ul class="simple">
+<li><p>anzitutto, struttura degli elementi del PDDL nel codice c++</p></li>
+<li><p>scrittura del codice nel costruttore, <strong>PER ORA SOLO INIT</strong></p></li>
+<li><p>compilare compila (a runtime bisogna vedere…)</p></li>
+<li><p>replan: il ciclo stupido di cui si parlava sopra</p></li>
+</ul>
+</li>
+<li><p>alcune domande:</p>
+<ul class="simple">
+<li><p><em>è necessario resettare anche il goal?</em> penso proprio di no</p></li>
+<li><p><em>serve un servizio per scrivere il goal?</em> assolutamente sì</p></li>
+</ul>
+</li>
+<li><p>servizio per indicare il goal</p>
+<ul class="simple">
+<li><p>aggiornamento UML</p></li>
+<li><p>creazione del nuovo tipo di servizio</p></li>
+<li><p>ora, servirà definire i vari predicati (il principio è sempre quello del ciclo stupido)</p></li>
+<li><p>apertura del nuovo servizio</p></li>
+<li><p>compilare compila (ora bisogna vedere se funge)</p></li>
+</ul>
+</li>
+<li><p>un minimo testing per il nodo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_rosplan load_rosplan.launch
+
+rosrun robocluedo_rosplan kb_interface
+
+rosservice call /rosplan_problem_interface/problem_generation_server
+
+<span class="c1"># rostopic echo /rosplan_problem_interface/problem_instance -n 1 -p</span>
+
+rosservice list
+<span class="c1"># /update_goal</span>
+<span class="c1"># /replan</span>
+</pre></div>
+</div>
+<p>azione di replan:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosservice call /replan <span class="s2">&quot;{}&quot;</span> 
+
+rosservice call /rosplan_problem_interface/problem_generation_server
+
+rosservice call /rosplan_knowledge_base/clear 
+
+rosservice call /replan <span class="s2">&quot;{}&quot;</span> 
+
+rosservice call /rosplan_problem_interface/problem_generation_server
+
+<span class="c1"># rostopic echo /rosplan_problem_interface/problem_instance -n 1 -p</span>
+</pre></div>
+</div>
+<p>landmarks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosservice call /update_goal <span class="s2">&quot;landmark: 0&quot;</span> 
+
+rosservice call /rosplan_problem_interface/problem_generation_server
+
+rosservice call /update_goal <span class="s2">&quot;landmark: 1&quot;</span> 
+
+rosservice call /rosplan_problem_interface/problem_generation_server
+
+rosservice call /update_goal <span class="s2">&quot;landmark: 2&quot;</span> 
+
+rosservice call /rosplan_problem_interface/problem_generation_server
+</pre></div>
+</div>
+</li>
+<li><p>direi che funziona! bene bene bene</p></li>
+<li><p><strong>COMMIT</strong> : “kb interface first version (seems stable)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>sperando che il nodo  appena implementato funzioni a dovere senza sorprese, andiamo avanti col pipeline manager. <em>stavolta lo voglio implementare in Python</em>.</p>
+<ul>
+<li><p><strong>NUOVO NODO</strong> : rosplan_pipeline_manager.py</p>
+<ul>
+<li><p>primo template del nodo (penso stavolta farò un nodo semplice, procedurale, tanto sono solo servizi)</p></li>
+<li><p>subito, UML del nodo e degli elementi principali di ROSplan</p></li>
+<li><p>ora, <em>usando l’UML che ho appena fatto</em>, implemento i servizi per il pipeline manager (manca il feedback per ora)</p></li>
+<li><p>ho preparato un minimo template per l’apertura dei client in ROSpy:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">open_cl</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">cl_type</span><span class="p">,</span> <span class="n">SRV_TIMEOUT</span><span class="o">=</span><span class="mi">60</span> <span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;open a client</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">NODE_NAME</span>
+	
+	<span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">NODE_NAME</span><span class="si">}</span><span class="s2">) client: </span><span class="si">{</span><span class="n">cl_name</span><span class="si">}</span><span class="s2"> ... &quot;</span><span class="p">)</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">SRV_TIMEOUT</span> <span class="p">)</span>
+		
+	<span class="k">except</span> <span class="n">ROSException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">NODE_NAME</span><span class="si">}</span><span class="s2">) client: </span><span class="si">{</span><span class="n">cl_name</span><span class="si">}</span><span class="s2"> UNABLE TO CONTACT within the timeout (</span><span class="si">{</span><span class="n">SRV_TIMEOUT</span><span class="si">}</span><span class="s2">s) cause: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+		<span class="k">raise</span> <span class="n">e</span>
+		
+	<span class="n">cl_this</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">cl_type</span> <span class="p">)</span>
+	<span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+	
+	<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+	
+	<span class="k">return</span> <span class="n">cl_this</span>
+</pre></div>
+</div>
+</li>
+<li><p>ora che le interfacce le abbiamo, abbozzo un UML del nodo (mancano ancora parecchie cose)</p></li>
+</ul>
+</li>
+<li><p>vediamo un po’ di riadattare se possibile il vecchio sistema di feedback … possibile?</p>
+<ul class="simple">
+<li><p>posso … riadattare l’idea, ma il vecchio sistema in se va riadattato</p></li>
+<li><p>partiamo dallo scrivere il messaggio di feedback</p></li>
+<li><p>ora il servizio implementato dal pipeline manager</p></li>
+<li><p>compila? compila, dopo qualche bestemmia</p>
+<ul>
+<li><p>ricorda di inserire nel cmake anche <em>message_runtime</em> oltre a <em>message_generation</em>, altrimenti non si riesce ad importare i messaggi nei servizi nell’ambito dello stesso package</p></li>
+</ul>
+</li>
+<li><p>(voglio mantenere l’idea del feedback da C++)</p></li>
+<li><p>aggiornamento dell’UML del nodo includendo anche il feedback manager</p></li>
+<li><p>e apriamo il servizio e il topic</p></li>
+</ul>
+</li>
+<li><p>adesso che il nodo ha tutte le interfacce esposte, lavoro per aggiungere le funzionalità una ad una</p>
+<ul>
+<li><p><em>caricamento del problema</em></p>
+<ul class="simple">
+<li><p>serve ancora una subscription, altrimenti non riesco a capire quando il load non ha avuto successo</p></li>
+<li><p>prima di andare avanti, UML (sarà lunga stasera…)</p></li>
+<li><p>ovviamente manca anche la parte in cui scrivo i landmark nel problema… aggiungere</p></li>
+<li><p>e dopo averla implementata, aggiornare l’UML</p></li>
+</ul>
+</li>
+<li><p>e test intermedio (mai fidarsi di Python)</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+<span class="n">roslaunch</span> <span class="n">robocluedo_rosplan</span> <span class="n">load_rosplan</span><span class="o">.</span><span class="n">launch</span>
+
+<span class="c1"># shell 2</span>
+<span class="n">rosrun</span> <span class="n">robocluedo_rosplan</span> <span class="n">kb_interface</span>
+
+<span class="c1"># shell 3</span>
+<span class="n">rosrun</span> <span class="n">robocluedo_rosplan</span> <span class="n">rosplan_pipeline_manager</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># shell 4</span>
+<span class="n">rosservice</span> <span class="n">list</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">robocluedo</span>
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: false, solve_problem: false, parse_plan: false, execute_plan: false, landmark: 0}&quot;</span> 
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: false, parse_plan: false, execute_plan: false, landmark: 0}&quot;</span> 
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: false, parse_plan: false, execute_plan: false, landmark: 1}&quot;</span> 
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: false, parse_plan: false, execute_plan: false, landmark: 2}&quot;</span> 
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: false, parse_plan: false, execute_plan: false, landmark: 3}&quot;</span> 
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: false, parse_plan: false, execute_plan: false, landmark: -1}&quot;</span> 
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><em>per oggi ho sofferto abbastanza</em></p></li>
+<li><p><strong>COMMIT</strong> : “working on pipeline manager (adding functionalities)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="rosplan-pipeline-manager-planning-e-replanning">
+<h2>10/08/2021 – rosplan pipeline manager – planning e replanning<a class="headerlink" href="#rosplan-pipeline-manager-planning-e-replanning" title="Permalink to this heading"></a></h2>
+<p>torniamo a lavorare sul pipeline manager, una funzionalità per volta. Ieri: l’istanza del problema.</p>
+<ul>
+<li><p><em>soluzione del problema</em> usando il planner</p>
+<ul>
+<li><p>implementazione</p></li>
+<li><p>serve anche aprire il subscriber con il planner per capire quando il plan è andato bene</p></li>
+<li><p><em>come capire se il problema non è risolvibile o se c’è stato qualcos’altro che non va?</em></p></li>
+<li><p>per provare, rendo volutamente irrisolvibile il problema:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(:goal (and (dirty ) (not-dirty ) (hint-collected wp1) (hint-collected wp3 ) (at-center )))
+</pre></div>
+</div>
+</li>
+<li><p>output lato rosplan:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660112152.481829500]: KCL: (/rosplan_problem_interface) (OUT.pddl) Generating problem file.
+[ INFO] [1660112152.829298800]: KCL: (/rosplan_problem_interface) (OUT.pddl) The problem was generated.
+[ INFO] [1660112152.829847100]: KCL: (/rosplan_planner_interface) Problem received.
+[ INFO] [1660112162.234649900]: KCL: (/rosplan_planner_interface) (OUT.pddl) Writing problem to file.
+[ INFO] [1660112162.234786600]: KCL: (/rosplan_planner_interface) (OUT.pddl) Running: timeout 10 /root/ros_ws/src/ROSPlan/rosplan_planning_system/common/bin/popf -T /root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_domain.pddl /root/ros_ws/src/erl2-new/robocluedo_rosplan/data/OUT.pddl &gt; /root/ros_ws/src/erl2-new/robocluedo_rosplan/data/plan.pddl
+[ INFO] [1660112172.240622500]: KCL: (/rosplan_planner_interface) (OUT.pddl) Planning complete
+[ INFO] [1660112172.240715400]: KCL: (/rosplan_planner_interface) (OUT.pddl) Plan was unsolvable.
+</pre></div>
+</div>
+</li>
+<li><p>output lato shell:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/launch# rosservice call /rosplan_problem_interface/problem_generation_server
+
+root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/launch# rosservice call /rosplan_planner_interface/planning_server
+ERROR: service [/rosplan_planner_interface/planning_server] responded with an error: b&#39;&#39;
+root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/launch# 
+</pre></div>
+</div>
+</li>
+<li><p>il topic non riceve nulla, quindi significa che il plan non è andato a buon fine</p></li>
+<li><p>il goal che ho scelto causa attesa (in questo caso viene sollevata un’eccezione riguadante il server)</p></li>
+<li><p>mi serve un goal che dia contraddizione immediata. questo funziona:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(:goal (and (not-is-center center )))
+</pre></div>
+</div>
+</li>
+<li><p>anche in questo caso non viene inviato nulla</p></li>
+<li><p>il file generato dal planner contiene questo:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Number of literals: 28
+Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%] [170%]
+A problem has been encountered, and the problem has been deemed unsolvable
+--------------------------------------------------------------------------
+The goal fact:
+(not-is-center center)
+
+...cannot be found either in the initial state, as an add effect of an
+action, or as a timed initial literal.  As such, the problem has been deemed
+unsolvable.
+</pre></div>
+</div>
+</li>
+<li><p>per capire se il problema non è risolvibile, occore</p>
+<ul class="simple">
+<li><p>eliminare il precedente file di plan</p></li>
+<li><p>caricare nel parameter server il percorso dove verrà caricato il file di plan dal planner</p></li>
+<li><p>leggere il file di plan e cercare all’interno di esso la stringa “the problem has been deemed unsolvable”</p></li>
+<li><p>se la stringa c’è, allora il problema è chiaramente irrisolvibile, altrimenti (il file non esiste proprio oppure è diverso) il problema è di altra natura</p></li>
+</ul>
+</li>
+<li><p>implementazione …</p>
+<ul class="simple">
+<li><p>caricamento percorso nel parameter server tramite launch file</p></li>
+<li><p>lavoro col file di plan</p></li>
+<li><p>ora manca solo l’eccezione</p></li>
+</ul>
+</li>
+<li><p>e urge una prova a questo punto: per ora nel caso del plan unsolvable immediatamente</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+<span class="n">roslaunch</span> <span class="n">robocluedo_rosplan</span> <span class="n">load_rosplan</span><span class="o">.</span><span class="n">launch</span>
+
+<span class="c1"># shell 2</span>
+<span class="n">rosrun</span> <span class="n">robocluedo_rosplan</span> <span class="n">kb_interface</span>
+
+<span class="c1"># shell 3</span>
+<span class="n">rosrun</span> <span class="n">robocluedo_rosplan</span> <span class="n">rosplan_pipeline_manager</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: false, execute_plan: false, landmark: 0}&quot;</span> 
+</pre></div>
+</div>
+</li>
+<li><p>pare che funzioni. tutti i landmark paiono portare ad una soluzione</p></li>
+<li><p><strong>ISSUE</strong> (ma basta solo stare attenti): il goal col fallimento immediato <code class="docutils literal notranslate"><span class="pre">(:goal</span> <span class="pre">(and</span> <span class="pre">(not-is-center</span> <span class="pre">center</span> <span class="pre">)))</span></code> rimane nel goal, non viene eliminata dalla kb interface.</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on pipeline manager (planning interface)”</p></li>
+<li><p><em>parsing del plan</em></p>
+<ul class="simple">
+<li><p>implementazione (solo trigger per ora)</p></li>
+<li><p>e test … funge!</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on pipeline manager (parsing interface)”</p></li>
+<li><p>prima di andare avanti mi servono le simulated actions</p>
+<ul>
+<li><p>posso implementare una prima versione del dispatcher (per ora senza il feedback)</p></li>
+<li><p>test</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="n">rosservice</span> <span class="n">call</span> <span class="o">/</span><span class="n">robocluedo</span><span class="o">/</span><span class="n">pipeline_manager</span> <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>per quanto riguarda il pipeline manager questo è tutto ciò che posso fare ora.</p></li>
+<li><p><strong>COMMIT</strong> : “working on pipeline manager (simulated action and dispatch)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>passiamo a lavorare sul feedback manager:</p>
+<ul class="simple">
+<li><p>anzitutto lettura del vecchio codice (l’idea è la stessa: una classe che posso usare da padre per altre classi, o che posso istanziare)</p></li>
+<li><p>la classe precedente non è più utilizzabile, però posso riadattarla, stesso lavoro di kb_tools direi</p>
+<ul>
+<li><p>creazione header e cpp file</p></li>
+</ul>
+</li>
+<li><p>adesso, una cosa per volta, a partire dall’header</p>
+<ul>
+<li><p>librerie e “contorno”</p></li>
+<li><p>funzione per la scrittura rapida del messaggio</p></li>
+</ul>
+</li>
+<li><p>per ora basta che compili (i feedback li scrivo man mano che scrivo le azioni)</p>
+<ul>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p>UML del feedback manager (per ora senza indicare i tipi di feedback)</p></li>
+<li><p><strong>COMMIT</strong> : “working on feedback manager (first basic implementation)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>meglio iniziare a strutturare le implementazioni delle azioni PDDL:</p>
+<ul>
+<li><p>prima, meglio farsi un template minimo per gli header</p>
+<p>header: (action_name.h)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>implementazione della classe: (action_name.cpp)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>nodo che implementa la classe: (action_name_node.cpp)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>catkin:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_library</span><span class="p">(</span> <span class="s">action_name</span> <span class="s">src/robocluedo_rosplan_actions/action_name.cpp</span> <span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span> <span class="s">action_name</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span> <span class="s">feedback_manager</span> <span class="s">kb_tools</span> <span class="s">rosplan_action_interface</span> <span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span> <span class="s">node_action_name</span> <span class="s">src/robocluedo_rosplan_actions/action_name_node.cpp</span> <span class="p">)</span>
+<span class="nb">add_dependencies</span><span class="p">(</span> <span class="s">node_action_name</span> <span class="o">${</span><span class="nv">${PROJECT_NAME</span><span class="o">}</span><span class="s">_EXPORTED_TARGETS}</span> <span class="o">${</span><span class="nv">catkin_EXPORTED_TARGETS</span><span class="o">}</span> <span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span> <span class="s">node_action_name</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span> <span class="s">feedback_manager</span> <span class="s">kb_tools</span> <span class="s">rosplan_action_interface</span> <span class="s">action_name</span> <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>compila?</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cplusplus.com/forum/general/203321/">ricorda questo errore!</a> piuttosto fastidioso da risolvere</p></li>
+<li><p>dopo aver tribolato mezz’ora, ci siamo</p></li>
+</ul>
+</li>
+<li><p>adesso possiamo partire con l’implementazione delle azioni</p></li>
+<li><p><em>replan</em></p>
+<ul class="simple">
+<li><p>creazione delle azioni</p></li>
+<li><p>UML dell’azione, giusto per capire che canali aprire</p></li>
+<li><p>implementazione</p></li>
+<li><p>cmake</p></li>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p><em>move-to</em></p>
+<ul class="simple">
+<li><p>creazione dell’azione</p></li>
+<li><p>UML della action</p></li>
+<li><p>manca un servizio per move_to …</p></li>
+<li><p>apertura delle interfacce (ne serve solo una)</p></li>
+<li><p>implementazione</p></li>
+<li><p>e cmake</p></li>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robocluedo_rosplan_actions (replan, move_to)”</p></li>
+<li><p><em>collect-hint</em></p>
+<ul class="simple">
+<li><p><em>pessimo design</em> : meglio ridimensionare questa azione</p></li>
+<li><p><em>manca il servizio manipulation!</em></p></li>
+<li><p>creazione dei file per l’implementazione dell’azione</p></li>
+<li><p>implementazione</p></li>
+<li><p>cmake</p></li>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p><em>move-to-center</em> è praticamente identica alla <em>move-to</em> di prima</p>
+<ul class="simple">
+<li><p>uml copiato e incollato</p></li>
+<li><p>l’implementazione è praticamente identica a <em>move-to</em></p></li>
+<li><p>cmake</p></li>
+<li><p>compila? ovviamente compila.</p></li>
+</ul>
+</li>
+<li><p>la <em>solve</em> è una simulated action: dato che solo il mission manager può accedere alla ontology, la solve perde di ogni utilità</p></li>
+<li><p><strong>COMMIT</strong> : “working on robocluedo_rosplan_actions (end of the job)”</p></li>
+<li><p>implementare (solo per il testing) un nodo che imiti navigation e manipulation</p>
+<ul class="simple">
+<li><p><strong>NUOVO NODO</strong> : rosplan_simulated_motion_system</p></li>
+<li><p>implementazione e installazione</p></li>
+<li><p>e un minimo testing</p></li>
+</ul>
+</li>
+<li><p>(manca solo da chiarire il sistema di feedback)</p></li>
+<li><p>feedback “hw manipulation failure”</p>
+<ul class="simple">
+<li><p>…e tutti gli altri tipi di feedback</p></li>
+</ul>
+</li>
+<li><p>compila? compila</p></li>
+<li><p><strong>gestire meglio l’invio dei feedback</strong>. CI sono vari problemi:</p>
+<ul class="simple">
+<li><p>il feedback dev’essere inviato <em>solo quando si presenta un problema</em> e il pipeline manager dev’essere pronto a riceverlo</p></li>
+<li><p>va inviato solo ed esclusivamente un feedback alla volta</p></li>
+<li><p>il feedback di successo non esiste, è inutile</p></li>
+</ul>
+</li>
+<li><p>ora, tutti i feedback in tutte le azioni</p>
+<ul class="simple">
+<li><p>in collect hint</p></li>
+<li><p>in move to</p></li>
+<li><p>in move to center</p></li>
+<li><p>in replan</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robocluedo_rosplan_actions (feedbacks from the actions)”</p></li>
+<li><p>come <em>ultima fatica per oggi</em> implementazione dell’esecuzione nella pipeline (test domani)</p>
+<ul>
+<li><p>(manca solo la parte riguardande i feedback)</p></li>
+<li><p>giusto un micro test per capire se è tutto a posto</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_rosplan load_rosplan.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_rosplan kb_interface
+
+<span class="c1"># shell 3 (not with simulated actions)</span>
+<span class="c1"># rosrun robocluedo_rosplan rosplan_simulated_motion_system.py</span>
+
+<span class="c1"># shell 4</span>
+rosrun robocluedo_rosplan rosplan_pipeline_manager.py
+
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>ISSUES</strong> che non potevo notare prima di avere il sistema completo (usando solo simulated actions)</p>
+<ul class="simple">
+<li><p>(GRAVE) la sequenza dei landmark porta ad un problema irrisolvibile, vedi la combinazione tra i predicati at e explored (probabilmente è un problema della attuale kb interface che non tiene conto di questo conflitto). lo scenario di utilizzo dovrebbe essere: (landmarks) 0 1 1 1 … 1 2 0 1 …</p></li>
+<li><p>(minore) la pipeline non segnala il raggiungimento del goal nel messaggio…</p></li>
+<li><p>(minore) il log nella pipeline non segna la fine del dispatch</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on the pipeline manager (feedback management)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="implementazione-rosplan-action-navigation-system-improving-the-robot-model">
+<h2>11/08/2022 – implementazione rosplan action – navigation system – improving the robot model<a class="headerlink" href="#implementazione-rosplan-action-navigation-system-improving-the-robot-model" title="Permalink to this heading"></a></h2>
+<p>anzitutto, vorrei lavorare sulle issue di ieri: il fatto che la sequenza di landmark che mi aspetto non funzioni come si deve è un problema grave che va risolto al più presto.</p>
+<ul class="simple">
+<li><p>un test più approfondito:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_rosplan load_rosplan.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_rosplan kb_interface
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_rosplan rosplan_pipeline_manager.py
+
+<span class="c1"># shell 4</span>
+<span class="c1">#     landmarks: 0 1 1 1 2</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ALTRO ASPETTO DA AFFINARE</strong>: il feedback di successo managi non servirà, però va comunque scritto nel messaggio di ritorno.</p>
+<ul>
+<li><p>(lo faccio adesso)</p></li>
+<li><p>test … e ok!</p></li>
+</ul>
+</li>
+<li><p>ora, sostituisco le simulated actions con le mie implementazioni</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">&quot;rosplan_interface_???&quot;</span> <span class="na">pkg=</span><span class="s">&quot;robocluedo_rosplan&quot;</span> <span class="na">type=</span><span class="s">&quot;node_???&quot;</span> <span class="na">respawn=</span><span class="s">&quot;false&quot;</span> <span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;knowledge_base&quot;</span>		<span class="na">value=</span><span class="s">&quot;rosplan_knowledge_base&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;pddl_action_name&quot;</span>		<span class="na">value=</span><span class="s">&quot;???&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;action_dispatch_topic&quot;</span>	<span class="na">value=</span><span class="s">&quot;/rosplan_plan_dispatcher/action_dispatch&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;action_feedback_topic&quot;</span>	<span class="na">value=</span><span class="s">&quot;/rosplan_plan_dispatcher/action_feedback&quot;</span> <span class="nt">/&gt;</span>
+	
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;action_duration&quot;</span>		<span class="na">value=</span><span class="s">&quot;0.99&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;action_probability&quot;</span>	<span class="na">value=</span><span class="s">&quot;1.0&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/node&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e test delle actions reali</p>
+<ul>
+<li><p><em>mi sono dimenticato di compilare move_to_center!</em></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_rosplan load_rosplan.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_rosplan kb_interface
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_rosplan rosplan_simulated_motion_system.py
+
+<span class="c1"># shell 4</span>
+rosrun robocluedo_rosplan rosplan_pipeline_manager.py
+
+<span class="c1"># shell 5</span>
+<span class="c1">#     landmarks: 0 1 1 1 2 0 1 2</span>
+
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
+
+<span class="c1"># ERRORE problema non risolvibile (correttamente segnalato dal pipeline manager)</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+
+<span class="c1"># problema risolvibile</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(alla fine la issue di ieri era … semplice sonno)</p></li>
+<li><p><strong>COMMIT</strong> : “working on robocluedo rosplan actions (launch file)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>con ROSPlan per il momento dovrei aver finito. passiamo ora a lavorare al movement controller. IDEE:</p>
+<ul class="simple">
+<li><p>dato che sulla macchina virtuale ci sono così tanti modi di fare navigation col robot, vorrei creare un’interfaccia per usarli tutti, a scelta</p></li>
+<li><p>il progetto attuale per il momento <em>non includerà move_base</em> per il semplice fatto che in questo contesto non è richiesta la navigazione indoor</p></li>
+<li><p>per quanto riguarda moveIt, credo riciclerò tutto dal vecchio progetto … oppure sarebbe carino usare tf per gestire meglio la posizione dell’end effector, in modo che vada proprio vicino al marker (questo mi darebbe l’opportuunità di approfondire tf2 e simili)</p></li>
+</ul>
+<p>lavoro sul movement controller, anzitutto il modello del robot:</p>
+<ul class="simple">
+<li><p><strong>IMPORTAZIONE PACKAGE</strong> erl2 (lo starter kit) dal vecchio progetto</p>
+<ul>
+<li><p>(importazione in una cartella separata chiamata <code class="docutils literal notranslate"><span class="pre">robocluedo_dependencies</span></code>, in vista di importare anche openCV e simili)</p></li>
+</ul>
+</li>
+<li><p>compila? compila, <em>e vede correttamente il pakcage sotto la cartella dependencies</em></p></li>
+<li><p><strong>COMMIT</strong> : “robocluedo dependencies”</p></li>
+<li><p>documentazione dello starter kit (dal precedente assignment)</p>
+<ul>
+<li><p><em>(mi sono appena reso conto che tale documentazione … non esiste)</em></p></li>
+<li><p>documentazione del nodo “simulation” con UML incluso</p>
+<ul>
+<li><p>(c’è voluto più tempo del previsto …)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>importazione del modello del robot dal precedente package (solo URDF per ora…)</p>
+<ul>
+<li><p>nuova cartella <code class="docutils literal notranslate"><span class="pre">robocluedo_dependencies/robocluedo_urdf_model</span></code> con tutti gli strumenti di sviluppo del caso</p></li>
+<li><p>con solito environment standard (al terzo progetto ce la facciamo…)</p></li>
+<li><p>e documentazione (un male necessario)</p></li>
+<li><p><em>il precedente modello è troppo disordinato …</em> meglio mettere in ordine, iniziando col separare i componenti di Gazebo (e altri lavori)</p></li>
+<li><p>ho solo scomposto il modello, dovrebbe continuare a funzionare… e funziona infatti (meno male)</p></li>
+<li><p>e torniamo sulla documentazione (per ora molto minimal)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robot model (first setup, xacro model)”</p></li>
+<li><p>e adesso il package in MoveIt</p>
+<ul>
+<li><p>prima creazione col setup assistant</p></li>
+<li><p>il gripper non funziona bene … tento di correggerlo …</p></li>
+<li><p>(anche qui c’è voluto più del previsto)</p></li>
+</ul>
+</li>
+<li><p>e facciamo funzionare il package MoveIt</p>
+<ul>
+<li><p>seguendo la procedura sulle slides…</p></li>
+<li><p>funziona? <strong>funziona!</strong></p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robot model (moveit package, fixes on the urdf model)”</p></li>
+<li><p>mancano ancora alcune cose:</p>
+<ul>
+<li><p>world files</p></li>
+<li><p>piccola prova … ok!</p></li>
+<li><p>meglio salvarsi delle immagini dell’environment</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robot model (world files)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>ora, il lavoro sul movement controller</p>
+<ul>
+<li><p><strong>CREAZIONE NUOVO PACKAGE</strong> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_movement_controller_msgs std_msgs std_srvs geometry_msgs moveit_msgs nav_msgs
+</pre></div>
+</div>
+</li>
+<li><p>e prima impostazione della documentazione</p></li>
+<li><p>compila? e meno male</p></li>
+<li><p><strong>CREAZIONE NUOVO PACKAGE</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_movement_controller roscpp rospy geometry_msgs std_msgs std_srvs nav_msgs actionlib actionlib_msgs moveit_msgs moveit_core moveit_ros_perception moveit_ros_planning moveit_ros_planning_interface robocluedo_movement_controller_msgs
+</pre></div>
+</div>
+</li>
+<li><p>al solito, prima documentazione</p></li>
+<li><p>mi da fastidio indicare i world files usando i path assoluti, per questo ho creato un finto package worlds usando i cmake files</p>
+<ul class="simple">
+<li><p>modifica ai file moveit</p></li>
+<li><p>prova … funziona</p></li>
+</ul>
+</li>
+<li><p>(ora che ho tutto, inizio col navigation system)</p></li>
+<li><p>schema UML del navigation system, giusto per avere le idee chiare</p>
+<ul class="simple">
+<li><p>wall follow</p></li>
+<li><p>go to point</p></li>
+<li><p>bug_m (e tutto l’ensemble)</p></li>
+</ul>
+</li>
+<li><p><strong>LIMITAZIONI</strong> dei nodi attuali per la navigation</p>
+<ul class="simple">
+<li><p>il wall follow va bene, non serve fare nulla</p></li>
+<li><p>il go to point dovrebbe stabilire un’orientazione finale</p></li>
+<li><p>(go to point) creare un servizio <em>normale</em> per la gestione del movimento, che faccia rimanere in attesa fin quando il robot non ha raggiunto il punto indicato</p></li>
+<li><p>(go to poit) oppure creare un topic che permetta di verificare lo stato del robot</p></li>
+<li><p>(go to point) per quanto riguarda l’orientazione potrei aggiungere semmai un servizio molto simile a quello che già c’è per l’orientazione</p></li>
+</ul>
+<p>la strategia migliore sarebbe la seguente:</p>
+<ul class="simple">
+<li><p>serve un nodo che implementi un’interfaccia più intuitiva col navigation system: quella attale va bene, può funzionare, ma non è troppo intuitiva</p></li>
+<li><p>implementare l’orientazione come un behaviour a parte</p></li>
+<li><p>per l’angolo si può sempre implementare un sistema tipo parameter server</p></li>
+</ul>
+</li>
+<li><p><strong>NUOVO NODO</strong> : (py) head_orientation.py</p></li>
+<li><p>(vorrei mantenere l’approccio iniziale dell’implementazione del behaviour, trovo sia un approccio interessante)</p></li>
+<li><p>implementazione del nodo head orientation</p></li>
+<li><p>studio bug_m (devo trovare un modo furbo e rapido di modificarlo)</p></li>
+<li><p>nuovo stato in bug_m</p></li>
+<li><p>uml vari ed eventuali</p>
+<ul class="simple">
+<li><p>uml del nuovo nodo</p></li>
+<li><p>e altri UML</p></li>
+</ul>
+</li>
+<li><p><strong>NUOVO COMMIT</strong> : “working on the navigation system (first version, not yet tested)”</p></li>
+<li><p>adesso serve un po’ di testing:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot gazebo.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller wall_follow_service_m.py
+
+rosrun robocluedo_movement_controller go_to_point_service_m.py
+
+rosrun robocluedo_movement_controller head_orientation.py
+
+rosrun robocluedo_movement_controller bug_m.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>test completo (conviene creare un launch file)</p></li>
+<li><p>mancava l’active nel bug_m</p>
+<ul>
+<li><p>aggiornamento UML di bug_m</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> : tutti i nodi devono essere <em>spenti</em> all’avvio del sistema</p>
+<ul>
+<li><p><strong>ISSUE</strong> : il servizio, quando dovrebbe disattivare il nodo, <em>non invia il segnale di stop!</em></p></li>
+</ul>
+</li>
+<li><p>comunque, a parte qualche difetto di meccanismo, <em>sembra funzionare</em></p>
+<ul>
+<li><p>l’unica cosa davvero da risolvere è rifare la ruota davanti del robot</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on the navigation system (testing)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>ISSUE</strong> : il robot si incastra per terra … perchè quella cosa sul frontale del robot <em>non è una vera castor wheel</em></p>
+<ul>
+<li><p>anzitutto, la situazione, con un teleop twist keyboard stupido stupido giusto per vedere come si muove il robot</p></li>
+<li><p>ho provato ad aumentare la dimensione della “castor” davanti, giusto per avere una superficie di impatto meno aspra e sembra funzionare</p></li>
+<li><p>torno alla vecchia giusto per confrontare… con la ruota piccola il robot tende ad impuntarsi in avanti</p></li>
+<li><p>potrebbe anche essere un problema di guadagno: per il movimento bisogna aumentare la velicità</p></li>
+</ul>
+</li>
+<li><p>(voglio mettere esplicitamente a confronto le due situazioni)</p></li>
+<li><p><em>robot con la ruota piccola</em></p>
+<ul>
+<li><p>test giro su se stesso</p>
+<ul>
+<li><p>il robot si impunta e tende a ruotare attorno alla castor</p></li>
+</ul>
+</li>
+<li><p>test andare avanti e tornare indietro</p>
+<ul>
+<li><p>andando avanti il robot tende ad oscillare perchè si impunta sulla ruota, viene fuori un movimento di pitch che non dovrebbe esserci e che disturba la odometry</p></li>
+</ul>
+</li>
+<li><p>test girare in cerchio</p>
+<ul>
+<li><p>tende a non girare</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>il braccio deve essere sollevato durante i test!</strong> altrimenti certo che il secondo caso è meglio del primo: il braccio è piegato all’indietro!</p></li>
+<li><p><em>e ora robot con la ruota grande</em>, aumentando solo la dimensione della ruota senza alterarne l’origine</p>
+<ul>
+<li><p>test giro su se stesso</p>
+<ul>
+<li><p>molto meglio, anche se non perfetto</p></li>
+</ul>
+</li>
+<li><p>test andare avanti e tornare indietro</p>
+<ul>
+<li><p>pitch davvero eccessivo…</p></li>
+</ul>
+</li>
+<li><p>test girare in cerchio</p>
+<ul>
+<li><p>il comportamento è ancora ondeggiante, però stavolta il robot tende a fare un giro più stretto, non si perde il giro</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>guardando il robot però mi sta venendo un’ideuzza: <em>ma se lo facessi avanzare dalla parte sul retro piuttosto che dalla dua parte frontale?</em> lo faccio andare in retromarcia piuttosto che in avanti come dovrebbe, così la castor la trascina e basta, senza corrompere così tanto il robot, e potrei anche ripristinare la vecchia ruota</p>
+<ul>
+<li><p>ripristino della vecchia ruota e “tenta di invertire”</p></li>
+<li><p><em>ha funzionato!</em> sono molto soddisfatto del risultato</p></li>
+<li><p>(basta solo non andare troppo veloce o il robot si ribalterà in avanti)</p></li>
+<li><p><em>maaa se gli mettessi altre due ruote?</em> con dei joint non controllati</p></li>
+<li><p><em>anche questa funziona!</em> e allora sai che c’è? gli tolgo la castor adesso</p></li>
+<li><p>già che siamo in vena di aggiornamenti, voglio provare a mettere a posto il gripper (o eliminarlo direttamente?)</p></li>
+</ul>
+</li>
+<li><p>come temevo ho fatto casino: devo rifare il pacchetto moveit…</p>
+<ul>
+<li><p>(dopo un’ora di bestemmie piuttosto forti…)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robot model (improving the stability of the robot)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="ancora-sul-movement-controller">
+<h2>12/08/2022 – ancora sul movement controller<a class="headerlink" href="#ancora-sul-movement-controller" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>anzitutto, i lavori noiosi:</p>
+<ul>
+<li><p>aggiornamento delle immagini nella doumentazione</p></li>
+<li><p>aggiornamento dei file yaml salvati nella documentazione del robot</p></li>
+<li><p>piccola modifica ai launch file del robot per supportare anche i percorsi dei world files</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on robot model (gazebo fix, documentation)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>il robot potrebbe avere anche diversi sistemi di navigation, perciò serve un’interfaccia che tenga conto del particolare funzionamento dell’algoritmo di motion planning attualmente in uso, e che eventualmente permetta di cambiare l’algoritmo.</p>
+<ul class="simple">
+<li><p>anzitutto, mi serviranno delle nuove interfacce</p>
+<ul>
+<li><p>un service per position e orientation del robot</p></li>
+<li><p>un service che permetta di scegliere quale algoritmo usare</p></li>
+</ul>
+</li>
+<li><p><strong>NUOVO NODO</strong> : (c++) navigation_manager.cpp</p>
+<ul>
+<li><p>per l’implementazione di questa classe vorrei un sistema modulare, nel senso che scrivo a parte il codice, poi il navigation controller se lo prende e lo esegue; vorrei che tutte le implementazioni condividessero la stessa interfaccia. Il problema è che questo complicherebbe molto di più il lavoro, perciò ricorrerò ad un polimorfismo “dubbio” per il momento, in vista di ristrutturarlo più avanti</p></li>
+<li><p>(sperando di non essere caduto in qualche stupido pitfall del C++ com’è successo l’ultima volta col simple bridge)</p></li>
+<li><p>prima di fare qualunque cosa, proviamo se almeno compila …</p></li>
+<li><p>(<em>mai mischiare reference con pointers…</em> per il momento meglio i soli semplici pointers, amiamo il rischio da queste parti)</p></li>
+<li><p>interfaccia ROS per la selezione dell’algoritmo</p></li>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p>(ora, iniziamo ad implementare qualche algoritmo)</p></li>
+<li><p>iniziamo da bug_m</p>
+<ul>
+<li><p>definizione della classe</p></li>
+<li><p>interfacce ROS del controller per comunicare con bug_m</p></li>
+<li><p>prima di compiare, voglio essere sicuro che tutti i servizi siano <em>disattivati</em> all’avvio del controller, quindi piccola modifica a bug_m per forzare la situazione</p></li>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on navigation (nav manager first version and first debug, yet not tested)”</p></li>
+<li><p>direi che prima di andare avanti bisogna per forza fare del testing, molto semplice</p>
+<ul>
+<li><p><strong>DIFETTO</strong> ci sono degli strani output da wall follow, pensavo di averli tolti tutti</p></li>
+<li><p><strong>ISSUE</strong> in bug_m bisogna aspettare che qualcuno fornisca il servizio per la user interface</p></li>
+<li><p><strong>ISSUE</strong> casino apocalittico sui servizi di bug_m … ci starò un po’</p></li>
+<li><p>(il problema con python si è risolto magicamente … si era piantato … ecco perchè detesto usare py per questo genere di lavori)</p>
+<ul>
+<li><p>SCHEEEEEERZONE</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> il nodo c++ non è in grado di gestire due service se non ha abbastanza thread … async spinner</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on navigation (debugging… there’s a problem with go_to_point and bug_m)”</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot gazebo.launch <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_movement_controller navigation_system.launch
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_movement_controller navigation_manager
+
+<span class="c1">#shell 4</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 0</span>
+<span class="s2">enabled: false&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: 1.5</span>
+<span class="s2">  y: 2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: false&quot;</span> 
+
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 0</span>
+<span class="s2">enabled: true&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: 1.5</span>
+<span class="s2">  y: 2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: false&quot;</span> 
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>c’è un problema piuttosto fastidioso col service go to point che non riesco a capire (al solitio l’unico modo per debuggare il codice python è … eseguirlo, con tutte le grane del caso). A quanto ne so potrebbe anche essere un typo.</p>
+<ul class="simple">
+<li><p>il problema potrebbe essere in go to point … voglio provarlo da solo</p>
+<ul>
+<li><p>no, go to point funziona bene …</p></li>
+</ul>
+</li>
+<li><p>allora il problema potrebbe essere in bug_m</p></li>
+</ul>
+<p>l’errore in questione me lo segno qui:</p>
+<p>lato bug_m:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>process[go_to_point_service_m-1]: started with pid [3888]
+process[wall_follow_service_m-2]: started with pid [3889]
+process[head_orientation-3]: started with pid [3890]
+process[bug_m-4]: started with pid [3891]
+Wall follower - [2] - follow the wall
+[ERROR] [1660306330.473755, 452.647000]: Error processing request: &#39;NoneType&#39; object is not callable
+Traceback (most recent call last): 
+   File &quot;/opt/ros/noetic/lib/python3/dist-packages/rospy/impl/tcpros_service.py&quot;, line 633, in _handle_request
+    response = convert_return_to_response(self.handler(request), self.response_class)
+   File &quot;/root/ros_ws/src/erl2-new/robocluedo_movement_controller/scripts/bug_m.py&quot;, line 129, in bug_switch
+    change_state(2)
+   File &quot;/root/ros_ws/src/erl2-new/robocluedo_movement_controller/scripts/bug_m.py&quot;, line 109, in change_state
+    srv_client_user_interface_() 
+TypeError: &#39;NoneType&#39; object is not callable
+Yaw error: [0.03443149860346817]
+Position error: [0.2979991913211027]
+</pre></div>
+</div>
+<p>lato navigation manager:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660306330.440827200]: [navigation_manager] starting ... 
+[ INFO] [1660306330.443291200]: [navigation_manager] Advertising service [/navigation_manager/set_algorithm] ...
+[ INFO] [1660306330.445242500]: [navigation_manager] Advertising service [/navigation_manager/set_algorithm] ... OK
+[ INFO] [1660306330.445294500]: [navigation_manager] Advertising service [/navigation_manager/navigation] ...
+[ INFO] [1660306330.447810400]: [navigation_manager] Advertising service [/navigation_manager/navigation] ... OK
+[ INFO] [1660306330.447872900]: [navigation_manager] Opening client [/bug_switch] ...
+[ INFO] [1660306330.448978900]: [navigation_manager] Opening client [/bug_switch] ... OK
+[ INFO] [1660306330.449069900]: [navigation_manager] advertising service [/bug_m_signal] ...
+[ INFO] [1660306330.450628400]: [navigation_manager] advertising service [/bug_m_signal] ... OK
+[ERROR] [1660306330.475950600]: Service call failed: service [/bug_switch] responded with an error: error processing request: &#39;NoneType&#39; object is not callable
+[ INFO] [1660306330.476083500]: [navigation_manager] ready
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>guardando meglio l’errore potrei aver risolto …</p>
+<ul>
+<li><p>prova … nada, sempre lo stesso errore (però adesso almeno ce n’è uno solo che si ripete, e non cambia ogni volta)</p></li>
+<li><p>l’errore <code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">'NoneType'</span> <span class="pre">object</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">callable</span></code> significa che il client non viene aperto, perchè la funzione in effetti vede la variabile correttamente</p></li>
+<li><p>il servizio incriminato è sicuramente <code class="docutils literal notranslate"><span class="pre">/bug_m_signal</span></code></p></li>
+<li><p>come viene aperto in cpp?</p></li>
+<li><p>il problema si è risolto aggiungendo un’attesa, evidentemente python è un po’ più lento, e questo genera problemi di sincronizzazione</p></li>
+</ul>
+</li>
+<li><p>ok, ora il problema è risolto … però adesso <em>il robot non si muove</em></p>
+<ul>
+<li><p>c’è un problema col nodo cpp</p></li>
+<li><p>lo switch di bug_m pare non funzionare…</p></li>
+<li><p>c’è un problema con l’apertura dei servizi in Python…</p></li>
+<li><p>proviamo aggiungendo qualche timeout…</p></li>
+<li><p><strong>BECCATO!</strong> In effetti bug_switch non funziona come si deve, la chiamata non ha effetto</p></li>
+<li><p>vediamo se riesco a capire qualcosa con qualche log in più</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot gazebo.launch <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_movement_controller navigation_system.launch
+
+<span class="c1"># shell 3</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_pos_y -2.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">2</span>.3
+rosservice call /bug_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">15</span>
+rosservice call /bug_switch <span class="s2">&quot;data: false&quot;</span> 
+rosparam <span class="nb">set</span> des_pos_x -2.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">2</span>.1
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.47
+rosservice call /bug_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">15</span>
+rosservice call /bug_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>il servizio arriva, l’informazione arriva corretta, ma il nodo non si attiva</p></li>
+<li><p><strong>C’E’ UN PROBLEMA COL LASER!</strong> assolutamente insospettabile… ecco perchè ci stavo girando così tanto attorno</p>
+<ul>
+<li><p>in effetti il robot pubblica il laser su ‘/m2wr/laser/scan’ e non su ‘/scan’</p></li>
+<li><p>anche in vista di usare move_base meglio usare direttamente ‘/scan’</p></li>
+</ul>
+</li>
+<li><p>e proviamo di nuovo … <strong>E FUNZIONA</strong> almeno solo la parte riguardante python</p>
+<ul>
+<li><p>c’era un errore nel nuovo stato 3, una cosa che non avevo notato prima, anche se nulla di serio</p></li>
+</ul>
+</li>
+<li><p>ora la parte python pare funzioni</p></li>
+<li><p>adesso, proviamo la parte cpp</p>
+<ul>
+<li><p><strong>E ADESSO FUNZIONA</strong></p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on navigation (debugging, now it works, laser issue)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>assumendo che tutto funzioni per il verso giusto … passiamo all’implementazione della parte moveit:</p>
+<ul class="simple">
+<li><p>innanzitutto, un movement controller per moveit già ce l’ho, riciclo</p>
+<ul>
+<li><p>serve definire l’interfaccia</p></li>
+<li><p>implementazione del nodo</p></li>
+<li><p>cmake e .. compila</p></li>
+</ul>
+</li>
+<li><p>test, giusto per capire se funziona</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot demo_gazebo.launch <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>funziona, ma c’è qualche problemino col controller, regolo il parametro p dei controller, vediamo se cambia qualcosa</p></li>
+<li><p>HA FUNZIONATO! benissimo!</p></li>
+<li><p><strong>COMMIT</strong> : “working on manipulation (manip controller, arm tuning)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e il movement controller è finito, o almeno la prima versione. Adesso possiamo iniziare a pensare al mission manager.</p>
+<ul>
+<li><p><strong>NUOVO PACKAGE</strong> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_mission_manager rospy roscpp robocluedo_rosplan_msgs robocluedo_movement_controller_msgs robocluedo_armor_msgs std_msgs geometry_msgs sensor_msgs nav_msgs
+</pre></div>
+</div>
+</li>
+<li><p>e prima documentazione del package (vuota)</p></li>
+<li><p>iniziamo dalla parte più “semplice”: movimento e comandi del braccio</p></li>
+<li><p><strong>NUOVO NODO</strong> : manipulation unit</p></li>
+<li><p><strong>COMMIT</strong> : “working on mission manager (manipulation unit first setup)”</p></li>
+<li><p>implementazione easy-pisy lemon sequeezy della manipulaton unit</p>
+<ul class="simple">
+<li><p>cmake e test … funge,funge</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on mission manager (end manipulation unit)”</p></li>
+<li><p><strong>NUOVO NODO</strong> : navigation unit (prima o poi sarebbe giunto questo momento)</p>
+<ul class="simple">
+<li><p>template nodo</p></li>
+<li><p>e implementazione</p></li>
+<li><p>cmake e compila … compila!</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on mission manager (navigation unit, first debugging but yet not runned)”</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>e perchè non concludere la nottata in bellezza?</em> Iniziamo subito ad occuparci del (temibilissimo) mission manager, <em>quello vero</em>, che sarà un nodo scritto in C++ che fungerà da centro di tutta l’architettura.</p>
+<ul class="simple">
+<li><p><strong>NUOVO NODO</strong> : (c++) mission_manager</p>
+<ul>
+<li><p>primo template e design del nodo</p></li>
+<li><p><em>devo fare gli schemi mancanti per aRMOR… che p…</em> li faccio ora subito e non ci pensiamo più</p></li>
+<li><p>e torniamo a lavorare sull’interfaccia…</p></li>
+<li><p>(è stata una cosa lunga…)</p></li>
+<li><p>compila? (dopo qualche colpo di sranga) compila.</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on mission manager (design of the main node)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="mission-manager-module-testing-test-completo">
+<h2>13/08/2022 – mission manager – module testing – test completo<a class="headerlink" href="#mission-manager-module-testing-test-completo" title="Permalink to this heading"></a></h2>
+<p>implementazione del nodo main dell’architettura (fatto questo si passa al testing e si impacchetta tutto)</p>
+<ul>
+<li><p>implementazione</p></li>
+<li><p>non ricordo come funzionassero i servizi di aRMOR e quale fosse la semantica dei messaggi di aRMOR interface… mi tocca documentarli</p></li>
+<li><p><strong>LIMITAZIONE</strong> in aRMOR questa volta: nella add hint l’ID è un numero intero, e la cosa mi sta bene, ma in tutti gli altri metodi l’ID è in realtà una stringa, e anzi, tutte le volte la ontology utilizza la stringa, e non l’intero, per identificare l’ipotesi.</p>
+<ul class="simple">
+<li><p><em>è il momento di imparare a parsare stringhe in C++</em> (can’t wait for it)</p></li>
+</ul>
+</li>
+<li><p>giusto un mini programmino di prova: (più che altro per sondare le mie caopacità dinamitarde)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ID13398&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">pos_init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;ID&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;pos=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pos_init</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// std::size_t pos_end = pos_init + 2;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(str) ID=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">pos_init</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// int id_int = atoi(id.substr(pos_init+2).c_str());</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">id_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(int) ID=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id_int</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="cm">/*OUTPUT</span>
+<span class="cm">  </span>
+<span class="cm">  pos=0</span>
+<span class="cm">  (str) ID=13398</span>
+<span class="cm">  (int) ID=13398</span>
+<span class="cm">  </span>
+<span class="cm">  */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>posso fare il parsing direttamente dalla parte del nodo che usa aRMOR piuttosto che fare tutto in aRMOR. <em>è perfettamente sensato che aRMOR usi stringhe anzichè identificatori interi</em> a meno di non voler  modificare l’ontologia. basta assicurarsi che gli identificatori abbiano <em>sempre</em> una data struttura</p></li>
+<li><p>a quanto pare aRMOR interface attualmente forza l’identificatore a essere strutturato come <em>HP<id></em>, ad esempio “HP6” o “HP41”, vedi implementazione di AddHint …</p>
+<ul class="simple">
+<li><p>… e direi, <em>a scanso di equivoci</em> di lasciare tutto così</p></li>
+<li><p>casomai posso solo aggiungere un checking (attualmente mancante) sulla <em>positività dell’ID fornito nel messaggio</em>.</p>
+<ul>
+<li><p>lo aggiungo ora</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>e terminiamo la documentazione</p></li>
+<li><p>ma aspetta: <em>se tanto non posso modificare i nomi delle ipotesi, che senso ha fornire la stringa?</em> a questo punto direi che posso modificare direttamente le interfacce per gli identificatori interi, e fine. senza complicare ulteriormente la mia esistenza con ulteriori non necessarie convenzioni sui nomi…</p>
+<ul class="simple">
+<li><p>AddHint (tra l’altro Aelem non veniva nemmeno usato qui…)</p></li>
+<li><p>find hint</p></li>
+<li><p>discard hint</p></li>
+<li><p>prima di riprendere a fare qualunque altra cosa direi che posso provare a compilare, no? compia? … E COMPILA SIGNORI</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on armor interface (forcing hidden naming convention)”</p>
+<ul class="simple">
+<li><p><strong>HO FATTO CASINO CON GIT</strong> e ora devo risolvere…</p></li>
+<li><p>casino coi large files … ho dovuto fare backup, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span> <span class="pre">&lt;commit&gt;</span></code> e aggiornamento, c’era un commit che continuava a “voler essere” caricato su git</p></li>
+</ul>
+</li>
+<li><p>proviamo a compilare di nuovo, <em>non si sa mai</em> … e anche questa volta ce l’abbiamo fatta</p></li>
+<li><p>dopo questa (tutt’altro che veloce) divagazione, torniamo sulla portata principale di oggi</p>
+<ul class="simple">
+<li><p>implementazione dell’acquisizione dell’hint</p></li>
+</ul>
+</li>
+<li><p>e passiamo agli stati</p>
+<ul class="simple">
+<li><p>anzitutto, il protocollo per determinare un fault</p></li>
+<li><p>anzi, meglio fare un po’ di design per commenti per adesso, identificando le parti più semplici</p></li>
+</ul>
+</li>
+<li><p>e adesso, implementazione precisa stato per stato (sarà una cosa lunga e dolorosa…)</p>
+<ul class="simple">
+<li><p>implementazione di MISSION_STATUS_REPLAN</p>
+<ul>
+<li><p>ma prima, un po’ di delirio coi messaggi per la rosplan pipeline…</p></li>
+</ul>
+</li>
+<li><p>(ROBA BRUTTA)</p></li>
+<li><p>implementazione di MISSION_STATUS_COLLECT</p>
+<ul>
+<li><p>al secondo passaggio fortunatamente inizio ad avere più codice su cui lavorare … e parecchio materiale già pronto, dovrei andare più veloce</p></li>
+</ul>
+</li>
+<li><p>(ROBA BRUTTISSIMA)</p></li>
+<li><p>implementazione di MISSION_STATUS_ASK_ONTOLOGY</p></li>
+<li><p>… (e tutte le altre)</p></li>
+</ul>
+</li>
+<li><p>e fine! (almeno, senza provare a compilare)</p></li>
+<li><p><strong>COMMIT</strong> : “working on mission manager (painful, endless implementation of the main mission manager)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e ora la parte … migliore? <em>il debugging dell’ecomostro</em></p>
+<ul class="simple">
+<li><p>vediamo se riusciamo a farlo compilare … (domenica libera? magari!)</p></li>
+<li><p>(posso dire che mi aspettavo di peggio? non sono tantissimi, sono sollevato)</p></li>
+<li><p><strong>ammazzando selvaggiamente</strong> gli ultimi errori</p></li>
+<li><p>(molto soddisfatto, e fortuna che ho pensato di implementarlo in C++ … l’avessi fatto in python sarei diventato pazzo da manicomio)</p></li>
+<li><p><strong>COMMIT</strong> : “working on mission manager (first debugging of the mission_manager node)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>il progetto completo adesso c’è! i prossimi passi? module testing, e infine test finale dell’intero progetto. (quella domenica libera potrebbe non essere solo un sogno … a meno di non aver combinato un casino apocalittico)</p>
+<ul>
+<li><p>prima di tutto, a posto la documentazione su come eseguire il progetto e come testarlo (ci sono due documenti fatti apposta per questo)</p>
+<ul class="simple">
+<li><p>inizio già ad elencarmi i test da fare</p></li>
+</ul>
+</li>
+<li><p>test per aRMOR</p>
+<ul>
+<li><p>armor puro – module testing</p></li>
+<li><p>test armor tools</p>
+<ul>
+<li><p>ho dovuto aggiornarlo leggermente: non c’era nulla di errato, solo però c’erano i due test di armortools e armorcluedo nello stesso file; ora sono divisi</p></li>
+<li><p><em>e meglio scrivere gli output dei test in fondo al file…</em> altrimenti presto non ci si capirà nulla</p></li>
+<li><p>l’ultima query mi da un’eccezione java nella ontology, pare che esista un oggetto null, ma non saprei perchè</p></li>
+<li><p>controllando le query sembra tutto a posto, non ce lo metto io di sicuro quell’oggetto</p></li>
+<li><p>(non penso che ci sia qualcosa di strano, però non mi convince … è anche vero però che il test è molto vecchio)</p></li>
+<li><p>scrissi questa cosa nel test:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* classe più profonda di un individual (caso bastardo, probabilmente bug)
+* 	&quot;QUERY&quot;, &quot;CLASS&quot;, &quot;IND&quot;, &quot;HP3&quot;, &quot;true&quot;
+* 	HYPOTHESIS
+</pre></div>
+</div>
+<p>quindi questo comando non funzionava già prima. tutto a posto: o ho trovato un workaround per farlo funzionare comunque, o ho proprio dribblato la questione. In ogni caso, devo aver sicuramente risolto in passato il problema. Attualmente, basta commentare la riga incriminata e siamo tutti contenti.</p>
+</li>
+<li><p>giusto per la cronaca, l’errore è questo:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span> 13/08/22_12:31:13,855 -&gt; Class OWLReferencesInterface : [[ !!! ERROR !!! ]]Cannot get the OWL name of a null OWL object
+Exception in thread &quot;pool-1-thread-22&quot; java.lang.IllegalArgumentException
+	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:108)
+	at org.ros.internal.message.field.PrimitiveFieldType$14.serialize(PrimitiveFieldType.java:574)
+	at org.ros.internal.message.field.ListField.serialize(ListField.java:62)
+	at org.ros.internal.message.DefaultMessageSerializer.serialize(DefaultMessageSerializer.java:32)
+	at org.ros.internal.message.DefaultMessageSerializer.serialize(DefaultMessageSerializer.java:26)
+	at org.ros.internal.message.field.MessageFieldType.serialize(MessageFieldType.java:92)
+	at org.ros.internal.message.field.ValueField.serialize(ValueField.java:62)
+	at org.ros.internal.message.DefaultMessageSerializer.serialize(DefaultMessageSerializer.java:32)
+	at org.ros.internal.message.DefaultMessageSerializer.serialize(DefaultMessageSerializer.java:26)
+	at org.ros.internal.node.service.ServiceRequestHandler.handleRequest(ServiceRequestHandler.java:66)
+	at org.ros.internal.node.service.ServiceRequestHandler.access$100(ServiceRequestHandler.java:38)
+	at org.ros.internal.node.service.ServiceRequestHandler$1.run(ServiceRequestHandler.java:99)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>test armor cluedo</p></li>
+</ul>
+</li>
+<li><p>test su robocluedo rosplan</p>
+<ul class="simple">
+<li><p>anzitutto voglio spostare il nodo py che simula le interfacce nel module testing</p></li>
+<li><p>test PDDL (non si sa mai…)</p>
+<ul>
+<li><p><em>fortunatamente</em> il modello è ok</p></li>
+</ul>
+</li>
+<li><p>simple rosplan</p></li>
+<li><p>knowledge base interface (vedi diario di implementazione … visto a cosa serve tenere dei diari?)</p></li>
+<li><p>pipeline manager (anche qui dai diari)</p></li>
+<li><p>tutto senza roslaunch</p>
+<ul>
+<li><p>“piccolo” problema con un manifest che non andava bene … risolto (c’ho messo più del previsto…)</p></li>
+</ul>
+</li>
+<li><p>a questo punto direi che possiamo scriverlo ‘sto launch finale, no?</p></li>
+<li><p>e test finale</p></li>
+</ul>
+</li>
+<li><p>(boh pare funzionare tutto a dovere .-.. ci fidiamo?)</p></li>
+<li><p>test sul package del robot</p>
+<ul class="simple">
+<li><p>urdf</p></li>
+<li><p>robot</p></li>
+</ul>
+</li>
+<li><p>ora, i test sulla navigation (e qui sono piuttosto curioso)</p>
+<ul class="simple">
+<li><p>go to point</p></li>
+<li><p>head orientation</p></li>
+<li><p>wall follow</p>
+<ul>
+<li><p><strong>ISSUE</strong> il wall follow non si disattiva … a vedere il comportamento del robot pare che non riesca a pubblicare la posizione dopo che è stato disattivato, ma il ciclo rimane in funzionamento, cosa strana</p></li>
+<li><p>tutto risolto: c’era un bug nella disattivazione (dal nodo originale)</p></li>
+</ul>
+</li>
+<li><p>e ora, quello che tutti stavamo aspettando! bug_m!</p></li>
+<li><p>ora il nav controller</p>
+<ul>
+<li><p><strong>ISSUE</strong> : credo ci sia un problema con il controllo della yaw da parte del controller: certe volte va, altre no, e non mi è chiaro il perchè.</p></li>
+<li><p>ho notato che il robot manda il segnale <em>prima di aggiustare la yaw</em>, e sapendo come ho strutturato gli stati, è presto detto il perchè</p></li>
+<li><p>avevo ragione, c’era un passaggio di stato poco pensato. problema <em>risolto</em></p></li>
+</ul>
+</li>
+<li><p>manca solo il manipulator, per cui secondo me ho già un test bello pronto</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “module testing (rosplan, navigation, manipulation)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e adesso siamo giunti al momento di <em>provare la comunicazione tra i component</em>. Prima di provare il mission manager per intero voglio essere assolutamente certo che tutto quello che c’è attorno al mission manager funzioni, in modo da poter isolare il problema più facilmente.</p>
+<ul>
+<li><p>(proseguiamo col module testing)</p></li>
+<li><p>rosplan più controller!</p></li>
+<li><p>… ok, avevo sottovalutato la situazione: <em>serve un launch file globale</em> altrimenti devo lanciare una ricca costellazione … di shell, e non ne ho voglia</p></li>
+<li><p>test … ma niente</p>
+<p>questo errore è un autentico mistero …</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new# rosrun robocluedo_mission_manager navigation_unit
+[ INFO] [1660407077.831806900]: [navigation_unit] starting ... 
+[ INFO] [1660407077.839691200]: [navigation_unit] sub topic /visualization_marker ... 
+[ INFO] [1660407077.842722600]: [navigation_unit] sub topic /visualization_marker ...  OK
+[ INFO] [1660407077.842797900]: [navigation_unit] advertising service /robocluedo/navigation_command ... 
+[ INFO] [1660407077.843474100]: [navigation_unit] advertising service /robocluedo/navigation_command ... OK
+[ INFO] [1660407077.843544000]: [navigation_unit] opening client /navigation_manager/navigation ... 
+[ INFO] [1660407077.844301900]: [navigation_unit] opening client /navigation_manager/navigation ... OK
+[ INFO] [1660407077.844362200]: [navigation_unit] opening client /navigation_manager/set_algorithm ... 
+[ INFO] [1660407077.845099500]: [navigation_unit] opening client /navigation_manager/set_algorithm ... OK
+[ INFO] [1660407077.845175600]: [navigation_unit] ready
+[ INFO] [1660407111.381570100, 178.948000000]: [navigation_unit] received a request (wp=)wp1
+[ INFO] [1660407111.381646300, 178.949000000]: [navigation_unit] enabling motion planning algorithm...
+[ERROR] [1660407111.381688800, 178.949000000]: Call to service [/navigation_manager/set_algorithm] with md5sum [0e1a5befb7c98ef5415a7d22fbb30177] does not match md5sum when the handle was created ([6e1d2f861340c9704c6bdc4be6b7a162])
+[ WARN] [1660407111.381745700, 178.949000000]: [navigation_unit] WARNING: unable to contact the service to enable the navigation algorithm.
+</pre></div>
+</div>
+<p>il problema (se ho capito bene) significa che la navigation unit non riesce a contattare il navigation manager (almeno il servizio riguardante l’algoritmo) … però il servizio pare essere stato correttamente attivato, quindi non ha molto senso.</p>
+</li>
+<li><p>provo a riavviare i componenti e a vedere se il servizio viene definito</p>
+<ul>
+<li><p>la stessa chiamata da console ha successo, quindi dev’esserci qualcosa che non va col nome del servizio, o insomma con la definizione del servizio nella navigation unit</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws# rosservice list | grep algo
+/navigation_manager/set_algorithm
+root@3b17871017fd:~/ros_ws# rosservice info /navigation_manager/set_algorithm 
+Node: /navigation_manager
+URI: rosrpc://3b17871017fd:55987
+Type: robocluedo_movement_controller_msgs/Algorithm
+Args: algorithm enabled
+root@3b17871017fd:~/ros_ws# rosservice call /navigation_manager/set_algorithm 
+Usage: rosservice call /service [args...]
+
+rosservice: error: Please specify service arguments
+root@3b17871017fd:~/ros_ws# rosservice call /navigation_manager/set_algorithm &quot;algorithm: 0
+enabled: true&quot; 
+success: True
+details: &#39;&#39;
+root@3b17871017fd:~/ros_ws# 
+</pre></div>
+</div>
+</li>
+<li><p><strong>BECCATO!</strong> Il problema stava proprio nella definizione, in particolare il tipo di messaggio con cui è stato definito il servizio: dovrebbe essere <code class="docutils literal notranslate"><span class="pre">Algorithm</span></code></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>// client navigation algorithm
+TLOG( &quot;opening client &quot; &lt;&lt; SERVICE_SET_ALGORITHM &lt;&lt; &quot; ... &quot; );
+cl_nav_algorithm = nh.serviceClient&lt;robocluedo_rosplan_msgs::NavigationCommand&gt;( SERVICE_SET_ALGORITHM );
+if( !cl_nav_algorithm.waitForExistence( ros::Duration(60) ) )
+{
+	TERR( &quot;unable to contact the server &quot; &lt;&lt; SERVICE_SET_ALGORITHM &lt;&lt; &quot; - timeout expired (60s) &quot; );
+	return;
+}
+TLOG( &quot;opening client &quot; &lt;&lt; SERVICE_SET_ALGORITHM &lt;&lt; &quot; ... OK&quot; );
+</pre></div>
+</div>
+<p>e c’era anche un altro errore: da un’altra parte chiamavo <code class="docutils literal notranslate"><span class="pre">cl_nav_algorithm</span></code> anzichè <code class="docutils literal notranslate"><span class="pre">cl_nav</span></code>, ma essendo la definizione del servizio errata, per il compilatore non c’era problema.</p>
+</li>
+<li><p>(sonno fortissimo mentre scrivevo ‘sta roba, c’erano un sacco di altri errori stupidissimi)</p></li>
+</ul>
+</li>
+<li><p>eeee proviamo di nuovo, stesso test (diamine, era riba già collaudata) …</p></li>
+<li><p><strong>ISSUE</strong> i marker sono messi in posizioni irraggiungibili dal robot (questa è la parte corretta) …</p>
+<ul class="simple">
+<li><p>… ma <em>il robot non dovrebbe andare proprio così vicino</em> … come si risolve questa cosa <em>senza implementare un qualcosa di troppo customizzato?</em></p></li>
+<li><p>temo non ci sia altra scelta: devo scalare la posizione all’interno del nodo bridge… non mi piace molto</p></li>
+</ul>
+</li>
+<li><p>e proviamo ancora</p></li>
+<li><p><strong>ISSUE</strong> angolo sbagliato, e coordinate decisamente troppo lontane dal punto (maaa dormivo quando ho scritto quella roba? <em>probabile</em>)</p>
+<ul class="simple">
+<li><p>potrei aver sottovalutato la questione. Per avere un approccio migliore, almeno in questa situazione, e data la pessima controlalbilità del robot, potrei pensare ad un movimento di avvicinamento al marker in 3 fasi: avvicinamento del 75% (mi piazzo di fronte al marker), avvicinamento <em>rettilineo</em> al 90%, e dopo il movimento col manipolatore, allontanamento in retro al 75%</p></li>
+<li><p>il problema è che il robot attuale <em>non supporta la retro…</em></p></li>
+</ul>
+</li>
+<li><p>almeno le units funzionano bene dai. ora è solo un problema di geometria, che a quanto pare sto canando di brutto per qualche ragione.</p>
+<ul class="simple">
+<li><p><strong>ILLUMINAZIONE GENIALE</strong> : ho invertito le coordinate dell’arcotangente … morto dal ridere</p></li>
+</ul>
+</li>
+<li><p>e riproviamo …</p>
+<ul class="simple">
+<li><p><strong>ISSUE</strong> tutti i feedback manager sono UNKNOWN … devo essermi dimenticato di regolarli</p></li>
+<li><p><em>e invece no</em> … ok, questo è assurdo</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> il robot si avvicina … ma non abbastanza a quanto pare</p>
+<ul class="simple">
+<li><p>anzitutto voglio vedere se il sistema funziona, quindi giochicchiamo con l’oracolo</p></li>
+<li><p>il sistema di invio funzionare funziona</p></li>
+<li><p>non mi piace fare modifiche all’oracolo, anche se piccola non mi piace … perciò vorrei trovare un sistema alternativo per non dover stravoltere tutto l’URDF e nel contempo farlo funzionare</p></li>
+<li><p>posso provare a far venire il robot più vicino al marker, dopotutto ad ogni avvicinamento ho notato che è raro che il robot arrivi esattamente al target: rimane sempre un po’ più indietro rispetto all’allineamento tra il punto di partenza e il target</p></li>
+<li><p>(se riuscissi a raggiungere la threshold del prof <em>senza barare</em> sarei felicissimo)</p></li>
+</ul>
+</li>
+<li><p>in un futuro auspicabilmente non troppo lontano poi vorrei capire questo da moveit:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660412162.088435300, 130.624000000]: Completed trajectory execution with status ABORTED ...
+[ INFO] [1660412162.091503800, 130.627000000]: ABORTED: Solution found but controller failed during execution
+</pre></div>
+</div>
+</li>
+<li><p><strong>LIMITAZIONE</strong> 3.14 è ingegneristicamente parlando <em>zero radianti …</em></p></li>
+<li><p><strong>LIMITAZIONE</strong> penso che il wall following in questo contesto sia praticamente inutile. dovrei implementare un controller che non includa il wall follower, solo il go to point</p></li>
+<li><p><strong>LIMITAZIONE</strong> si attiva il wall follow perchè <em>il sensore laser va a colpire le ruote!</em></p></li>
+<li><p>ehi ha funzionato! <em>male, ma è già qualcosa</em></p></li>
+<li><p><strong>LIMITAZIONE</strong> il modello del robot fa proprio … schifo, e anche il controllo non è proprio tutto questo gran chè. l’architettura funziona bene, ma fatica veramente troppo ad andare avanti</p>
+<ul class="simple">
+<li><p>ci sono volte in cui il robot va contro il muro di lungo, si incastra e non riesce ad uscirne. posso pensare a qualche sistema per evitare che questo accada? oppure … forse meglio modificare il modello?</p></li>
+</ul>
+</li>
+<li><p>il robot funziona <em>leggermente meglio</em> se evito di andare troppo vicino al marker, al 90% ci sta, si può fare</p></li>
+<li><p><strong>COME LOGICA IL ROBOT FUNZIONA</strong></p></li>
+<li><p><strong>COMMIT</strong>: “testing (very near to the final tests)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>posso farmi venire un’idea per la navigazione… dopotutto ho i sensori laser a disposizione: quanto meno posso comandare al robot di “non avvicinarsi troppo” as un ostacolo, anche se però questo ha comunque i suoi rischi. Dovrei provare a sperimentare col sensore laser: l’idea sarebbe di creare un altro behaviour, che <em>prenda il controllo della situazione</em> (sto pensando ad un servizio) e allontani il robot da eventuali situazioni tipo quella in cui rimane incastrato. Sinceramente avrei preferito <em>evitare</em> a questo punto di fare altri lavori di implementazione … ma alla fine, se posso migliorare il progetto senza stravolgerlo troppo, va bene così.</p>
+<p>brain storming:</p>
+<ul class="simple">
+<li><p>il problema prima è sort quando il robot è arrivato <em>troppo vicino</em> al muro: si è inchiodato sul muro, e ha iniziato a premerci sopra per girare, causando un allineamento completo contro il muro che poi lo ha fatto incastrare</p></li>
+<li><p><em>se il robot avesse guardato in quel momento il sensore laser</em> avrebbe capito che la cosa migliore sarebbe stata <em>andare in retromarcia per guadagnare spazio di manovra</em></p></li>
+<li><p>il wall following è sicuramente da evitare in questo contesto</p></li>
+<li><p>il robot deve inoltre capire quando sta perdendo la posizione. capita spesso che, durante la rotazione, il robot tenda ad allontanarsi dalla posizione iniziale. se durante questa anomalia il robot si fosse segnato la posizione iniziale, e avesse continuamente controllato la distanza dal target, questo non sarebbe successo perchè il robot avrebbe capito che stava perdendo controllabilità, si sarebbe fermato e avrebbe ripreso a muoversi</p></li>
+<li><p>sicuramente un tuning migliore dei controlli serve, e serve anche secondo me <em>fissare delle velocità precise</em>, discretizzare le velocità piuttosto che mantenerle continue</p></li>
+<li><p>il modello sicuramente si può migliorare. avvicinando le ruote ad esempio si riuscirebbe a fare meno forza durante le fasi di rotazione</p></li>
+</ul>
+<p>e iniziamo a lavorarci su</p>
+<ul class="simple">
+<li><p>anzitutto, le ruote (sperando che questo già da solo migliori qualcosa)</p>
+<ul>
+<li><p>un piccolo test per capire se effettivamente c’è miglioramento</p></li>
+<li><p>INCREDIBILE! HA FUNZIONATO! stavo già iniziando a temere il peggio</p></li>
+</ul>
+</li>
+<li><p><strong>LIMITAZIONE</strong> c’è ancora qualche problema quando si tenta di raggiungere un’orientazione di 3.14, non saprei perchè, però per le altre orientazioni tutto funziona come dovrebbe</p></li>
+<li><p>a questo punto, potrei anche solo aggiungere una nuova azione all’attuale go_to_point per indietreggiare piuttosto che rifare da capo l’intero algoritmo di motion planning, MOLTO MEGLIO</p>
+<ul>
+<li><p>aggiunta dello stato</p></li>
+<li><p><em>ma go to point non ha il laser…</em></p></li>
+<li><p>(una soluzione anche solo vagamente decente? <em>e no, non voglio implementare un nuovo behaviour per una cosa così stupida</em>)</p></li>
+<li><p>la cosa migliore è usare bug_m , anche se come soluzione è un po’ sporca … <em>ma va bene lo stesso</em></p></li>
+<li><p>e allora, implementazione in bug_m sia!</p></li>
+<li><p>prova … e ho fatto un casino, sotili incubi logici in cui solo io riesco ad infilarmi</p></li>
+<li><p>dopo essermi fatto venire l’emicrania per un po’, <em>ora funziona</em></p></li>
+</ul>
+</li>
+<li><p>in realtà, guardando il risultato che ho ottenuto con poche semplici mosse, mi sembra veramente intuile stare a reimplementare l’universo. un grosso, grasso ,<em>va bene così</em>.</p></li>
+<li><p><strong>COMMIT</strong> : “working on robot model and navigation (stability and behavioural improvements)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>direi che siamo arrivati all’ultimo grande test: <em>il mission manager</em>, e tutta l’ensemble allegramente riunita</p>
+<ul class="simple">
+<li><p>prima di procedere però, voglio provare ancora la ricezione degli hints dall’oracolo, <em>stavolta usando il raggio di 0.25 originale del nodo.</em> se c’ho visto bene, con le migliorie che ho fatto funziona anche così.</p></li>
+<li><p><strong>ISSUE</strong> manca il riferimento al centro nella unit… risolto</p></li>
+<li><p>ancora una prova…</p>
+<ul>
+<li><p>devo provare a farlo avvicinare di più il robot, sperando di non cadere in comportamenti instabili come negli esempi precedenti</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> ancora un problema col landmark 2: il robot non va in centro, ma si limita ad andare verso unwaypoint a caso, dopodichè il programma termina, <em>e non so perchè</em></p>
+<ul>
+<li><p>(il sonno sta iniziando ad avere la meglio) <strong>ma se non compili ciccio, ma come pretendi che il sistema prenda la modifica?</strong></p></li>
+<li><p>capito, compilo e riproviamo</p></li>
+</ul>
+</li>
+<li><p><strong>LIMITAZIONE</strong> ci sono marker alti, e marker bassi … bisogna distinguere tra i due tipi</p></li>
+<li><p>risolviamo qualche limitazione</p>
+<ul>
+<li><p>più vicino ai markers! passiamo ad un 97.5% di vicinanza al marker</p></li>
+<li><p>e distinzione tra marker alti e marker bassi</p></li>
+<li><p><em>ma prima devo definire un subscriber del tutto analogo a quello della nav unit …</em></p></li>
+<li><p><em>e inoltre … ho appena scoperto che rosplan non mi invia il marker …</em></p></li>
+<li><p>proviamo a compilare .. a spranghe, compila</p></li>
+<li><p>voglio rivedere velocemente le poses nel pacchetto moveit, alzare la high e alzare leggermente la low</p></li>
+</ul>
+</li>
+<li><p>e test …</p>
+<ul>
+<li><p>ogni tanto si attiva il wall follow a caso … devo eliminarlo, altrimenti non se ne esce più</p></li>
+<li><p>e infatti senza il wall follower il robot va molto meglio. ancora non sono convintissimo della macchina a stati, ma va bene così per il momento</p></li>
+</ul>
+</li>
+<li><p>(mi sarei aspettato di fare prima)</p></li>
+<li><p>per il momento, l’aiutino sull’oracolo teniamolo: 0.25 è davvero troppo stretto.</p>
+<ul>
+<li><p>dovrei rifare il manipulation controller … poi, un altro giorno</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong> : “working on navigation (solving issued and limitations)”</p></li>
+<li><p>e ovviamnete cosa manca? un bel launch di aRMOR … bello</p></li>
+<li><p>a questo punto passiamo direttamente al test completo: il test parziale è un casino, e poi tanto prima o poi avrei dovuto farlo</p>
+<ul>
+<li><p>iniziato bene … poi il programma è letteralmente inciampato su se stesso. era altamente improbabile che andasse bene a primo colpo.</p></li>
+</ul>
+</li>
+<li><p><em>domani ci si pensa</em>, adesso a mezzanotte mi si incrociano gli occhi.</p></li>
+<li><p><strong>COMMIT</strong>: “first complete test (not working)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="prova-del-sistema-completo">
+<h2>14/08/2022 – prova del sistema completo<a class="headerlink" href="#prova-del-sistema-completo" title="Permalink to this heading"></a></h2>
+<p>debug del mission manager</p>
+<ul>
+<li><p>(andiamo per passi: uno stato alla volta, verificando che tutto proceda bene)</p></li>
+<li><p>inserisco una funzione che attenda l’input utente da console, una sorta di “breakpoint”</p>
+<ul>
+<li><p>vedi <a class="reference external" href="https://stackoverflow.com/questions/21257544/c-wait-for-user-input">stackoverflow</a> (ho cercato, magari esisteva un metodo più furbo … ma a quanto pare non è così)</p></li>
+<li><p>la macro:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#define WAITKEY_ENABLED true</span>
+<span class="cp">#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout &lt;&lt; &quot;press ENTER to continue ... &quot; ; sstd::cin.get( ) ; std::cout &lt;&lt; std::endl ; } }</span>
+</pre></div>
+</div>
+</li>
+<li><p>ne va messa una ad ogni ingresso di fase della missione, e una ad ogni statement <code class="docutils literal notranslate"><span class="pre">continue</span></code> o <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p></li>
+<li><p>compila? direi di sì (ma bisogna vedere se funge)</p></li>
+</ul>
+</li>
+<li><p>e passiamo a testare</p>
+<ul class="simple">
+<li><p>il primissimo REPLAN funziona
+-MISSION_STATUS_COLLECT per qualche ragione lancia REPLAN invece che COLLECT … e dal codice non sembra affatto chiaro quale sia il problema, dato che il landmark viene settato correttamente</p>
+<ul>
+<li><p><strong>BECCATO!</strong> nella <code class="docutils literal notranslate"><span class="pre">make_plan()</span></code> usavo come landmark LA COSTANTE piuttosto che il valore del parametro … boh</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> per qualche ragione non riceve lo shutdown il nodo. dopo aver fatto ctrl+C il nodo rimane in “stopping…” ma non si chiude</p></li>
+<li><p>la COLLECT funge</p></li>
+<li><p>e la ASK pure a quanto pare</p></li>
+</ul>
+</li>
+<li><p>stava andando tutto bene, fin quando il robot non è arrivato al quarto landmark:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new# rosrun robocluedo_mission_manager mission_manager
+[ INFO] [1660460418.195116500]: [robocluedo_mission_manager] starting ... 
+[ INFO] [1660460418.196407600]: [robocluedo_mission_manager] Opening client [/robocluedo/pipeline_manager] ...
+[ INFO] [1660460418.197618500]: [robocluedo_mission_manager] Opening client [/robocluedo/pipeline_manager] ... OK
+[ INFO] [1660460418.197674800]: [robocluedo_mission_manager] Opening client [/cluedo_armor/add_hint] ...
+[ INFO] [1660460418.198233900]: [robocluedo_mission_manager] Opening client [/cluedo_armor/add_hint] ... OK
+[ INFO] [1660460418.198291300]: [robocluedo_mission_manager] Opening client [/cluedo_armor/find_consistent_h] ...
+[ INFO] [1660460418.198825800]: [robocluedo_mission_manager] Opening client [/cluedo_armor/find_consistent_h] ... OK
+[ INFO] [1660460418.199101100]: [robocluedo_mission_manager] Opening client [/cluedo_armor/wrong_hypothesis] ...
+[ INFO] [1660460418.199661000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/wrong_hypothesis] ... OK
+[ INFO] [1660460418.199908500]: [robocluedo_mission_manager] Opening client [/cluedo_armor/backup] ...
+[ INFO] [1660460418.200465800]: [robocluedo_mission_manager] Opening client [/cluedo_armor/backup] ... OK
+[ INFO] [1660460418.200778500]: [robocluedo_mission_manager] Opening client [/oracle_solution] ...
+[ INFO] [1660460418.201464000]: [robocluedo_mission_manager] Opening client [/oracle_solution] ... OK
+[ INFO] [1660460418.201500800]: [robocluedo_mission_manager] subscribing to /oracle_hint ... 
+[ INFO] [1660460418.204203900]: [robocluedo_mission_manager] subscribing to /oracle_hint ... OK
+[ INFO] [1660460418.228821100]: [robocluedo_mission_manager] ready
+[ INFO] [1660460418.228863900]: [robocluedo_mission_manager] mission manager STARTING WORKING CYCLE
+press ENTER to continue ... 
+
+[ INFO] [1660460420.256930200, 145.951000000]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+press ENTER to continue ... 
+
+press ENTER to continue ... 
+
+[ INFO] [1660460432.031566100, 155.948000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ INFO] [1660460462.566825900, 181.214000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=who, value=missScarlett)
+[ INFO] [1660460462.846654800, 181.432000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+press ENTER to continue ... 
+
+[ INFO] [1660460493.867900700, 207.520000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+press ENTER to continue ... 
+
+[ INFO] [1660460507.569821400, 219.268000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660460507.569901300, 219.268000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ INFO] [1660460551.924768000, 256.869000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=3, key=what, value=rope)
+[ INFO] [1660460552.174746000, 257.041000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+
+
+press ENTER to continue ... 
+[ INFO] [1660460577.442745800, 278.420000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+press ENTER to continue ... 
+[ INFO] [1660460577.524677600, 278.500000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660460577.524750600, 278.500000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ INFO] [1660460614.284841800, 309.496000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=3, key=what, value=leadPipe)
+[ INFO] [1660460614.542821400, 309.706000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+press ENTER to continue ... 
+
+[ INFO] [1660460644.022687800, 334.679000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+press ENTER to continue ... 
+
+[ INFO] [1660460646.470102900, 336.749000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660460646.470179600, 336.749000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ INFO] [1660460689.925096000, 373.548000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=4, key=who, value=-1)
+[ INFO] [1660460689.925142300, 373.548000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) NOT VALID hint, skip
+press ENTER to continue ... 
+
+[ INFO] [1660460717.820632200, 397.160000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+press ENTER to continue ... 
+
+[ INFO] [1660460719.465309900, 398.545000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660460719.465353000, 398.545000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ WARN] [1660460724.006679600, 402.454000000]: [robocluedo_mission_manager] WARNING: unable to load the problem! RETRYING
+press ENTER to continue ... 
+
+[ WARN] [1660460741.215243700, 417.067000000]: [robocluedo_mission_manager] WARNING: status: MISSION_STATUS_COUNT_FAULT (remaining 9)
+press ENTER to continue ... 
+
+[ INFO] [1660460743.781805500, 419.283000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ WARN] [1660460748.547209900, 423.408000000]: [robocluedo_mission_manager] WARNING: unable to load the problem! RETRYING
+press ENTER to continue ... 
+
+[ WARN] [1660460778.918767200, 449.660000000]: [robocluedo_mission_manager] WARNING: status: MISSION_STATUS_COUNT_FAULT (remaining 8)
+press ENTER to continue ... 
+
+[ INFO] [1660460784.046885600, 454.064000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ WARN] [1660460786.128425500, 455.724000000]: [robocluedo_mission_manager] WARNING: unable to load the problem! RETRYING
+press ENTER to continue ... 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>c’è un output molto strano dal pipeline manager in questo caso:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[INFO] [1660460723.687263, 402.195000]: (rosplan_pipeline_manager) problem interface -- loading problem ...
+&lt;class &#39;int&#39;&gt;
+[ INFO] [1660460723.912317100, 402.372000000]: KCL: (/rosplan_knowledge_base) Removing goal (hint-collected)
+[ INFO] [1660460723.923327800, 402.385000000]: KCL: (/rosplan_knowledge_base) Removing goal (at)
+[INFO] [1660460748.265953, 423.156000]: (rosplan_pipeline_manager) problem interface -- loading problem ...
+&lt;class &#39;int&#39;&gt;
+[INFO] [1660460785.780212, 455.469000]: (rosplan_pipeline_manager) problem interface -- loading problem ...
+&lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(che python abbia colpito ancora?)</p></li>
+<li><p>il problema è che al mission manager arriva false al loading, il che mi sembra piuttosto strano perchè nulla cancella il file da caricare, e inoltre la lettura ha funzionato bene finora, quindi mi pare piuttosto improbabile che proprio quello non funzioni.</p></li>
+<li><p>penso più ad un problema di flags: il pipeline manager invia false quando dovrebbe inviare true sul load e false sul solve</p>
+<ul>
+<li><p>un’occhiata al pipeline manager…</p></li>
+<li><p>guardando il codice e guardando l’output mi pare stranissimo che il codice si pianti a quel punto … tempo che ci sia un altro fastidiosissimo errore Python alla callback, nascosto da <code class="docutils literal notranslate"><span class="pre">2&gt;/dev/null</span></code></p></li>
+<li><p>devo runnare rosplan in una bash a parte per poter osservare questo errore</p></li>
+</ul>
+</li>
+<li><p><strong>BECCATO!</strong> l’errore sta nella outcome al verificarsi di questa situazione</p></li>
+</ul>
+<p>outout ROSPlan: (vedi in particolare l’ultima riga)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660461899.384484700, 368.281000000]: KCL: (/rosplan_plan_dispatcher) Action [2] is 1660461558.747440 second(s) late
+[ INFO] [1660461899.387802700, 368.281000000]: KCL: (collect-hint) action received
+[ INFO] [1660461899.395119400, 368.290000000]: KCL: (/rosplan_knowledge_base) Removing Fact (not-hint-collected,0)
+[ INFO] [1660461899.395371600, 368.290000000]: KCL: (/rosplan_knowledge_base) Removing Fact (hint-ready,0)
+[ INFO] [1660461899.395691800, 368.289000000]: [collect_hint] (collect-hint ?wp4)
+[ INFO] [1660461899.395955200, 368.289000000]: [collect_hint] manipulator PHASE 1
+[ INFO] [1660461899.486790600, 368.360000000]: KCL: (/rosplan_plan_dispatcher) Feedback received [2, 1]
+[ INFO] [1660461899.486843400, 368.360000000]: KCL: (/rosplan_plan_dispatcher) Feedback received [2, 1]
+[ INFO] [1660461909.056033800, 376.331000000]: [collect_hint] manipulator WAITING
+[ INFO] [1660461911.484642900, 378.333000000]: [collect_hint] manipulator PHASE 2
+[ INFO] [1660461920.840904400, 386.340000000]: KCL: (collect-hint) action completed successfully
+[ INFO] [1660461920.850418500, 386.352000000]: KCL: (/rosplan_knowledge_base) Adding fact (hint-collected wp4, 0)
+[ INFO] [1660461920.850520100, 386.352000000]: KCL: (/rosplan_knowledge_base) Adding fact (not-hint-ready, 0)
+[ INFO] [1660461920.852806600, 386.356000000]: KCL: (/rosplan_plan_dispatcher) Feedback received [2, 2]
+[ INFO] [1660461920.993050300, 386.455000000]: KCL: (/rosplan_plan_dispatcher) Dispatch complete.
+[INFO] [1660461927.192263, 391.719000]: (rosplan_pipeline_manager) problem interface -- loading problem ...
+[ INFO] [1660461927.382111400, 391.884000000]: KCL: (/rosplan_knowledge_base) Removing goal (hint-collected)
+[ INFO] [1660461927.398705300, 391.894000000]: KCL: (/rosplan_knowledge_base) Removing goal (at)
+[WARN] [1660461927.484973, 391.963000]: (rosplan_pipeline_manager) unable to apply the landmark 1 (reason: landmark not applicable)
+</pre></div>
+</div>
+<p>output mission manager:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660461854.394579400, 330.383000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+press ENTER to continue ... 
+
+[ INFO] [1660461856.196549900, 331.908000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660461856.196642700, 331.908000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ INFO] [1660461896.403702500, 365.783000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=2, key=who, value=missScarlett)
+[ INFO] [1660461896.560204400, 365.880000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+press ENTER to continue ... 
+
+[ INFO] [1660461924.169541900, 389.179000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+press ENTER to continue ... 
+
+[ INFO] [1660461925.436996600, 390.256000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660461925.437071300, 390.256000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ WARN] [1660461927.486965400, 391.966000000]: [robocluedo_mission_manager] WARNING: unable to load the problem! RETRYING
+press ENTER to continue ... 
+
+[ WARN] [1660462017.573408400, 468.375000000]: [robocluedo_mission_manager] WARNING: status: MISSION_STATUS_COUNT_FAULT (remaining 9)
+press ENTER to continue ... 
+
+[ INFO] [1660462019.221448000, 469.797000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+press ENTER to continue ... 
+
+[ WARN] [1660462021.992463400, 472.069000000]: [robocluedo_mission_manager] WARNING: unable to load the problem! RETRYING
+press ENTER to continue ... 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>questo significa che fortunatamente il problema sta nel mission manager (quindi è facile da risolvere … fiuuuu … )</p></li>
+<li><p>c’è una particolarità nel servizio rosplan pipeline manager: quando il landmark non è applicabile, il pipeline manager <em>non chiama comunque il planner</em>, ma dopo aver approvato la non applicabilità del landmark, ritorna che la load non può essere eseguita. quindi, nel landmark 1, questo non è un caso di errore, ma un caso che semplicemente modifica lo stato</p>
+<ul>
+<li><p><em>una domanda fastidiosa</em> : ma se quel false fosse riferito invece ad una <em>failure</em> del servizio? può succedere dopotutto</p>
+<ul>
+<li><p><em>bella domanda…</em></p></li>
+</ul>
+</li>
+<li><p>una soluzione può essere quella di aggiungere un flag che permetta di distinguere la non applicabilità del landmark dalla failure vera e propria</p>
+<ul>
+<li><p>aggiunta del campo al servizio</p></li>
+<li><p><em>modifica al pipeline manager</em> (occhio………)</p></li>
+<li><p>e modifica al mission manager per supportare il nuovo flag</p></li>
+<li><p>compilare compila</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>e si prova di nuovo</p>
+<ul>
+<li><p>voglio provare a togliere i waitkey e a vedere come va “a briglie sciolte”</p></li>
+<li><p><em>per il futuro</em> sarebbe meglio fare una modalità di debug che funzioni da parameter server piuttosto che definire dei parametri e dover ricompilare tutto ogni volta</p></li>
+<li><p><strong>E UNA E’ ANDATA!</strong></p></li>
+</ul>
+</li>
+<li><p>ora, c’è un problema con le ipotesi consistenti.</p></li>
+</ul>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new# rosrun robocluedo_mission_manager mission_manager
+[ INFO] [1660464813.088098700]: [robocluedo_mission_manager] starting ... 
+[ INFO] [1660464813.090170500]: [robocluedo_mission_manager] Opening client [/robocluedo/pipeline_manager] ...
+[ INFO] [1660464813.091644400]: [robocluedo_mission_manager] Opening client [/robocluedo/pipeline_manager] ... OK
+[ INFO] [1660464813.092038000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/add_hint] ...
+[ INFO] [1660464813.094735800]: [robocluedo_mission_manager] Opening client [/cluedo_armor/add_hint] ... OK
+[ INFO] [1660464813.095365700]: [robocluedo_mission_manager] Opening client [/cluedo_armor/find_consistent_h] ...
+[ INFO] [1660464813.097256000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/find_consistent_h] ... OK
+[ INFO] [1660464813.097323300]: [robocluedo_mission_manager] Opening client [/cluedo_armor/wrong_hypothesis] ...
+[ INFO] [1660464813.098976400]: [robocluedo_mission_manager] Opening client [/cluedo_armor/wrong_hypothesis] ... OK
+[ INFO] [1660464813.099051400]: [robocluedo_mission_manager] Opening client [/cluedo_armor/backup] ...
+[ INFO] [1660464813.100113600]: [robocluedo_mission_manager] Opening client [/cluedo_armor/backup] ... OK
+[ INFO] [1660464813.100198100]: [robocluedo_mission_manager] Opening client [/oracle_solution] ...
+[ INFO] [1660464813.104764600]: [robocluedo_mission_manager] Opening client [/oracle_solution] ... OK
+[ INFO] [1660464813.104856800]: [robocluedo_mission_manager] subscribing to /oracle_hint ... 
+[ INFO] [1660464813.107836100]: [robocluedo_mission_manager] subscribing to /oracle_hint ... OK
+[ INFO] [1660464813.107976100]: [robocluedo_mission_manager] ready
+[ INFO] [1660464813.108064500]: [robocluedo_mission_manager] mission manager STARTING WORKING CYCLE
+
+[ INFO] [1660464813.108126700]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+
+[ INFO] [1660464819.133991300, 144.109000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660464882.251502800, 197.926000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=1, key=, value=revolver)
+[ INFO] [1660464882.251554600, 197.926000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) NOT VALID hint, skip
+[ INFO] [1660464906.749652000, 219.549000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660464906.875105900, 219.635000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+
+[ INFO] [1660464906.875148700, 219.635000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660464940.332236900, 248.285000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=2, key=what, value=rope)
+[ INFO] [1660464940.666278200, 248.518000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660464965.108541000, 269.932000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660464965.190347900, 269.992000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+
+[ INFO] [1660464965.190460400, 269.992000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660464993.823901000, 294.687000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=5, key=who, value=mrsWhite)
+[ INFO] [1660464994.028262600, 294.833000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660465021.162767200, 318.449000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660465021.240666700, 318.513000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+
+[ INFO] [1660465021.240766100, 318.513000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660465057.858384000, 349.682000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=5, key=what, value=revolver)
+[ INFO] [1660465058.093437000, 349.853000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660465082.987075500, 371.376000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660465083.025977500, 371.416000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+
+[ INFO] [1660465083.026057500, 371.416000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ WARN] [1660465083.370297200, 371.676000000]: [robocluedo_mission_manager] WARNING: landmark COLLECT no longer applicable (all the waypoints have been explored) TRYING TO directly SOLVE THE MYSTERY
+
+[ INFO] [1660465083.370458800, 371.678000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660465083.451198800, 371.717000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) REPLANNING
+
+[ INFO] [1660465083.451276500, 371.717000000]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+
+[ INFO] [1660465089.413400700, 376.855000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660465147.673380700, 426.049000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=5, key=when, value=-1)
+[ INFO] [1660465147.673434500, 426.049000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) NOT VALID hint, skip
+[ INFO] [1660465172.558713000, 447.613000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660465172.659145500, 447.675000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+
+[ INFO] [1660465172.659197000, 447.675000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660465206.605444200, 476.502000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=5, key=where, value=bathroom)
+[ INFO] [1660465206.803322900, 476.625000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660465231.859765100, 498.152000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+
+
+[ INFO] [1660465231.957811700, 498.233000000]: [robocluedo_mission_manager] (from the ontology) found 1consistent hypotheses
+
+
+[ INFO] [1660465231.957864000, 498.233000000]: [robocluedo_mission_manager] status: MISSION_STATUS_SOLVE
+[ WARN] [1660465233.820674500, 499.839000000]: [robocluedo_mission_manager] WARNING: UNEXPECTED! Plan not solvable, can&#39;t find a solution (maybe a issue with the PDDL model?)
+[ WARN] [1660465233.820753800, 499.839000000]: [robocluedo_mission_manager] WARNING: status: MISSION_STATUS_COUNT_FAULT (remaining 9)
+
+
+[ INFO] [1660465233.820833900, 499.839000000]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+[ INFO] [1660465239.883059400, 504.990000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+^C[ INFO] [1660465358.404594600, 604.827000000]: [robocluedo_mission_manager] stopping... 
+root@3b17871017fd:~/ros_ws/src/erl2-new# 
+
+</pre></div>
+</div>
+<ul>
+<li><p><strong>ASPETTA UN ATTIMO! CHE COSA SAREBBE <code class="docutils literal notranslate"><span class="pre">when</span></code>???</strong></p>
+<ul>
+<li><p>maaaaa non l’avevo visto! non avevo notato il caso 4!</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">key</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">value</span><span class="o">=</span><span class="n">person</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">2</span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">key</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">value</span><span class="o">=</span><span class="n">object</span><span class="p">[</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">3</span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">key</span><span class="o">=</span><span class="s">&quot;when&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;-1&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">4</span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">key</span><span class="o">=</span><span class="s">&quot;who&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">oracle_msg</span><span class="p">.</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;-1&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>ISSUE</strong> occorre aggiungere un altro controllo di validità: la key dev’essere <em>esattamente</em> una tra who, where e what</p></li>
+<li><p>ok niente, incidentalmente avevo già pensato a questa eventualità, vedi implementazione attuale di add hint. anche fosse passato, non sarebbe stato accettato da aRMOR</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">property</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="o">-&gt;</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">Belem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">property</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;who&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="o">-&gt;</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">Belem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">property</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;what&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="o">-&gt;</span><span class="n">AddIndiv</span><span class="p">(</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">Belem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">OUTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ERROR: not a valid hint property (received &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">hint</span><span class="p">.</span><span class="n">property</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">success</span><span class="p">.</span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>devo capire adesso perchè a quel punto il plan non è risolvibile. pare esserci un problema quando il robot richiama la move to center per la seconda volta</p>
+<ul class="simple">
+<li><p>potrebbe essere un disguido con le preconditions di move to center?</p></li>
+<li><p><strong>BECCATO!</strong> ricordo che nell’esecuzione di prima (dannato me che ho chiuso la console senza annotare…) il robot è passato dal centro, quindi il centro era come se fosse stato già esplorato</p></li>
+<li><p>in quel caso, <em>bisogna richiamare il replan</em> e poi procedere con la soluzione</p></li>
+<li><p>riguardando il PDDL Potrei aver notato una falla grande quanto una casa nella parte del solve … il predicato <code class="docutils literal notranslate"><span class="pre">(not-hint-ready</span> <span class="pre">)</span></code> viene usato malissimo, in maniera proprio insensata. e nell’output del planner questi manca, così come il suo opposto <code class="docutils literal notranslate"><span class="pre">(hint-ready</span> <span class="pre">)</span></code></p>
+<ul>
+<li><p>nel problema iniziale c’è, quindi la kb interface evidentemente lo cancella o non tiene conto della sua presenza come dovrebbe, vero? …</p></li>
+<li><p>… <em>mi sbagliavo.</em></p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> però avevo ragione su <code class="docutils literal notranslate"><span class="pre">(not-hint-ready</span> <span class="pre">)</span></code>, non mi piace come viene usato, e se c’ho visto bvene può anche essere eliminato e basta</p></li>
+</ul>
+</li>
+<li><p>il problema con la solve è di natura <em>topologica</em>.</p>
+<ul class="simple">
+<li><p>attualmente la mappa è costituito da un unico percorso (per ragioni di semplicità) centro -&gt; wp1 -&gt; wp1 -&gt; wp3 -&gt; wp4 &lt;-&gt; centro</p></li>
+<li><p>ogni volta che il robot usa la move-to verso un wp, il wp di arrivo viene marcato come explored</p></li>
+<li><p>nel caso precedente, il robot è partito da wp4 anzichè dal centro, ha chiamato la move-to-center, e poi la move-to su wp1 e poi su wp2 fin quando non ha trovato un’ipotesi consistente</p></li>
+<li><p>il sistema allora ha chiamato il landmark SOLVE per muovere il robot al centro</p></li>
+<li><p>qui il planner non è stato in grado di trovare una soluzione: non poteva chiamare move-to-center perchè non esiste un percorso che leghi wp2 al centro, quindi bisogna passare per altri punti, <strong>e la knowledge base interface mantiene il flag explored</strong> quindi wp4 risultava <em>explored</em>, e la move-to non consente di passare da un punto explored! <strong>ecco perchè plan unsolvable</strong></p></li>
+</ul>
+</li>
+<li><p>il problema si può risolvere facilmente facendo replanning prima di richiamare il solve, facile se hai un flag “readu_to_solve” nel codice del mission manager</p>
+<ul class="simple">
+<li><p>trovo sia più che lecito che la kb interface tratti in questa maniera i waypoints, altrimenti il robot ripeterebbe lo stesso movimento</p></li>
+<li><p>quello che non capisco però, e che non mi va bene, è che <em>la kb interface avrebbe dovuto controllare l’applicabilità dell’azione</em>, e il pipeline manager avrebbe dovuto controllare che il landmark fosse applicabile</p>
+<ul>
+<li><p>infatti non c’è alcun check nella kb interface a riguardo</p></li>
+</ul>
+</li>
+<li><p>altra domanda spinosa, <em>e come lo implementerei questo check?</em></p>
+<ul>
+<li><p>temo non ci sia alcun modo facile a dire il vero… cosa dovrei fare? verifico che esista un percorso tra wp2 e il centro? mi sembra assurdo, e complicherebbe inutilmente un nodo che già è un prodotto altamente custom nonostante gli sforzi per renderlo vagamanete generale</p></li>
+</ul>
+</li>
+<li><p>quindi <em>la soluzione migliore</em> (mio modesto parere) <em>è di cambiare reazione alla plan unsolvable</em> ordinando un replan</p></li>
+</ul>
+</li>
+<li><p>quindi,</p>
+<ul class="simple">
+<li><p>modifica mission manager per supportare il replan intermedio</p></li>
+</ul>
+</li>
+<li><p><strong>LIMITAZIONE</strong> bisognerebbe ristrutturare leggermente la kb interface in modo tale che riesca a gestire vari aspetti distinti del problema: ad esempio la topologia, distinta da la localizzazione, e tutto il resto. Se il compito della kb_interface è quello di <em>fornire servizi specializzati</em> al sistema, allora penso si possa fare molto di più.</p>
+<ul class="simple">
+<li><p>un altro difetto potrebbe essere mischiare troppo le cose tra pipeline manager e kb interface. la kb interface sarebbe meglio che fosse un nodo che esponga servizi <em>anche al di fuori del package</em>.</p></li>
+<li><p>unico compito del pipeline manager è quello di <em>gestire il flusso di esecuzione in base ai landmarks</em>, il che sicuramente coinvolge la kb_interface, <em>ma sempre nel pieno rispetto del compito iniziale</em>: la pipeline manager <em>non dovrebbe offrire servizi diversi dall’esecuzione di uno specifico landmark</em> e il fornire una prima spiegazione ad eventuali problemi che possono sorgere</p></li>
+<li><p>quando la pipeline manager solleva un problema, la kb_interface dovrebbe mettere a disposizione dei servizi separati per aiutare a comprendere il problema.</p></li>
+<li><p><em>attualmente la kb_interface ha solo rilevanza interna, e il pipeline manager fa tutto</em>, dando luogo a situazioni ambigue come quella che ho appena visto.</p></li>
+</ul>
+</li>
+<li><p>e si torna a provare</p>
+<ul class="simple">
+<li><p>… la prova infinita (senza nulla di insolito) … meglio riavviare</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> nessun backup dalla ontology! (me lo sono dimenticato onestamente)</p></li>
+<li><p>e si prova ancora (sperando stavolta di ottenere un’ipotesi consistente in tempi ragionevoli, così provo tutto il flow una volta e fine)</p>
+<ul class="simple">
+<li><p>e alla ASK_ORACLE ci siamo arrivati!</p></li>
+<li><p>però adesso va in ciclo infinito su quello stesso stato … e conoscendomi so <em>perfettamente</em> perchè (dannato me che copio incollo selvaggiamente)</p></li>
+<li><p>totalmente missato lo stato successivo … bello</p></li>
+</ul>
+</li>
+<li><p>giusto un’occhiata alla ontology dato che ci siamo fermati</p>
+<ul class="simple">
+<li><p>sembra ben formata: la deduzione era corretta, anche se non era soluzione del caso</p></li>
+</ul>
+</li>
+<li><p><em>e proviamo ancora</em></p>
+<ul class="simple">
+<li><p>stesso problema di prima …</p></li>
+<li><p><strong>indovina un po’ chi ha dimenticato di ricompilare? ARIDANGHETEEEEEE</strong></p></li>
+</ul>
+</li>
+<li><p>beh, a questo punto faccio una modifica all’oracolo giusto per fare i test più velocemente</p></li>
+<li><p><strong>COMMIT</strong> : “testing (mission manager debugging, erl oracle debug mode)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>eeee ennesiam sessione di test:</p>
+<ul>
+<li><p>(dopo aver aggiunto la modalità di sviluppo all’oracolo)</p></li>
+<li><p>serve documentare nei test</p></li>
+<li><p><em>e ora</em>, indaghiamo (sul senso della vita)</p>
+<ul class="simple">
+<li><p><strong>COMPILAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</strong></p></li>
+<li><p>ho fatto un <em>mezzo</em> casino con l’oracolo, ma si risolve facilmente</p></li>
+<li><p><strong>COMPILAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</strong></p></li>
+</ul>
+</li>
+<li><p>visto come vanno le cose posso anche settare direttamente lo SCALING_FACTOR a 0.99</p></li>
+<li><p><strong>EANDIAMO.</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new# rosrun robocluedo_mission_manager mission_manager
+[ INFO] [1660477923.310792700]: [robocluedo_mission_manager] starting ... 
+[ INFO] [1660477923.338249500]: [robocluedo_mission_manager] Opening client [/robocluedo/pipeline_manager] ...
+[ INFO] [1660477923.340275700]: waitForService: Service [/robocluedo/pipeline_manager] has not been advertised, waiting...
+[ INFO] [1660477937.913722200, 138.900000000]: waitForService: Service [/robocluedo/pipeline_manager] is now available.
+[ INFO] [1660477937.913775000, 138.900000000]: [robocluedo_mission_manager] Opening client [/robocluedo/pipeline_manager] ... OK
+[ INFO] [1660477937.913804300, 138.900000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/add_hint] ...
+[ INFO] [1660477937.915489500, 138.901000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/add_hint] ... OK
+[ INFO] [1660477937.915635100, 138.901000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/find_consistent_h] ...
+[ INFO] [1660477937.916569100, 138.902000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/find_consistent_h] ... OK
+[ INFO] [1660477937.916651500, 138.902000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/wrong_hypothesis] ...
+[ INFO] [1660477937.917376500, 138.902000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/wrong_hypothesis] ... OK
+[ INFO] [1660477937.917413400, 138.902000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/backup] ...
+[ INFO] [1660477937.918439600, 138.904000000]: [robocluedo_mission_manager] Opening client [/cluedo_armor/backup] ... OK
+[ INFO] [1660477937.918480900, 138.904000000]: [robocluedo_mission_manager] Opening client [/oracle_solution] ...
+[ INFO] [1660477937.919124000, 138.906000000]: [robocluedo_mission_manager] Opening client [/oracle_solution] ... OK
+[ INFO] [1660477937.919214500, 138.906000000]: [robocluedo_mission_manager] subscribing to /oracle_hint ... 
+[ INFO] [1660477937.922416100, 138.909000000]: [robocluedo_mission_manager] subscribing to /oracle_hint ... OK
+[ INFO] [1660477937.922479500, 138.909000000]: [robocluedo_mission_manager] ready
+[ INFO] [1660477937.922499700, 138.909000000]: [robocluedo_mission_manager] mission manager STARTING WORKING CYCLE
+[ INFO] [1660477937.922518700, 138.909000000]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+[ INFO] [1660477943.840810200, 143.947000000]: [robocluedo_mission_manager] gotta catch &#39;em all! NA NA NA NA NA NA
+[ INFO] [1660477943.840866700, 143.947000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660478000.065528700, 191.676000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=who, value=missScarlett)
+[ INFO] [1660478000.337667300, 191.893000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660478015.775549300, 205.276000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478015.820921200, 205.316000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660478015.820994300, 205.316000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660478064.410216300, 246.860000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=who, value=missScarlett)
+[ INFO] [1660478064.495085900, 246.920000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660478074.302948400, 255.592000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478074.337975300, 255.617000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660478074.338025600, 255.617000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660478115.632459800, 291.042000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=who, value=missScarlett)
+[ INFO] [1660478115.683327800, 291.083000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660478130.942204600, 304.335000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478130.976974500, 304.349000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660478130.977089700, 304.349000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660478181.943447500, 348.124000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=where, value=conservatory)
+[ INFO] [1660478182.066006900, 348.211000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660478192.309954000, 356.905000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478192.348465100, 356.941000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660478192.348579000, 356.941000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ WARN] [1660478192.701782900, 357.215000000]: [robocluedo_mission_manager] WARNING: landmark COLLECT no longer applicable (all the waypoints have been explored) TRYING TO directly SOLVE THE MYSTERY
+[ INFO] [1660478192.701833500, 357.215000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478192.729748300, 357.237000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) REPLANNING
+[ INFO] [1660478192.729869700, 357.237000000]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+[ INFO] [1660478198.633827100, 362.407000000]: [robocluedo_mission_manager] gotta catch &#39;em all! NA NA NA NA NA NA
+[ INFO] [1660478198.633924300, 362.407000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660478264.932059200, 419.078000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=where, value=conservatory)
+[ INFO] [1660478265.044341400, 419.157000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660478280.620287300, 432.618000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478280.649785900, 432.651000000]: [robocluedo_mission_manager] no brilliant ideas from the RoboCLuedo B.B.B. (Big Brain Bruh) COLLECTING AGAIN
+[ INFO] [1660478280.649918600, 432.651000000]: [robocluedo_mission_manager] status: MISSION_STATUS_COLLECT
+[ INFO] [1660478329.181607100, 474.499000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) received hint with content (ID=0, key=what, value=candlestick)
+[ INFO] [1660478329.265570900, 474.543000000]: [robocluedo_mission_manager] (cbk_oracle_hint, add hint) valid hint received and registered
+[ INFO] [1660478339.478846100, 483.301000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ONTOLOGY
+[ INFO] [1660478339.550077100, 483.357000000]: [robocluedo_mission_manager] (from the ontology) found consistent hypotheses : 1
+[ INFO] [1660478339.550119700, 483.357000000]: [robocluedo_mission_manager] status: MISSION_STATUS_SOLVE
+[ INFO] [1660478341.487364700, 484.998000000]: [robocluedo_mission_manager] plan not solvable (need intermediate replanning
+[ INFO] [1660478341.487517600, 484.998000000]: [robocluedo_mission_manager] status: MISSION_STATUS_REPLAN
+[ INFO] [1660478347.442209500, 490.266000000]: [robocluedo_mission_manager] retrying landmark SOLVE after replanning
+[ INFO] [1660478347.442323200, 490.266000000]: [robocluedo_mission_manager] status: MISSION_STATUS_SOLVE
+[ INFO] [1660478446.738491300, 575.338000000]: [robocluedo_mission_manager] status: MISSION_STATUS_ASK_ORACLE
+[ INFO] [1660478446.744114100, 575.344000000]: [robocluedo_mission_manager] Narrator voice: 
+	(wispering) RoboCLuedo thinks that the solution is ID=0
+[ INFO] [1660478446.744179800, 575.344000000]: [robocluedo_mission_manager] RoboCLuedo: 
+	WELL, missScarlett, DID YOU MURDER Dr. Black ? 
+
+		HUH?
+
+
+[ INFO] [1660478446.744212400, 575.344000000]: [robocluedo_mission_manager] Oracle: 
+	ID=0 is the way
+[ INFO] [1660478446.744237500, 575.344000000]: [robocluedo_mission_manager] gg ez
+[ INFO] [1660478446.744257000, 575.344000000]: [robocluedo_mission_manager] ==== ID=0 | where[conservatory] what[candlestick] who[missScarlett] ====
+</pre></div>
+</div>
+<p><em>suono di microfono che viene lasciato cadere per terra</em>.</p>
+</li>
+<li><p><strong>COMMIT</strong> “happy commit!”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="ultime-issues-documentazione-del-codice-e-deploy">
+<h2>15/08/2022 – ultime issues – documentazione del codice e deploy<a class="headerlink" href="#ultime-issues-documentazione-del-codice-e-deploy" title="Permalink to this heading"></a></h2>
+<p>anzitutto, un piccolo elenco di quello che devo fare per il deployment:</p>
+<ul class="simple">
+<li><p>(OK) – rimuovere eventuali modalità di backup da in giro per il codice</p>
+<ul>
+<li><p>erl2 simulation.cpp (casomai crea una versione alternativa del nodo)</p></li>
+<li><p>mission manager</p></li>
+</ul>
+</li>
+<li><p>revisione del codice</p>
+<ul>
+<li><p>(OK) – migliorare il log dal mission manager</p></li>
+<li><p>… (magari qualcosa segnato nel TODO?)</p></li>
+<li><p>ultima volta, il module testing (giusto per essere sicuri)</p></li>
+</ul>
+</li>
+<li><p>ultimi diagrammi UML</p>
+<ul>
+<li><p>con un “dizionario” delle interfacce</p></li>
+<li><p>elimina i diagrammi sbagliati o troppo vecchi (da questo progetto esiste uno standard)</p></li>
+<li><p>… (quali mancano?)</p></li>
+<li><p>… (sequence diagrams?)</p></li>
+</ul>
+</li>
+<li><p>ultima prova <em>filmata</em> del sistema in funziona</p>
+<ul>
+<li><p>prima con la modalità di sviluppo nell’oracolo</p></li>
+<li><p>poi senza modalità di sviluppo</p></li>
+</ul>
+</li>
+<li><p>documentazione ausiliaria sui singoli progetti:</p>
+<ul>
+<li><p>sarebbe meglio iniziare mettendo a posto le toctree in giro per il codice</p></li>
+<li><p>armor</p></li>
+<li><p>rosplan</p></li>
+<li><p>robot</p></li>
+<li><p>movement controller</p></li>
+<li><p>mission manager</p></li>
+</ul>
+</li>
+<li><p>come runnare il progetto - versione definitiva</p>
+<ul>
+<li><p>launch rapido</p></li>
+<li><p>launch nodo per nodo (con descrizione del progetto)</p></li>
+</ul>
+</li>
+<li><p>documentazione del codice</p>
+<ul>
+<li><p>creazione delle cartelle source code con il codice dentro</p></li>
+<li><p>prima vedi che esce solo così</p></li>
+<li><p>poi correggi l’output</p></li>
+</ul>
+</li>
+<li><p>ultima revisione della documentazione del codice</p></li>
+<li><p>scrittura del README</p>
+<ul>
+<li><p>struttura (classica) del readme</p></li>
+<li><p>e scrittura del contenuto (molto può essere rimandato alla documentazione)</p></li>
+</ul>
+</li>
+<li><p>e caricamento della documentazione su GitHub</p></li>
+</ul>
+<p>devo fare almeno parte di questo lavoro se voglio iniziare il terzo assignment, che consisterà in una leggera modifica di questo secondo assignment e nulla di più.</p>
+<hr class="docutils" />
+<p>andiamo col lavoro:</p>
+<ul class="simple">
+<li><p>via tutte le modalità di sviluppo</p>
+<ul>
+<li><p>da simulation</p></li>
+<li><p>la threshold a 0.35 ieri funzionava bene … se la abbassassi a 0.3?</p>
+<ul>
+<li><p>proviamo</p></li>
+<li><p><em>posso abbassarlo ancora</em>, stavolta a 0.25</p></li>
+<li><p>anche a 0.25 (la distanza <em>iniziale</em>) pare funzionare, e non dovrebbe missarne nessuno</p></li>
+</ul>
+</li>
+<li><p><em>direi di lasciare la distanza a 0.25 com’era all’inizio</em></p></li>
+</ul>
+</li>
+<li><p>già che ci sono, rivedo i log dal mission manager</p>
+<ul>
+<li><p><em>suspence</em></p></li>
+<li><p>ora il nodo ha anche DEVELOP_PRINT_ENABLED che permette di stampare quei print che di norma non sarebbe utile stampare.</p></li>
+<li><p>proviamo se funziona, giusto per accertarmi di non aver scritto castronerie</p></li>
+<li><p>funziona tutto a dovere. Ottimo.</p></li>
+<li><p><strong>COMMIT</strong>: “deployment (logs more clear from the mission manager)”</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>ora, i diagrammi UML mancanti. direi di andare per package:</p>
+<ul class="simple">
+<li><p>giusto per non doverli riscrivere tutte le volte, ecco qualche template per i servizi e i topic in UML: (avrei dovuto fare prima questo lavoro…)</p></li>
+</ul>
+<p><strong>topics</strong>:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>``\`
+@startuml
+	
+() &quot;/???&quot; as TOPIC_???
+&#39;&#39;&#39; TOPIC_??? &lt;-- &quot;pub&quot; NODE_???
+&#39;&#39;&#39; TOPIC_??? --&gt; &quot;sub&quot; NODE_???
+note on link: ???/???.msg
+	
+@enduml
+``\`
+</pre></div>
+</div>
+<p><strong>services:</strong></p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>``\`
+@startuml
+
+() &quot;/???&quot; as SRV_???
+&#39;&#39;&#39; SRV_??? &lt;-- &quot;srv&quot; NODE_???
+&#39;&#39;&#39; SRV_??? --&gt; &quot;cl&quot; NODE_???
+note on link: ???/???.srv
+
+@enduml
+``\`
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>iniziamo dal package di aRMOR e armor msgs</p>
+<ul>
+<li><p>documentazione delle interfacce</p></li>
+<li><p>ora c’è anche un giga UML per aRMOR, direi che siamo soddisfatti</p></li>
+<li><p>mancano gli esempi, che mi tocca riconvertire da Doxygen a Sphinx</p>
+<ul>
+<li><p>peccato però, lo stile di Doxygen mi piaceva abbastanza … graficamente orrendo, ma metteva i link belli sistemati in automatico</p></li>
+</ul>
+</li>
+<li><p>e serve anche un documento in cui trascrivere i comandi aRMOR dal module testing</p></li>
+<li><p>ora manca solo la documentazione del codice, che peraltro è già fatta: devo solo espanderla</p></li>
+<li><p>se non ricordo male, avevo scritto anche delle informazioni su come configurare il componente… al vecchio progetto!</p></li>
+</ul>
+</li>
+<li><p>mi sono accorto che nel package erano rimasti dei vecchi parametri … togliendoli non esploder aRMOR, vero?</p>
+<ul>
+<li><p>ok ha funzionato tutto, quindi quei parametri erano inutili qui</p></li>
+<li><p>posso anche eliminare i file contenenti gli items (la cartella cluedo items)</p></li>
+</ul>
+</li>
+<li><p>e con aRMOR abbiamo chiuso!</p></li>
+<li><p><strong>COMMIT</strong>: “deployment (armor documentation)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>meglio fare quello che so di non dover andare a ritoccare nel terzo assignment: devo fare solo le cose su cui so che non ci metterò mai più mano</p>
+<ul class="simple">
+<li><p>robot urdf documentazione</p>
+<ul>
+<li><p>…e invece direi che va bene, anche se il robot mostrato è ancora quello con le ruote più lontane dal centro</p></li>
+</ul>
+</li>
+<li><p>nello user manual di erl2 non si fa riferimento alle funzionalità di sviluppo</p>
+<ul>
+<li><p>le aggiungo ora</p></li>
+</ul>
+</li>
+<li><p>per quanto riguarda i file worlds, aspetterei il terzo progetto per fare qualunque modifica:ç ho tutti quei file world da provare … lo farò poi</p></li>
+<li><p><strong>COMMIT</strong> – “deploy (dependencies documentation)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>il mio obiettivo è solo di <em>dare una ripulita</em> prima di iniziare ad implementare il prossimo assignment</p>
+<ul class="simple">
+<li><p>direi che la documentazione riferita ai pacchetti di messaggi … non serve, a meno di non trovare un modo per forzare Sphinx ad importarli nella documentazione, il che sarebbe veramente molto bello.</p>
+<ul>
+<li><p><em>la scomoda domanda: esiste un modo per importare i file .yaml come si fa per il codice?</em></p>
+<ul>
+<li><p>questo è interessante: <a class="reference external" href="http://wiki.ros.org/Sphinx">sphinx</a></p></li>
+<li><p>e anche questo: <a class="reference external" href="http://wiki.ros.org/rosdoc_lite">rosdoc</a></p></li>
+<li><p>anche questo sembra piuttosto interessante <a class="reference external" href="https://www.astro.rug.nl/~vogelaar/sphinx/build/html/index.html">qui</a></p></li>
+</ul>
+</li>
+<li><p><strong>ma nulla di convincente finora</strong></p></li>
+<li><p>questo mi sembra la soluzione migliore: <a class="reference external" href="https://pypi.org/project/sphinxcontrib-yaml/">sphinxcontrob-yaml</a></p>
+<ul>
+<li><p>proviamolo, sembra interessante</p></li>
+<li><p>giusto un minimo di documentazione preliminare, che non guasta mai</p></li>
+<li><p><em>momento della verità…</em></p></li>
+<li><p>… e logicamente non funziona</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>per ora <em>mi arrendo</em> , ma solo <em>per ora</em></p></li>
+<li><p><strong>COMMIT</strong> : “deployment (testing autoyaml … not working)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>dopo questo excursus che mi ha solo fatto venire il nervoso, andiamo avanti</p>
+<ul class="simple">
+<li><p>ultime cose coi package per i messaggi (sarebbe bello avere un modo per importare i file yaml dentro alla documentazione, così da poter documentare anche i messaggi senza dover fare dell’orrendo copia incolla)</p></li>
+<li><p>ultima sistemata ai packages coi messaggi</p></li>
+<li><p>documentazione del codice per il module testing (veramente poca roba)</p>
+<ul>
+<li><p>…avevo dimeticato che per i moduli python servisse il mocking…</p></li>
+<li><p>… in più devi aggiungere i percorsi a mano in sphinx</p></li>
+</ul>
+</li>
+<li><p>a questo punto per ora facciamo solo la generazione delle code reference</p>
+<ul>
+<li><p>movement controller</p></li>
+<li><p>rosplan</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “deployment (setup code docs)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>mi sono dimenticato il mission manager!</p></li>
+<li><p><strong>COMMIT</strong>: “deployment (pkg mission manager docs setup)”</p></li>
+</ul>
+</div>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>ma provando con un controller per uno skid robot cosa succede? magari riesco a farlo andare meglio</p></li>
+<li><p>vanno aggiustati i guadagni dei go to point e align, e magari introdurre anche una saturation</p></li>
+<li><p>navigation system: creare un controller che gestisca anche il braccio durante la navigazione (magari abbassarlo per rendere il robot più stabile)</p></li>
+<li><p>documentazione del package ROSPlan</p></li>
+<li><p>UML finale per ROSPlan</p></li>
+<li><p><em>module testing</em> su kb_tools</p></li>
+<li><p>evita di muovere il braccio robotico se sai che la posture richiesta è uguale a quella attuale, <em>memorizza la posture attuale</em> (puoi tracciarla…)</p></li>
+<li><p>pensare bene al module testing, e in particolare correggere i module testing di armor (potrebbero non funzionare più per via delle ultime modifiche ai servizi)</p></li>
+<li><p><em>un tantino in più di scena nell’indagine?</em> (intanto deve funzionare…)</p></li>
+<li><p>implementazione precisa dell’azione move-to</p></li>
+<li><p>implementazione del launch di un particolare file di configurazione per rviz</p></li>
+<li><p>la pagina di documentazione del codice andrebbe messa in una cartella chiamata code_documentation (inutile dire che ogni package ha le sue, e non si deve mischiare nulla)</p></li>
+<li><p>rifare gli schemi di armor!</p></li>
+<li><p>aggiornare schema feedback manager</p></li>
+<li><p>aggiustare le toctree in giro per le pagine</p></li>
+<li><p>creare una “rubrica” generale di topic e servizi dell’architettura</p></li>
+<li><p>e creare uno standard per gli UML in ROS, o qualcosa che possa essere replicato</p></li>
+<li><p><strong>vanno fatti ancora i temporal diagrams!</strong> e i diagrammi riguardanti l’architettura generale</p></li>
+<li><p>in tutti gli UML dei componenti delle implementazioni delle azioni PDDL c’è una parte comune di feedback: scrivila una volta per tutte e copia-incolla in tutti i diagrammi</p></li>
+<li><p>aggiungere le pagine di documentazione del codice di Sphinx!</p></li>
+<li><p>aggiornare i template delle actions in questo file</p></li>
+<li><p>rimuovere le immagini dalla documentazione del codice per armor</p></li>
+<li><p>un branch per la documentazione Sphinx</p></li>
+<li><p>e uno script per mettere online la documentazione sphinx “senza sbattersi troppo”</p></li>
+<li><p>approfondire UML armor</p></li>
+<li><p>aggiornare il file di descrizione e design del PDDL con il codice corretto</p>
+<ul>
+<li><p>correggere i landmark, oppure eliminare direttamente la sezione</p></li>
+</ul>
+</li>
+<li><p>specificare negli UML, nel tipo di topic/servizio, <em>anche il formato del tipo</em>, ad esempio se è <em>.msg</em> o anche <em>.srv</em></p></li>
+<li><p>autenticazione SSH sul Docker di lavoro</p></li>
+</ul>
+</div>
+<div class="section" id="note">
+<h2>NOTE<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
+<div class="section" id="una-nota-su-rosplan-e-il-mission-manager">
+<h3>una nota su rosplan e il mission manager<a class="headerlink" href="#una-nota-su-rosplan-e-il-mission-manager" title="Permalink to this heading"></a></h3>
+<p>il principio è questo:</p>
+<ul class="simple">
+<li><p><em>il mission manager</em> si occupa del progresso della missione ad alto livello</p></li>
+<li><p><em>ROSPlan</em> si preoccupa della singola azione da eseguire, <em>nel dettaglio dello stato delle cose</em>.</p></li>
+</ul>
+<p>Quindi il comportamento del robot è distribuito su due livelli: il primo è quello “generico” del mission manager, che si occupa anche di fare da mediatore <em>tra due componenti architetturali diversi</em> (armor e rosplan), e il secondo quello specifico che si preoccupa di gestire i dettagli delle varie azioni da compiere.</p>
+<p>in questo caso la sequenza delle azioni non è molto complessa, però in futuro potrebbe esserla. ad esempio, il landmark COLLECT, che attualmente comprende una sequenza di 3 azioni (più la scelta di dove andare in base alla mappa topologica dell’area … ok, non così semplice) potrebbe, in futuro, comprenderne di più: ad esempio, comprendere movimenti espliciti del manipolatore in base al tipo di hint da raccogliere, determinate operazioni di sensing durante la raccolta, e molto di più.</p>
+<p>più il comportamento del robot evolve in complessità, più è necessaria una separazione tra diversi modi di vedere il da farsi. più di due livelli però … non so quanto convenga. 2 è la scelta più logica ed efficace per la maggioranza dei casi.</p>
+</div>
+<div class="section" id="vantaggi-e-svantaggi-dell-approccio-per-landmarks">
+<h3>vantaggi (e svantaggi) dell’approccio per landmarks<a class="headerlink" href="#vantaggi-e-svantaggi-dell-approccio-per-landmarks" title="Permalink to this heading"></a></h3>
+<p>motivazioni per cui ho scelto un planning su due livelli e l’approccio dei landmarks:</p>
+<ul class="simple">
+<li><p>maggiore flessibilità in caso di modifica dell’architettura</p></li>
+<li><p>il planner PDDL non deve fare un’intera pianificazione statica, perciò è più veloce nel risolvere il plan</p></li>
+<li><p>fare un planning statico dell’intera situazione è semplicemente assurdo, se pensiamo a tutti i problemi imprevisti che possono sorgere</p></li>
+<li><p>vedere il comportamento del sistema su due livelli permette di astrarre in maniera più conveniente</p></li>
+</ul>
+<p>problemi, limitazioni, difetti:</p>
+<ul class="simple">
+<li><p>rapido aumento della complessità di implementazione del sistema</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpp-docs-template.html" class="btn btn-neutral float-left" title="Documentation for c++ nodes and libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how-to-setup-doxy-sphinx-ws.html" class="btn btn-neutral float-right" title="How to setup a Doxygen/Sphinx workspace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

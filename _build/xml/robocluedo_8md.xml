@@ -1,0 +1,842 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="robocluedo_8md" kind="file" language="Markdown">
+    <compoundname>robocluedo.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>robocluedo<sp/>--<sp/>notes<sp/>about<sp/>the<sp/>PDDL<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>osservazioni<sp/>iniziali</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>planner<sp/>risolve<sp/>il<sp/>problema<sp/>fino<sp/>alla<sp/>fine<sp/>come<sp/>se<sp/>non<sp/>ci<sp/>fosse<sp/>nessun<sp/>problema</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>è<sp/>il<sp/>sistema<sp/>esterno<sp/>a<sp/>risolvere<sp/>gli<sp/>imprevisti<sp/>con<sp/>eventuali<sp/>richieste<sp/>di<sp/>replanning</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>la<sp/>knowledge<sp/>base<sp/>è<sp/>formata<sp/>da<sp/>un<sp/>insieme<sp/>di<sp/>informazioni<sp/>non<sp/>comunicanti:<sp/>quelle<sp/>che<sp/>servono<sp/>per<sp/>il<sp/>planner<sp/>PDDL,<sp/>e<sp/>quelle<sp/>che<sp/>servono<sp/>per<sp/>la<sp/>reale<sp/>gestione<sp/>del<sp/>reasoning</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>date<sp/>le<sp/>funzionalità<sp/>della<sp/>knowledge<sp/>base,<sp/>contare<sp/>via<sp/>query<sp/>è<sp/>davvero<sp/>una<sp/>pessima<sp/>idea:<sp/>il<sp/>PDDL<sp/>dovrà<sp/>portare<sp/>con<sp/>se<sp/>tutta<sp/>una<sp/>serie<sp/>di<sp/>metadati<sp/>da<sp/>aggiornare<sp/>ogni<sp/>volta<sp/>che<sp/>viene<sp/>ricevuto<sp/>un<sp/>nuovo<sp/>hint<sp/>dall&apos;oracolo.<sp/>questa<sp/>operazione<sp/>permette<sp/>inoltre<sp/>di<sp/>usare<sp/>la<sp/>knowledge<sp/>base<sp/>come<sp/>una<sp/>shared<sp/>memory<sp/>tra<sp/>le<sp/>varie<sp/>actions</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>ogni<sp/>nodo<sp/>ha<sp/>la<sp/>sua<sp/>particolare<sp/>istanza<sp/>di<sp/>`robocluedo_kb_tools`,<sp/>per<sp/>giunta<sp/>su<sp/>processi<sp/>diversi,<sp/>dunque<sp/>l&apos;unica<sp/>vera<sp/>memoria<sp/>condivisa<sp/>è<sp/>la<sp/>knowledge<sp/>base:<sp/>inutile<sp/>tenere<sp/>dei<sp/>conteggi<sp/>nella<sp/>classe<sp/>senza<sp/>aggiornare<sp/>la<sp/>knowledge<sp/>base:<sp/>dei<sp/>fluents<sp/>di<sp/>conteggio<sp/>devono<sp/>esserci<sp/>sempre<sp/>nel<sp/>problema.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>system<sp/>inizialization</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>system<sp/>shall<sp/>be<sp/>initialized,<sp/>which<sp/>means<sp/>to<sp/>allocate<sp/>the<sp/>hints<sp/>and<sp/>to<sp/>update<sp/>the<sp/>ontology<sp/>before<sp/>starting.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(init-planning-system<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>controlla<sp/>e<sp/>aggiorna<sp/>lo<sp/>stato<sp/>del<sp/>database</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>conta<sp/>gli<sp/>elementi<sp/>associati<sp/>alle<sp/>ipotesi</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>e<sp/>classifica<sp/>le<sp/>ipotesi<sp/>nelle<sp/>tre<sp/>categorie</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>controlla<sp/>che<sp/>il<sp/>problema<sp/>ammetta<sp/>soluzione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>c&apos;è<sp/>almeno<sp/>un&apos;ipotesi<sp/>ammissibile?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>IF<sp/>almeno<sp/>una<sp/>ipotesi<sp/>ammissibile<sp/>-&gt;<sp/>REPLAN<sp/>(verso<sp/>la<sp/>soluzione)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>applica<sp/>l&apos;effetto<sp/>dell&apos;azione</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>check<sp/>hint<sp/>status</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**assunzione**<sp/>:<sp/>dopo<sp/>un<sp/>tentativo<sp/>di<sp/>esecuzione<sp/>di<sp/>soluzione<sp/>fallito,<sp/>la<sp/>knowledge<sp/>base<sp/>conserva<sp/>ancora<sp/>i<sp/>dati<sp/>derivati<sp/>dall&apos;ultima<sp/>esecuzione.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">classificazione<sp/>degli<sp/>ID:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>un<sp/>ID<sp/>è<sp/>*attivo*<sp/>quando<sp/>non<sp/>si<sp/>può<sp/>provare<sp/>che<sp/>questi<sp/>non<sp/>è<sp/>valido</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>un<sp/>ID<sp/>è<sp/>*escluso*<sp/><sp/>quando<sp/>uno<sp/>tra<sp/>i<sp/>campi<sp/>*who*,<sp/>*where*<sp/>o<sp/>*what*<sp/>ha<sp/>almeno<sp/>due<sp/>elementi<sp/>associati</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>questo<sp/>è<sp/>gestito<sp/>dall&apos;esterno:<sp/>è<sp/>il<sp/>sistema<sp/>esterno<sp/>al<sp/>PDDL<sp/>che<sp/>individua<sp/>le<sp/>esclusioni.<sp/>il<sp/>planner<sp/>può<sp/>escludere<sp/>solo<sp/>questi<sp/>casi</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>un<sp/>ID<sp/>è<sp/>*ammissibile*<sp/>quando<sp/>i<sp/>tre<sp/>campi<sp/>hanno<sp/>uno<sp/>e<sp/>un<sp/>solo<sp/>elemento</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>sistema<sp/>iniziale<sp/>valuta<sp/>le<sp/>condizioni<sp/>delle<sp/>ipotesi<sp/>e<sp/>marca<sp/>i<sp/>tre<sp/>predicati<sp/>col<sp/>loro<sp/>stato.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>sistema<sp/>fa<sp/>anche<sp/>il<sp/>check<sp/>se<sp/>il<sp/>problema<sp/>è<sp/>risolvibile.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**il<sp/>problema<sp/>è<sp/>risolvibile<sp/>quando**<sp/>esiste<sp/>almeno<sp/>un&apos;opzione<sp/>ancora<sp/>attiva</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**il<sp/>problema<sp/>è<sp/>risolto<sp/>per<sp/>esclusione**<sp/>quando<sp/>esiste<sp/>un&apos;unica<sp/>opzione<sp/>valida<sp/>o<sp/>anche<sp/>completa</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**il<sp/>problema<sp/>non<sp/>è<sp/>risolvibile**<sp/>quando<sp/>tutte<sp/>le<sp/>opzioni<sp/>sono<sp/>state<sp/>escluse</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>movimento</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">caratteristiche<sp/>generali:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>robot<sp/>può<sp/>muoversi<sp/>ovunque<sp/>voglia,<sp/>anche<sp/>al<sp/>centro</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>i<sp/>punti<sp/>in<sp/>cui<sp/>il<sp/>robot<sp/>può<sp/>stare<sp/>sono<sp/>chiamati<sp/>waypoints<sp/>nel<sp/>codice<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">constraints:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>robot<sp/>non<sp/>può<sp/>stare<sp/>più<sp/>di<sp/>un<sp/>turno<sp/>nello<sp/>stesso<sp/>posto<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(però<sp/>può<sp/>tornare<sp/>al<sp/>punto<sp/>precedente<sp/>al<sp/>turno<sp/>successivo,<sp/>basta<sp/>che<sp/>si<sp/>muova)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">pseudocodice<sp/>associato<sp/>all&apos;azione:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(move-to<sp/>?from<sp/>?to<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>serve<sp/>un<sp/>check<sp/>sulla<sp/>validità<sp/>delle<sp/>preconditions<sp/>prima<sp/>di<sp/>iniziare?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>ottieni<sp/>le<sp/>coordinate<sp/>reali<sp/>del<sp/>waypoint</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>esiste<sp/>una<sp/>tabella<sp/>nella<sp/>classe<sp/>che<sp/>associa<sp/>il<sp/>waypoint<sp/>alla<sp/>pose<sp/>reale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>oppure<sp/>leggi<sp/>le<sp/>posizioni<sp/>dall&apos;oracolo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>navigation<sp/>controller<sp/>-&gt;<sp/>vai<sp/>a<sp/>quel<sp/>waypoint</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>attendi<sp/>fin<sp/>quando<sp/>il<sp/>robot<sp/>non<sp/>ha<sp/>raggiunto<sp/>la<sp/>posizione<sp/>finale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>applica<sp/>l&apos;effetto<sp/>dell&apos;azione</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>segnale<sp/>di<sp/>acquisizione</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>robot<sp/>può<sp/>continuare<sp/>a<sp/>muoversi<sp/>nello<sp/>spazio<sp/>come<sp/>vuole.<sp/>Al<sp/>momento<sp/>però<sp/>in<sp/>cui<sp/>bisogna<sp/>fare<sp/>l&apos;acquisizione<sp/>di<sp/>un<sp/>hint,<sp/>il<sp/>robot<sp/>deve<sp/>*segnalare*<sp/>la<sp/>sua<sp/>volontà<sp/>di<sp/>acquisire<sp/>il<sp/>suggerimento.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(signal-info-acquisition<sp/>?wp)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>controlla<sp/>le<sp/>preconditions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>aggiorna<sp/>allo<sp/>stato<sp/>successivo</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">anche<sp/>una<sp/>semplice<sp/>azione<sp/>standard<sp/>è<sp/>sufficiente<sp/>per<sp/>questa<sp/>operazione.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>avvicinamento<sp/>manipolatore</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**quando<sp/>il<sp/>robot<sp/>avvicina<sp/>il<sp/>manipolatore,<sp/>l&apos;oracolo<sp/>pubblica<sp/>un<sp/>messaggio<sp/>con<sp/>l&apos;hint**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(manipulator-near-marker<sp/>?wp<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>check<sp/>sulla<sp/>validità<sp/>delle<sp/>condition?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>coordinate<sp/>del<sp/>marker</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>manipulator<sp/>controller<sp/>-&gt;<sp/>avvicina<sp/>il<sp/>manipolatore</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>attendi<sp/>fin<sp/>quando<sp/>l&apos;azione<sp/>non<sp/>ha<sp/>avuto<sp/>termine</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>a<sp/>questo<sp/>punto,<sp/>l&apos;azione<sp/>successiva<sp/>dovrebbe<sp/>aver<sp/>ricevuto<sp/>l&apos;hint</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>fine<sp/>dell&apos;azione,<sp/>aggiorna<sp/>la<sp/>knowledge<sp/>base</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>cattura<sp/>dell&apos;indizio</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">qui<sp/>il<sp/>robot<sp/>&quot;legge&quot;<sp/>l&apos;indizio,<sp/>vale<sp/>a<sp/>dire<sp/>il<sp/>sistema<sp/>interpreta<sp/>l&apos;indizio<sp/>proveniente<sp/>dall&apos;oracolo<sp/>(precedentemente<sp/>allocato)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(acquire-hint<sp/>?wp)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>controllo<sp/>delle<sp/>preconditions?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>controlla<sp/>che<sp/>l&apos;indizio<sp/>ricevuto<sp/>sia<sp/>ben<sp/>formato</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/>(altrimenti<sp/>scartalo<sp/>e<sp/>passa<sp/>avanti)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>controllare<sp/>qui<sp/>se<sp/>l&apos;indizio<sp/>è<sp/>ridondante?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>aggiungi<sp/>l&apos;indizio<sp/>alla<sp/>ontology</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>in<sp/>base<sp/>all&apos;indizio,<sp/>classifica<sp/>l&apos;ID<sp/>dell&apos;ipotesi<sp/>implicata</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>INFINE<sp/>applica<sp/>il<sp/>nuovo<sp/>stato<sp/>alla<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>riprotare<sp/>il<sp/>manipolatore<sp/>alla<sp/>posizione<sp/>iniziale</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">a<sp/>questo<sp/>punto<sp/>il<sp/>robot<sp/>ha<sp/>già<sp/>acquisito<sp/>l&apos;indizio.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(manipulator-far-marker<sp/>?wp<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>check<sp/>della<sp/>validità<sp/>delle<sp/>preconditions?<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>manipulator<sp/>controller<sp/>-&gt;<sp/>home<sp/>position<sp/>del<sp/>manipolatore</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>attendi<sp/>fino<sp/>al<sp/>termine<sp/>dell&apos;operazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>aggiorna<sp/>la<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>valutazione<sp/>dello<sp/>stato<sp/>del<sp/>problema</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">questa<sp/>azione<sp/>viene<sp/>eseguita<sp/>subito<sp/>dopo<sp/>aver<sp/>ritratto<sp/>il<sp/>manipolatore<sp/>dopo<sp/>l&apos;acquisizione<sp/>dell&apos;hint,<sp/>e<sp/>consiste<sp/>nella<sp/>valutazione<sp/>di<sp/>risolubilità<sp/>del<sp/>problema<sp/>in<sp/>base<sp/>allo<sp/>stato<sp/>attuale<sp/>e<sp/>al<sp/>numero<sp/>di<sp/>mosse<sp/>rimanenti.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Non<sp/>conviene<sp/>fare<sp/>questa<sp/>mossa<sp/>quando<sp/>il<sp/>manipolatore<sp/>è<sp/>ancora<sp/>vicino<sp/>al<sp/>marker.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(sherlok-is-thinking<sp/>?wp<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>check<sp/>delle<sp/>conditions?<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>aggiorna<sp/>i<sp/>conteggi</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>-&gt;VERIFICA<sp/>SE<sp/>IL<sp/>PROBLEMA<sp/>E&apos;<sp/>ANCORA<sp/>RISOLVIBILE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>questa<sp/>procedura<sp/>non<sp/>dovrebbe<sp/>essere<sp/>eseguita<sp/>una<sp/>volta<sp/>ritratto<sp/>il<sp/>braccio?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>ELIF<sp/>nessun<sp/>ID<sp/>valido<sp/>:<sp/>FINE,<sp/>mistero<sp/>irrisolvibile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>ELIF<sp/>c&apos;è<sp/>solo<sp/>un<sp/>ID<sp/>valido<sp/>:<sp/>REPLAN,<sp/>verso<sp/>una<sp/>soluzione<sp/>per<sp/>esclusione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>ELIF<sp/>più<sp/>di<sp/>un<sp/>ID<sp/>:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>IF<sp/>troppi<sp/>ID,<sp/>poche<sp/>mosse<sp/>-&gt;<sp/>REPLAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>ELSE<sp/>:<sp/>vai<sp/>avanti</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>nel<sp/>caso<sp/>tutto<sp/>sia<sp/>andato<sp/>bene,<sp/>aggiorna<sp/>la<sp/>KB<sp/>e<sp/>vai<sp/>avanti</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>preparazione<sp/>alla<sp/>soluzione<sp/>finale</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">l&apos;idea<sp/>di<sp/>base:<sp/>il<sp/>robot<sp/>può<sp/>proporre<sp/>la<sp/>sua<sp/>soluzione<sp/>solo<sp/>una<sp/>volta<sp/>raggiunto<sp/>il<sp/>centro<sp/>dell&apos;arena.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(bright-bulb-over-head<sp/>?wp<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>check<sp/>delle<sp/>conditions?<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>aggiorna<sp/>la<sp/>KB<sp/>e<sp/>vai<sp/>avanti</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>la<sp/>soluzione<sp/>del<sp/>caso</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>planner,<sp/>dato<sp/>che<sp/>funziona<sp/>offline,<sp/>non<sp/>può<sp/>ricevere<sp/>alcun<sp/>dato<sp/>sui<sp/>vari<sp/>ID<sp/>delle<sp/>ipotesi:<sp/>purchè<sp/>un&apos;ipotesi<sp/>sia<sp/>classificata<sp/>valida,<sp/>il<sp/>planner<sp/>può<sp/>sempre<sp/>sceglierla.<sp/>Sempre<sp/>nello<sp/>stesso<sp/>spirito:<sp/>*per<sp/>il<sp/>planner,<sp/>tutto<sp/>va<sp/>a<sp/>liscio<sp/>liscio*.<sp/>E&apos;<sp/>il<sp/>sistema<sp/>esterno<sp/>che<sp/>deve<sp/>giudicare<sp/>la<sp/>soluzione<sp/>proposta,<sp/>evitando<sp/>decisioni<sp/>&quot;eccessivamente<sp/>irrazionali&quot;<sp/>da<sp/>parte<sp/>del<sp/>planner,<sp/>che<sp/>comunque<sp/>attua<sp/>una<sp/>scelta<sp/>al<sp/>termine<sp/>dell&apos;investigazione,<sp/>anche<sp/>se<sp/>non<sp/>dettata<sp/>da<sp/>un<sp/>effettivo<sp/>ragionamento<sp/>deduttivo.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>planner<sp/>può<sp/>scegliere<sp/>tra<sp/>le<sp/>opzioni<sp/>attive,<sp/>ed<sp/>escluderà<sp/>solo<sp/>quelle<sp/>risapute<sp/>non<sp/>valide<sp/>*a<sp/>priori*,<sp/>quindi<sp/>quelle<sp/>escluse<sp/>dal<sp/>problem<sp/>file<sp/>prima<sp/>di<sp/>fare<sp/>la<sp/>ricerca<sp/>della<sp/>soluzione.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">per<sp/>favorire<sp/>le<sp/>opzioni<sp/>complete<sp/>su<sp/>quelle<sp/>solo<sp/>attive,<sp/>il<sp/>codice<sp/>PDDL<sp/>richiede<sp/>un&apos;ottimizzazione<sp/>sulla<sp/>qualità<sp/>della<sp/>soluzione,<sp/>e<sp/>mette<sp/>a<sp/>disposizione<sp/>due<sp/>tipi<sp/>di<sp/>azione:<sp/>q1<sp/>che<sp/>aggiunge<sp/>1<sp/>alla<sp/>qualità,<sp/>e<sp/>q2<sp/>che<sp/>invece<sp/>aggiunge<sp/>10<sp/>alla<sp/>qualità.<sp/>entrambe<sp/>hanno<sp/>lo<sp/>stesso<sp/>effetto,<sp/>ma<sp/>il<sp/>reward<sp/>di<sp/>una<sp/>è<sp/>maggiore<sp/>che<sp/>nell&apos;altra.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">(who-killed-doctor-black-huh-q1<sp/>?id<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">(who-killed-doctor-black-huh-q2<sp/>?id<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>controlla<sp/>le<sp/>preconditions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>IF<sp/>id<sp/>di<sp/>opzione<sp/>classificata<sp/>completa<sp/>:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>oracolo<sp/>-&gt;<sp/>invia<sp/>la<sp/>soluzione<sp/>e<sp/>ricevi<sp/>l&apos;id<sp/>della<sp/>soluzione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>servizio,<sp/>bloccante</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>IF<sp/>soluzione<sp/>corretta<sp/>:<sp/>SOLUZIONE<sp/>DEL<sp/>CASO,<sp/>termina<sp/>la<sp/>missione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>ELSE<sp/>:<sp/>segna<sp/>l&apos;esito<sp/>nella<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>e<sp/>passa<sp/>alla<sp/>valutazione<sp/>di<sp/>fattibilità</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>ELIF<sp/>id<sp/>classificato<sp/>attivo<sp/>:<sp/>REPLAN,<sp/>non<sp/>accettare<sp/>una<sp/>soluzione<sp/>non<sp/>motivata</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>valutazione<sp/>di<sp/>fattibilità</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>il<sp/>problema<sp/>è<sp/>risolvibile?<sp/>ci<sp/>sono<sp/>ancora<sp/>ipotesi<sp/>smarcate?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>se<sp/>non<sp/>c&apos;è<sp/>più<sp/>nulla<sp/>da<sp/>fare,<sp/>FAIL<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>valuta<sp/>il<sp/>numero<sp/>di<sp/>cicli<sp/>alla<sp/>prossima<sp/>iterazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>se<sp/>c&apos;è<sp/>un<sp/>solo<sp/>ID<sp/>completo<sp/>da<sp/>provare,<sp/>0<sp/>potrebbe<sp/>essere<sp/>la<sp/>scelta</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>SLOT<sp/>:<sp/>(3<sp/>-<sp/>massimo<sp/>numero<sp/>di<sp/>elementi<sp/>in<sp/>una<sp/>ipotesi<sp/>ancora<sp/>aperta)<sp/>*<sp/>(numero<sp/>di<sp/>ID<sp/>ancora<sp/>attivi)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>in<sp/>generale<sp/>meno<sp/>slot<sp/>ci<sp/>sono<sp/>da<sp/>riempire,<sp/>e<sp/>meno<sp/>iterazioni<sp/>serviranno<sp/>per<sp/>proporre<sp/>una<sp/>ipotesi<sp/>completa</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>infine,<sp/>REPLAN<sp/>e<sp/>il<sp/>ciclo<sp/>ricomincia</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>movimento<sp/>verso<sp/>il<sp/>centro</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>robot<sp/>si<sp/>muove<sp/>verso<sp/>il<sp/>centro<sp/>dell&apos;arena<sp/>per<sp/>proporre<sp/>la<sp/>soluzione.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Landmarks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">riporto<sp/>qui<sp/>i<sp/>landmarks<sp/>che<sp/>ho<sp/>usato<sp/>per<sp/>debuggare<sp/>e<sp/>testare<sp/>il<sp/>codice<sp/>PDDL,<sp/>tutti<sp/>a<sp/>partire<sp/>dallo<sp/>stesso<sp/>stato<sp/>iniziale.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>solo<sp/>init<sp/>del<sp/>sistema</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>sistema<sp/>parte<sp/>da<sp/>stato<sp/>`(pre-init<sp/>)`.<sp/>Nota<sp/>che,<sp/>di<sp/>tutti<sp/>questi<sp/>stati,<sp/>ce<sp/>n&apos;è<sp/>ad<sp/>ogni<sp/>azione<sp/>solo<sp/>uno<sp/>acceso,<sp/>come<sp/>una<sp/>sorta<sp/>di<sp/>segnalatore<sp/>di<sp/>stato.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(investigating<sp/>))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>init<sp/>e<sp/>movimento<sp/>a<sp/>w2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>robot<sp/>parte<sp/>dal<sp/>centro<sp/>e<sp/>arriva<sp/>in<sp/>w2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(investigating<sp/>)<sp/>(robot-position<sp/>w2)))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">o<sp/>anche<sp/>solo<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(robot-position<sp/>w2))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>in<sp/>w2<sp/>e<sp/>braccio<sp/>verso<sp/>il<sp/>marker</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(robot-position<sp/>w2<sp/>)<sp/>(acquiring<sp/>)<sp/>(manipulator-on<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">o<sp/>anche,<sp/>più<sp/>compatto,</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(robot-position<sp/>w2<sp/>)<sp/>(acquiring<sp/>)<sp/>(manipulator-on<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>cattura<sp/>il<sp/>marker<sp/>w2<sp/>col<sp/>braccio<sp/>vicino<sp/>al<sp/>marker</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(robot-position<sp/>w2<sp/>)<sp/>(acquired<sp/>)<sp/>(manipulator-on<sp/>)<sp/>(acquired-hint<sp/>w2)))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">in<sp/>alternativa,<sp/>bastava<sp/>anche<sp/>solo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(acquired-hint<sp/>w2))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>wp2<sp/>acquisito<sp/>e<sp/>manipolatore<sp/>non<sp/>attivo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(manipulator-off<sp/>)<sp/>(acquired-hint<sp/>w2)))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>wp2<sp/>e<sp/>wp3<sp/>in<sp/>due<sp/>mosse</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>fluent<sp/>`(remaining-moves<sp/>)`<sp/>viene<sp/>inizializzato<sp/>a<sp/>3<sp/>prima<sp/>di<sp/>far<sp/>partire<sp/>il<sp/>problema.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(manipulator-off<sp/>)<sp/>(acquired-hint<sp/>w2<sp/>)<sp/>(acquired-hint<sp/>w3<sp/>)<sp/>(&gt;=<sp/>(remaining-moves<sp/>)<sp/>1)))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">si<sp/>ottiene<sp/>un<sp/>risultato<sp/>praticamente<sp/>identico<sp/>usando<sp/>la<sp/>metrica:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/>(manipulator-off<sp/>)<sp/>(acquired-hint<sp/>w2<sp/>)<sp/>(acquired-hint<sp/>w3<sp/>)))</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:metric<sp/>maximize<sp/>(remaining-moves<sp/>))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>wp1<sp/>wp2<sp/>wp3<sp/>poi<sp/>in<sp/>mezzo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquired-hint<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquired-hint<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquired-hint<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(robot-position<sp/>center<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>ciclo<sp/>completo<sp/>di<sp/>indagine<sp/>prima<sp/>della<sp/>soluzione</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(wanna-solve<sp/>))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>in<sp/>centro<sp/>per<sp/>proporre<sp/>la<sp/>soluzione</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(wanna-solve<sp/>)<sp/>(robot-position<sp/>center)</highlight></codeline>
+<codeline><highlight class="normal">))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>il<sp/>ciclo<sp/>di<sp/>lavoro<sp/>completo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(elementary-whatson<sp/>))</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:metric<sp/>maximize<sp/>(solution-quality<sp/>))</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Checkpoints</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>domain</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(define<sp/>(domain<sp/>robocluedo)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:requirements<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>===<sp/>PDDL1.1<sp/>===<sp/>;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:strips<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:typing<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:equality<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:existential-preconditions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:universal-preconditions<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:conditional-effects</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:quantified-preconditions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>===<sp/>PDDL2.1<sp/>===<sp/>;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:numeric-fluents</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:durative-actions</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:types</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>ontology</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>hypID</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>navigation<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>waypoint</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:constants</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>center<sp/>-<sp/>waypoint</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:predicates</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>working<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(pre-init<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(investigating<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(ready-to-acquire<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquiring<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquired<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(thinking<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(wanna-solve<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(who-killed-doctor-black<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(elementary-whatson<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>?w1<sp/>?w2<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>navigation<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>?w<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(robot-position<sp/>?w<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>manipulator</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(manipulator-off<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(manipulator-on<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>hint<sp/>gathering</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-acquired-hint<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquired-hint<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(can-give-hint<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>hypotheses<sp/>classification</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>?id<sp/>-<sp/>hypID<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-complete<sp/>?id<sp/>-<sp/>hypID<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-discard<sp/>?id<sp/>-<sp/>hypID<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:functions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(remaining-moves<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(solution-quality<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">;;<sp/>===<sp/>SYSTEM<sp/>INIT<sp/>===<sp/>;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>init-planning-system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(at<sp/>start<sp/>(pre-init<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(pre-init<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(investigating<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">;;<sp/>===<sp/>NAVIGATION<sp/>SYSTEM<sp/>===<sp/>;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>move-to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?from<sp/>?to<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(investigating<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>localization</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?from<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>passage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(passage<sp/>?from<sp/>?to<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>path<sp/>tracking</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not-explored<sp/>?to<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(manipulator-off<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>it<sp/>must<sp/>be<sp/>a<sp/>new<sp/>hint<sp/>there</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;<sp/>(at<sp/>start<sp/>(can-give-hint<sp/>?to<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;<sp/>(at<sp/>start<sp/>(not-acquired-hint<sp/>?to<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>localization</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(robot-position<sp/>?from<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(robot-position<sp/>?to<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>path<sp/>tracking</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(not<sp/>(not-explored<sp/>?to<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(not-explored<sp/>?from<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>move-to-center</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?from<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(wanna-solve<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>localization</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?from<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(=<sp/>(remaining-moves<sp/>)<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>localization</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(robot-position<sp/>?from<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(robot-position<sp/>center))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>system<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(wanna-solve<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(who-killed-doctor-black<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">;;<sp/>===<sp/>MANIPULATOR<sp/>===<sp/>;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>manipulator-near-marker</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(ready-to-acquire<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>it<sp/>must<sp/>be<sp/>a<sp/>new<sp/>hint<sp/>there</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(can-give-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not-acquired-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(manipulator-off<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(ready-to-acquire<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(acquiring<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(manipulator-off<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(manipulator-on<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>manipulator-far-marker</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(acquired<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>point<sp/>already<sp/>acquired</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(can-give-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(acquired-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(manipulator-on<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(acquired<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(thinking<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(manipulator-on<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(manipulator-off<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">;;<sp/>===<sp/>HINT<sp/>ACQUISITION<sp/>===<sp/>;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>signal-info-acquisition</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(investigating<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(manipulator-off<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(&gt;<sp/>(remaining-moves<sp/>)<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(decrease<sp/>(remaining-moves<sp/>)<sp/>1))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(investigating<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(ready-to-acquire<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>acquire-hint</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>state</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(acquiring<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator<sp/>state</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(manipulator-on<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>it<sp/>must<sp/>be<sp/>a<sp/>hint<sp/>there</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(can-give-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not-acquired-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>state</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(not<sp/>(acquiring<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(acquired<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>marker<sp/>has<sp/>been<sp/>acquired</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(not<sp/>(not-acquired-hint<sp/>?wp<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(acquired-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>sherlock-is-thinking</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>system<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(thinking<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>manipulator<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(manipulator-off<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>localization</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>hint<sp/>already<sp/>acquired<sp/>for<sp/>that<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(can-give-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(acquired-hint<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>system<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(thinking<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(investigating<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">;;<sp/>===<sp/>MYSTERY<sp/>SOLUTION<sp/>===<sp/>;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>bright-bulb-over-head</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?wp<sp/>-<sp/>waypoint<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>system<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(investigating<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>?wp<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>no<sp/>more<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(=<sp/>(remaining-moves<sp/>)<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(investigating<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(wanna-solve<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>who-killed-doctor-black-huh-q1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?id<sp/>-<sp/>hypID<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>system<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(who-killed-doctor-black<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>center))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>remaining<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(=<sp/>(remaining-moves<sp/>)<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>quality<sp/>of<sp/>the<sp/>ID<sp/>--<sp/>active</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(h-open<sp/>?id<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>reward<sp/>-<sp/>1<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(increase<sp/>(solution-quality<sp/>)<sp/>1))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>status<sp/>change</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(who-killed-doctor-black<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(elementary-whatson<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:durative-action<sp/>who-killed-doctor-black-huh-q2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>?id<sp/>-<sp/>hypID<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:duration<sp/>(=<sp/>?duration<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:condition<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>system<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(who-killed-doctor-black<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>robot<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(robot-position<sp/>center))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>remaining<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(=<sp/>(remaining-moves<sp/>)<sp/>0))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>quality<sp/>of<sp/>the<sp/>ID<sp/>--<sp/>complete</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(h-complete<sp/>?id<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:effect<sp/>(and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>reward<sp/>-<sp/>10<sp/>points</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(increase<sp/>(solution-quality<sp/>)<sp/>10))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;;<sp/>status<sp/>change</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>start<sp/>(not<sp/>(who-killed-doctor-black<sp/>)))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>end<sp/>(elementary-whatson<sp/>))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>problem</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```lisp</highlight></codeline>
+<codeline><highlight class="normal">(define<sp/>(problem<sp/>task)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:domain<sp/>robocluedo)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:objects</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>ontology<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ID1<sp/>ID2<sp/>ID3<sp/>ID4<sp/>ID5<sp/>ID6<sp/>-<sp/>hypID</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>w1<sp/>w2<sp/>w3<sp/>w4<sp/>-<sp/>waypoint</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:init</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>init<sp/>state<sp/>of<sp/>the<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(pre-init<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>moves</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(=<sp/>(remaining-moves<sp/>)<sp/>3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>quality<sp/>of<sp/>the<sp/>solution</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(=<sp/>(solution-quality<sp/>)<sp/>0)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>environment<sp/>data</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>w1<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w1<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w1<sp/>w4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w1<sp/>center<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>w2<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w2<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w2<sp/>w4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w2<sp/>center<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>w3<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w3<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w3<sp/>w4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w3<sp/>center<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>w4<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w4<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w4<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>w4<sp/>center<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>w4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>navigation<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(robot-position<sp/>center<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>w4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>manipulator</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(manipulator-off<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>hints<sp/>gathering<sp/>system</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(can-give-hint<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(not-acquired-hint<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(can-give-hint<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(not-acquired-hint<sp/>w2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(can-give-hint<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(not-acquired-hint<sp/>w3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(can-give-hint<sp/>w4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(not-acquired-hint<sp/>w1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;<sp/>hypotheses<sp/>classification</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>ID1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>ID2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>ID3<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>ID4<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>ID5<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(h-open<sp/>ID6<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:goal<sp/>(elementary-whatson<sp/>))</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(:metric<sp/>maximize<sp/>(solution-quality<sp/>))</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>ultimo<sp/>log</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Number<sp/>of<sp/>literals:<sp/>27</highlight></codeline>
+<codeline><highlight class="normal">Constructing<sp/>lookup<sp/>tables:<sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]</highlight></codeline>
+<codeline><highlight class="normal">Post<sp/>filtering<sp/>unreachable<sp/>actions:<sp/><sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]</highlight></codeline>
+<codeline><highlight class="normal">No<sp/>analytic<sp/>limits<sp/>found,<sp/>not<sp/>considering<sp/>limit<sp/>effects<sp/>of<sp/>goal-only<sp/>operators</highlight></codeline>
+<codeline><highlight class="normal">47%<sp/>of<sp/>the<sp/>ground<sp/>temporal<sp/>actions<sp/>in<sp/>this<sp/>problem<sp/>are<sp/>compression-safe</highlight></codeline>
+<codeline><highlight class="normal">Initial<sp/>heuristic<sp/>=<sp/>4.000</highlight></codeline>
+<codeline><highlight class="normal">b<sp/>(3.000<sp/>|<sp/>1.000)</highlight></codeline>
+<codeline><highlight class="normal">Resorting<sp/>to<sp/>best-first<sp/>search</highlight></codeline>
+<codeline><highlight class="normal">b<sp/>(3.000<sp/>|<sp/>1.000)b<sp/>(2.000<sp/>|<sp/>20.019)b<sp/>(1.000<sp/>|<sp/>21.020);;;;<sp/>Solution<sp/>Found</highlight></codeline>
+<codeline><highlight class="normal">;<sp/>States<sp/>evaluated:<sp/>1109</highlight></codeline>
+<codeline><highlight class="normal">;<sp/>Cost:<sp/>0.000</highlight></codeline>
+<codeline><highlight class="normal">;<sp/>Time<sp/>0.63</highlight></codeline>
+<codeline><highlight class="normal">0.000:<sp/>(init-planning-system)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">1.001:<sp/>(move-to<sp/>center<sp/>w1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">2.002:<sp/>(signal-info-acquisition<sp/>w1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">3.003:<sp/>(manipulator-near-marker<sp/>w1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">4.004:<sp/>(acquire-hint<sp/>w1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">5.005:<sp/>(manipulator-far-marker<sp/>w1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">6.006:<sp/>(sherlock-is-thinking<sp/>w1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">7.007:<sp/>(move-to<sp/>w1<sp/>w2)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">8.008:<sp/>(signal-info-acquisition<sp/>w2)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">9.009:<sp/>(manipulator-near-marker<sp/>w2)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">10.010:<sp/>(acquire-hint<sp/>w2)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">11.011:<sp/>(manipulator-far-marker<sp/>w2)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">12.012:<sp/>(sherlock-is-thinking<sp/>w2)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">13.013:<sp/>(move-to<sp/>w2<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">14.014:<sp/>(signal-info-acquisition<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">15.015:<sp/>(manipulator-near-marker<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">16.016:<sp/>(acquire-hint<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">17.017:<sp/>(manipulator-far-marker<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">18.018:<sp/>(sherlock-is-thinking<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">19.019:<sp/>(bright-bulb-over-head<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">20.020:<sp/>(move-to-center<sp/>w3)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">21.021:<sp/>(who-killed-doctor-black-huh-q1<sp/>id1)<sp/><sp/>[1.000]</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_rosplan/pddl/robocluedo_old/robocluedo.md"/>
+  </compounddef>
+</doxygen>

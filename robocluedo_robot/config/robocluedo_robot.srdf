@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="robocluedo_robot">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="arm_group">
+        <chain base_link="base_link" tip_link="cluedo_link"/>
+    </group>
+    <group name="end_effector_group">
+        <joint name="arm_joint_04"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="extended" group="arm_group">
+        <joint name="arm_joint_01" value="-1.57"/>
+        <joint name="arm_joint_02" value="0"/>
+        <joint name="arm_joint_03" value="0"/>
+        <joint name="arm_joint_04" value="0"/>
+    </group_state>
+    <group_state name="home" group="arm_group">
+        <joint name="arm_joint_01" value="-1.57"/>
+        <joint name="arm_joint_02" value="0.4475"/>
+        <joint name="arm_joint_03" value="-1.1039"/>
+        <joint name="arm_joint_04" value="0.3282"/>
+    </group_state>
+    <group_state name="low" group="arm_group">
+        <joint name="arm_joint_01" value="-1.57"/>
+        <joint name="arm_joint_02" value="0.7657"/>
+        <joint name="arm_joint_03" value="-1.8"/>
+        <joint name="arm_joint_04" value="-0.368"/>
+    </group_state>
+    <group_state name="front_low" group="arm_group">
+        <joint name="arm_joint_01" value="-1.57"/>
+        <joint name="arm_joint_02" value="-1.1039"/>
+        <joint name="arm_joint_03" value="-0.2287"/>
+        <joint name="arm_joint_04" value="1.3624"/>
+    </group_state>
+    <group_state name="front_high" group="arm_group">
+        <joint name="arm_joint_01" value="-1.57"/>
+        <joint name="arm_joint_02" value="-0.5072"/>
+        <joint name="arm_joint_03" value="-0.6464"/>
+        <joint name="arm_joint_04" value="0.9845"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="end_effector" parent_link="arm_link_03" group="end_effector_group" parent_group="arm_group"/>
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="vjoint" type="fixed" parent_frame="world" child_link="base_link"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="arm_base_link" link2="arm_link_01" reason="Adjacent"/>
+    <disable_collisions link1="arm_base_link" link2="arm_link_02" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="arm_link_03" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="arm_base_link" link2="cluedo_link" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="laser" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="link_a_left_wheel" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="link_a_right_wheel" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="link_left_wheel" reason="Never"/>
+    <disable_collisions link1="arm_base_link" link2="link_right_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="arm_link_02" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_01" link2="arm_link_03" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="base_link" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="cluedo_link" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="laser" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="link_a_left_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="link_a_right_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="link_left_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="link_right_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="arm_link_03" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_02" link2="base_link" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="cluedo_link" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="laser" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="link_a_left_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="link_a_right_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="link_left_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="link_right_wheel" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="base_link" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="cluedo_link" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_03" link2="laser" reason="User"/>
+    <disable_collisions link1="arm_link_03" link2="link_a_left_wheel" reason="User"/>
+    <disable_collisions link1="arm_link_03" link2="link_a_right_wheel" reason="User"/>
+    <disable_collisions link1="arm_link_03" link2="link_left_wheel" reason="User"/>
+    <disable_collisions link1="arm_link_03" link2="link_right_wheel" reason="User"/>
+    <disable_collisions link1="base_link" link2="cluedo_link" reason="User"/>
+    <disable_collisions link1="base_link" link2="laser" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_a_left_wheel" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_a_right_wheel" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_left_wheel" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_right_wheel" reason="Adjacent"/>
+    <disable_collisions link1="cluedo_link" link2="laser" reason="User"/>
+    <disable_collisions link1="cluedo_link" link2="link_a_left_wheel" reason="User"/>
+    <disable_collisions link1="cluedo_link" link2="link_a_right_wheel" reason="User"/>
+    <disable_collisions link1="cluedo_link" link2="link_left_wheel" reason="User"/>
+    <disable_collisions link1="cluedo_link" link2="link_right_wheel" reason="User"/>
+    <disable_collisions link1="laser" link2="link_a_left_wheel" reason="Never"/>
+    <disable_collisions link1="laser" link2="link_a_right_wheel" reason="Never"/>
+    <disable_collisions link1="laser" link2="link_left_wheel" reason="Never"/>
+    <disable_collisions link1="laser" link2="link_right_wheel" reason="Never"/>
+    <disable_collisions link1="link_a_left_wheel" link2="link_a_right_wheel" reason="Never"/>
+    <disable_collisions link1="link_a_left_wheel" link2="link_left_wheel" reason="Never"/>
+    <disable_collisions link1="link_a_left_wheel" link2="link_right_wheel" reason="Never"/>
+    <disable_collisions link1="link_a_right_wheel" link2="link_left_wheel" reason="Never"/>
+    <disable_collisions link1="link_a_right_wheel" link2="link_right_wheel" reason="Never"/>
+    <disable_collisions link1="link_left_wheel" link2="link_right_wheel" reason="Never"/>
+</robot>

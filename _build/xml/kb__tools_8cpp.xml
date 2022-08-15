@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="kb__tools_8cpp" kind="file" language="C++">
+    <compoundname>kb_tools.cpp</compoundname>
+    <includes refid="kb__tools_8h" local="yes">knowledge_base_tools/kb_tools.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>knowledge_base_tools/kb_tools.h</label>
+        <link refid="kb__tools_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>rosplan_knowledge_msgs/KnowledgeUpdateService.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>map</label>
+      </node>
+      <node id="4">
+        <label>diagnostic_msgs/KeyValue.h</label>
+      </node>
+      <node id="3">
+        <label>ros/ros.h</label>
+      </node>
+      <node id="1">
+        <label>robocluedo_rosplan/src/knowledge_base_tools/kb_tools.cpp</label>
+        <link refid="kb__tools_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>rosplan_knowledge_msgs/KnowledgeQueryService.h</label>
+      </node>
+      <node id="5">
+        <label>rosplan_knowledge_msgs/KnowledgeItem.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>implementation of the class <ref refid="classkb__tools" kindref="compound">kb_tools</ref> </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="authors"><para>Fracesco Ganci </para>
+</simplesect>
+<simplesect kind="version"><para>v1.0</para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="kb__tools_8h" kindref="compound">kb_tools.h</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/********************************************/</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="kb__tools_8h" kindref="compound">knowledge_base_tools/kb_tools.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>class<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classkb__tools_1a785a2d86d2fb4c7ea199527425c2600d" refkind="member"><highlight class="normal"><ref refid="classkb__tools_1a785a2d86d2fb4c7ea199527425c2600d" kindref="member">kb_tools::kb_tools</ref>(<sp/>)<sp/>:<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref>(<sp/>true<sp/>)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>verbosity<sp/>level</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a8e669891a5a1483f4c40642a17ac3c5a" kindref="member">set_debug_mode</ref>(<sp/><ref refid="kb__tools_8h_1a35867bb3311de7b885b59b9d27705a5a" kindref="member">DEBUG_MODE_ENABLED</ref><sp/>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>open<sp/>the<sp/>services</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;open_services(<sp/>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>class<sp/>destructor<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classkb__tools_1a07d99e246e9d60f9c2bdbcd60b626294" refkind="member"><highlight class="normal"><ref refid="classkb__tools_1a07d99e246e9d60f9c2bdbcd60b626294" kindref="member">kb_tools::~kb_tools</ref>(<sp/>)<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>the<sp/>last<sp/>action<sp/>succeeded<sp/>or<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classkb__tools_1a84232df0b5e76bad833c8f617abccf30" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__tools_1a84232df0b5e76bad833c8f617abccf30" kindref="member">kb_tools::ok</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_INFO(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::ok(<sp/>)&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::ok(<sp/>)<sp/>!!!<sp/>FAILURE<sp/>!!!&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>log<sp/>verosity<sp/>level</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classkb__tools_1a8e669891a5a1483f4c40642a17ac3c5a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classkb__tools_1a8e669891a5a1483f4c40642a17ac3c5a" kindref="member">kb_tools::set_debug_mode</ref>(<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>db_mode<sp/>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>=<sp/>db_mode;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>notify<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>db_mode<sp/>)<sp/>ROS_INFO(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::set_debug_mode<sp/>:<sp/>DEBUG<sp/>MODE<sp/>ENABLED&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>ROS_INFO(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::set_debug_mode<sp/>:<sp/>debug<sp/>mode<sp/>not<sp/>enabled&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>GETTERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>get<sp/>value<sp/>of<sp/>a<sp/>predicate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" kindref="member">kb_tools::get_predicate</ref>(<sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>pname,<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>std::string&gt;<sp/>params<sp/>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>query<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>rosplan_knowledge_msgs::KnowledgeQueryService<sp/><ref refid="pddl-and-rosplan_8md_8txt_1a5ad219dcb365b07ddded393e77b7a3df" kindref="member">query</ref><sp/>=<sp/>this-&gt;<ref refid="classkb__tools_1a1b5b559fba6923f0e73b426a0144c5a7" kindref="member">request_query</ref>(</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pname,<sp/>params<sp/>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>pm<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>=params.begin(<sp/>)<sp/>;<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>!=params.end(<sp/>)<sp/>;<sp/>++<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref><sp/>)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pm<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;first<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;=&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;second;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::get_predicate&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pname<sp/>&lt;&lt;<sp/>pm<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>)&quot;</highlight><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>call<sp/>the<sp/>query<sp/>service</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;cl_query.call(<sp/><ref refid="pddl-and-rosplan_8md_8txt_1a5ad219dcb365b07ddded393e77b7a3df" kindref="member">query</ref><sp/>)<sp/>)<sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>make<sp/>a<sp/>service<sp/>request<sp/>--<sp/>failed<sp/>calling<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1a14480e81381e195709ebd903dedd6c60" kindref="member">SERVICE_QUERY</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(!this-&gt;cl_query.exists(<sp/>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;<sp/>--<sp/>it<sp/>seems<sp/>not<sp/>opened&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::get_predicate&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>CALL<sp/>SUCCESS<sp/>with<sp/>return<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(query.response.all_true<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">)<sp/><sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="pddl-and-rosplan_8md_8txt_1a5ad219dcb365b07ddded393e77b7a3df" kindref="member">query</ref>.response.all_true;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>SETTERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>set<sp/>a<sp/>predicate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" kindref="member">kb_tools::set_predicate</ref>(</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>pname,<sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>std::string&gt;<sp/>params,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pvalue<sp/>)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>formulate<sp/>the<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>rosplan_knowledge_msgs::KnowledgeUpdateService<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref><sp/>=<sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a2687b3d61e2e8abe4469ed3011c75320" kindref="member">request_update</ref>(<sp/>pname,<sp/>params,<sp/>pvalue,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>pm<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>=params.begin(<sp/>)<sp/>;<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>!=params.end(<sp/>)<sp/>;<sp/>++<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref><sp/>)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pm<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;first<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;=&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;second;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::set_predicate&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pname<sp/>&lt;&lt;<sp/>pm<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>pvalue=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(pvalue<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal"><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>)&quot;</highlight><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>send<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;cl_kb_update.call(<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref><sp/>)<sp/>)<sp/></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>make<sp/>a<sp/>service<sp/>request<sp/>--<sp/>failed<sp/>calling<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1ac9ef9cc1af3aeeacaf4b06f1b54ece3a" kindref="member">SERVICE_KB_UPDATE</ref></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(!this-&gt;cl_kb_update.exists(<sp/>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;<sp/>--<sp/>it<sp/>seems<sp/>not<sp/>opened&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/>kbm.response.success;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::set_predicate&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>CALL<sp/>SUCCESS<sp/>with<sp/>return<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(<ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.response.success<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;success&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;NOT<sp/>success&quot;</highlight><highlight class="normal">)<sp/><sp/>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.response.success;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment">//<sp/>set<sp/>a<sp/>goal<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" kindref="member">kb_tools::set_goal</ref>(<sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>pname,<sp/></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>std::string&gt;<sp/>params,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pvalue<sp/>)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>rosplan_knowledge_msgs::KnowledgeUpdateService<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref><sp/>=<sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a2687b3d61e2e8abe4469ed3011c75320" kindref="member">request_update</ref>(<sp/>pname,<sp/>params,<sp/>pvalue,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>pm<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>=params.begin(<sp/>)<sp/>;<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>!=params.end(<sp/>)<sp/>;<sp/>++<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref><sp/>)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pm<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;first<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;=&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;second;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::set_predicate&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;(<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>pname<sp/>&lt;&lt;<sp/>pm<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>pvalue=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(pvalue<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal"><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>)&quot;</highlight><highlight class="normal"><sp/><sp/>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>send<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;cl_kb_update.call(<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref><sp/>)<sp/>)<sp/></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>make<sp/>a<sp/>service<sp/>request<sp/>--<sp/>failed<sp/>calling<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1ac9ef9cc1af3aeeacaf4b06f1b54ece3a" kindref="member">SERVICE_KB_UPDATE</ref></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(!this-&gt;cl_kb_update.exists(<sp/>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;<sp/>--<sp/>it<sp/>seems<sp/>not<sp/>opened&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/>kbm.response.success;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="classkb__tools_1aef928170758f6785ee44daf81c814cc6" kindref="member">debug_mode</ref><sp/>)<sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;kb_tools::set_predicate&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>CALL<sp/>SUCCESS<sp/>with<sp/>return<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(<ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.response.success<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;success&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;NOT<sp/>success&quot;</highlight><highlight class="normal">)<sp/><sp/>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.response.success;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>PROTECTED<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/>build<sp/>a<sp/>query<sp/>message<sp/>(predicates<sp/>only)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="classkb__tools_1a1b5b559fba6923f0e73b426a0144c5a7" refkind="member"><highlight class="normal">rosplan_knowledge_msgs::KnowledgeQueryService<sp/><ref refid="classkb__tools_1a1b5b559fba6923f0e73b426a0144c5a7" kindref="member">kb_tools::request_query</ref>(</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>pname,<sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>params<sp/>)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>query<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>rosplan_knowledge_msgs::KnowledgeQueryService<sp/><ref refid="pddl-and-rosplan_8md_8txt_1a5ad219dcb365b07ddded393e77b7a3df" kindref="member">query</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>rosplan_knowledge_msgs::KnowledgeItem<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.knowledge_type<sp/>=<sp/><ref refid="rosplan-kb_8md_8txt_1a4fe1e5d1ed4ba3fd4237490006e06dd2" kindref="member">KB_KTYPE_PREDICATE</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.attribute_name<sp/>=<sp/>pname;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>=params.begin(<sp/>)<sp/>;<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>!=params.end(<sp/>)<sp/>;<sp/>++<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref><sp/>)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>diagnostic_msgs::KeyValue<sp/>kv;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kv.key<sp/>=<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;first;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kv.value<sp/>=<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;second;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.values.push_back(<sp/>kv<sp/>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="pddl-and-rosplan_8md_8txt_1a5ad219dcb365b07ddded393e77b7a3df" kindref="member">query</ref>.request.knowledge.push_back(<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref><sp/>);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="pddl-and-rosplan_8md_8txt_1a5ad219dcb365b07ddded393e77b7a3df" kindref="member">query</ref>;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="comment">//<sp/>build<sp/>a<sp/>update<sp/>message<sp/>for<sp/>predicates<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="classkb__tools_1a2687b3d61e2e8abe4469ed3011c75320" refkind="member"><highlight class="normal">rosplan_knowledge_msgs::KnowledgeUpdateService<sp/><ref refid="classkb__tools_1a2687b3d61e2e8abe4469ed3011c75320" kindref="member">kb_tools::request_update</ref>(</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>pname,<sp/></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>std::string&gt;&amp;<sp/>params,<sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_goal<sp/>)</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>rosplan_knowledge_msgs::KnowledgeUpdateService<sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!is_goal)</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.request.update_type<sp/>=<sp/>(<sp/>value<sp/>?<sp/><ref refid="rosplan-kb_8md_8txt_1ae383a0070aad6f5b5ff2e0e8ecc57980" kindref="member">KB_ADD_KNOWLEDGE</ref><sp/>:<sp/><ref refid="rosplan-kb_8md_8txt_1a3fc8fe8eaf6f19d6e73eb762b5608590" kindref="member">KB_DEL_KNOWLEDGE</ref><sp/>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.request.update_type<sp/>=<sp/>(<sp/>value<sp/>?<sp/><ref refid="rosplan-kb_8md_8txt_1acf652202a3134c42f03042569520a219" kindref="member">KB_ADD_GOAL</ref><sp/>:<sp/><ref refid="rosplan-kb_8md_8txt_1a74bc32467d212c3b7b1af62e36e6174a" kindref="member">KB_DEL_GOAL</ref><sp/>);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.request.knowledge.knowledge_type<sp/>=<sp/><ref refid="rosplan-kb_8md_8txt_1a4fe1e5d1ed4ba3fd4237490006e06dd2" kindref="member">KB_KTYPE_PREDICATE</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.request.knowledge.attribute_name<sp/>=<sp/>pname;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>=params.begin(<sp/>)<sp/>;<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>!=params.end(<sp/>)<sp/>;<sp/>++<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref><sp/>)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>diagnostic_msgs::KeyValue<sp/>kv;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kv.key<sp/>=<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;first;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kv.value<sp/>=<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;second;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>.request.knowledge.values.push_back(<sp/>kv<sp/>);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a1c4a72d1174dc069f7cda8bd0b749190" kindref="member">kbm</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="comment">//<sp/>cast<sp/>a<sp/>KeyValue<sp/>message<sp/>into<sp/>a<sp/>simple<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239" refid="classkb__tools_1ac39559c5414b4254d13d61fca5c3f6a5" refkind="member"><highlight class="normal">std::map&lt;std::string,<sp/>std::string&gt;<sp/><ref refid="classkb__tools_1ac39559c5414b4254d13d61fca5c3f6a5" kindref="member">kb_tools::keyvalue2map</ref>(<sp/></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;diagnostic_msgs::KeyValue&gt;&amp;<sp/>kv<sp/>)</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>std::string&gt;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>=kv.begin(<sp/>)<sp/>;<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>!=kv.end(<sp/>)<sp/>;<sp/>++<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref><sp/>)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>[<ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;key]<sp/>=<sp/><ref refid="test-the-project_8md_8txt_1ae9880850b92fe7594f93a01193dc189d" kindref="member">it</ref>-&gt;value;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>PRIVATE<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="comment">//<sp/>open<sp/>the<sp/>services<sp/>with<sp/>the<sp/>knowledge<sp/>base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>kb_tools::open_services(<sp/>)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/>Predicates<sp/>Query<sp/>service<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>[&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1a14480e81381e195709ebd903dedd6c60" kindref="member">SERVICE_QUERY</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;cl_query<sp/>=<sp/><ref refid="classkb__tools_1a8ace0d8aefb4528d49284a31021d7f2b" kindref="member">nh</ref>.serviceClient&lt;rosplan_knowledge_msgs::KnowledgeQueryService&gt;(<sp/><ref refid="rosplan-kb_8md_8txt_1a14480e81381e195709ebd903dedd6c60" kindref="member">SERVICE_QUERY</ref><sp/>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;cl_query.waitForExistence(<sp/>ros::Duration(<sp/><ref refid="kb__tools_8h_1a779e0704b7854956198cc3883c7f215e" kindref="member">TIMEOUT_QUERY</ref><sp/>)<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>contact<sp/>the<sp/>server<sp/>-<sp/>timeout<sp/>expired<sp/>(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kb__tools_8h_1a779e0704b7854956198cc3883c7f215e" kindref="member">TIMEOUT_QUERY</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;s)<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>[&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1a14480e81381e195709ebd903dedd6c60" kindref="member">SERVICE_QUERY</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>===<sp/>update<sp/>service<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>[&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1ac9ef9cc1af3aeeacaf4b06f1b54ece3a" kindref="member">SERVICE_KB_UPDATE</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;cl_kb_update<sp/>=<sp/><ref refid="classkb__tools_1a8ace0d8aefb4528d49284a31021d7f2b" kindref="member">nh</ref>.serviceClient&lt;rosplan_knowledge_msgs::KnowledgeUpdateService&gt;(<sp/><ref refid="rosplan-kb_8md_8txt_1ac9ef9cc1af3aeeacaf4b06f1b54ece3a" kindref="member">SERVICE_KB_UPDATE</ref><sp/>);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;cl_kb_update.waitForExistence(<sp/>ros::Duration(<sp/><ref refid="kb__tools_8h_1a6dffd91fadc72daca40e06d00a34b254" kindref="member">TIMEOUT_KB_UPDATE</ref><sp/>)<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_WARN_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>contact<sp/>the<sp/>server<sp/>-<sp/>timeout<sp/>expired<sp/>(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kb__tools_8h_1a6dffd91fadc72daca40e06d00a34b254" kindref="member">TIMEOUT_KB_UPDATE</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;s)<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a25b2a84da20ed8d1bb6cea6f07ef45f1" kindref="member">success</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>[&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="rosplan-kb_8md_8txt_1ac9ef9cc1af3aeeacaf4b06f1b54ece3a" kindref="member">SERVICE_KB_UPDATE</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_rosplan/src/knowledge_base_tools/kb_tools.cpp"/>
+  </compounddef>
+</doxygen>

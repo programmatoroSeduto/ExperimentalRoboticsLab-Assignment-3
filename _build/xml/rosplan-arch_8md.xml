@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="rosplan-arch_8md" kind="file" language="Markdown">
+    <compoundname>rosplan-arch.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>robocluedo<sp/>rosplan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>simple<sp/>description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">nodes<sp/>and<sp/>components:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>knowledge<sp/>base</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>problem<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>planning<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>parsing<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>plan<sp/>dispatcher</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>...<sp/>actions<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>feedback<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>rosplan<sp/>kb<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>rosplan<sp/>pipeline<sp/>manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DIAGRAM<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>&quot;robocluedo<sp/>rosplan&quot;</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DIAGRAM<sp/>ELEMENTS</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;robocluedo<sp/>rosplan&quot;<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">file<sp/>&quot;pddl\ndomain&quot;<sp/>as<sp/>PDDL_DOM</highlight></codeline>
+<codeline><highlight class="normal">file<sp/>&quot;pddl\nproblem&quot;<sp/>as<sp/>PDDL_PROB</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;ROSplan&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>database<sp/>&quot;knowledge<sp/>base&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[problem<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PROBLEM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[planning<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PLAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[parsing<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PARSE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[plan<sp/>dispatcher]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>DISPATCH</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right-&gt;<sp/>PROBLEM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PROBLEM<sp/>-down-&gt;<sp/>PLAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PLAN<sp/>-down-&gt;<sp/>PARSE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right-<sp/>PARSE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PARSE<sp/>-down-&gt;<sp/>DISPATCH</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-left-<sp/>DISPATCH</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;actions<sp/>dispatch&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[action]<sp/>as<sp/>ACTION</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[feedback\nmanager]<sp/>as<sp/>FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">[ROSPlan\npipeline<sp/>manager]<sp/>&lt;&lt;node&gt;&gt;<sp/>as<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">[KB<sp/>interface]<sp/>&lt;&lt;node&gt;&gt;<sp/>as<sp/>IKB</highlight></codeline>
+<codeline><highlight class="normal">ACTION<sp/>--&gt;<sp/>IKB</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">DISPATCH<sp/>-right-&gt;<sp/>ACTION</highlight></codeline>
+<codeline><highlight class="normal">PDDL_DOM<sp/>--&gt;<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">PDDL_PROB<sp/>--&gt;<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">IKB<sp/>&lt;--&gt;<sp/>KB</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ACTION<sp/>--&gt;<sp/>FEEDBACK</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PROBLEM<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">PLAN<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">PARSE<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">DISPATCH<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;feedback<sp/>topic&quot;<sp/>as<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;service<sp/>pipeline<sp/>manager&quot;<sp/>as<sp/>SRV_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">MANAGER<sp/>--&gt;<sp/>SRV_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;KB<sp/>interface<sp/>service&quot;<sp/>as<sp/>SRV_IKB</highlight></codeline>
+<codeline><highlight class="normal">IKB<sp/>--&gt;<sp/>SRV_IKB</highlight></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_rosplan/_uml/rosplan-arch.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE REFERENCE – node kb_interface &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CODE REFERENCE – class kb_tools" href="kb_tools.html" />
+    <link rel="prev" title="CODE REFERENCE – class feedback manager" href="feedback_manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/new-robocluedo.html">PDDL description – the new RoboCLuedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/pddl-and-rosplan.html">PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="action_collect_hint.html">CODE REFERENCE – ROSPlan action collect_hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feedback_manager.html">CODE REFERENCE – class feedback manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_tools.html">CODE REFERENCE – class kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to.html">CODE REFERENCE – ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to_center.html">CODE REFERENCE – ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replan.html">CODE REFERENCE – ROSPlan action replan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosplan_pipeline_manager.html">CODE REFERENCE – node rosplan_pipeline_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
+      <li>CODE REFERENCE – node kb_interface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_rosplan/_code_reference/kb_interface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="code-reference-node-kb-interface">
+<h1>CODE REFERENCE – node kb_interface<a class="headerlink" href="#code-reference-node-kb-interface" title="Permalink to this heading"></a></h1>
+<p>services for read/write on the rosplan kb </p>
+<p><dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NODE_NAME">
+<span class="target" id="kb__interface_8cpp_1a8cc8d559acdd2f74085b20977182d5b7"></span><span class="sig-name descname"><span class="n"><span class="pre">NODE_NAME</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOGSQUARE">
+<span class="target" id="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0"></span><span class="sig-name descname"><span class="n"><span class="pre">LOGSQUARE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">str</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OUTLABEL">
+<span class="target" id="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643"></span><span class="sig-name descname"><span class="n"><span class="pre">OUTLABEL</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TLOG">
+<span class="target" id="kb__interface_8cpp_1a4c242fea9a3b706e637163f8b0eed95c"></span><span class="sig-name descname"><span class="n"><span class="pre">TLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TWARN">
+<span class="target" id="kb__interface_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643"></span><span class="sig-name descname"><span class="n"><span class="pre">TWARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TERR">
+<span class="target" id="kb__interface_8cpp_1a59b71c836719259a2e9b1428ec35504c"></span><span class="sig-name descname"><span class="n"><span class="pre">TERR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_REPLAN">
+<span class="target" id="kb__interface_8cpp_1a70e8f2a0877a3bce00060e809cc9c598"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_REPLAN</span></span></span><a class="headerlink" href="#c.SERVICE_REPLAN" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_UPDATE_GOAL">
+<span class="target" id="kb__interface_8cpp_1afb9ddc61b30142ae234ee958e6d2e7de"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_UPDATE_GOAL</span></span></span><a class="headerlink" href="#c.SERVICE_UPDATE_GOAL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LANDMARK_REPLAN">
+<span class="target" id="kb__interface_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8"></span><span class="sig-name descname"><span class="n"><span class="pre">LANDMARK_REPLAN</span></span></span><a class="headerlink" href="#c.LANDMARK_REPLAN" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LANDMARK_COLLECT">
+<span class="target" id="kb__interface_8cpp_1a24358e49160550a847f87e20cbae2755"></span><span class="sig-name descname"><span class="n"><span class="pre">LANDMARK_COLLECT</span></span></span><a class="headerlink" href="#c.LANDMARK_COLLECT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LANDMARK_SOLVE">
+<span class="target" id="kb__interface_8cpp_1aeba69fa9266c50170be8cd6c57e4f2ef"></span><span class="sig-name descname"><span class="n"><span class="pre">LANDMARK_SOLVE</span></span></span><a class="headerlink" href="#c.LANDMARK_SOLVE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48shut_msgi">
+<span id="_CPPv38shut_msgi"></span><span id="_CPPv28shut_msgi"></span><span id="shut_msg__i"></span><span class="target" id="kb__interface_8cpp_1ac55116ccd10a2e3bfb144277f960d79e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shut_msg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiA_Pc">
+<span id="_CPPv34mainiA_Pc"></span><span id="_CPPv24mainiA_Pc"></span><span id="main__i.cPA"></span><span class="target" id="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv410srv_replan">
+<span id="_CPPv310srv_replan"></span><span id="_CPPv210srv_replan"></span><span id="srv_replan__ros::ServiceServerP"></span><span class="target" id="kb__interface_8cpp_1aeb74a807105c4586e22380a700abdebc"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">srv_replan</span></span></span><a class="headerlink" href="#_CPPv410srv_replan" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv415srv_update_goal">
+<span id="_CPPv315srv_update_goal"></span><span id="_CPPv215srv_update_goal"></span><span id="srv_update_goal__ros::ServiceServerP"></span><span class="target" id="kb__interface_8cpp_1adc4cb6e10ff53f2bf24bed463cd076ab"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">srv_update_goal</span></span></span><a class="headerlink" href="#_CPPv415srv_update_goal" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv418predicate_instance">
+<span id="_CPPv318predicate_instance"></span><span id="_CPPv218predicate_instance"></span><span id="predicate_instance"></span><span class="target" id="classpredicate__instance"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">predicate_instance</span></span></span><a class="headerlink" href="#_CPPv418predicate_instance" title="Permalink to this definition"></a><br /></dt>
+<dd><p>representation of one predicate </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18predicate_instance9set_paramENSt6stringENSt6stringE">
+<span id="_CPPv3N18predicate_instance9set_paramENSt6stringENSt6stringE"></span><span id="_CPPv2N18predicate_instance9set_paramENSt6stringENSt6stringE"></span><span id="predicate_instance::set_param__ss.ss"></span><span class="target" id="classpredicate__instance_1a4225683c001580c09308f7807776e34c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_param</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">p1</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">val1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18predicate_instance9set_paramENSt6stringENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>insert one param </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18predicate_instance11set_param_2ENSt6stringENSt6stringENSt6stringENSt6stringE">
+<span id="_CPPv3N18predicate_instance11set_param_2ENSt6stringENSt6stringENSt6stringENSt6stringE"></span><span id="_CPPv2N18predicate_instance11set_param_2ENSt6stringENSt6stringENSt6stringENSt6stringE"></span><span id="predicate_instance::set_param_2__ss.ss.ss.ss"></span><span class="target" id="classpredicate__instance_1a9867672c23698ee24c258129be388cba"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_param_2</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">p1</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">val1</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">p2</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">val2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18predicate_instance11set_param_2ENSt6stringENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>insert two params </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18predicate_instance4nameE">
+<span id="_CPPv3N18predicate_instance4nameE"></span><span id="_CPPv2N18predicate_instance4nameE"></span><span id="predicate_instance::name__ss"></span><span class="target" id="classpredicate__instance_1ada909861d7429830f3139bf987db8681"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><a class="headerlink" href="#_CPPv4N18predicate_instance4nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18predicate_instance6paramsE">
+<span id="_CPPv3N18predicate_instance6paramsE"></span><span id="_CPPv2N18predicate_instance6paramsE"></span><span id="predicate_instance::params__std::map:ss.ss:"></span><span class="target" id="classpredicate__instance_1a7a7e2240007a0747cb330d781b59a8c0"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">params</span></span></span><a class="headerlink" href="#_CPPv4N18predicate_instance6paramsE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>parameters </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18predicate_instance13default_valueE">
+<span id="_CPPv3N18predicate_instance13default_valueE"></span><span id="_CPPv2N18predicate_instance13default_valueE"></span><span id="predicate_instance::default_value__b"></span><span class="target" id="classpredicate__instance_1a56680bb5f2721c05d9056ff4ab4d652a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">default_value</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N18predicate_instance13default_valueE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>default value </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv412kb_interface">
+<span id="_CPPv312kb_interface"></span><span id="_CPPv212kb_interface"></span><span id="kb_interface"></span><span class="target" id="classkb__interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kb_interface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">private</span></span><span class="w"> </span><a class="reference internal" href="kb_tools.html#_CPPv48kb_tools" title="kb_tools"><span class="n"><span class="pre">kb_tools</span></span></a><a class="headerlink" href="#_CPPv412kb_interface" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface12kb_interfaceEv">
+<span id="_CPPv3N12kb_interface12kb_interfaceEv"></span><span id="_CPPv2N12kb_interface12kb_interfaceEv"></span><span id="kb_interface::kb_interface"></span><span class="target" id="classkb__interface_1a66e8069a0f9c87f4064642b8e927f31a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kb_interface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12kb_interface12kb_interfaceEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="#classkb__interface"><span class="std std-ref">kb_interface</span></a> node constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE">
+<span id="_CPPv3N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="_CPPv2N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="kb_interface::cbk_replan__std_srvs::Empty::RequestR.std_srvs::Empty::ResponseR"></span><span class="target" id="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_replan</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>replan service </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE">
+<span id="_CPPv3N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE"></span><span id="_CPPv2N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE"></span><span id="kb_interface::cbk_update_goal__robocluedo_rosplan_msgs::UpdateGoal::RequestR.robocluedo_rosplan_msgs::UpdateGoal::ResponseR"></span><span class="target" id="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_update_goal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UpdateGoal</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UpdateGoal</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>update goal service </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface2nhE">
+<span id="_CPPv3N12kb_interface2nhE"></span><span id="_CPPv2N12kb_interface2nhE"></span><span id="kb_interface::nh__ros::NodeHandle"></span><span class="target" id="classkb__interface_1a34ce02f35e999532f0640e946b98cae1"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N12kb_interface2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface9init_predE">
+<span id="_CPPv3N12kb_interface9init_predE"></span><span id="_CPPv2N12kb_interface9init_predE"></span><span id="kb_interface::init_pred__std::vector:predicate_instance:"></span><span class="target" id="classkb__interface_1a85b42761439f2b71ce47b2aeafad4f6f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv418predicate_instance" title="predicate_instance"><span class="n"><span class="pre">predicate_instance</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init_pred</span></span></span><a class="headerlink" href="#_CPPv4N12kb_interface9init_predE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>a list of init predicates </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface9goal_predE">
+<span id="_CPPv3N12kb_interface9goal_predE"></span><span id="_CPPv2N12kb_interface9goal_predE"></span><span id="kb_interface::goal_pred__std::vector:predicate_instance:"></span><span class="target" id="classkb__interface_1a0261ae63bd1007b57d9699ee1462378b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv418predicate_instance" title="predicate_instance"><span class="n"><span class="pre">predicate_instance</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">goal_pred</span></span></span><a class="headerlink" href="#_CPPv4N12kb_interface9goal_predE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>a list of goal predicates </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12kb_interface3wpsE">
+<span id="_CPPv3N12kb_interface3wpsE"></span><span id="_CPPv2N12kb_interface3wpsE"></span><span id="kb_interface::wps__std::vector:ss:"></span><span class="target" id="classkb__interface_1abc04eeb94129f16f32702dcb81013d6f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">wps</span></span></span><a class="headerlink" href="#_CPPv4N12kb_interface3wpsE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>list of waypoints </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="feedback_manager.html" class="btn btn-neutral float-left" title="CODE REFERENCE – class feedback manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kb_tools.html" class="btn btn-neutral float-right" title="CODE REFERENCE – class kb_tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

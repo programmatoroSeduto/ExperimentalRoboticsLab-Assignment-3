@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="armor-how-to-use_8md" kind="file" language="Markdown">
+    <compoundname>armor-how-to-use.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>DOCS<sp/>--<sp/>HOW<sp/>TO<sp/>use<sp/>RoboCLuedo<sp/>aRMOR<sp/>interface</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">./armor-services.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>interface<sp/>provides<sp/>4<sp/>main<sp/>directives:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**ADD**<sp/><sp/>--<sp/>put<sp/>a<sp/>hint<sp/>into<sp/>the<sp/>aRMOR<sp/>ontology</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**FIND**<sp/>--<sp/>find<sp/>the<sp/>hypotheses<sp/>which<sp/>are<sp/>CONSISTENT<sp/>(i.e.<sp/>COMPLETE<sp/>but<sp/>not<sp/>INCONSISTENT)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**DEL**<sp/><sp/>--<sp/>mark<sp/>a<sp/>hypothesis<sp/>as<sp/>wrong,<sp/>i.e.<sp/>*discard<sp/>it*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**BACKUP**<sp/>--<sp/>save<sp/>the<sp/>ontology<sp/>on<sp/>file.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>services<sp/>schematics</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>package<sp/>robocluedo_armor</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;aRMOR<sp/>interface&quot;<sp/>&lt;&lt;RCL&gt;&gt;<sp/>as<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;aRMOR<sp/>service&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>NODE_ARMOR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>&lt;--<sp/>&quot;srv&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Trigger.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/armor_interface_srv&quot;<sp/>as<sp/>SRV_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR<sp/>..&gt;<sp/>&quot;cl&quot;<sp/>NODE_RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR<sp/>&lt;..<sp/>&quot;srv&quot;<sp/>NODE_ARMOR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/&apos;<sp/></highlight></codeline>
+<codeline><highlight class="normal">service<sp/>``<sp/>of<sp/>type<sp/>``</highlight></codeline>
+<codeline><highlight class="normal">&apos;/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>ADD<sp/>--<sp/>register<sp/>a<sp/>new<sp/>hint<sp/>into<sp/>the<sp/>Ontology</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>add<sp/>a<sp/>new<sp/>hint<sp/>(from<sp/>the<sp/>Oracle?)<sp/>the<sp/>node<sp/>provides<sp/>the<sp/>service<sp/>`/cluedo_armor/add_hint`<sp/>of<sp/>type<sp/>`robocluedo_armor_msgs/AddHint`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Note<sp/>that**<sp/>adding<sp/>the<sp/>same<sp/>hint<sp/>twice<sp/>*doesn&apos;t<sp/>affect<sp/>the<sp/>content<sp/>of<sp/>the<sp/>ontology*.<sp/>The<sp/>request<sp/>will<sp/>retur<sp/>true<sp/>even<sp/>in<sp/>this<sp/>case.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>the<sp/>format<sp/>of<sp/>the<sp/>service:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>file<sp/>&apos;AddHint.srv&apos;</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>it<sp/>represents<sp/>a<sp/>hint<sp/>of<sp/>the<sp/>type<sp/>-&gt;<sp/>(Aelem,<sp/>Belem):property</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>numeric<sp/>ID<sp/>of<sp/>the<sp/>hint</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>hypID</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>fields<sp/>of<sp/>the<sp/>property</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>property</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>Belem</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bool<sp/>success</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">fields:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`hypID`<sp/>is<sp/>the<sp/>integer<sp/>identifier<sp/>of<sp/>the<sp/>hypothesis<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`property`<sp/>indicates<sp/>the<sp/>role<sp/>to<sp/>define:<sp/>it<sp/>corresponds<sp/>to<sp/>the<sp/>&apos;key&apos;<sp/>element<sp/>of<sp/>the<sp/>hint<sp/>message</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`Belem`<sp/>is<sp/>the<sp/>content<sp/>of<sp/>the<sp/>property:<sp/>it<sp/>corresponds<sp/>to<sp/>the<sp/>field<sp/>`value`<sp/>from<sp/>the<sp/>Oracle</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>ontology<sp/>allows<sp/>to<sp/>define<sp/>three<sp/>roles:<sp/>(`Aelem`<sp/>is<sp/>always<sp/>the<sp/>label<sp/>of<sp/>the<sp/>hypothesis,<sp/>whereas<sp/>`Belem`<sp/>is<sp/>the<sp/>value<sp/>of<sp/>the<sp/>property)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`(who<sp/>&quot;HP&lt;hypID&gt;&quot;<sp/>?Belem)`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`(where<sp/>&quot;HP&lt;hypID&gt;&quot;<sp/>?Belem)`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`(what<sp/>&quot;HP&lt;hypID&gt;&quot;<sp/>?Belem)`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**very<sp/>important:<sp/>the<sp/>node<sp/>allows<sp/>only<sp/>these<sp/>properties!**<sp/>it<sp/>will<sp/>raise<sp/>an<sp/>error<sp/>if<sp/>the<sp/>property<sp/>hasn&apos;t<sp/>one<sp/>of<sp/>the<sp/>abovementioned<sp/>keys;<sp/>remember<sp/>to<sp/>check<sp/>the<sp/>`success`<sp/>flag<sp/>of<sp/>the<sp/>message.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**property<sp/>names<sp/>must<sp/>be<sp/>written<sp/>in<sp/>lowercase!**</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>FIND<sp/>--<sp/>ask<sp/>for<sp/>a<sp/>consistent<sp/>hint</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>service<sp/>`/cluedo_armor/find_consistent_h`<sp/>of<sp/>type<sp/>`robocluedo_armor_msgs/FindConsistentHypotheses`<sp/>is<sp/>what<sp/>you<sp/>need<sp/>to<sp/>ask<sp/>the<sp/>Ontology<sp/>for<sp/>a<sp/>admissible<sp/>solution.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>the<sp/>service<sp/>file<sp/>employed<sp/>by<sp/>the<sp/>service:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>file<sp/>&apos;FindConsistentHypotheses.srv&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>empty<sp/>request</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>list<sp/>of<sp/>consistent<sp/>hypotheses<sp/>from<sp/>the<sp/>ontology</highlight></codeline>
+<codeline><highlight class="normal">Hypothesis[]<sp/>hyp</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">when<sp/>called,<sp/>the<sp/>service<sp/>returns<sp/>the<sp/>entire<sp/>list<sp/>of<sp/>the<sp/>hypotheses<sp/>*belonging<sp/>to<sp/>the<sp/>COMPLETED<sp/>set<sp/>and<sp/>not<sp/>belonging<sp/>to<sp/>the<sp/>INCONSISTENT<sp/>one*.<sp/>Remember<sp/>that<sp/>the<sp/>ontology<sp/>has<sp/>the<sp/>following<sp/>structure:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>THINGs<sp/>--<sp/>`owl:thing`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>HYPOTHESIS<sp/>--<sp/>`(what<sp/>only<sp/>WEAPON)<sp/>and<sp/>(where<sp/>only<sp/>PLACE)<sp/>and<sp/>(who<sp/>only<sp/>PERSON)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>COMPLETED<sp/>--<sp/>`(what<sp/>min<sp/>1<sp/>WEAPON)<sp/>and<sp/>(where<sp/>min<sp/>1<sp/>PLACE)<sp/>and<sp/>(who<sp/>min<sp/>1<sp/>PERSON)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>INCONSISTENT<sp/><sp/>--<sp/>`(what<sp/>min<sp/>2<sp/>WEAPON)<sp/>or<sp/>(where<sp/>min<sp/>2<sp/>PLACE)<sp/>or<sp/>(who<sp/>min<sp/>2<sp/>PERSON)`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>WHO</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>WHERE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>WHAT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Hence<sp/>the<sp/>*COMPLETED*<sp/>set<sp/>will<sp/>contain<sp/>not<sp/>only<sp/>the<sp/>complete<sp/>hypotheses,<sp/>but<sp/>also<sp/>the<sp/>*INCONSISTENT*<sp/>ones.<sp/>The<sp/>service<sp/>performs<sp/>a<sp/>set<sp/>difference<sp/>*COMPLETED<sp/>-<sp/>INCONSISTENT*<sp/>which<sp/>is<sp/>the<sp/>set<sp/>of<sp/>the<sp/>admissible<sp/>solutions,<sp/>if<sp/>any.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**don&apos;t<sp/>forget<sp/>to<sp/>check<sp/>the<sp/>length<sp/>of<sp/>the<sp/>list!**<sp/>The<sp/>method<sp/>could<sp/>return<sp/>a<sp/>empty<sp/>list<sp/>of<sp/>complete<sp/>hypotheses.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>the<sp/>type<sp/>`robocluedo_armor_msgs/Hypothesis`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>file<sp/>&apos;Hypothesis.msg&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>DEPRECATED</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>tag</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>integer<sp/>identifier<sp/>of<sp/>the<sp/>hypothesis<sp/>(-1<sp/>if<sp/>the<sp/>identifier<sp/>is<sp/>not<sp/>standard)</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>who<sp/>killed<sp/>Dr.<sp/>Black</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>who</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>where<sp/>the<sp/>murder<sp/>happened</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>where</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>what<sp/>is<sp/>the<sp/>murder<sp/>weapon</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>what</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>DEL<sp/>--<sp/>discard<sp/>a<sp/>hypothesis</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">use<sp/>the<sp/>service<sp/>`/cluedo_armor/wrong_hypothesis`<sp/>of<sp/>type<sp/>`robocluedo_armor_msgs/DiscardHypothesis`,<sp/>whose<sp/>structure<sp/>is<sp/>reported<sp/>here<sp/>below:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>file<sp/>&apos;DiscardHypothesis.srv&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bool<sp/>success</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**the<sp/>request<sp/>could<sp/>fail**<sp/>due<sp/>to,<sp/>for<sp/>instance,<sp/>the<sp/>unexistence<sp/>of<sp/>the<sp/>indicated<sp/>hypothesis.<sp/></highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="robocluedo_armor/_docs/armor-how-to-use.md"/>
+  </compounddef>
+</doxygen>

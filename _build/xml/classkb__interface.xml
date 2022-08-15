@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classkb__interface" kind="class" language="C++" prot="public">
+    <compoundname>kb_interface</compoundname>
+    <basecompoundref refid="classkb__tools" prot="private" virt="non-virtual">kb_tools</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classkb__interface_1a34ce02f35e999532f0640e946b98cae1" prot="private" static="no" mutable="no">
+        <type>ros::NodeHandle</type>
+        <definition>ros::NodeHandle kb_interface::nh</definition>
+        <argsstring></argsstring>
+        <name>nh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="277" column="21" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classkb__interface_1a85b42761439f2b71ce47b2aeafad4f6f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref> &gt;</type>
+        <definition>std::vector&lt;predicate_instance&gt; kb_interface::init_pred</definition>
+        <argsstring></argsstring>
+        <name>init_pred</name>
+        <briefdescription>
+<para>a list of init predicates </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="280" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classkb__interface_1a0261ae63bd1007b57d9699ee1462378b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref> &gt;</type>
+        <definition>std::vector&lt;predicate_instance&gt; kb_interface::goal_pred</definition>
+        <argsstring></argsstring>
+        <name>goal_pred</name>
+        <briefdescription>
+<para>a list of goal predicates </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="283" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classkb__interface_1abc04eeb94129f16f32702dcb81013d6f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; kb_interface::wps</definition>
+        <argsstring></argsstring>
+        <name>wps</name>
+        <briefdescription>
+<para>list of waypoints </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="286" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classkb__interface_1a66e8069a0f9c87f4064642b8e927f31a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>kb_interface::kb_interface</definition>
+        <argsstring>()</argsstring>
+        <name>kb_interface</name>
+        <briefdescription>
+<para><ref refid="classkb__interface" kindref="compound">kb_interface</ref> node constructor </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="76" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="76" bodyend="134"/>
+        <references refid="classpredicate__instance_1ada909861d7429830f3139bf987db8681" compoundref="kb__interface_8cpp" startline="46">predicate_instance::name</references>
+        <references refid="classpredicate__instance_1a56680bb5f2721c05d9056ff4ab4d652a" compoundref="kb__interface_8cpp" startline="52">predicate_instance::default_value</references>
+        <references refid="classpredicate__instance_1a4225683c001580c09308f7807776e34c" compoundref="kb__interface_8cpp" startline="55" endline="58">predicate_instance::set_param</references>
+      </memberdef>
+      <memberdef kind="function" id="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool kb_interface::cbk_replan</definition>
+        <argsstring>(std_srvs::Empty::Request &amp;req, std_srvs::Empty::Response &amp;res)</argsstring>
+        <name>cbk_replan</name>
+        <param>
+          <type>std_srvs::Empty::Request &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>std_srvs::Empty::Response &amp;</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+<para>replan service </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="137" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="137" bodyend="188"/>
+        <references refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" compoundref="kb__tools_8cpp" startline="109" endline="141">kb_tools::set_predicate</references>
+        <references refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" compoundref="kb__tools_8cpp" startline="69" endline="101">kb_tools::get_predicate</references>
+        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="297" endline="322">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool kb_interface::cbk_update_goal</definition>
+        <argsstring>(robocluedo_rosplan_msgs::UpdateGoal::Request &amp;req, robocluedo_rosplan_msgs::UpdateGoal::Response &amp;res)</argsstring>
+        <name>cbk_update_goal</name>
+        <param>
+          <type>robocluedo_rosplan_msgs::UpdateGoal::Request &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>robocluedo_rosplan_msgs::UpdateGoal::Response &amp;</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+<para>update goal service </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="191" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="191" bodyend="272"/>
+        <references refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" compoundref="kb__tools_8cpp" startline="145" endline="176">kb_tools::set_goal</references>
+        <references refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" compoundref="examples__tools_8md_8txt" startline="116">req</references>
+        <references refid="kb__interface_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8" compoundref="kb__interface_8cpp" startline="35">LANDMARK_REPLAN</references>
+        <references refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" compoundref="kb__tools_8cpp" startline="109" endline="141">kb_tools::set_predicate</references>
+        <references refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" compoundref="examples__tools_8md_8txt" startline="117">res</references>
+        <references refid="kb__interface_8cpp_1a24358e49160550a847f87e20cbae2755" compoundref="kb__interface_8cpp" startline="36">LANDMARK_COLLECT</references>
+        <references refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" compoundref="kb__tools_8cpp" startline="69" endline="101">kb_tools::get_predicate</references>
+        <references refid="kb__interface_8cpp_1aeba69fa9266c50170be8cd6c57e4f2ef" compoundref="kb__interface_8cpp" startline="37">LANDMARK_SOLVE</references>
+        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="297" endline="322">main</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>kb_tools</label>
+        <link refid="classkb__tools"/>
+      </node>
+      <node id="1">
+        <label>kb_interface</label>
+        <link refid="classkb__interface"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>kb_tools</label>
+        <link refid="classkb__tools"/>
+      </node>
+      <node id="1">
+        <label>kb_interface</label>
+        <link refid="classkb__interface"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="robocluedo_rosplan/src/kb_interface.cpp" line="72" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="71" bodyend="287"/>
+    <listofallmembers>
+      <member refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>cbk_replan</name></member>
+      <member refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>cbk_update_goal</name></member>
+      <member refid="classkb__interface_1a0261ae63bd1007b57d9699ee1462378b" prot="private" virt="non-virtual"><scope>kb_interface</scope><name>goal_pred</name></member>
+      <member refid="classkb__interface_1a85b42761439f2b71ce47b2aeafad4f6f" prot="private" virt="non-virtual"><scope>kb_interface</scope><name>init_pred</name></member>
+      <member refid="classkb__interface_1a66e8069a0f9c87f4064642b8e927f31a" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>kb_interface</name></member>
+      <member refid="classkb__interface_1a34ce02f35e999532f0640e946b98cae1" prot="private" virt="non-virtual"><scope>kb_interface</scope><name>nh</name></member>
+      <member refid="classkb__interface_1abc04eeb94129f16f32702dcb81013d6f" prot="private" virt="non-virtual"><scope>kb_interface</scope><name>wps</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

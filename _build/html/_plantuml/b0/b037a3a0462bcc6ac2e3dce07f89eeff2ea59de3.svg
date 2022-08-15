@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="357px" preserveAspectRatio="none" style="width:754px;height:357px;background:#FFFFFF;" version="1.1" viewBox="0 0 754 357" width="754px" zoomAndPan="magnify"><defs/><g><rect height="42.2969" style="stroke:#00000000;stroke-width:1.0;fill:none;" width="190" x="275" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="164" x="288" y="30.9951">(ACTION) collect-hint</text><!--MD5=[4ca550b5f474e5b03a514a1a0f811f43]
+entity ACT_COLLECT_HINT--><g id="elem_ACT_COLLECT_HINT"><rect fill="#F1F1F1" height="94.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158" x="439" y="60.2969"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="577" y="65.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="575" y="67.2969"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="575" y="71.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="102" x="462" y="101.292">«PDDL action»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="475" y="133.5889">collect-hint</text></g><!--MD5=[bc367bcd7c3b1c01d40cff759d9fea2e]
+entity SRV_MANIP--><g id="elem_SRV_MANIP"><ellipse cx="129" cy="311.2969" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="246" x="6" y="349.292">/robocluedo/manipulator_command</text></g><!--MD5=[82817458b664c54c40293f09e7dd8da8]
+entity DISPATCH--><g id="elem_DISPATCH"><ellipse cx="518" cy="311.2969" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="465.5" y="349.292">action dispatch</text></g><!--MD5=[14ec68510050050bc5f07de05681fa1b]
+entity DISP_FEEDBACK--><g id="elem_DISP_FEEDBACK"><ellipse cx="692" cy="311.2969" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="637" y="349.292">action feedback</text></g><!--MD5=[145d09c6e6e757117590fc06ac5578c8]
+reverse link ACT_COLLECT_HINT to SRV_MANIP--><g id="link_ACT_COLLECT_HINT_SRV_MANIP"><path codeLine="14" d="M433.43,114.7969 C335.37,123.6169 182.26,143.7469 144,185.2969 C113.2,218.7369 122.55,280.3569 127.14,302.2869 " fill="none" id="ACT_COLLECT_HINT-backto-SRV_MANIP" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="438.64,114.3369,429.3206,111.1512,433.6597,114.7805,430.0304,119.1197,438.64,114.3369" style="stroke:#181818;stroke-width:1.0;"/><path d="M149,190.2969 L149,231.2969 L505,231.2969 L505,200.2969 L495,190.2969 L149,190.2969 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M495,190.2969 L495,200.2969 L505,200.2969 L495,190.2969 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="319" x="163" y="215.3638">robocluedo_rosplan_msgs/ManipulationCommand</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="10" x="412.9914" y="102.6841">cl</text></g><!--MD5=[908cb0b0bb7824cd9f9a6f08333bf0d5]
+reverse link ACT_COLLECT_HINT to DISPATCH--><g id="link_ACT_COLLECT_HINT_DISPATCH"><path codeLine="18" d="M518,160.7969 C518,209.6869 518,278.7669 518,302.1769 " fill="none" id="ACT_COLLECT_HINT-backto-DISPATCH" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="518,155.5269,514,164.5269,518,160.5269,522,164.5269,518,155.5269" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[b6dfd19c39095d39f49f0207c0f3bc60]
+link ACT_COLLECT_HINT to DISP_FEEDBACK--><g id="link_ACT_COLLECT_HINT_DISP_FEEDBACK"><path codeLine="20" d="M558.36,155.5269 C598.57,202.0969 657.66,270.5369 681.48,298.1169 " fill="none" id="ACT_COLLECT_HINT-to-DISP_FEEDBACK" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="684.99,302.1769,682.1319,292.7518,681.7208,298.3937,676.0789,297.9826,684.99,302.1769" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3b77fbea53f2500e6136f47ff7e2ddab]
+@startuml
+
+''' DIAGRAM INFOS
+title "(ACTION) collect-hint"
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+component "collect-hint" <<PDDL action>> as ACT_COLLECT_HINT
+
+
+''' LINKS
+() "/robocluedo/manipulator_command" as SRV_MANIP
+ACT_COLLECT_HINT "cl" <- - SRV_MANIP
+note on link : robocluedo_rosplan_msgs/ManipulationCommand
+
+() "action dispatch" as DISPATCH
+ACT_COLLECT_HINT <.. DISPATCH
+() "action feedback" as DISP_FEEDBACK 
+ACT_COLLECT_HINT ..> DISP_FEEDBACK
+
+@enduml
+
+@startuml
+
+title "(ACTION) collect-hint"
+skinparam Padding 8
+allow_mixing
+
+
+component "collect-hint" <<PDDL action>> as ACT_COLLECT_HINT
+
+
+() "/robocluedo/manipulator_command" as SRV_MANIP
+ACT_COLLECT_HINT "cl" <- - SRV_MANIP
+note on link : robocluedo_rosplan_msgs/ManipulationCommand
+
+() "action dispatch" as DISPATCH
+ACT_COLLECT_HINT <.. DISPATCH
+() "action feedback" as DISP_FEEDBACK 
+ACT_COLLECT_HINT ..> DISP_FEEDBACK
+
+@enduml
+
+PlantUML version 1.2022.6(Tue Jun 21 17:34:49 UTC 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

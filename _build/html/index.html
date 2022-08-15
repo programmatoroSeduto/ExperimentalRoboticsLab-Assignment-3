@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RCL – the RoboCLuedo Project - part 2 &mdash; RobotCLuedo 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/assets/jsonview.bundle.js"></script>
+        <script src="_static/assets/jsonview_loader.js"></script>
+        <script src="_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="README – the RoboCLuedo Project – part 2" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> RobotCLuedo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/dev-log.html">RoboCLuedo – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">RobotCLuedo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>RCL – the RoboCLuedo Project - part 2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="rcl-the-robocluedo-project-part-2">
+<h1>RCL – the RoboCLuedo Project - part 2<a class="headerlink" href="#rcl-the-robocluedo-project-part-2" title="Permalink to this heading"></a></h1>
+<p><em>here we go again</em></p>
+<img alt="Textual alternative to the image" class="with-border with-shadow" src="_images/cluedologo.jpg" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_uml/arch.html">UML overall arch</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_docs/armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_uml/armor-old-schematics.html">aRMOR UML CLASS – old schematics</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_uml/armor-uml.html">UML – aRMOR elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_code_reference/armor-cluedo.html">CODE REFERENCE – class aRMOR CLuedo</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_code_reference/armor-tools.html">CODE REFERENCE – class aRMOR Tools</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_code_reference/cluedo-armor-interface.html">CODE REFERENCE – node CLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_examples/examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_armor/_examples/examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_docs/new-robocluedo.html">PDDL description – the new RoboCLuedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_docs/pddl-and-rosplan.html">PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_uml/rosplan-arch.html">UML – robocluedo rosplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_uml/rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/action_collect_hint.html">CODE REFERENCE – ROSPlan action collect_hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/feedback_manager.html">CODE REFERENCE – class feedback manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/kb_interface.html">CODE REFERENCE – node kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/kb_tools.html">CODE REFERENCE – class kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/move_to.html">CODE REFERENCE – ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/move_to_center.html">CODE REFERENCE – ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/replan.html">CODE REFERENCE – ROSPlan action replan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html">CODE REFERENCE – node rosplan_pipeline_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_uml/bug-m.html">UML – bug_m PY node</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_uml/go-to-point.html">UML – go to point PY node</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_uml/head-orient.html">UML – head orientation PY</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_uml/wall-follow.html">UML – wall follow PY node</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_code_reference/bug_m.html">CODE REFERENCE – node bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_code_reference/go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_code_reference/head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_code_reference/manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_code_reference/navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_movement_controller/_code_reference/wall_follow.html">CODE REFERENCE – node wall_follow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_mission_manager/_code_reference/manipulation_unit.html">CODE REFERENCE – node manipulation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_mission_manager/_code_reference/mission_manager.html">CODE REFERENCE – node mission_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_mission_manager/_code_reference/nagivation_unit.html">CODE REFERENCE – node navigation_unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_module_testing/_code_reference/rosplan_simulated_motion_system.html">CODE REFERENCE – node rosplan_simulated_motion_system</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_module_testing/_code_reference/test_armor.html">CODE REFERENCE – node test_armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_module_testing/_code_reference/test_armor_cluedo.html">CODE REFERENCE – node test_armor_cluedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robocluedo_module_testing/_code_reference/test_armor_tools.html">CODE REFERENCE – node test_armor_tools</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_dependencies/_docs/robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+<p>..Module Testing &lt;./robocluedo_dependencies/_docs/test-the-project.md&gt;</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/dev-log.html">RoboCLuedo – Development Log</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/sphinx-yaml.html">YAML and Sphinx</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/test-the-project.html">Testing the project</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_examples/examples-index.html">Code Examples</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_ext/plant-uml-reference.html">PlantUML quick reference</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="README.html" class="btn btn-neutral float-right" title="README – the RoboCLuedo Project – part 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

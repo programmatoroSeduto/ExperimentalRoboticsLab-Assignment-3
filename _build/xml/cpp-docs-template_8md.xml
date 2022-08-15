@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="cpp-docs-template_8md" kind="file" language="Markdown">
+    <compoundname>cpp-docs-template.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Documentation<sp/>for<sp/>c++<sp/>nodes<sp/>and<sp/>libraries</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>conventions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>header<sp/>contains<sp/>the<sp/>big<sp/>part<sp/>of<sp/>the<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>cpp<sp/>file<sp/>contains<sp/>a<sp/>reference<sp/>to<sp/>the<sp/>documentation<sp/>in<sp/>the<sp/>header</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**use<sp/>the<sp/>header<sp/>documentation<sp/>both<sp/>for<sp/>nodes<sp/>and<sp/>for<sp/>header<sp/>files**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>where<sp/>possible,<sp/>better<sp/>to<sp/>use<sp/>javadoc<sp/>supported<sp/>by<sp/>many<sp/>other<sp/>doc<sp/>systems<sp/>instead<sp/>of<sp/>the<sp/>(horrible)<sp/>doxygen<sp/>statement,<sp/>poorly<sp/>supported<sp/>except<sp/>by<sp/>doxygen<sp/>itself.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**use<sp/>HTML**<sp/>to<sp/>alter<sp/>the<sp/>markup<sp/>inside<sp/>the<sp/>documentation<sp/>text</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>file<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">documentation<sp/>of<sp/>a<sp/>node<sp/>or<sp/>a<sp/>library.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>delete<sp/>the<sp/>unused<sp/>fields</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>use<sp/>the<sp/>name<sp/>of<sp/>the<sp/>macro<sp/>to<sp/>make<sp/>a<sp/>reference<sp/>to<sp/>a<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>remember<sp/>to<sp/>use<sp/>`\ref`<sp/>when<sp/>you&apos;re<sp/>referring<sp/>to<sp/>a<sp/>name<sp/>of<sp/>the<sp/>code</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Header<sp/>documentation<sp/>/<sp/>node<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**use<sp/>this<sp/>both<sp/>for<sp/>nodes<sp/>and<sp/>for<sp/>header<sp/>files**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```html</highlight></codeline>
+<codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\file<sp/>file.ext</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;div&gt;&lt;b&gt;ROS<sp/>Node<sp/>Name&lt;/b&gt;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;ul&gt;&lt;li&gt;???ros_node???&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>...brief...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\authors<sp/>???</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\version<sp/>v1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Description:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;p&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/p&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;UML<sp/>component&lt;/b&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>(See<sp/>...<sp/>the<sp/>overal<sp/>architecture,<sp/>for<sp/>further<sp/>informations)&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;img<sp/>src=&quot;&quot;<sp/>alt=&quot;TODO<sp/>uml&quot;/&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Publishers:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/topic&lt;/i&gt;<sp/>:<sp/>file.msg<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Subscribers:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/topic&lt;/i&gt;<sp/>:<sp/>file.msg<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Services:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/service&lt;/i&gt;<sp/>:<sp/>file.srv<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Clients:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;/serv&lt;/i&gt;<sp/>:<sp/>file.srv<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>reference<sp/>to<sp/>the<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Providing<sp/>actions&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;action_name&lt;/i&gt;<sp/>:<sp/>file.action<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Using<sp/>actions&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;i&gt;action_name&lt;/i&gt;<sp/>:<sp/>file.action<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Hidden<sp/>Services<sp/>and<sp/>Topics:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>from<sp/>...<sp/>:<sp/>type<sp/>)<sp/>&lt;i&gt;/channel&lt;/i&gt;<sp/>:<sp/>type.format<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>reference<sp/>to<sp/>page</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Parameters:&lt;/b&gt;<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[GET/SET]<sp/>&lt;i&gt;/parameter&lt;/i&gt;<sp/>:<sp/>type<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...<sp/>description<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>&lt;/li&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/ul&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;Test<sp/>the<sp/>code&lt;/b&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;code&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;/code&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>&lt;b&gt;TODOs&lt;/b&gt;&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal"><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>###<sp/>Cpp<sp/>file<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>this<sp/>file<sp/>simply<sp/>makes<sp/>a<sp/>reference<sp/>to<sp/>the<sp/>header.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>```html</highlight></codeline>
+<codeline><highlight class="normal"><sp/>/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@file<sp/>filename</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@brief<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@authors<sp/>...lista<sp/>di<sp/>autori<sp/>separati<sp/>da<sp/>virgola...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@version<sp/>v1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>header<sp/>the<sp/>Header</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Code<sp/>Elements<sp/>Documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>naive<sp/>doc</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>most<sp/>free<sp/>template.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```html</highlight></codeline>
+<codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>classical<sp/>function<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">use<sp/>this<sp/>also<sp/>for<sp/>class<sp/>methods!</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```html</highlight></codeline>
+<codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>param<sp/>...<sp/>description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@returns<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>MAIN<sp/>FUNCTION<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```html</highlight></codeline>
+<codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>ROS<sp/>node<sp/>main<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>service<sp/>implementation<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```html</highlight></codeline>
+<codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>implementation<sp/>of<sp/>service<sp/>\ref<sp/>SERVICE_MACRO_OF_THE_SERVICE</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>request<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>response<sp/>...description</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>file.srv</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>publisher-callback<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>template<sp/>can<sp/>be<sp/>used<sp/>to<sp/>document<sp/>a<sp/>function<sp/>callback<sp/>which<sp/>also<sp/>publishes<sp/>something.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```html</highlight></codeline>
+<codeline><highlight class="normal">/********************************************//**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\brief<sp/>subscriber<sp/>to<sp/>\ref<sp/>SUBSCRIBER_HINT_SIGNAL<sp/>and<sp/>publisher<sp/>of<sp/>\ref<sp/>PUBLISHER_HINT</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>...<sp/>more<sp/>details</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>emptySignal<sp/>empty<sp/>&apos;request&apos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>subscriber.msg<sp/>[IN]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@see<sp/>publisher.msg<sp/>[OUT]</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>***********************************************/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>useful<sp/>doxygen<sp/>statements</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[doxygen<sp/>statements](https://www.doxygen.nl/manual/commands.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>also<sp/>[javadoc<sp/>official<sp/>giude](https://www.oracle.com/it/technical-resources/articles/java/javadoc-tool.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TODO<sp/>remarks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">@todo<sp/>something<sp/>still<sp/>to<sp/>do</highlight></codeline>
+<codeline><highlight class="normal">@bug<sp/>describe<sp/>the<sp/>bug<sp/>here<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>annotations<sp/>and<sp/>remarks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">\note</highlight></codeline>
+<codeline><highlight class="normal">...your<sp/>annotation...</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\remark</highlight></codeline>
+<codeline><highlight class="normal">...your<sp/>annotation...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">===AN<sp/>EXAMPLE===</highlight></codeline>
+<codeline><highlight class="normal">\note</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>note<sp/>consists<sp/>of<sp/>two<sp/>paragraphs.<sp/>&lt;br&gt;</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>is<sp/>the<sp/>first<sp/>paragraph.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>warnings<sp/>and<sp/>limitations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">@warning<sp/>this<sp/>is<sp/>a<sp/>warning</highlight></codeline>
+<codeline><highlight class="normal">@deprecated<sp/>...deprecation<sp/>notice<sp/>here...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">\attention</highlight></codeline>
+<codeline><highlight class="normal">\warning</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="_docs/cpp-docs-template.md"/>
+  </compounddef>
+</doxygen>

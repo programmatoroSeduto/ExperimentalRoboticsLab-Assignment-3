@@ -1,0 +1,59 @@
+# service 'RosplanPipelineManagerService'
+
+## Request
+
+# landmarks
+int32 LANDMARK_NONE = -1
+int32 LANDMARK_REPLAN = 0
+int32 LANDMARK_COLLECT = 1
+int32 LANDMARK_SOLVE = 2
+
+# load the problem
+bool load_problem
+
+# try to solve the problem with the planner
+bool solve_problem
+
+# try to parse the plan
+bool parse_plan
+
+# execute the plan
+bool execute_plan
+
+# landmark to execute
+int32 landmark
+
+---
+
+## Response
+
+# success or failure?
+bool success
+
+# loading phase success
+bool success_load_problem
+
+# landmark feasibility (true if not used)
+#    (success_load_problem=false) and (landmark_is_applicable=true) indicates a service failure
+#    (success_load_problem=false) and (landmark_is_applicable=false) landmark not applicable
+#    (success_load_problem=true) and (landmark_is_applicable=true) good!
+#    (success_load_problem=true) and (landmark_is_applicable=false) NO MEANING (it shouldn't happen)
+bool landmark_is_applicable
+
+# planner execution success
+bool success_solve_problem
+
+# planner not able to solve the problem
+bool problem_not_solvable
+
+# parsing execution success
+bool success_parse_plan
+
+# execution phase success
+bool success_execute_plan
+
+# received a feedback (not received a feedback indicates a anomalous situation)
+bool feedback_received
+
+# the last feedback received from the system
+ActionFeedback feedback
