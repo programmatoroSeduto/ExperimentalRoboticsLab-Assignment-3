@@ -6,16 +6,23 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><programlisting filename=".toctree"><codeline><highlight class="normal">./dev-log.md</highlight></codeline>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Indice<sp/></highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./dev-log.md</highlight></codeline>
 </programlisting></para>
+<para><hruler/>
+</para>
 <para><itemizedlist>
 <listitem><para><ulink url="http://www.plantuml.com/plantuml/uml/VLNlQkGs4F-kfvWB77NWuetthd-Q3-NI59h0fLt8XdufB8eqNelOaf7acAKK-XfzlJv9PoHxDybo-M2FD7z-C_ERyUxd4AMFGzSAyKvZRIo22t952cXYxCF5Ok7bM6vDR8Q78Q1NpaQqiLIkMrnv6HhKdR5wiMgbZVUtNyvSZpQW6ho9E-bLOoAgE7XSdXcA3OjEXeXUl3DMjOFUfrjSkQvpjkpfV6oyfymBsRPVCLzBhqVfyGsNMnFK6-Oxz4zlfhWpyHcy-AQ4M-btO098-0MViAM-FHWBiK5OUQS75I6Yx4gu8qqZsV4FOigD0QfpM5s1j9eUkBJQEwEXRvp5af5_TWyP-5PQkJt0NYhb1Xl3X7kTOCb9pL1cjSUuUU9xOEtD6hR33iR6GUlS8-dgY3uXXjHs2HonRd07D2ABNBbBTejnTFuHQFWVKf8d8q52RJoEHCRiTcC9a7nBGSm03ok8wBP8DWz_2U9mmxkpsNf4kz4pNGLJ-05EM9oGV4uRt_Uydfo-nc2jZCRPK72dvCo2WwZRzHIVXmgNlA774BJEnc88cowpN13j54HlZdt1DIkcMH3EtzmarMOK7hMfCJn6rnUzef3gnsLPVVT3MPNLEKCSnf-wlPfgQcNF8Pry5RFCQTKiidUUSM5w5apIpihEABXPiL-sGbNn9PrVXicyR4Tnqn9IQQy3yueKMRngAZdVFn1F0qnaBy_Byq_mPNrt642cZ3ZxBM-Jc9XY0ZUZyTZo5BmR8kKPJMqkLo_pCDGKEnL5-rZGG_hVwvfWW2xiTKqYUymhMim7idvRbH-_BvUVgFAFnvYgTOCkqfjiyqg_z1CYVVLdPpz1houWkC5JSkKq7WmJnMnLHhRGeJPI2DghPEua1TR6IfkinjPkRyj3lO0aG57LWLBoPYTpdi45VwIrsGxv0n0YHoMFp9wOIdYkoe8rp9KG6Mj_fwhsv_vm58BUwJRJACHyIkf45-cSYuJslZOjqbfXSGeUhKQFcWg83Sn_3q190rKDxwT3SVgdNJS8roQgfZ6FwF_xvzy0lmv68qIt3nIV2I_zz0hnFm00">plantUML online</ulink></para>
 </listitem><listitem><para><ulink url="https://www.planttext.com/">un altro editor motlo carino per PlantText</ulink></para>
 </listitem><listitem><para><ulink url="https://www.onlinegdb.com/online_c++_compiler">onlineGDB</ulink></para>
 </listitem></itemizedlist>
 </para>
-<sect1 id="md__docs_dev-log_1autotoc_md20">
-<title>15/08/2022 – setup repository –</title>
+<sect1 id="md__docs_dev-log_1autotoc_md22">
+<title>15/08/2022 – setup repository – starter kit –</title>
 <para>nuovo assignment, nuova avventura:</para>
 <para><itemizedlist>
 <listitem><para>primo setup della repository</para>
@@ -42,9 +49,33 @@
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><bold>potrei avere qualche problema col nome dei services più avanti</bold> perchè purtroppo adesso */oracle_hint* è un servizio, e non più un topic. servirà un remapping ... o forse posso semplicemente cambiare nome del servizio nel mission manager, o fare un remapping da launch file</para>
-</listitem><listitem><para><bold>COMMIT</bold>: &quot;setup (starter kit with oracle documentation)&quot; </para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;setup (starter kit with oracle documentation)&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
+<para>prima di tutto serve avere funzionante il modello del robot. La cosa più ragionevole in questo momento è partire dall&apos;installazione di MoveBasepassando per il modello del robot. Questo terzo assignment utilizzerà una versioneleggermente diversa del robot, equipaggiata con 3 telecamere e con MoveBase integrato. <emphasis>partiamo dal modello e passiamo da move_base</emphasis>; alle telecamere ci pensiamo dopo.</para>
+<para><itemizedlist>
+<listitem><para>creazione del nuovo modello URDF</para>
+</listitem><listitem><para>e creazione del nuovo maledettissimo pacchetto MoveIt (sperando di non combinare casini stavolta)</para>
+</listitem><listitem><para>la nuova versione del robot avrà come soprannome &quot;hunter&quot;</para>
+</listitem><listitem><para>adesso tutti i noiosissimi setup (pensa se il setup assistant funzionasse davvero ... sarebbe un mondo magnifico no? e invece siamo qui)<itemizedlist>
+<listitem><para>fix del world file</para>
+</listitem><listitem><para>&quot;run&quot; launch file (altro fix da segnare)</para>
+</listitem><listitem><para>non avevo fixato RViz ... dovrò farlo prima o poi</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>direi che il pacchetto è pronto!</para>
+</listitem><listitem><para>...hmmm però aspetta: e che dire del <emphasis>mastino di Baskerville?</emphasis> che in inglese è <emphasis>the HOUD of baskerville?</emphasis> chiamarlo Hunter sarebbe ... un&apos;occasione mancata<itemizedlist>
+<listitem><para>e quindi, cambiamo tutti i nomi? <emphasis>certo che no.</emphasis></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on robot model (robocluedo HUNTER)&quot;</para>
+</listitem><listitem><para><emphasis>e ci si rivede domani</emphasis></para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+ </para>
 </sect1>
     </detaileddescription>
   </compounddef>
