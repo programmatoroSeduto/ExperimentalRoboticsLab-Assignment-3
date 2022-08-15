@@ -18,7 +18,18 @@ nuovo assignment, nuova avventura:
 - creazione di un nuovo log pulito (serve a me per riflettere e annotare cose che non so dove metterei altrimenti)
 - customizzazione della documentazione (... il 2 diventa un 3?)
 - **COMMIT**: "setup (docs)"
-- **COMMIT**: "setup (docs)"
 
 ---
 
+- importazione materiale del prof per il terzo assignment
+- [link starter kit per l'assignment](https://github.com/CarmineD8/exp_assignment3/)
+- modalità di sviluppo al nuovo giocattolo
+	- ANZI, per il momento niente modalità di sviluppo
+	- più avanti semmai ne inserirò una
+- compila? compila (perfetto)
+- e senza perdere tempo, voglio una documentazione per il nuovo nodo
+	- uml
+	- aggiungo anche una minima copde reference
+	
+- **potrei avere qualche problema col nome dei services più avanti** perchè purtroppo adesso */oracle_hint* è un servizio, e non più un topic. servirà un remapping ... o forse posso semplicemente cambiare nome del servizio nel mission manager, o fare un remapping da launch file
+- **COMMIT**: "setup (starter kit with oracle documentation)"

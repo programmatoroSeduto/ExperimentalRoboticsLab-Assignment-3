@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oracle (for the ERL project no.3) – User Documentation &mdash; RobotCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="the RoboCLuedo Project no.2 – robot URDF model – User Manual" href="robocluedo-urdf-user-manual.html" />
+    <link rel="prev" title="Oracle (for the ERL project no.2) – User Documentation" href="erl2-oracle-user-manual.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RobotCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Oracle (for the ERL project no.3) – User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robocluedo-urdf-user-manual.html">the RoboCLuedo Project no.2 – robot URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/catkin-notes.html">Notes about Catkin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – erl3 – Development Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-yaml.html">YAML and Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/test-the-project.html">Testing the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/examples-index.html">Code Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RobotCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Oracle (for the ERL project no.3) – User Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_dependencies/_docs/erl3-oracle-user-manual.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="oracle-for-the-erl-project-no-3-user-documentation">
+<h1>Oracle (for the ERL project no.3) – User Documentation<a class="headerlink" href="#oracle-for-the-erl-project-no-3-user-documentation" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="erl2-oracle-user-manual.html#schema-node-simulation-cpp">SCHEMA – node <em>simulation.cpp</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="erl2-oracle-user-manual.html#message-erl2-erloracle">message <em>erl2::ErlOracle</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="erl2-oracle-user-manual.html#service-erl2-oracle">service <em>erl2::Oracle</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="erl2-oracle-user-manual.html#message-visualization-msgs-markerarray">message <em>visualization_msgs::MarkerArray</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="erl2-oracle-user-manual.html#message-visualization-msgs-marker">message <em>visualization_msgs::Marker</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="erl2-oracle-user-manual.html#how-to-receive-a-hint">HOW TO receive a hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erl2-oracle-user-manual.html#how-to-check-the-solution">HOW TO check the solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="erl2-oracle-user-manual.html#development-settings">Development settings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>differently from the oracle of for the second part of the project, this is nothing more than <em>a service</em> aware of the solution and capable to provide hints (also corrupted hints as before).</p>
+<p>it is meant to be used with ArUco: the robot take sthe IDs detecting arUco markers spread across the environment, and asks for their meaning to the Oracle, which returns the message containing that meaning.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The third Oracle provides the name <em>/oracle_hint</em> as a service, and no longer as a topic as in the second version of the Oracle. It could be required a remapping.</p>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>the node contains up to 30 precomputed hints</strong>, see in the code: <code class="docutils literal notranslate"><span class="pre">erl3::ErlOracle</span> <span class="pre">oracle_msgs[30];</span></code>
+sometimes in the space, the robot could find a ID greater than 30: <em>it must be discarded</em>.</p></li>
+<li><p>the array <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">markerID[30];</span></code> contains the ID associated to the respective message into <code class="docutils literal notranslate"><span class="pre">erl3::ErlOracle</span> <span class="pre">oracle_msgs[30];</span></code>. For instance, the id of the i-th hint <code class="docutils literal notranslate"><span class="pre">oracle_msgs[i]</span></code> is <code class="docutils literal notranslate"><span class="pre">markerID[i]</span></code></p></li>
+<li><p>in particular, <code class="docutils literal notranslate"><span class="pre">winID</span></code> is the ID of the solution of the case</p></li>
+<li><p>there are two types of ID: there’s the one in the message <em>Marker</em> which is an index of the array of hints; and there’s the ID of the other message <em>ErlOracle</em> that is an identifier of a hypothesis of the case.</p></li>
+<li><p>each hypothesis identifier goes from 0 up to 5</p></li>
+</ul>
+</div>
+<div class="section" id="schema-node-simulation-cpp">
+<h2>SCHEMA – node <em>simulation.cpp</em><a class="headerlink" href="#schema-node-simulation-cpp" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>run the node referring to it with <em>final_oracle</em></p></li>
+<li><p>the node name at runtime is <em>assignment3</em></p></li>
+<li><p>the source file is called <em>simulation3.cpp</em></p></li>
+</ul>
+</div>
+<p class="plantuml">
+<object data="../../_images/plantuml-0e6444ca7349d79b827fe90801f79834c0bcb83e.svg" type="image/svg+xml" style="width:452px;height:357px;background:#FFFFFF;">
+<img src="../../_images/plantuml-0e6444ca7349d79b827fe90801f79834c0bcb83e.png" alt="&#64;startuml
+
+''' INFOS
+title (erl2) node simulation3.cpp
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+component &quot;simulation3.cpp&quot; &lt;&lt;ERL3 Oracle&gt;&gt; as NODE_ERL3_ORACLE
+
+
+''' LINKS 
+() &quot;/oracle_solution&quot; as SRV_ORACLE_SOLUTION
+NODE_ERL3_ORACLE &quot;srv&quot; --&gt; SRV_ORACLE_SOLUTION
+note on link: erl2/Oracle.srv
+
+() &quot;/oracle_hint&quot; as SRV_HINT
+NODE_ERL3_ORACLE &quot;srv&quot; --&gt; SRV_HINT
+note on link: exp_assignment3/Marker.srv
+
+&#64;enduml"/>
+
+</object></p>
+<div class="section" id="service-erl2-oracle">
+<h3>service <em>erl2::Oracle</em><a class="headerlink" href="#service-erl2-oracle" title="Permalink to this heading"></a></h3>
+<p>this service is used to check the validity of a solution in “solve” phase. it returns <em>the winner ID</em> choosed at the beginning of the game by the Oracle.</p>
+<p>the system should check wether the ID of the solution is equal to the one returned by this service. <em>the returned value is never corrupted</em> concerning this particular type of message.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
+</pre></div>
+</div>
+<p>note: in the actual implementation, the ID goes from 0 included to 5 included.</p>
+</div>
+<div class="section" id="message-erl2-erloracle">
+<h3>message <em>erl2::ErlOracle</em><a class="headerlink" href="#message-erl2-erloracle" title="Permalink to this heading"></a></h3>
+<p>this message is sent every time the <strong>cluedo_link</strong> is at a distance up to <em>0.25m</em>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
+<span class="l l-Scalar l-Scalar-Plain">string key</span>
+<span class="l l-Scalar l-Scalar-Plain">string value</span>
+</pre></div>
+</div>
+<p><em>the message could be corrupted</em> in many ways:</p>
+<ul class="simple">
+<li><p>empty field(s)</p></li>
+<li><p>one or more fields could be “-1”</p></li>
+<li><p>the field “key” could contain a string different from the allowed ones: who, where, and what</p></li>
+</ul>
+<p>so, <em>remember to check the validity of the message</em>.</p>
+</div>
+</div>
+<div class="section" id="how-to-receive-a-hint">
+<h2>HOW TO receive a hint<a class="headerlink" href="#how-to-receive-a-hint" title="Permalink to this heading"></a></h2>
+<p>the robot goes around in search of a ArUco code containing the ID of the hint. When it finds one hint, it makes a service request to the Oracle through <code class="docutils literal notranslate"><span class="pre">/oracle_hint</span></code> service,  declaring the found hint. This request is of type <code class="docutils literal notranslate"><span class="pre">exp_assignment3/Marker</span></code>, made as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int32 markerId</span>
+
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">erl2/ErlOracle oracle_hint</span>
+</pre></div>
+</div>
+<p>the field of type <em>erl2/ErlOracle</em> has these fields:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
+<span class="l l-Scalar l-Scalar-Plain">string key</span>
+<span class="l l-Scalar l-Scalar-Plain">string value</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-check-the-solution">
+<h2>HOW TO check the solution<a class="headerlink" href="#how-to-check-the-solution" title="Permalink to this heading"></a></h2>
+<p>to check whether a specific ID is the solution of the mystery, call the service <code class="docutils literal notranslate"><span class="pre">/oracle_solution</span></code> of type <code class="docutils literal notranslate"><span class="pre">erl2/Oracle</span></code>. Here’s the prototype of the service:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-reference">
+<h2>Code Reference<a class="headerlink" href="#code-reference" title="Permalink to this heading"></a></h2>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413oracleServiceRN4erl26Oracle7RequestERN4erl26Oracle8ResponseE">
+<span id="_CPPv313oracleServiceRN4erl26Oracle7RequestERN4erl26Oracle8ResponseE"></span><span id="_CPPv213oracleServiceRN4erl26Oracle7RequestERN4erl26Oracle8ResponseE"></span><span id="oracleService__erl2::Oracle::RequestR.erl2::Oracle::ResponseR"></span><span class="target" id="simulation3_8cpp_1ae1a3f65d934a3c4a938e85d5071dfaa5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oracleService</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">erl2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Oracle</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">erl2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Oracle</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413oracleServiceRN4erl26Oracle7RequestERN4erl26Oracle8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414oracleCallbackRN15exp_assignment36Marker7RequestERN15exp_assignment36Marker8ResponseE">
+<span id="_CPPv314oracleCallbackRN15exp_assignment36Marker7RequestERN15exp_assignment36Marker8ResponseE"></span><span id="_CPPv214oracleCallbackRN15exp_assignment36Marker7RequestERN15exp_assignment36Marker8ResponseE"></span><span id="oracleCallback__exp_assignment3::Marker::RequestR.exp_assignment3::Marker::ResponseR"></span><span class="target" id="simulation3_8cpp_1ad9cf714dd0ccfe55b69a3f8ac68c60df"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oracleCallback</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">exp_assignment3</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Marker</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">exp_assignment3</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Marker</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414oracleCallbackRN15exp_assignment36Marker7RequestERN15exp_assignment36Marker8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiPPc">
+<span id="_CPPv34mainiPPc"></span><span id="_CPPv24mainiPPc"></span><span id="main__i.cPP"></span><span class="target" id="simulation3_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv410oracle_pub">
+<span id="_CPPv310oracle_pub"></span><span id="_CPPv210oracle_pub"></span><span id="oracle_pub__ros::Publisher"></span><span class="target" id="simulation3_8cpp_1a32812fe000700d7aa8988d74e59471c7"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Publisher</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oracle_pub</span></span></span><a class="headerlink" href="#_CPPv410oracle_pub" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45markx">
+<span id="_CPPv35markx"></span><span id="_CPPv25markx"></span><span id="markx__doubleA"></span><span class="target" id="simulation3_8cpp_1a36b0204cd96e3dc326a2adfa3d1dceda"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">markx</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv45markx" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45marky">
+<span id="_CPPv35marky"></span><span id="_CPPv25marky"></span><span id="marky__doubleA"></span><span class="target" id="simulation3_8cpp_1a0bc4146f286fe42bd5e8fa1e53826447"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">marky</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv45marky" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45markz">
+<span id="_CPPv35markz"></span><span id="_CPPv25markz"></span><span id="markz__doubleA"></span><span class="target" id="simulation3_8cpp_1a8d90002e6a9c50028f184b22c380efc4"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">markz</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv45markz" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv49lastmarkx">
+<span id="_CPPv39lastmarkx"></span><span id="_CPPv29lastmarkx"></span><span id="lastmarkx__double"></span><span class="target" id="simulation3_8cpp_1a412ed4d68a81f370cdcd20e3019db982"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lastmarkx</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0</span></span><a class="headerlink" href="#_CPPv49lastmarkx" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv49lastmarky">
+<span id="_CPPv39lastmarky"></span><span id="_CPPv29lastmarky"></span><span id="lastmarky__double"></span><span class="target" id="simulation3_8cpp_1a174c0dfc727a92493b03f7b0573f4f3e"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lastmarky</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0</span></span><a class="headerlink" href="#_CPPv49lastmarky" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv43key">
+<span id="_CPPv33key"></span><span id="_CPPv23key"></span><span id="key__ssCA"></span><span class="target" id="simulation3_8cpp_1a0049a8a39c319bf1470f36c9e0f75abd"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;who&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;what&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;where&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv43key" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv46person">
+<span id="_CPPv36person"></span><span id="_CPPv26person"></span><span id="person__ssCA"></span><span class="target" id="simulation3_8cpp_1a68fa6a0c7a1208892294604263e23d92"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">person</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;MissScarlett&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;ColonelMustard&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;MrsWhite&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;MrGreen&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;MrsPeacock&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;ProfPlum&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv46person" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv46object">
+<span id="_CPPv36object"></span><span id="_CPPv26object"></span><span id="object__ssCA"></span><span class="target" id="simulation3_8cpp_1a4368e40a20e72e62974037baf19dba80"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">object</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;candlestick&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;dagger&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;leadPipe&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;revolver&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;rope&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;spanner&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv46object" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45place">
+<span id="_CPPv35place"></span><span id="_CPPv25place"></span><span id="place__ssCA"></span><span class="target" id="simulation3_8cpp_1a5e5bd50ead53d20df3f8ede527f47ce7"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">place</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">9</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;conservatory&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;lounge&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;kitchen&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;library&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;hall&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;study&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;bathroom&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;diningRoom&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;billiardRoom&quot;</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv45place" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv44uIDs">
+<span id="_CPPv34uIDs"></span><span id="_CPPv24uIDs"></span><span id="uIDs__iA"></span><span class="target" id="simulation3_8cpp_1a37d4a0b625b8b9583adf9362f5aae971"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uIDs</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv44uIDs" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45winID">
+<span id="_CPPv35winID"></span><span id="_CPPv25winID"></span><span id="winID__i"></span><span class="target" id="simulation3_8cpp_1a90c5d03e068ddae91702223f47eff712"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">winID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv45winID" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv48markerID">
+<span id="_CPPv38markerID"></span><span id="_CPPv28markerID"></span><span id="markerID__iA"></span><span class="target" id="simulation3_8cpp_1ab5f3446a47fbb2ab4e388c5f5e6674df"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">markerID</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">30</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv48markerID" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv411oracle_msgs">
+<span id="_CPPv311oracle_msgs"></span><span id="_CPPv211oracle_msgs"></span><span id="oracle_msgs__erl2::ErlOracleA"></span><span class="target" id="simulation3_8cpp_1aa1e0faa63b5f5b649a5056108449dc95"></span><span class="n"><span class="pre">erl2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ErlOracle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oracle_msgs</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">30</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv411oracle_msgs" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="erl2-oracle-user-manual.html" class="btn btn-neutral float-left" title="Oracle (for the ERL project no.2) – User Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="robocluedo-urdf-user-manual.html" class="btn btn-neutral float-right" title="the RoboCLuedo Project no.2 – robot URDF model – User Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

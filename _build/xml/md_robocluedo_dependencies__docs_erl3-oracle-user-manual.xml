@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual" kind="page">
+    <compoundname>md_robocluedo_dependencies__docs_erl3-oracle-user-manual</compoundname>
+    <title>Oracle (for the ERL project no.3) – User Documentation</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./erl2-oracle-user-manual.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para>differently from the oracle of for the second part of the project, this is nothing more than <emphasis>a service</emphasis> aware of the solution and capable to provide hints (also corrupted hints as before).</para>
+<para>it is meant to be used with ArUco: the robot take sthe IDs detecting arUco markers spread across the environment, and asks for their meaning to the Oracle, which returns the message containing that meaning.</para>
+<para><programlisting filename=".warning"><codeline><highlight class="normal">The<sp/>third<sp/>Oracle<sp/>provides<sp/>the<sp/>name<sp/>*/oracle_hint*<sp/>as<sp/>a<sp/>service,<sp/>and<sp/>no<sp/>longer<sp/>as<sp/>a<sp/>topic<sp/>as<sp/>in<sp/>the<sp/>second<sp/>version<sp/>of<sp/>the<sp/>Oracle.<sp/>It<sp/>could<sp/>be<sp/>required<sp/>a<sp/>remapping.<sp/></highlight></codeline>
+</programlisting></para>
+<sect1 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md145">
+<title>Observations</title>
+<para><itemizedlist>
+<listitem><para><bold>the node contains up to 30 precomputed hints</bold>, see in the code: <computeroutput>erl3::ErlOracle oracle_msgs[30];</computeroutput> sometimes in the space, the robot could find a ID greater than 30: <emphasis>it must be discarded</emphasis>.</para>
+</listitem><listitem><para>the array <computeroutput>int markerID[30];</computeroutput> contains the ID associated to the respective message into <computeroutput>erl3::ErlOracle oracle_msgs[30];</computeroutput>. For instance, the id of the i-th hint <computeroutput>oracle_msgs[i]</computeroutput> is <computeroutput>markerID[i]</computeroutput></para>
+</listitem><listitem><para>in particular, <computeroutput>winID</computeroutput> is the ID of the solution of the case</para>
+</listitem><listitem><para>there are two types of ID: there&apos;s the one in the message <emphasis>Marker</emphasis> which is an index of the array of hints; and there&apos;s the ID of the other message <emphasis>ErlOracle</emphasis> that is an identifier of a hypothesis of the case.</para>
+</listitem><listitem><para>each hypothesis identifier goes from 0 up to 5</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md146">
+<title>SCHEMA – node &lt;em&gt;simulation.cpp&lt;/em&gt;</title>
+<para><programlisting filename=".note"><codeline><highlight class="normal">-<sp/>run<sp/>the<sp/>node<sp/>referring<sp/>to<sp/>it<sp/>with<sp/>*final_oracle*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>node<sp/>name<sp/>at<sp/>runtime<sp/>is<sp/>*assignment3*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>source<sp/>file<sp/>is<sp/>called<sp/>*simulation3.cpp*</highlight></codeline>
+</programlisting></para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>(erl2)<sp/>node<sp/>simulation3.cpp</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;simulation3.cpp&quot;<sp/>&lt;&lt;ERL3<sp/>Oracle&gt;&gt;<sp/>as<sp/>NODE_ERL3_ORACLE</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS<sp/></highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oracle_solution&quot;<sp/>as<sp/>SRV_ORACLE_SOLUTION</highlight></codeline>
+<codeline><highlight class="normal">NODE_ERL3_ORACLE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ORACLE_SOLUTION</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>erl2/Oracle.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oracle_hint&quot;<sp/>as<sp/>SRV_HINT</highlight></codeline>
+<codeline><highlight class="normal">NODE_ERL3_ORACLE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_HINT</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>exp_assignment3/Marker.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<sect2 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md147">
+<title>service &lt;em&gt;erl2::Oracle&lt;/em&gt;</title>
+<para>this service is used to check the validity of a solution in &quot;solve&quot; phase. it returns <emphasis>the winner ID</emphasis> choosed at the beginning of the game by the Oracle.</para>
+<para>the system should check wether the ID of the solution is equal to the one returned by this service. <emphasis>the returned value is never corrupted</emphasis> concerning this particular type of message.</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+</programlisting></para>
+<para>note: in the actual implementation, the ID goes from 0 included to 5 included.</para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md148">
+<title>message &lt;em&gt;erl2::ErlOracle&lt;/em&gt;</title>
+<para>this message is sent every time the <bold>cluedo_link</bold> is at a distance up to <emphasis>0.25m</emphasis>.</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>key</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>value</highlight></codeline>
+</programlisting></para>
+<para><emphasis>the message could be corrupted</emphasis> in many ways:</para>
+<para><itemizedlist>
+<listitem><para>empty field(s)</para>
+</listitem><listitem><para>one or more fields could be &quot;-1&quot;</para>
+</listitem><listitem><para>the field &quot;key&quot; could contain a string different from the allowed ones: who, where, and what</para>
+</listitem></itemizedlist>
+</para>
+<para>so, <emphasis>remember to check the validity of the message</emphasis>.</para>
+</sect2>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md149">
+<title>HOW TO receive a hint</title>
+<para>the robot goes around in search of a ArUco code containing the ID of the hint. When it finds one hint, it makes a service request to the Oracle through <computeroutput>/oracle_hint</computeroutput> service, declaring the found hint. This request is of type <computeroutput>exp_assignment3/Marker</computeroutput>, made as follows:</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">int32<sp/>markerId</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">erl2/ErlOracle<sp/>oracle_hint</highlight></codeline>
+</programlisting></para>
+<para>the field of type <emphasis>erl2/ErlOracle</emphasis> has these fields:</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>key</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>value</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md150">
+<title>HOW TO check the solution</title>
+<para>to check whether a specific ID is the solution of the mystery, call the service <computeroutput>/oracle_solution</computeroutput> of type <computeroutput>erl2/Oracle</computeroutput>. Here&apos;s the prototype of the service:</para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_erl3-oracle-user-manual_1autotoc_md151">
+<title>Code Reference</title>
+<para><programlisting filename=".doxygenfile"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="robocluedo-urdf-user-manual_8md_8txt_1af7740bd233f62bf7e16cd57319d7ada2" kindref="member">project</ref>:<sp/>robocluedo</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

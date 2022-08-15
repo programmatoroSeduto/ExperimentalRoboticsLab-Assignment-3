@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="erl3-oracle-user-manual_8md" kind="file" language="Markdown">
+    <compoundname>erl3-oracle-user-manual.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Oracle<sp/>(for<sp/>the<sp/>ERL<sp/>project<sp/>no.3)<sp/>--<sp/>User<sp/>Documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./erl2-oracle-user-manual.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">differently<sp/>from<sp/>the<sp/>oracle<sp/>of<sp/>for<sp/>the<sp/>second<sp/>part<sp/>of<sp/>the<sp/>project,<sp/>this<sp/>is<sp/>nothing<sp/>more<sp/>than<sp/>*a<sp/>service*<sp/>aware<sp/>of<sp/>the<sp/>solution<sp/>and<sp/>capable<sp/>to<sp/>provide<sp/>hints<sp/>(also<sp/>corrupted<sp/>hints<sp/>as<sp/>before).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">it<sp/>is<sp/>meant<sp/>to<sp/>be<sp/>used<sp/>with<sp/>ArUco:<sp/>the<sp/>robot<sp/>take<sp/>sthe<sp/>IDs<sp/>detecting<sp/>arUco<sp/>markers<sp/>spread<sp/>across<sp/>the<sp/>environment,<sp/>and<sp/>asks<sp/>for<sp/>their<sp/>meaning<sp/>to<sp/>the<sp/>Oracle,<sp/>which<sp/>returns<sp/>the<sp/>message<sp/>containing<sp/>that<sp/>meaning.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{warning}</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>third<sp/>Oracle<sp/>provides<sp/>the<sp/>name<sp/>*/oracle_hint*<sp/>as<sp/>a<sp/>service,<sp/>and<sp/>no<sp/>longer<sp/>as<sp/>a<sp/>topic<sp/>as<sp/>in<sp/>the<sp/>second<sp/>version<sp/>of<sp/>the<sp/>Oracle.<sp/>It<sp/>could<sp/>be<sp/>required<sp/>a<sp/>remapping.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Observations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**the<sp/>node<sp/>contains<sp/>up<sp/>to<sp/>30<sp/>precomputed<sp/>hints**,<sp/>see<sp/>in<sp/>the<sp/>code:<sp/>`erl3::ErlOracle<sp/>oracle_msgs[30];`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sometimes<sp/>in<sp/>the<sp/>space,<sp/>the<sp/>robot<sp/>could<sp/>find<sp/>a<sp/>ID<sp/>greater<sp/>than<sp/>30:<sp/>*it<sp/>must<sp/>be<sp/>discarded*.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>array<sp/>`int<sp/>markerID[30];`<sp/>contains<sp/>the<sp/>ID<sp/>associated<sp/>to<sp/>the<sp/>respective<sp/>message<sp/>into<sp/>`erl3::ErlOracle<sp/>oracle_msgs[30];`.<sp/>For<sp/>instance,<sp/>the<sp/>id<sp/>of<sp/>the<sp/>i-th<sp/>hint<sp/>`oracle_msgs[i]`<sp/>is<sp/>`markerID[i]`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>in<sp/>particular,<sp/>`winID`<sp/>is<sp/>the<sp/>ID<sp/>of<sp/>the<sp/>solution<sp/>of<sp/>the<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>there<sp/>are<sp/>two<sp/>types<sp/>of<sp/>ID:<sp/>there&apos;s<sp/>the<sp/>one<sp/>in<sp/>the<sp/>message<sp/>*Marker*<sp/>which<sp/>is<sp/>an<sp/>index<sp/>of<sp/>the<sp/>array<sp/>of<sp/>hints;<sp/>and<sp/>there&apos;s<sp/>the<sp/>ID<sp/>of<sp/>the<sp/>other<sp/>message<sp/>*ErlOracle*<sp/>that<sp/>is<sp/>an<sp/>identifier<sp/>of<sp/>a<sp/>hypothesis<sp/>of<sp/>the<sp/>case.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>each<sp/>hypothesis<sp/>identifier<sp/>goes<sp/>from<sp/>0<sp/>up<sp/>to<sp/>5</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>SCHEMA<sp/>--<sp/>node<sp/>*simulation.cpp*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>run<sp/>the<sp/>node<sp/>referring<sp/>to<sp/>it<sp/>with<sp/>*final_oracle*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>node<sp/>name<sp/>at<sp/>runtime<sp/>is<sp/>*assignment3*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>source<sp/>file<sp/>is<sp/>called<sp/>*simulation3.cpp*</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>(erl2)<sp/>node<sp/>simulation3.cpp</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;simulation3.cpp&quot;<sp/>&lt;&lt;ERL3<sp/>Oracle&gt;&gt;<sp/>as<sp/>NODE_ERL3_ORACLE</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS<sp/></highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oracle_solution&quot;<sp/>as<sp/>SRV_ORACLE_SOLUTION</highlight></codeline>
+<codeline><highlight class="normal">NODE_ERL3_ORACLE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ORACLE_SOLUTION</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>erl2/Oracle.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oracle_hint&quot;<sp/>as<sp/>SRV_HINT</highlight></codeline>
+<codeline><highlight class="normal">NODE_ERL3_ORACLE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_HINT</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>exp_assignment3/Marker.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>service<sp/>*erl2::Oracle*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>service<sp/>is<sp/>used<sp/>to<sp/>check<sp/>the<sp/>validity<sp/>of<sp/>a<sp/>solution<sp/>in<sp/>&quot;solve&quot;<sp/>phase.<sp/>it<sp/>returns<sp/>*the<sp/>winner<sp/>ID*<sp/>choosed<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>game<sp/>by<sp/>the<sp/>Oracle.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>system<sp/>should<sp/>check<sp/>wether<sp/>the<sp/>ID<sp/>of<sp/>the<sp/>solution<sp/>is<sp/>equal<sp/>to<sp/>the<sp/>one<sp/>returned<sp/>by<sp/>this<sp/>service.<sp/>*the<sp/>returned<sp/>value<sp/>is<sp/>never<sp/>corrupted*<sp/>concerning<sp/>this<sp/>particular<sp/>type<sp/>of<sp/>message.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note:<sp/>in<sp/>the<sp/>actual<sp/>implementation,<sp/>the<sp/>ID<sp/>goes<sp/>from<sp/>0<sp/>included<sp/>to<sp/>5<sp/>included.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>message<sp/>*erl2::ErlOracle*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>message<sp/>is<sp/>sent<sp/>every<sp/>time<sp/>the<sp/>**cluedo_link**<sp/>is<sp/>at<sp/>a<sp/>distance<sp/>up<sp/>to<sp/>*0.25m*.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>key</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>value</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*the<sp/>message<sp/>could<sp/>be<sp/>corrupted*<sp/>in<sp/>many<sp/>ways:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>empty<sp/>field(s)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>one<sp/>or<sp/>more<sp/>fields<sp/>could<sp/>be<sp/>&quot;-1&quot;</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>field<sp/>&quot;key&quot;<sp/>could<sp/>contain<sp/>a<sp/>string<sp/>different<sp/>from<sp/>the<sp/>allowed<sp/>ones:<sp/>who,<sp/>where,<sp/>and<sp/>what</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">so,<sp/>*remember<sp/>to<sp/>check<sp/>the<sp/>validity<sp/>of<sp/>the<sp/>message*.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>receive<sp/>a<sp/>hint</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>robot<sp/>goes<sp/>around<sp/>in<sp/>search<sp/>of<sp/>a<sp/>ArUco<sp/>code<sp/>containing<sp/>the<sp/>ID<sp/>of<sp/>the<sp/>hint.<sp/>When<sp/>it<sp/>finds<sp/>one<sp/>hint,<sp/>it<sp/>makes<sp/>a<sp/>service<sp/>request<sp/>to<sp/>the<sp/>Oracle<sp/>through<sp/>`/oracle_hint`<sp/>service,<sp/><sp/>declaring<sp/>the<sp/>found<sp/>hint.<sp/>This<sp/>request<sp/>is<sp/>of<sp/>type<sp/>`exp_assignment3/Marker`,<sp/>made<sp/>as<sp/>follows:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>markerId</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">erl2/ErlOracle<sp/>oracle_hint</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>field<sp/>of<sp/>type<sp/>*erl2/ErlOracle*<sp/>has<sp/>these<sp/>fields:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>key</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>value</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>check<sp/>the<sp/>solution</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">to<sp/>check<sp/>whether<sp/>a<sp/>specific<sp/>ID<sp/>is<sp/>the<sp/>solution<sp/>of<sp/>the<sp/>mystery,<sp/>call<sp/>the<sp/>service<sp/>`/oracle_solution`<sp/>of<sp/>type<sp/>`erl2/Oracle`.<sp/>Here&apos;s<sp/>the<sp/>prototype<sp/>of<sp/>the<sp/>service:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Code<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{doxygenfile}<sp/>simulation3.cpp</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">project:<sp/>robocluedo</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_dependencies/_docs/erl3-oracle-user-manual.md"/>
+  </compounddef>
+</doxygen>
