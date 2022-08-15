@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.abspath('./robocluedo_rosplan_msgs'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'RobotCLuedo'
+project = 'RobotCLuedo #3'
 copyright = '2022, Francesco Ganci'
 author = 'Francesco Ganci'
 

@@ -13,6 +13,12 @@
       <node id="5">
         <label>armor_msgs/ArmorDirective.h</label>
       </node>
+      <node id="1">
+        <label>robocluedo_armor/src/armor_tools/armor_tools.cpp</label>
+        <link refid="armor__tools_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="10">
         <label>map</label>
       </node>
@@ -27,6 +33,9 @@
       </node>
       <node id="6">
         <label>armor_msgs/ArmorDirectiveReq.h</label>
+      </node>
+      <node id="8">
+        <label>iostream</label>
       </node>
       <node id="2">
         <label>armor_tools/armor_tools.h</label>
@@ -52,17 +61,8 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>iostream</label>
-      </node>
       <node id="4">
         <label>armor_msgs/QueryItem.h</label>
-      </node>
-      <node id="1">
-        <label>robocluedo_armor/src/armor_tools/armor_tools.cpp</label>
-        <link refid="armor__tools_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -200,7 +200,7 @@
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>try<sp/>to<sp/>call<sp/>it</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;ArmorSrv.call(<sp/>data<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="armor__tools_8h_1a07e1a753da9f7c716c4bf57d5ce2de54" kindref="member">ARMOR_ERR</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>call<sp/>ArmorService&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dev-log_8md_8txt_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="armor__tools_8h_1a5387b85042c0c102acc50a8837236fe3" kindref="member">ARMOR_SERVICE_SINGLE_REQUEST</ref><sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="armor__tools_8h_1a07e1a753da9f7c716c4bf57d5ce2de54" kindref="member">ARMOR_ERR</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>call<sp/>ArmorService&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="armor__tools_8h_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="armor__tools_8h_1a5387b85042c0c102acc50a8837236fe3" kindref="member">ARMOR_SERVICE_SINGLE_REQUEST</ref><sp/>)<sp/>);</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -231,7 +231,7 @@
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>the<sp/>file<sp/>exists</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;FileExist(<sp/>path<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="armor__tools_8h_1a07e1a753da9f7c716c4bf57d5ce2de54" kindref="member">ARMOR_ERR</ref>(<sp/></highlight><highlight class="stringliteral">&quot;OWL<sp/>file<sp/>not<sp/>found.<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dev-log_8md_8txt_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/>path<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="armor__tools_8h_1a07e1a753da9f7c716c4bf57d5ce2de54" kindref="member">ARMOR_ERR</ref>(<sp/></highlight><highlight class="stringliteral">&quot;OWL<sp/>file<sp/>not<sp/>found.<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="armor__tools_8h_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/>path<sp/>)<sp/>);</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -265,7 +265,7 @@
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>connect<sp/>to<sp/>the<sp/>service</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="armor__tools_8h_1a6fa37f9111f92e4eb4228d33ed5e301f" kindref="member">ARMOR_INFO</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Requiring<sp/>client<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="dev-log_8md_8txt_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="armor__tools_8h_1a5387b85042c0c102acc50a8837236fe3" kindref="member">ARMOR_SERVICE_SINGLE_REQUEST</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="armor__tools_8h_1a6fa37f9111f92e4eb4228d33ed5e301f" kindref="member">ARMOR_INFO</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Requiring<sp/>client<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="armor__tools_8h_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="armor__tools_8h_1a5387b85042c0c102acc50a8837236fe3" kindref="member">ARMOR_SERVICE_SINGLE_REQUEST</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;ArmorSrv<sp/>=<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>.serviceClient&lt;armor_msgs::ArmorDirective&gt;(<sp/><ref refid="armor__tools_8h_1a5387b85042c0c102acc50a8837236fe3" kindref="member">ARMOR_SERVICE_SINGLE_REQUEST</ref><sp/>);</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;ArmorSrv.waitForExistence(<sp/>ros::Duration(<sp/>timeout<sp/>)<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>

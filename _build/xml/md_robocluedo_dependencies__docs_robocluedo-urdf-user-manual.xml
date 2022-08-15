@@ -8,7 +8,7 @@
     <detaileddescription>
 <para><programlisting filename=".toctree"><codeline><highlight class="normal">./robocluedo-urdf-user-manual.md</highlight></codeline>
 </programlisting></para>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md208">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md142">
 <title>Model file structure</title>
 <para>inside the folder <computeroutput>robocluedo_urdf_model</computeroutput> there are these files:</para>
 <para><itemizedlist>
@@ -27,7 +27,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md209">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md143">
 <title>HOW TO generate the model</title>
 <para>execute the file <computeroutput>generate_model.sh</computeroutput>; the URDF and its schematic will be located into the folder <computeroutput>model</computeroutput> with names</para>
 <para><itemizedlist>
@@ -53,7 +53,7 @@
 <codeline><highlight class="normal">Created<sp/>file<sp/>robocluedo_robot.pdf</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md210">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md144">
 <title>HOW TO generate the package with Moveit</title>
 <para>first of all, use the setup assistant to generate the package. Inside the project, <computeroutput>robocluedo_robot</computeroutput>.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>moveit_setup_assistant<sp/>setup.assistant.launch</highlight></codeline>
@@ -65,7 +65,7 @@
 </listitem><listitem><para>In config/joint_limits.yaml let&apos;s set to 1 the scaling factor.</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md211">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md145">
 <title>file ros_controllers.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>Simulation<sp/>settings<sp/>for<sp/>using<sp/>moveit_sim_controllers</highlight></codeline>
 <codeline><highlight class="normal">moveit_sim_hw_interface:</highlight></codeline>
@@ -132,7 +132,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md212">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md146">
 <title>file joint_limits.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>joint_limits.yaml<sp/>allows<sp/>the<sp/>dynamics<sp/>properties<sp/>specified<sp/>in<sp/>the<sp/>URDF<sp/>to<sp/>be<sp/>overwritten<sp/>or<sp/>augmented<sp/>as<sp/>needed</highlight></codeline>
 <codeline></codeline>
@@ -166,7 +166,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md213">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md147">
 <title>Gazebo world files fix</title>
 <para>apply this code into the file <bold>gazebo.launch</bold> :</para>
 <para><programlisting filename=".xml"><codeline><highlight class="comment">&lt;!--<sp/>world<sp/>file<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -198,7 +198,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md214">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md148">
 <title>HOW TO test the model with Gazebo</title>
 <para>launch this:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch</highlight></codeline>
@@ -208,14 +208,14 @@
 </para>
 <para><image type="html" name="robot_rviz.png" inline="yes"></image>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md215">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md149">
 <title>HOW TO Launch the simulation with other worlds file</title>
 <para>the package takes the world files from the package <emphasis>worlds</emphasis> located into the <emphasis>robocluedo_depedencied</emphasis> folder. The default world file is <emphasis>square_room.world</emphasis>.</para>
 <para>here&apos;s the syntax of the command:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch<sp/>world_name:=indoor.world</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md216">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-urdf-user-manual_1autotoc_md150">
 <title>HOW TO launch a world &lt;em&gt;outside the package worlds&lt;/em&gt;</title>
 <para>in case the world file is not included in the <emphasis>worlds</emphasis> package, you have two possibilities.</para>
 <para>the first one is to specify both path and name in this way:</para>

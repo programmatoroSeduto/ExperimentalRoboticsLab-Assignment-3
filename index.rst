@@ -1,8 +1,8 @@
 
-RCL -- the RoboCLuedo Project - part 2
+RCL -- the RoboCLuedo Project - part 3
 ========================================
 
-*here we go again*
+*frutta, caffè, espresso e ammazzacaffè.*
 
 .. image:: _media/cluedologo.jpg
    :class: with-border with-shadow
