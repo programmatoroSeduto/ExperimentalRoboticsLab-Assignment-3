@@ -164,3 +164,17 @@ e adesso, installazione di ArUco e openCV
 	- **funge!**
 	- meglio copiare tutt i markers anche nel package worlds
 - **COMMIT**: "setting up openCV and ArUco"
+
+---
+
+adesso che ArUco c'è, possiamo iniziare il lavoro serio
+
+- questo nuovo progetto richiede ... un **NUOVO PACKAGE**
+
+```bash
+catkin_create_pkg robocluedo_vision roscpp rospy std_msgs geometry_msgs nav_msgs sensor_msgs erl2 exp_assignment3 aruco aruco_msgs dynamic_reconfigure cv_bridge image_transport 
+
+```
+
+- eeee documentazione, subito
+- **COMMIT**: "working on vision (setup package)"

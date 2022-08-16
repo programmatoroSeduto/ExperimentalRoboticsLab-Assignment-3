@@ -25,6 +25,8 @@ RCL -- the RoboCLuedo Project - part 3
    ./robocluedo_armor/index.rst
    ./robocluedo_armor_msgs/index.rst
    
+   ./robocluedo_vision/index.rst
+   
    ./robocluedo_rosplan/index.rst
    ./robocluedo_rosplan_msgs/index.rst
    
