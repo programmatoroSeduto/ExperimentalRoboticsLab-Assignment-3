@@ -460,6 +460,38 @@
     <parent link="base_link"/>
     <child link="laser"/>
   </joint>
+  <link name="camera_front_low">
+		
+	</link>
+  <joint name="joint_camera_front_low" type="fixed">
+    <origin rpy="0 0 0" xyz="0.2 0 0.1"/>
+    <parent link="base_link"/>
+    <child link="camera_front_low"/>
+  </joint>
+  <link name="camera_left">
+		
+	</link>
+  <joint name="joint_camera_left" type="fixed">
+    <origin rpy="0 0 1.57" xyz="0 0.2 0.1"/>
+    <parent link="base_link"/>
+    <child link="camera_left"/>
+  </joint>
+  <link name="camera_right">
+		
+	</link>
+  <joint name="joint_camera_right" type="fixed">
+    <origin rpy="0 0 -1.57" xyz="0 -0.2 0.1"/>
+    <parent link="base_link"/>
+    <child link="camera_right"/>
+  </joint>
+  <link name="camera_arm">
+		
+	</link>
+  <joint name="joint_camera_arm" type="fixed">
+    <origin rpy="0 0 1.57" xyz="0 0 0.1"/>
+    <parent link="arm_link_03"/>
+    <child link="camera_arm"/>
+  </joint>
   <gazebo reference="laser">
     <sensor name="head_hokuyo_sensor" type="ray">
       <pose>0 0 0 0 0 0</pose>
@@ -489,6 +521,150 @@
         <!-- <topicName>m2wr/laser/scan</topicName> -->
         <topicName>/scan</topicName>
         <frameName>laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="camera_front_low">
+    <sensor name="camera_front_low" type="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="camera_front_low">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>robocluedo_robot/camera_front_low</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_front_low</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="camera_left">
+    <sensor name="camera_left" type="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="camera_left">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>robocluedo_robot/camera_left</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_left</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="camera_right">
+    <sensor name="camera_right" type="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="camera_right">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>robocluedo_robot/camera_right</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_right</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="camera_arm">
+    <sensor name="camera_arm" type="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="camera_arm">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>robocluedo_robot/camera_arm</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_arm</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
       </plugin>
     </sensor>
   </gazebo>

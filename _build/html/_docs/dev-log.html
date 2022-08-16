@@ -129,6 +129,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">RoboCLuedo – erl3 – Development Log</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit –</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">16/08/2022 –</a></li>
 </ul>
 </li>
 </ul>
@@ -190,6 +191,103 @@
 </li>
 <li><p><strong>COMMIT</strong>: “working on robot model (robocluedo HUNTER)”</p></li>
 <li><p><em>e ci si rivede domani</em></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h2>16/08/2022 –<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>cotinuiamo a lavorare sul modello del robot (oggi si fa poco…)</p>
+<ul class="simple">
+<li><p>il mio robot avrà ben 4 telecamere (giusto per complicare un po’ la situazione, ecco)</p>
+<ul>
+<li><p>una frontale <em>bassa</em></p></li>
+<li><p>una sul cluedo link</p></li>
+<li><p>un’altra a destra del robot</p></li>
+<li><p>e un’altra a sinistra, un po’ come Spot</p></li>
+</ul>
+</li>
+<li><p>prima il codice per applicare le videocamere</p></li>
+</ul>
+<p>parte Gazebo URDF:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- camera --&gt;</span>
+<span class="nt">&lt;gazebo</span> <span class="na">reference=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;sensor</span> <span class="na">type=</span><span class="s">&quot;camera&quot;</span> <span class="na">name=</span><span class="s">&quot;camera1&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;update_rate&gt;</span>30.0<span class="nt">&lt;/update_rate&gt;</span>
+  <span class="nt">&lt;camera</span> <span class="na">name=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;horizontal_fov&gt;</span>1.3962634<span class="nt">&lt;/horizontal_fov&gt;</span>
+	<span class="nt">&lt;image&gt;</span>
+	  <span class="nt">&lt;width&gt;</span>800<span class="nt">&lt;/width&gt;</span>
+	  <span class="nt">&lt;height&gt;</span>800<span class="nt">&lt;/height&gt;</span>
+	  <span class="nt">&lt;format&gt;</span>R8G8B8<span class="nt">&lt;/format&gt;</span>
+	<span class="nt">&lt;/image&gt;</span>
+	<span class="nt">&lt;clip&gt;</span>
+	  <span class="nt">&lt;near&gt;</span>0.02<span class="nt">&lt;/near&gt;</span>
+	  <span class="nt">&lt;far&gt;</span>300<span class="nt">&lt;/far&gt;</span>
+	<span class="nt">&lt;/clip&gt;</span>
+	<span class="nt">&lt;noise&gt;</span>
+	  <span class="nt">&lt;type&gt;</span>gaussian<span class="nt">&lt;/type&gt;</span>
+	  <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+	  <span class="nt">&lt;stddev&gt;</span>0.007<span class="nt">&lt;/stddev&gt;</span>
+	<span class="nt">&lt;/noise&gt;</span>
+  <span class="nt">&lt;/camera&gt;</span>
+  <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;camera_controller&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_camera.so&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
+	<span class="nt">&lt;updateRate&gt;</span>0.0<span class="nt">&lt;/updateRate&gt;</span>
+	<span class="nt">&lt;cameraName&gt;</span>robot/camera1<span class="nt">&lt;/cameraName&gt;</span>
+	<span class="nt">&lt;imageTopicName&gt;</span>image_raw<span class="nt">&lt;/imageTopicName&gt;</span>
+	<span class="nt">&lt;cameraInfoTopicName&gt;</span>camera_info<span class="nt">&lt;/cameraInfoTopicName&gt;</span>
+	<span class="nt">&lt;frameName&gt;</span>camera_link<span class="nt">&lt;/frameName&gt;</span>
+	<span class="nt">&lt;hackBaseline&gt;</span>0.07<span class="nt">&lt;/hackBaseline&gt;</span>
+	<span class="nt">&lt;distortionK1&gt;</span>0.0<span class="nt">&lt;/distortionK1&gt;</span>
+	<span class="nt">&lt;distortionK2&gt;</span>0.0<span class="nt">&lt;/distortionK2&gt;</span>
+	<span class="nt">&lt;distortionK3&gt;</span>0.0<span class="nt">&lt;/distortionK3&gt;</span>
+	<span class="nt">&lt;distortionT1&gt;</span>0.0<span class="nt">&lt;/distortionT1&gt;</span>
+	<span class="nt">&lt;distortionT2&gt;</span>0.0<span class="nt">&lt;/distortionT2&gt;</span>
+  <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span> 
+</pre></div>
+</div>
+<p>Dovrò aggiungere dei link per farci stare le videocamere…</p>
+<ul class="simple">
+<li><p>e andiamo a modificare il modello del robot</p></li>
+<li><p>la camera davanti bassa</p>
+<ul>
+<li><p>creazione dei link nel modello URDF</p></li>
+<li><p>compila? compila</p></li>
+<li><p>e creazione della videocamera montata sul link</p></li>
+<li><p>e ora vediamo se funge … e pare che funga</p></li>
+</ul>
+</li>
+<li><p>voglio rivedere meglio la questione dei topic della videocamera</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robot/camera_front_low/camera_info
+/robot/camera_front_low/image_raw
+/robot/camera_front_low/image_raw/compressed
+/robot/camera_front_low/image_raw/compressed/parameter_descriptions
+/robot/camera_front_low/image_raw/compressed/parameter_updates
+/robot/camera_front_low/image_raw/compressedDepth
+/robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions
+/robot/camera_front_low/image_raw/compressedDepth/parameter_updates
+/robot/camera_front_low/image_raw/theora
+/robot/camera_front_low/image_raw/theora/parameter_descriptions
+/robot/camera_front_low/image_raw/theora/parameter_updates
+/robot/camera_front_low/parameter_descriptions
+/robot/camera_front_low/parameter_updates
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>il sistema funziona! Ora aggiungiamo quella sul braccio</p>
+<ul>
+<li><p>compilare compila</p></li>
+<li><p>e prova con rviz gazebo … ruotata nel verso sbagliat! … e ok</p></li>
+<li><p>telecamera laterale 1 … ok</p></li>
+<li><p>e telecamera laterale 2 … ok</p></li>
+<li><p>genera? genera</p></li>
+<li><p>e in RViz pare funzioni tutto come dovrebbe</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “working on robot model (added cameras)”</p></li>
 </ul>
 <hr class="docutils" />
 </div>

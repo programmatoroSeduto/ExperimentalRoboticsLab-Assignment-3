@@ -15,7 +15,7 @@
 </programlisting></para>
 <para><hruler/>
 </para>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md159">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md161">
 <title>Model file structure</title>
 <para>inside the folder <computeroutput>robocluedo_hunter_urdf_model</computeroutput> there are these files:</para>
 <para><itemizedlist>
@@ -34,7 +34,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md160">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md162">
 <title>HOW TO generate the model</title>
 <para>execute the file <computeroutput>generate_model.sh</computeroutput>; the URDF and its schematic will be located into the folder <computeroutput>model</computeroutput> with names</para>
 <para><itemizedlist>
@@ -60,7 +60,7 @@
 <codeline><highlight class="normal">Created<sp/>file<sp/>robocluedo_robot.pdf</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md161">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md163">
 <title>HOW TO generate the package with Moveit</title>
 <para>first of all, use the setup assistant to generate the package. Inside the project, <computeroutput>robocluedo_robot</computeroutput>.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>moveit_setup_assistant<sp/>setup.assistant.launch</highlight></codeline>
@@ -75,7 +75,7 @@
 </listitem><listitem><para>(optional) setup the RViz environment</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md162">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md164">
 <title>file ros_controllers.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>Simulation<sp/>settings<sp/>for<sp/>using<sp/>moveit_sim_controllers</highlight></codeline>
 <codeline><highlight class="normal">moveit_sim_hw_interface:</highlight></codeline>
@@ -142,7 +142,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md163">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md165">
 <title>file joint_limits.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>joint_limits.yaml<sp/>allows<sp/>the<sp/>dynamics<sp/>properties<sp/>specified<sp/>in<sp/>the<sp/>URDF<sp/>to<sp/>be<sp/>overwritten<sp/>or<sp/>augmented<sp/>as<sp/>needed</highlight></codeline>
 <codeline></codeline>
@@ -176,7 +176,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md164">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md166">
 <title>Gazebo world files fix</title>
 <para>apply this code into the file <bold>gazebo.launch</bold> :</para>
 <para><programlisting filename=".xml"><codeline><highlight class="comment">&lt;!--<sp/>world<sp/>file<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -207,7 +207,7 @@
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md165">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md167">
 <title>(optional) run.launch</title>
 <para>create a file named <emphasis>run.launch</emphasis> and paste this code:</para>
 <para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;?</highlight><highlight class="keyword">xml</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">version</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">?&gt;</highlight></codeline>
@@ -244,7 +244,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md166">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md168">
 <title>HOW TO test the model with Gazebo</title>
 <para>launch this:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch</highlight></codeline>
@@ -254,14 +254,14 @@
 </para>
 <para><image type="html" name="robot_rviz.png" inline="yes"></image>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md167">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md169">
 <title>HOW TO Launch the simulation with other worlds file</title>
 <para>the package takes the world files from the package <emphasis>worlds</emphasis> located into the <emphasis>robocluedo_depedencied</emphasis> folder. The default world file is <emphasis>square_room.world</emphasis>.</para>
 <para>here&apos;s the syntax of the command:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=indoor.world</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md168">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md170">
 <title>HOW TO launch a world &lt;em&gt;outside the package worlds&lt;/em&gt;</title>
 <para>in case the world file is not included in the <emphasis>worlds</emphasis> package, you have two possibilities.</para>
 <para>the first one is to specify both path and name in this way:</para>

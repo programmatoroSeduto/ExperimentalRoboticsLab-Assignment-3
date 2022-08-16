@@ -71,6 +71,96 @@
 <codeline></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">##<sp/>16/08/2022<sp/>--<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">cotinuiamo<sp/>a<sp/>lavorare<sp/>sul<sp/>modello<sp/>del<sp/>robot<sp/>(oggi<sp/>si<sp/>fa<sp/>poco...)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>mio<sp/>robot<sp/>avrà<sp/>ben<sp/>4<sp/>telecamere<sp/>(giusto<sp/>per<sp/>complicare<sp/>un<sp/>po&apos;<sp/>la<sp/>situazione,<sp/>ecco)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>una<sp/>frontale<sp/>*bassa*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>una<sp/>sul<sp/>cluedo<sp/>link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>un&apos;altra<sp/>a<sp/>destra<sp/>del<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>un&apos;altra<sp/>a<sp/>sinistra,<sp/>un<sp/>po&apos;<sp/>come<sp/>Spot</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>prima<sp/>il<sp/>codice<sp/>per<sp/>applicare<sp/>le<sp/>videocamere</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">parte<sp/>Gazebo<sp/>URDF:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```xml</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>camera<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;gazebo<sp/>reference=&quot;camera_link&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;sensor<sp/>type=&quot;camera&quot;<sp/>name=&quot;camera1&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;update_rate&gt;30.0&lt;/update_rate&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;camera<sp/>name=&quot;head&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;horizontal_fov&gt;1.3962634&lt;/horizontal_fov&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;image&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;width&gt;800&lt;/width&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;height&gt;800&lt;/height&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;format&gt;R8G8B8&lt;/format&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/image&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;clip&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;near&gt;0.02&lt;/near&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;far&gt;300&lt;/far&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/clip&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;noise&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;type&gt;gaussian&lt;/type&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;mean&gt;0.0&lt;/mean&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;stddev&gt;0.007&lt;/stddev&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/noise&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/camera&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;plugin<sp/>name=&quot;camera_controller&quot;<sp/>filename=&quot;libgazebo_ros_camera.so&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;alwaysOn&gt;true&lt;/alwaysOn&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;updateRate&gt;0.0&lt;/updateRate&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;cameraName&gt;robot/camera1&lt;/cameraName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;imageTopicName&gt;image_raw&lt;/imageTopicName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;cameraInfoTopicName&gt;camera_info&lt;/cameraInfoTopicName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;frameName&gt;camera_link&lt;/frameName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;hackBaseline&gt;0.07&lt;/hackBaseline&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;distortionK1&gt;0.0&lt;/distortionK1&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;distortionK2&gt;0.0&lt;/distortionK2&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;distortionK3&gt;0.0&lt;/distortionK3&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;distortionT1&gt;0.0&lt;/distortionT1&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;distortionT2&gt;0.0&lt;/distortionT2&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/plugin&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/sensor&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/gazebo&gt;<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Dovrò<sp/>aggiungere<sp/>dei<sp/>link<sp/>per<sp/>farci<sp/>stare<sp/>le<sp/>videocamere...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>andiamo<sp/>a<sp/>modificare<sp/>il<sp/>modello<sp/>del<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>la<sp/>camera<sp/>davanti<sp/>bassa</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>creazione<sp/>dei<sp/>link<sp/>nel<sp/>modello<sp/>URDF</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>compila</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>creazione<sp/>della<sp/>videocamera<sp/>montata<sp/>sul<sp/>link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>ora<sp/>vediamo<sp/>se<sp/>funge<sp/>...<sp/>e<sp/>pare<sp/>che<sp/>funga</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>voglio<sp/>rivedere<sp/>meglio<sp/>la<sp/>questione<sp/>dei<sp/>topic<sp/>della<sp/>videocamera</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>sistema<sp/>funziona!<sp/>Ora<sp/>aggiungiamo<sp/>quella<sp/>sul<sp/>braccio</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compilare<sp/>compila</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>prova<sp/>con<sp/>rviz<sp/>gazebo<sp/>...<sp/>ruotata<sp/>nel<sp/>verso<sp/>sbagliat!<sp/>...<sp/>e<sp/>ok</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>telecamera<sp/>laterale<sp/>1<sp/>...<sp/>ok</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>telecamera<sp/>laterale<sp/>2<sp/>...<sp/>ok</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>genera?<sp/>genera</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>in<sp/>RViz<sp/>pare<sp/>funzioni<sp/>tutto<sp/>come<sp/>dovrebbe</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>robot<sp/>model<sp/>(added<sp/>cameras)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
     </programlisting>
     <location file="_docs/dev-log.md"/>

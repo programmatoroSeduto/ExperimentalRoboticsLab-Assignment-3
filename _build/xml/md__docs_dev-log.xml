@@ -75,6 +75,102 @@
 </listitem></itemizedlist>
 </para>
 <para><hruler/>
+</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md26">
+<title>16/08/2022 –</title>
+<para>cotinuiamo a lavorare sul modello del robot (oggi si fa poco...)</para>
+<para><itemizedlist>
+<listitem><para>il mio robot avrà ben 4 telecamere (giusto per complicare un po&apos; la situazione, ecco)<itemizedlist>
+<listitem><para>una frontale <emphasis>bassa</emphasis></para>
+</listitem><listitem><para>una sul cluedo link</para>
+</listitem><listitem><para>un&apos;altra a destra del robot</para>
+</listitem><listitem><para>e un&apos;altra a sinistra, un po&apos; come Spot</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>prima il codice per applicare le videocamere</para>
+</listitem></itemizedlist>
+</para>
+<para>parte Gazebo URDF:</para>
+<para><programlisting filename=".xml"><codeline><highlight class="comment">&lt;!--<sp/>camera<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">gazebo</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reference</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;camera_link&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">sensor</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">type</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;camera&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;camera1&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">update_rate</highlight><highlight class="normal">&gt;30.0&lt;/</highlight><highlight class="keywordtype">update_rate</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">camera</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;head&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">horizontal_fov</highlight><highlight class="normal">&gt;1.3962634&lt;/</highlight><highlight class="keywordtype">horizontal_fov</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">image</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">width</highlight><highlight class="normal">&gt;800&lt;/</highlight><highlight class="keywordtype">width</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">height</highlight><highlight class="normal">&gt;800&lt;/</highlight><highlight class="keywordtype">height</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">format</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">R8G8B8</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">format</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">image</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">clip</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">near</highlight><highlight class="normal">&gt;0.02&lt;/</highlight><highlight class="keywordtype">near</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">far</highlight><highlight class="normal">&gt;300&lt;/</highlight><highlight class="keywordtype">far</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">clip</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">noise</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">type</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">gaussian</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">type</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">mean</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">mean</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">stddev</highlight><highlight class="normal">&gt;0.007&lt;/</highlight><highlight class="keywordtype">stddev</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">noise</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">camera</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">plugin</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;camera_controller&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">filename</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;libgazebo_ros_camera.so&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">alwaysOn</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">true</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">alwaysOn</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">updateRate</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">updateRate</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">cameraName</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">robot</highlight><highlight class="normal">/</highlight><highlight class="keyword">camera1</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">cameraName</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">imageTopicName</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">image_raw</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">imageTopicName</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">cameraInfoTopicName</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">camera_info</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">cameraInfoTopicName</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">frameName</highlight><highlight class="normal">&gt;</highlight><highlight class="keyword">camera_link</highlight><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">frameName</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">hackBaseline</highlight><highlight class="normal">&gt;0.07&lt;/</highlight><highlight class="keywordtype">hackBaseline</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">distortionK1</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">distortionK1</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">distortionK2</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">distortionK2</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">distortionK3</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">distortionK3</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">distortionT1</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">distortionT1</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">distortionT2</highlight><highlight class="normal">&gt;0.0&lt;/</highlight><highlight class="keywordtype">distortionT2</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">plugin</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">sensor</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">gazebo</highlight><highlight class="normal">&gt;<sp/></highlight></codeline>
+</programlisting></para>
+<para>Dovrò aggiungere dei link per farci stare le videocamere...</para>
+<para><itemizedlist>
+<listitem><para>e andiamo a modificare il modello del robot</para>
+</listitem><listitem><para>la camera davanti bassa<itemizedlist>
+<listitem><para>creazione dei link nel modello URDF</para>
+</listitem><listitem><para>compila? compila</para>
+</listitem><listitem><para>e creazione della videocamera montata sul link</para>
+</listitem><listitem><para>e ora vediamo se funge ... e pare che funga</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>voglio rivedere meglio la questione dei topic della videocamera</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/robot/camera_front_low/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robot/camera_front_low/parameter_updates</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>il sistema funziona! Ora aggiungiamo quella sul braccio<itemizedlist>
+<listitem><para>compilare compila</para>
+</listitem><listitem><para>e prova con rviz gazebo ... ruotata nel verso sbagliat! ... e ok</para>
+</listitem><listitem><para>telecamera laterale 1 ... ok</para>
+</listitem><listitem><para>e telecamera laterale 2 ... ok</para>
+</listitem><listitem><para>genera? genera</para>
+</listitem><listitem><para>e in RViz pare funzioni tutto come dovrebbe</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on robot model (added cameras)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
  </para>
 </sect1>
     </detaileddescription>
