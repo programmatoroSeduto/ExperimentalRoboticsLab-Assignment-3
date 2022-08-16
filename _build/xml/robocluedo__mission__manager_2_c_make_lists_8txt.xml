@@ -7,7 +7,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="normal"><ref refid="robocluedo__robot_2_c_make_lists_8txt_1ab54a2e80178aab1022aded8cfb50e8cb" kindref="member">cmake_minimum_required</ref>(VERSION<sp/>3.0.2)</highlight></codeline>
+<codeline lineno="1"><highlight class="normal"><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2_c_make_lists_8txt_1a568106bac57c72cd74c219299b3a2994" kindref="member">cmake_minimum_required</ref>(VERSION<sp/>3.0.2)</highlight></codeline>
 <codeline lineno="2"><highlight class="normal"><ref refid="robocluedo-hunter-user-manual_8md_8txt_1af7740bd233f62bf7e16cd57319d7ada2" kindref="member">project</ref>(robocluedo_mission_manager)</highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Compile<sp/>as<sp/>C++11,<sp/>supported<sp/>in<sp/>ROS<sp/>Kinetic<sp/>and<sp/>newer</highlight><highlight class="normal"></highlight></codeline>
@@ -118,7 +118,7 @@
 <codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>LIBRARIES:<sp/>libraries<sp/>you<sp/>create<sp/>in<sp/>this<sp/>project<sp/>that<sp/>dependent<sp/>projects<sp/>also<sp/>need</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>CATKIN_DEPENDS:<sp/>catkin_packages<sp/>dependent<sp/>projects<sp/>also<sp/>need</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>DEPENDS:<sp/>system<sp/>dependencies<sp/>of<sp/>this<sp/>project<sp/>that<sp/>dependent<sp/>projects<sp/>also<sp/>need</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal">catkin_package(</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1aadf77ead1ce9ef9ce0b6ac5f1617614d" kindref="member">catkin_package</ref>(</highlight></codeline>
 <codeline lineno="113"><highlight class="normal">#<sp/><sp/>INCLUDE_DIRS<sp/>include</highlight></codeline>
 <codeline lineno="114"><highlight class="normal">#<sp/><sp/>LIBRARIES<sp/>robocluedo_mission_manager</highlight></codeline>
 <codeline lineno="115"><highlight class="normal">#<sp/><sp/>CATKIN_DEPENDS<sp/>geometry_msgs<sp/>nav_msgs<sp/>robocluedo_armor_msgs<sp/>robocluedo_movement_controller_msgs<sp/>robocluedo_rosplan_msgs<sp/>roscpp<sp/>rospy<sp/>sensor_msgs<sp/>std_msgs</highlight></codeline>
@@ -131,7 +131,7 @@
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Specify<sp/>additional<sp/>locations<sp/>of<sp/>header<sp/>files</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Your<sp/>package<sp/>locations<sp/>should<sp/>be<sp/>listed<sp/>before<sp/>other<sp/>locations</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal">include_directories(</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2src_2_c_make_lists_8txt_1a241f405a0e38dc1e387380b7e39ec7d8" kindref="member">include_directories</ref>(</highlight></codeline>
 <codeline lineno="126"><highlight class="normal">#<sp/>include</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/>${catkin_INCLUDE_DIRS}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal">)</highlight></codeline>
@@ -167,16 +167,16 @@
 <codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><ref refid="catkin-notes_8md_8txt_1a61387bb85991c86e0de3a2eadab6fe46" kindref="member">add_executable</ref>(<sp/>manipulation_unit<sp/>src/manipulation_unit.cpp<sp/>)</highlight></codeline>
-<codeline lineno="161"><highlight class="normal">add_dependencies(<sp/>manipulation_unit<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS}<sp/>)</highlight></codeline>
-<codeline lineno="162"><highlight class="normal">target_link_libraries(<sp/>manipulation_unit<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2src_2_c_make_lists_8txt_1a3fc5a59643df1fdad4b47bf627460f9c" kindref="member">add_dependencies</ref>(<sp/>manipulation_unit<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS}<sp/>)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2image__geometry_2test_2_c_make_lists_8txt_1ae52e1693c2fb9f99471b9cb9caa26588" kindref="member">target_link_libraries</ref>(<sp/>manipulation_unit<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><ref refid="catkin-notes_8md_8txt_1a61387bb85991c86e0de3a2eadab6fe46" kindref="member">add_executable</ref>(<sp/>navigation_unit<sp/>src/navigation_unit.cpp<sp/>)</highlight></codeline>
-<codeline lineno="165"><highlight class="normal">add_dependencies(<sp/>navigation_unit<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS}<sp/>)</highlight></codeline>
-<codeline lineno="166"><highlight class="normal">target_link_libraries(<sp/>navigation_unit<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2src_2_c_make_lists_8txt_1a3fc5a59643df1fdad4b47bf627460f9c" kindref="member">add_dependencies</ref>(<sp/>navigation_unit<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS}<sp/>)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2image__geometry_2test_2_c_make_lists_8txt_1ae52e1693c2fb9f99471b9cb9caa26588" kindref="member">target_link_libraries</ref>(<sp/>navigation_unit<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><ref refid="catkin-notes_8md_8txt_1a61387bb85991c86e0de3a2eadab6fe46" kindref="member">add_executable</ref>(<sp/>mission_manager<sp/>src/mission_manager.cpp<sp/>)</highlight></codeline>
-<codeline lineno="169"><highlight class="normal">add_dependencies(<sp/>mission_manager<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS}<sp/>)</highlight></codeline>
-<codeline lineno="170"><highlight class="normal">target_link_libraries(<sp/>mission_manager<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2src_2_c_make_lists_8txt_1a3fc5a59643df1fdad4b47bf627460f9c" kindref="member">add_dependencies</ref>(<sp/>mission_manager<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS}<sp/>)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2image__geometry_2test_2_c_make_lists_8txt_1ae52e1693c2fb9f99471b9cb9caa26588" kindref="member">target_link_libraries</ref>(<sp/>mission_manager<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
 <codeline lineno="172"><highlight class="normal">#############</highlight></codeline>
 <codeline lineno="173"><highlight class="normal">##<sp/>Install<sp/>##</highlight></codeline>

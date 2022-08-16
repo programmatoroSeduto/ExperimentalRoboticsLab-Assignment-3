@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespacearuco_1_1aruco__private" kind="namespace" language="C++">
+    <compoundname>aruco::aruco_private</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacearuco_1_1aruco__private_1ad99ffa19151b36b7e5d3984429019c2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Mat</type>
+        <definition>cv::Mat aruco::aruco_private::impl__aruco_getRTMatrix</definition>
+        <argsstring>(const cv::Mat &amp;_rvec, const cv::Mat &amp;_tvec)</argsstring>
+        <name>impl__aruco_getRTMatrix</name>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>_rvec</declname>
+        </param>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>_tvec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" line="41" column="9" bodyfile="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" bodystart="41" bodyend="80"/>
+        <references refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" compoundref="erl2-oracle-user-manual_8md_8txt" startline="130">a</references>
+        <referencedby refid="classaruco_1_1_marker_map_pose_tracker_1a30d84078a230ea6bbb99ee266399efb1" compoundref="posetracker_8cpp" startline="566" endline="571">aruco::MarkerMapPoseTracker::getRTMatrix</referencedby>
+        <referencedby refid="classaruco_1_1_marker_pose_tracker_1a9b84a982a094e9315e7fe59d1c4ebe81" compoundref="posetracker_8cpp" startline="573" endline="578">aruco::MarkerPoseTracker::getRTMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacearuco_1_1aruco__private_1ae3d3e913cfca024f2bb948b44496fa1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void aruco::aruco_private::impl__aruco_getRTfromMatrix44</definition>
+        <argsstring>(const cv::Mat &amp;M, cv::Mat &amp;R, cv::Mat &amp;T)</argsstring>
+        <name>impl__aruco_getRTfromMatrix44</name>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>M</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>R</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>T</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" line="82" column="6" bodyfile="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" bodystart="82" bodyend="99"/>
+        <referencedby refid="namespacearuco_1_1aruco__private_1a321d43080bd7449ae0d8448b9bbdd4c3" compoundref="posetracker_8cpp" startline="101" endline="119">reprj_error</referencedby>
+        <referencedby refid="classaruco_1_1_marker_map_pose_tracker_1abd678d2bb687984bfb13cea41ae59b0b" compoundref="posetracker_8cpp" startline="523" endline="564">aruco::MarkerMapPoseTracker::estimatePose</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacearuco_1_1aruco__private_1a321d43080bd7449ae0d8448b9bbdd4c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double aruco::aruco_private::reprj_error</definition>
+        <argsstring>(const std::vector&lt; cv::Point3f &gt; &amp;objPoints, const std::vector&lt; cv::Point2f &gt; points2d, const CameraParameters &amp;imp, const cv::Mat &amp;rt44)</argsstring>
+        <name>reprj_error</name>
+        <param>
+          <type>const std::vector&lt; cv::Point3f &gt; &amp;</type>
+          <declname>objPoints</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; cv::Point2f &gt;</type>
+          <declname>points2d</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classaruco_1_1_camera_parameters" kindref="compound">CameraParameters</ref> &amp;</type>
+          <declname>imp</declname>
+        </param>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>rt44</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" line="101" column="8" bodyfile="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" bodystart="101" bodyend="119"/>
+        <references refid="namespacearuco_1_1aruco__private_1ae3d3e913cfca024f2bb948b44496fa1d" compoundref="posetracker_8cpp" startline="82" endline="99">impl__aruco_getRTfromMatrix44</references>
+        <references refid="classaruco_1_1_camera_parameters_1a5210f7dd5f0f4f0fea728357005d6bcd" compoundref="cameraparameters_8h" startline="47">aruco::CameraParameters::CameraMatrix</references>
+        <references refid="classaruco_1_1_camera_parameters_1a33a5ab0b2f00a4753a2fda307e24360a" compoundref="cameraparameters_8h" startline="50">aruco::CameraParameters::Distorsion</references>
+        <references refid="erl2-oracle-user-manual_8md_8txt_1a16754163197eb074b61db8a8c354ccaf" compoundref="erl2-oracle-user-manual_8md_8txt" startline="110">x</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacearuco_1_1aruco__private_1aeb25dcbda31030c3dd21e248324ff981" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float aruco::aruco_private::rigidBodyTransformation_Horn1987</definition>
+        <argsstring>(const std::vector&lt; cv::Point3f &gt; &amp;POrg, const std::vector&lt; cv::Point3f &gt; &amp;PDst, cv::Mat &amp;RT_4x4)</argsstring>
+        <name>rigidBodyTransformation_Horn1987</name>
+        <param>
+          <type>const std::vector&lt; cv::Point3f &gt; &amp;</type>
+          <declname>POrg</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; cv::Point3f &gt; &amp;</type>
+          <declname>PDst</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>RT_4x4</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" line="125" column="7" bodyfile="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" bodystart="125" bodyend="248"/>
+        <referencedby refid="classaruco_1_1_marker_map_pose_tracker_1a60cba24ce68b8fb99b1fd15c83003069" compoundref="posetracker_8cpp" startline="403" endline="436">aruco::MarkerMapPoseTracker::setParams</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp" line="39" column="1"/>
+  </compounddef>
+</doxygen>

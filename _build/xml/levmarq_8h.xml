@@ -1,0 +1,396 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="levmarq_8h" kind="file" language="C++">
+    <compoundname>levmarq.h</compoundname>
+    <includes local="no">Eigen/Core</includes>
+    <includes local="no">Eigen/Cholesky</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">cmath</includes>
+    <includes local="no">ctime</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">iomanip</includes>
+    <includedby refid="posetracker_8cpp" local="yes">robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp</includedby>
+    <incdepgraph>
+      <node id="11">
+        <label>iomanip</label>
+      </node>
+      <node id="4">
+        <label>functional</label>
+      </node>
+      <node id="3">
+        <label>Eigen/Cholesky</label>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+      <node id="2">
+        <label>Eigen/Core</label>
+      </node>
+      <node id="1">
+        <label>robocluedo_dependencies/aruco_ros/aruco/include/aruco/levmarq.h</label>
+        <link refid="levmarq_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>ctime</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+      <node id="5">
+        <label>iostream</label>
+      </node>
+      <node id="10">
+        <label>chrono</label>
+      </node>
+      <node id="8">
+        <label>cstring</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>robocluedo_dependencies/aruco_ros/aruco/include/aruco/levmarq.h</label>
+        <link refid="levmarq_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>robocluedo_dependencies/aruco_ros/aruco/src/aruco/posetracker.cpp</label>
+        <link refid="posetracker_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classaruco_1_1_lev_marq" prot="public">aruco::LevMarq</innerclass>
+    <innernamespace refid="namespacearuco">aruco</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="levmarq_8h_1aa4f01fddd441d028673ddb8cfb091f43" prot="public" static="no">
+        <name>splm_get_time</name>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <initializer>std::chrono::duration_cast&lt;std::chrono::duration&lt;double&gt;&gt;(<ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref> - <ref refid="erl2-oracle-user-manual_8md_8txt_1a9e32a79e1fd44a43bcbc5ab3cf66b552" kindref="member">b</ref>).<ref refid="random__robot_8cpp_1ad43c3812e6d13e0518d9f8b8f463ffcf" kindref="member">count</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/levmarq.h" line="268" column="9" bodyfile="robocluedo_dependencies/aruco_ros/aruco/include/aruco/levmarq.h" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="29"><highlight class="preprocessor">#ifndef<sp/>ARUCO_MM__LevMarq_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARUCO_MM__LevMarq_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Eigen/Core&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Eigen/Cholesky&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacearuco" kindref="compound">aruco</ref></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Levenberg-Marquardt<sp/>method<sp/>for<sp/>general<sp/>problems<sp/>Inspired<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//@MISC\{IMM2004-03215,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>author<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;K.<sp/>Madsen<sp/>and<sp/>H.<sp/>B.<sp/>Nielsen<sp/>and<sp/>O.<sp/>Tingleff&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>title<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;Methods<sp/>for<sp/>Non-Linear<sp/>Least<sp/>Squares<sp/>Problems<sp/>(2nd<sp/>ed.)&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>year<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;2004&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>pages<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;60&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>publisher<sp/><sp/><sp/><sp/>=<sp/>&quot;Informatics<sp/>and<sp/>Mathematical<sp/>Modelling,<sp/>Technical<sp/>University<sp/>of<sp/>Denmark,<sp/>{DTU}&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>address<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;Richard<sp/>Petersens<sp/>Plads,<sp/>Building<sp/>321,<sp/>{DK-}2800<sp/>Kgs.<sp/>Lyngby&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>url<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&quot;http://www.ltu.se/cms_fs/1.51590!/nonlinear_least_squares.pdf&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="57" refid="classaruco_1_1_lev_marq" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classaruco_1_1_lev_marq" kindref="compound">LevMarq</ref></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="60" refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>1&gt;<sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref>;</highlight></codeline>
+<codeline lineno="61" refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;,<sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;)&gt;<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref>;</highlight></codeline>
+<codeline lineno="62" refid="classaruco_1_1_lev_marq_1a2bc0943b020132439f3a293aba9ab5bc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;,<sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>Eigen::Dynamic&gt;<sp/>&amp;)&gt;<sp/><ref refid="classaruco_1_1_lev_marq_1a2bc0943b020132439f3a293aba9ab5bc" kindref="member">F_z_J</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1aaa53b358b3b926b7088ce01bc9474e68" kindref="member">LevMarq</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1aaa53b358b3b926b7088ce01bc9474e68" kindref="member">LevMarq</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxIters,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>minError,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>min_step_error_diff<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tau<sp/>=<sp/>1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>der_epsilon<sp/>=<sp/>1e-3);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a7b5b41aa09da3fcd3cd0c5f3eec62c43" kindref="member">setParams</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxIters,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>minError,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>min_step_error_diff<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tau<sp/>=<sp/>1,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>der_epsilon<sp/>=</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1e-3);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a28534e8cd28e3ec8ad36201082a9a891" kindref="member">solve</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a2bc0943b020132439f3a293aba9ab5bc" kindref="member">F_z_J</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Step<sp/>by<sp/>step<sp/>solve<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1aafc362d41310b93bd95bb10c214a1685" kindref="member">init</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1ab5073e9f622bc99824a49d79276ce98d" kindref="member">step</ref>(<ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x,<sp/><ref refid="classaruco_1_1_lev_marq_1a2bc0943b020132439f3a293aba9ab5bc" kindref="member">F_z_J</ref><sp/>f_z_J);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1ab5073e9f622bc99824a49d79276ce98d" kindref="member">step</ref>(<ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a6854ffd2d6dd9ad0173057a91ac7d801" kindref="member">getCurrentSolution</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a3a6d6deeea57868cd5fa066ba8f1142a" kindref="member">getBestSolution</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a28534e8cd28e3ec8ad36201082a9a891" kindref="member">solve</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>enable<sp/>verbose<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classaruco_1_1_lev_marq_1a01decaa085d3fd049b0e2231e71ba0cd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;<sp/><ref refid="classaruco_1_1_lev_marq_1a01decaa085d3fd049b0e2231e71ba0cd" kindref="member">verbose</ref>()</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_verbose;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>sets<sp/>a<sp/>callback<sp/>func<sp/>call<sp/>at<sp/>each<sp/>step</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classaruco_1_1_lev_marq_1a0e9ca02d0a2eb4f6e2ded4fb852109c2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a0e9ca02d0a2eb4f6e2ded4fb852109c2" kindref="member">setStepCallBackFunc</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;)&gt;<sp/>callback)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>_step_callback<sp/>=<sp/>callback;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>sets<sp/>a<sp/>function<sp/>that<sp/>indicates<sp/>when<sp/>the<sp/>algorithm<sp/>must<sp/>be<sp/>stop.<sp/>returns<sp/>true<sp/>if<sp/>must<sp/>stop<sp/>and<sp/>false<sp/>otherwise</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="classaruco_1_1_lev_marq_1a660a70801c67e434daac34bf159155ea" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a660a70801c67e434daac34bf159155ea" kindref="member">setStopFunction</ref>(std::function&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;)&gt;<sp/>stop_function)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>_stopFunction<sp/>=<sp/>stop_function;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a76d43fda2268c4069e62f13e8ca3a0cd" kindref="member">calcDerivates</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>Eigen::Dynamic&gt;<sp/>&amp;,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_maxIters;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>_minErrorAllowed,<sp/>_der_epsilon,<sp/>_tau,<sp/>_min_step_error_diff;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_verbose;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//--------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>curr_z,<sp/>x64;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>currErr,<sp/>prevErr,<sp/>minErr;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>Eigen::Dynamic&gt;<sp/>I,<sp/>_J;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>mu,<sp/>v;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;)&gt;<sp/>_step_callback;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>std::function&lt;bool(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;)&gt;<sp/>_stopFunction;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="177" refid="classaruco_1_1_lev_marq_1aaa53b358b3b926b7088ce01bc9474e68" refkind="member"><highlight class="normal"><ref refid="classaruco_1_1_lev_marq_1aaa53b358b3b926b7088ce01bc9474e68" kindref="member">LevMarq&lt;T&gt;::LevMarq</ref>()</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>_maxIters<sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>_minErrorAllowed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>_der_epsilon<sp/>=<sp/>1e-3;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>_verbose<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>_tau<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>v<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>_min_step_error_diff<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="198" refid="classaruco_1_1_lev_marq_1a39b9f83cbeba8746a23087040b259c03" refkind="member"><highlight class="normal"><ref refid="classaruco_1_1_lev_marq_1aaa53b358b3b926b7088ce01bc9474e68" kindref="member">LevMarq&lt;T&gt;::LevMarq</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxIters,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>minError,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>min_step_error_diff,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tau,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>der_epsilon)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>_maxIters<sp/>=<sp/>maxIters;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>_minErrorAllowed<sp/>=<sp/>minError;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>_der_epsilon<sp/>=<sp/>der_epsilon;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>_verbose<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>_tau<sp/>=<sp/>tau;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>v<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>_min_step_error_diff<sp/>=<sp/>min_step_error_diff;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="219" refid="classaruco_1_1_lev_marq_1a7b5b41aa09da3fcd3cd0c5f3eec62c43" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a7b5b41aa09da3fcd3cd0c5f3eec62c43" kindref="member">LevMarq&lt;T&gt;::setParams</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxIters,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>minError,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>min_step_error_diff,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tau,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>der_epsilon)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>_maxIters<sp/>=<sp/>maxIters;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>_minErrorAllowed<sp/>=<sp/>minError;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>_der_epsilon<sp/>=<sp/>der_epsilon;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>_tau<sp/>=<sp/>tau;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>_min_step_error_diff<sp/>=<sp/>min_step_error_diff;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="229" refid="classaruco_1_1_lev_marq_1a76d43fda2268c4069e62f13e8ca3a0cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a76d43fda2268c4069e62f13e8ca3a0cd" kindref="member">LevMarq&lt;T&gt;::calcDerivates</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>Eigen::Dynamic&gt;<sp/>&amp;J,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>.rows();<sp/>i++)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>zp(<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>),<sp/>zm(<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>zp(i)<sp/>+=<sp/>_der_epsilon;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>zm(i)<sp/>-=<sp/>_der_epsilon;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>xp,<sp/>xm;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>f_z_x(zp,<sp/>xp);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>f_z_x(zm,<sp/>xm);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>dif<sp/>=<sp/>(xp<sp/>-<sp/>xm)<sp/>/<sp/>(2.f<sp/>*<sp/>_der_epsilon);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>J.middleCols(i,<sp/>1)<sp/>=<sp/>dif;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="245" refid="classaruco_1_1_lev_marq_1ac7789d90810efd3fef6a885517694044" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a28534e8cd28e3ec8ad36201082a9a891" kindref="member">LevMarq&lt;T&gt;::solve</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>solve(<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/>f_z_x,<sp/>std::bind(&amp;<ref refid="classaruco_1_1_lev_marq_1a76d43fda2268c4069e62f13e8ca3a0cd" kindref="member">LevMarq::calcDerivates</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>std::placeholders::_1,<sp/>std::placeholders::_2,<sp/>f_z_x));</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="251" refid="classaruco_1_1_lev_marq_1a20da7831aa64ae928ecc2690ec7ac054" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1ab5073e9f622bc99824a49d79276ce98d" kindref="member">LevMarq&lt;T&gt;::step</ref>(<ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x)</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>step(f_z_x,<sp/>std::bind(&amp;<ref refid="classaruco_1_1_lev_marq_1a76d43fda2268c4069e62f13e8ca3a0cd" kindref="member">LevMarq::calcDerivates</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>std::placeholders::_1,<sp/>std::placeholders::_2,<sp/>f_z_x));</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="257" refid="classaruco_1_1_lev_marq_1aafc362d41310b93bd95bb10c214a1685" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1aafc362d41310b93bd95bb10c214a1685" kindref="member">LevMarq&lt;T&gt;::init</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x)</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>curr_z<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>I.resize(<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>.rows(),<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>.rows());</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>I.setIdentity();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>f_z_x(curr_z,<sp/>x64);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>minErr<sp/>=<sp/>currErr<sp/>=<sp/>prevErr<sp/>=<sp/>x64.cwiseProduct(x64).sum();</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>_J.resize(x64.rows(),<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>.rows());</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>mu<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268" refid="levmarq_8h_1aa4f01fddd441d028673ddb8cfb091f43" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>splm_get_time(a,b)<sp/>std::chrono::duration_cast&lt;std::chrono::duration&lt;double&gt;&gt;(a<sp/>-<sp/>b).count()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="271" refid="classaruco_1_1_lev_marq_1ab5073e9f622bc99824a49d79276ce98d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1ab5073e9f622bc99824a49d79276ce98d" kindref="member">LevMarq&lt;T&gt;::step</ref>(<ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x,<sp/><ref refid="classaruco_1_1_lev_marq_1a2bc0943b020132439f3a293aba9ab5bc" kindref="member">F_z_J</ref><sp/>f_J)</highlight></codeline>
+<codeline lineno="272"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>f_J(curr_z,<sp/>_J);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>Eigen::Dynamic&gt;<sp/>Jt<sp/>=<sp/>_J.transpose();</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>Eigen::Matrix&lt;T,<sp/>Eigen::Dynamic,<sp/>Eigen::Dynamic&gt;<sp/>JtJ<sp/>=<sp/>(Jt<sp/>*<sp/>_J);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>B<sp/>=<sp/>-Jt<sp/>*<sp/>x64;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mu<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>time<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>1;<sp/>j<sp/>&lt;<sp/>JtJ.cols();<sp/>j++)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(JtJ(j,<sp/>j)<sp/>&gt;<sp/>JtJ(max,<sp/>max))</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>=<sp/>j;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>mu<sp/>=<sp/>JtJ(max,<sp/>max)<sp/>*<sp/>_tau;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>gain<sp/>=<sp/>0,<sp/>prev_mu<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ntries<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isStepAccepted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add/update<sp/>dumping<sp/>factor<sp/>to<sp/>JtJ.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>very<sp/>efficient<sp/>in<sp/>any<sp/>case,<sp/>but<sp/>particularly<sp/>if<sp/>initial<sp/>dump<sp/>does<sp/>not<sp/>produce<sp/>improvement<sp/>and<sp/>must<sp/>reenter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>JtJ.cols();<sp/>j++)</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>JtJ(j,<sp/>j)<sp/>+=<sp/>mu<sp/>-<sp/>prev_mu;<sp/></highlight><highlight class="comment">//<sp/>update<sp/>mu</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>prev_mu<sp/>=<sp/>mu;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>delta<sp/>=<sp/>JtJ.ldlt().solve(B);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>estimated_z<sp/>=<sp/>curr_z<sp/>+<sp/>delta;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compute<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>f_z_x(estimated_z,<sp/>x64);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>err<sp/>=<sp/>x64.cwiseProduct(x64).sum();</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>L<sp/>=<sp/>0.5<sp/>*<sp/>delta.transpose()<sp/>*<sp/>((mu<sp/>*<sp/>delta)<sp/>-<sp/>B);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>gain<sp/>=<sp/>(err<sp/>-<sp/>prevErr)<sp/>/<sp/>L(0,<sp/>0);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>gain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(gain<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mu<sp/>=<sp/>mu<sp/>*<sp/>std::max(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(0.33),<sp/>1.<sp/>-<sp/>pow(2<sp/>*<sp/>gain<sp/>-<sp/>1,<sp/>3));</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v<sp/>=<sp/>5.f;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>currErr<sp/>=<sp/>err;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>curr_z<sp/>=<sp/>estimated_z;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>isStepAccepted<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mu<sp/>=<sp/>mu<sp/>*<sp/>v;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>v<sp/>=<sp/>v<sp/>*<sp/>5;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(gain<sp/>&lt;=<sp/>0<sp/>&amp;&amp;<sp/>ntries++<sp/>&lt;<sp/>5);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_verbose)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::setprecision(5)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Curr<sp/>Error=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>currErr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>AErr(prev<sp/>-<sp/>curr)<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>prevErr<sp/>-<sp/>currErr</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>gain<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>gain<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>dumping<sp/>factor<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>mu<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>we<sp/>must<sp/>move<sp/>to<sp/>the<sp/>new<sp/>position<sp/>or<sp/>exit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currErr<sp/>&lt;<sp/>prevErr)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>std::swap(currErr,<sp/>prevErr);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>isStepAccepted;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="335" refid="classaruco_1_1_lev_marq_1a6854ffd2d6dd9ad0173057a91ac7d801" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a6854ffd2d6dd9ad0173057a91ac7d801" kindref="member">LevMarq&lt;T&gt;::getCurrentSolution</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>)</highlight></codeline>
+<codeline lineno="336"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref><sp/>=<sp/>curr_z;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currErr;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="342" refid="classaruco_1_1_lev_marq_1a28534e8cd28e3ec8ad36201082a9a891" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classaruco_1_1_lev_marq_1a28534e8cd28e3ec8ad36201082a9a891" kindref="member">LevMarq&lt;T&gt;::solve</ref>(<ref refid="classaruco_1_1_lev_marq_1a747c31d8687661c91ef882e8b7d075c8" kindref="member">eVector</ref><sp/>&amp;<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/><ref refid="classaruco_1_1_lev_marq_1a8a7984b7db969c7973f302a4022e858b" kindref="member">F_z_x</ref><sp/>f_z_x,<sp/><ref refid="classaruco_1_1_lev_marq_1a2bc0943b020132439f3a293aba9ab5bc" kindref="member">F_z_J</ref><sp/>f_J)</highlight></codeline>
+<codeline lineno="343"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>init(<ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>,<sp/>f_z_x);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_stopFunction)</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>step(f_z_x,<sp/>f_J);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_step_callback)</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_step_callback(curr_z);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!_stopFunction(curr_z));</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initial<sp/>error<sp/>estimation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mustExit<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>_maxIters<sp/>&amp;&amp;<sp/>!mustExit;<sp/>i++)</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_verbose)</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;iteration<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>_maxIters<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isStepAccepted<sp/>=<sp/>step(f_z_x,<sp/>f_J);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>we<sp/>must<sp/>exit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currErr<sp/>&lt;<sp/>_minErrorAllowed)</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mustExit<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fabs(prevErr<sp/>-<sp/>currErr)<sp/>&lt;=<sp/>_min_step_error_diff<sp/>||<sp/>!isStepAccepted)</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mustExit<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exit<sp/>if<sp/>error<sp/>increment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currErr<sp/>&lt;<sp/>prevErr)</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mustExit<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>((prevErr<sp/>-<sp/>currErr)<sp/>&lt;<sp/>1e-5)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mustExit<sp/>=<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_step_callback)</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_step_callback(curr_z);</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Exit<sp/>code<sp/>=<sp/>&quot;<sp/>&lt;&lt;<sp/>mustExit<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref><sp/>=<sp/>curr_z;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currErr;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>aruco</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ARUCO_MM__LevMarq_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/levmarq.h"/>
+  </compounddef>
+</doxygen>

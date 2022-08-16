@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="intrinsic_8hpp" kind="file" language="C++">
+    <compoundname>intrinsic.hpp</compoundname>
+    <includedby refid="conversion_8hpp" local="no">robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/conversion.hpp</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/cv_bridge.cpp</label>
+        <link refid="cv__bridge_8cpp"/>
+      </node>
+      <node id="1">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp</label>
+        <link refid="intrinsic_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/test/test_endian.cpp</label>
+        <link refid="test__endian_8cpp"/>
+      </node>
+      <node id="2">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/conversion.hpp</label>
+        <link refid="conversion_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="intrinsic_8hpp_1a447121dcab4275b7839a56082b7a1ab8" prot="public" static="no">
+        <name>__has_builtin</name>
+        <param><defname>x</defname></param>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp" line="18" column="11" bodyfile="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="intrinsic_8hpp_1a3dc3ed3339399088453901c367060dff" prot="public" static="no">
+        <name>BOOST_ENDIAN_NO_INTRINSICS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp" line="57" column="11" bodyfile="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="intrinsic_8hpp_1a41499ecb211acf2a3b4e16f42603f792" prot="public" static="no">
+        <name>BOOST_ENDIAN_INTRINSIC_MSG</name>
+        <initializer>&quot;no byte swap intrinsics&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp" line="58" column="10" bodyfile="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/><sp/>endian/detail/intrinsic.hpp<sp/><sp/>-------------------------------------------------------//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(C)<sp/>2012<sp/>David<sp/>Stone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>Beman<sp/>Dawes<sp/>2013</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Distributed<sp/>under<sp/>the<sp/>Boost<sp/>Software<sp/>License,<sp/>Version<sp/>1.0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>http://www.boost.org/LICENSE_1_0.txt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BOOST_ENDIAN_INTRINSIC_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOST_ENDIAN_INTRINSIC_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Allow<sp/>user<sp/>to<sp/>force<sp/>BOOST_ENDIAN_NO_INTRINSICS<sp/>in<sp/>case<sp/>they<sp/>aren&apos;t<sp/>available<sp/>for<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>particular<sp/>platform/compiler<sp/>combination.<sp/>Please<sp/>report<sp/>such<sp/>platform/compiler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>combinations<sp/>to<sp/>the<sp/>Boost<sp/>mailing<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>BOOST_ENDIAN_NO_INTRINSICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__has_builtin<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Optional<sp/>of<sp/>course</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="intrinsic_8hpp_1a447121dcab4275b7839a56082b7a1ab8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#define<sp/>__has_builtin(x)<sp/>0<sp/><sp/>//<sp/>Compatibility<sp/>with<sp/>non-clang<sp/>compilers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>GCC<sp/>and<sp/>Clang<sp/>recent<sp/>versions<sp/>provide<sp/>intrinsic<sp/>byte<sp/>swaps<sp/>via<sp/>builtins</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(defined(__clang__)<sp/>&amp;&amp;<sp/>__has_builtin(__builtin_bswap32)<sp/>&amp;&amp;<sp/>__has_builtin(__builtin_bswap64))<sp/>\</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"><sp/><sp/>||<sp/>(defined(__GNUC__<sp/>)<sp/>&amp;&amp;<sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/>(__GNUC__<sp/>&gt;<sp/>4<sp/>||<sp/>(__GNUC__<sp/>==<sp/>4<sp/>&amp;&amp;<sp/>__GNUC_MINOR__<sp/>&gt;=<sp/>3)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_MSG<sp/>&quot;__builtin_bswap16,<sp/>etc.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>prior<sp/>to<sp/>4.8,<sp/>gcc<sp/>did<sp/>not<sp/>provide<sp/>__builtin_bswap16<sp/>on<sp/>some<sp/>platforms<sp/>so<sp/>we<sp/>emulate<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>see<sp/>http://gcc.gnu.org/bugzilla/show_bug.cgi?id=52624</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Clang<sp/>has<sp/>a<sp/>similar<sp/>problem,<sp/>but<sp/>their<sp/>feature<sp/>test<sp/>macros<sp/>make<sp/>it<sp/>easier<sp/>to<sp/>detect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>if<sp/>(defined(__clang__)<sp/>&amp;&amp;<sp/>__has_builtin(__builtin_bswap16))<sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/>||<sp/>(defined(__GNUC__)<sp/>&amp;&amp;(__GNUC__<sp/>&gt;<sp/>4<sp/>||<sp/>(__GNUC__<sp/>==<sp/>4<sp/>&amp;&amp;<sp/>__GNUC_MINOR__<sp/>&gt;=<sp/>8)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x)<sp/>__builtin_bswap16(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x)<sp/>__builtin_bswap32((x)<sp/>&lt;&lt;<sp/>16)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_4(x)<sp/>__builtin_bswap32(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_8(x)<sp/>__builtin_bswap64(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Linux<sp/>systems<sp/>provide<sp/>the<sp/>byteswap.h<sp/>header,<sp/>with<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__linux__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>don&apos;t<sp/>check<sp/>for<sp/>obsolete<sp/>forms<sp/>defined(linux)<sp/>and<sp/>defined(__linux)<sp/>on<sp/>the<sp/>theory<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>compilers<sp/>that<sp/>predefine<sp/>only<sp/>these<sp/>are<sp/>so<sp/>old<sp/>that<sp/>byteswap.h<sp/>probably<sp/>isn&apos;t<sp/>present.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_MSG<sp/>&quot;byteswap.h<sp/>bswap_16,<sp/>etc.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>include<sp/>&lt;byteswap.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x)<sp/>bswap_16(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_4(x)<sp/>bswap_32(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_8(x)<sp/>bswap_64(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(_MSC_VER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Microsoft<sp/>documents<sp/>these<sp/>as<sp/>being<sp/>compatible<sp/>since<sp/>Windows<sp/>95<sp/>and<sp/>specificly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>lists<sp/>runtime<sp/>library<sp/>support<sp/>since<sp/>Visual<sp/>Studio<sp/>2003<sp/>(aka<sp/>7.1).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_MSG<sp/>&quot;cstdlib<sp/>_byteswap_ushort,<sp/>etc.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x)<sp/>_byteswap_ushort(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_4(x)<sp/>_byteswap_ulong(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_8(x)<sp/>_byteswap_uint64(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="intrinsic_8hpp_1a3dc3ed3339399088453901c367060dff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_NO_INTRINSICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="intrinsic_8hpp_1a41499ecb211acf2a3b4e16f42603f792" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_MSG<sp/>&quot;no<sp/>byte<sp/>swap<sp/>intrinsics&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>!defined(BOOST_ENDIAN_INTRINSIC_MSG)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>define<sp/>BOOST_ENDIAN_INTRINSIC_MSG<sp/>&quot;no<sp/>byte<sp/>swap<sp/>intrinsics&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>BOOST_ENDIAN_NO_INTRINSICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>BOOST_ENDIAN_INTRINSIC_HPP</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/detail/intrinsic.hpp"/>
+  </compounddef>
+</doxygen>

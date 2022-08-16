@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classaruco_1_1_marker_labeler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>aruco::MarkerLabeler</compoundname>
+    <derivedcompoundref refid="classaruco_1_1_dictionary_based" prot="public" virt="non-virtual">aruco::DictionaryBased</derivedcompoundref>
+    <derivedcompoundref refid="classaruco_1_1_s_v_m_markers" prot="public" virt="non-virtual">aruco::SVMMarkers</derivedcompoundref>
+    <includes refid="markerlabeler_8h" local="no">markerlabeler.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1a390b5884aa8a4ef974be26d3ae7fd0aa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Ptr&lt; <ref refid="classaruco_1_1_marker_labeler" kindref="compound">MarkerLabeler</ref> &gt;</type>
+        <definition>cv::Ptr&lt; MarkerLabeler &gt; aruco::MarkerLabeler::create</definition>
+        <argsstring>(Dictionary::DICT_TYPES dict_type, float error_correction_rate=0)</argsstring>
+        <name>create</name>
+        <param>
+          <type><ref refid="classaruco_1_1_dictionary_1ab854c54cccb529c9351ab5fbbf92b7b4" kindref="member">Dictionary::DICT_TYPES</ref></type>
+          <declname>dict_type</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>error_correction_rate</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function that returns a labeler for a given dictionary <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dict_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of dictionary </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>error_correction_rate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>some dictionaries are susceptible of error correction. These params specify the correction rate: 0 means no correction at all, 1 means full correction (maximum correction bits = (tau - 1) / 2, tau = predefined minimum intermarker distance).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+If you want correction capabilities and not sure how much, use 0.5 in this parameter </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="58" column="18" bodyfile="robocluedo_dependencies/aruco_ros/aruco/src/aruco/markerlabeler.cpp" bodystart="40" bodyend="46"/>
+        <references refid="classaruco_1_1_dictionary_1a8c8446cc7ed26e15e03cb4395f07bfbf" compoundref="dictionary_8cpp" startline="121" endline="2496">aruco::Dictionary::loadPredefined</references>
+        <references refid="classaruco_1_1_dictionary_based_1a0b80cf303de665772e59ce7ed4473a11" compoundref="dictionary__based_8cpp" startline="40" endline="59">aruco::DictionaryBased::setParams</references>
+        <referencedby refid="classaruco_1_1_marker_detector_1aeb11e4c8d99e619338f9453b03252722" compoundref="markerdetector_8cpp" startline="56" endline="60">aruco::MarkerDetector::MarkerDetector</referencedby>
+        <referencedby refid="classaruco_1_1_marker_detector_1a45ccc7e785ed6bcb5a4898e305471ce2" compoundref="markerdetector_8cpp" startline="1201" endline="1204">aruco::MarkerDetector::setDictionary</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1ac6ee6f6094c678de888e7bdf77e6b082" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Ptr&lt; <ref refid="classaruco_1_1_marker_labeler" kindref="compound">MarkerLabeler</ref> &gt;</type>
+        <definition>cv::Ptr&lt; MarkerLabeler &gt; aruco::MarkerLabeler::create</definition>
+        <argsstring>(std::string detector, std::string params=&quot;&quot;)</argsstring>
+        <name>create</name>
+        <param>
+          <type>std::string</type>
+          <declname>detector</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>params</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>create Factory function that returns the desired detector </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Factory function that returns the desired detector</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>detector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><itemizedlist>
+<listitem><para>Possible names implemented are: ARUCO,CHILITAGS....: original ArUco markers (0-1024) <ulink url="http://www.sciencedirect.com/science/article/pii/S0031320314000235">http://www.sciencedirect.com/science/article/pii/S0031320314000235</ulink> SVM: </para>
+</listitem></itemizedlist>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="71" column="18" bodyfile="robocluedo_dependencies/aruco_ros/aruco/src/aruco/markerlabeler.cpp" bodystart="48" bodyend="76"/>
+        <references refid="classaruco_1_1_s_v_m_markers_1ac30b48f82eb1448f35c1adf482f29620" compoundref="svmmarkers_8cpp" startline="177" endline="180">aruco::SVMMarkers::load</references>
+        <references refid="classaruco_1_1_dictionary_1a231435611507f2300166173ec9b8761f" compoundref="dictionary_8cpp" startline="44" endline="50">aruco::Dictionary::load</references>
+        <references refid="classaruco_1_1_dictionary_based_1a0b80cf303de665772e59ce7ed4473a11" compoundref="dictionary__based_8cpp" startline="40" endline="59">aruco::DictionaryBased::setParams</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1a22ca23eae5eef46651b7678a89683ddf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool aruco::MarkerLabeler::detect</definition>
+        <argsstring>(const cv::Mat &amp;in, int &amp;marker_id, int &amp;nRotations, std::string &amp;additionalInfo)=0</argsstring>
+        <name>detect</name>
+        <reimplementedby refid="classaruco_1_1_dictionary_based_1a52bdd094306122899e0bb545563e8b4b">detect</reimplementedby>
+        <reimplementedby refid="classaruco_1_1_s_v_m_markers_1a8cfb011d740393712ede91010053637f">detect</reimplementedby>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>marker_id</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>nRotations</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>additionalInfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Function that identifies a marker. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input image to analyze </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>marker_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of the marker (if valid) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nRotations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: output parameter nRotations must indicate how many times the marker must be rotated clockwise 90 deg to be in its ideal position. (The way you would see it when you print it). This is employed to know always which is the corner that acts as reference system. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true marker valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="82" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1a6a8d716f8a739ef97666207c3ce26644" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int aruco::MarkerLabeler::getBestInputSize</definition>
+        <argsstring>()</argsstring>
+        <name>getBestInputSize</name>
+        <reimplementedby refid="classaruco_1_1_s_v_m_markers_1a30b2b45910e9757bee7f58bcd3ae799f">getBestInputSize</reimplementedby>
+        <briefdescription>
+<para>getBestInputSize if desired, you can set the desired input size to the detect function </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>-1 if detect accept any type of input, or a size otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="88" column="15" bodyfile="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1a833249727c1a539e6cafa848d0ab2814" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int aruco::MarkerLabeler::getNSubdivisions</definition>
+        <argsstring>() const</argsstring>
+        <name>getNSubdivisions</name>
+        <reimplementedby refid="classaruco_1_1_dictionary_based_1a87694143a5c5729ef333f31e90cb715e">getNSubdivisions</reimplementedby>
+        <briefdescription>
+<para>getNSubdivisions returns the number of subdivisions in each axis that the iamge will be subject to. This is in dictionary based labelers, equals to the number of bits in each dimension plus the border bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="98" column="15" bodyfile="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1ac1e8812e6b9015b0ca9a4f80438e8378" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string aruco::MarkerLabeler::getName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getName</name>
+        <reimplementedby refid="classaruco_1_1_dictionary_based_1ad600c0a0da948e0b07ea542db3543da8">getName</reimplementedby>
+        <reimplementedby refid="classaruco_1_1_s_v_m_markers_1a14c4d873883e7a8c2dbb1da228302cbc">getName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="104" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classaruco_1_1_marker_labeler_1ac11b9294d2b99f5aa70bc6b4f8ba94b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual aruco::MarkerLabeler::~MarkerLabeler</definition>
+        <argsstring>()</argsstring>
+        <name>~MarkerLabeler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="106" column="11" bodyfile="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>aruco::SVMMarkers</label>
+        <link refid="classaruco_1_1_s_v_m_markers"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>aruco::MarkerLabeler</label>
+        <link refid="classaruco_1_1_marker_labeler"/>
+      </node>
+      <node id="2">
+        <label>aruco::DictionaryBased</label>
+        <link refid="classaruco_1_1_dictionary_based"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" line="47" column="1" bodyfile="robocluedo_dependencies/aruco_ros/aruco/include/aruco/markerlabeler.h" bodystart="46" bodyend="109"/>
+    <listofallmembers>
+      <member refid="classaruco_1_1_marker_labeler_1a390b5884aa8a4ef974be26d3ae7fd0aa" prot="public" virt="non-virtual"><scope>aruco::MarkerLabeler</scope><name>create</name></member>
+      <member refid="classaruco_1_1_marker_labeler_1ac6ee6f6094c678de888e7bdf77e6b082" prot="public" virt="non-virtual"><scope>aruco::MarkerLabeler</scope><name>create</name></member>
+      <member refid="classaruco_1_1_marker_labeler_1a22ca23eae5eef46651b7678a89683ddf" prot="public" virt="pure-virtual"><scope>aruco::MarkerLabeler</scope><name>detect</name></member>
+      <member refid="classaruco_1_1_marker_labeler_1a6a8d716f8a739ef97666207c3ce26644" prot="public" virt="virtual"><scope>aruco::MarkerLabeler</scope><name>getBestInputSize</name></member>
+      <member refid="classaruco_1_1_marker_labeler_1ac1e8812e6b9015b0ca9a4f80438e8378" prot="public" virt="pure-virtual"><scope>aruco::MarkerLabeler</scope><name>getName</name></member>
+      <member refid="classaruco_1_1_marker_labeler_1a833249727c1a539e6cafa848d0ab2814" prot="public" virt="virtual"><scope>aruco::MarkerLabeler</scope><name>getNSubdivisions</name></member>
+      <member refid="classaruco_1_1_marker_labeler_1ac11b9294d2b99f5aa70bc6b4f8ba94b7" prot="public" virt="virtual"><scope>aruco::MarkerLabeler</scope><name>~MarkerLabeler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

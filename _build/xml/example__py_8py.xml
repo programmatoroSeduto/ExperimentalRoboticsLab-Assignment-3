@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="example__py_8py" kind="file" language="Python">
+    <compoundname>example_py.py</compoundname>
+    <innerclass refid="classexample__py_1_1image__converter" prot="public">example_py::image_converter</innerclass>
+    <innernamespace refid="namespaceexample__py">example_py</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceexample__py" refkind="compound"><highlight class="comment">#!/usr/bin/env<sp/>python</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>__future__<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>print_function</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>sys</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>cv2</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>std_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>String</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>sensor_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Image</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>cv_bridge<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>CvBridge,<sp/>CvBridgeError</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classexample__py_1_1image__converter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classexample__py_1_1image__converter" kindref="compound">image_converter</ref>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classexample__py_1_1image__converter_1a18ec5d479e99f68fb37eea8b062acd03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classexample__py_1_1image__converter_1a18ec5d479e99f68fb37eea8b062acd03" kindref="member">__init__</ref>(self):</highlight></codeline>
+<codeline lineno="15" refid="classexample__py_1_1image__converter_1ac69e248a955e409b2b29970e514438cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classexample__py_1_1image__converter_1ac69e248a955e409b2b29970e514438cb" kindref="member">image_pub</ref><sp/>=<sp/>rospy.Publisher(</highlight><highlight class="stringliteral">&quot;image_topic&quot;</highlight><highlight class="normal">,<sp/>Image,<sp/>queue_size=10)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classexample__py_1_1image__converter_1a6b4a18575981a09a02ca641616cb401c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classexample__py_1_1image__converter_1a6b4a18575981a09a02ca641616cb401c" kindref="member">bridge</ref><sp/>=<sp/>CvBridge()</highlight></codeline>
+<codeline lineno="18" refid="classexample__py_1_1image__converter_1addefa0b737aab40d26609d1fc95c2f99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classexample__py_1_1image__converter_1addefa0b737aab40d26609d1fc95c2f99" kindref="member">image_sub</ref><sp/>=<sp/>rospy.Subscriber(</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;robot/camera1/image_raw&quot;</highlight><highlight class="normal">,<sp/>Image,<sp/>self.<ref refid="classexample__py_1_1image__converter_1a8eb0095c652c0dd58e92dbfa3831bcea" kindref="member">callback</ref>)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classexample__py_1_1image__converter_1a8eb0095c652c0dd58e92dbfa3831bcea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="classexample__py_1_1image__converter_1a8eb0095c652c0dd58e92dbfa3831bcea" kindref="member">callback</ref>(self,<sp/>data):</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cv_image<sp/>=<sp/>self.<ref refid="classexample__py_1_1image__converter_1a6b4a18575981a09a02ca641616cb401c" kindref="member">bridge</ref>.imgmsg_to_cv2(data,<sp/></highlight><highlight class="stringliteral">&quot;bgr8&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>CvBridgeError<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>e:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacearuco_1a2b40362ac4f2994c0e05ca7bcb0e93f0" kindref="member">print</ref>(e)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(rows,<sp/>cols,<sp/>channels)<sp/>=<sp/>cv_image.shape</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cols<sp/>&gt;<sp/>60<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>rows<sp/>&gt;<sp/>60:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cv2.circle(cv_image,<sp/>(50,<sp/>50),<sp/>10,<sp/>255)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cv2.imshow(</highlight><highlight class="stringliteral">&quot;Image<sp/>window&quot;</highlight><highlight class="normal">,<sp/>cv_image)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cv2.waitKey(3)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.<ref refid="classexample__py_1_1image__converter_1ac69e248a955e409b2b29970e514438cb" kindref="member">image_pub</ref>.publish(self.<ref refid="classexample__py_1_1image__converter_1a6b4a18575981a09a02ca641616cb401c" kindref="member">bridge</ref>.cv2_to_imgmsg(cv_image,<sp/></highlight><highlight class="stringliteral">&quot;bgr8&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>CvBridgeError<sp/></highlight><highlight class="keyword">as</highlight><highlight class="normal"><sp/>e:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacearuco_1a2b40362ac4f2994c0e05ca7bcb0e93f0" kindref="member">print</ref>(e)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="namespaceexample__py_1aae694318dd62975323ca7eda7f0b8723" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespaceexample__py_1aae694318dd62975323ca7eda7f0b8723" kindref="member">main</ref>(args):</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>ic<sp/>=<sp/><ref refid="classexample__py_1_1image__converter" kindref="compound">image_converter</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.init_node(</highlight><highlight class="stringliteral">&apos;image_converter&apos;</highlight><highlight class="normal">,<sp/>anonymous=</highlight><highlight class="keyword">True</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.spin()</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>KeyboardInterrupt:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacearuco_1a2b40362ac4f2994c0e05ca7bcb0e93f0" kindref="member">print</ref>(</highlight><highlight class="stringliteral">&quot;Shutting<sp/>down&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>cv2.destroyAllWindows()</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;__main__&apos;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceexample__py_1aae694318dd62975323ca7eda7f0b8723" kindref="member">main</ref>(sys.argv)</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_dependencies/bridge_example/scripts/example_py.py"/>
+  </compounddef>
+</doxygen>

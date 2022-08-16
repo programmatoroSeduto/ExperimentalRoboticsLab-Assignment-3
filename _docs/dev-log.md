@@ -152,4 +152,15 @@ Dovrò aggiungere dei link per farci stare le videocamere...
 
 ---
 
+e adesso, installazione di ArUco e openCV
 
+- prima di tutto, voglio avere delle versioni mie di OpenCV installate sulla macchina, quella effettivamente data per l'assignment (sarà un errore? in caso ho il backup della ws intera)
+- installazione di openCV per ROS
+	- compila? compila.
+- meglio scriversi un piccolo documento dove spiego come installare queste cose
+- importazione dei modelli arUco
+- compilazione ... compila
+- e adesso proviamo se i markers funzionano
+	- **funge!**
+	- meglio copiare tutt i markers anche nel package worlds
+- **COMMIT**: "setting up openCV and ArUco"

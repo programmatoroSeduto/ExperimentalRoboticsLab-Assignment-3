@@ -409,6 +409,7 @@
         <references refid="armor-how-to-use_8md_8txt_1aca1ed6b4b0cfeb558dd5ec675c0bbec8" compoundref="armor-how-to-use_8md_8txt" startline="117">service</references>
         <references refid="simulation_8cpp_1ae1a3f65d934a3c4a938e85d5071dfaa5" compoundref="simulation_8cpp" startline="48" endline="52">oracleService</references>
         <references refid="simulation_8cpp_1a876a1245db85a2bb87c08ae086f1eafa" compoundref="simulation_8cpp" startline="54" endline="131">oracleCallback</references>
+        <references refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" compoundref="simple__double_8cpp" startline="57">markers</references>
         <references refid="erl3-oracle-user-manual_8md_8txt_1aa7a01146ac8011dc898a4f74c6ee0c75" compoundref="erl3-oracle-user-manual_8md_8txt" startline="101">Marker</references>
         <references refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" compoundref="erl2-oracle-user-manual_8md_8txt" startline="210">marker</references>
         <references refid="simulation_8cpp_1a36b0204cd96e3dc326a2adfa3d1dceda" compoundref="simulation_8cpp" startline="25">markx</references>
@@ -564,7 +565,7 @@
 <codeline lineno="139"><highlight class="normal"><ref refid="simulation_8cpp_1a32812fe000700d7aa8988d74e59471c7" kindref="member">oracle_pub</ref><sp/>=<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>.advertise&lt;erl2::ErlOracle&gt;(<sp/></highlight><highlight class="stringliteral">&quot;/oracle_hint&quot;</highlight><highlight class="normal">,<sp/>0<sp/>);</highlight></codeline>
 <codeline lineno="140"><highlight class="normal">ros::ServiceServer<sp/><ref refid="armor-how-to-use_8md_8txt_1aca1ed6b4b0cfeb558dd5ec675c0bbec8" kindref="member">service</ref>=<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>.advertiseService(</highlight><highlight class="stringliteral">&quot;/oracle_solution&quot;</highlight><highlight class="normal">,<sp/><ref refid="simulation_8cpp_1ae1a3f65d934a3c4a938e85d5071dfaa5" kindref="member">oracleService</ref>);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal">ros::Subscriber<sp/>sub<sp/>=<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>.subscribe(</highlight><highlight class="stringliteral">&quot;/gazebo/link_states&quot;</highlight><highlight class="normal">,<sp/>10,<sp/><ref refid="simulation_8cpp_1a876a1245db85a2bb87c08ae086f1eafa" kindref="member">oracleCallback</ref>);</highlight></codeline>
-<codeline lineno="142"><highlight class="normal">visualization_msgs::MarkerArray<sp/>markers;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">visualization_msgs::MarkerArray<sp/><ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>;</highlight></codeline>
 <codeline lineno="143"><highlight class="normal">srand<sp/>(time(NULL));</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>zpos[2]<sp/>=<sp/>{0.75,<sp/>1.25};</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>RandIndex;</highlight></codeline>
@@ -594,7 +595,7 @@
 <codeline lineno="169"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.color.r<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.color.g<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.color.b<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal">markers.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.id<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.x<sp/>=<sp/>3.0;</highlight></codeline>
@@ -604,7 +605,7 @@
 <codeline lineno="179"><highlight class="normal">RandIndex<sp/>=<sp/>rand()<sp/>%<sp/>2;</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.z<sp/>=<sp/>zpos[RandIndex];</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><ref refid="simulation_8cpp_1a8d90002e6a9c50028f184b22c380efc4" kindref="member">markz</ref>[1]=<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.z;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal">markers.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.id<sp/>=<sp/>2;</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.x<sp/>=<sp/>0.0;</highlight></codeline>
@@ -614,7 +615,7 @@
 <codeline lineno="189"><highlight class="normal">RandIndex<sp/>=<sp/>rand()<sp/>%<sp/>2;</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.z<sp/>=<sp/>zpos[RandIndex];</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><ref refid="simulation_8cpp_1a8d90002e6a9c50028f184b22c380efc4" kindref="member">markz</ref>[2]=<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.z;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal">markers.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.id<sp/>=<sp/>3;</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.x<sp/>=<sp/>0.0;</highlight></codeline>
@@ -624,7 +625,7 @@
 <codeline lineno="199"><highlight class="normal">RandIndex<sp/>=<sp/>rand()<sp/>%<sp/>2;</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.z<sp/>=<sp/>zpos[RandIndex];</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><ref refid="simulation_8cpp_1a8d90002e6a9c50028f184b22c380efc4" kindref="member">markz</ref>[3]=<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>.pose.position.z;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal">markers.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>.markers.push_back(<ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref>);</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>uid;</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>4;<sp/>i++){<sp/><sp/><sp/><sp/></highlight></codeline>
@@ -650,7 +651,7 @@
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(ros::ok()){</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>vis_pub.publish(markers);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>vis_pub.publish(<ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>);</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::spinOnce();</highlight></codeline>
 <codeline lineno="230"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"></highlight></codeline>

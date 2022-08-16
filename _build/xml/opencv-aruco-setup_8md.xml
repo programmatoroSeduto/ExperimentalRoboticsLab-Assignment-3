@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="opencv-aruco-setup_8md" kind="file" language="Markdown">
+    <compoundname>opencv-aruco-setup.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>ArUco<sp/>and<sp/>OpenCV</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>OpenCV<sp/>for<sp/>ROS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">download<sp/>in<sp/>the<sp/>workspace<sp/>this:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/ros-perception/vision_opencv.git</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>OpenCV<sp/>Examples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">download<sp/>this<sp/>package:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/CarmineD8/bridge_example.git</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>ArUco</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">first<sp/>of<sp/>all,<sp/>download<sp/>this<sp/>package:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/CarmineD8/aruco_ros.git<sp/>-b<sp/>main</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>package<sp/>contains<sp/>the<sp/>images<sp/>to<sp/>import<sp/>as<sp/>markers,<sp/>in<sp/>the<sp/>folder<sp/>`/aruco_ros/aruco_ros/models`.<sp/>you<sp/>should<sp/>copy<sp/>all<sp/>the<sp/>content<sp/>of<sp/>this<sp/>folder<sp/>inside<sp/>your<sp/>Gazebo<sp/>environment<sp/>`/root/.gazebo/models`.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Importing<sp/>OpenCV<sp/>and<sp/>ArUco</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>the<sp/>content<sp/>to<sp/>apply<sp/>to<sp/>your<sp/>CMakeLists.txt<sp/>file:</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cmake</highlight></codeline>
+<codeline><highlight class="normal">find_package(OpenCV<sp/>REQUIRED)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">find_package(catkin<sp/>REQUIRED<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>roscpp</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cv_bridge</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>image_transport</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>aruco</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>aruco_msgs</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor_msgs</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dynamic_reconfigure</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">generate_dynamic_reconfigure_options(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>cfg/ArucoThreshold.cfg</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">add_compile_options(-std=c++11)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cmake</highlight></codeline>
+<codeline><highlight class="normal">###################################</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>catkin<sp/>specific<sp/>configuration<sp/>##</highlight></codeline>
+<codeline><highlight class="normal">###################################</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">catkin_package(</highlight></codeline>
+<codeline><highlight class="normal">#<sp/><sp/>INCLUDE_DIRS<sp/>include</highlight></codeline>
+<codeline><highlight class="normal">#<sp/><sp/>LIBRARIES<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">#<sp/><sp/>CATKIN_DEPENDS<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">#<sp/><sp/>DEPENDS<sp/>system_lib</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>DEPENDS<sp/>OpenCV</highlight></codeline>
+<codeline><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_dependencies/_docs/opencv-aruco-setup.md"/>
+  </compounddef>
+</doxygen>

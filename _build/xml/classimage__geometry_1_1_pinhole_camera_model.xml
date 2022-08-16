@@ -1,0 +1,1432 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classimage__geometry_1_1_pinhole_camera_model" kind="class" language="C++" prot="public">
+    <compoundname>image_geometry::PinholeCameraModel</compoundname>
+    <includes refid="pinhole__camera__model_8h" local="no">pinhole_camera_model.h</includes>
+    <innerclass refid="structimage__geometry_1_1_pinhole_camera_model_1_1_cache" prot="public">image_geometry::PinholeCameraModel::Cache</innerclass>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" prot="protected" static="no" mutable="no">
+        <type>sensor_msgs::CameraInfo</type>
+        <definition>sensor_msgs::CameraInfo image_geometry::PinholeCameraModel::cam_info_</definition>
+        <argsstring></argsstring>
+        <name>cam_info_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="267" column="27" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="267" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a06c91d650a3e66be0a388e8981223bb0" compoundref="pinhole__camera__model_8h" startline="291" endline="295">tfFrame</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a701aa92e0167b5201700ccab9feb56be" compoundref="pinhole__camera__model_8h" startline="297" endline="301">stamp</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a2946e61753fab48da515a6af7705867b" compoundref="pinhole__camera__model_8h" startline="303" endline="303">cameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aba78f938fa01ed728c78ee7b3c3379e8" compoundref="pinhole__camera__model_8cpp" startline="58" endline="62">PinholeCameraModel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" compoundref="pinhole__camera__model_8cpp" startline="230" endline="234">fullResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a229852b48dbaa3ae00fc1fb3ac9eac73" compoundref="pinhole__camera__model_8cpp" startline="276" endline="282">rawRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" prot="protected" static="no" mutable="no">
+        <type>cv::Mat_&lt; double &gt;</type>
+        <definition>cv::Mat_&lt;double&gt; image_geometry::PinholeCameraModel::D_</definition>
+        <argsstring></argsstring>
+        <name>D_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="268" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="268" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a23856bb75e0c110585441322535804f1" compoundref="pinhole__camera__model_8h" startline="305" endline="305">distortionCoeffs</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a07e45aafec138761b8ed62f0b1906f83" compoundref="pinhole__camera__model_8cpp" startline="389" endline="416">rectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" compoundref="pinhole__camera__model_8cpp" startline="423" endline="454">unrectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" prot="protected" static="no" mutable="no">
+        <type>cv::Matx33d</type>
+        <definition>cv::Matx33d image_geometry::PinholeCameraModel::R_</definition>
+        <argsstring></argsstring>
+        <name>R_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="269" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="269" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aede1bf435903448c7e8a976d4b0ae1df" compoundref="pinhole__camera__model_8h" startline="306" endline="306">rotationMatrix</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a07e45aafec138761b8ed62f0b1906f83" compoundref="pinhole__camera__model_8cpp" startline="389" endline="416">rectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" compoundref="pinhole__camera__model_8cpp" startline="423" endline="454">unrectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1aca9b03228e206b4c99df4c1cb191214f" prot="protected" static="no" mutable="no">
+        <type>cv::Matx33d</type>
+        <definition>cv::Matx33d image_geometry::PinholeCameraModel::K_</definition>
+        <argsstring></argsstring>
+        <name>K_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="270" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="270" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8c8048be0b7f2c749d36ab0dcc98c4d5" compoundref="pinhole__camera__model_8h" startline="304" endline="304">intrinsicMatrix</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1af9f461bb4610dadfed25aef2da6bc1c8" compoundref="pinhole__camera__model_8cpp" startline="384" endline="387">rectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1afdf040f493b8fa60a6192cd3f01901d3" compoundref="pinhole__camera__model_8cpp" startline="418" endline="421">unrectifyPoint</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" prot="protected" static="no" mutable="no">
+        <type>cv::Matx34d</type>
+        <definition>cv::Matx34d image_geometry::PinholeCameraModel::P_</definition>
+        <argsstring></argsstring>
+        <name>P_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="271" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="271" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a97b4afee71dcadcd3daf3887c3cf7074" compoundref="pinhole__camera__model_8h" startline="307" endline="307">projectionMatrix</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" compoundref="pinhole__camera__model_8h" startline="311" endline="311">fx</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" compoundref="pinhole__camera__model_8h" startline="312" endline="312">fy</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aaece1bd454e98c5a31f8b7cadecc3271" compoundref="pinhole__camera__model_8h" startline="313" endline="313">cx</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1acd6a134be6f13d510c4ce299fd3f1c6f" compoundref="pinhole__camera__model_8h" startline="314" endline="314">cy</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1bfc96ff7e2c4ade21a71fdf105547cb" compoundref="pinhole__camera__model_8h" startline="315" endline="315">Tx</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a0dc607b79f714b20d8a2317bb928f104" compoundref="pinhole__camera__model_8h" startline="316" endline="316">Ty</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a40ad5d3b964d63f41232428fb96376fe" compoundref="pinhole__camera__model_8cpp" startline="313" endline="316">projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1af9f461bb4610dadfed25aef2da6bc1c8" compoundref="pinhole__camera__model_8cpp" startline="384" endline="387">rectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1afdf040f493b8fa60a6192cd3f01901d3" compoundref="pinhole__camera__model_8cpp" startline="418" endline="421">unrectifyPoint</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" prot="protected" static="no" mutable="no">
+        <type>cv::Matx33d</type>
+        <definition>cv::Matx33d image_geometry::PinholeCameraModel::K_full_</definition>
+        <argsstring></argsstring>
+        <name>K_full_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="272" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="272" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a89026fe3b4d46c0f70bf69099da8c567" compoundref="pinhole__camera__model_8h" startline="308" endline="308">fullIntrinsicMatrix</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" compoundref="pinhole__camera__model_8cpp" startline="456" endline="476">rectifyRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" prot="protected" static="no" mutable="no">
+        <type>cv::Matx34d</type>
+        <definition>cv::Matx34d image_geometry::PinholeCameraModel::P_full_</definition>
+        <argsstring></argsstring>
+        <name>P_full_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="273" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="273" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a209dfc76398af728a57ea7f530652b24" compoundref="pinhole__camera__model_8h" startline="309" endline="309">fullProjectionMatrix</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" compoundref="pinhole__camera__model_8cpp" startline="456" endline="476">rectifyRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" prot="protected" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="structimage__geometry_1_1_pinhole_camera_model_1_1_cache" kindref="compound">Cache</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Cache&gt; image_geometry::PinholeCameraModel::cache_</definition>
+        <argsstring></argsstring>
+        <name>cache_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="280" column="19" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="276" bodyend="-1"/>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a3cb983f84f1993287247781a6bda39c2" compoundref="pinhole__camera__model_8cpp" startline="336" endline="358">rectifyImage</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a017a52e057c798c49a8da3999967ee63" compoundref="pinhole__camera__model_8cpp" startline="360" endline="382">unrectifyImage</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a07e45aafec138761b8ed62f0b1906f83" compoundref="pinhole__camera__model_8cpp" startline="389" endline="416">rectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" compoundref="pinhole__camera__model_8cpp" startline="423" endline="454">unrectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classimage__geometry_1_1_pinhole_camera_model_1a0eb31054c4e1a7d18d0fcbbc6abd3abc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend <ref refid="examples__cluedo_8md_8txt_1a6d5127a3f7f0cdb640dc89707783a957" kindref="member">class</ref></type>
+        <definition>friend class StereoCameraModel</definition>
+        <argsstring></argsstring>
+        <name>StereoCameraModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="286" column="3" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a8b71635f93504394844980dd39ab0ccf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>image_geometry::PinholeCameraModel::PinholeCameraModel</definition>
+        <argsstring>()</argsstring>
+        <name>PinholeCameraModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="27" column="3" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1aba78f938fa01ed728c78ee7b3c3379e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>image_geometry::PinholeCameraModel::PinholeCameraModel</definition>
+        <argsstring>(const PinholeCameraModel &amp;other)</argsstring>
+        <name>PinholeCameraModel</name>
+        <param>
+          <type>const <ref refid="classimage__geometry_1_1_pinhole_camera_model" kindref="compound">PinholeCameraModel</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="29" column="3" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="58" bodyend="62"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a8714a753e171292a4193422dd9cd07ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classimage__geometry_1_1_pinhole_camera_model" kindref="compound">PinholeCameraModel</ref> &amp;</type>
+        <definition>PinholeCameraModel &amp; image_geometry::PinholeCameraModel::operator=</definition>
+        <argsstring>(const PinholeCameraModel &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classimage__geometry_1_1_pinhole_camera_model" kindref="compound">PinholeCameraModel</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="31" column="22" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="51" bodyend="56"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a2946e61753fab48da515a6af7705867b" compoundref="pinhole__camera__model_8h" startline="303" endline="303">cameraInfo</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool image_geometry::PinholeCameraModel::fromCameraInfo</definition>
+        <argsstring>(const sensor_msgs::CameraInfo &amp;msg)</argsstring>
+        <name>fromCameraInfo</name>
+        <param>
+          <type>const sensor_msgs::CameraInfo &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Set the camera parameters from the sensor_msgs/CameraInfo message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000010"><xreftitle>Todo</xreftitle><xrefdescription><para>Calculate and use rectified ROI </para>
+</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000011"><xreftitle>Todo</xreftitle><xrefdescription><para>Adjust P by rectified ROI instead </para>
+</xrefdescription></xrefsect></para>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="36" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="97" bodyend="223"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <references refid="namespaceimage__geometry_1a1d4fa0de6a4e9647005bae9c19d2ddad" compoundref="pinhole__camera__model_8cpp" startline="66" endline="72">image_geometry::update</references>
+        <references refid="namespaceimage__geometry_1a7705ae72c107c8b9fd8e524a27a44205" compoundref="pinhole__camera__model_8cpp" startline="76" endline="84">image_geometry::updateMat</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" compoundref="pinhole__camera__model_8h" startline="268">D_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" compoundref="pinhole__camera__model_8h" startline="272">K_full_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" compoundref="pinhole__camera__model_8h" startline="269">R_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" compoundref="pinhole__camera__model_8h" startline="273">P_full_</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12aae55a7fc987f7dfc00e592cfbd7c3365" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::EQUIDISTANT</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca0c4842f7c52829caefd563f3c2e230ea" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::NONE</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca19e63b72d954539ee7cdcbe8b4018793" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::CALIBRATED</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca91071c75155c18e8fbb0370bf73ff6a1" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::UNKNOWN</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12a7d76b74999d240a9e24bc674f4be68f0" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::PLUMB_BOB_OR_RATIONAL_POLYNOMIAL</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12afbf3dc05f9bc19d70e65b4ec25b66b52" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::UNKNOWN_MODEL</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aca9b03228e206b4c99df4c1cb191214f" compoundref="pinhole__camera__model_8h" startline="270">K_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="class_pinhole_test_1a8c1a0cd8b7b53e00a234619f340a47ea" compoundref="image__geometry_2test_2utest_8cpp" startline="14" endline="41">PinholeTest::SetUp</referencedby>
+        <referencedby refid="image__geometry_2test_2utest_8cpp_1a1396dcd2d34b1210cc163c72d38faa30" compoundref="image__geometry_2test_2utest_8cpp" startline="151" endline="162">TEST_F</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8714a753e171292a4193422dd9cd07ff" compoundref="pinhole__camera__model_8cpp" startline="51" endline="56">operator=</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aba78f938fa01ed728c78ee7b3c3379e8" compoundref="pinhole__camera__model_8cpp" startline="58" endline="62">PinholeCameraModel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1af865eebea5405f59158194fd7780ec90" compoundref="pinhole__camera__model_8cpp" startline="225" endline="228">fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1ad9cfc052d847560f9d4159a938706942" compoundref="stereo__camera__model_8cpp" startline="28" endline="46">image_geometry::StereoCameraModel::fromCameraInfo</referencedby>
+        <referencedby refid="class_equidistant_test_1aba1177ec24f2d85b20003905baeb3c8c" compoundref="utest__equi_8cpp" startline="14" endline="41">EquidistantTest::SetUp</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1af865eebea5405f59158194fd7780ec90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool image_geometry::PinholeCameraModel::fromCameraInfo</definition>
+        <argsstring>(const sensor_msgs::CameraInfoConstPtr &amp;msg)</argsstring>
+        <name>fromCameraInfo</name>
+        <param>
+          <type>const sensor_msgs::CameraInfoConstPtr &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Set the camera parameters from the sensor_msgs/CameraInfo message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="41" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="225" bodyend="228"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" compoundref="pinhole__camera__model_8cpp" startline="97" endline="223">fromCameraInfo</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a06c91d650a3e66be0a388e8981223bb0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string image_geometry::PinholeCameraModel::tfFrame</definition>
+        <argsstring>() const</argsstring>
+        <name>tfFrame</name>
+        <briefdescription>
+<para>Get the name of the camera coordinate frame in tf. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="46" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="291" bodyend="295"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1ad032c906e3c4954787019d24c9c560fc" compoundref="stereo__camera__model_8h" startline="107" endline="107">image_geometry::StereoCameraModel::tfFrame</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1ad9cfc052d847560f9d4159a938706942" compoundref="stereo__camera__model_8cpp" startline="28" endline="46">image_geometry::StereoCameraModel::fromCameraInfo</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a701aa92e0167b5201700ccab9feb56be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ros::Time</type>
+        <definition>ros::Time image_geometry::PinholeCameraModel::stamp</definition>
+        <argsstring>() const</argsstring>
+        <name>stamp</name>
+        <briefdescription>
+<para>Get the time stamp associated with this camera model. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="51" column="13" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="297" bodyend="301"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Size</type>
+        <definition>cv::Size image_geometry::PinholeCameraModel::fullResolution</definition>
+        <argsstring>() const</argsstring>
+        <name>fullResolution</name>
+        <briefdescription>
+<para>The resolution at which the camera was calibrated. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The maximum resolution at which the camera can be used with the current calibration; normally this is the same as the imager resolution. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="59" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="230" bodyend="234"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1aff933f9400051b319525dab6b30f7c05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Size</type>
+        <definition>cv::Size image_geometry::PinholeCameraModel::reducedResolution</definition>
+        <argsstring>() const</argsstring>
+        <name>reducedResolution</name>
+        <briefdescription>
+<para>The resolution of the current rectified image. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The size of the rectified image associated with the latest CameraInfo, as reduced by binning/ROI and affected by distortion. If binning and ROI are not in use, this is the same as <ref refid="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" kindref="member">fullResolution()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="68" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="236" bodyend="242"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a89cf05e43a7d2f32c075d19b80fa70dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::toFullResolution</definition>
+        <argsstring>(const cv::Point2d &amp;uv_reduced) const</argsstring>
+        <name>toFullResolution</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_reduced</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="70" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="244" bodyend="249"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a7c72a5668270d34ff98579a6a9d38420" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Rect</type>
+        <definition>cv::Rect image_geometry::PinholeCameraModel::toFullResolution</definition>
+        <argsstring>(const cv::Rect &amp;roi_reduced) const</argsstring>
+        <name>toFullResolution</name>
+        <param>
+          <type>const cv::Rect &amp;</type>
+          <declname>roi_reduced</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="72" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="251" bodyend="258"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1af90d7c3d9fe6386f7439ab97b7465c8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::toReducedResolution</definition>
+        <argsstring>(const cv::Point2d &amp;uv_full) const</argsstring>
+        <name>toReducedResolution</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_full</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="74" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="260" bodyend="265"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a53423550e66cd797c0913bd98c29b0f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Rect</type>
+        <definition>cv::Rect image_geometry::PinholeCameraModel::toReducedResolution</definition>
+        <argsstring>(const cv::Rect &amp;roi_full) const</argsstring>
+        <name>toReducedResolution</name>
+        <param>
+          <type>const cv::Rect &amp;</type>
+          <declname>roi_full</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="76" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="267" bodyend="274"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a229852b48dbaa3ae00fc1fb3ac9eac73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Rect</type>
+        <definition>cv::Rect image_geometry::PinholeCameraModel::rawRoi</definition>
+        <argsstring>() const</argsstring>
+        <name>rawRoi</name>
+        <briefdescription>
+<para>The current raw ROI, as used for capture by the camera driver. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="81" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="276" bodyend="282"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Rect</type>
+        <definition>cv::Rect image_geometry::PinholeCameraModel::rectifiedRoi</definition>
+        <argsstring>() const</argsstring>
+        <name>rectifiedRoi</name>
+        <briefdescription>
+<para>The current rectified ROI, which best fits the raw ROI. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="86" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="284" bodyend="297"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a229852b48dbaa3ae00fc1fb3ac9eac73" compoundref="pinhole__camera__model_8cpp" startline="276" endline="282">rawRoi</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" compoundref="pinhole__camera__model_8cpp" startline="456" endline="476">rectifyRoi</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aff933f9400051b319525dab6b30f7c05" compoundref="pinhole__camera__model_8cpp" startline="236" endline="242">reducedResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a89cf05e43a7d2f32c075d19b80fa70dd" compoundref="pinhole__camera__model_8cpp" startline="244" endline="249">toFullResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1af90d7c3d9fe6386f7439ab97b7465c8b" compoundref="pinhole__camera__model_8cpp" startline="260" endline="265">toReducedResolution</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::project3dToPixel</definition>
+        <argsstring>(const cv::Point3d &amp;xyz) const</argsstring>
+        <name>project3dToPixel</name>
+        <param>
+          <type>const cv::Point3d &amp;</type>
+          <declname>xyz</declname>
+        </param>
+        <briefdescription>
+<para>Project a 3d point to rectified pixel coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is the inverse of <ref refid="classimage__geometry_1_1_pinhole_camera_model_1a40ad5d3b964d63f41232428fb96376fe" kindref="member">projectPixelTo3dRay()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>xyz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>3d point in the camera coordinate frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>(u,v) in rectified pixel coordinates </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="96" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="299" bodyend="311"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" compoundref="pinhole__camera__model_8h" startline="311" endline="311">fx</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a1bfc96ff7e2c4ade21a71fdf105547cb" compoundref="pinhole__camera__model_8h" startline="315" endline="315">Tx</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aaece1bd454e98c5a31f8b7cadecc3271" compoundref="pinhole__camera__model_8h" startline="313" endline="313">cx</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" compoundref="pinhole__camera__model_8h" startline="312" endline="312">fy</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0dc607b79f714b20d8a2317bb928f104" compoundref="pinhole__camera__model_8h" startline="316" endline="316">Ty</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1acd6a134be6f13d510c4ce299fd3f1c6f" compoundref="pinhole__camera__model_8h" startline="314" endline="314">cy</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a40ad5d3b964d63f41232428fb96376fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point3d</type>
+        <definition>cv::Point3d image_geometry::PinholeCameraModel::projectPixelTo3dRay</definition>
+        <argsstring>(const cv::Point2d &amp;uv_rect) const</argsstring>
+        <name>projectPixelTo3dRay</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_rect</declname>
+        </param>
+        <briefdescription>
+<para>Project a rectified pixel to a 3d ray. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the unit vector in the camera coordinate frame in the direction of rectified pixel (u,v) in the image plane. This is the inverse of <ref refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" kindref="member">project3dToPixel()</ref>.</para>
+<para>In 1.4.x, the vector has z = 1.0. Previously, this function returned a unit vector.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uv_rect</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rectified pixel coordinates </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>3d ray passing through (u,v) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="109" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="313" bodyend="316"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" compoundref="pinhole__camera__model_8cpp" startline="423" endline="454">unrectifyPoint</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point3d</type>
+        <definition>cv::Point3d image_geometry::PinholeCameraModel::projectPixelTo3dRay</definition>
+        <argsstring>(const cv::Point2d &amp;uv_rect, const cv::Matx34d &amp;P) const</argsstring>
+        <name>projectPixelTo3dRay</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_rect</declname>
+        </param>
+        <param>
+          <type>const cv::Matx34d &amp;</type>
+          <declname>P</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="110" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="318" bodyend="334"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" compoundref="pinhole__camera__model_8h" startline="311" endline="311">fx</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" compoundref="pinhole__camera__model_8h" startline="312" endline="312">fy</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aaece1bd454e98c5a31f8b7cadecc3271" compoundref="pinhole__camera__model_8h" startline="313" endline="313">cx</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1acd6a134be6f13d510c4ce299fd3f1c6f" compoundref="pinhole__camera__model_8h" startline="314" endline="314">cy</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a1bfc96ff7e2c4ade21a71fdf105547cb" compoundref="pinhole__camera__model_8h" startline="315" endline="315">Tx</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0dc607b79f714b20d8a2317bb928f104" compoundref="pinhole__camera__model_8h" startline="316" endline="316">Ty</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a3cb983f84f1993287247781a6bda39c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void image_geometry::PinholeCameraModel::rectifyImage</definition>
+        <argsstring>(const cv::Mat &amp;raw, cv::Mat &amp;rectified, int interpolation=cv::INTER_LINEAR) const</argsstring>
+        <name>rectifyImage</name>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>raw</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>rectified</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>interpolation</declname>
+          <defval>cv::INTER_LINEAR</defval>
+        </param>
+        <briefdescription>
+<para>Rectify a raw camera image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="115" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="336" bodyend="358"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca0c4842f7c52829caefd563f3c2e230ea" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::NONE</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca19e63b72d954539ee7cdcbe8b4018793" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::CALIBRATED</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca91071c75155c18e8fbb0370bf73ff6a1" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::UNKNOWN</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a017a52e057c798c49a8da3999967ee63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void image_geometry::PinholeCameraModel::unrectifyImage</definition>
+        <argsstring>(const cv::Mat &amp;rectified, cv::Mat &amp;raw, int interpolation=cv::INTER_LINEAR) const</argsstring>
+        <name>unrectifyImage</name>
+        <param>
+          <type>const cv::Mat &amp;</type>
+          <declname>rectified</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>raw</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>interpolation</declname>
+          <defval>cv::INTER_LINEAR</defval>
+        </param>
+        <briefdescription>
+<para>Apply camera distortion to a rectified image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="121" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="360" bodyend="382"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca0c4842f7c52829caefd563f3c2e230ea" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::NONE</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca19e63b72d954539ee7cdcbe8b4018793" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::CALIBRATED</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca91071c75155c18e8fbb0370bf73ff6a1" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::UNKNOWN</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1af9f461bb4610dadfed25aef2da6bc1c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::rectifyPoint</definition>
+        <argsstring>(const cv::Point2d &amp;uv_raw) const</argsstring>
+        <name>rectifyPoint</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_raw</declname>
+        </param>
+        <briefdescription>
+<para>Compute the rectified image coordinates of a pixel in the raw image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="127" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="384" bodyend="387"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aca9b03228e206b4c99df4c1cb191214f" compoundref="pinhole__camera__model_8h" startline="270">K_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" compoundref="pinhole__camera__model_8cpp" startline="456" endline="476">rectifyRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a07e45aafec138761b8ed62f0b1906f83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::rectifyPoint</definition>
+        <argsstring>(const cv::Point2d &amp;uv_raw, const cv::Matx33d &amp;K, const cv::Matx34d &amp;P) const</argsstring>
+        <name>rectifyPoint</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_raw</declname>
+        </param>
+        <param>
+          <type>const cv::Matx33d &amp;</type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type>const cv::Matx34d &amp;</type>
+          <declname>P</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000012"><xreftitle>Todo</xreftitle><xrefdescription><para>cv::undistortPoints requires the point data to be float, should allow double </para>
+</xrefdescription></xrefsect></para>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="128" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="389" bodyend="416"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca0c4842f7c52829caefd563f3c2e230ea" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::NONE</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca91071c75155c18e8fbb0370bf73ff6a1" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::UNKNOWN</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca19e63b72d954539ee7cdcbe8b4018793" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::CALIBRATED</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12a7d76b74999d240a9e24bc674f4be68f0" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::PLUMB_BOB_OR_RATIONAL_POLYNOMIAL</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" compoundref="pinhole__camera__model_8h" startline="268">D_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" compoundref="pinhole__camera__model_8h" startline="269">R_</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12aae55a7fc987f7dfc00e592cfbd7c3365" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::EQUIDISTANT</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12afbf3dc05f9bc19d70e65b4ec25b66b52" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::UNKNOWN_MODEL</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1afdf040f493b8fa60a6192cd3f01901d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::unrectifyPoint</definition>
+        <argsstring>(const cv::Point2d &amp;uv_rect) const</argsstring>
+        <name>unrectifyPoint</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_rect</declname>
+        </param>
+        <briefdescription>
+<para>Compute the raw image coordinates of a pixel in the rectified image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="133" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="418" bodyend="421"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aca9b03228e206b4c99df4c1cb191214f" compoundref="pinhole__camera__model_8h" startline="270">K_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1ac8815860e7009e5407e43ebfafb3f4d0" compoundref="pinhole__camera__model_8cpp" startline="478" endline="497">unrectifyRoi</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Point2d</type>
+        <definition>cv::Point2d image_geometry::PinholeCameraModel::unrectifyPoint</definition>
+        <argsstring>(const cv::Point2d &amp;uv_rect, const cv::Matx33d &amp;K, const cv::Matx34d &amp;P) const</argsstring>
+        <name>unrectifyPoint</name>
+        <param>
+          <type>const cv::Point2d &amp;</type>
+          <declname>uv_rect</declname>
+        </param>
+        <param>
+          <type>const cv::Matx33d &amp;</type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type>const cv::Matx34d &amp;</type>
+          <declname>P</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="134" column="15" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="423" bodyend="454"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca0c4842f7c52829caefd563f3c2e230ea" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::NONE</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca91071c75155c18e8fbb0370bf73ff6a1" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::UNKNOWN</references>
+        <references refid="namespaceimage__geometry_1a5678e0cb61ab96a3f1f6c4954a8a343ca19e63b72d954539ee7cdcbe8b4018793" compoundref="pinhole__camera__model_8cpp" startline="10">image_geometry::CALIBRATED</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a40ad5d3b964d63f41232428fb96376fe" compoundref="pinhole__camera__model_8cpp" startline="313" endline="316">projectPixelTo3dRay</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" compoundref="pinhole__camera__model_8h" startline="269">R_</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12a7d76b74999d240a9e24bc674f4be68f0" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::PLUMB_BOB_OR_RATIONAL_POLYNOMIAL</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" compoundref="pinhole__camera__model_8h" startline="268">D_</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12aae55a7fc987f7dfc00e592cfbd7c3365" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::EQUIDISTANT</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12afbf3dc05f9bc19d70e65b4ec25b66b52" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::UNKNOWN_MODEL</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Rect</type>
+        <definition>cv::Rect image_geometry::PinholeCameraModel::rectifyRoi</definition>
+        <argsstring>(const cv::Rect &amp;roi_raw) const</argsstring>
+        <name>rectifyRoi</name>
+        <param>
+          <type>const cv::Rect &amp;</type>
+          <declname>roi_raw</declname>
+        </param>
+        <briefdescription>
+<para>Compute the rectified ROI best fitting a raw ROI. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000013"><xreftitle>Todo</xreftitle><xrefdescription><para>Actually implement &quot;best fit&quot; as described by REP 104. </para>
+</xrefdescription></xrefsect></para>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="139" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="456" bodyend="476"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1af9f461bb4610dadfed25aef2da6bc1c8" compoundref="pinhole__camera__model_8cpp" startline="384" endline="387">rectifyPoint</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" compoundref="pinhole__camera__model_8h" startline="272">K_full_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" compoundref="pinhole__camera__model_8h" startline="273">P_full_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1ac8815860e7009e5407e43ebfafb3f4d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>cv::Rect</type>
+        <definition>cv::Rect image_geometry::PinholeCameraModel::unrectifyRoi</definition>
+        <argsstring>(const cv::Rect &amp;roi_rect) const</argsstring>
+        <name>unrectifyRoi</name>
+        <param>
+          <type>const cv::Rect &amp;</type>
+          <declname>roi_rect</declname>
+        </param>
+        <briefdescription>
+<para>Compute the raw ROI best fitting a rectified ROI. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000014"><xreftitle>Todo</xreftitle><xrefdescription><para>Actually implement &quot;best fit&quot; as described by REP 104. </para>
+</xrefdescription></xrefsect></para>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="144" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="478" bodyend="497"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1afdf040f493b8fa60a6192cd3f01901d3" compoundref="pinhole__camera__model_8cpp" startline="418" endline="421">unrectifyPoint</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a2946e61753fab48da515a6af7705867b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const sensor_msgs::CameraInfo &amp;</type>
+        <definition>const sensor_msgs::CameraInfo &amp; image_geometry::PinholeCameraModel::cameraInfo</definition>
+        <argsstring>() const</argsstring>
+        <name>cameraInfo</name>
+        <briefdescription>
+<para>Returns the camera info message held internally. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="149" column="33" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="303" bodyend="303"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8714a753e171292a4193422dd9cd07ff" compoundref="pinhole__camera__model_8cpp" startline="51" endline="56">operator=</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a00618d9eebacd41119c87f512d3e0af6" compoundref="stereo__camera__model_8cpp" startline="21" endline="26">image_geometry::StereoCameraModel::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a8c8048be0b7f2c749d36ab0dcc98c4d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const cv::Matx33d &amp;</type>
+        <definition>const cv::Matx33d &amp; image_geometry::PinholeCameraModel::intrinsicMatrix</definition>
+        <argsstring>() const</argsstring>
+        <name>intrinsicMatrix</name>
+        <briefdescription>
+<para>Returns the original camera matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="154" column="21" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="304" bodyend="304"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aca9b03228e206b4c99df4c1cb191214f" compoundref="pinhole__camera__model_8h" startline="270">K_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a23856bb75e0c110585441322535804f1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const cv::Mat_&lt; double &gt; &amp;</type>
+        <definition>const cv::Mat_&lt; double &gt; &amp; image_geometry::PinholeCameraModel::distortionCoeffs</definition>
+        <argsstring>() const</argsstring>
+        <name>distortionCoeffs</name>
+        <briefdescription>
+<para>Returns the distortion coefficients. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="159" column="18" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="305" bodyend="305"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" compoundref="pinhole__camera__model_8h" startline="268">D_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1aede1bf435903448c7e8a976d4b0ae1df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const cv::Matx33d &amp;</type>
+        <definition>const cv::Matx33d &amp; image_geometry::PinholeCameraModel::rotationMatrix</definition>
+        <argsstring>() const</argsstring>
+        <name>rotationMatrix</name>
+        <briefdescription>
+<para>Returns the rotation matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="164" column="21" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="306" bodyend="306"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" compoundref="pinhole__camera__model_8h" startline="269">R_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a97b4afee71dcadcd3daf3887c3cf7074" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const cv::Matx34d &amp;</type>
+        <definition>const cv::Matx34d &amp; image_geometry::PinholeCameraModel::projectionMatrix</definition>
+        <argsstring>() const</argsstring>
+        <name>projectionMatrix</name>
+        <briefdescription>
+<para>Returns the projection matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="169" column="21" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="307" bodyend="307"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="image__geometry_2test_2utest_8cpp_1a1396dcd2d34b1210cc163c72d38faa30" compoundref="image__geometry_2test_2utest_8cpp" startline="151" endline="162">TEST_F</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a89026fe3b4d46c0f70bf69099da8c567" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const cv::Matx33d &amp;</type>
+        <definition>const cv::Matx33d &amp; image_geometry::PinholeCameraModel::fullIntrinsicMatrix</definition>
+        <argsstring>() const</argsstring>
+        <name>fullIntrinsicMatrix</name>
+        <briefdescription>
+<para>Returns the original camera matrix for full resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="174" column="21" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="308" bodyend="308"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" compoundref="pinhole__camera__model_8h" startline="272">K_full_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a209dfc76398af728a57ea7f530652b24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const cv::Matx34d &amp;</type>
+        <definition>const cv::Matx34d &amp; image_geometry::PinholeCameraModel::fullProjectionMatrix</definition>
+        <argsstring>() const</argsstring>
+        <name>fullProjectionMatrix</name>
+        <briefdescription>
+<para>Returns the projection matrix for full resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="179" column="21" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="309" bodyend="309"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" compoundref="pinhole__camera__model_8h" startline="273">P_full_</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::fx</definition>
+        <argsstring>() const</argsstring>
+        <name>fx</name>
+        <briefdescription>
+<para>Returns the focal length (pixels) in x direction of the rectified image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="184" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="311" bodyend="311"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a516c9c4b13b484305672b83dbbf23558" compoundref="pinhole__camera__model_8h" startline="321" endline="325">getDeltaU</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a2d554fb0044525242ec50a6fd8eb7313" compoundref="pinhole__camera__model_8h" startline="333" endline="337">getDeltaX</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a963876fbeafcc1ee53f3e11b139eadde" compoundref="stereo__camera__model_8h" startline="111" endline="115">image_geometry::StereoCameraModel::baseline</referencedby>
+        <referencedby refid="classimage__geometry_1_1cameramodels_1_1_pinhole_camera_model_1a2d30be314a738f851ebcd29bd210ba1c" compoundref="cameramodels_8py" startline="128" endline="144">image_geometry.cameramodels.PinholeCameraModel.projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1ad9cfc052d847560f9d4159a938706942" compoundref="stereo__camera__model_8cpp" startline="28" endline="46">image_geometry::StereoCameraModel::fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a1c88cbfd1c66a72bb03eff297e595164" compoundref="stereo__camera__model_8cpp" startline="54" endline="114">image_geometry::StereoCameraModel::updateQ</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::fy</definition>
+        <argsstring>() const</argsstring>
+        <name>fy</name>
+        <briefdescription>
+<para>Returns the focal length (pixels) in y direction of the rectified image. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="189" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="312" bodyend="312"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a83482436d252f900cade959e4ef6c63b" compoundref="pinhole__camera__model_8h" startline="327" endline="331">getDeltaV</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aeaed5d4aca9cc77dc323b235909334f8" compoundref="pinhole__camera__model_8h" startline="339" endline="343">getDeltaY</referencedby>
+        <referencedby refid="classimage__geometry_1_1cameramodels_1_1_pinhole_camera_model_1a2d30be314a738f851ebcd29bd210ba1c" compoundref="cameramodels_8py" startline="128" endline="144">image_geometry.cameramodels.PinholeCameraModel.projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1ad9cfc052d847560f9d4159a938706942" compoundref="stereo__camera__model_8cpp" startline="28" endline="46">image_geometry::StereoCameraModel::fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a1c88cbfd1c66a72bb03eff297e595164" compoundref="stereo__camera__model_8cpp" startline="54" endline="114">image_geometry::StereoCameraModel::updateQ</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1aaece1bd454e98c5a31f8b7cadecc3271" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::cx</definition>
+        <argsstring>() const</argsstring>
+        <name>cx</name>
+        <briefdescription>
+<para>Returns the x coordinate of the optical center. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="194" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="313" bodyend="313"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a0e8534f8bed31309e93b9545eae185bc" compoundref="stereo__camera__model_8h" startline="117" endline="121">image_geometry::StereoCameraModel::getZ</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a372ceb041bac3b79e5c7a0bfa918850e" compoundref="stereo__camera__model_8h" startline="123" endline="127">image_geometry::StereoCameraModel::getDisparity</referencedby>
+        <referencedby refid="classimage__geometry_1_1cameramodels_1_1_pinhole_camera_model_1a2d30be314a738f851ebcd29bd210ba1c" compoundref="cameramodels_8py" startline="128" endline="144">image_geometry.cameramodels.PinholeCameraModel.projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a1c88cbfd1c66a72bb03eff297e595164" compoundref="stereo__camera__model_8cpp" startline="54" endline="114">image_geometry::StereoCameraModel::updateQ</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1acd6a134be6f13d510c4ce299fd3f1c6f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::cy</definition>
+        <argsstring>() const</argsstring>
+        <name>cy</name>
+        <briefdescription>
+<para>Returns the y coordinate of the optical center. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="199" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="314" bodyend="314"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1cameramodels_1_1_pinhole_camera_model_1a2d30be314a738f851ebcd29bd210ba1c" compoundref="cameramodels_8py" startline="128" endline="144">image_geometry.cameramodels.PinholeCameraModel.projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1ad9cfc052d847560f9d4159a938706942" compoundref="stereo__camera__model_8cpp" startline="28" endline="46">image_geometry::StereoCameraModel::fromCameraInfo</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a1c88cbfd1c66a72bb03eff297e595164" compoundref="stereo__camera__model_8cpp" startline="54" endline="114">image_geometry::StereoCameraModel::updateQ</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a1bfc96ff7e2c4ade21a71fdf105547cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::Tx</definition>
+        <argsstring>() const</argsstring>
+        <name>Tx</name>
+        <briefdescription>
+<para>Returns the x-translation term of the projection matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="204" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="315" bodyend="315"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a963876fbeafcc1ee53f3e11b139eadde" compoundref="stereo__camera__model_8h" startline="111" endline="115">image_geometry::StereoCameraModel::baseline</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a0e8534f8bed31309e93b9545eae185bc" compoundref="stereo__camera__model_8h" startline="117" endline="121">image_geometry::StereoCameraModel::getZ</referencedby>
+        <referencedby refid="classimage__geometry_1_1_stereo_camera_model_1a372ceb041bac3b79e5c7a0bfa918850e" compoundref="stereo__camera__model_8h" startline="123" endline="127">image_geometry::StereoCameraModel::getDisparity</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a0dc607b79f714b20d8a2317bb928f104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::Ty</definition>
+        <argsstring>() const</argsstring>
+        <name>Ty</name>
+        <briefdescription>
+<para>Returns the y-translation term of the projection matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="209" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="316" bodyend="316"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" compoundref="pinhole__camera__model_8h" startline="271">P_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t image_geometry::PinholeCameraModel::binningX</definition>
+        <argsstring>() const</argsstring>
+        <name>binningX</name>
+        <briefdescription>
+<para>Returns the number of columns in each bin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="214" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="318" bodyend="318"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aff933f9400051b319525dab6b30f7c05" compoundref="pinhole__camera__model_8cpp" startline="236" endline="242">reducedResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a89cf05e43a7d2f32c075d19b80fa70dd" compoundref="pinhole__camera__model_8cpp" startline="244" endline="249">toFullResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1af90d7c3d9fe6386f7439ab97b7465c8b" compoundref="pinhole__camera__model_8cpp" startline="260" endline="265">toReducedResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t image_geometry::PinholeCameraModel::binningY</definition>
+        <argsstring>() const</argsstring>
+        <name>binningY</name>
+        <briefdescription>
+<para>Returns the number of rows in each bin. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="219" column="12" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="319" bodyend="319"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aff933f9400051b319525dab6b30f7c05" compoundref="pinhole__camera__model_8cpp" startline="236" endline="242">reducedResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a89cf05e43a7d2f32c075d19b80fa70dd" compoundref="pinhole__camera__model_8cpp" startline="244" endline="249">toFullResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1af90d7c3d9fe6386f7439ab97b7465c8b" compoundref="pinhole__camera__model_8cpp" startline="260" endline="265">toReducedResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" compoundref="pinhole__camera__model_8cpp" startline="499" endline="579">initRectificationMaps</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" compoundref="pinhole__camera__model_8cpp" startline="581" endline="659">initUnrectificationMaps</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a516c9c4b13b484305672b83dbbf23558" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::getDeltaU</definition>
+        <argsstring>(double deltaX, double Z) const</argsstring>
+        <name>getDeltaU</name>
+        <param>
+          <type>double</type>
+          <declname>deltaX</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Z</declname>
+        </param>
+        <briefdescription>
+<para>Compute delta u, given Z and delta X in Cartesian space. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For given Z, this is the inverse of <ref refid="classimage__geometry_1_1_pinhole_camera_model_1a2d554fb0044525242ec50a6fd8eb7313" kindref="member">getDeltaX()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deltaX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delta X, in Cartesian space </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z (depth), in Cartesian space </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="229" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="321" bodyend="325"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" compoundref="pinhole__camera__model_8h" startline="311" endline="311">fx</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a83482436d252f900cade959e4ef6c63b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::getDeltaV</definition>
+        <argsstring>(double deltaY, double Z) const</argsstring>
+        <name>getDeltaV</name>
+        <param>
+          <type>double</type>
+          <declname>deltaY</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Z</declname>
+        </param>
+        <briefdescription>
+<para>Compute delta v, given Z and delta Y in Cartesian space. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For given Z, this is the inverse of <ref refid="classimage__geometry_1_1_pinhole_camera_model_1aeaed5d4aca9cc77dc323b235909334f8" kindref="member">getDeltaY()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deltaY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delta Y, in Cartesian space </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z (depth), in Cartesian space </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="239" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="327" bodyend="331"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" compoundref="pinhole__camera__model_8h" startline="312" endline="312">fy</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a2d554fb0044525242ec50a6fd8eb7313" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::getDeltaX</definition>
+        <argsstring>(double deltaU, double Z) const</argsstring>
+        <name>getDeltaX</name>
+        <param>
+          <type>double</type>
+          <declname>deltaU</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Z</declname>
+        </param>
+        <briefdescription>
+<para>Compute delta X, given Z in Cartesian space and delta u in pixels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For given Z, this is the inverse of <ref refid="classimage__geometry_1_1_pinhole_camera_model_1a516c9c4b13b484305672b83dbbf23558" kindref="member">getDeltaU()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deltaU</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delta u, in pixels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z (depth), in Cartesian space </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="249" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="333" bodyend="337"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" compoundref="pinhole__camera__model_8h" startline="311" endline="311">fx</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1aeaed5d4aca9cc77dc323b235909334f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double image_geometry::PinholeCameraModel::getDeltaY</definition>
+        <argsstring>(double deltaV, double Z) const</argsstring>
+        <name>getDeltaY</name>
+        <param>
+          <type>double</type>
+          <declname>deltaV</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Z</declname>
+        </param>
+        <briefdescription>
+<para>Compute delta Y, given Z in Cartesian space and delta v in pixels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For given Z, this is the inverse of <ref refid="classimage__geometry_1_1_pinhole_camera_model_1a83482436d252f900cade959e4ef6c63b" kindref="member">getDeltaV()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deltaV</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delta v, in pixels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z (depth), in Cartesian space </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="259" column="10" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="339" bodyend="343"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" compoundref="pinhole__camera__model_8h" startline="264" endline="264">initialized</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" compoundref="pinhole__camera__model_8h" startline="312" endline="312">fy</references>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool image_geometry::PinholeCameraModel::initialized</definition>
+        <argsstring>() const</argsstring>
+        <name>initialized</name>
+        <briefdescription>
+<para>Returns true if the camera has been initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="264" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="264" bodyend="264"/>
+        <referencedby refid="image__geometry_2test_2utest_8cpp_1a1396dcd2d34b1210cc163c72d38faa30" compoundref="image__geometry_2test_2utest_8cpp" startline="151" endline="162">TEST_F</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a06c91d650a3e66be0a388e8981223bb0" compoundref="pinhole__camera__model_8h" startline="291" endline="295">tfFrame</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a701aa92e0167b5201700ccab9feb56be" compoundref="pinhole__camera__model_8h" startline="297" endline="301">stamp</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a516c9c4b13b484305672b83dbbf23558" compoundref="pinhole__camera__model_8h" startline="321" endline="325">getDeltaU</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a83482436d252f900cade959e4ef6c63b" compoundref="pinhole__camera__model_8h" startline="327" endline="331">getDeltaV</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a2d554fb0044525242ec50a6fd8eb7313" compoundref="pinhole__camera__model_8h" startline="333" endline="337">getDeltaX</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aeaed5d4aca9cc77dc323b235909334f8" compoundref="pinhole__camera__model_8h" startline="339" endline="343">getDeltaY</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8714a753e171292a4193422dd9cd07ff" compoundref="pinhole__camera__model_8cpp" startline="51" endline="56">operator=</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aba78f938fa01ed728c78ee7b3c3379e8" compoundref="pinhole__camera__model_8cpp" startline="58" endline="62">PinholeCameraModel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" compoundref="pinhole__camera__model_8cpp" startline="230" endline="234">fullResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1aff933f9400051b319525dab6b30f7c05" compoundref="pinhole__camera__model_8cpp" startline="236" endline="242">reducedResolution</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a229852b48dbaa3ae00fc1fb3ac9eac73" compoundref="pinhole__camera__model_8cpp" startline="276" endline="282">rawRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" compoundref="pinhole__camera__model_8cpp" startline="284" endline="297">rectifiedRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" compoundref="pinhole__camera__model_8cpp" startline="299" endline="311">project3dToPixel</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" compoundref="pinhole__camera__model_8cpp" startline="318" endline="334">projectPixelTo3dRay</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a3cb983f84f1993287247781a6bda39c2" compoundref="pinhole__camera__model_8cpp" startline="336" endline="358">rectifyImage</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a017a52e057c798c49a8da3999967ee63" compoundref="pinhole__camera__model_8cpp" startline="360" endline="382">unrectifyImage</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a07e45aafec138761b8ed62f0b1906f83" compoundref="pinhole__camera__model_8cpp" startline="389" endline="416">rectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" compoundref="pinhole__camera__model_8cpp" startline="423" endline="454">unrectifyPoint</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" compoundref="pinhole__camera__model_8cpp" startline="456" endline="476">rectifyRoi</referencedby>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1ac8815860e7009e5407e43ebfafb3f4d0" compoundref="pinhole__camera__model_8cpp" startline="478" endline="497">unrectifyRoi</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void image_geometry::PinholeCameraModel::initRectificationMaps</definition>
+        <argsstring>() const</argsstring>
+        <name>initRectificationMaps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000015"><xreftitle>Todo</xreftitle><xrefdescription><para>For large binning settings, can drop extra rows/cols at bottom/right boundary. Make sure we&apos;re handling that 100% correctly. </para>
+</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000016"><xreftitle>Todo</xreftitle><xrefdescription><para>Should binned resolution, K, P be part of public API? </para>
+</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000017"><xreftitle>Todo</xreftitle><xrefdescription><para>Use rectified ROI </para>
+</xrefdescription></xrefsect></para>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="283" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="499" bodyend="579"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" compoundref="pinhole__camera__model_8cpp" startline="230" endline="234">fullResolution</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" compoundref="pinhole__camera__model_8h" startline="272">K_full_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" compoundref="pinhole__camera__model_8h" startline="273">P_full_</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12a7d76b74999d240a9e24bc674f4be68f0" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::PLUMB_BOB_OR_RATIONAL_POLYNOMIAL</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" compoundref="pinhole__camera__model_8h" startline="268">D_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" compoundref="pinhole__camera__model_8h" startline="269">R_</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12aae55a7fc987f7dfc00e592cfbd7c3365" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::EQUIDISTANT</references>
+        <references refid="namespaceimage__geometry_1a424126c810dda1c6323db253370fca12afbf3dc05f9bc19d70e65b4ec25b66b52" compoundref="pinhole__camera__model_8cpp" startline="11">image_geometry::UNKNOWN_MODEL</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a3cb983f84f1993287247781a6bda39c2" compoundref="pinhole__camera__model_8cpp" startline="336" endline="358">rectifyImage</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void image_geometry::PinholeCameraModel::initUnrectificationMaps</definition>
+        <argsstring>() const</argsstring>
+        <name>initUnrectificationMaps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000018"><xreftitle>Todo</xreftitle><xrefdescription><para>For large binning settings, can drop extra rows/cols at bottom/right boundary. Make sure we&apos;re handling that 100% correctly. </para>
+</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>Should binned resolution, K, P be part of public API? </para>
+</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>Use rectified ROI </para>
+</xrefdescription></xrefsect></para>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="284" column="8" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/src/pinhole_camera_model.cpp" bodystart="581" bodyend="659"/>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" compoundref="pinhole__camera__model_8h" startline="276">cache_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" compoundref="pinhole__camera__model_8cpp" startline="230" endline="234">fullResolution</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" compoundref="pinhole__camera__model_8h" startline="318" endline="318">binningX</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" compoundref="pinhole__camera__model_8h" startline="319" endline="319">binningY</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" compoundref="pinhole__camera__model_8h" startline="272">K_full_</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" compoundref="pinhole__camera__model_8h" startline="273">P_full_</references>
+        <references refid="erl2-oracle-user-manual_8md_8txt_1a16754163197eb074b61db8a8c354ccaf" compoundref="erl2-oracle-user-manual_8md_8txt" startline="110">x</references>
+        <references refid="erl2-oracle-user-manual_8md_8txt_1a2f82cd5f2a14b7605818ee4df8fef0fe" compoundref="erl2-oracle-user-manual_8md_8txt" startline="111">y</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1af9f461bb4610dadfed25aef2da6bc1c8" compoundref="pinhole__camera__model_8cpp" startline="384" endline="387">rectifyPoint</references>
+        <references refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" compoundref="pinhole__camera__model_8h" startline="267">cam_info_</references>
+        <referencedby refid="classimage__geometry_1_1_pinhole_camera_model_1a017a52e057c798c49a8da3999967ee63" compoundref="pinhole__camera__model_8cpp" startline="360" endline="382">unrectifyImage</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Simplifies interpreting images geometrically using the parameters from sensor_msgs/CameraInfo. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" line="24" column="1" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/include/image_geometry/pinhole_camera_model.h" bodystart="23" bodyend="287"/>
+    <listofallmembers>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a9f7f4cfc429df4868af4f46fa05139d6" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>binningX</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1ae7bdfae1673ddf92e057100967797ccf" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>binningY</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a0a72ec66e3b23de3146a4abe5834161a" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>cache_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aa287475d52013919ae82fd801a3c9762" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>cam_info_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a2946e61753fab48da515a6af7705867b" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>cameraInfo</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aaece1bd454e98c5a31f8b7cadecc3271" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>cx</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1acd6a134be6f13d510c4ce299fd3f1c6f" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>cy</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a08b8ddc6537f437457498eb98fb145e0" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>D_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a23856bb75e0c110585441322535804f1" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>distortionCoeffs</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fromCameraInfo</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1af865eebea5405f59158194fd7780ec90" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fromCameraInfo</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a89026fe3b4d46c0f70bf69099da8c567" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fullIntrinsicMatrix</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a209dfc76398af728a57ea7f530652b24" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fullProjectionMatrix</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a9842c73aad59668b024d2b83ff486823" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fullResolution</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a7e041253ee062be2e2415f08a9882099" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fx</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a8a03173d75221de77d387ddf7d1b9a1d" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>fy</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a516c9c4b13b484305672b83dbbf23558" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>getDeltaU</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a83482436d252f900cade959e4ef6c63b" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>getDeltaV</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a2d554fb0044525242ec50a6fd8eb7313" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>getDeltaX</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aeaed5d4aca9cc77dc323b235909334f8" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>getDeltaY</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a39cf1b29b5704273c15723b608061052" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>initialized</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a1a1eaea138b6f4103ddd0aaa2c3e7533" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>initRectificationMaps</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a04aac2f6a633e3a325e09e0d3e878d22" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>initUnrectificationMaps</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a8c8048be0b7f2c749d36ab0dcc98c4d5" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>intrinsicMatrix</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aca9b03228e206b4c99df4c1cb191214f" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>K_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a2eade4c2b648c1980092b13b758d8835" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>K_full_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a8714a753e171292a4193422dd9cd07ff" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>operator=</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a8f2a5195067e5dce80e8ea8a979e6254" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>P_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a6b50cc5d72c233d01fcb30b1af6d9fe8" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>P_full_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a8b71635f93504394844980dd39ab0ccf" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>PinholeCameraModel</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aba78f938fa01ed728c78ee7b3c3379e8" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>PinholeCameraModel</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a8ded243252068a90be137c0fc1275fdb" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>project3dToPixel</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a97b4afee71dcadcd3daf3887c3cf7074" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>projectionMatrix</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a40ad5d3b964d63f41232428fb96376fe" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>projectPixelTo3dRay</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a48ab619b697b611a46b3ab1ec1255595" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>projectPixelTo3dRay</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a577b028fd24fbb24c1d3fbeb4e0af398" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>R_</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a229852b48dbaa3ae00fc1fb3ac9eac73" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rawRoi</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a48d4007b6d56502229b72988b7929042" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rectifiedRoi</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a3cb983f84f1993287247781a6bda39c2" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rectifyImage</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1af9f461bb4610dadfed25aef2da6bc1c8" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rectifyPoint</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a07e45aafec138761b8ed62f0b1906f83" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rectifyPoint</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a64e2815572652c5b51ff31849db97b17" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rectifyRoi</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aff933f9400051b319525dab6b30f7c05" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>reducedResolution</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1aede1bf435903448c7e8a976d4b0ae1df" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>rotationMatrix</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a701aa92e0167b5201700ccab9feb56be" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>stamp</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a0eb31054c4e1a7d18d0fcbbc6abd3abc" prot="protected" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>StereoCameraModel</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a06c91d650a3e66be0a388e8981223bb0" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>tfFrame</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a89cf05e43a7d2f32c075d19b80fa70dd" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>toFullResolution</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a7c72a5668270d34ff98579a6a9d38420" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>toFullResolution</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1af90d7c3d9fe6386f7439ab97b7465c8b" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>toReducedResolution</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a53423550e66cd797c0913bd98c29b0f3" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>toReducedResolution</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a1bfc96ff7e2c4ade21a71fdf105547cb" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>Tx</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a0dc607b79f714b20d8a2317bb928f104" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>Ty</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a017a52e057c798c49a8da3999967ee63" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>unrectifyImage</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1afdf040f493b8fa60a6192cd3f01901d3" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>unrectifyPoint</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1a48fac8ad47e8eab8424dec583f76078e" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>unrectifyPoint</name></member>
+      <member refid="classimage__geometry_1_1_pinhole_camera_model_1ac8815860e7009e5407e43ebfafb3f4d0" prot="public" virt="non-virtual"><scope>image_geometry::PinholeCameraModel</scope><name>unrectifyRoi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

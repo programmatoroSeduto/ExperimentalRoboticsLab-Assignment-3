@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt" kind="file" language="C++">
+    <compoundname>CMakeLists.txt</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1a71d617500e3f2741963b56be4d0fb94a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>cmake_minimum_required</definition>
+        <argsstring>(VERSION 3.0.2) project(cv_bridge) find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs) if(NOT ANDROID) find_package(PythonLibs) if(PYTHONLIBS_VERSION_STRING VERSION_LESS &quot;3.8&quot;) find_package(Boost REQUIRED python37) else() find_package(Boost REQUIRED python) endif() else() find_package(Boost REQUIRED) endif() set(_opencv_version 4) find_package(OpenCV 4 QUIET) if(NOT OpenCV_FOUND) message(STATUS &quot;Did not find OpenCV 4</argsstring>
+        <name>cmake_minimum_required</name>
+        <param>
+          <type>VERSION 3.0.</type>
+          <declname>2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/cv_bridge/CMakeLists.txt" line="1" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1ae327ecbeb73df2f6640391f6d8775b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>trying OpenCV</type>
+        <definition>trying OpenCV set</definition>
+        <argsstring>(_opencv_version 3) endif() find_package(OpenCV $</argsstring>
+        <name>set</name>
+        <param>
+          <type>_opencv_version</type>
+          <declname>3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/cv_bridge/CMakeLists.txt" line="24" column="3" bodyfile="robocluedo_dependencies/vision_opencv/cv_bridge/CMakeLists.txt" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1aadf77ead1ce9ef9ce0b6ac5f1617614d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>REQUIRED COMPONENTS opencv_core opencv_imgproc opencv_imgcodecs CONFIG</type>
+        <definition>REQUIRED COMPONENTS opencv_core opencv_imgproc opencv_imgcodecs CONFIG catkin_package</definition>
+        <argsstring>(INCLUDE_DIRS include LIBRARIES ${PROJECT_NAME} CATKIN_DEPENDS rosconsole sensor_msgs DEPENDS OpenCV CFG_EXTRAS cv_bridge-extras.cmake) catkin_python_setup() include_directories(include $</argsstring>
+        <name>catkin_package</name>
+        <param>
+          <type>INCLUDE_DIRS include LIBRARIES ${PROJECT_NAME} CATKIN_DEPENDS rosconsole sensor_msgs DEPENDS OpenCV CFG_EXTRAS cv_bridge-extras.</type>
+          <declname>cmake</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_dependencies/vision_opencv/cv_bridge/CMakeLists.txt" line="35" column="1" bodyfile="robocluedo_dependencies/vision_opencv/cv_bridge/CMakeLists.txt" bodystart="35" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2_c_make_lists_8txt_1a568106bac57c72cd74c219299b3a2994" kindref="member">cmake_minimum_required</ref>(VERSION<sp/>3.0.2)</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"><ref refid="robocluedo-hunter-user-manual_8md_8txt_1af7740bd233f62bf7e16cd57319d7ada2" kindref="member">project</ref>(<ref refid="namespacecv__bridge" kindref="compound">cv_bridge</ref>)</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">find_package(catkin<sp/>REQUIRED<sp/>COMPONENTS<sp/>rosconsole<sp/>sensor_msgs)</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(NOT<sp/>ANDROID)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/>find_package(PythonLibs)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(PYTHONLIBS_VERSION_STRING<sp/>VERSION_LESS<sp/></highlight><highlight class="stringliteral">&quot;3.8&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/>Debian<sp/>Buster</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>find_package(Boost<sp/>REQUIRED<sp/>python37)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/>Ubuntu<sp/>Focal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>find_package(Boost<sp/>REQUIRED<sp/>python)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>endif()</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="rosplan-kb_8md_8txt_1a0544c3fe466e421738dae463968b70ba" kindref="member">else</ref>()</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">find_package(Boost<sp/>REQUIRED)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">endif()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2src_2aruco_2_c_make_lists_8txt_1a490557a10016e2cc08409075b58fae6f" kindref="member">set</ref>(_opencv_version<sp/>4)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">find_package(OpenCV<sp/>4<sp/>QUIET)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><ref refid="examples__tools_8md_8txt_1ab7ba283e106143c7b2f5dbb2b4147982" kindref="member">if</ref>(NOT<sp/>OpenCV_FOUND)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a613aec3cea90947774335a408726fd2e" kindref="member">message</ref>(STATUS<sp/>&quot;Did<sp/>not<sp/>find<sp/>OpenCV<sp/>4,<sp/>trying<sp/>OpenCV<sp/>3&quot;)</highlight></codeline>
+<codeline lineno="24" refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1ae327ecbeb73df2f6640391f6d8775b50" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2src_2aruco_2_c_make_lists_8txt_1a490557a10016e2cc08409075b58fae6f" kindref="member">set</ref>(_opencv_version<sp/>3)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">endif()</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">find_package(OpenCV<sp/>${_opencv_version}<sp/>REQUIRED</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>COMPONENTS</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>opencv_core</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>opencv_imgproc</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>opencv_imgcodecs</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>CONFIG</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1aadf77ead1ce9ef9ce0b6ac5f1617614d" refkind="member"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1aadf77ead1ce9ef9ce0b6ac5f1617614d" kindref="member">catkin_package</ref>(</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>INCLUDE_DIRS<sp/>include</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>LIBRARIES<sp/>${PROJECT_NAME}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>CATKIN_DEPENDS<sp/>rosconsole<sp/>sensor_msgs</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>DEPENDS<sp/>OpenCV</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>CFG_EXTRAS<sp/><ref refid="namespacecv__bridge" kindref="compound">cv_bridge</ref>-extras.cmake</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2image__geometry_2_c_make_lists_8txt_1ac0501a4c5e5c791634d48ae1b5e45174" kindref="member">catkin_python_setup</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2src_2_c_make_lists_8txt_1a241f405a0e38dc1e387380b7e39ec7d8" kindref="member">include_directories</ref>(include<sp/>${Boost_INCLUDE_DIRS}<sp/>${OpenCV_INCLUDE_DIRS}<sp/>${catkin_INCLUDE_DIRS})</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">link_directories(${Boost_LIBRARY_DIRS})</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(NOT<sp/>ANDROID)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">add_subdirectory(python)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">endif()</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">add_subdirectory(src)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><ref refid="examples__tools_8md_8txt_1ab7ba283e106143c7b2f5dbb2b4147982" kindref="member">if</ref>(CATKIN_ENABLE_TESTING)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>add_subdirectory(<ref refid="test-the-project_8md_8txt_1ab9c30914b6e8a2a87c4305b70785cbfa" kindref="member">test</ref>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">endif()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>install<sp/>the<sp/>include<sp/>folder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">install(</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>DIRECTORY<sp/>include/${PROJECT_NAME}/</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>DESTINATION<sp/>${CATKIN_PACKAGE_INCLUDE_DESTINATION}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">)</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_dependencies/vision_opencv/cv_bridge/CMakeLists.txt"/>
+  </compounddef>
+</doxygen>
