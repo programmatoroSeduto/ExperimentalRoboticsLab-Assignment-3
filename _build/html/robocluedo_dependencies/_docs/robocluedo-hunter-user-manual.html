@@ -135,12 +135,31 @@
 <li class="toctree-l3"><a class="reference internal" href="#file-ros-controllers-yaml">file ros_controllers.yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-joint-limits-yaml">file joint_limits.yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gazebo-world-files-fix">Gazebo world files fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rviz-config-file-fix">RViz config file fix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optional-run-launch">(optional) run.launch</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-test-the-model-with-gazebo">HOW TO test the model with Gazebo</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-launch-the-simulation-with-other-worlds-file">HOW TO Launch the simulation with other worlds file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-launch-a-world-outside-the-package-worlds">HOW TO launch a world <em>outside the package worlds</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#robocluedo-hunter-sensors">RoboCLuedo Hunter sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#camera-arm">camera arm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-front-low">camera front low</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-left">camera left</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-right">camera right</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#topc-laser-sensor">topc Laser sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install-the-navigation-stack">HOW TO install the navigation stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#param-base-local-planner-params-yaml">param – base_local_planner_params.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#param-costmap-common-params-yaml">param – costmap_common_params.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#param-global-costmap-params-yaml">param – global_costmap_params.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#param-local-costmap-params-yaml">param – local_costmap_params.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#param-move-base-params-yaml">param – move_base_params.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-file-nav-stack-launch">launch file <em>nav_stack.launch</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-run-launch-file">new <em>run.launch</em> file</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +226,8 @@ Created file robocluedo_robot.pdf
 <li><p>apply the gazebo world fix (see below)</p></li>
 <li><p>(optional) create the <em>run.launch</em> file</p></li>
 <li><p>(optional) setup the RViz environment</p></li>
+<li><p>(optional) RViz config file fix</p></li>
+<li><p>(optional) install MoveBase</p></li>
 </ul>
 <div class="section" id="file-ros-controllers-yaml">
 <h3>file ros_controllers.yaml<a class="headerlink" href="#file-ros-controllers-yaml" title="Permalink to this heading"></a></h3>
@@ -345,27 +366,69 @@ Created file robocluedo_robot.pdf
 </pre></div>
 </div>
 </div>
+<div class="section" id="rviz-config-file-fix">
+<h3>RViz config file fix<a class="headerlink" href="#rviz-config-file-fix" title="Permalink to this heading"></a></h3>
+<p><strong>demo.launch</strong> : replace the RViz calling with this:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">default=</span><span class="s">&quot;moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- Run Rviz and load the default config to see the state of the move_group node --&gt;</span>
+<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/moveit_rviz.launch&quot;</span> <span class="na">if=</span><span class="s">&quot;$(arg use_rviz)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file_path)&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;debug&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg debug)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/include&gt;</span>
+</pre></div>
+</div>
+<p><strong>demo_gazebo.launch</strong> : same work as before</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">default=</span><span class="s">&quot;moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- Run Rviz and load the default config to see the state of the move_group node --&gt;</span>
+<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/moveit_rviz.launch&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file_path)&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;debug&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg debug)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/include&gt;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="optional-run-launch">
 <h3>(optional) run.launch<a class="headerlink" href="#optional-run-launch" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this launch file assumes that the other two fixes have been applied beforehand.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>in case you want to install also the navigation stack, see the version below in this document.</p>
+</div>
 <p>create a file named <em>run.launch</em> and paste this code:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 
 <span class="nt">&lt;launch&gt;</span>
 
 <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;gazebo&quot;</span> <span class="na">default=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+
 <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_name&quot;</span> <span class="na">default=</span><span class="s">&quot;square_room.world&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find worlds)&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(arg world_path)/$(arg world_name)&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">default=</span><span class="s">&quot;moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
+
 
 <span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/demo_gazebo.launch&quot;</span> <span class="na">if=</span><span class="s">&quot;$(arg gazebo)&quot;</span> <span class="nt">&gt;</span>
 	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_name&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_name)&quot;</span> <span class="nt">/&gt;</span>
 	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_path)&quot;</span> <span class="nt">/&gt;</span>
 	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_file_path)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file_path)&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/include&gt;</span>
-<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/demo.launch&quot;</span> <span class="na">unless=</span><span class="s">&quot;$(arg gazebo)&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/demo.launch&quot;</span> <span class="na">unless=</span><span class="s">&quot;$(arg gazebo)&quot;</span> <span class="nt">&gt;</span>
 	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_name&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_name)&quot;</span> <span class="nt">/&gt;</span>
 	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_path)&quot;</span> <span class="nt">/&gt;</span>
 	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_file_path)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file_path)&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/include&gt;</span>
 
 <span class="nt">&lt;/launch&gt;</span>
@@ -380,6 +443,25 @@ roslaunch robocluedo_robot_hunter run.launch gazebo:<span class="o">=</span><spa
 
 <span class="c1"># launch RViz only</span>
 roslaunch robocluedo_robot_hunter run.launch gazebo:<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<p>this even allows to launch the simulation specifying the config file. <strong>see the folder <code class="docutils literal notranslate"><span class="pre">robocluedo_robot_hunter/config/rviz</span></code></strong> containing all the RViz configuration files.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># default: moveit_2.rviz</span>
+roslaunch robocluedo_robot_hunter run.launch 
+
+<span class="c1"># other RViz config file</span>
+roslaunch robocluedo_robot_hunter run.launch  rviz_config_file:<span class="o">=</span>moveit.rviz
+
+ this is a specific file <span class="k">for</span> the navigation stack
+roslaunch robocluedo_robot_hunter run.launch  rviz_config_file:<span class="o">=</span>sim_nav_stack.rviz
+</pre></div>
+</div>
+<p>in case the RViz config file is not in that folder, you can give the complete path of the config file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run.launch  rviz_config_file_path:<span class="o">=</span>/root/ros_ws/src/erl3/robocluedo_robot_hunter/config/rviz/sim_nav_stack.rviz
+</pre></div>
+</div>
+<p>of course, you can combine all the options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run.launch gazebo:<span class="o">=</span><span class="nb">true</span> rviz_config_file:<span class="o">=</span>sim_nav_stack.rviz world_name:<span class="o">=</span>indoor.world
 </pre></div>
 </div>
 </div>
@@ -410,6 +492,324 @@ roslaunch robocluedo_robot_hunter run.launch gazebo:<span class="o">=</span><spa
 </div>
 <p>the second one is to directly specify the path with the variable <code class="docutils literal notranslate"><span class="pre">world_file_path</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter demo_gazebo.launch world_file_path:<span class="o">=</span>/root/ros_ws/src/erl2-new/robocluedo_dependencies/worlds/indoor.world
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="robocluedo-hunter-sensors">
+<h2>RoboCLuedo Hunter sensors<a class="headerlink" href="#robocluedo-hunter-sensors" title="Permalink to this heading"></a></h2>
+<p>the RoboCLuedo Hunter is endowed with four cameras:</p>
+<ul class="simple">
+<li><p>one camera at the fron of the chassis</p></li>
+<li><p>two camera at the two sides of the chassis</p></li>
+<li><p>one camera at the top of the arm</p></li>
+</ul>
+<p>plus a laser sensor.</p>
+<div class="section" id="camera-arm">
+<h3>camera arm<a class="headerlink" href="#camera-arm" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_arm/camera_info
+/robocluedo_robot/camera_arm/image_raw
+/robocluedo_robot/camera_arm/image_raw/compressed
+/robocluedo_robot/camera_arm/image_raw/compressed/parameter_descriptions
+/robocluedo_robot/camera_arm/image_raw/compressed/parameter_updates
+/robocluedo_robot/camera_arm/image_raw/compressedDepth
+/robocluedo_robot/camera_arm/image_raw/compressedDepth/parameter_descriptions
+/robocluedo_robot/camera_arm/image_raw/compressedDepth/parameter_updates
+/robocluedo_robot/camera_arm/image_raw/theora
+/robocluedo_robot/camera_arm/image_raw/theora/parameter_descriptions
+/robocluedo_robot/camera_arm/image_raw/theora/parameter_updates
+/robocluedo_robot/camera_arm/parameter_descriptions
+/robocluedo_robot/camera_arm/parameter_updates
+</pre></div>
+</div>
+</div>
+<div class="section" id="camera-front-low">
+<h3>camera front low<a class="headerlink" href="#camera-front-low" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_front_low/camera_info
+/robocluedo_robot/camera_front_low/image_raw
+/robocluedo_robot/camera_front_low/image_raw/compressed
+/robocluedo_robot/camera_front_low/image_raw/compressed/parameter_descriptions
+/robocluedo_robot/camera_front_low/image_raw/compressed/parameter_updates
+/robocluedo_robot/camera_front_low/image_raw/compressedDepth
+/robocluedo_robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions
+/robocluedo_robot/camera_front_low/image_raw/compressedDepth/parameter_updates
+/robocluedo_robot/camera_front_low/image_raw/theora
+/robocluedo_robot/camera_front_low/image_raw/theora/parameter_descriptions
+/robocluedo_robot/camera_front_low/image_raw/theora/parameter_updates
+/robocluedo_robot/camera_front_low/parameter_descriptions
+/robocluedo_robot/camera_front_low/parameter_updates
+</pre></div>
+</div>
+</div>
+<div class="section" id="camera-left">
+<h3>camera left<a class="headerlink" href="#camera-left" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_left/camera_info
+/robocluedo_robot/camera_left/image_raw
+/robocluedo_robot/camera_left/image_raw/compressed
+/robocluedo_robot/camera_left/image_raw/compressed/parameter_descriptions
+/robocluedo_robot/camera_left/image_raw/compressed/parameter_updates
+/robocluedo_robot/camera_left/image_raw/compressedDepth
+/robocluedo_robot/camera_left/image_raw/compressedDepth/parameter_descriptions
+/robocluedo_robot/camera_left/image_raw/compressedDepth/parameter_updates
+/robocluedo_robot/camera_left/image_raw/theora
+/robocluedo_robot/camera_left/image_raw/theora/parameter_descriptions
+/robocluedo_robot/camera_left/image_raw/theora/parameter_updates
+/robocluedo_robot/camera_left/parameter_descriptions
+/robocluedo_robot/camera_left/parameter_updates
+</pre></div>
+</div>
+</div>
+<div class="section" id="camera-right">
+<h3>camera right<a class="headerlink" href="#camera-right" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_right/camera_info
+/robocluedo_robot/camera_right/image_raw
+/robocluedo_robot/camera_right/image_raw/compressed
+/robocluedo_robot/camera_right/image_raw/compressed/parameter_descriptions
+/robocluedo_robot/camera_right/image_raw/compressed/parameter_updates
+/robocluedo_robot/camera_right/image_raw/compressedDepth
+/robocluedo_robot/camera_right/image_raw/compressedDepth/parameter_descriptions
+/robocluedo_robot/camera_right/image_raw/compressedDepth/parameter_updates
+/robocluedo_robot/camera_right/image_raw/theora
+/robocluedo_robot/camera_right/image_raw/theora/parameter_descriptions
+/robocluedo_robot/camera_right/image_raw/theora/parameter_updates
+/robocluedo_robot/camera_right/parameter_descriptions
+/robocluedo_robot/camera_right/parameter_updates
+</pre></div>
+</div>
+</div>
+<div class="section" id="topc-laser-sensor">
+<h3>topc Laser sensor<a class="headerlink" href="#topc-laser-sensor" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/scan
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-install-the-navigation-stack">
+<h2>HOW TO install the navigation stack<a class="headerlink" href="#how-to-install-the-navigation-stack" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>before installing the navigation stack as described below, check that the laser sensor of the robot is publishing on a topic named <code class="docutils literal notranslate"><span class="pre">/scan</span></code>. The plugin publishing the laser sensor is located in the folder <code class="docutils literal notranslate"><span class="pre">robocluedo_dependencies/robocluedo_hunter_urdf_model/robot/</span></code> file <code class="docutils literal notranslate"><span class="pre">robocluedo_gazebo_sensing.xacro</span></code>.</p>
+</div>
+<p>inside the package MoveIt,</p>
+<ul class="simple">
+<li><p>create a folder named <em>param</em></p></li>
+<li><p>create the files described below (copy and paste from this documentation)</p></li>
+<li><p>create a new launch file for running the navigation stack</p></li>
+<li><p>(optional) launch the navigation stack from the <em>run.launch</em> file</p></li>
+</ul>
+<div class="section" id="param-base-local-planner-params-yaml">
+<h3>param – base_local_planner_params.yaml<a class="headerlink" href="#param-base-local-planner-params-yaml" title="Permalink to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">TrajectoryPlannerROS</span><span class="p">:</span>
+
+<span class="c1"># Robot Configuration Parameters</span>
+  <span class="nt">max_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.8</span>
+  <span class="nt">min_vel_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.4</span>
+
+  <span class="nt">max_vel_theta</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">1.5</span>
+  <span class="nt">min_vel_theta</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">-1.5</span>
+  <span class="nt">min_in_place_vel_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+  
+  <span class="nt">acc_lim_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+  <span class="nt">acc_lim_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+
+<span class="c1"># Goal Tolerance Parameters</span>
+  <span class="nt">yaw_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.14</span>
+  <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
+
+<span class="c1"># Forward Simulation Parameters</span>
+  <span class="nt">sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+  <span class="nt">vx_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+  <span class="nt">vtheta_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">40</span>
+
+<span class="c1"># Trajectory Scoring Parameters</span>
+  <span class="nt">meter_scoring</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">pdist_scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+  <span class="nt">gdist_scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+  <span class="nt">occdist_scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+  <span class="nt">heading_lookahead</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+  <span class="nt">dwa</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">global_frame_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+
+<span class="c1"># Oscillation Prevention Parameters</span>
+  <span class="nt">oscillation_reset_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+
+<span class="c1"># Differential-drive robot configuration</span>
+  <span class="nt">holonomic_robot</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="nt">max_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+  <span class="nt">min_vel_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+  <span class="nt">acc_lim_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+  <span class="nt">vy_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="param-costmap-common-params-yaml">
+<h3>param – costmap_common_params.yaml<a class="headerlink" href="#param-costmap-common-params-yaml" title="Permalink to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.60</span>  
+<span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="nt">raytrace_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+<span class="nt">robot_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.15</span>
+
+<span class="c1"># voxel map configuration; z-voxels 0 are filled by bumpers and 1 by laser scan (kinect)</span>
+<span class="nt">map_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">voxel</span>
+<span class="nt">origin_z</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="nt">z_resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+<span class="nt">z_voxels</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">publish_voxel_map</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
+
+<span class="nt">scan</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">data_type</span><span class="p">:</span> <span class="nv">LaserScan</span><span class="p p-Indicator">,</span><span class="nt"> topic</span><span class="p">:</span> <span class="nv">scan</span><span class="p p-Indicator">,</span><span class="nt"> marking</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> clearing</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> min_obstacle_height</span><span class="p">:</span> <span class="nv">0.05</span><span class="p p-Indicator">,</span><span class="nt"> max_obstacle_height</span><span class="p">:</span> <span class="nv">0.6</span><span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="param-global-costmap-params-yaml">
+<h3>param – global_costmap_params.yaml<a class="headerlink" href="#param-global-costmap-params-yaml" title="Permalink to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
+   <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+   <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+   <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+   <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+   <span class="nt">static_map</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+   <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+   <span class="nt">inflation_layer</span><span class="p">:</span>
+        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="param-local-costmap-params-yaml">
+<h3>param – local_costmap_params.yaml<a class="headerlink" href="#param-local-costmap-params-yaml" title="Permalink to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span>
+   <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+   <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+   <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+   <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+   <span class="nt">static_map</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+   <span class="nt">rolling_window</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+   <span class="nt">width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4.0</span>
+   <span class="nt">height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4.0</span>
+   <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+   <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+   <span class="nt">inflation_layer</span><span class="p">:</span>
+        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="param-move-base-params-yaml">
+<h3>param – move_base_params.yaml<a class="headerlink" href="#param-move-base-params-yaml" title="Permalink to this heading"></a></h3>
+<p>see also <a class="reference external" href="http://www.ros.org/wiki/move_base">move_base official wiki</a></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">shutdown_costmaps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">controller_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">controller_patience</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+
+<span class="nt">planner_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+<span class="nt">planner_patience</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+
+<span class="nt">oscillation_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<span class="nt">oscillation_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="launch-file-nav-stack-launch">
+<h3>launch file <em>nav_stack.launch</em><a class="headerlink" href="#launch-file-nav-stack-launch" title="Permalink to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+
+<span class="nt">&lt;launch&gt;</span>
+	
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;use_sim_time&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+	
+	<span class="c">&lt;!-- SLAM/GMapping --&gt;</span>
+	<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;gmapping&quot;</span> <span class="na">type=</span><span class="s">&quot;slam_gmapping&quot;</span> <span class="na">name=</span><span class="s">&quot;slam_gmapping&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;base_frame&quot;</span> <span class="na">value=</span><span class="s">&quot;base_link&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;map_update_interval&quot;</span> <span class="na">value=</span><span class="s">&quot;5.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;maxUrange&quot;</span> <span class="na">value=</span><span class="s">&quot;16.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;sigma&quot;</span> <span class="na">value=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;kernelSize&quot;</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;lstep&quot;</span> <span class="na">value=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;astep&quot;</span> <span class="na">value=</span><span class="s">&quot;0.03&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;iterations&quot;</span> <span class="na">value=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;lsigma&quot;</span> <span class="na">value=</span><span class="s">&quot;0.075&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;ogain&quot;</span> <span class="na">value=</span><span class="s">&quot;3.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;lskip&quot;</span> <span class="na">value=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;srr&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;srt&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;str&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;stt&quot;</span> <span class="na">value=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;linearUpdate&quot;</span> <span class="na">value=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;angularUpdate&quot;</span> <span class="na">value=</span><span class="s">&quot;0.2&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;temporalUpdate&quot;</span> <span class="na">value=</span><span class="s">&quot;3.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;resampleThreshold&quot;</span> <span class="na">value=</span><span class="s">&quot;0.5&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;particles&quot;</span> <span class="na">value=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;xmin&quot;</span> <span class="na">value=</span><span class="s">&quot;-50.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;ymin&quot;</span> <span class="na">value=</span><span class="s">&quot;-50.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;xmax&quot;</span> <span class="na">value=</span><span class="s">&quot;50.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;ymax&quot;</span> <span class="na">value=</span><span class="s">&quot;50.0&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;delta&quot;</span> <span class="na">value=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;llsamplerange&quot;</span> <span class="na">value=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;llsamplestep&quot;</span> <span class="na">value=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;lasamplerange&quot;</span> <span class="na">value=</span><span class="s">&quot;0.005&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;lasamplestep&quot;</span> <span class="na">value=</span><span class="s">&quot;0.005&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;transform_publish_period&quot;</span> <span class="na">value=</span><span class="s">&quot;0.0005&quot;</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;/node&gt;</span>
+	
+	<span class="c">&lt;!-- move base --&gt;</span>
+	<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;move_base&quot;</span> <span class="na">type=</span><span class="s">&quot;move_base&quot;</span> <span class="na">respawn=</span><span class="s">&quot;false&quot;</span> <span class="na">name=</span><span class="s">&quot;move_base&quot;</span> <span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;rosparam</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/param/costmap_common_params.yaml&quot;</span> <span class="na">command=</span><span class="s">&quot;load&quot;</span> <span class="na">ns=</span><span class="s">&quot;global_costmap&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;rosparam</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/param/costmap_common_params.yaml&quot;</span> <span class="na">command=</span><span class="s">&quot;load&quot;</span> <span class="na">ns=</span><span class="s">&quot;local_costmap&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;rosparam</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/param/local_costmap_params.yaml&quot;</span> <span class="na">command=</span><span class="s">&quot;load&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;rosparam</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/param/global_costmap_params.yaml&quot;</span> <span class="na">command=</span><span class="s">&quot;load&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;rosparam</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/param/base_local_planner_params.yaml&quot;</span> <span class="na">command=</span><span class="s">&quot;load&quot;</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;rosparam</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/param/move_base_params.yaml&quot;</span> <span class="na">command=</span><span class="s">&quot;load&quot;</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;/node&gt;</span>
+	
+<span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="new-run-launch-file">
+<h3>new <em>run.launch</em> file<a class="headerlink" href="#new-run-launch-file" title="Permalink to this heading"></a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+
+<span class="nt">&lt;launch&gt;</span>
+
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;gazebo&quot;</span> <span class="na">default=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;use_nav_stack&quot;</span> <span class="na">default=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_name&quot;</span> <span class="na">default=</span><span class="s">&quot;square_room.world&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find worlds)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(arg world_path)/$(arg world_name)&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">default=</span><span class="s">&quot;sim_nav_stack.rviz&quot;</span> <span class="na">if=</span><span class="s">&quot;$(arg gazebo)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/config/rviz/sim_nav_stack.rviz&quot;</span> <span class="na">if=</span><span class="s">&quot;$(arg gazebo)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/demo_gazebo.launch&quot;</span> <span class="na">if=</span><span class="s">&quot;$(arg gazebo)&quot;</span> <span class="nt">&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_name&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_name)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_path)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_file_path)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file_path)&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/include&gt;</span>
+
+<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/nav_stack.launch&quot;</span> <span class="na">if=</span><span class="s">&quot;$(arg use_nav_stack)&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">default=</span><span class="s">&quot;moveit_2.rviz&quot;</span> <span class="na">unless=</span><span class="s">&quot;$(arg gazebo)&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">default=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</span> <span class="na">unless=</span><span class="s">&quot;$(arg gazebo)&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;include</span> <span class="na">file=</span><span class="s">&quot;$(find robocluedo_robot_hunter)/launch/demo.launch&quot;</span> <span class="na">unless=</span><span class="s">&quot;$(arg gazebo)&quot;</span> <span class="nt">&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_name&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_name)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_path)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;world_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg world_file_path)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file)&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file_path&quot;</span> <span class="na">value=</span><span class="s">&quot;$(arg rviz_config_file_path)&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/include&gt;</span>
+
+<span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+</div>
+<p>this version of the launch file adds a new parameter, <code class="docutils literal notranslate"><span class="pre">use_move_base</span></code> which allows to switch move_base when starting the simulation environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run.launch use_move_base:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
 </div>

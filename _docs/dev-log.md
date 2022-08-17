@@ -62,7 +62,7 @@ prima di tutto serve avere funzionante il modello del robot. La cosa più ragion
 
 ---
 
-## 16/08/2022 -- 
+## 16/08/2022 -- modello del robot
 
 cotinuiamo a lavorare sul modello del robot (oggi si fa poco...)
 
@@ -178,3 +178,18 @@ catkin_create_pkg robocluedo_vision roscpp rospy std_msgs geometry_msgs nav_msgs
 
 - eeee documentazione, subito
 - **COMMIT**: "working on vision (setup package)"
+
+--- 
+
+## 17/08/2022 -- move_base
+
+iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)
+
+
+- installazione di move_base (dalla vecchia versione di erl2)
+- devo anche fare una modifica a come viene lanciato RViz in modo da poter scegliere il file di configurazione
+- ora dovrebbe esserci tutto: posso provare il navigation stack ... *e funziona a primo colpo signori*
+- meglio annotarsi due cose nella documentazione del robot riguardo il navigation stack
+	- (mi ringrazierò in futuro, quando dovrò installare di nuovo move_base su un altro robot)
+- ultima prova, giusto per capire se è tutto a posto
+- **COMMIT**: "working on robot model (setup move base)"

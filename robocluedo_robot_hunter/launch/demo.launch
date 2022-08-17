@@ -1,3 +1,5 @@
+<?xml version="0.1"?>
+
 <launch>
 
   <!-- specify the planning pipeline -->
@@ -52,12 +54,15 @@
     <arg name="pipeline" value="$(arg pipeline)"/>
     <arg name="load_robot_description" value="$(arg load_robot_description)"/>
   </include>
+  
+<arg name="rviz_config_file" default="moveit_2.rviz" />
+<arg name="rviz_config_file_path" default="$(find robocluedo_robot_hunter)/config/rviz/moveit_2.rviz" />
 
-  <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <include file="$(find robocluedo_robot_hunter)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
-    <arg name="rviz_config" value="$(find robocluedo_robot_hunter)/launch/moveit.rviz"/>
-    <arg name="debug" value="$(arg debug)"/>
-  </include>
+<!-- Run Rviz and load the default config to see the state of the move_group node -->
+<include file="$(find robocluedo_robot_hunter)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
+  <arg name="rviz_config" value="$(arg rviz_config_file_path)" />
+  <arg name="debug" value="$(arg debug)"/>
+</include>
 
   <!-- If database loading was enabled, start mongodb as well -->
   <include file="$(find robocluedo_robot_hunter)/launch/default_warehouse_db.launch" if="$(arg db)">

@@ -15,7 +15,7 @@
 </programlisting></para>
 <para><hruler/>
 </para>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md162">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md164">
 <title>Model file structure</title>
 <para>inside the folder <computeroutput>robocluedo_hunter_urdf_model</computeroutput> there are these files:</para>
 <para><itemizedlist>
@@ -34,7 +34,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md163">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md165">
 <title>HOW TO generate the model</title>
 <para>execute the file <computeroutput>generate_model.sh</computeroutput>; the URDF and its schematic will be located into the folder <computeroutput>model</computeroutput> with names</para>
 <para><itemizedlist>
@@ -60,7 +60,7 @@
 <codeline><highlight class="normal">Created<sp/>file<sp/>robocluedo_robot.pdf</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md164">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md166">
 <title>HOW TO generate the package with Moveit</title>
 <para>first of all, use the setup assistant to generate the package. Inside the project, <computeroutput>robocluedo_robot</computeroutput>.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>moveit_setup_assistant<sp/>setup.assistant.launch</highlight></codeline>
@@ -73,9 +73,11 @@
 </listitem><listitem><para>apply the gazebo world fix (see below)</para>
 </listitem><listitem><para>(optional) create the <emphasis>run.launch</emphasis> file</para>
 </listitem><listitem><para>(optional) setup the RViz environment</para>
+</listitem><listitem><para>(optional) RViz config file fix</para>
+</listitem><listitem><para>(optional) install MoveBase</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md165">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md167">
 <title>file ros_controllers.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>Simulation<sp/>settings<sp/>for<sp/>using<sp/>moveit_sim_controllers</highlight></codeline>
 <codeline><highlight class="normal">moveit_sim_hw_interface:</highlight></codeline>
@@ -142,7 +144,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md166">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md168">
 <title>file joint_limits.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>joint_limits.yaml<sp/>allows<sp/>the<sp/>dynamics<sp/>properties<sp/>specified<sp/>in<sp/>the<sp/>URDF<sp/>to<sp/>be<sp/>overwritten<sp/>or<sp/>augmented<sp/>as<sp/>needed</highlight></codeline>
 <codeline></codeline>
@@ -176,7 +178,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md167">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md169">
 <title>Gazebo world files fix</title>
 <para>apply this code into the file <bold>gazebo.launch</bold> :</para>
 <para><programlisting filename=".xml"><codeline><highlight class="comment">&lt;!--<sp/>world<sp/>file<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -207,27 +209,63 @@
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md168">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md170">
+<title>RViz config file fix</title>
+<para><bold>demo.launch</bold> : replace the RViz calling with this:</para>
+<para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">&lt;!--<sp/>Run<sp/>Rviz<sp/>and<sp/>load<sp/>the<sp/>default<sp/>config<sp/>to<sp/>see<sp/>the<sp/>state<sp/>of<sp/>the<sp/>move_group<sp/>node<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/moveit_rviz.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">if</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>use_rviz)&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;debug&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>debug)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
+</programlisting></para>
+<para><bold>demo_gazebo.launch</bold> : same work as before</para>
+<para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">&lt;!--<sp/>Run<sp/>Rviz<sp/>and<sp/>load<sp/>the<sp/>default<sp/>config<sp/>to<sp/>see<sp/>the<sp/>state<sp/>of<sp/>the<sp/>move_group<sp/>node<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/moveit_rviz.launch&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;debug&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>debug)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md171">
 <title>(optional) run.launch</title>
+<para><programlisting filename=".note"><codeline><highlight class="normal">this<sp/>launch<sp/>file<sp/>assumes<sp/>that<sp/>the<sp/>other<sp/>two<sp/>fixes<sp/>have<sp/>been<sp/>applied<sp/>beforehand.<sp/></highlight></codeline>
+</programlisting></para>
+<para><programlisting filename=".note"><codeline><highlight class="normal">in<sp/>case<sp/>you<sp/>want<sp/>to<sp/>install<sp/>also<sp/>the<sp/>navigation<sp/>stack,<sp/>see<sp/>the<sp/>version<sp/>below<sp/>in<sp/>this<sp/>document.<sp/></highlight></codeline>
+</programlisting></para>
 <para>create a file named <emphasis>run.launch</emphasis> and paste this code:</para>
 <para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;?</highlight><highlight class="keyword">xml</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">version</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">?&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;gazebo&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;square_room.world&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>worlds)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)/$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo_gazebo.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">if</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal"><sp/>&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
-<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">unless</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">unless</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal"><sp/>&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
@@ -242,9 +280,25 @@
 <codeline><highlight class="normal">#<sp/>launch<sp/>RViz<sp/>only</highlight></codeline>
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>gazebo:=false</highlight></codeline>
 </programlisting></para>
+<para>this even allows to launch the simulation specifying the config file. <bold>see the folder <computeroutput>robocluedo_robot_hunter/config/rviz</computeroutput></bold> containing all the RViz configuration files.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>default:<sp/>moveit_2.rviz</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>other<sp/>RViz<sp/>config<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/><sp/>rviz_config_file:=moveit.rviz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>this<sp/>is<sp/>a<sp/>specific<sp/>file<sp/>for<sp/>the<sp/>navigation<sp/>stack</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/><sp/>rviz_config_file:=sim_nav_stack.rviz</highlight></codeline>
+</programlisting></para>
+<para>in case the RViz config file is not in that folder, you can give the complete path of the config file:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/><sp/>rviz_config_file_path:=/root/ros_ws/src/erl3/robocluedo_robot_hunter/config/rviz/sim_nav_stack.rviz</highlight></codeline>
+</programlisting></para>
+<para>of course, you can combine all the options:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>gazebo:=true<sp/>rviz_config_file:=sim_nav_stack.rviz<sp/>world_name:=indoor.world</highlight></codeline>
+</programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md169">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md172">
 <title>HOW TO test the model with Gazebo</title>
 <para>launch this:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch</highlight></codeline>
@@ -254,14 +308,14 @@
 </para>
 <para><image type="html" name="robot_rviz.png" inline="yes"></image>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md170">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md173">
 <title>HOW TO Launch the simulation with other worlds file</title>
 <para>the package takes the world files from the package <emphasis>worlds</emphasis> located into the <emphasis>robocluedo_depedencied</emphasis> folder. The default world file is <emphasis>square_room.world</emphasis>.</para>
 <para>here&apos;s the syntax of the command:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=indoor.world</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md171">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md174">
 <title>HOW TO launch a world &lt;em&gt;outside the package worlds&lt;/em&gt;</title>
 <para>in case the world file is not included in the <emphasis>worlds</emphasis> package, you have two possibilities.</para>
 <para>the first one is to specify both path and name in this way:</para>
@@ -269,6 +323,311 @@
 </programlisting></para>
 <para>the second one is to directly specify the path with the variable <computeroutput>world_file_path</computeroutput>:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>demo_gazebo.launch<sp/>world_file_path:=/root/ros_ws/src/erl2-new/robocluedo_dependencies/worlds/indoor.world</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md175">
+<title>RoboCLuedo Hunter sensors</title>
+<para>the RoboCLuedo Hunter is endowed with four cameras:</para>
+<para><itemizedlist>
+<listitem><para>one camera at the fron of the chassis</para>
+</listitem><listitem><para>two camera at the two sides of the chassis</para>
+</listitem><listitem><para>one camera at the top of the arm</para>
+</listitem></itemizedlist>
+</para>
+<para>plus a laser sensor.</para>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md176">
+<title>camera arm</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_arm/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/parameter_updates</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md177">
+<title>camera front low</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_front_low/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/parameter_updates</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md178">
+<title>camera left</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_left/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/parameter_updates</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md179">
+<title>camera right</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_right/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/parameter_updates</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md180">
+<title>topc Laser sensor</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/scan</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md181">
+<title>HOW TO install the navigation stack</title>
+<para><programlisting filename=".note"><codeline><highlight class="normal">before<sp/>installing<sp/>the<sp/>navigation<sp/>stack<sp/>as<sp/>described<sp/>below,<sp/>check<sp/>that<sp/>the<sp/>laser<sp/>sensor<sp/>of<sp/>the<sp/>robot<sp/>is<sp/>publishing<sp/>on<sp/>a<sp/>topic<sp/>named<sp/>`/scan`.<sp/>The<sp/>plugin<sp/>publishing<sp/>the<sp/>laser<sp/>sensor<sp/>is<sp/>located<sp/>in<sp/>the<sp/>folder<sp/>`robocluedo_dependencies/robocluedo_hunter_urdf_model/robot/`<sp/>file<sp/>`robocluedo_gazebo_sensing.xacro`.</highlight></codeline>
+</programlisting></para>
+<para>inside the package MoveIt,</para>
+<para><itemizedlist>
+<listitem><para>create a folder named <emphasis>param</emphasis></para>
+</listitem><listitem><para>create the files described below (copy and paste from this documentation)</para>
+</listitem><listitem><para>create a new launch file for running the navigation stack</para>
+</listitem><listitem><para>(optional) launch the navigation stack from the <emphasis>run.launch</emphasis> file</para>
+</listitem></itemizedlist>
+</para>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md182">
+<title>param – base_local_planner_params.yaml</title>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">TrajectoryPlannerROS:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Robot<sp/>Configuration<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>max_vel_x:<sp/>0.8</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_vel_x:<sp/>0.4</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>max_vel_theta:<sp/><sp/>1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_vel_theta:<sp/><sp/>-1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_in_place_vel_theta:<sp/>-1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>acc_lim_x:<sp/>0.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>acc_lim_theta:<sp/>1.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Goal<sp/>Tolerance<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw_goal_tolerance:<sp/>3.14</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>xy_goal_tolerance:<sp/>0.3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Forward<sp/>Simulation<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sim_time:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vx_samples:<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vtheta_samples:<sp/>40</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Trajectory<sp/>Scoring<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>meter_scoring:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pdist_scale:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gdist_scale:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>occdist_scale:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>heading_lookahead:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dwa:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>global_frame_id:<sp/>map</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Oscillation<sp/>Prevention<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>oscillation_reset_dist:<sp/>0.05</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Differential-drive<sp/>robot<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>holonomic_robot:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>max_vel_y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_vel_y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>acc_lim_y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vy_samples:<sp/>0</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md183">
+<title>param – costmap_common_params.yaml</title>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">max_obstacle_height:<sp/>0.60<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">obstacle_range:<sp/>3.0</highlight></codeline>
+<codeline><highlight class="normal">raytrace_range:<sp/>3.0</highlight></codeline>
+<codeline><highlight class="normal">robot_radius:<sp/>0.15</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>voxel<sp/>map<sp/>configuration;<sp/>z-voxels<sp/>0<sp/>are<sp/>filled<sp/>by<sp/>bumpers<sp/>and<sp/>1<sp/>by<sp/>laser<sp/>scan<sp/>(kinect)</highlight></codeline>
+<codeline><highlight class="normal">map_type:<sp/>voxel</highlight></codeline>
+<codeline><highlight class="normal">origin_z:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">z_resolution:<sp/>0.2</highlight></codeline>
+<codeline><highlight class="normal">z_voxels:<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">publish_voxel_map:<sp/>false</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">observation_sources:<sp/>scan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">scan:<sp/>{data_type:<sp/>LaserScan,<sp/>topic:<sp/>scan,<sp/>marking:<sp/>true,<sp/>clearing:<sp/>true,<sp/>min_obstacle_height:<sp/>0.05,<sp/>max_obstacle_height:<sp/>0.6}</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md184">
+<title>param – global_costmap_params.yaml</title>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">global_costmap:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>global_frame:<sp/>map</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>robot_base_frame:<sp/>base_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>update_frequency:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>publish_frequency:<sp/>0.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>static_map:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>transform_tolerance:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>inflation_layer:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inflation_radius:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cost_scaling_factor:<sp/>20</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md185">
+<title>param – local_costmap_params.yaml</title>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">local_costmap:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>global_frame:<sp/>map</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>robot_base_frame:<sp/>base_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>update_frequency:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>publish_frequency:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>static_map:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>rolling_window:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>width:<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>height:<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>resolution:<sp/>0.05</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>transform_tolerance:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>inflation_layer:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inflation_radius:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cost_scaling_factor:<sp/>20</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md186">
+<title>param – move_base_params.yaml</title>
+<para>see also <ulink url="http://www.ros.org/wiki/move_base">move_base official wiki</ulink></para>
+<para><programlisting filename=".yaml"><codeline><highlight class="normal">shutdown_costmaps:<sp/>false</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">controller_frequency:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal">controller_patience:<sp/>5.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">planner_frequency:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal">planner_patience:<sp/>5.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">oscillation_timeout:<sp/>10.0</highlight></codeline>
+<codeline><highlight class="normal">oscillation_distance:<sp/>0.05</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md187">
+<title>launch file &lt;em&gt;nav_stack.launch&lt;/em&gt;</title>
+<para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;?</highlight><highlight class="keyword">xml</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">version</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">?&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;use_sim_time&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">&lt;!--<sp/>SLAM/GMapping<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">node</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">pkg</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;gmapping&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">type</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;slam_gmapping&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;slam_gmapping&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;base_frame&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;base_link&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;map_update_interval&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;5.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;maxUrange&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;16.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;sigma&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.05&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;kernelSize&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;lstep&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.05&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;astep&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.03&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;iterations&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;3&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;lsigma&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.075&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;ogain&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;3.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;lskip&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;srr&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.1&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;srt&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.1&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;str&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.1&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;stt&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.1&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;linearUpdate&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;angularUpdate&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.2&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;temporalUpdate&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;3.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;resampleThreshold&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.5&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;particles&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;20&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;xmin&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;-50.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;ymin&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;-50.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;xmax&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;50.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;ymax&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;50.0&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;delta&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.05&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;llsamplerange&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.01&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;llsamplestep&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.01&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;lasamplerange&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.005&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;lasamplestep&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.005&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">param</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;transform_publish_period&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;0.0005&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">node</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">&lt;!--<sp/>move<sp/>base<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">node</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">pkg</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;move_base&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">type</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;move_base&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">respawn</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;move_base&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">output</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;screen&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">rosparam</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/param/costmap_common_params.yaml&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">command</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;load&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">ns</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;global_costmap&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">rosparam</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/param/costmap_common_params.yaml&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">command</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;load&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">ns</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;local_costmap&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">rosparam</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/param/local_costmap_params.yaml&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">command</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;load&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">rosparam</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/param/global_costmap_params.yaml&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">command</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;load&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">rosparam</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/param/base_local_planner_params.yaml&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">command</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;load&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">rosparam</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/param/move_base_params.yaml&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">command</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;load&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/</highlight><highlight class="keywordtype">node</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md188">
+<title>new &lt;em&gt;run.launch&lt;/em&gt; file</title>
+<para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;?</highlight><highlight class="keyword">xml</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">version</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">?&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;gazebo&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;use_nav_stack&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;square_room.world&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>worlds)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)/$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;sim_nav_stack.rviz&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">if</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/sim_nav_stack.rviz&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">if</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo_gazebo.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">if</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal"><sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/nav_stack.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">if</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>use_nav_stack)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">unless</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">unless</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal">/&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">include</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">file</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo.launch&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">unless</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>gazebo)&quot;</highlight><highlight class="normal"><sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_name&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_name)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;world_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>world_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file_path&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">value</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;$(arg<sp/>rviz_config_file_path)&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
+</programlisting></para>
+<para>this version of the launch file adds a new parameter, <computeroutput>use_move_base</computeroutput> which allows to switch move_base when starting the simulation environment.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>use_move_base:=true</highlight></codeline>
 </programlisting> </para>
 </sect2>
 </sect1>

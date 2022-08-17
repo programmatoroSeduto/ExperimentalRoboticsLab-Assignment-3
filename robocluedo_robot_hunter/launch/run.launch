@@ -3,19 +3,34 @@
 <launch>
 
 <arg name="gazebo" default="true" />
+
+<arg name="use_nav_stack" default="true" />
+
 <arg name="world_name" default="square_room.world"/>
 <arg name="world_path" default="$(find worlds)"/>
 <arg name="world_file_path" default="$(arg world_path)/$(arg world_name)" />
 
+<arg name="rviz_config_file" default="sim_nav_stack.rviz" if="$(arg gazebo)"/>
+<arg name="rviz_config_file_path" default="$(find robocluedo_robot_hunter)/config/rviz/sim_nav_stack.rviz" if="$(arg gazebo)"/>
 <include file="$(find robocluedo_robot_hunter)/launch/demo_gazebo.launch" if="$(arg gazebo)" >
 	<arg name="world_name" value="$(arg world_name)" />
 	<arg name="world_path" value="$(arg world_path)" />
 	<arg name="world_file_path" value="$(arg world_file_path)" />
+	<arg name="rviz_config_file" value="$(arg rviz_config_file)" />
+	<arg name="rviz_config_file_path" value="$(arg rviz_config_file_path)" />
 </include>
+
+<include file="$(find robocluedo_robot_hunter)/launch/nav_stack.launch" if="$(arg use_nav_stack)"/>
+
+<arg name="rviz_config_file" default="moveit_2.rviz" unless="$(arg gazebo)"/>
+<arg name="rviz_config_file_path" default="$(find robocluedo_robot_hunter)/config/rviz/moveit_2.rviz" unless="$(arg gazebo)"/>
+
 <include file="$(find robocluedo_robot_hunter)/launch/demo.launch" unless="$(arg gazebo)" >
 	<arg name="world_name" value="$(arg world_name)" />
 	<arg name="world_path" value="$(arg world_path)" />
 	<arg name="world_file_path" value="$(arg world_file_path)" />
+	<arg name="rviz_config_file" value="$(arg rviz_config_file)" />
+	<arg name="rviz_config_file_path" value="$(arg rviz_config_file_path)" />
 </include>
 
 </launch>

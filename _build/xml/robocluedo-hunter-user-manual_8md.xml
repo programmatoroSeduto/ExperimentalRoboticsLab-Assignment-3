@@ -80,6 +80,8 @@
 <codeline><highlight class="normal">-<sp/>apply<sp/>the<sp/>gazebo<sp/>world<sp/>fix<sp/>(see<sp/>below)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>(optional)<sp/>create<sp/>the<sp/>*run.launch*<sp/>file</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>(optional)<sp/>setup<sp/>the<sp/>RViz<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(optional)<sp/>RViz<sp/>config<sp/>file<sp/>fix</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(optional)<sp/>install<sp/>MoveBase</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>file<sp/>ros_controllers.yaml</highlight></codeline>
 <codeline></codeline>
@@ -224,7 +226,43 @@
 <codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">###<sp/>RViz<sp/>config<sp/>file<sp/>fix</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**demo.launch**<sp/>:<sp/>replace<sp/>the<sp/>RViz<sp/>calling<sp/>with<sp/>this:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```xml</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>default=&quot;moveit_2.rviz&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>default=&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>Run<sp/>Rviz<sp/>and<sp/>load<sp/>the<sp/>default<sp/>config<sp/>to<sp/>see<sp/>the<sp/>state<sp/>of<sp/>the<sp/>move_group<sp/>node<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/moveit_rviz.launch&quot;<sp/>if=&quot;$(arg<sp/>use_rviz)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;arg<sp/>name=&quot;debug&quot;<sp/>value=&quot;$(arg<sp/>debug)&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**demo_gazebo.launch**<sp/>:<sp/>same<sp/>work<sp/>as<sp/>before</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```xml</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>default=&quot;moveit_2.rviz&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>default=&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>Run<sp/>Rviz<sp/>and<sp/>load<sp/>the<sp/>default<sp/>config<sp/>to<sp/>see<sp/>the<sp/>state<sp/>of<sp/>the<sp/>move_group<sp/>node<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/moveit_rviz.launch&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>&lt;arg<sp/>name=&quot;debug&quot;<sp/>value=&quot;$(arg<sp/>debug)&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">###<sp/>(optional)<sp/>run.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">this<sp/>launch<sp/>file<sp/>assumes<sp/>that<sp/>the<sp/>other<sp/>two<sp/>fixes<sp/>have<sp/>been<sp/>applied<sp/>beforehand.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">in<sp/>case<sp/>you<sp/>want<sp/>to<sp/>install<sp/>also<sp/>the<sp/>navigation<sp/>stack,<sp/>see<sp/>the<sp/>version<sp/>below<sp/>in<sp/>this<sp/>document.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">create<sp/>a<sp/>file<sp/>named<sp/>*run.launch*<sp/>and<sp/>paste<sp/>this<sp/>code:</highlight></codeline>
 <codeline></codeline>
@@ -234,19 +272,28 @@
 <codeline><highlight class="normal">&lt;launch&gt;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&lt;arg<sp/>name=&quot;gazebo&quot;<sp/>default=&quot;true&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">&lt;arg<sp/>name=&quot;world_name&quot;<sp/>default=&quot;square_room.world&quot;/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;arg<sp/>name=&quot;world_path&quot;<sp/>default=&quot;$(find<sp/>worlds)&quot;/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;arg<sp/>name=&quot;world_file_path&quot;<sp/>default=&quot;$(arg<sp/>world_path)/$(arg<sp/>world_name)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>default=&quot;moveit_2.rviz&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>default=&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo_gazebo.launch&quot;<sp/>if=&quot;$(arg<sp/>gazebo)&quot;<sp/>&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_name&quot;<sp/>value=&quot;$(arg<sp/>world_name)&quot;<sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_path&quot;<sp/>value=&quot;$(arg<sp/>world_path)&quot;<sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_file_path&quot;<sp/>value=&quot;$(arg<sp/>world_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file_path)&quot;<sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
-<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo.launch&quot;<sp/>unless=&quot;$(arg<sp/>gazebo)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo.launch&quot;<sp/>unless=&quot;$(arg<sp/>gazebo)&quot;<sp/>&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_name&quot;<sp/>value=&quot;$(arg<sp/>world_name)&quot;<sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_path&quot;<sp/>value=&quot;$(arg<sp/>world_path)&quot;<sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_file_path&quot;<sp/>value=&quot;$(arg<sp/>world_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file_path)&quot;<sp/>/&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&lt;/launch&gt;</highlight></codeline>
@@ -263,6 +310,34 @@
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>launch<sp/>RViz<sp/>only</highlight></codeline>
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>gazebo:=false</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>even<sp/>allows<sp/>to<sp/>launch<sp/>the<sp/>simulation<sp/>specifying<sp/>the<sp/>config<sp/>file.<sp/>**see<sp/>the<sp/>folder<sp/>`robocluedo_robot_hunter/config/rviz`**<sp/>containing<sp/>all<sp/>the<sp/>RViz<sp/>configuration<sp/>files.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>default:<sp/>moveit_2.rviz</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>other<sp/>RViz<sp/>config<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/><sp/>rviz_config_file:=moveit.rviz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>this<sp/>is<sp/>a<sp/>specific<sp/>file<sp/>for<sp/>the<sp/>navigation<sp/>stack</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/><sp/>rviz_config_file:=sim_nav_stack.rviz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">in<sp/>case<sp/>the<sp/>RViz<sp/>config<sp/>file<sp/>is<sp/>not<sp/>in<sp/>that<sp/>folder,<sp/>you<sp/>can<sp/>give<sp/>the<sp/>complete<sp/>path<sp/>of<sp/>the<sp/>config<sp/>file:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/><sp/>rviz_config_file_path:=/root/ros_ws/src/erl3/robocluedo_robot_hunter/config/rviz/sim_nav_stack.rviz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">of<sp/>course,<sp/>you<sp/>can<sp/>combine<sp/>all<sp/>the<sp/>options:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>gazebo:=true<sp/>rviz_config_file:=sim_nav_stack.rviz<sp/>world_name:=indoor.world</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
@@ -306,6 +381,332 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>demo_gazebo.launch<sp/>world_file_path:=/root/ros_ws/src/erl2-new/robocluedo_dependencies/worlds/indoor.world</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>RoboCLuedo<sp/>Hunter<sp/>sensors</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>RoboCLuedo<sp/>Hunter<sp/>is<sp/>endowed<sp/>with<sp/>four<sp/>cameras:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>one<sp/>camera<sp/>at<sp/>the<sp/>fron<sp/>of<sp/>the<sp/>chassis</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>two<sp/>camera<sp/>at<sp/>the<sp/>two<sp/>sides<sp/>of<sp/>the<sp/>chassis</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>one<sp/>camera<sp/>at<sp/>the<sp/>top<sp/>of<sp/>the<sp/>arm</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">plus<sp/>a<sp/>laser<sp/>sensor.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>camera<sp/>arm</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_arm/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>camera<sp/>front<sp/>low</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_front_low/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>camera<sp/>left</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_left/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>camera<sp/>right</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/camera_info</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressed</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressed/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressed/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressedDepth</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressedDepth/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/compressedDepth/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/theora</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/theora/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw/theora/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/robocluedo_robot/camera_right/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>topc<sp/>Laser<sp/>sensor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/scan</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>install<sp/>the<sp/>navigation<sp/>stack</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">before<sp/>installing<sp/>the<sp/>navigation<sp/>stack<sp/>as<sp/>described<sp/>below,<sp/>check<sp/>that<sp/>the<sp/>laser<sp/>sensor<sp/>of<sp/>the<sp/>robot<sp/>is<sp/>publishing<sp/>on<sp/>a<sp/>topic<sp/>named<sp/>`/scan`.<sp/>The<sp/>plugin<sp/>publishing<sp/>the<sp/>laser<sp/>sensor<sp/>is<sp/>located<sp/>in<sp/>the<sp/>folder<sp/>`robocluedo_dependencies/robocluedo_hunter_urdf_model/robot/`<sp/>file<sp/>`robocluedo_gazebo_sensing.xacro`.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">inside<sp/>the<sp/>package<sp/>MoveIt,</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>create<sp/>a<sp/>folder<sp/>named<sp/>*param*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>create<sp/>the<sp/>files<sp/>described<sp/>below<sp/>(copy<sp/>and<sp/>paste<sp/>from<sp/>this<sp/>documentation)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>create<sp/>a<sp/>new<sp/>launch<sp/>file<sp/>for<sp/>running<sp/>the<sp/>navigation<sp/>stack</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(optional)<sp/>launch<sp/>the<sp/>navigation<sp/>stack<sp/>from<sp/>the<sp/>*run.launch*<sp/>file</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>param<sp/>--<sp/>base_local_planner_params.yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">TrajectoryPlannerROS:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Robot<sp/>Configuration<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>max_vel_x:<sp/>0.8</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_vel_x:<sp/>0.4</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>max_vel_theta:<sp/><sp/>1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_vel_theta:<sp/><sp/>-1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_in_place_vel_theta:<sp/>-1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>acc_lim_x:<sp/>0.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>acc_lim_theta:<sp/>1.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Goal<sp/>Tolerance<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw_goal_tolerance:<sp/>3.14</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>xy_goal_tolerance:<sp/>0.3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Forward<sp/>Simulation<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sim_time:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vx_samples:<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vtheta_samples:<sp/>40</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Trajectory<sp/>Scoring<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>meter_scoring:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pdist_scale:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gdist_scale:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>occdist_scale:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>heading_lookahead:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dwa:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>global_frame_id:<sp/>map</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Oscillation<sp/>Prevention<sp/>Parameters</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>oscillation_reset_dist:<sp/>0.05</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Differential-drive<sp/>robot<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>holonomic_robot:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>max_vel_y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>min_vel_y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>acc_lim_y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vy_samples:<sp/>0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>param<sp/>--<sp/>costmap_common_params.yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">max_obstacle_height:<sp/>0.60<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">obstacle_range:<sp/>3.0</highlight></codeline>
+<codeline><highlight class="normal">raytrace_range:<sp/>3.0</highlight></codeline>
+<codeline><highlight class="normal">robot_radius:<sp/>0.15</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>voxel<sp/>map<sp/>configuration;<sp/>z-voxels<sp/>0<sp/>are<sp/>filled<sp/>by<sp/>bumpers<sp/>and<sp/>1<sp/>by<sp/>laser<sp/>scan<sp/>(kinect)</highlight></codeline>
+<codeline><highlight class="normal">map_type:<sp/>voxel</highlight></codeline>
+<codeline><highlight class="normal">origin_z:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">z_resolution:<sp/>0.2</highlight></codeline>
+<codeline><highlight class="normal">z_voxels:<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">publish_voxel_map:<sp/>false</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">observation_sources:<sp/>scan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">scan:<sp/>{data_type:<sp/>LaserScan,<sp/>topic:<sp/>scan,<sp/>marking:<sp/>true,<sp/>clearing:<sp/>true,<sp/>min_obstacle_height:<sp/>0.05,<sp/>max_obstacle_height:<sp/>0.6}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>param<sp/>--<sp/>global_costmap_params.yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">global_costmap:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>global_frame:<sp/>map</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>robot_base_frame:<sp/>base_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>update_frequency:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>publish_frequency:<sp/>0.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>static_map:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>transform_tolerance:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>inflation_layer:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inflation_radius:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cost_scaling_factor:<sp/>20</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>param<sp/>--<sp/>local_costmap_params.yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">local_costmap:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>global_frame:<sp/>map</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>robot_base_frame:<sp/>base_link</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>update_frequency:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>publish_frequency:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>static_map:<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>rolling_window:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>width:<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>height:<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>resolution:<sp/>0.05</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>transform_tolerance:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>inflation_layer:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inflation_radius:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cost_scaling_factor:<sp/>20</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>param<sp/>--<sp/>move_base_params.yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>also<sp/>[move_base<sp/>official<sp/>wiki](http://www.ros.org/wiki/move_base)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">shutdown_costmaps:<sp/>false</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">controller_frequency:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal">controller_patience:<sp/>5.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">planner_frequency:<sp/>5.0</highlight></codeline>
+<codeline><highlight class="normal">planner_patience:<sp/>5.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">oscillation_timeout:<sp/>10.0</highlight></codeline>
+<codeline><highlight class="normal">oscillation_distance:<sp/>0.05</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>launch<sp/>file<sp/>*nav_stack.launch*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```xml</highlight></codeline>
+<codeline><highlight class="normal">&lt;?xml<sp/>version=&quot;1.0&quot;?&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;launch&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;use_sim_time&quot;<sp/>value=&quot;true&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;!--<sp/>SLAM/GMapping<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;node<sp/>pkg=&quot;gmapping&quot;<sp/>type=&quot;slam_gmapping&quot;<sp/>name=&quot;slam_gmapping&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;base_frame&quot;<sp/>value=&quot;base_link&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;map_update_interval&quot;<sp/>value=&quot;5.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;maxUrange&quot;<sp/>value=&quot;16.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;sigma&quot;<sp/>value=&quot;0.05&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;kernelSize&quot;<sp/>value=&quot;1&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;lstep&quot;<sp/>value=&quot;0.05&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;astep&quot;<sp/>value=&quot;0.03&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;iterations&quot;<sp/>value=&quot;3&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;lsigma&quot;<sp/>value=&quot;0.075&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;ogain&quot;<sp/>value=&quot;3.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;lskip&quot;<sp/>value=&quot;0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;srr&quot;<sp/>value=&quot;0.1&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;srt&quot;<sp/>value=&quot;0.1&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;str&quot;<sp/>value=&quot;0.1&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;stt&quot;<sp/>value=&quot;0.1&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;linearUpdate&quot;<sp/>value=&quot;1.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;angularUpdate&quot;<sp/>value=&quot;0.2&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;temporalUpdate&quot;<sp/>value=&quot;3.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;resampleThreshold&quot;<sp/>value=&quot;0.5&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;particles&quot;<sp/>value=&quot;20&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;xmin&quot;<sp/>value=&quot;-50.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;ymin&quot;<sp/>value=&quot;-50.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;xmax&quot;<sp/>value=&quot;50.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;ymax&quot;<sp/>value=&quot;50.0&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;delta&quot;<sp/>value=&quot;0.05&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;llsamplerange&quot;<sp/>value=&quot;0.01&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;llsamplestep&quot;<sp/>value=&quot;0.01&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;lasamplerange&quot;<sp/>value=&quot;0.005&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;lasamplestep&quot;<sp/>value=&quot;0.005&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;transform_publish_period&quot;<sp/>value=&quot;0.0005&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/node&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;!--<sp/>move<sp/>base<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;node<sp/>pkg=&quot;move_base&quot;<sp/>type=&quot;move_base&quot;<sp/>respawn=&quot;false&quot;<sp/>name=&quot;move_base&quot;<sp/>output=&quot;screen&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;rosparam<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/param/costmap_common_params.yaml&quot;<sp/>command=&quot;load&quot;<sp/>ns=&quot;global_costmap&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;rosparam<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/param/costmap_common_params.yaml&quot;<sp/>command=&quot;load&quot;<sp/>ns=&quot;local_costmap&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;rosparam<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/param/local_costmap_params.yaml&quot;<sp/>command=&quot;load&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;rosparam<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/param/global_costmap_params.yaml&quot;<sp/>command=&quot;load&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;rosparam<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/param/base_local_planner_params.yaml&quot;<sp/>command=&quot;load&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;rosparam<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/param/move_base_params.yaml&quot;<sp/>command=&quot;load&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/node&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">&lt;/launch&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>new<sp/>*run.launch*<sp/>file</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```xml</highlight></codeline>
+<codeline><highlight class="normal">&lt;?xml<sp/>version=&quot;1.0&quot;?&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;launch&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;gazebo&quot;<sp/>default=&quot;true&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;use_nav_stack&quot;<sp/>default=&quot;true&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;world_name&quot;<sp/>default=&quot;square_room.world&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;world_path&quot;<sp/>default=&quot;$(find<sp/>worlds)&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;world_file_path&quot;<sp/>default=&quot;$(arg<sp/>world_path)/$(arg<sp/>world_name)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>default=&quot;sim_nav_stack.rviz&quot;<sp/>if=&quot;$(arg<sp/>gazebo)&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>default=&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/sim_nav_stack.rviz&quot;<sp/>if=&quot;$(arg<sp/>gazebo)&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo_gazebo.launch&quot;<sp/>if=&quot;$(arg<sp/>gazebo)&quot;<sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_name&quot;<sp/>value=&quot;$(arg<sp/>world_name)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_path&quot;<sp/>value=&quot;$(arg<sp/>world_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_file_path&quot;<sp/>value=&quot;$(arg<sp/>world_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/nav_stack.launch&quot;<sp/>if=&quot;$(arg<sp/>use_nav_stack)&quot;/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>default=&quot;moveit_2.rviz&quot;<sp/>unless=&quot;$(arg<sp/>gazebo)&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>default=&quot;$(find<sp/>robocluedo_robot_hunter)/config/rviz/moveit_2.rviz&quot;<sp/>unless=&quot;$(arg<sp/>gazebo)&quot;/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;include<sp/>file=&quot;$(find<sp/>robocluedo_robot_hunter)/launch/demo.launch&quot;<sp/>unless=&quot;$(arg<sp/>gazebo)&quot;<sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_name&quot;<sp/>value=&quot;$(arg<sp/>world_name)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_path&quot;<sp/>value=&quot;$(arg<sp/>world_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;world_file_path&quot;<sp/>value=&quot;$(arg<sp/>world_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;rviz_config_file_path&quot;<sp/>value=&quot;$(arg<sp/>rviz_config_file_path)&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/include&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;/launch&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>version<sp/>of<sp/>the<sp/>launch<sp/>file<sp/>adds<sp/>a<sp/>new<sp/>parameter,<sp/>`use_move_base`<sp/>which<sp/>allows<sp/>to<sp/>switch<sp/>move_base<sp/>when<sp/>starting<sp/>the<sp/>simulation<sp/>environment.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>use_move_base:=true</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
