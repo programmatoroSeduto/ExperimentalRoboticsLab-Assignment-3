@@ -18,6 +18,8 @@ from geometry_msgs.msg import Point
 from tf import transformations
 import math
 from nav_msgs.msg import Odometry
+from move_base_msgs.msg import MoveBaseActionGoal
+from actionlib_msgs.msg import GoalID
 
 
 
@@ -54,7 +56,6 @@ def move_base_switch( data ):
 	res.success = True
 	res.message = ""
 	
-	
 	# check the activity status
 	if active_ and not data.data:
 		rospy.loginfo( "(move_base_nav ) move_base navigation is OFF" )
@@ -67,6 +68,9 @@ def move_base_switch( data ):
 		
 	elif active_ and data.data:
 		rospy.loginfo( "(move_base_nav ) switching target" )
+	
+	else:
+		res.message = "trying to disable something already off ..." 
 	
 	if active_:
 		desired_position_.x = rospy.get_param( "des_pos_x" )
@@ -125,6 +129,8 @@ cl_head_orient_switch = None
 
 
 
+# current values
+
 position_ = Point( )
 ''' the current position of the robot, from the odometry
 '''
@@ -132,6 +138,8 @@ position_ = Point( )
 yaw_ = 0.0
 ''' the orientation of the robot about the 'z' axis, from the odometry
 ''' 
+
+# target
 
 desired_position_ = Point( )
 ''' the objective position for move_base. obtained from the parameters
@@ -141,13 +149,11 @@ desired_position_.x = 0.0
 desired_position_.y = 0.0
 desired_position_.z = 0.0
 
-threshold_position_ = 0.35
-''' the maximum allowed position error while reaching the target. 
-'''
-
 desired_yaw_ = 0.0
 ''' the current orientation of the robot
 '''
+
+# error evaluation
 
 err_pos = math.inf
 ''' teh error between the desired position and the current one.
@@ -163,6 +169,12 @@ Note:
 	its default value is PI/2, and also when the distance is not measured
 '''
 
+# thresholds
+
+threshold_position_ = 0.35
+''' the maximum allowed position error while reaching the target. 
+'''
+
 yaw_precision_ = math.pi / 9 
 ''' +/- 20 degree allowed
 '''
@@ -171,10 +183,7 @@ yaw_precision_2_ = math.pi / 90
 ''' +/- 2 degree allowed
 '''
 
-compute_odometry = False
-''' whether to compute or not the odometry. if false, the both the odometry
-	and the distance are not computed. 
-'''
+# odometry measurement
 
 topic_odometry = "/odom"
 ''' the node measures the position of the robot during the navigation.
@@ -194,16 +203,16 @@ def normalize_angle( angle ):
 		angle = angle - (2 * math.pi * angle) / (math.fabs(angle))
 	return angle
 
-def cbk_odometry( data ):
+
+def cbk_odometry( msg ):
 	''' subscription callback for the odometry topic
 	'''
-	global position_
-	global yaw_
+	global active_
+	global position_, yaw_
 	global desired_position_, desired_yaw_
 	global err_pos, err_yaw
-	global compute_odometry
 	
-	if compute_odometry:
+	if active_:
 		# position
 		position_ = msg.pose.pose.position
 
@@ -216,12 +225,12 @@ def cbk_odometry( data ):
 		euler = transformations.euler_from_quaternion(quaternion)
 		yaw_ = euler[2]
 		
-		err_pos = math.sqrt(pow(des_pos.y - position_.y, 2) + pow(des_pos.x - position_.x, 2))
+		# estimation of errors
+		err_pos = math.sqrt(pow(desired_position_.y - position_.y, 2) + pow(desired_position_.x - position_.x, 2))
 		err_yaw = normalize_angle(desired_yaw_ - yaw_)
 		
 	else:
 		# set defaults
-		yaw_ = 0.0
 		err_pos = math.inf
 		err_yaw = math.pi / 2.0
 
@@ -231,13 +240,55 @@ topic_move_base_goal = "/move_base/goal"
 ''' the topic for sending the target to the navigation stack
 '''
 
-cl_move_base = None
-''' (client handle) move base goal
+pub_move_base_goal = None
+''' (publisher handle) move base goal
 '''
 
-topic_move_base_cancel = ""
+def move_base_send_target( x, y ):
+	''' send a target to move base. 
+	
+	Parameters:
+		x (float) : 
+			the x coordinate
+		y (float) : 
+			the y coordinate
+	'''
+	global topic_move_base_goal, pub_move_base_goal
+	
+	msg = MoveBaseActionGoal( )
+	msg.header.frame_id = "map"
+	msg.goal.target_pose.header.frame_id = "map"
+	
+	msg.goal.target_pose.pose.position.x = x
+	msg.goal.target_pose.pose.position.y = y
+	msg.goal.target_pose.pose.position.z = 0.0
+	msg.goal.target_pose.pose.orientation.x = 0.0
+	msg.goal.target_pose.pose.orientation.y = 0.0
+	msg.goal.target_pose.pose.orientation.z = 0.0
+	msg.goal.target_pose.pose.orientation.w = 1.0
+	
+	pub_move_base_goal.publish( msg )
+	rospy.sleep( rospy.Duration(1) )
 
-def send_target(  )
+
+
+topic_move_base_cancel = "/move_base/cancel"
+''' name of the topic for cancelling the navigation request
+'''
+
+pub_move_base_cancel = None
+''' (publisher handle) the publisher for cancelling the request
+'''
+
+def move_base_cancel_goal( ):
+	''' send a cancellation request to move_base
+	'''
+	global topic_move_base_cancel, pub_move_base_cancel
+	
+	msg = GoalID( )
+	
+	pub_move_base_cancel.publish( msg )
+	rospy.sleep( rospy.Duration(1) )
 
 
 
@@ -250,23 +301,36 @@ def change_state( state ):
 	''' 
 	global state_ 
 	global cl_head_orient_switch
+	global desired_position_
+	global state_description
 	
 	state_ = state
 	
 	if state_ == 0:   # -- idle
+		state_description = "idle -- waiting for a target"
 		cl_head_orient_switch( False )
+		move_base_cancel_goal( )
 	
 	elif state_ == 1: # -- move_base planning
+		state_description = "motion planning -- sending the request to move_base"
 		cl_head_orient_switch( False )
+		move_base_cancel_goal( )
+		move_base_send_target( desired_position_.x, desired_position_.y )
 	
 	elif state_ == 2: # -- move_base motion
+		state_description = "navigation -- going towards the target"
 		cl_head_orient_switch( False )
 	
 	elif state_ == 3: # -- head_orientation behaviour
+		state_description = "head orientation"
+		move_base_cancel_goal( )
 		cl_head_orient_switch( True )
 	
 	elif state_ == 4: # -- send signal (end of the motion)
+		state_description = "SUCCESS. sending signal"
 		cl_head_orient_switch( False )
+		move_base_cancel_goal( )
+		
 	
 	else:
 		rospy.logwarn( f"(move_base_nav ) WARNING: unknown state {state_}" )
@@ -274,29 +338,28 @@ def change_state( state ):
 
 
 
-def state_idle( ):
-	''' implementation of the status idle
-	
-	here the robot simply waits until the distance from the target is 
-	greater than :any:`threshold_position_` or the :any:`yaw_error` is
-	greater than :any:`yaw_precision_2_`. 
-	'''
-	
-	global err_pos, err_yaw
-	global threshold_position_, yaw_precision_2_
-	
-	if err_pos > threshold_position_:
-		change_state( 1 )
-	elif err_yaw > yaw_precision_2_ :
-		change_state( 2 )
+replan_time = 5
+''' the planner, in case the robot is requiring too much time for reaching
+	the point, can do a replanning request
+'''
 
+working_rate = 10
+''' the working rate is the maximum update frequency of this node. the status
+	is checked with a frequency of 'working_rate' Hz.
+'''
 
+state_description = ""
+''' just a message to make clear the current status of the node
+'''
 
 def main( ):
 	''' state machine implementation
 	'''
 	global active_, state_
 	global err_pos, err_yaw
+	global threshold_position_, yaw_precision_2_
+	global replan_time, working_rate
+	global state_description
 	
 	'''
 	while not rospy.is_shutdown():
@@ -310,7 +373,10 @@ def main( ):
 	rospy.spin( )
 	'''
 	
-	r = rospy.Rate( 10 )
+	r = rospy.Rate( working_rate )
+	elapsed_time = 0.0
+	time_unit = rospy.Duration( 1/working_rate )
+	prev_output = ""
 	while not rospy.is_shutdown( ):
 		
 		# wait (in any case)
@@ -320,25 +386,52 @@ def main( ):
 		if not active_:
 			continue
 		
+		# update the goal
+		desired_position_.x = rospy.get_param( "des_pos_x" )
+		desired_position_.y = rospy.get_param( "des_pos_y" )
+		desired_yaw_ = rospy.get_param( "des_yaw" )
+		
 		# run the state machine
 		if state_ == 0:   # -- idle
-			state_idle( )
+			if err_pos > threshold_position_:
+				change_state( 1 )
+			elif err_yaw > yaw_precision_2_ :
+				change_state( 2 )
 		
 		elif state_ == 1: # -- move_base planning
-			pass
+			elapsed_time = 0.0
+			change_state( 2 )
 		
 		elif state_ == 2: # -- move_base motion
-			pass
+			elapsed_time = elapsed_time + time_unit.to_sec()
+			
+			if elapsed_time > replan_time:
+				rospy.loginfo( f"(move_base_nav ) replanning move_base (timer expired, max {replan_time})" )
+				change_state( 1 ) # -- replanning
+				continue
+			
+			if err_pos < threshold_position_:
+				if err_yaw > yaw_precision_2_:
+					change_state( 3 ) # -- orientation
+				else:
+					change_state( 4 ) # -- end of the task
 		
 		elif state_ == 3: # -- head_orientation behaviour
-			pass
+			if err_yaw <= yaw_precision_2_:
+				change_state( 4 )
 		
 		elif state_ == 4: # -- send signal (end of the motion)
-			pass
+			send_signal( )
+			change_state( 0 )
 		
 		else:
 			rospy.logwarn( f"(move_base_nav ) WARNING: unknown state {state_}" )
 			change_state( 0 )
+		
+		# output : current status
+		if prev_output != state_description:
+			rospy.loginfo( f"(move_base_nav ) current state = {state_} ({state_description})" )
+			prev_output = state_description
 
 
 
@@ -354,7 +447,7 @@ if __name__ == "__main__":
 	# rospy.loginfo( f"(move_base_nav )" )
 	
 	rospy.loginfo( f"(move_base_nav ) starting..." )
-	rospy.sleep(rospy.Duration(1))
+	rospy.sleep(rospy.Duration(2))
 	
 	if not rospy.has_param( "des_pos_x" ) or not rospy.has_param( "des_pos_y" ) or not rospy.has_param( "des_yaw" ):
 		rospy.logerr( "(move_base_nav ) ERROR: parameters not found in the parameter server!" )
@@ -369,7 +462,7 @@ if __name__ == "__main__":
 	rospy.loginfo( f"(move_base_nav ) service {service_move_base_switch} ... OK" )
 	
 	rospy.loginfo( f"(move_base_nav ) subscription: {topic_odometry} ... " )
-	sub_odom = rospy.Subscriber( topic_odometry , Odometry, cbk_odometry )
+	sub_odometry = rospy.Subscriber( topic_odometry , Odometry, cbk_odometry )
 	rospy.sleep(rospy.Duration(1))
 	rospy.loginfo( f"(move_base_nav ) subscription: {topic_odometry} ... OK" )
 	
@@ -378,7 +471,15 @@ if __name__ == "__main__":
 	rospy.sleep(rospy.Duration(1))
 	rospy.loginfo( f"(move_base_nav ) client: {service_head_orient_switch} ... OK" )
 	
-	rospy.sleep(rospy.Duration(1))
+	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_goal} ... " )
+	pub_move_base_goal = rospy.Publisher( topic_move_base_goal, MoveBaseActionGoal, queue_size=10 )
+	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_goal} ... OK" )
+	
+	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_cancel} ... " )
+	pub_move_base_cancel = rospy.Publisher( topic_move_base_cancel, GoalID, queue_size=10 )
+	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_cancel} ... OK" )
+	
+	rospy.sleep(rospy.Duration(2))
 	
 	rospy.loginfo( f"(move_base_nav ) ready" )
 	main( )

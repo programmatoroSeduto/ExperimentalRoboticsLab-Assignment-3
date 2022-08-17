@@ -9,6 +9,17 @@
     <programlisting>
 <codeline><highlight class="normal">#<sp/>HOW<sp/>TO<sp/>--<sp/>navigation<sp/>stack<sp/>CRASH<sp/>COURSE</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>concents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./how-to-nav-stack.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">here<sp/>are<sp/>some<sp/>quick<sp/>informations<sp/>about<sp/>how<sp/>to<sp/>set<sp/>up<sp/>and<sp/>use<sp/>the<sp/>**ROS<sp/>Navigation<sp/>Stack**.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>install<sp/>the<sp/>Navigation<sp/>Stack</highlight></codeline>
@@ -708,10 +719,94 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>richiesta<sp/>di<sp/>cancellazione</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">basta<sp/>pubblicare<sp/>un<sp/>messaggio<sp/>di<sp/>tipo<sp/>``<sp/>sul<sp/>topic<sp/>``,<sp/>anche<sp/>vuoto,<sp/>per<sp/>annullare<sp/>l&apos;ultima<sp/>richiesta.<sp/></highlight></codeline>
+<codeline><highlight class="normal">basta<sp/>pubblicare<sp/>un<sp/>messaggio<sp/>di<sp/>tipo<sp/>`actionlib_msgs/GoalID.msg`<sp/>sul<sp/>topic<sp/>`/move_base/cancel`,<sp/>anche<sp/>vuoto,<sp/>per<sp/>annullare<sp/>l&apos;ultima<sp/>richiesta.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>rostopic<sp/>info<sp/>/move_base/cancel<sp/></highlight></codeline>
+<codeline><highlight class="normal">Type:<sp/>actionlib_msgs/GoalID</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">Publishers:<sp/>None</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Subscribers:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>/move_base<sp/>(http://3b17871017fd:39227/)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>rosmsg<sp/>show<sp/>actionlib_msgs/GoalID</highlight></codeline>
+<codeline><highlight class="normal">time<sp/>stamp</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>id</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>richiesta<sp/>di<sp/>movimento<sp/>verso<sp/>un<sp/>target</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">pubblica<sp/>la<sp/>richiesta<sp/>sul<sp/>topic<sp/>`/move_base/goal`<sp/>di<sp/>tipo<sp/>`move_base_msgs/MoveBaseActionGoal`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>rostopic<sp/>info<sp/>/move_base/goal<sp/></highlight></codeline>
+<codeline><highlight class="normal">Type:<sp/>move_base_msgs/MoveBaseActionGoal</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Publishers:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>/move_base<sp/>(http://3b17871017fd:39227/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Subscribers:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>/move_base<sp/>(http://3b17871017fd:39227/)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>rosmsg<sp/>show<sp/>move_base_msgs/MoveBaseActionGoal</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">std_msgs/Header<sp/>header</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32<sp/>seq</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>time<sp/>stamp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>string<sp/>frame_id</highlight></codeline>
+<codeline><highlight class="normal">actionlib_msgs/GoalID<sp/>goal_id</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>time<sp/>stamp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>string<sp/>id</highlight></codeline>
+<codeline><highlight class="normal">move_base_msgs/MoveBaseGoal<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>geometry_msgs/PoseStamped<sp/>target_pose</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std_msgs/Header<sp/>header</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint32<sp/>seq</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>time<sp/>stamp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>string<sp/>frame_id</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>geometry_msgs/Pose<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>geometry_msgs/Point<sp/>position</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>x</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>y</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>z</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>geometry_msgs/Quaternion<sp/>orientation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>x</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>y</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>z</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float64<sp/>w</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{warning}</highlight></codeline>
+<codeline><highlight class="normal">non<sp/>basta<sp/>semplicemente<sp/>dire<sp/>dove<sp/>andare<sp/>purtroppo.<sp/>Move<sp/>base<sp/>sempluicemente<sp/>non<sp/>accetta<sp/>il<sp/>comando<sp/>nel<sp/>caso<sp/>del<sp/>semplice<sp/>target.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">affinchè<sp/>move_base<sp/>accetti<sp/>il<sp/>target,<sp/>bisogna<sp/>anche<sp/>fornire<sp/>il<sp/>frame<sp/>rispetto<sp/>a<sp/>cui<sp/>il<sp/>target<sp/>è<sp/>dato.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">vedi<sp/>questo<sp/>esempio<sp/>di<sp/>invio<sp/>di<sp/>richiesta<sp/>a<sp/>move_base<sp/>(in<sp/>c++,<sp/>ma<sp/>il<sp/>concetto<sp/>è<sp/>lo<sp/>stesso):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">move_base_msgs::MoveBaseActionGoal<sp/>goal;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>===<sp/>VERY<sp/>VERY<sp/>VERY<sp/>IMPORTANT<sp/>===<sp/>//</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>goal.frame_id<sp/>=<sp/>&quot;map&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>goal.goal.target_pose.header.frame_id<sp/>=<sp/>&quot;map&quot;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>===<sp/>VERY<sp/>VERY<sp/>VERY<sp/>IMPORTANT<sp/>===<sp/>//</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.position.x<sp/>=<sp/>x;</highlight></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.position.y<sp/>=<sp/>y;</highlight></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.position.z<sp/>=<sp/>z;</highlight></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.orientation.x<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.orientation.y<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.orientation.z<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">goal.goal.target_pose.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="robocluedo_movement_controller/_docs/how-to-nav-stack.md"/>

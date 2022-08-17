@@ -131,7 +131,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">RoboCLuedo – erl3 – Development Log</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit –</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#move-base">17/08/2022 – move_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
 </ul>
 </li>
 </ul>
@@ -325,8 +325,8 @@
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="move-base">
-<h2>17/08/2022 – move_base<a class="headerlink" href="#move-base" title="Permalink to this heading"></a></h2>
+<div class="section" id="move-base-navigation">
+<h2>17/08/2022 – move_base navigation<a class="headerlink" href="#move-base-navigation" title="Permalink to this heading"></a></h2>
 <p>iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)</p>
 <ul class="simple">
 <li><p>installazione di move_base (dalla vecchia versione di erl2)</p></li>
@@ -426,6 +426,89 @@ angular:
 </ul>
 </li>
 <li><p><strong>COMMIT</strong>: “working on robot model (move_base laser issue)”</p></li>
+<li><p>e andiamo avanti con lo sviluppo del nodo</p>
+<ul class="simple">
+<li><p>quindi … questa cancellazione?</p></li>
+<li><p>e torniamo ad implementare</p></li>
+<li><p>(oggi sto facendo una fatica incredibile…)</p></li>
+</ul>
+</li>
+<li><p>è arrivata la parte migliore: <em>testare…</em></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosrun robocluedo_movement_controller head_orientation.py
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_movement_controller move_base_nav.py
+
+<span class="c1"># shell 4</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y -1.5
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>le cose ora iniziano a funzionare… ultimo test:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosrun robocluedo_movement_controller head_orientation.py <span class="p">&amp;</span>
+rosrun robocluedo_movement_controller move_base_nav.py
+
+<span class="c1"># shell 3</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y -1.5
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x -2.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>e funge.</em></p></li>
+<li><p><strong>COMMIT</strong>: “working on navigation (move_base navigation node tested, ready to use)”</p></li>
 </ul>
 </div>
 </div>

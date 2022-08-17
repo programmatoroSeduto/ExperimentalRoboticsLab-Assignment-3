@@ -1,5 +1,16 @@
 # HOW TO -- navigation stack CRASH COURSE
 
+---
+
+```{toctree}
+---
+caption: concents
+---
+./how-to-nav-stack.md
+```
+
+---
+
 here are some quick informations about how to set up and use the **ROS Navigation Stack**.
 
 ## install the Navigation Stack
@@ -699,8 +710,92 @@ NOta bene: dev'esserci un link di riferimento nel robot, quello dov'è piazzato 
 
 ### richiesta di cancellazione
 
-basta pubblicare un messaggio di tipo `` sul topic ``, anche vuoto, per annullare l'ultima richiesta. 
+basta pubblicare un messaggio di tipo `actionlib_msgs/GoalID.msg` sul topic `/move_base/cancel`, anche vuoto, per annullare l'ultima richiesta. 
 
 ```text
+# rostopic info /move_base/cancel 
+Type: actionlib_msgs/GoalID
 
+Publishers: None
+
+Subscribers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+
+# rosmsg show actionlib_msgs/GoalID
+time stamp
+string id
+
+```
+
+### richiesta di movimento verso un target
+
+pubblica la richiesta sul topic `/move_base/goal` di tipo `move_base_msgs/MoveBaseActionGoal`.
+
+```text
+# rostopic info /move_base/goal 
+Type: move_base_msgs/MoveBaseActionGoal
+
+Publishers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+Subscribers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+
+# rosmsg show move_base_msgs/MoveBaseActionGoal
+
+std_msgs/Header header
+  uint32 seq
+  time stamp
+  string frame_id
+actionlib_msgs/GoalID goal_id
+  time stamp
+  string id
+move_base_msgs/MoveBaseGoal goal
+  geometry_msgs/PoseStamped target_pose
+    std_msgs/Header header
+      uint32 seq
+      time stamp
+      string frame_id
+    geometry_msgs/Pose pose
+      geometry_msgs/Point position
+        float64 x
+        float64 y
+        float64 z
+      geometry_msgs/Quaternion orientation
+        float64 x
+        float64 y
+        float64 z
+        float64 w
+
+```
+
+```{warning}
+non basta semplicemente dire dove andare purtroppo. Move base sempluicemente non accetta il comando nel caso del semplice target.
+
+affinchè move_base accetti il target, bisogna anche fornire il frame rispetto a cui il target è dato. 
+```
+
+vedi questo esempio di invio di richiesta a move_base (in c++, ma il concetto è lo stesso):
+
+```c++
+move_base_msgs::MoveBaseActionGoal goal;
+
+
+// === VERY VERY VERY IMPORTANT === //
+
+	goal.frame_id = "map";
+	goal.goal.target_pose.header.frame_id = "map";
+
+// === VERY VERY VERY IMPORTANT === //
+
+
+goal.goal.target_pose.pose.position.x = x;
+goal.goal.target_pose.pose.position.y = y;
+goal.goal.target_pose.pose.position.z = z;
+goal.goal.target_pose.pose.orientation.x = 0;
+goal.goal.target_pose.pose.orientation.y = 0;
+goal.goal.target_pose.pose.orientation.z = 0;
+goal.goal.target_pose.pose.orientation.w = 1.0;
 ```

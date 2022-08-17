@@ -181,7 +181,7 @@ catkin_create_pkg robocluedo_vision roscpp rospy std_msgs geometry_msgs nav_msgs
 
 --- 
 
-## 17/08/2022 -- move_base
+## 17/08/2022 -- move_base navigation
 
 iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)
 
@@ -263,4 +263,85 @@ e torniamo al lavoro sul navigation system
 	- provo ... 
 	- ora che ho modificato il modello, passo a provare con move base ... **E PROBLEMA RISOLTO SIGNORI**: ora va dove voglio io!
 - **COMMIT**: "working on robot model (move_base laser issue)"
+- e andiamo avanti con lo sviluppo del nodo
+	- quindi ... questa cancellazione?
+	- e torniamo ad implementare
+	- (oggi sto facendo una fatica incredibile...)
+- è arrivata la parte migliore: *testare...*
 
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch world_name:=square_room.world 2>/dev/null
+
+# shell 2
+rosparam set des_pos_x 0.0
+rosparam set des_pos_y 0.0
+rosparam set des_yaw 0.0
+rosrun robocluedo_movement_controller head_orientation.py
+
+# shell 3
+rosrun robocluedo_movement_controller move_base_nav.py
+
+# shell 4
+rosparam set des_pos_x 2.0
+rosparam set des_pos_y 0.0
+rosparam set des_yaw 0.0
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+sleep 30
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+rosparam set des_pos_x 0.0
+rosparam set des_pos_y -1.5
+rosparam set des_yaw 0.0
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+sleep 30
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+```
+
+- le cose ora iniziano a funzionare... ultimo test:
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch world_name:=square_room.world 2>/dev/null
+
+# shell 2
+rosparam set des_pos_x 0.0
+rosparam set des_pos_y 0.0
+rosparam set des_yaw 0.0
+rosrun robocluedo_movement_controller head_orientation.py &
+rosrun robocluedo_movement_controller move_base_nav.py
+
+# shell 3
+rosparam set des_pos_x 2.0
+rosparam set des_pos_y 0.0
+rosparam set des_yaw 0.0
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+sleep 30
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+rosparam set des_pos_x 0.0
+rosparam set des_pos_y -1.5
+rosparam set des_yaw 0.0
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+sleep 30
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+rosparam set des_pos_x 0.0
+rosparam set des_pos_y 2.0
+rosparam set des_yaw 0.0
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+sleep 30
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+rosparam set des_pos_x -2.0
+rosparam set des_pos_y 0.0
+rosparam set des_yaw 0.0
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+sleep 30
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+```
+
+- *e funge.*
+- **COMMIT**: "working on navigation (move_base navigation node tested, ready to use)"

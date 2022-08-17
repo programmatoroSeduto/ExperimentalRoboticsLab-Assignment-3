@@ -55,27 +55,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">HOW TO – navigation stack CRASH COURSE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="odometry-and-navigation.html">Notes about Navigation and Odometry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/wall-follow.html">UML – wall follow PY node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/bug_m.html">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/wall_follow.html">CODE REFERENCE – node wall_follow</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
@@ -137,6 +123,53 @@
              
   <div class="section" id="how-to-navigation-stack-crash-course">
 <h1>HOW TO – navigation stack CRASH COURSE<a class="headerlink" href="#how-to-navigation-stack-crash-course" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">concents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO – navigation stack CRASH COURSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-navigation-stack">install the Navigation Stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#slam-gmapping">Slam - GMapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#movebase">MoveBase</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#a-quick-example-with-gazebo-and-rviz">A quick example with Gazebo and RViz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#names-and-types-of-the-interfaces-of-movebase">Names and Types of the Interfaces of MoveBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-action-movebase">the action movebase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-note-about-the-action-names">A note about the action names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-base-msgs-movebasegoal">move_base_msgs/MoveBaseGoal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-base-msgs-movebasefeedback">move_base_msgs/MoveBaseFeedback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-base-msgs-movebaseresult">move_base_msgs/MoveBaseResult</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-interfaces">other interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-posestamped">geometry_msgs/PoseStamped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-pose">geometry_msgs/Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-quaternion">geometry_msgs/Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-point">geometry_msgs/Point</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#movebase-action-calls-in-c">MoveBase action calls in C++</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-headers">C++ – headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-main-with-async-spinner">C++ – main with async spinner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-open-the-action-client">C++ – open the action client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-use-the-client-callback-based-approach">C++ – use the client – callback based approach</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#slam-and-gmapping-navigation-stack-structure">SLAM and GMapping – navigation stack structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hokuyo-laser-range-finder">Hokuyo laser range finder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usare-movebase-senza-ricorrere-alla-actionlib">Usare MoveBase senza ricorrere alla actionlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#richiesta-di-cancellazione">richiesta di cancellazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#richiesta-di-movimento-verso-un-target">richiesta di movimento verso un target</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
 <p>here are some quick informations about how to set up and use the <strong>ROS Navigation Stack</strong>.</p>
 <div class="section" id="install-the-navigation-stack">
 <h2>install the Navigation Stack<a class="headerlink" href="#install-the-navigation-stack" title="Permalink to this heading"></a></h2>
@@ -790,8 +823,86 @@ float64 z
 </ul>
 <div class="section" id="richiesta-di-cancellazione">
 <h3>richiesta di cancellazione<a class="headerlink" href="#richiesta-di-cancellazione" title="Permalink to this heading"></a></h3>
-<p>basta pubblicare un messaggio di tipo <code class="docutils literal notranslate"><span class="pre">sul</span> <span class="pre">topic</span></code>, anche vuoto, per annullare l’ultima richiesta.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
+<p>basta pubblicare un messaggio di tipo <code class="docutils literal notranslate"><span class="pre">actionlib_msgs/GoalID.msg</span></code> sul topic <code class="docutils literal notranslate"><span class="pre">/move_base/cancel</span></code>, anche vuoto, per annullare l’ultima richiesta.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rostopic info /move_base/cancel 
+Type: actionlib_msgs/GoalID
+
+Publishers: None
+
+Subscribers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+
+# rosmsg show actionlib_msgs/GoalID
+time stamp
+string id
+</pre></div>
+</div>
+</div>
+<div class="section" id="richiesta-di-movimento-verso-un-target">
+<h3>richiesta di movimento verso un target<a class="headerlink" href="#richiesta-di-movimento-verso-un-target" title="Permalink to this heading"></a></h3>
+<p>pubblica la richiesta sul topic <code class="docutils literal notranslate"><span class="pre">/move_base/goal</span></code> di tipo <code class="docutils literal notranslate"><span class="pre">move_base_msgs/MoveBaseActionGoal</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rostopic info /move_base/goal 
+Type: move_base_msgs/MoveBaseActionGoal
+
+Publishers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+Subscribers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+
+# rosmsg show move_base_msgs/MoveBaseActionGoal
+
+std_msgs/Header header
+  uint32 seq
+  time stamp
+  string frame_id
+actionlib_msgs/GoalID goal_id
+  time stamp
+  string id
+move_base_msgs/MoveBaseGoal goal
+  geometry_msgs/PoseStamped target_pose
+    std_msgs/Header header
+      uint32 seq
+      time stamp
+      string frame_id
+    geometry_msgs/Pose pose
+      geometry_msgs/Point position
+        float64 x
+        float64 y
+        float64 z
+      geometry_msgs/Quaternion orientation
+        float64 x
+        float64 y
+        float64 z
+        float64 w
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>non basta semplicemente dire dove andare purtroppo. Move base sempluicemente non accetta il comando nel caso del semplice target.</p>
+<p>affinchè move_base accetti il target, bisogna anche fornire il frame rispetto a cui il target è dato.</p>
+</div>
+<p>vedi questo esempio di invio di richiesta a move_base (in c++, ma il concetto è lo stesso):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseActionGoal</span><span class="w"> </span><span class="n">goal</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="c1">// === VERY VERY VERY IMPORTANT === //</span>
+
+<span class="w">	</span><span class="n">goal</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;map&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;map&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// === VERY VERY VERY IMPORTANT === //</span>
+
+
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </div>

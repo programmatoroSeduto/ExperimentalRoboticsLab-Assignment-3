@@ -208,7 +208,7 @@
 </para>
 </sect1>
 <sect1 id="md__docs_dev-log_1autotoc_md30">
-<title>17/08/2022 – move_base</title>
+<title>17/08/2022 – move_base navigation</title>
 <para>iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)</para>
 <para><itemizedlist>
 <listitem><para>installazione di move_base (dalla vecchia versione di erl2)</para>
@@ -293,7 +293,89 @@
 </listitem><listitem><para>ora che ho modificato il modello, passo a provare con move base ... <bold>E PROBLEMA RISOLTO SIGNORI</bold>: ora va dove voglio io!</para>
 </listitem></itemizedlist>
 </para>
-</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on robot model (move_base laser issue)&quot; </para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on robot model (move_base laser issue)&quot;</para>
+</listitem><listitem><para>e andiamo avanti con lo sviluppo del nodo<itemizedlist>
+<listitem><para>quindi ... questa cancellazione?</para>
+</listitem><listitem><para>e torniamo ad implementare</para>
+</listitem><listitem><para>(oggi sto facendo una fatica incredibile...)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>è arrivata la parte migliore: <emphasis>testare...</emphasis></para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>head_orientation.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>move_base_nav.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>30</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>-1.5</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>30</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>le cose ora iniziano a funzionare... ultimo test:</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>head_orientation.py<sp/>&amp;</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>move_base_nav.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>30</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>-1.5</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>30</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>30</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>-2.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>30</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para><emphasis>e funge.</emphasis></para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on navigation (move_base navigation node tested, ready to use)&quot; </para>
 </listitem></itemizedlist>
 </para>
 </sect1>
