@@ -340,6 +340,36 @@
 <li><p>ultima prova, giusto per capire se è tutto a posto</p></li>
 <li><p><strong>COMMIT</strong>: “working on robot model (setup move base)”</p></li>
 </ul>
+<hr class="docutils" />
+<p>ora, il navigation controller del robot</p>
+<ul class="simple">
+<li><p>anzitutto, il nodo che deve eseguire la navigation: penso avrà lo stesso meccanismo dei nodi di bug_m : trigger, e wait del segnale, e struttura come macchina a stati</p></li>
+<li><p><strong>nuovo nodo</strong> : move_base_nav.py</p>
+<ul>
+<li><p>prima struttura del nodo</p></li>
+<li><p>(c’è voluto un po’ più del previsto…)</p></li>
+</ul>
+</li>
+<li><p>prima di andare avanti, voglio vedere se il nodo si avvia e non crasha</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosrun robocluedo_movement_controller move_base_nav.py
+
+<span class="c1"># shell 3</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e ora torniamo ad implementare questo bellissimo nodo</p></li>
+<li><p><strong>COMMIT</strong>: “workign on nvigation (implementation of the new navigation service)”</p></li>
+</ul>
 </div>
 </div>
 

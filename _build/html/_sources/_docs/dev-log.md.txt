@@ -193,3 +193,32 @@ iniziamo subito da move_base, per passare poi al navigation system per il nuovo 
 	- (mi ringrazierò in futuro, quando dovrò installare di nuovo move_base su un altro robot)
 - ultima prova, giusto per capire se è tutto a posto
 - **COMMIT**: "working on robot model (setup move base)"
+
+--- 
+
+ora, il navigation controller del robot
+
+- anzitutto, il nodo che deve eseguire la navigation: penso avrà lo stesso meccanismo dei nodi di bug_m : trigger, e wait del segnale, e struttura come macchina a stati
+- **nuovo nodo** : move_base_nav.py
+	- prima struttura del nodo
+	- (c'è voluto un po' più del previsto...)
+- prima di andare avanti, voglio vedere se il nodo si avvia e non crasha
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch 2>/dev/null
+
+# shell 2
+rosparam set des_pos_x 0.0
+rosparam set des_pos_y 0.0
+rosparam set des_yaw 0.0
+rosrun robocluedo_movement_controller move_base_nav.py
+
+# shell 3
+rosservice call /nav_stack_go_to_point_switch "data: true" 
+rosservice call /nav_stack_go_to_point_switch "data: false" 
+
+```
+
+- e ora torniamo ad implementare questo bellissimo nodo
+- **COMMIT**: "workign on nvigation (implementation of the new navigation service)"

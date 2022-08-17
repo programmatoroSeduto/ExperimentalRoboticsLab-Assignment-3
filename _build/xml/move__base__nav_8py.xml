@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="move__base__nav_8py" kind="file" language="Python">
+    <compoundname>move_base_nav.py</compoundname>
+    <innernamespace refid="namespacemove__base__nav">move_base_nav</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacemove__base__nav" refkind="compound"><highlight class="comment">#!<sp/>/usr/bin/env<sp/>python</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">@file<sp/>move_base_nav.py</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral">@brief<sp/>navigation<sp/>using<sp/>MoveBase<sp/>and<sp/>the<sp/>navigation<sp/>stack</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral">@author<sp/>Francesco<sp/>Ganci</highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacestd__srvs_1_1srv" kindref="compound">std_srvs.srv</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>SetBool,<sp/>SetBoolRequest,<sp/>SetBoolResponse</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespacestd__srvs_1_1srv" kindref="compound">std_srvs.srv</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Empty,<sp/>EmptyRequest,<sp/>EmptyResponse</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>geometry_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Point</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>tf<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>transformations</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>math</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>nav_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Odometry</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="namespacemove__base__nav_1abe9679192c2830e58a61f47fdb6df9a6" refkind="member"><highlight class="normal">active_<sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>activity<sp/>status<sp/>of<sp/>the<sp/>node.<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="namespacemove__base__nav_1a1c49f3cddd28dc50f1a329ae27bf0959" refkind="member"><highlight class="normal">service_move_base_switch<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/nav_stack_go_to_point_switch&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>name<sp/>of<sp/>the<sp/>service<sp/>to<sp/>trigger<sp/>the<sp/>state<sp/>of<sp/>the<sp/>node</highlight></codeline>
+<codeline lineno="32"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="namespacemove__base__nav_1a2ef25e2d03d6825c81ba58e864ef9554" refkind="member"><highlight class="normal">srv_move_base_switch<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>service<sp/>handle<sp/>for<sp/>:any:`service_move_base_switch`</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="namespacemove__base__nav_1ad0cb30b7b0a96d203cf117f123815ee8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1ad0cb30b7b0a96d203cf117f123815ee8" kindref="member">move_base_switch</ref>(<sp/>data<sp/>):</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>used<sp/>for<sp/>switching<sp/>the<sp/>activity<sp/>status<sp/>of<sp/>the<sp/>node.<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Arguments:</highlight></codeline>
+<codeline lineno="42"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data<sp/>(SetBool)<sp/>:</highlight></codeline>
+<codeline lineno="43"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>boolean<sp/>SetBool.data<sp/>inside<sp/>the<sp/>message<sp/>is<sp/>the<sp/>new<sp/>activity<sp/>status</highlight></codeline>
+<codeline lineno="44"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Note:</highlight></codeline>
+<codeline lineno="46"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>before<sp/>calling<sp/>the<sp/>service,<sp/>make<sp/>sure<sp/>the<sp/>three<sp/>ros<sp/>parameters</highlight></codeline>
+<codeline lineno="47"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;des_pos_x&apos;<sp/>,<sp/>&apos;des_pos_y&apos;<sp/>and<sp/>&apos;des_yaw&apos;<sp/>have<sp/>been<sp/>set.</highlight></codeline>
+<codeline lineno="48"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>active_</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>desired_position_,<sp/>desired_yaw_</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/>SetBoolResponse(<sp/>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>res.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>check<sp/>the<sp/>activity<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>active_<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>data.data:</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/></highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>move_base<sp/>navigation<sp/>is<sp/>OFF&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_<sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" kindref="member">change_state</ref>(<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>active_<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>data.data:</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/></highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>move_base<sp/>navigation<sp/>is<sp/>ON&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>active_<sp/>=<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>active_<sp/></highlight><highlight class="keywordflow">and</highlight><highlight class="normal"><sp/>data.data:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/></highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>switching<sp/>target&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>active_:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>desired_position_.x<sp/>=<sp/>rospy.get_param(<sp/></highlight><highlight class="stringliteral">&quot;des_pos_x&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>desired_position_.y<sp/>=<sp/>rospy.get_param(<sp/></highlight><highlight class="stringliteral">&quot;des_pos_y&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>desired_yaw_<sp/>=<sp/>rospy.get_param(<sp/></highlight><highlight class="stringliteral">&quot;des_yaw&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>new<sp/>target<sp/>is<sp/>(x={desired_position_.x},<sp/>y={desired_position_.y},<sp/>yaw={desired_yaw_})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="namespacemove__base__nav_1a0bd033617aacb83d9638f6979ea3dead" refkind="member"><highlight class="normal">service_move_base_signal<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/nav_stack_signal&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>node<sp/>assumes<sp/>that<sp/>some<sp/>other<sp/>node<sp/>implements<sp/>this<sp/>client,<sp/>used</highlight></codeline>
+<codeline lineno="84"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>for<sp/>sending<sp/>the<sp/>signal<sp/>when<sp/>the<sp/>robot<sp/>reaches<sp/>the<sp/>objective.<sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="namespacemove__base__nav_1ac67fa94976c9b6076f3a88b1ce0cea46" refkind="member"><highlight class="normal">cl_move_base_signal<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(service<sp/>client<sp/>handle)<sp/>client<sp/>for<sp/>:any:`service_move_base_signal`</highlight></codeline>
+<codeline lineno="89"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="namespacemove__base__nav_1a3dad5b164e1b87d97e9c4b956d59a079" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1a3dad5b164e1b87d97e9c4b956d59a079" kindref="member">send_signal</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>send<sp/>a<sp/>signal<sp/>through<sp/>the<sp/>service<sp/>:any:`service_move_base_signal`</highlight></codeline>
+<codeline lineno="93"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>available.<sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>cl_move_base_signal</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>service_move_base_signal</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cl_move_base_signal<sp/>==<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>TRYING<sp/>client<sp/>{service_move_base_signal}<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(1))</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cl_move_base_signal<sp/>=<sp/>rospy.ServiceProxy(<sp/>service_move_base_signal,<sp/>Empty<sp/>)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cl_move_base_signal<sp/>==<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>unable<sp/>to<sp/>connect<sp/>with<sp/>{service_move_base_signal}<sp/>--<sp/>retrying<sp/>later...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>FOUND<sp/>SERVICE<sp/>{service_move_base_signal}&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cl_move_base_signal<sp/>!=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1ac67fa94976c9b6076f3a88b1ce0cea46" kindref="member">cl_move_base_signal</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>rospy.ServiceException:</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>unable<sp/>to<sp/>connect<sp/>with<sp/>{service_move_base_signal}<sp/>--<sp/>service<sp/>call<sp/>failed&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cl_move_base_signal<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="namespacemove__base__nav_1a9659bd6ae2efc9c70674cfe20c4af05d" refkind="member"><highlight class="normal">service_head_orient_switch<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/head_orient_switch&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>service<sp/>name<sp/>for<sp/>the<sp/>head<sp/>orientation</highlight></codeline>
+<codeline lineno="120"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="namespacemove__base__nav_1a663040c27219e443d59065f7c5c67858" refkind="member"><highlight class="normal">cl_head_orient_switch<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(client<sp/>handle)<sp/>client<sp/>to<sp/>enable<sp/>and<sp/>disable<sp/>the<sp/>head<sp/>orientation</highlight></codeline>
+<codeline lineno="124"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="namespacemove__base__nav_1a053555b67bf71a049feeec78d4f2f95e" refkind="member"><highlight class="normal">position_<sp/>=<sp/>Point(<sp/>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>current<sp/>position<sp/>of<sp/>the<sp/>robot,<sp/>from<sp/>the<sp/>odometry</highlight></codeline>
+<codeline lineno="130"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="namespacemove__base__nav_1aa8b3ce6f0fec071d821e24daa9aaf1de" refkind="member"><highlight class="normal">yaw_<sp/>=<sp/>0.0</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>orientation<sp/>of<sp/>the<sp/>robot<sp/>about<sp/>the<sp/>&apos;z&apos;<sp/>axis,<sp/>from<sp/>the<sp/>odometry</highlight></codeline>
+<codeline lineno="134"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="namespacemove__base__nav_1acf4cd90b0e4c2c716e33411bcfa2218a" refkind="member"><highlight class="normal">desired_position_<sp/>=<sp/>Point(<sp/>)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>objective<sp/>position<sp/>for<sp/>move_base.<sp/>obtained<sp/>from<sp/>the<sp/>parameters</highlight></codeline>
+<codeline lineno="138"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;des_pos_x&apos;<sp/>and<sp/>&apos;des_pos_y&apos;</highlight></codeline>
+<codeline lineno="139"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="140" refid="namespacemove__base__nav_1ac1728237a46bdeba00339ddf830de2a6" refkind="member"><highlight class="normal">desired_position_.x<sp/>=<sp/>0.0</highlight></codeline>
+<codeline lineno="141" refid="namespacemove__base__nav_1ac14deb66ba6a2875b1618bde41211670" refkind="member"><highlight class="normal">desired_position_.y<sp/>=<sp/>0.0</highlight></codeline>
+<codeline lineno="142" refid="namespacemove__base__nav_1a2ff635cf09e0b18ad505fd4cc5d773af" refkind="member"><highlight class="normal">desired_position_.z<sp/>=<sp/>0.0</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="namespacemove__base__nav_1a0ab8f32655407a5352086a098ac85050" refkind="member"><highlight class="normal">threshold_position_<sp/>=<sp/>0.35</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>maximum<sp/>allowed<sp/>position<sp/>error<sp/>while<sp/>reaching<sp/>the<sp/>target.<sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="namespacemove__base__nav_1a149fbe416aa01c0628e1ca83b1596aae" refkind="member"><highlight class="normal">desired_yaw_<sp/>=<sp/>0.0</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>current<sp/>orientation<sp/>of<sp/>the<sp/>robot</highlight></codeline>
+<codeline lineno="150"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="namespacemove__base__nav_1a3a0879db7c4f2cbd6801f6b79ddabdeb" refkind="member"><highlight class="normal">err_pos<sp/>=<sp/>math.inf</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>teh<sp/>error<sp/>between<sp/>the<sp/>desired<sp/>position<sp/>and<sp/>the<sp/>current<sp/>one.</highlight></codeline>
+<codeline lineno="154"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="155"><highlight class="stringliteral">Note:</highlight></codeline>
+<codeline lineno="156"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>if<sp/>the<sp/>position<sp/>is<sp/>not<sp/>measured,<sp/>the<sp/>distance<sp/>will<sp/>be<sp/>always<sp/>infinite.<sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="namespacemove__base__nav_1a6a114f90223d2dda0f606f6c31f05ecd" refkind="member"><highlight class="normal">err_yaw<sp/>=<sp/>math.pi/2.0</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>error<sp/>between<sp/>the<sp/>current<sp/>orientation<sp/>and<sp/>the<sp/>desired<sp/>one.<sp/></highlight></codeline>
+<codeline lineno="161"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="162"><highlight class="stringliteral">Note:</highlight></codeline>
+<codeline lineno="163"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>its<sp/>default<sp/>value<sp/>is<sp/>PI/2,<sp/>and<sp/>also<sp/>when<sp/>the<sp/>distance<sp/>is<sp/>not<sp/>measured</highlight></codeline>
+<codeline lineno="164"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="namespacemove__base__nav_1a7830e3f4148abb042351aaa7b0927e8c" refkind="member"><highlight class="normal">yaw_precision_<sp/>=<sp/>math.pi<sp/>/<sp/>9<sp/></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>+/-<sp/>20<sp/>degree<sp/>allowed</highlight></codeline>
+<codeline lineno="168"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="namespacemove__base__nav_1a0920156f8d1f83c19766ebf462dcacf9" refkind="member"><highlight class="normal">yaw_precision_2_<sp/>=<sp/>math.pi<sp/>/<sp/>90</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>+/-<sp/>2<sp/>degree<sp/>allowed</highlight></codeline>
+<codeline lineno="172"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="namespacemove__base__nav_1a7053f01a4518290d6e496ad73e5502f4" refkind="member"><highlight class="normal">compute_odometry<sp/>=<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>whether<sp/>to<sp/>compute<sp/>or<sp/>not<sp/>the<sp/>odometry.<sp/>if<sp/>false,<sp/>the<sp/>both<sp/>the<sp/>odometry</highlight></codeline>
+<codeline lineno="176"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>and<sp/>the<sp/>distance<sp/>are<sp/>not<sp/>computed.<sp/></highlight></codeline>
+<codeline lineno="177"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="namespacemove__base__nav_1a9601adaf051fb601b98ab7871e3d0ee2" refkind="member"><highlight class="normal">topic_odometry<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/odom&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>node<sp/>measures<sp/>the<sp/>position<sp/>of<sp/>the<sp/>robot<sp/>during<sp/>the<sp/>navigation.</highlight></codeline>
+<codeline lineno="181"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="namespacemove__base__nav_1a67707cebe1ea6c2cf6bb85e01f05cfd3" refkind="member"><highlight class="normal">sub_odometry<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(subscription<sp/>handle)<sp/>subscription<sp/>to<sp/>the<sp/>odometry</highlight></codeline>
+<codeline lineno="185"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="namespacemove__base__nav_1a35c0c25cc236d24f451bfd2a7fb80d51" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1a35c0c25cc236d24f451bfd2a7fb80d51" kindref="member">normalize_angle</ref>(<sp/>angle<sp/>):</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>angle<sp/>normalization<sp/>between<sp/>-PI<sp/>and<sp/>PI.</highlight></codeline>
+<codeline lineno="189"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="190"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Note:</highlight></codeline>
+<codeline lineno="191"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>parameter<sp/>&quot;angle&quot;<sp/>is<sp/>the<sp/>err_yaw<sp/>in<sp/>this<sp/>implementation.</highlight></codeline>
+<codeline lineno="192"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1ab7ba283e106143c7b2f5dbb2b4147982" kindref="member">if</ref>(math.fabs(angle)<sp/>&gt;<sp/>math.pi):</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>angle<sp/>=<sp/>angle<sp/>-<sp/>(2<sp/>*<sp/>math.pi<sp/>*<sp/>angle)<sp/>/<sp/>(math.fabs(angle))</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>angle</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="namespacemove__base__nav_1adb1433f703093bd610e015c099b85890" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1adb1433f703093bd610e015c099b85890" kindref="member">cbk_odometry</ref>(<sp/>data<sp/>):</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>subscription<sp/>callback<sp/>for<sp/>the<sp/>odometry<sp/>topic</highlight></codeline>
+<codeline lineno="199"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>position_</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>yaw_</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>desired_position_,<sp/>desired_yaw_</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>err_pos,<sp/>err_yaw</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>compute_odometry</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>compute_odometry:</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>position_<sp/>=<sp/>msg.pose.pose.position</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>yaw</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>quaternion<sp/>=<sp/>(</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.pose.pose.orientation.x,</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.pose.pose.orientation.y,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.pose.pose.orientation.z,</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.pose.pose.orientation.w)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>euler<sp/>=<sp/>transformations.euler_from_quaternion(quaternion)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>yaw_<sp/>=<sp/>euler[2]</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_pos<sp/>=<sp/>math.sqrt(pow(des_pos.y<sp/>-<sp/>position_.y,<sp/>2)<sp/>+<sp/>pow(des_pos.x<sp/>-<sp/>position_.x,<sp/>2))</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_yaw<sp/>=<sp/><ref refid="namespacemove__base__nav_1a35c0c25cc236d24f451bfd2a7fb80d51" kindref="member">normalize_angle</ref>(desired_yaw_<sp/>-<sp/>yaw_)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>set<sp/>defaults</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>yaw_<sp/>=<sp/>0.0</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_pos<sp/>=<sp/>math.inf</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_yaw<sp/>=<sp/>math.pi<sp/>/<sp/>2.0</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="namespacemove__base__nav_1a46bf683c9535533a6c0cffd11cd0912e" refkind="member"><highlight class="normal">state_<sp/>=<sp/>0</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>current<sp/>state<sp/>of<sp/>the<sp/>node</highlight></codeline>
+<codeline lineno="232"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" kindref="member">change_state</ref>(<sp/>state<sp/>):</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>state<sp/>transition<sp/>from<sp/>the<sp/>current<sp/>one<sp/>to<sp/>the<sp/>one<sp/>in<sp/>the<sp/>argument.</highlight></codeline>
+<codeline lineno="236"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>state_<sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>cl_head_orient_switch</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>state_<sp/>=<sp/>state</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>0:<sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>--<sp/>idle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a663040c27219e443d59065f7c5c67858" kindref="member">cl_head_orient_switch</ref>(<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>1:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>move_base<sp/>planning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a663040c27219e443d59065f7c5c67858" kindref="member">cl_head_orient_switch</ref>(<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>2:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>move_base<sp/>motion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a663040c27219e443d59065f7c5c67858" kindref="member">cl_head_orient_switch</ref>(<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>3:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>head_orientation<sp/>behaviour</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a663040c27219e443d59065f7c5c67858" kindref="member">cl_head_orient_switch</ref>(<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>4:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>send<sp/>signal<sp/>(end<sp/>of<sp/>the<sp/>motion)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a663040c27219e443d59065f7c5c67858" kindref="member">cl_head_orient_switch</ref>(<sp/></highlight><highlight class="keyword">False</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.logwarn(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>WARNING:<sp/>unknown<sp/>state<sp/>{state_}&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" kindref="member">change_state</ref>(<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="namespacemove__base__nav_1a80d36a13f7a355c1f81a831193f0e9d6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1a80d36a13f7a355c1f81a831193f0e9d6" kindref="member">state_idle</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>implementation<sp/>of<sp/>the<sp/>status<sp/>idle</highlight></codeline>
+<codeline lineno="265"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="266"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>here<sp/>the<sp/>robot<sp/>simply<sp/>waits<sp/>until<sp/>the<sp/>distance<sp/>from<sp/>the<sp/>target<sp/>is<sp/></highlight></codeline>
+<codeline lineno="267"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>greater<sp/>than<sp/>:any:`threshold_position_`<sp/>or<sp/>the<sp/>:any:`yaw_error`<sp/>is</highlight></codeline>
+<codeline lineno="268"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>greater<sp/>than<sp/>:any:`yaw_precision_2_`.<sp/></highlight></codeline>
+<codeline lineno="269"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>err_pos,<sp/>err_yaw</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>threshold_position_,<sp/>yaw_precision_2_</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>err_pos<sp/>&gt;<sp/>threshold_position_:</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" kindref="member">change_state</ref>(<sp/>1<sp/>)</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>err_yaw<sp/>&gt;<sp/>yaw_precision_2_<sp/>:</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" kindref="member">change_state</ref>(<sp/>2<sp/>)</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="namespacemove__base__nav_1ac7417a0b38c1158a11ac706dd6eef62d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1ac7417a0b38c1158a11ac706dd6eef62d" kindref="member">main</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>state<sp/>machine<sp/>implementation</highlight></codeline>
+<codeline lineno="283"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>active_,<sp/>state_</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>err_pos,<sp/>err_yaw</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;</highlight></codeline>
+<codeline lineno="288"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>while<sp/>not<sp/>rospy.is_shutdown():</highlight></codeline>
+<codeline lineno="289"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>active_:</highlight></codeline>
+<codeline lineno="290"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>&quot;ON&quot;<sp/>)</highlight></codeline>
+<codeline lineno="291"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else:</highlight></codeline>
+<codeline lineno="292"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>&quot;OFF&quot;<sp/>)</highlight></codeline>
+<codeline lineno="293"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;</highlight></codeline>
+<codeline lineno="296"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>rospy.spin(<sp/>)</highlight></codeline>
+<codeline lineno="297"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>=<sp/>rospy.Rate(<sp/>10<sp/>)</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.is_shutdown(<sp/>):</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>wait<sp/>(in<sp/>any<sp/>case)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r.sleep(<sp/>)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>check<sp/>active<sp/>status</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>active_:</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>run<sp/>the<sp/>state<sp/>machine</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>0:<sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>--<sp/>idle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a80d36a13f7a355c1f81a831193f0e9d6" kindref="member">state_idle</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>1:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>move_base<sp/>planning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>2:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>move_base<sp/>motion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>3:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>head_orientation<sp/>behaviour</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">elif</highlight><highlight class="normal"><sp/>state_<sp/>==<sp/>4:<sp/></highlight><highlight class="comment">#<sp/>--<sp/>send<sp/>signal<sp/>(end<sp/>of<sp/>the<sp/>motion)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.logwarn(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>WARNING:<sp/>unknown<sp/>state<sp/>{state_}&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1a423cfca15384ad19d30526a513e89354" kindref="member">change_state</ref>(<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331" refid="namespacemove__base__nav_1a43bbb61ee94a579c069c7fd76216c50c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacemove__base__nav_1a43bbb61ee94a579c069c7fd76216c50c" kindref="member">on_shut</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>closing...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;__main__&quot;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.init_node(<sp/></highlight><highlight class="stringliteral">&quot;move_base_nav&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.on_shutdown(<sp/>on_shut<sp/>)</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>rospy.loginfo(<sp/>f&quot;(move_base_nav<sp/>)&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>starting...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(1))</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.has_param(<sp/></highlight><highlight class="stringliteral">&quot;des_pos_x&quot;</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keywordflow">or</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.has_param(<sp/></highlight><highlight class="stringliteral">&quot;des_pos_y&quot;</highlight><highlight class="normal"><sp/>)<sp/></highlight><highlight class="keywordflow">or</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.has_param(<sp/></highlight><highlight class="stringliteral">&quot;des_yaw&quot;</highlight><highlight class="normal"><sp/>):</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.logerr(<sp/></highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>ERROR:<sp/>parameters<sp/>not<sp/>found<sp/>in<sp/>the<sp/>parameter<sp/>server!&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.shutdown(<sp/>)</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(1))</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>os.exit(<sp/>)</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>service<sp/>{service_move_base_switch}<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>srv_move_base_switch<sp/>=<sp/>rospy.Service(<sp/>service_move_base_switch,<sp/>SetBool,<sp/>move_base_switch<sp/>)</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>service<sp/>{service_move_base_switch}<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>subscription:<sp/>{topic_odometry}<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="358" refid="namespacemove__base__nav_1a8958037d4ce243ea80bc4269c272ed88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sub_odom<sp/>=<sp/>rospy.Subscriber(<sp/>topic_odometry<sp/>,<sp/>Odometry,<sp/>cbk_odometry<sp/>)</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(1))</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>subscription:<sp/>{topic_odometry}<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>client:<sp/>{service_head_orient_switch}<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>cl_head_orient_switch<sp/>=<sp/>rospy.ServiceProxy(<sp/>service_head_orient_switch,<sp/>SetBool<sp/>)</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(1))</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>client:<sp/>{service_head_orient_switch}<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(rospy.Duration(1))</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>ready&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacemove__base__nav_1ac7417a0b38c1158a11ac706dd6eef62d" kindref="member">main</ref>(<sp/>)</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/scripts/move_base_nav.py"/>
+  </compounddef>
+</doxygen>

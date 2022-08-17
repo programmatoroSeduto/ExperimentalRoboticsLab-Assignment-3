@@ -202,6 +202,35 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(mi<sp/>ringrazierò<sp/>in<sp/>futuro,<sp/>quando<sp/>dovrò<sp/>installare<sp/>di<sp/>nuovo<sp/>move_base<sp/>su<sp/>un<sp/>altro<sp/>robot)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>ultima<sp/>prova,<sp/>giusto<sp/>per<sp/>capire<sp/>se<sp/>è<sp/>tutto<sp/>a<sp/>posto</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>robot<sp/>model<sp/>(setup<sp/>move<sp/>base)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ora,<sp/>il<sp/>navigation<sp/>controller<sp/>del<sp/>robot</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>anzitutto,<sp/>il<sp/>nodo<sp/>che<sp/>deve<sp/>eseguire<sp/>la<sp/>navigation:<sp/>penso<sp/>avrà<sp/>lo<sp/>stesso<sp/>meccanismo<sp/>dei<sp/>nodi<sp/>di<sp/>bug_m<sp/>:<sp/>trigger,<sp/>e<sp/>wait<sp/>del<sp/>segnale,<sp/>e<sp/>struttura<sp/>come<sp/>macchina<sp/>a<sp/>stati</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**nuovo<sp/>nodo**<sp/>:<sp/>move_base_nav.py</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>prima<sp/>struttura<sp/>del<sp/>nodo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(c&apos;è<sp/>voluto<sp/>un<sp/>po&apos;<sp/>più<sp/>del<sp/>previsto...)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>prima<sp/>di<sp/>andare<sp/>avanti,<sp/>voglio<sp/>vedere<sp/>se<sp/>il<sp/>nodo<sp/>si<sp/>avvia<sp/>e<sp/>non<sp/>crasha</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>move_base_nav.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>ora<sp/>torniamo<sp/>ad<sp/>implementare<sp/>questo<sp/>bellissimo<sp/>nodo</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;workign<sp/>on<sp/>nvigation<sp/>(implementation<sp/>of<sp/>the<sp/>new<sp/>navigation<sp/>service)&quot;</highlight></codeline>
     </programlisting>
     <location file="_docs/dev-log.md"/>
   </compounddef>

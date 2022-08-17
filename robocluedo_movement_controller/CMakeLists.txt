@@ -184,6 +184,7 @@ catkin_install_python(PROGRAMS
   scripts/go_to_point_service_m.py
   scripts/head_orientation.py
   scripts/bug_m.py
+  scripts/move_base_nav.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

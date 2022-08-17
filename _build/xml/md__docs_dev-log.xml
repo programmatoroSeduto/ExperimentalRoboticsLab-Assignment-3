@@ -219,7 +219,38 @@
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para>ultima prova, giusto per capire se è tutto a posto</para>
-</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on robot model (setup move base)&quot; </para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on robot model (setup move base)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para>ora, il navigation controller del robot</para>
+<para><itemizedlist>
+<listitem><para>anzitutto, il nodo che deve eseguire la navigation: penso avrà lo stesso meccanismo dei nodi di <ref refid="namespacebug__m" kindref="compound">bug_m</ref> : trigger, e wait del segnale, e struttura come macchina a stati</para>
+</listitem><listitem><para><bold>nuovo nodo</bold> : <ref refid="move__base__nav_8py" kindref="compound">move_base_nav.py</ref><itemizedlist>
+<listitem><para>prima struttura del nodo</para>
+</listitem><listitem><para>(c&apos;è voluto un po&apos; più del previsto...)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>prima di andare avanti, voglio vedere se il nodo si avvia e non crasha</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>move_base_nav.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>e ora torniamo ad implementare questo bellissimo nodo</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;workign on nvigation (implementation of the new navigation service)&quot; </para>
 </listitem></itemizedlist>
 </para>
 </sect1>

@@ -494,9 +494,11 @@ int main( int argc, char* argv[] )
 	class_navigation_manager nav;
 	
 	// controller bug_m
+	/*
 	nav_bug_m bug_m;
 	bug_m.nav_name = "bug_m";
 	nav.register_algorithm( &bug_m );
+	*/
 	
 	// enable the first one
 	nav.switch_controller( 0 );
