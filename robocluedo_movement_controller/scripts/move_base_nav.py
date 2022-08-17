@@ -29,7 +29,7 @@ active_ = False
 
 
 
-service_move_base_switch = "/nav_stack_go_to_point_switch"
+service_move_base_switch = "/nav_stack_switch"
 ''' name of the service to trigger the state of the node
 '''
 
@@ -338,7 +338,7 @@ def change_state( state ):
 
 
 
-replan_time = 5
+replan_time = 15
 ''' the planner, in case the robot is requiring too much time for reaching
 	the point, can do a replanning request
 '''

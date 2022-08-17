@@ -866,31 +866,25 @@
 <codeline lineno="780"><highlight class="normal">vedi<sp/>questo<sp/>esempio<sp/>di<sp/>invio<sp/>di<sp/>richiesta<sp/>a<sp/>move_base<sp/>(in<sp/>c++,<sp/>ma<sp/>il<sp/>concetto<sp/>è<sp/>lo<sp/>stesso):</highlight></codeline>
 <codeline lineno="781"><highlight class="normal"></highlight></codeline>
 <codeline lineno="782"><highlight class="normal">```c++</highlight></codeline>
-<codeline lineno="783"><highlight class="normal">bool<sp/>send_goal(<sp/></highlight></codeline>
-<codeline lineno="784"><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>wait,<sp/></highlight></codeline>
-<codeline lineno="785"><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>x,<sp/></highlight></codeline>
-<codeline lineno="786"><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>y,<sp/></highlight></codeline>
-<codeline lineno="787"><highlight class="normal"><sp/><sp/><sp/><sp/>float<sp/>z,</highlight></codeline>
-<codeline lineno="788"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>frame_id<sp/>=<sp/>&quot;map&quot;,</highlight></codeline>
-<codeline lineno="789"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::Duration<sp/>d<sp/>=<sp/>ros::Duration(<sp/>TIMEOUT_MOVE_BASE<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="790"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="791"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>prepare<sp/>the<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="792"><highlight class="normal"><sp/><sp/><sp/><sp/>move_base_msgs::MoveBaseGoal<sp/>goal;</highlight></codeline>
-<codeline lineno="793"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="794"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.header.frame_id<sp/>=<sp/>frame_id;</highlight></codeline>
-<codeline lineno="795"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="796"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.position.x<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a16754163197eb074b61db8a8c354ccaf" kindref="member">x</ref>;</highlight></codeline>
-<codeline lineno="797"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.position.y<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a2f82cd5f2a14b7605818ee4df8fef0fe" kindref="member">y</ref>;</highlight></codeline>
-<codeline lineno="798"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.position.z<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>;</highlight></codeline>
-<codeline lineno="799"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.orientation.x<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="800"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.orientation.y<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="801"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.orientation.z<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="802"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.target_pose.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="803"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="804"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>send<sp/>the<sp/>goal<sp/>as<sp/>usual</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="805"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;send_goal(<sp/>goal,<sp/>wait,<sp/><ref refid="namespacesetup_1aa2586b6c4dd84a0aaaf49cb1565cee6e" kindref="member">d</ref><sp/>);</highlight></codeline>
-<codeline lineno="806"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="807"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="783"><highlight class="normal">move_base_msgs::MoveBaseActionGoal<sp/>goal;</highlight></codeline>
+<codeline lineno="784"><highlight class="normal"></highlight></codeline>
+<codeline lineno="785"><highlight class="normal"></highlight></codeline>
+<codeline lineno="786"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>VERY<sp/>VERY<sp/>VERY<sp/>IMPORTANT<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="787"><highlight class="normal"></highlight></codeline>
+<codeline lineno="788"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="789"><highlight class="normal"><sp/><sp/><sp/><sp/>goal.goal.target_pose.header.frame_id<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;map&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="790"><highlight class="normal"></highlight></codeline>
+<codeline lineno="791"><highlight class="normal"></highlight><highlight class="comment">//<sp/>===<sp/>VERY<sp/>VERY<sp/>VERY<sp/>IMPORTANT<sp/>===<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="792"><highlight class="normal"></highlight></codeline>
+<codeline lineno="793"><highlight class="normal"></highlight></codeline>
+<codeline lineno="794"><highlight class="normal">goal.goal.target_pose.pose.position.x<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a16754163197eb074b61db8a8c354ccaf" kindref="member">x</ref>;</highlight></codeline>
+<codeline lineno="795"><highlight class="normal">goal.goal.target_pose.pose.position.y<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a2f82cd5f2a14b7605818ee4df8fef0fe" kindref="member">y</ref>;</highlight></codeline>
+<codeline lineno="796"><highlight class="normal">goal.goal.target_pose.pose.position.z<sp/>=<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a41e4ab58621449a60b55531d4f7b5823" kindref="member">z</ref>;</highlight></codeline>
+<codeline lineno="797"><highlight class="normal">goal.goal.target_pose.pose.orientation.x<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="798"><highlight class="normal">goal.goal.target_pose.pose.orientation.y<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="799"><highlight class="normal">goal.goal.target_pose.pose.orientation.z<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="800"><highlight class="normal">goal.goal.target_pose.pose.orientation.w<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="801"><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="_build/html/_sources/robocluedo_movement_controller/_docs/how-to-nav-stack.md.txt"/>
   </compounddef>

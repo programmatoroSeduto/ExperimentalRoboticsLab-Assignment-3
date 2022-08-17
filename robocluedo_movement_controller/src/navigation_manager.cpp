@@ -40,6 +40,8 @@
 #define SERVICE_NAVIGATION "/navigation_manager/navigation"
 #define SERVICE_BUGM_SWITCH "/bug_switch"
 #define SERVICE_BUGM_SIGNAL "/bug_m_signal"
+#define SERVICE_MOVE_BASE_SWITCH "/nav_stack_switch"
+#define SERVICE_MOVE_BASE_SIGNAL "/nav_stack_signal"
 
 
 
@@ -226,6 +228,162 @@ private:
 	
 	/// service /bug_m_signal : std_srvs/Empty
 	ros::ServiceServer cl_bug_signal;
+	
+	/// received a signal from the node
+	bool signal = false;
+	
+	/** set the target into the parameter server */
+	void set_parameter_server( robocluedo_movement_controller_msgs::NavigationService::Request& req )
+	{
+		// des_pos_x
+		ros::param::set( "des_pos_x", req.target.x );
+		
+		// des_pos_y
+		ros::param::set( "des_pos_y", req.target.y );
+		
+		// des_yaw
+		ros::param::set( "des_yaw", req.target.yaw );
+		
+	}
+	
+	/** wait for the signal */
+	void wait_for_signal( )
+	{
+		ros::Rate r( 20 );
+		do
+			r.sleep( );
+		while( !this->signal && ros::ok( ) );
+	}
+};
+
+
+/********************************************//**
+ *  
+ * \brief move_base navigation
+ * 
+ * this class implements the workflow with the navigation algorithm 
+ * implemented in the node 'move_base_nav.py'. The way it works is 
+ * quite similar to the one of 'bug_m' except for the different
+ * navigation system. 
+ * 
+ * \note this kind of navigation is particularly indicated for indoor
+ * environments. 
+ * 
+ ***********************************************/
+class nav_move_base : public navigation_controller
+{
+public:
+	
+	/** class constructor */
+	nav_move_base( std::string name = "", int code = -1 ) :
+		navigation_controller( name, code )
+	{ 
+		// ...
+	}
+	
+	/** class destructor */
+	~nav_move_base( )
+	{ 
+		// ...
+	}
+	
+	/** turn on the algorithm */
+	bool enable( )
+	{
+		std_srvs::SetBool cmd;
+		cmd.request.data = false;
+		
+		if( !channels_enabled )
+		{
+			// open the client /nav_stack_switch : std_srvs/SetBool
+			TLOG( "Opening client " << LOGSQUARE( SERVICE_MOVE_BASE_SWITCH ) << "..." );
+			cl_move_base_switch = nh.serviceClient<std_srvs::SetBool>( SERVICE_MOVE_BASE_SWITCH );
+			if( !cl_move_base_switch.waitForExistence( ros::Duration( 60 ) ) )
+			{
+				TERR( "unable to contact the server " << SERVICE_MOVE_BASE_SWITCH << " - timeout expired (60s) " );
+				return false;
+			}
+			TLOG( "Opening client " << LOGSQUARE( SERVICE_MOVE_BASE_SWITCH ) << "... OK" );
+			
+			// open the service /nav_stack_signal : std_srvs/Empty
+			TLOG( "advertising service " << LOGSQUARE( SERVICE_MOVE_BASE_SIGNAL ) << "..." );
+			srv_move_base_signal = nh.advertiseService( SERVICE_MOVE_BASE_SIGNAL, &nav_move_base::cbk_bug_signal, this );
+			TLOG( "advertising service " << LOGSQUARE( SERVICE_MOVE_BASE_SIGNAL ) << "... OK" );
+			
+			(ros::Duration(2)).sleep();
+			channels_enabled = true;
+		}
+		
+		// set the status of the node (disabled)
+		cl_move_base_switch.call( cmd );
+		
+		this->enabled = true;
+		return true;
+	}
+	
+	/** use the algorithm for the 2D navigation */
+	bool perform_navigation( 
+		robocluedo_movement_controller_msgs::NavigationService::Request& req,
+		robocluedo_movement_controller_msgs::NavigationService::Response& res )
+	{
+		if( !enabled )
+		{
+			res.success = false;
+			res.details = "(move_base_nav controller ) the controller isn't active";
+			
+			return false;
+		}
+		
+		std_srvs::SetBool cmd;
+		
+		// set the target into the parameter server
+		ROS_INFO_STREAM( "(move_base_nav controller ) sending request (" << req.target.x << ", " << req.target.y << ", " << req.target.yaw << ") ... " );
+		set_parameter_server( req );
+		
+		// send the request to the service
+		cmd.request.data = true;
+		cl_move_base_switch.call( cmd );
+		
+		// wait for the signal from the node
+		signal = false;
+		ROS_INFO_STREAM( "(move_base_nav controller ) waiting..." );
+		wait_for_signal( );
+		
+		// deactivate the service
+		ROS_INFO_STREAM( "(move_base_nav controller ) stopping ..." );
+		cmd.request.data = false;
+		cl_move_base_switch.call( cmd );
+		
+		res.success = true;
+		res.details = "";
+		
+		return true;
+	};
+	
+	/** turn off the algorithm */
+	bool disable( )
+	{
+		this->enabled = false;
+		return true;
+	}
+	
+	/** service for the signal from the move_base_nav node */
+	bool cbk_bug_signal( std_srvs::Empty::Request& req, std_srvs::Empty::Response& res )
+	{
+		signal=true;
+		return true;
+	}
+
+private:
+
+	/// channels opened?
+	bool channels_enabled = false;
+	
+	/// client /nav_stack_switch : std_srvs/SetBool
+	ros::ServiceClient cl_move_base_switch;
+	
+	/// service /nav_stack_signal : std_srvs/Empty
+	ros::ServiceServer srv_move_base_signal;
 	
 	/// received a signal from the node
 	bool signal = false;
@@ -494,14 +652,14 @@ int main( int argc, char* argv[] )
 	class_navigation_manager nav;
 	
 	// controller bug_m
-	/*
 	nav_bug_m bug_m;
 	bug_m.nav_name = "bug_m";
 	nav.register_algorithm( &bug_m );
-	*/
 	
-	// enable the first one
-	nav.switch_controller( 0 );
+	// controller move_base_nav
+	nav_move_base moveb;
+	moveb.nav_name = "move_base_nav";
+	nav.register_algorithm( &moveb );
 	
 	TLOG( "ready" );
 	ros::waitForShutdown( );

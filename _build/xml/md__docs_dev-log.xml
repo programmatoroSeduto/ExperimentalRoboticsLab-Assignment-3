@@ -375,9 +375,74 @@
 </programlisting></para>
 <para><itemizedlist>
 <listitem><para><emphasis>e funge.</emphasis></para>
-</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on navigation (move_base navigation node tested, ready to use)&quot; </para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on navigation (move_base navigation node tested, ready to use)&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
+<para>e ora il controller, altro dolore:</para>
+<para><itemizedlist>
+<listitem><para>implementazione del controller (molto simile a quello di <ref refid="namespacebug__m" kindref="compound">bug_m</ref>)</para>
+</listitem><listitem><para>compila? alla prima senza errori, sono un campione</para>
+</listitem><listitem><para>e ora, prova pratica</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>navigation_system.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>navigation_manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/set_algorithm<sp/>&quot;algorithm:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">enabled:<sp/>false&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/navigation<sp/>&quot;target:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>x:<sp/>1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>y:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">force_enable:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>this<sp/>sequence<sp/>moves<sp/>the<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/set_algorithm<sp/>&quot;algorithm:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">enabled:<sp/>true&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/navigation<sp/>&quot;target:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>x:<sp/>-1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>y:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">force_enable:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>this<sp/>sequence<sp/>moves<sp/>the<sp/>robot<sp/>EVEN<sp/>IF<sp/>the<sp/>component<sp/>has<sp/>been<sp/>turned<sp/>off</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/set_algorithm<sp/>&quot;algorithm:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">enabled:<sp/>false&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/navigation<sp/>&quot;target:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>x:<sp/>1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>y:<sp/>-2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">force_enable:<sp/>true&quot;<sp/></highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on navigation (controller implemented and tested, ready to use)&quot;</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md34">
+<title>Note</title>
+<sect2 id="md__docs_dev-log_1autotoc_md35">
+<title>utilizzo di move base</title>
+<para><itemizedlist>
+<listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
+</listitem><listitem><para>rifacendo il panning ogni tot si assicura una certa sitabilità sul path prescelto</para>
+</listitem><listitem><para>unico difetto: il robot si ferma spesso per fare replanning, causando delle oscillazioni in avanti un po&apos; brusche </para>
+</listitem></itemizedlist>
+</para>
+</sect2>
 </sect1>
     </detaileddescription>
   </compounddef>

@@ -345,3 +345,68 @@ rosservice call /nav_stack_go_to_point_switch "data: false"
 
 - *e funge.*
 - **COMMIT**: "working on navigation (move_base navigation node tested, ready to use)"
+
+---
+
+e ora il controller, altro dolore:
+
+- implementazione del controller (molto simile a quello di bug_m)
+- compila? alla prima senza errori, sono un campione
+- e ora, prova pratica
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch world_name:=square_room.world 2>/dev/null
+
+# shell 2
+roslaunch robocluedo_movement_controller navigation_system.launch
+
+# shell 3
+rosrun robocluedo_movement_controller navigation_manager
+
+# shell 4
+rosservice call /navigation_manager/set_algorithm "algorithm: 1
+enabled: false"
+
+rosservice call /navigation_manager/navigation "target:
+  x: 1.5
+  y: 2.0
+  yaw: 1.0
+force_enable: false" 
+
+# this sequence moves the robot
+rosservice call /navigation_manager/set_algorithm "algorithm: 1
+enabled: true"
+
+rosservice call /navigation_manager/navigation "target:
+  x: -1.5
+  y: 2.0
+  yaw: 1.0
+force_enable: false" 
+
+# this sequence moves the robot EVEN IF the component has been turned off
+rosservice call /navigation_manager/set_algorithm "algorithm: 1
+enabled: false"
+
+rosservice call /navigation_manager/navigation "target:
+  x: 1.5
+  y: -2.0
+  yaw: 1.0
+force_enable: true" 
+
+```
+
+- FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+- **COMMIT**: "working on navigation (controller implemented and tested, ready to use)"
+
+
+
+
+
+## Note
+
+### utilizzo di move base
+
+- il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso
+- rifacendo il panning ogni tot si assicura una certa sitabilità sul path prescelto
+- unico difetto: il robot si ferma spesso per fare replanning, causando delle oscillazioni in avanti un po' brusche

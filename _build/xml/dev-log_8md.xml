@@ -354,6 +354,71 @@
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>*e<sp/>funge.*</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>navigation<sp/>(move_base<sp/>navigation<sp/>node<sp/>tested,<sp/>ready<sp/>to<sp/>use)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>ora<sp/>il<sp/>controller,<sp/>altro<sp/>dolore:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>implementazione<sp/>del<sp/>controller<sp/>(molto<sp/>simile<sp/>a<sp/>quello<sp/>di<sp/>bug_m)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>compila?<sp/>alla<sp/>prima<sp/>senza<sp/>errori,<sp/>sono<sp/>un<sp/>campione</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>ora,<sp/>prova<sp/>pratica</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>navigation_system.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>navigation_manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/set_algorithm<sp/>&quot;algorithm:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">enabled:<sp/>false&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/navigation<sp/>&quot;target:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>x:<sp/>1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>y:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">force_enable:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>this<sp/>sequence<sp/>moves<sp/>the<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/set_algorithm<sp/>&quot;algorithm:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">enabled:<sp/>true&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/navigation<sp/>&quot;target:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>x:<sp/>-1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>y:<sp/>2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">force_enable:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>this<sp/>sequence<sp/>moves<sp/>the<sp/>robot<sp/>EVEN<sp/>IF<sp/>the<sp/>component<sp/>has<sp/>been<sp/>turned<sp/>off</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/set_algorithm<sp/>&quot;algorithm:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">enabled:<sp/>false&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/navigation_manager/navigation<sp/>&quot;target:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>x:<sp/>1.5</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>y:<sp/>-2.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>yaw:<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">force_enable:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>navigation<sp/>(controller<sp/>implemented<sp/>and<sp/>tested,<sp/>ready<sp/>to<sp/>use)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>utilizzo<sp/>di<sp/>move<sp/>base</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>nodo<sp/>che<sp/>si<sp/>occupa<sp/>di<sp/>fare<sp/>la<sp/>navigation<sp/>aggiorna<sp/>il<sp/>plan<sp/>parecchie<sp/>volte,<sp/>perchè<sp/>sulle<sp/>lunghe<sp/>tratte<sp/>move_base<sp/>tende<sp/>a<sp/>far<sp/>andare<sp/>il<sp/>robot<sp/>in<sp/>percorsi<sp/>che<sp/>non<sp/>hanno<sp/>molto<sp/>senso</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>rifacendo<sp/>il<sp/>panning<sp/>ogni<sp/>tot<sp/>si<sp/>assicura<sp/>una<sp/>certa<sp/>sitabilità<sp/>sul<sp/>path<sp/>prescelto</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>unico<sp/>difetto:<sp/>il<sp/>robot<sp/>si<sp/>ferma<sp/>spesso<sp/>per<sp/>fare<sp/>replanning,<sp/>causando<sp/>delle<sp/>oscillazioni<sp/>in<sp/>avanti<sp/>un<sp/>po&apos;<sp/>brusche</highlight></codeline>
     </programlisting>
     <location file="_docs/dev-log.md"/>
   </compounddef>

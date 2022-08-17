@@ -208,6 +208,16 @@
 <span class="target" id="navigation__manager_8cpp_1aecd8ace0b284efe7853c8bf94f7f2ac4"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_BUGM_SIGNAL</span></span></span><a class="headerlink" href="#c.SERVICE_BUGM_SIGNAL" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_MOVE_BASE_SWITCH">
+<span class="target" id="navigation__manager_8cpp_1ae7eca9cdfd7afe60733f966c0661f294"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_MOVE_BASE_SWITCH</span></span></span><a class="headerlink" href="#c.SERVICE_MOVE_BASE_SWITCH" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_MOVE_BASE_SIGNAL">
+<span class="target" id="navigation__manager_8cpp_1af6b343ec1229375a73bd1eca0475499c"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_MOVE_BASE_SIGNAL</span></span></span><a class="headerlink" href="#c.SERVICE_MOVE_BASE_SIGNAL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -232,7 +242,7 @@
 <p class="admonition-title">Note</p>
 <p>this class is also a template for a motion planning algorithm </p>
 </div>
-<p>Subclassed by <a class="reference internal" href="#classnav__bug__m"><span class="std std-ref">nav_bug_m</span></a></p>
+<p>Subclassed by <a class="reference internal" href="#classnav__bug__m"><span class="std std-ref">nav_bug_m</span></a>, <a class="reference internal" href="#classnav__move__base"><span class="std std-ref">nav_move_base</span></a></p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -385,6 +395,98 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m6signalE">
 <span id="_CPPv3N9nav_bug_m6signalE"></span><span id="_CPPv2N9nav_bug_m6signalE"></span><span id="nav_bug_m::signal__b"></span><span class="target" id="classnav__bug__m_1ac507bb1ff3c8a3f3f7e1e1763a1fb06b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">signal</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N9nav_bug_m6signalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>received a signal from the node </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv413nav_move_base">
+<span id="_CPPv313nav_move_base"></span><span id="_CPPv213nav_move_base"></span><span id="nav_move_base"></span><span class="target" id="classnav__move__base"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_move_base</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><a class="headerlink" href="#_CPPv413nav_move_base" title="Permalink to this definition"></a><br /></dt>
+<dd><p>move_base navigation </p>
+<p>this class implements the workflow with the navigation algorithm implemented in the node ‘move_base_nav.py’. The way it works is quite similar to the one of ‘bug_m’ except for the different navigation system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this kind of navigation is particularly indicated for indoor environments. </p>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base13nav_move_baseENSt6stringEi">
+<span id="_CPPv3N13nav_move_base13nav_move_baseENSt6stringEi"></span><span id="_CPPv2N13nav_move_base13nav_move_baseENSt6stringEi"></span><span id="nav_move_base::nav_move_base__ss.i"></span><span class="target" id="classnav__move__base_1a2421bd06d30a66b8061fc8dca60d9a5c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_move_base</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">code</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base13nav_move_baseENSt6stringEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_baseD0Ev">
+<span id="_CPPv3N13nav_move_baseD0Ev"></span><span id="_CPPv2N13nav_move_baseD0Ev"></span><span id="nav_move_base::~nav_move_base"></span><span class="target" id="classnav__move__base_1a4477133fa75efafe3944cbf61e2760c1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~nav_move_base</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_baseD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base6enableEv">
+<span id="_CPPv3N13nav_move_base6enableEv"></span><span id="_CPPv2N13nav_move_base6enableEv"></span><span id="nav_move_base::enable"></span><span class="target" id="classnav__move__base_1a9bd4457ef31977269081d1dc79c78e67"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base6enableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>turn on the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
+<span id="_CPPv3N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="nav_move_base::perform_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classnav__move__base_1af6a2463054b7b7452e4eb95c4a211c46"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perform_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>use the algorithm for the 2D navigation </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base7disableEv">
+<span id="_CPPv3N13nav_move_base7disableEv"></span><span id="_CPPv2N13nav_move_base7disableEv"></span><span id="nav_move_base::disable"></span><span class="target" id="classnav__move__base_1ac5ae3e32abd2ea2453787df7ae908fb0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">disable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base7disableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>turn off the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE">
+<span id="_CPPv3N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="_CPPv2N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="nav_move_base::cbk_bug_signal__std_srvs::Empty::RequestR.std_srvs::Empty::ResponseR"></span><span class="target" id="classnav__move__base_1a9258664c43806e343e08c8569f464fe0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_bug_signal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>service for the signal from the move_base_nav node </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE">
+<span id="_CPPv3N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE"></span><span id="_CPPv2N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE"></span><span id="nav_move_base::set_parameter_server__robocluedo_movement_controller_msgs::NavigationService::RequestR"></span><span class="target" id="classnav__move__base_1a6fe2e1e1c556353993ac4a5181f0d788"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_parameter_server</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set the target into the parameter server </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base15wait_for_signalEv">
+<span id="_CPPv3N13nav_move_base15wait_for_signalEv"></span><span id="_CPPv2N13nav_move_base15wait_for_signalEv"></span><span id="nav_move_base::wait_for_signal"></span><span class="target" id="classnav__move__base_1a6d8f8ce74e3a7c2dc5a418f58d6b2b92"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">wait_for_signal</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base15wait_for_signalEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>wait for the signal </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base16channels_enabledE">
+<span id="_CPPv3N13nav_move_base16channels_enabledE"></span><span id="_CPPv2N13nav_move_base16channels_enabledE"></span><span id="nav_move_base::channels_enabled__b"></span><span class="target" id="classnav__move__base_1ac8e439f3894397818a2b48747f0826cf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channels_enabled</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N13nav_move_base16channels_enabledE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>channels opened? </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base19cl_move_base_switchE">
+<span id="_CPPv3N13nav_move_base19cl_move_base_switchE"></span><span id="_CPPv2N13nav_move_base19cl_move_base_switchE"></span><span id="nav_move_base::cl_move_base_switch__ros::ServiceClient"></span><span class="target" id="classnav__move__base_1a44492fecfd32da344d5d7625181ea6e2"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_move_base_switch</span></span></span><a class="headerlink" href="#_CPPv4N13nav_move_base19cl_move_base_switchE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client /nav_stack_switch : std_srvs/SetBool </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base20srv_move_base_signalE">
+<span id="_CPPv3N13nav_move_base20srv_move_base_signalE"></span><span id="_CPPv2N13nav_move_base20srv_move_base_signalE"></span><span id="nav_move_base::srv_move_base_signal__ros::ServiceServer"></span><span class="target" id="classnav__move__base_1a5ebf89f8c2b42ce5415cbc9cfb646f62"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_move_base_signal</span></span></span><a class="headerlink" href="#_CPPv4N13nav_move_base20srv_move_base_signalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>service /nav_stack_signal : std_srvs/Empty </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base6signalE">
+<span id="_CPPv3N13nav_move_base6signalE"></span><span id="_CPPv2N13nav_move_base6signalE"></span><span id="nav_move_base::signal__b"></span><span class="target" id="classnav__move__base_1a6359fd818aef356e4e3c8a5547ac5b74"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">signal</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N13nav_move_base6signalE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>received a signal from the node </p>
 </dd></dl>
 

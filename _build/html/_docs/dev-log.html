@@ -132,6 +132,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit –</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#note">Note</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilizzo-di-move-base">utilizzo di move base</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -510,6 +514,68 @@ rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false
 <li><p><em>e funge.</em></p></li>
 <li><p><strong>COMMIT</strong>: “working on navigation (move_base navigation node tested, ready to use)”</p></li>
 </ul>
+<hr class="docutils" />
+<p>e ora il controller, altro dolore:</p>
+<ul class="simple">
+<li><p>implementazione del controller (molto simile a quello di bug_m)</p></li>
+<li><p>compila? alla prima senza errori, sono un campione</p></li>
+<li><p>e ora, prova pratica</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_movement_controller navigation_system.launch
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_movement_controller navigation_manager
+
+<span class="c1"># shell 4</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 1</span>
+<span class="s2">enabled: false&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: 1.5</span>
+<span class="s2">  y: 2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: false&quot;</span> 
+
+<span class="c1"># this sequence moves the robot</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 1</span>
+<span class="s2">enabled: true&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: -1.5</span>
+<span class="s2">  y: 2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: false&quot;</span> 
+
+<span class="c1"># this sequence moves the robot EVEN IF the component has been turned off</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 1</span>
+<span class="s2">enabled: false&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: 1.5</span>
+<span class="s2">  y: -2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: true&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p></li>
+<li><p><strong>COMMIT</strong>: “working on navigation (controller implemented and tested, ready to use)”</p></li>
+</ul>
+</div>
+<div class="section" id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
+<div class="section" id="utilizzo-di-move-base">
+<h3>utilizzo di move base<a class="headerlink" href="#utilizzo-di-move-base" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</p></li>
+<li><p>rifacendo il panning ogni tot si assicura una certa sitabilità sul path prescelto</p></li>
+<li><p>unico difetto: il robot si ferma spesso per fare replanning, causando delle oscillazioni in avanti un po’ brusche</p></li>
+</ul>
+</div>
 </div>
 </div>
 
