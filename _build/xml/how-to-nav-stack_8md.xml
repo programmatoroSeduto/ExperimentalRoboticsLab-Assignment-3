@@ -1,0 +1,719 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="how-to-nav-stack_8md" kind="file" language="Markdown">
+    <compoundname>how-to-nav-stack.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>HOW<sp/>TO<sp/>--<sp/>navigation<sp/>stack<sp/>CRASH<sp/>COURSE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here<sp/>are<sp/>some<sp/>quick<sp/>informations<sp/>about<sp/>how<sp/>to<sp/>set<sp/>up<sp/>and<sp/>use<sp/>the<sp/>**ROS<sp/>Navigation<sp/>Stack**.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>install<sp/>the<sp/>Navigation<sp/>Stack</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Slam<sp/>-<sp/>GMapping</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>order<sp/>to<sp/>run<sp/>the<sp/>project,<sp/>you<sp/>need<sp/>the<sp/>two<sp/>packages<sp/>you<sp/>can<sp/>find<sp/>[here](https://github.com/CarmineD8/slam_gmapping.git).<sp/>SLAM<sp/>and<sp/>GMapping<sp/>are<sp/>tools<sp/>for<sp/>managing<sp/>the<sp/>movement<sp/>of<sp/>a<sp/>robot<sp/>with<sp/>noisy<sp/>odometry:<sp/>their<sp/>purpose<sp/>is<sp/>to<sp/>correct<sp/>odometry<sp/>in<sp/>a<sp/>way<sp/>that<sp/>the<sp/>robot<sp/>can<sp/>get<sp/>its<sp/>position<sp/>as<sp/>precisely<sp/>as<sp/>possible.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Copy<sp/>the<sp/>packages<sp/>into<sp/>the<sp/>workspace<sp/>you<sp/>prefer.<sp/>**use<sp/>branch<sp/>:<sp/>_noetic_**</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/CarmineD8/slam_gmapping.git<sp/>-b<sp/>noetic</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Also<sp/>these<sp/>packages<sp/>are<sp/>required.<sp/>Please<sp/>install<sp/>them.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>install<sp/>ros-noetic-openslam-gmapping</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>install<sp/>ros-noetic-navigation</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>MoveBase</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MoveBase<sp/>is<sp/>a<sp/>motion<sp/>planner:<sp/>given<sp/>a<sp/>goal,<sp/>it<sp/>can<sp/>retrieve<sp/>a<sp/>path<sp/>from<sp/>the<sp/>actual<sp/>position<sp/>to<sp/>the<sp/>desired<sp/>one,<sp/>recomputing<sp/>the<sp/>path<sp/>depending<sp/>on<sp/>the<sp/>informations<sp/>gathered<sp/>by<sp/>sensors<sp/>in<sp/>conjunction<sp/>with<sp/>Slam-GMapping.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Simply<sp/>install<sp/>it:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>install<sp/>ros-noetic-move-base</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>A<sp/>quick<sp/>example<sp/>with<sp/>Gazebo<sp/>and<sp/>RViz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[this<sp/>project<sp/>on<sp/>GitHub](https://github.com/programmatoroSeduto/RT1_assignment_2)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/programmatoroSeduto/RT1_assignment_2.git<sp/>-b<sp/>main<sp/>./test_nav_stack</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">in<sp/>particular<sp/>see<sp/>[how<sp/>to<sp/>setup<sp/>the<sp/>project](https://github.com/programmatoroSeduto/RT1_assignment_2#how-to-set-up-the-project)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">and<sp/>see<sp/>[how<sp/>to<sp/>build<sp/>the<sp/>project](https://github.com/programmatoroSeduto/RT1_assignment_2#build-the-project)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Names<sp/>and<sp/>Types<sp/>of<sp/>the<sp/>Interfaces<sp/>of<sp/>MoveBase</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**services**:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">/move_base/NavfnROS/make_plan</highlight></codeline>
+<codeline><highlight class="normal">/move_base/TrajectoryPlannerROS/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/clear_costmaps</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/inflation_layer/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/obstacle_layer/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/static_layer/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/inflation_layer/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/obstacle_layer/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">/move_base/make_plan</highlight></codeline>
+<codeline><highlight class="normal">/move_base/set_parameters</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**topics:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">/move_base/NavfnROS/plan</highlight></codeline>
+<codeline><highlight class="normal">/move_base/TrajectoryPlannerROS/cost_cloud</highlight></codeline>
+<codeline><highlight class="normal">/move_base/TrajectoryPlannerROS/global_plan</highlight></codeline>
+<codeline><highlight class="normal">/move_base/TrajectoryPlannerROS/local_plan</highlight></codeline>
+<codeline><highlight class="normal">/move_base/TrajectoryPlannerROS/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/TrajectoryPlannerROS/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/cancel</highlight></codeline>
+<codeline><highlight class="normal">/move_base/current_goal</highlight></codeline>
+<codeline><highlight class="normal">/move_base/feedback</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/costmap</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/costmap_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/footprint</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/inflation_layer/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/inflation_layer/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/obstacle_layer/clearing_endpoints</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/obstacle_layer/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/obstacle_layer/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/static_layer/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/global_costmap/static_layer/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/goal</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/costmap</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/costmap_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/footprint</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/inflation_layer/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/inflation_layer/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/obstacle_layer/clearing_endpoints</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/obstacle_layer/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/obstacle_layer/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/local_costmap/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/parameter_descriptions</highlight></codeline>
+<codeline><highlight class="normal">/move_base/parameter_updates</highlight></codeline>
+<codeline><highlight class="normal">/move_base/result</highlight></codeline>
+<codeline><highlight class="normal">/move_base/status</highlight></codeline>
+<codeline><highlight class="normal">/move_base_simple/goal</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>the<sp/>action<sp/>movebase</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">movebase<sp/>is<sp/>meant<sp/>to<sp/>behave<sp/>as<sp/>an<sp/>action:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>you<sp/>can<sp/>send<sp/>a<sp/>2D<sp/>position<sp/>to<sp/>reach,<sp/>topic<sp/>`/move_base/goal`<sp/>of<sp/>type<sp/>`move_base_msgs/MoveBaseAction`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>fullfillment<sp/>of<sp/>the<sp/>goal<sp/>could<sp/>require<sp/>a<sp/>lot<sp/>of<sp/>time</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>finally,<sp/>the<sp/>move-base<sp/>node<sp/>will<sp/>send<sp/>a<sp/>result<sp/>message<sp/>with<sp/>the<sp/>success<sp/>flag<sp/>set</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">for<sp/>the<sp/>complete<sp/>list<sp/>of<sp/>interfaces<sp/>opened<sp/>by<sp/>move-base,<sp/>see<sp/>[move_base_msgs<sp/>package](http://docs.ros.org/en/fuerte/api/move_base_msgs/html/index-msg.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">also<sp/>[the<sp/>official<sp/>wiki](http://wiki.ros.org/move_base)<sp/>is<sp/>a<sp/>good<sp/>reference<sp/>(very<sp/>seldom,<sp/>sometimes<sp/>it<sp/>happens...)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>A<sp/>note<sp/>about<sp/>the<sp/>action<sp/>names</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBase.action*<sp/>--<sp/>the<sp/>name<sp/>of<sp/>the<sp/>action,<sp/>file<sp/>with<sp/>3<sp/>fields</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>message<sp/>is<sp/>split<sp/>into<sp/>3<sp/>different<sp/>messages:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBaseActionGoal*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBaseActionResult*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBaseActionFeedback*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">but<sp/>*what<sp/>you<sp/>need<sp/>are<sp/>these<sp/>names:*<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBaseGoal*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBaseResult*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*MoveBaseFeedback*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>that<sp/>in<sp/>C++<sp/>you<sp/>can<sp/>refer<sp/>to<sp/>them<sp/>in<sp/>this<sp/>way:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>include<sp/>of<sp/>the<sp/>action</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;move_base_msgs/MoveBaseAction.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>referring<sp/>to<sp/>the<sp/>file<sp/>MoveBase.action</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>the<sp/>goal<sp/>will<sp/>be</highlight></codeline>
+<codeline><highlight class="normal">move_base_msgs::MoveBaseGoal<sp/>goal;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>the<sp/>feedback<sp/>will<sp/>be</highlight></codeline>
+<codeline><highlight class="normal">move_base_msgs::MoveBaseFeedback<sp/>feedback;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>and<sp/>finally,<sp/>the<sp/>result<sp/>will<sp/>be</highlight></codeline>
+<codeline><highlight class="normal">move_base_msgs::MoveBaseResult<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>move_base_msgs/MoveBaseGoal</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/PoseStamped<sp/>target_pose</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>move_base_msgs/MoveBaseFeedback</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/PoseStamped<sp/>base_position</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>move_base_msgs/MoveBaseResult</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**empty<sp/>means<sp/>that**<sp/>the<sp/>framework<sp/>will<sp/>sendo<sp/>only<sp/>a<sp/>simple<sp/>signal.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>...<sp/>empty</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>other<sp/>interfaces</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>geometry_msgs/PoseStamped</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">a<sp/>pose<sp/>with<sp/>the<sp/>recording<sp/>time<sp/>and<sp/>*the<sp/>frame*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>A<sp/>Pose<sp/>with<sp/>reference<sp/>coordinate<sp/>frame<sp/>and<sp/>timestamp</highlight></codeline>
+<codeline><highlight class="normal">Header<sp/>header</highlight></codeline>
+<codeline><highlight class="normal">Pose<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**remember<sp/>to<sp/>give<sp/>a<sp/>frame<sp/>for<sp/>the<sp/>pose!**<sp/>if<sp/>you<sp/>don&apos;t<sp/>know<sp/>what<sp/>to<sp/>take<sp/>as<sp/>pose<sp/>frame,<sp/>use<sp/>this:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```python</highlight></codeline>
+<codeline><highlight class="normal">msg.goal.target_pose.header.frame_id<sp/>=<sp/>&quot;map&quot;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>geometry_msgs/Pose</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">a<sp/>pose<sp/>is<sp/>made<sp/>up<sp/>of</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>a<sp/>position</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>and<sp/>a<sp/>orientation<sp/>*as<sp/>quaternion*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>A<sp/>representation<sp/>of<sp/>pose<sp/>in<sp/>free<sp/>space,<sp/>composed<sp/>of<sp/>postion<sp/>and<sp/>orientation.<sp/></highlight></codeline>
+<codeline><highlight class="normal">Point<sp/>position</highlight></codeline>
+<codeline><highlight class="normal">Quaternion<sp/>orientation</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Gazebo<sp/>spatial<sp/>convention**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>horizontal<sp/>plane<sp/>:<sp/>**x**<sp/>(red)<sp/>and<sp/>**y**<sp/>(green)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>vertical<sp/>axis<sp/>:<sp/>**z**<sp/>(blue)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Rotation<sp/>ROS<sp/>convention**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>the<sp/>answer<sp/>under<sp/>[this<sp/>post](https://answers.ros.org/question/58863/incorrect-rollpitch-yaw-values-using-getrpy/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>*x*<sp/>--<sp/>roll</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*y*<sp/>--<sp/>pitch</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*z*<sp/>--<sp/>yaw</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>geometry_msgs/Quaternion</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">representation<sp/>of<sp/>a<sp/>rotation<sp/>using<sp/>4<sp/>parameters.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>This<sp/>represents<sp/>an<sp/>orientation<sp/>in<sp/>free<sp/>space<sp/>in<sp/>quaternion<sp/>form.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">float64<sp/>x</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>y</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>z</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>w</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**C++<sp/>how<sp/>to<sp/>convert<sp/>quaternion<sp/>to<sp/>roll-pitch-yaw**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[this<sp/>simple<sp/>example<sp/>on<sp/>GitHub<sp/>Gist](https://gist.github.com/marcoarruda/f931232fe3490b7fa20dbb38da1195ac)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>tf<sp/>contains<sp/>some<sp/>tool<sp/>to<sp/>deal<sp/>with<sp/>the<sp/>most<sp/>common<sp/>geonetry<sp/>for<sp/>the<sp/>Geometrical<sp/>Unit</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;tf/tf.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">double<sp/>roll,<sp/>pitch,<sp/>yaw;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">tf::Quaternion<sp/>q(<sp/>x,<sp/>y,<sp/>z,<sp/>w<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">tf::Matrix3x3<sp/>m(q);</highlight></codeline>
+<codeline><highlight class="normal">m.getRPY(roll,<sp/>pitch,<sp/>yaw);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>geometry_msgs/Point</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>This<sp/>contains<sp/>the<sp/>position<sp/>of<sp/>a<sp/>point<sp/>in<sp/>free<sp/>space</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>x</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>y</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>z</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>MoveBase<sp/>action<sp/>calls<sp/>in<sp/>C++</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here<sp/>are<sp/>some<sp/>templates<sp/>if<sp/>you<sp/>wnat<sp/>(like<sp/>me)<sp/>to<sp/>put<sp/>the<sp/>hands<sp/>on<sp/>without<sp/>bothering<sp/>too<sp/>much<sp/>with<sp/>technical<sp/>details<sp/>(geeky<sp/>geeky).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>C++<sp/>--<sp/>headers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;actionlib/client/simple_action_client.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;actionlib/client/terminal_state.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;tf/tf.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;string&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;geometry_msgs/PoseStamped.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">std_msgs/Header<sp/>header</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/Pose<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;geometry_msgs/Pose.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">Point<sp/>position</highlight></codeline>
+<codeline><highlight class="normal">Quaternion<sp/>orientation</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;geometry_msgs/Quaternion.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>x,<sp/>y,<sp/>z,<sp/>w</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;geometry_msgs/Point.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">float<sp/>x,<sp/>y,<sp/>z</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;move_base_msgs/MoveBaseAction.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>move_base_msgs::MoveBaseGoal</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/PoseStamped<sp/>target_pose</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>move_base_msgs::MoveBaseFeedback</highlight></codeline>
+<codeline><highlight class="normal">/*</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/PoseStamped<sp/>base_position</highlight></codeline>
+<codeline><highlight class="normal">*/</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>move_base_msgs::MoveBaseResult</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>empty</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>C++<sp/>--<sp/>main<sp/>with<sp/>async<sp/>spinner</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**use<sp/>async-spinner**<sp/>for<sp/>your<sp/>node,<sp/>in<sp/>this<sp/>way:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>main(<sp/>int<sp/>argc,<sp/>char*<sp/>argv[]<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::AsyncSpinner<sp/>spinner(<sp/>2<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>spinner.start(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::waitForShutdown(<sp/>);<sp/>//<sp/>same<sp/>as<sp/>ros::spin(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>C++<sp/>--<sp/>open<sp/>the<sp/>action<sp/>client</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**declaration<sp/>of<sp/>the<sp/>macros<sp/>and<sp/>pointers**:<sp/>declare<sp/>globally</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>move_base<sp/>action<sp/>client</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ACTION_MOVE_BASE<sp/>&quot;move_base&quot;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>TIMEOUT_MOVE_BASE<sp/>5</highlight></codeline>
+<codeline><highlight class="normal">actionlib::SimpleActionClient&lt;move_base_msgs::MoveBaseAction&gt;<sp/>*actcl_move_base(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**open<sp/>the<sp/>interface**<sp/>in<sp/>the<sp/>main<sp/>function,<sp/>assuming<sp/>the<sp/>client<sp/>global<sp/>for<sp/>the<sp/>node,<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C++</highlight></codeline>
+<codeline><highlight class="normal">TLOG(<sp/>&quot;opening<sp/>action<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MOVE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;<sp/>...<sp/>&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">actionlib::SimpleActionClient&lt;move_base_msgs::MoveBaseAction&gt;<sp/>tactcl_move_base(<sp/>ACTION_MOVE_BASE,<sp/>true<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">if(<sp/>!tactcl_act.waitForServer(<sp/>ros::Duration(<sp/>TIMEOUT_MOVE_BASE<sp/>)<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TERR(<sp/>&quot;unable<sp/>to<sp/>connect<sp/>to<sp/>the<sp/>action<sp/>server<sp/>(timeout<sp/>&quot;<sp/>&lt;&lt;<sp/>TIMEOUT_MOVE_BASE<sp/>&lt;&lt;<sp/>&quot;s)<sp/>&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;--<sp/>action<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MovE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;\t<sp/>&quot;<sp/>&lt;&lt;<sp/>(tactcl_move_base.isServerConnected(<sp/>)<sp/>?<sp/>&quot;<sp/>it<sp/>seems<sp/>not<sp/>online<sp/>&quot;<sp/>:<sp/>&quot;<sp/>service<sp/>online<sp/>&quot;)<sp/><sp/>)<sp/>&lt;&lt;<sp/>&quot;\n&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;\t&quot;<sp/>&lt;&lt;<sp/>&quot;STATUS:<sp/>&quot;<sp/>&lt;&lt;<sp/>tactcl_move_base.getState(<sp/>).toString(<sp/>)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">actcl_move_base<sp/>=<sp/>&amp;tactcl_move_base;</highlight></codeline>
+<codeline><highlight class="normal">TLOG(<sp/>&quot;opening<sp/>action<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MOVE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;<sp/>...<sp/>OK!&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">now<sp/>the<sp/>simple<sp/>action<sp/>client<sp/>should<sp/>be<sp/>online.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>C++<sp/>--<sp/>use<sp/>the<sp/>client<sp/>--<sp/>callback<sp/>based<sp/>approach</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[waitForResult](https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#a94b5a38fae6917f83331560b81eea341)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>also<sp/>[sendGoal](https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#ae6a2e6904495e7c20c59e96af0d86801)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">very<sp/>useful<sp/>[this<sp/>wiki<sp/>page](http://wiki.ros.org/actionlib_tutorials/Tutorials/Writing%20a%20Callback%20Based%20Simple%20Action%20Client)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**sequential<sp/>style<sp/>pattern**<sp/>if<sp/>you<sp/>just<sp/>want<sp/>to<sp/>try<sp/>something<sp/>simple.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Called<sp/>once<sp/>when<sp/>the<sp/>goal<sp/>becomes<sp/>active</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>cbk_active_move_base(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>feedback<sp/>subscription</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>cbk_feedback_move_base(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>move_base_msgs::MoveBaseFeedback::ConstPtr&amp;<sp/>feedback<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...<sp/>access<sp/>the<sp/>feedback<sp/>using<sp/>-&gt;<sp/>operator</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Called<sp/>once<sp/>when<sp/>the<sp/>goal<sp/>completes</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>cbk_done_move_base(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>actionlib::SimpleClientGoalState&amp;<sp/>state,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/>move_base_msgs::MoveBaseResult&amp;<sp/>res<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO(<sp/>&quot;Finished<sp/>in<sp/>state<sp/>[%s]&quot;,<sp/>state.toString(<sp/>).c_str(<sp/>)<sp/>)<sp/>;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>send_goal_pos(<sp/>float<sp/>x,<sp/>float<sp/>y,<sp/>float<sp/>z<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>move_base_msgs::MoveBaseGoal<sp/>goal;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>goal.target_pose.pose.{position.{x,y,z},<sp/>orientation.{x,y,z,w}}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>actcl_move_base-&gt;sendGoal(<sp/>goal,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;cbk_done_move_base,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;cbk_active_move_base,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;cbk_feedback_move_base<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**...but<sp/>I<sp/>don&apos;t<sp/>want<sp/>to<sp/>use<sp/>3<sp/>callback,<sp/>I<sp/>use<sp/>only<sp/>2/1<sp/>of<sp/>them**.<sp/>well,<sp/>ActionLib<sp/>defined<sp/>three<sp/>&quot;placeholders&quot;:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[the<sp/>code](https://docs.ros.org/en/diamondback/api/actionlib/html/simple__action__client_8h_source.html#l00076)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>for<sp/>the<sp/>&quot;done&quot;<sp/>callback</highlight></codeline>
+<codeline><highlight class="normal">Client::SimpleDoneCallback(<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>for<sp/>the<sp/>&quot;active&quot;<sp/>callback</highlight></codeline>
+<codeline><highlight class="normal">Client::SimpleActiveCallback(<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>for<sp/>the<sp/>callback<sp/>subscribing<sp/>to<sp/>the<sp/>feedback<sp/>topic</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/>(if<sp/>you<sp/>don&apos;t<sp/>need<sp/>feedbacks)</highlight></codeline>
+<codeline><highlight class="normal">Client::SimpleFeedbackCallback(<sp/>)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>EXAMPLE:<sp/>I<sp/>don&apos;t<sp/>need<sp/>the<sp/>done<sp/>and<sp/>the<sp/>active</highlight></codeline>
+<codeline><highlight class="normal">ac.sendGoal(<sp/>goal,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Client::SimpleDoneCallback(<sp/>),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Client::SimpleActiveCallback(<sp/>),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&amp;my_beautiful_feedback_callback</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**methods<sp/>inside<sp/>a<sp/>class?**<sp/>no<sp/>problem:<sp/>*use<sp/>boost*<sp/>as<sp/>follows:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>the<sp/>function</highlight></codeline>
+<codeline><highlight class="normal">boost::bind(<sp/>&amp;MyClass::cbk_quello_che_vuoi,<sp/>&amp;MyClass,<sp/>_1,<sp/>_2<sp/>)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>that<sp/>sometimes<sp/>this<sp/>call<sp/>could<sp/>return<sp/>a<sp/>very<sp/>strange<sp/>and<sp/>unintelligible<sp/>error:<sp/>an<sp/>example<sp/>is<sp/>contained<sp/>[in<sp/>this<sp/>post](https://answers.ros.org/question/195723/actionlib-callback-based-simpleactionclient-bind-error/),<sp/>which<sp/>was<sp/>a<sp/>simple<sp/>type.<sp/>*but<sp/>in<sp/>my<sp/>case*<sp/>(my<sp/>usual<sp/>luck,<sp/>nothing<sp/>special)<sp/>the<sp/>error<sp/>was<sp/>due<sp/>to<sp/>the<sp/>use<sp/>of<sp/>`const<sp/>move_base_msgs::MoveBaseResult::ConstPtr&amp;<sp/>res`<sp/>instead<sp/>of<sp/>the<sp/>correct<sp/>form<sp/>`const<sp/>move_base_msgs::MoveBaseResultConstPtr&amp;<sp/>res`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**class<sp/>implementation**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>move_base_interface</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>move_base_interface(<sp/>)<sp/>:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actcl_move_base(<sp/>&quot;move_base&quot;,<sp/>true<sp/>),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>running(<sp/>false<sp/>),<sp/>idle(<sp/>true<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TLOG(<sp/>&quot;opening<sp/>action<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MOVE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;<sp/>...<sp/>&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actcl_move_base.waitForServer(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>!this-&gt;actcl_act.waitForServer(<sp/>ros::Duration(<sp/>TIMEOUT_MOVE_BASE<sp/>)<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TERR(<sp/>&quot;unable<sp/>to<sp/>connect<sp/>to<sp/>the<sp/>action<sp/>server<sp/>(timeout<sp/>&quot;<sp/>&lt;&lt;<sp/>TIMEOUT_MOVE_BASE<sp/>&lt;&lt;<sp/>&quot;s)<sp/>&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;--<sp/>action<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MOVE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;\n&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;\t<sp/>&quot;<sp/>&lt;&lt;<sp/>(this-&gt;actcl_move_base.isServerConnected(<sp/>)<sp/>?<sp/>&quot;<sp/>it<sp/>seems<sp/>not<sp/>online<sp/>&quot;<sp/>:<sp/>&quot;<sp/>service<sp/>online<sp/>&quot;)<sp/><sp/>)<sp/>&lt;&lt;<sp/>&quot;\n&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>&quot;\t&quot;<sp/>&lt;&lt;<sp/>&quot;STATUS:<sp/>&quot;<sp/>&lt;&lt;<sp/>this-&gt;actcl_move_base.getState(<sp/>).toString(<sp/>)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TLOG(<sp/>&quot;opening<sp/>action<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MOVE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;<sp/>...<sp/>OK!&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>call<sp/>the<sp/>service</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>send_goal(<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>move_base_msgs::MoveBaseGoal<sp/>goal,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bool<sp/>wait<sp/>=<sp/>false,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Duration<sp/>d<sp/>=<sp/>ros::Duration(<sp/>TIMEOUT_MOVE_BASE<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;last_goal<sp/>=<sp/>goal;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actcl_move_base.sendGoal(<sp/>this-&gt;last_goal,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::bind(&amp;move_base_interface::cbk_done_move_base,<sp/>this,<sp/>_1,<sp/>_2<sp/>),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::bind(&amp;move_base_interface::cbk_active_move_base,<sp/>this<sp/>),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::bind(&amp;move_base_interface::cbk_feedback_move_base,<sp/>this,<sp/>_1<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>wait<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>!actcl_move_base.wait_for_results(<sp/>d<sp/>)<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TERR(<sp/>&quot;action<sp/>client<sp/>for<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>ACTION_MOVE_BASE<sp/>)<sp/>&lt;&lt;<sp/>&quot;TIMEOUT<sp/>EXPIRED<sp/>&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actcl_move_base.cancelAllGoals(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Called<sp/>once<sp/>when<sp/>the<sp/>goal<sp/>becomes<sp/>active</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>cbk_active_move_base(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;idle<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;running<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>feedback<sp/>subscription</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>cbk_feedback_move_base(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>move_base_msgs::MoveBaseFeedback::ConstPtr&amp;<sp/>feedback<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...<sp/>access<sp/>the<sp/>feedback<sp/>using<sp/>-&gt;<sp/>operator</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Called<sp/>once<sp/>when<sp/>the<sp/>goal<sp/>completes</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>cbk_done_move_base(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>actionlib::SimpleClientGoalState&amp;<sp/>state,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>move_base_msgs::MoveBaseResult&amp;<sp/>res<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;idle<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;running<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_INFO(<sp/>&quot;Finished<sp/>in<sp/>state<sp/>[%s]&quot;,<sp/>state.toString(<sp/>).c_str(<sp/>)<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>cancel<sp/>the<sp/>last<sp/>request</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>cancel(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>this-&gt;running<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actcl_move_base.cancelAllGoals(<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;idle<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;running<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>idle!<sp/>nothing<sp/>to<sp/>cancel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>check<sp/>activity<sp/>flag</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>is_running(<sp/>)<sp/>{<sp/>return<sp/>this-&gt;running;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>check<sp/>activity<sp/>flag</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>is_idle(<sp/>)<sp/>{<sp/>return<sp/>this-&gt;idle;<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>action<sp/>client<sp/>status<sp/>from<sp/>the<sp/>handle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>get_state(<sp/>)<sp/>{<sp/>return<sp/>actcl_move_base.getState.toString(<sp/>);<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">private:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>the<sp/>action<sp/>client</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>actionlib::SimpleActionClient&lt;move_base_msgs::MoveBaseAction&gt;<sp/>actcl_move_base;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>the<sp/>current<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>move_base_msgs::MoveBaseGoal<sp/>last_goal;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>activity<sp/>flag</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>running;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>idle<sp/>flag</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>idle;</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>SLAM<sp/>and<sp/>GMapping<sp/>--<sp/>navigation<sp/>stack<sp/>structure</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">infos<sp/>about<sp/>[GMapping](http://wiki.ros.org/gmapping)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[sma_gmapping<sp/>on<sp/>GitHub](https://github.com/ros-perception/slam_gmapping)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>also<sp/>the<sp/>[tf<sp/>package<sp/>on<sp/>ROS<sp/>Wiki](http://wiki.ros.org/tf)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>also<sp/>the<sp/>[nav<sp/>stack<sp/>official<sp/>page](http://wiki.ros.org/navigation)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[openSLAM<sp/>official<sp/>page](https://openslam-org.github.io/gmapping.html)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[Gazebo<sp/>Plugins](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*laser-based<sp/>simultaneous<sp/>localization<sp/>and<sp/>mapping*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Hokuyo<sp/>laser<sp/>range<sp/>finder</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ROS<sp/>documentation<sp/>about<sp/>[hoyuko<sp/>laser<sp/>range<sp/>finder](https://wiki.ros.org/hokuyo_node)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**publishers**:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`/scan`<sp/>:<sp/>sensor_msgs/LaserScan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Gazebo**<sp/>simulation<sp/>of<sp/>this<sp/>range<sp/>sensor<sp/>finder:<sp/>RIMPIAZZA<sp/>`hokuyo_link`<sp/>nel<sp/>codice<sp/>col<sp/>link<sp/>che<sp/>rappresenta<sp/>il<sp/>sensore<sp/>nel<sp/>file<sp/>URDF.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```xml</highlight></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>NON-GPU<sp/>VERSION<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;gazebo<sp/>reference=&quot;hokuyo_link&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;sensor<sp/>type=&quot;ray&quot;<sp/>name=&quot;head_hokuyo_sensor&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;pose&gt;0<sp/>0<sp/>0<sp/>0<sp/>0<sp/>0&lt;/pose&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;visualize&gt;false&lt;/visualize&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;update_rate&gt;40&lt;/update_rate&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;ray&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;scan&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;horizontal&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;samples&gt;720&lt;/samples&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;resolution&gt;1&lt;/resolution&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;min_angle&gt;-1.570796&lt;/min_angle&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;max_angle&gt;1.570796&lt;/max_angle&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/horizontal&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/scan&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;range&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;min&gt;0.10&lt;/min&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;max&gt;30.0&lt;/max&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;resolution&gt;0.01&lt;/resolution&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/range&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;noise&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;type&gt;gaussian&lt;/type&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;!--<sp/>Noise<sp/>parameters<sp/>based<sp/>on<sp/>published<sp/>spec<sp/>for<sp/>Hokuyo<sp/>laser</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>achieving<sp/>&quot;+-30mm&quot;<sp/>accuracy<sp/>at<sp/>range<sp/>&lt;<sp/>10m.<sp/><sp/>A<sp/>mean<sp/>of<sp/>0.0m<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stddev<sp/>of<sp/>0.01m<sp/>will<sp/>put<sp/>99.7%<sp/>of<sp/>samples<sp/>within<sp/>0.03m<sp/>of<sp/>the<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true<sp/>reading.<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;mean&gt;0.0&lt;/mean&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;stddev&gt;0.01&lt;/stddev&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/noise&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/ray&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;plugin<sp/>name=&quot;gazebo_ros_head_hokuyo_controller&quot;<sp/>filename=&quot;libgazebo_ros_laser.so&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;topicName&gt;/scan&lt;/topicName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;frameName&gt;hokuyo_link&lt;/frameName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/plugin&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/sensor&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/gazebo&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>GPU<sp/>VERSION<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;gazebo<sp/>reference=&quot;hokuyo_link&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;sensor<sp/>type=&quot;gpu_ray&quot;<sp/>name=&quot;head_hokuyo_sensor&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;pose&gt;0<sp/>0<sp/>0<sp/>0<sp/>0<sp/>0&lt;/pose&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;visualize&gt;false&lt;/visualize&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;update_rate&gt;40&lt;/update_rate&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;ray&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;scan&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;horizontal&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;samples&gt;720&lt;/samples&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;resolution&gt;1&lt;/resolution&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;min_angle&gt;-1.570796&lt;/min_angle&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;max_angle&gt;1.570796&lt;/max_angle&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/horizontal&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/scan&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;range&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;min&gt;0.10&lt;/min&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;max&gt;30.0&lt;/max&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;resolution&gt;0.01&lt;/resolution&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/range&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;noise&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;type&gt;gaussian&lt;/type&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;!--<sp/>Noise<sp/>parameters<sp/>based<sp/>on<sp/>published<sp/>spec<sp/>for<sp/>Hokuyo<sp/>laser</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>achieving<sp/>&quot;+-30mm&quot;<sp/>accuracy<sp/>at<sp/>range<sp/>&lt;<sp/>10m.<sp/><sp/>A<sp/>mean<sp/>of<sp/>0.0m<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stddev<sp/>of<sp/>0.01m<sp/>will<sp/>put<sp/>99.7%<sp/>of<sp/>samples<sp/>within<sp/>0.03m<sp/>of<sp/>the<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true<sp/>reading.<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;mean&gt;0.0&lt;/mean&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;stddev&gt;0.01&lt;/stddev&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/noise&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/ray&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;plugin<sp/>name=&quot;gazebo_ros_head_hokuyo_controller&quot;<sp/>filename=&quot;libgazebo_ros_gpu_laser.so&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;topicName&gt;/scan&lt;/topicName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;frameName&gt;hokuyo_link&lt;/frameName&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/plugin&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;/sensor&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/gazebo&gt;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">NOta<sp/>bene:<sp/>dev&apos;esserci<sp/>un<sp/>link<sp/>di<sp/>riferimento<sp/>nel<sp/>robot,<sp/>quello<sp/>dov&apos;è<sp/>piazzato<sp/>il<sp/>sensore.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>plugin<sp/>pubblicherà<sp/>la<sp/>scansione<sp/>sul<sp/>topic<sp/>`&lt;topicName&gt;/scan&lt;/topicName&gt;`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>link<sp/>usato<sp/>come<sp/>origine<sp/>del<sp/>sensore<sp/>è<sp/>`&lt;frameName&gt;hokuyo_link&lt;/frameName&gt;`,<sp/>da<sp/>cambiare<sp/>a<sp/>piacimento</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>occhio<sp/>anche<sp/>al<sp/>campo<sp/>`&lt;gazebo<sp/>reference=&quot;hokuyo_link&quot;&gt;`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Usare<sp/>MoveBase<sp/>senza<sp/>ricorrere<sp/>alla<sp/>actionlib</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>inviare<sp/>il<sp/>goal,<sp/>usa<sp/>``<sp/>di<sp/>tipo<sp/>``</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>cancellare<sp/>la<sp/>richiesta,<sp/>basta<sp/>inviare<sp/>un<sp/>messaggio,<sp/>*anche<sp/>vuoto*,<sp/>sul<sp/>topic<sp/>``<sp/>di<sp/>tipo<sp/>``</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>richiesta<sp/>di<sp/>cancellazione</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">basta<sp/>pubblicare<sp/>un<sp/>messaggio<sp/>di<sp/>tipo<sp/>``<sp/>sul<sp/>topic<sp/>``,<sp/>anche<sp/>vuoto,<sp/>per<sp/>annullare<sp/>l&apos;ultima<sp/>richiesta.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/_docs/how-to-nav-stack.md"/>
+  </compounddef>
+</doxygen>

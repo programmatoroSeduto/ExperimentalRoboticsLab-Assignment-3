@@ -231,6 +231,48 @@
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>e<sp/>ora<sp/>torniamo<sp/>ad<sp/>implementare<sp/>questo<sp/>bellissimo<sp/>nodo</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;workign<sp/>on<sp/>nvigation<sp/>(implementation<sp/>of<sp/>the<sp/>new<sp/>navigation<sp/>service)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>torniamo<sp/>al<sp/>lavoro<sp/>sul<sp/>navigation<sp/>system</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>occorre<sp/>aggiungere<sp/>la<sp/>&quot;action&quot;<sp/>move_base...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...che<sp/>tratterò<sp/>come<sp/>un<sp/>topic<sp/>per<sp/>il<sp/>momento,<sp/>*perchè<sp/>sono<sp/>pigro*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>recupero<sp/>la<sp/>documentazione<sp/>su<sp/>move_base<sp/>dal<sp/>vecchiop<sp/>assignment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>e<sp/>ovviamnete<sp/>manca<sp/>la<sp/>parte<sp/>su<sp/>come<sp/>inviare<sp/>la<sp/>richiesta<sp/>di<sp/>cancellazione<sp/>tramite<sp/>topic,<sp/>dannato<sp/>me</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**ALT<sp/>FERMI<sp/>TUTTI**<sp/>c&apos;è<sp/>un<sp/>grosso<sp/>problema<sp/>con<sp/>move_base<sp/>...<sp/>al<sp/>solito</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>il<sp/>robot<sp/>continua<sp/>ad<sp/>indietreggiare<sp/>quando<sp/>move_base<sp/>è<sp/>attivo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>la<sp/>traiettoria<sp/>calcolata<sp/>parte<sp/>*dal<sp/>retro<sp/>del<sp/>robot*<sp/>...<sp/>eppure<sp/>go<sp/>to<sp/>point<sp/>ha<sp/>sempre<sp/>funzionato,<sp/>quindi<sp/>perchè<sp/>move_base<sp/>da<sp/>il<sp/>comando<sp/>invertito?<sp/>*forse<sp/>un<sp/>problema<sp/>col<sp/>modello<sp/>urdf?*<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>che<sp/>genere<sp/>di<sp/>twist<sp/>viene<sp/>inviato<sp/>da<sp/>move_base?<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```text</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>linear:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x:<sp/>-0.1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>angular:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z:<sp/>0.0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>non<sp/>è<sp/>un<sp/>problema<sp/>del<sp/>modello:<sp/>è<sp/>esattamente<sp/>identico<sp/>a<sp/>quello<sp/>del<sp/>precedente<sp/>assignment<sp/>(erl2<sp/>quello<sp/>vecchio),<sp/>funzionava,<sp/>deve<sp/>continuare<sp/>a<sp/>funzionare</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>se<sp/>provassi<sp/>a<sp/>cambiare<sp/>il<sp/>controller?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>potrebbe<sp/>esserci<sp/>un<sp/>problema<sp/>col<sp/>local<sp/>planner</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>credo<sp/>che<sp/>il<sp/>problema<sp/>possa<sp/>essere<sp/>più<sp/>stupido<sp/>di<sp/>quel<sp/>che<sp/>sembra:<sp/>il<sp/>robot<sp/>non<sp/>riesce<sp/>a<sp/>curvare<sp/>per<sp/>via<sp/>delle<sp/>ruote<sp/>dietro<sp/>...<sp/>l&apos;altro<sp/>nodo<sp/>ignorava<sp/>questo<sp/>aspetto<sp/>dinamico,<sp/>*ma<sp/>a<sp/>quanto<sp/>pare<sp/>a<sp/>move_base<sp/>non<sp/>sfugge<sp/>proprio<sp/>nulla.*<sp/>ci<sp/>fosse<sp/>un<sp/>modo<sp/>per<sp/>diminuire<sp/>l&apos;attrito<sp/>delle<sp/>ruote<sp/>dietro<sp/>e<sp/>renderle<sp/>così<sp/>indifferenti<sp/>alla<sp/>rotazione...</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>problema<sp/>è<sp/>più<sp/>fastidioso<sp/>di<sp/>quel<sp/>che<sp/>sembra:<sp/>nemmeno<sp/>annullando<sp/>l&apos;attrito<sp/>si<sp/>riesce.<sp/>il<sp/>local<sp/>planner<sp/>nella<sp/>visualizzazione<sp/>RViz<sp/>mostra<sp/>un<sp/>buco<sp/>nero<sp/>davanti<sp/>al<sp/>robot,<sp/>segno<sp/>che<sp/>ha<sp/>individuato<sp/>un<sp/>ostacolo,<sp/>perciò<sp/>indietreggia...<sp/>il<sp/>problema<sp/>è<sp/>che<sp/>non<sp/>c&apos;è<sp/>alcun<sp/>ostacolo!</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>il<sp/>problema<sp/>potrebbe<sp/>essere<sp/>nel<sp/>laucnher?<sp/>ha<sp/>senso?<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>l&apos;unica<sp/>cosa<sp/>regolabile<sp/>da<sp/>launch<sp/>è<sp/>GMapping,<sp/>quindi<sp/>no</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>allora<sp/>il<sp/>problema<sp/>è<sp/>in<sp/>qualche<sp/>configuration<sp/>file...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>prima<sp/>però<sp/>voglio<sp/>provare<sp/>a<sp/>muovere<sp/>il<sp/>robot<sp/>inviando<sp/>direttamente<sp/>un<sp/>comando<sp/>su<sp/>cmd_vel<sp/>e<sp/>vedere<sp/>che<sp/>succede...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>muoversi<sp/>si<sp/>muove...</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>...<sp/>e<sp/>mi<sp/>viene<sp/>un<sp/>altro<sp/>dubbio:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>i<sp/>sensori<sp/>laser<sp/>vanno<sp/>ad<sp/>incidere<sp/>sulle<sp/>ruote<sp/>di<sp/>fianco<sp/>...<sp/>questo<sp/>in<sp/>effetti<sp/>potrebbe<sp/>portare<sp/>MoveBase<sp/>a<sp/>vedere<sp/>degli<sp/>ostacoli<sp/>attorno<sp/>al<sp/>robot,<sp/>e<sp/>preferire<sp/>così<sp/>un<sp/>certo<sp/>tipo<sp/>di<sp/>movimento<sp/>per<sp/>evitare<sp/>l&apos;ostacolo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>la<sp/>soluzione<sp/>potrebbe<sp/>quindi<sp/>essere<sp/>spostare<sp/>il<sp/>sensore<sp/>laser<sp/>in<sp/>avanti...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>provo<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>ora<sp/>che<sp/>ho<sp/>modificato<sp/>il<sp/>modello,<sp/>passo<sp/>a<sp/>provare<sp/>con<sp/>move<sp/>base<sp/>...<sp/>**E<sp/>PROBLEMA<sp/>RISOLTO<sp/>SIGNORI**:<sp/>ora<sp/>va<sp/>dove<sp/>voglio<sp/>io!</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>robot<sp/>model<sp/>(move_base<sp/>laser<sp/>issue)&quot;</highlight></codeline>
+<codeline></codeline>
     </programlisting>
     <location file="_docs/dev-log.md"/>
   </compounddef>

@@ -202,6 +202,44 @@
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(mi<sp/>ringrazierò<sp/>in<sp/>futuro,<sp/>quando<sp/>dovrò<sp/>installare<sp/>di<sp/>nuovo<sp/>move_base<sp/>su<sp/>un<sp/>altro<sp/>robot)</highlight></codeline>
 <codeline lineno="194"><highlight class="normal">-<sp/>ultima<sp/>prova,<sp/>giusto<sp/>per<sp/>capire<sp/>se<sp/>è<sp/>tutto<sp/>a<sp/>posto</highlight></codeline>
 <codeline lineno="195"><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>robot<sp/>model<sp/>(setup<sp/>move<sp/>base)&quot;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal">---<sp/></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal">ora,<sp/>il<sp/>navigation<sp/>controller<sp/>del<sp/>robot</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal">-<sp/>anzitutto,<sp/>il<sp/>nodo<sp/>che<sp/>deve<sp/>eseguire<sp/>la<sp/>navigation:<sp/>penso<sp/>avrà<sp/>lo<sp/>stesso<sp/>meccanismo<sp/>dei<sp/>nodi<sp/>di<sp/>bug_m<sp/>:<sp/>trigger,<sp/>e<sp/>wait<sp/>del<sp/>segnale,<sp/>e<sp/>struttura<sp/>come<sp/>macchina<sp/>a<sp/>stati</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">-<sp/>**nuovo<sp/>nodo**<sp/>:<sp/>move_base_nav.py</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>prima<sp/>struttura<sp/>del<sp/>nodo</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(c&apos;è<sp/>voluto<sp/>un<sp/>po&apos;<sp/>più<sp/>del<sp/>previsto...)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">-<sp/>prima<sp/>di<sp/>andare<sp/>avanti,<sp/>voglio<sp/>vedere<sp/>se<sp/>il<sp/>nodo<sp/>si<sp/>avvia<sp/>e<sp/>non<sp/>crasha</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">```bash</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">rosparam<sp/>set<sp/>des_pos_y<sp/>0.0</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
+<codeline lineno="215"><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>move_base_nav.py</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline lineno="219"><highlight class="normal">rosservice<sp/>call<sp/>/nav_stack_go_to_point_switch<sp/>&quot;data:<sp/>false&quot;<sp/></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal">-<sp/>e<sp/>ora<sp/>torniamo<sp/>ad<sp/>implementare<sp/>questo<sp/>bellissimo<sp/>nodo</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;workign<sp/>on<sp/>nvigation<sp/>(implementation<sp/>of<sp/>the<sp/>new<sp/>navigation<sp/>service)&quot;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal">e<sp/>torniamo<sp/>al<sp/>lavoro<sp/>sul<sp/>navigation<sp/>system</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal">-<sp/>occorre<sp/>aggiungere<sp/>la<sp/>&quot;action&quot;<sp/>move_base...</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...che<sp/>tratterò<sp/>come<sp/>un<sp/>topic<sp/>per<sp/>il<sp/>momento,<sp/>*perchè<sp/>sono<sp/>pigro*</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>recupero<sp/>la<sp/>documentazione<sp/>su<sp/>move_base<sp/>dal<sp/>vecchiop<sp/>assignment</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
     </programlisting>
     <location file="_build/html/_sources/_docs/dev-log.md.txt"/>
   </compounddef>

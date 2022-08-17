@@ -30,7 +30,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="UML – bug_m PY node" href="_uml/bug-m.html" />
+    <link rel="next" title="HOW TO – navigation stack CRASH COURSE" href="_docs/how-to-nav-stack.html" />
     <link rel="prev" title="PKG DOCS – robocluedo_rosplan_msgs" href="../robocluedo_rosplan_msgs/index.html" /> 
 </head>
 
@@ -62,6 +62,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PKG DOCS – robocluedo_movement_controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html">Notes about Navigation and Odometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/head-orient.html">UML – head orientation PY</a></li>
@@ -136,6 +138,58 @@
 <span id="pkg-robocluedo-movement-controller"></span><h1>PKG DOCS – robocluedo_movement_controller<a class="headerlink" href="#pkg-docs-robocluedo-movement-controller" title="Permalink to this heading"></a></h1>
 <p>this package enables the robot to move the manipulator and to navigate into the environment, usign different methods.</p>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#install-the-navigation-stack">install the Navigation Stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#slam-gmapping">Slam - GMapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#movebase">MoveBase</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#a-quick-example-with-gazebo-and-rviz">A quick example with Gazebo and RViz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#names-and-types-of-the-interfaces-of-movebase">Names and Types of the Interfaces of MoveBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#the-action-movebase">the action movebase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#a-note-about-the-action-names">A note about the action names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#move-base-msgs-movebasegoal">move_base_msgs/MoveBaseGoal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#move-base-msgs-movebasefeedback">move_base_msgs/MoveBaseFeedback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#move-base-msgs-movebaseresult">move_base_msgs/MoveBaseResult</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#other-interfaces">other interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-posestamped">geometry_msgs/PoseStamped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-pose">geometry_msgs/Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-quaternion">geometry_msgs/Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-point">geometry_msgs/Point</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#movebase-action-calls-in-c">MoveBase action calls in C++</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-headers">C++ – headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-main-with-async-spinner">C++ – main with async spinner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-open-the-action-client">C++ – open the action client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-use-the-client-callback-based-approach">C++ – use the client – callback based approach</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#slam-and-gmapping-navigation-stack-structure">SLAM and GMapping – navigation stack structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#hokuyo-laser-range-finder">Hokuyo laser range finder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#usare-movebase-senza-ricorrere-alla-actionlib">Usare MoveBase senza ricorrere alla actionlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#richiesta-di-cancellazione">richiesta di cancellazione</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/odometry-and-navigation.html">Notes about Navigation and Odometry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html#odometry-message">Odometry message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html#twistwithcovariance-message">TwistWithCovariance message</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_docs/odometry-and-navigation.html#twist-message">Twist message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_docs/odometry-and-navigation.html#vector3-message">Vector3 message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html#posewithcovariance">PoseWithCovariance</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">UML diagrams</span></p>
@@ -187,7 +241,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../robocluedo_rosplan_msgs/index.html" class="btn btn-neutral float-left" title="PKG DOCS – robocluedo_rosplan_msgs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="_uml/bug-m.html" class="btn btn-neutral float-right" title="UML – bug_m PY node" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="_docs/how-to-nav-stack.html" class="btn btn-neutral float-right" title="HOW TO – navigation stack CRASH COURSE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -222,3 +222,45 @@ rosservice call /nav_stack_go_to_point_switch "data: false"
 
 - e ora torniamo ad implementare questo bellissimo nodo
 - **COMMIT**: "workign on nvigation (implementation of the new navigation service)"
+
+---
+
+e torniamo al lavoro sul navigation system
+
+- occorre aggiungere la "action" move_base...
+	- ...che tratterò come un topic per il momento, *perchè sono pigro*
+	- recupero la documentazione su move_base dal vecchiop assignment
+	- ... e ovviamnete manca la parte su come inviare la richiesta di cancellazione tramite topic, dannato me
+- **ALT FERMI TUTTI** c'è un grosso problema con move_base ... al solito
+	- il robot continua ad indietreggiare quando move_base è attivo
+	- la traiettoria calcolata parte *dal retro del robot* ... eppure go to point ha sempre funzionato, quindi perchè move_base da il comando invertito? *forse un problema col modello urdf?* 
+	- che genere di twist viene inviato da move_base? 
+		
+		```text
+		linear: 
+		  x: -0.1
+		  y: 0.0
+		  z: 0.0
+		angular: 
+		  x: 0.0
+		  y: 0.0
+		  z: 0.0
+		```
+	
+	- non è un problema del modello: è esattamente identico a quello del precedente assignment (erl2 quello vecchio), funzionava, deve continuare a funzionare
+	- ... se provassi a cambiare il controller?
+	- potrebbe esserci un problema col local planner
+	- credo che il problema possa essere più stupido di quel che sembra: il robot non riesce a curvare per via delle ruote dietro ... l'altro nodo ignorava questo aspetto dinamico, *ma a quanto pare a move_base non sfugge proprio nulla.* ci fosse un modo per diminuire l'attrito delle ruote dietro e renderle così indifferenti alla rotazione...
+- il problema è più fastidioso di quel che sembra: nemmeno annullando l'attrito si riesce. il local planner nella visualizzazione RViz mostra un buco nero davanti al robot, segno che ha individuato un ostacolo, perciò indietreggia... il problema è che non c'è alcun ostacolo!
+	- il problema potrebbe essere nel laucnher? ha senso? 
+		- l'unica cosa regolabile da launch è GMapping, quindi no
+	- allora il problema è in qualche configuration file...
+	- prima però voglio provare a muovere il robot inviando direttamente un comando su cmd_vel e vedere che succede...
+		- muoversi si muove...
+- ... e mi viene un altro dubbio:
+	- i sensori laser vanno ad incidere sulle ruote di fianco ... questo in effetti potrebbe portare MoveBase a vedere degli ostacoli attorno al robot, e preferire così un certo tipo di movimento per evitare l'ostacolo
+	- la soluzione potrebbe quindi essere spostare il sensore laser in avanti...
+	- provo ... 
+	- ora che ho modificato il modello, passo a provare con move base ... **E PROBLEMA RISOLTO SIGNORI**: ora va dove voglio io!
+- **COMMIT**: "working on robot model (move_base laser issue)"
+

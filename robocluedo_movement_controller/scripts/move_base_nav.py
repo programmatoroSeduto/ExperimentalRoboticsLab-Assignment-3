@@ -227,6 +227,20 @@ def cbk_odometry( data ):
 
 
 
+topic_move_base_goal = "/move_base/goal"
+''' the topic for sending the target to the navigation stack
+'''
+
+cl_move_base = None
+''' (client handle) move base goal
+'''
+
+topic_move_base_cancel = ""
+
+def send_target(  )
+
+
+
 state_ = 0
 ''' the current state of the node
 '''

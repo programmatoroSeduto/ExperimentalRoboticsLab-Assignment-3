@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="odometry-and-navigation_8md" kind="file" language="Markdown">
+    <compoundname>odometry-and-navigation.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Notes<sp/>about<sp/>Navigation<sp/>and<sp/>Odometry</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Odometry<sp/>message</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**complete<sp/>reference**<sp/>:<sp/>`nav_msgs/Odometry`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>the<sp/>content<sp/>of<sp/>the<sp/>message:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>This<sp/>represents<sp/>an<sp/>estimate<sp/>of<sp/>a<sp/>position<sp/>and<sp/>velocity<sp/>in<sp/>free<sp/>space.<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">#<sp/>The<sp/>pose<sp/>in<sp/>this<sp/>message<sp/>should<sp/>be<sp/>specified<sp/>in<sp/>the<sp/>coordinate<sp/>frame<sp/>given<sp/>by<sp/>header.frame_id.</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>The<sp/>twist<sp/>in<sp/>this<sp/>message<sp/>should<sp/>be<sp/>specified<sp/>in<sp/>the<sp/>coordinate<sp/>frame<sp/>given<sp/>by<sp/>the<sp/>child_frame_id</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Header<sp/>header</highlight></codeline>
+<codeline><highlight class="normal">string<sp/>child_frame_id</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/PoseWithCovariance<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal">geometry_msgs/TwistWithCovariance<sp/>twist</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>TwistWithCovariance<sp/>message</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**complete<sp/>reference**<sp/>:<sp/>`geometry_msgs/TwistWithCovariance`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">message<sp/>content:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>This<sp/>expresses<sp/>velocity<sp/>in<sp/>free<sp/>space<sp/>with<sp/>uncertainty.</highlight></codeline>
+<codeline><highlight class="normal">Twist<sp/>twist</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Row-major<sp/>representation<sp/>of<sp/>the<sp/>6x6<sp/>covariance<sp/>matrix</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>The<sp/>orientation<sp/>parameters<sp/>use<sp/>a<sp/>fixed-axis<sp/>representation.</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>In<sp/>order,<sp/>the<sp/>parameters<sp/>are:</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>(x,<sp/>y,<sp/>z,<sp/>rotation<sp/>about<sp/>X<sp/>axis,<sp/>rotation<sp/>about<sp/>Y<sp/>axis,<sp/>rotation<sp/>about<sp/>Z<sp/>axis)</highlight></codeline>
+<codeline><highlight class="normal">float64[36]<sp/>covariance</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Twist<sp/>message</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**complete<sp/>reference**<sp/>:<sp/>`geometry_msgs/Twist`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>This<sp/>expresses<sp/>velocity<sp/>in<sp/>free<sp/>space<sp/>broken<sp/>into<sp/>its<sp/>linear<sp/>and<sp/>angular<sp/>parts.</highlight></codeline>
+<codeline><highlight class="normal">Vector3<sp/><sp/>linear</highlight></codeline>
+<codeline><highlight class="normal">Vector3<sp/><sp/>angular</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Vector3<sp/>message</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**complete<sp/>reference**<sp/>:<sp/>`geometry_msgs/Vector3`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>x</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>y</highlight></codeline>
+<codeline><highlight class="normal">float64<sp/>z</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>PoseWithCovariance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**complete<sp/>reference**<sp/>:<sp/>`geometry_msgs/PoseWithCovariance.msg`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">message<sp/>content:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>This<sp/>represents<sp/>a<sp/>pose<sp/>in<sp/>free<sp/>space<sp/>with<sp/>uncertainty.</highlight></codeline>
+<codeline><highlight class="normal">Pose<sp/>pose</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Row-major<sp/>representation<sp/>of<sp/>the<sp/>6x6<sp/>covariance<sp/>matrix</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>The<sp/>orientation<sp/>parameters<sp/>use<sp/>a<sp/>fixed-axis<sp/>representation.</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>In<sp/>order,<sp/>the<sp/>parameters<sp/>are:</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>(x,<sp/>y,<sp/>z,<sp/>rotation<sp/>about<sp/>X<sp/>axis,<sp/>rotation<sp/>about<sp/>Y<sp/>axis,<sp/>rotation<sp/>about<sp/>Z<sp/>axis)</highlight></codeline>
+<codeline><highlight class="normal">float64[36]<sp/>covariance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/_docs/odometry-and-navigation.md"/>
+  </compounddef>
+</doxygen>

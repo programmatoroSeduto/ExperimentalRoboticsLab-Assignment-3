@@ -370,6 +370,63 @@ rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false
 <li><p>e ora torniamo ad implementare questo bellissimo nodo</p></li>
 <li><p><strong>COMMIT</strong>: “workign on nvigation (implementation of the new navigation service)”</p></li>
 </ul>
+<hr class="docutils" />
+<p>e torniamo al lavoro sul navigation system</p>
+<ul>
+<li><p>occorre aggiungere la “action” move_base…</p>
+<ul class="simple">
+<li><p>…che tratterò come un topic per il momento, <em>perchè sono pigro</em></p></li>
+<li><p>recupero la documentazione su move_base dal vecchiop assignment</p></li>
+<li><p>… e ovviamnete manca la parte su come inviare la richiesta di cancellazione tramite topic, dannato me</p></li>
+</ul>
+</li>
+<li><p><strong>ALT FERMI TUTTI</strong> c’è un grosso problema con move_base … al solito</p>
+<ul>
+<li><p>il robot continua ad indietreggiare quando move_base è attivo</p></li>
+<li><p>la traiettoria calcolata parte <em>dal retro del robot</em> … eppure go to point ha sempre funzionato, quindi perchè move_base da il comando invertito? <em>forse un problema col modello urdf?</em></p></li>
+<li><p>che genere di twist viene inviato da move_base?</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>linear: 
+  x: -0.1
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+</pre></div>
+</div>
+</li>
+<li><p>non è un problema del modello: è esattamente identico a quello del precedente assignment (erl2 quello vecchio), funzionava, deve continuare a funzionare</p></li>
+<li><p>… se provassi a cambiare il controller?</p></li>
+<li><p>potrebbe esserci un problema col local planner</p></li>
+<li><p>credo che il problema possa essere più stupido di quel che sembra: il robot non riesce a curvare per via delle ruote dietro … l’altro nodo ignorava questo aspetto dinamico, <em>ma a quanto pare a move_base non sfugge proprio nulla.</em> ci fosse un modo per diminuire l’attrito delle ruote dietro e renderle così indifferenti alla rotazione…</p></li>
+</ul>
+</li>
+<li><p>il problema è più fastidioso di quel che sembra: nemmeno annullando l’attrito si riesce. il local planner nella visualizzazione RViz mostra un buco nero davanti al robot, segno che ha individuato un ostacolo, perciò indietreggia… il problema è che non c’è alcun ostacolo!</p>
+<ul class="simple">
+<li><p>il problema potrebbe essere nel laucnher? ha senso?</p>
+<ul>
+<li><p>l’unica cosa regolabile da launch è GMapping, quindi no</p></li>
+</ul>
+</li>
+<li><p>allora il problema è in qualche configuration file…</p></li>
+<li><p>prima però voglio provare a muovere il robot inviando direttamente un comando su cmd_vel e vedere che succede…</p>
+<ul>
+<li><p>muoversi si muove…</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>… e mi viene un altro dubbio:</p>
+<ul class="simple">
+<li><p>i sensori laser vanno ad incidere sulle ruote di fianco … questo in effetti potrebbe portare MoveBase a vedere degli ostacoli attorno al robot, e preferire così un certo tipo di movimento per evitare l’ostacolo</p></li>
+<li><p>la soluzione potrebbe quindi essere spostare il sensore laser in avanti…</p></li>
+<li><p>provo …</p></li>
+<li><p>ora che ho modificato il modello, passo a provare con move base … <strong>E PROBLEMA RISOLTO SIGNORI</strong>: ora va dove voglio io!</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “working on robot model (move_base laser issue)”</p></li>
+</ul>
 </div>
 </div>
 
