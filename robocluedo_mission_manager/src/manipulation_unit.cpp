@@ -22,9 +22,11 @@
 #include "ros/ros.h"
 #include "robocluedo_rosplan_msgs/ManipulationCommand.h"
 #include "robocluedo_movement_controller_msgs/ManipulatorPosition.h"
+#include "robocluedo_movement_controller_msgs/ManipulatorPositionAsync.h"
 #include "robocluedo_movement_controller_msgs/Pose2D.h"
 #include "visualization_msgs/MarkerArray.h"
 #include "visualization_msgs/Marker.h"
+#include "std_srvs/SetBool.h"
 
 #include <map>
 #include <signal.h>
@@ -41,12 +43,19 @@
 #define SERVICE_MANIP "/tip_pos"
 
 #define TOPIC_MARMERS "/visualization_marker"
+#define TOPIC_MANIP_ASYNC "/tip_pos_async"
+
+#define SERVICE_RANDOM_ARM_SWITCH "/tip_pos_auto_switch"
 
 #define POSE_HOME 0
-#define POSE_EXTENDED 1
-#define POSE_LOW 2
-#define POSE_FRONT_LOW 3
-#define POSE_FRONT_HIGH 4
+#define POSE_CAM_LEFT 1
+#define POSE_CAM_RIGHT 2
+#define POSE_CAM_BACK 3
+#define POSE_CAM_LOW 4
+#define POSE_CAM_LOW_LEFT 5
+#define POSE_CAM_LOW_BACK 6
+#define POSE_CAM_LOW_RIGHT 7
+#define POSE_HOME_LOW 8
 
 /********************************************//**
  *  
@@ -67,11 +76,6 @@ public:
 	/// node constructor
 	node_manipulation_unit( )
 	{
-		// rosplan manipulation service
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_ROBOPLAN_MANIP  ) << "..." );
-		srv_roboplan_manip = nh.advertiseService( SERVICE_ROBOPLAN_MANIP, &node_manipulation_unit::cbk_roboplan_manip, this );
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_ROBOPLAN_MANIP  ) << "... ok" );
-		
 		// manipulation controller
 		TLOG( "Opening client " << LOGSQUARE( SERVICE_MANIP ) << "..." );
 		cl_manip = nh.serviceClient<robocluedo_movement_controller_msgs::ManipulatorPosition>( SERVICE_MANIP );
@@ -82,122 +86,58 @@ public:
 		}
 		TLOG( "Opening client " << LOGSQUARE( SERVICE_MANIP ) << "... OK" );
 		
-		// topic markers
-		TLOG( "sub topic " << TOPIC_MARMERS << " ... " );
-		sub_markers = nh.subscribe( TOPIC_MARMERS, 1, &node_manipulation_unit::cbk_markers, this );
-		TLOG( "sub topic " << TOPIC_MARMERS << " ...  OK" );
+		TLOG( "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ARM_SWITCH ) << "..." );
+		srv_auto_manip_switch = nh.advertiseService( SERVICE_RANDOM_ARM_SWITCH, &node_manipulation_unit::cbk_auto_manip_switch, this );
+		TLOG( "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ARM_SWITCH ) << "... OK" );
+		
+		// publisher
+		TLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... " );
+		pub_motion_async = nh.advertise<robocluedo_movement_controller_msgs::ManipulatorPositionAsync>( TOPIC_MANIP_ASYNC, 3 );
+		TLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... OK" );
 	}
 	
-	/// spin function: just swait for shutdown
+	/// spin function: send a new pose each 15 seconds
 	void spin( )
 	{
-		// simple spin
-		ros::waitForShutdown( );
+		robocluedo_movement_controller_msgs::ManipulatorPositionAsync msg;
+		
+		ros::Duration d( 5 );
+		while( ros::ok( ) )
+		{
+			if( auto_manip_active )
+			{
+				msg.command = rand( ) % 9;
+				msg.enabled = true;
+				
+				TLOG( "new pose: " << msg.command );
+				
+				pub_motion_async.publish( msg );
+			}
+			else
+			{
+				msg.command = 0;
+				msg.enabled = false;
+				
+				pub_motion_async.publish( msg );
+			}
+			
+			d.sleep( );
+		}
 	}
 	
-	/********************************************//**
-	 *  
-	 * \brief service implementation for the rosplan interface
-	 * 
-	 * @param req
-	 * @param res
-	 * 
-	 * @returns always true
-	 * 
-	 ***********************************************/
-	bool cbk_roboplan_manip( 
-		robocluedo_rosplan_msgs::ManipulationCommand::Request& req, 
-		robocluedo_rosplan_msgs::ManipulationCommand::Response& res )
+	/** switch for the automatic manipulation */
+	bool cbk_auto_manip_switch( 
+		std_srvs::SetBool::Request& req, std_srvs::SetBool::Response& res )
 	{
-		TLOG( "received a request" << (req.home_position? " -- home position" : "") );
+		auto_manip_active = req.data;
 		
-		if( !found_markers )
-		{
-			TLOG( "waiting for markers... " );
-			ros::Rate r(5);
-			do
-				r.sleep();
-			while( !found_markers );
-			TLOG( "found markers! " );
-		}
+		if( req.data )
+			TLOG( "auto manipulation ENABLED" );
+		else
+			TLOG( "auto manipulation DISABLED" );
 		
-		// pass the request to the manipulation controller
-		robocluedo_movement_controller_msgs::ManipulatorPosition cmd;
-		cmd.request.command = ( req.home_position? POSE_HOME : ( waypoint_heigth[req.waypoint] ? POSE_FRONT_HIGH : POSE_FRONT_LOW ) );
-		
-		if( !this->cl_manip.call( cmd ) )
-		{
-			TWARN( "unable to make a service request to SRV "<< SERVICE_MANIP << " -- failed calling service " 
-				<< LOGSQUARE( SERVICE_MANIP ) 
-				<< (!cl_manip.exists( ) ? " -- it seems not opened" : "") );
-			
-			res.success = false;
-			return true;
-		}
-		
-		res.success = cmd.response.success;
-		if( !cmd.response.success )
-			TWARN( "manipulator command FAILED -- explaination: " << cmd.response.details );
-		
+		res.success = true;
 		return true;
-	}
-	
-	/** "one-shot" listener for the markers from the Oracle */
-	void cbk_markers( const visualization_msgs::MarkerArray::ConstPtr& data )
-	{
-		TLOG( "reading markers ... " );
-		
-		// read the markers
-		int i = 0;
-		float max_h = 0.f;
-		for( const visualization_msgs::Marker& mrk : data->markers )
-		{
-			/*
-			std::string marker_name = SS("wp") + SSS(i+1);
-			
-			robocluedo_movement_controller_msgs::Pose2D markerpose;
-			
-			markerpose.x = mrk.pose.position.x * SCALING_FACTOR;
-			markerpose.y = mrk.pose.position.y * SCALING_FACTOR;
-			*/
-			if( mrk.pose.position.z > max_h )
-				max_h = mrk.pose.position.z;
-			/*
-			markerpose.yaw = atan2( markerpose.y, markerpose.x ); // atan2 from -pi to pi
-			if( markerpose.yaw > 3.135 )
-				markerpose.yaw = 3.135; 
-			else if( markerpose.yaw < -3.135 )
-				markerpose.yaw = 3.135;
-			
-			waypoints[marker_name] = markerpose;
-			
-			++i;
-			TLOG( "received (" << i << ") marker with data (x=" << markerpose.x << ", y=" << markerpose.y << ", yaw= " << markerpose.yaw << ")" );
-			*/
-		}
-		
-		i = 0;
-		for( const visualization_msgs::Marker& mrk : data->markers )
-		{
-			std::string marker_name = SS("wp") + SSS(i+1);
-			waypoint_heigth[marker_name] = ( mrk.pose.position.z >= max_h );
-		}
-			
-		
-		// even add the center
-		{
-			robocluedo_movement_controller_msgs::Pose2D markerpose;
-			markerpose.x = 0.0;
-			markerpose.y = 0.0;
-			markerpose.yaw = 0.0;
-			waypoints["center"] = markerpose;
-		}
-		
-		// unsubscribe
-		sub_markers.shutdown( );
-		
-		found_markers = true;
-		TLOG( "reading markers done -- found " << i << " markers" );
 	}
 	
 private:
@@ -205,23 +145,17 @@ private:
 	/// ROS node handle
     ros::NodeHandle nh;
     
-    /// ROSPlan manipulation controller service
-    ros::ServiceServer srv_roboplan_manip;
-    
     /// manipulation controller client
     ros::ServiceClient cl_manip;
     
-    /// subscription handle to markers from the Oracle
-	ros::Subscriber sub_markers;
-	
-	/// signal fro the markers listener
-	bool found_markers = false;
-	
-	/// positions of the waypoints
-	std::map<std::string, robocluedo_movement_controller_msgs::Pose2D> waypoints;
-	
-	/// heigth of the markers
-	std::map<std::string, bool> waypoint_heigth;
+    /// subscription for the async motion
+    ros::Publisher pub_motion_async;
+    
+    /// switch for the authomatic manipulation
+    ros::ServiceServer srv_auto_manip_switch;
+    
+    /// automatic manipulation on? (default: not active)
+    bool auto_manip_active = false;
 };
 
 
@@ -237,7 +171,7 @@ int main( int argc, char* argv[] )
 	ros::init( argc, argv, NODE_NAME, ros::init_options::NoSigintHandler );
 	signal( SIGINT, shut_msg );
 	
-	ros::AsyncSpinner spinner( 4 );
+	ros::AsyncSpinner spinner( 1 );
 	spinner.start( );
 	
 	TLOG( "starting ... " );

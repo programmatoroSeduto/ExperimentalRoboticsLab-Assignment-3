@@ -80,6 +80,8 @@ public:
 		wps.push_back("wp2");
 		wps.push_back("wp3");
 		wps.push_back("wp4");
+		wps.push_back("wp5");
+		wps.push_back("wp6");
 		
 		
 		// === init predicates === //

@@ -484,13 +484,224 @@
 <para><itemizedlist>
 <listitem><para>funzionare funziona</para>
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;working on manipulation (new postures)&quot;</para>
-</listitem><listitem><para>.... ma devo ammettere che non mi piace molto come il robot fa il planning</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><itemizedlist>
+<listitem><para>... ma devo ammettere che non mi piace molto come il robot fa il planning, e non mi convince il fatto di non riuscire a fare il planning cartesiano, non mi convince proprio</para>
+</listitem><listitem><para>vorrei provare a fare una modifica dell&apos;attuale nodo (in caso, backup e si ritorna a quello funzionante)<itemizedlist>
+<listitem><para>anzitutto, backup</para>
+</listitem><listitem><para>e importazione dell&apos;attuale documentazione MoveIt in questo spazio di lavoro</para>
+</listitem><listitem><para>voglio provare con una configurazione più precisa di moveit</para>
+</listitem><listitem><para>iniziamo dal definire un end effector</para>
+</listitem><listitem><para>compila? compila</para>
+</listitem><listitem><para>... ma la definizione dell&apos;end effector non funziona: penso che il lavoro vada fatto da moveit setup assistant, proviamo</para>
+</listitem><listitem><para>ho provato ad aggiungere l&apos;end effector da setup assistant, vediamo che fa ...</para>
+</listitem><listitem><para><emphasis>sembra acer accettato l&apos;end effector!</emphasis></para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>per creare l&apos;end effector nel setup assistant</bold>:<itemizedlist>
+<listitem><para>crea un group che contiene solo un link (usa le advanced options), <emphasis>cluedo_link</emphasis>, chiamalo <emphasis>ee</emphasis>, solite impostazioni per i groups</para>
+</listitem><listitem><para>definisci un end effector di nome <emphasis>cluedo_ee</emphasis> con group <emphasis>ee</emphasis> parent link <emphasis>arm_group</emphasis> e parent link <emphasis>arm_link_03</emphasis></para>
+</listitem><listitem><para>aggiorna il package (non serve aggiornare i gazebo, demo e demo_gazebo, dovrai riaggiornare solo i controllers yaml)</para>
+</listitem></itemizedlist>
+</para>
+<para>e ora vediamo se funge...</para>
+<para><itemizedlist>
+<listitem><para>aggiungo al messaggio il target dell&apos;end effector</para>
+</listitem><listitem><para>e aggiungo anche il planning cartesiano<itemizedlist>
+<listitem><para>per ora, facile così</para>
+</listitem><listitem><para>compila?</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>fastidiosissimo:</para>
+<para><programlisting><codeline><highlight class="normal">The<sp/>dependencies<sp/>of<sp/>the<sp/>message/service<sp/>&apos;robocluedo_movement_controller_msgs/ManipulatorPosition&apos;<sp/>have<sp/>changed.<sp/>Please<sp/>rerun<sp/>cmake.</highlight></codeline>
+<codeline><highlight class="normal">make[2]:<sp/>***<sp/>[erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition.dir/build.make:57:<sp/>erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition]<sp/>Error<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">make[1]:<sp/>***<sp/>[CMakeFiles/Makefile2:24138:<sp/>erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition.dir/all]<sp/>Error<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">make[1]:<sp/>***<sp/>Waiting<sp/>for<sp/>unfinished<sp/>jobs....</highlight></codeline>
+</programlisting></para>
+<para>e la soluzione ancora meglio... <ulink url="https://stackoverflow.com/questions/56769404/following-error-occured-when-compiling-custom-message-in-ros">qui</ulink></para>
+<para>per risolvere questa roba improbabile è bastato ritoccare il cmake (ma veramente, invertire due dipendenze! e nient&apos;altro) per far scattare la parte della compilazione che lui non faceva perchè ... motivo ignoto. ma si può? cazz</para>
+<para><itemizedlist>
+<listitem><para>comunque, ora compila</para>
+</listitem><listitem><para>e test ... niente, il planner non riesce a trovare la traiettoria</para>
+</listitem><listitem><para>direi di tornare alla versione precedente.</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on manipulation (trying something more ... but not working)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para>ora la parte noiosa: il package ROSPlan</para>
+<para><itemizedlist>
+<listitem><para>aggiornamento della topologia nel pddl<itemizedlist>
+<listitem><para>la topologia del terzo assignmento comprende 6 waypoint (più un centro, è sottinteso)</para>
+<para>```text Room1: (-4,-3) Room2: (-4,2) Room3: (-4,7) Room4: (5,-7) Room5: (5,-3) Room6: (5,1) ```</para>
+</listitem><listitem><para>modifica al problem pddl</para>
+</listitem><listitem><para>risolve? direi proprio di sì. <emphasis>fatto</emphasis>.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>aggiornamento della kb interface per tenere conto dei 6 waypoints<itemizedlist>
+<listitem><para>aggiornamento</para>
+</listitem><listitem><para>e si compila</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>l&apos;oracolo dovrebbe pubblicare i markers anche qui (aggiungere la pubblicazione dei marker)<itemizedlist>
+<listitem><para>solito meccanismo, prendi dall&apos;assignment 2 ... o forse sarebbe meglio fare un nodo ausiliario che pubblichi i markers?</para>
+</listitem><listitem><para><emphasis>ecco sì, sarebbe meglio</emphasis>: non voglio modificare il nodo del professore, il gioco è anche un po&apos; quello, no?</para>
+</listitem><listitem><para>e quind, <bold>nuovo nodo</bold>: marker_publisher (c++, per motivi di profonda ... pigrizia)</para>
+</listitem><listitem><para>implementazione</para>
+</listitem><listitem><para>compila? compila.</para>
+</listitem><listitem><para>e adesso proviamolo un po&apos;</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>exp_assignment3<sp/>simulation_marker_publisher</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>direi che funge!</para>
+</listitem><listitem><para>aggiornamento della topologia anche nel mission manager (navigation unit)<itemizedlist>
+<listitem><para>se non ricordo male il nodo leggeva i waypoints direttamente dal canale dei markers...</para>
+</listitem><listitem><para>come pensavo, quindi modifiche da fare non ce ne sono</para>
+</listitem><listitem><para>toglierei tutto il codice per distinguere le altezze, dato che tutti i markers sono &quot;alla stessa altezza&quot;<itemizedlist>
+<listitem><para>sia dalla nav unit ...</para>
+</listitem><listitem><para>... che dalla manip unit (ho altro in servo per lei) <bold>NO</bold>: qui serve un lavoro più dettagliato</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>aggiornamento della selezione del controller nella navigation unit<itemizedlist>
+<listitem><para>c&apos;era solo da cambiare uno 0 con un 1 ...</para>
+</listitem><listitem><para>proviamo se funziona ancora, giusto per</para>
+</listitem><listitem><para><bold>e infatti NON funziona</bold> ... fortuna che faccio i test ogni volta che modifico</para>
+<para>```bash </para>
+</listitem></itemizedlist>
+</para>
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md36">
+<sect1 id="md__docs_dev-log_1autotoc_md38">
+<title>shell 1</title>
+<para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md39">
+<title>shell 2</title>
+<para>roslaunch robocluedo_movement_controller navigation_system.launch &amp; rosrun robocluedo_movement_controller navigation_manager &amp; rosrun exp_assignment3 simulation_marker_publisher &amp; rosrun robocluedo_mission_manager navigation_unit</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md40">
+<title>shell 3</title>
+<para>rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp1&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp2&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp3&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp4&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp5&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp6&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;center&apos;&quot;</para>
+<para>```</para>
+<para><itemizedlist>
+<listitem><para><emphasis>ora funziona.</emphasis></para>
+</listitem></itemizedlist>
+</para>
+<para>l&apos;azione <emphasis>collect hint</emphasis> diventa una simulated action in questa versione del progetto<itemizedlist>
+<listitem><para>cambiare i percorsi del PDDL nei launcher del plan</para>
+</listitem></itemizedlist>
+</para>
+<para>ora, come ultima cosa, la modifica della manipulation unit, dopodichè dovrei essere pronto per iniziare l&apos;implementazione di arUco<itemizedlist>
+<listitem><para>essendo ora la <emphasis>collect-hint</emphasis> una simulated action, non dovrebbe più servire il servizio per la manipulation</para>
+</listitem><listitem><para>e non serve nemmeno ricevere dei markers</para>
+</listitem><listitem><para>voglio aprire un topic sul controller per far compiere al braccio movimenti asincroni (voglio che il braccio si muova tra le postures a disposizione mentr eil robot si muove, senza rimanere bloccato in un servizio)<itemizedlist>
+<listitem><para>per fare questo ovviamente devo creare un nuovo messaggio...</para>
+</listitem><listitem><para>implementazione</para>
+</listitem><listitem><para>compila? compila</para>
+</listitem><listitem><para>(che fatica...)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e proviamo</para>
+<para>```bash </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md41">
+<title>shell 1</title>
+<para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md42">
+<title>shell 2</title>
+<para>rosrun robocluedo_movement_controller manipulation_controller 2&gt;/dev/null</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md43">
+<title>shell 3</title>
+<para>rostopic list | grep tip </para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md44">
+<title>/tip_pos_async</title>
+<para>rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 2
+        enabled: true&quot; sleep 15 rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 4
+        enabled: true&quot; sleep 15 rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 6
+        enabled: true&quot; sleep 15 ```</para>
+<para><itemizedlist>
+<listitem><para><emphasis>e funziona</emphasis></para>
+</listitem><listitem><para>ultima cosa: topic aperto come publisher dalla manipulation unit</para>
+</listitem><listitem><para>e implementazione del publisher: una psoe a casotra le 9 disponibili ogni 10 secondi</para>
+</listitem><listitem><para>siccome potrebbe darmi fastidio che questo pubblichi una pose nuova senza dirmi nulla, voglio anche uno switch per questo nodo, basta una set bool</para>
+</listitem><listitem><para>compila? compila.</para>
+</listitem><listitem><para>e si prova:</para>
+<para>```bash </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md45">
+<title>shell 1</title>
+<para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md46">
+<title>shell 2</title>
+<para>rosrun robocluedo_movement_controller manipulation_controller 2&gt;/dev/null</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md47">
+<title>shell 3</title>
+<para>rosrun robocluedo_mission_manager manipulation_unit</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md48">
+<title>shell 4</title>
+<para>rosservice list | grep tip </para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md49">
+<title>/tip_pos</title>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md50">
+<title>/tip_pos_auto_switch</title>
+<para>rosservice call /tip_pos_auto_switch &quot;data: true&quot; </para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md51">
+<title>6 different poses</title>
+<para>sleep 60 rosservice call /tip_pos_auto_switch &quot;data: false&quot;</para>
+<para>```</para>
+<para><itemizedlist>
+<listitem><para>funziona.</para>
+</listitem><listitem><para>adesso, la domanda <emphasis>spigolosa</emphasis>: dove mettere le richieste per la automanipulation? dipende dal landmark<itemizedlist>
+<listitem><para>dirty e solve non richiedono questo movimento automatico</para>
+</listitem><listitem><para>mentre collect lo richiede</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e la modifica va fatta in ...<itemizedlist>
+<listitem><para>posso farla nel mission manager direttamente</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>quindi, modifiche</para>
+</listitem><listitem><para>(non posso provare il mission manager ora, ma se compila è tutto a posto per il tipo di modifiche che ho fatto)</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>COMMIT</bold>: &quot;changing PDDL topology, RViz markers, auto manipulation&quot;</para>
+<para><hruler/>
+</para>
+<para>(pronti pr ArUco)</para>
+<sect2 id="md__docs_dev-log_1autotoc_md53">
 <title>Note</title>
-<sect2 id="md__docs_dev-log_1autotoc_md37">
+<sect3 id="md__docs_dev-log_1autotoc_md54">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -498,6 +709,7 @@
 </listitem><listitem><para>unico difetto: il robot si ferma spesso per fare replanning, causando delle oscillazioni in avanti un po&apos; brusche </para>
 </listitem></itemizedlist>
 </para>
+</sect3>
 </sect2>
 </sect1>
     </detaileddescription>

@@ -43,7 +43,10 @@
 // i.e. use the bug_m motion planning algorithm
 #define NAV_ALGO_BUG_M 0
 
-#define SCALING_FACTOR 0.99
+// move base motion planning algorithm
+#define NAV_ALGO_MOVE_BASE 1
+
+#define SCALING_FACTOR 1.0
 
 class node_navigation_unit
 {
@@ -83,7 +86,7 @@ public:
 		TLOG( "opening client " << SERVICE_SET_ALGORITHM << " ... OK" );
 	}
 	
-	/** spin function: just swait for shutdown */
+	/** spin function: just wait for shutdown */
 	void spin( )
 	{
 		// simple spin
@@ -102,7 +105,8 @@ public:
 			TLOG( "enabling motion planning algorithm..." );
 			
 			robocluedo_movement_controller_msgs::Algorithm algo;
-			algo.request.algorithm = NAV_ALGO_BUG_M;
+			// algo.request.algorithm = NAV_ALGO_BUG_M;
+			algo.request.algorithm = NAV_ALGO_MOVE_BASE;
 			algo.request.enabled = true;
 			
 			if( !cl_nav_algorithm.call( algo ) )
@@ -174,7 +178,7 @@ public:
 		
 		// read the markers
 		int i = 0;
-		float max_h = 0.f;
+		// float max_h = 0.f;
 		for( const visualization_msgs::Marker& mrk : data->markers )
 		{
 			std::string marker_name = SS("wp") + SSS(i+1);
@@ -183,9 +187,6 @@ public:
 			
 			markerpose.x = mrk.pose.position.x * SCALING_FACTOR;
 			markerpose.y = mrk.pose.position.y * SCALING_FACTOR;
-			
-			if( mrk.pose.position.z > max_h )
-				max_h = mrk.pose.position.z;
 			
 			markerpose.yaw = atan2( markerpose.y, markerpose.x ); // atan2 from -pi to pi
 			if( markerpose.yaw > 3.135 )
@@ -198,14 +199,6 @@ public:
 			++i;
 			TLOG( "received (" << i << ") marker with data (x=" << markerpose.x << ", y=" << markerpose.y << ", yaw= " << markerpose.yaw << ")" );
 		}
-		
-		i = 0;
-		for( const visualization_msgs::Marker& mrk : data->markers )
-		{
-			std::string marker_name = SS("wp") + SSS(i+1);
-			waypoint_heigth[marker_name] = ( mrk.pose.position.z >= max_h );
-		}
-			
 		
 		// even add the center
 		{
@@ -242,9 +235,6 @@ private:
 	
 	/// positions of the waypoints
 	std::map<std::string, robocluedo_movement_controller_msgs::Pose2D> waypoints;
-	
-	/// heigth of the markers
-	std::map<std::string, bool> waypoint_heigth;
 	
 	/// signal fro the markers listener
 	bool found_markers = false;

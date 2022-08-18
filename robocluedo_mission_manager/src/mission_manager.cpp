@@ -31,6 +31,7 @@
 #include "std_srvs/Trigger.h"
 #include "erl2/Oracle.h"
 #include "erl2/ErlOracle.h"
+#include "std_srvs/SetBool.h"
 
 #include <map>
 #include <iostream>
@@ -99,6 +100,9 @@ string value
 /// the mission has failed
 #define MISSION_STATUS_FAULT 7
 
+/// manipulation unit service for auto manipulation
+#define SERVICE_RANDOM_ARM_SWITCH "/tip_pos_auto_switch"
+
 class node_mission_manager
 {
 public:
@@ -126,6 +130,10 @@ public:
 		TLOG( "subscribing to " << TOPIC_ORACLE_HINT << " ... " );
 		sub_oracle_hint = nh.subscribe( TOPIC_ORACLE_HINT, 10, &node_mission_manager::cbk_oracle_hint, this );
 		TLOG( "subscribing to " << TOPIC_ORACLE_HINT << " ... OK" );
+		
+		// auto manipulation
+		if( !open_client<std_srvs::SetBool>( SERVICE_RANDOM_ARM_SWITCH, cl_auto_manip ) )
+			return;
 	}
 	
 	/** node working cycle */
@@ -146,6 +154,9 @@ public:
 		// the robot has no more waypoints to explore
 		bool last_waypoint = false;
 		
+		// turn on or off the auto manipulation
+		std_srvs::SetBool auto_manip_msg;
+		
 		WTLOG( "mission manager STARTING WORKING CYCLE" );
 		TLOG( "who killed Dr black?" );
 		WAITKEY;
@@ -158,6 +169,10 @@ public:
 			{
 				WTLOG( "status: " << "MISSION_STATUS_REPLAN" );
 				WAITKEY;
+				
+				// turn off the auto manipulation
+				auto_manip_msg.request.data = false;
+				cl_auto_manip.call( auto_manip_msg );
 				
 				// make the plan with LANDMARK_REPLAN
 				robocluedo_rosplan_msgs::RosplanPipelineManagerService::Response res = make_plan( LANDMARK_REPLAN );
@@ -239,6 +254,10 @@ public:
 			{
 				WTLOG( "status: " << "MISSION_STATUS_COLLECT" );
 				WAITKEY;
+				
+				// turn on the auto manipulation
+				auto_manip_msg.request.data = true;
+				cl_auto_manip.call( auto_manip_msg );
 				
 				// make the plan with LANDMARK_COLLECT
 				robocluedo_rosplan_msgs::RosplanPipelineManagerService::Response res = make_plan( LANDMARK_COLLECT );
@@ -392,6 +411,11 @@ public:
 			case MISSION_STATUS_SOLVE: // landmark
 			{
 				WTLOG( "status: " << "MISSION_STATUS_SOLVE" );
+				WAITKEY;
+				
+				// turn off the auto manipulation
+				auto_manip_msg.request.data = false;
+				cl_auto_manip.call( auto_manip_msg );
 				
 				// check ready to solve (just to be super sure)
 				if( !ready_to_solve )
@@ -786,6 +810,9 @@ private:
 	
 	/// the node handle
 	ros::NodeHandle nh;
+	
+	/// auto manipulation client
+	ros::ServiceClient cl_auto_manip;
 	
 	/// client rosplan pipeline manager
 	ros::ServiceClient cl_rosplan_pipeline;

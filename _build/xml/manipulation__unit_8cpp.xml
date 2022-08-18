@@ -5,18 +5,20 @@
     <includes local="yes">ros/ros.h</includes>
     <includes local="yes">robocluedo_rosplan_msgs/ManipulationCommand.h</includes>
     <includes local="yes">robocluedo_movement_controller_msgs/ManipulatorPosition.h</includes>
+    <includes local="yes">robocluedo_movement_controller_msgs/ManipulatorPositionAsync.h</includes>
     <includes local="yes">robocluedo_movement_controller_msgs/Pose2D.h</includes>
     <includes local="yes">visualization_msgs/MarkerArray.h</includes>
     <includes local="yes">visualization_msgs/Marker.h</includes>
+    <includes local="yes">std_srvs/SetBool.h</includes>
     <includes local="no">map</includes>
     <includes local="no">signal.h</includes>
     <includes local="no">math.h</includes>
     <includes local="no">string</includes>
     <incdepgraph>
-      <node id="5">
+      <node id="6">
         <label>robocluedo_movement_controller_msgs/Pose2D.h</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>visualization_msgs/MarkerArray.h</label>
       </node>
       <node id="3">
@@ -45,17 +47,27 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="11">
+      <node id="13">
         <label>string</label>
       </node>
-      <node id="8">
+      <node id="10">
         <label>map</label>
       </node>
-      <node id="7">
+      <node id="5">
+        <label>robocluedo_movement_controller_msgs/ManipulatorPositionAsync.h</label>
+      </node>
+      <node id="8">
         <label>visualization_msgs/Marker.h</label>
       </node>
       <node id="9">
+        <label>std_srvs/SetBool.h</label>
+      </node>
+      <node id="11">
         <label>signal.h</label>
       </node>
       <node id="4">
@@ -64,7 +76,7 @@
       <node id="2">
         <label>ros/ros.h</label>
       </node>
-      <node id="10">
+      <node id="12">
         <label>math.h</label>
       </node>
     </incdepgraph>
@@ -150,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="34" column="10" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="34" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="36" column="10" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="manipulation__unit_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" prot="public" static="no">
         <name>SSS</name>
@@ -162,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="35" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="35" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="37" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="manipulation__unit_8cpp_1a1ffaa7bfaff984375908b5c2eb156714" prot="public" static="no">
         <name>SERVICE_ROBOPLAN_MANIP</name>
@@ -173,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="38" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="38" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="40" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" prot="public" static="no">
         <name>SERVICE_MANIP</name>
@@ -184,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="41" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="41" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="43" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="manipulation__unit_8cpp_1a735ccfd0415c3273be69843313f0030e" prot="public" static="no">
         <name>TOPIC_MARMERS</name>
@@ -195,7 +207,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="43" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="43" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="45" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a5c3edaaad237014d12f44d7355479159" prot="public" static="no">
+        <name>TOPIC_MANIP_ASYNC</name>
+        <initializer>&quot;/tip_pos_async&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="46" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1ae01bd6357e88ba5fb5ff1b0f1f91c189" prot="public" static="no">
+        <name>SERVICE_RANDOM_ARM_SWITCH</name>
+        <initializer>&quot;/tip_pos_auto_switch&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="48" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="manipulation__unit_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" prot="public" static="no">
         <name>POSE_HOME</name>
@@ -206,10 +240,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="45" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="45" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="50" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="50" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="manipulation__unit_8cpp_1a1a91a5c6eb5f9d956907ef99a55fde46" prot="public" static="no">
-        <name>POSE_EXTENDED</name>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a06030c0476b31d6c53a3496ca5608802" prot="public" static="no">
+        <name>POSE_CAM_LEFT</name>
         <initializer>1</initializer>
         <briefdescription>
         </briefdescription>
@@ -217,10 +251,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="46" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="46" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="51" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="51" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="manipulation__unit_8cpp_1af3cf1ad007e09eff2b8209586939a3a6" prot="public" static="no">
-        <name>POSE_LOW</name>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a5a66ff8555e20f2484a2a83532528267" prot="public" static="no">
+        <name>POSE_CAM_RIGHT</name>
         <initializer>2</initializer>
         <briefdescription>
         </briefdescription>
@@ -228,10 +262,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="47" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="47" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="52" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="52" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="manipulation__unit_8cpp_1a0c261af135c0942669dbb3861532e2b1" prot="public" static="no">
-        <name>POSE_FRONT_LOW</name>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a2bc13395c8284555d9b193ca4374ba8c" prot="public" static="no">
+        <name>POSE_CAM_BACK</name>
         <initializer>3</initializer>
         <briefdescription>
         </briefdescription>
@@ -239,10 +273,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="48" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="48" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="53" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="53" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="manipulation__unit_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062" prot="public" static="no">
-        <name>POSE_FRONT_HIGH</name>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1aed3716646a8175c63e37310e54bfa9a8" prot="public" static="no">
+        <name>POSE_CAM_LOW</name>
         <initializer>4</initializer>
         <briefdescription>
         </briefdescription>
@@ -250,7 +284,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="49" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="49" bodyend="-1"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="54" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a2e21a4fa5f2ccc9418ff883df052caa4" prot="public" static="no">
+        <name>POSE_CAM_LOW_LEFT</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="55" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a84440ee207e077c6c6c1860e4c48b101" prot="public" static="no">
+        <name>POSE_CAM_LOW_BACK</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="56" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a1217e464a63e2d74133b66b8d8efc8e6" prot="public" static="no">
+        <name>POSE_CAM_LOW_RIGHT</name>
+        <initializer>7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="57" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="manipulation__unit_8cpp_1a3b3f77ba6a26d6d6e9c9fbbe8e22778d" prot="public" static="no">
+        <name>POSE_HOME_LOW</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="58" column="9" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -269,9 +347,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="228" column="6" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="228" bodyend="232"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="162" column="6" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="162" bodyend="166"/>
         <references refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" compoundref="manipulation__unit_8cpp" startline="18">TLOG</references>
-        <referencedby refid="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="manipulation__unit_8cpp" startline="235" endline="250">main</referencedby>
+        <referencedby refid="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="manipulation__unit_8cpp" startline="169" endline="184">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -293,11 +371,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="235" column="5" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="235" bodyend="250"/>
+        <location file="robocluedo_mission_manager/src/manipulation_unit.cpp" line="169" column="5" bodyfile="robocluedo_mission_manager/src/manipulation_unit.cpp" bodystart="169" bodyend="184"/>
         <references refid="manipulation__unit_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" compoundref="manipulation__unit_8cpp" startline="14">NODE_NAME</references>
-        <references refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="manipulation__unit_8cpp" startline="228" endline="232">shut_msg</references>
+        <references refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="manipulation__unit_8cpp" startline="162" endline="166">shut_msg</references>
         <references refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" compoundref="manipulation__unit_8cpp" startline="18">TLOG</references>
-        <references refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" compoundref="manipulation__unit_8cpp" startline="92" endline="96">node_manipulation_unit::spin</references>
+        <references refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" compoundref="manipulation__unit_8cpp" startline="100" endline="126">node_manipulation_unit::spin</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -324,202 +402,147 @@
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ros/ros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_rosplan_msgs/ManipulationCommand.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_movement_controller_msgs/ManipulatorPosition.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_movement_controller_msgs/Pose2D.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;visualization_msgs/MarkerArray.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;visualization_msgs/Marker.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;signal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34" refid="manipulation__unit_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SS(chr)<sp/>std::string(<sp/>chr<sp/>)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="manipulation__unit_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SSS(el)<sp/>std::to_string(<sp/>el<sp/>)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>rosplan<sp/>manipulation<sp/>command</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="manipulation__unit_8cpp_1a1ffaa7bfaff984375908b5c2eb156714" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVICE_ROBOPLAN_MANIP<sp/>&quot;/robocluedo/manipulator_command&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>manipulation<sp/>controller<sp/>service</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVICE_MANIP<sp/>&quot;/tip_pos&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="manipulation__unit_8cpp_1a735ccfd0415c3273be69843313f0030e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TOPIC_MARMERS<sp/>&quot;/visualization_marker&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_movement_controller_msgs/ManipulatorPositionAsync.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_movement_controller_msgs/Pose2D.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;visualization_msgs/MarkerArray.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;visualization_msgs/Marker.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;std_srvs/SetBool.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;signal.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="manipulation__unit_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SS(chr)<sp/>std::string(<sp/>chr<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="manipulation__unit_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SSS(el)<sp/>std::to_string(<sp/>el<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>rosplan<sp/>manipulation<sp/>command</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="manipulation__unit_8cpp_1a1ffaa7bfaff984375908b5c2eb156714" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVICE_ROBOPLAN_MANIP<sp/>&quot;/robocluedo/manipulator_command&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>manipulation<sp/>controller<sp/>service</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVICE_MANIP<sp/>&quot;/tip_pos&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45" refid="manipulation__unit_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_HOME<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46" refid="manipulation__unit_8cpp_1a1a91a5c6eb5f9d956907ef99a55fde46" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_EXTENDED<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47" refid="manipulation__unit_8cpp_1af3cf1ad007e09eff2b8209586939a3a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_LOW<sp/>2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="manipulation__unit_8cpp_1a0c261af135c0942669dbb3861532e2b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_FRONT_LOW<sp/>3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="manipulation__unit_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_FRONT_HIGH<sp/>4</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">/********************************************/</highlight></codeline>
-<codeline lineno="63" refid="classnode__manipulation__unit" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classnode__manipulation__unit" kindref="compound">node_manipulation_unit</ref></highlight></codeline>
-<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="68" refid="classnode__manipulation__unit_1aa56cb61dac7f3270ca379827de41666e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__manipulation__unit_1aa56cb61dac7f3270ca379827de41666e" kindref="member">node_manipulation_unit</ref>(<sp/>)</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>rosplan<sp/>manipulation<sp/>service</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1a1ffaa7bfaff984375908b5c2eb156714" kindref="member">SERVICE_ROBOPLAN_MANIP</ref><sp/><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>srv_roboplan_manip<sp/>=<sp/>nh.advertiseService(<sp/><ref refid="manipulation__unit_8cpp_1a1ffaa7bfaff984375908b5c2eb156714" kindref="member">SERVICE_ROBOPLAN_MANIP</ref>,<sp/>&amp;<ref refid="classnode__manipulation__unit_1a7334affee4fac593614b7c98b56f48b1" kindref="member">node_manipulation_unit::cbk_roboplan_manip</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1a1ffaa7bfaff984375908b5c2eb156714" kindref="member">SERVICE_ROBOPLAN_MANIP</ref><sp/><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>ok&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>manipulation<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cl_manip<sp/>=<sp/>nh.serviceClient&lt;robocluedo_movement_controller_msgs::ManipulatorPosition&gt;(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!cl_manip.waitForExistence(<sp/>ros::Duration(<sp/>60<sp/>)<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a59b71c836719259a2e9b1428ec35504c" kindref="member">TERR</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>contact<sp/>the<sp/>server<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>timeout<sp/>expired<sp/>(60s)<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>topic<sp/>markers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;sub<sp/>topic<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a735ccfd0415c3273be69843313f0030e" kindref="member">TOPIC_MARMERS</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sub_markers<sp/>=<sp/>nh.subscribe(<sp/><ref refid="manipulation__unit_8cpp_1a735ccfd0415c3273be69843313f0030e" kindref="member">TOPIC_MARMERS</ref>,<sp/>1,<sp/>&amp;<ref refid="classnode__manipulation__unit_1acc8dace053bce583b55a7109326042e6" kindref="member">node_manipulation_unit::cbk_markers</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;sub<sp/>topic<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a735ccfd0415c3273be69843313f0030e" kindref="member">TOPIC_MARMERS</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...<sp/><sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="92" refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" kindref="member">spin</ref>(<sp/>)</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>simple<sp/>spin</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::waitForShutdown(<sp/>);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment"><sp/><sp/><sp/><sp/>/********************************************/</highlight></codeline>
-<codeline lineno="108" refid="classnode__manipulation__unit_1a7334affee4fac593614b7c98b56f48b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__unit_1a7334affee4fac593614b7c98b56f48b1" kindref="member">cbk_roboplan_manip</ref>(<sp/></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::ManipulationCommand::Request&amp;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>,<sp/></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::ManipulationCommand::Response&amp;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref><sp/>)</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;received<sp/>a<sp/>request&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>(<ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.home_position?<sp/></highlight><highlight class="stringliteral">&quot;<sp/>--<sp/>home<sp/>position&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!found_markers<sp/>)</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;waiting<sp/>for<sp/>markers...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Rate<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>(5);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>.sleep();</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<sp/>!found_markers<sp/>);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;found<sp/>markers!<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pass<sp/>the<sp/>request<sp/>to<sp/>the<sp/>manipulation<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::ManipulatorPosition<sp/>cmd;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd.request.command<sp/>=<sp/>(<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.home_position?<sp/><ref refid="manipulation__unit_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" kindref="member">POSE_HOME</ref><sp/>:<sp/>(<sp/>waypoint_heigth[<ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.waypoint]<sp/>?<sp/><ref refid="manipulation__unit_8cpp_1a667ed3e8e9a6a9689a6c0228ef1fc062" kindref="member">POSE_FRONT_HIGH</ref><sp/>:<sp/><ref refid="manipulation__unit_8cpp_1a0c261af135c0942669dbb3861532e2b1" kindref="member">POSE_FRONT_LOW</ref><sp/>)<sp/>);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!this-&gt;cl_manip.call(<sp/>cmd<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643" kindref="member">TWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>make<sp/>a<sp/>service<sp/>request<sp/>to<sp/>SRV<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>--<sp/>failed<sp/>calling<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>(!cl_manip.exists(<sp/>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;<sp/>--<sp/>it<sp/>seems<sp/>not<sp/>opened&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/>cmd.response.success;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!cmd.response.success<sp/>)</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643" kindref="member">TWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;manipulator<sp/>command<sp/>FAILED<sp/>--<sp/>explaination:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cmd.response.details<sp/>);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45" refid="manipulation__unit_8cpp_1a735ccfd0415c3273be69843313f0030e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TOPIC_MARMERS<sp/>&quot;/visualization_marker&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="manipulation__unit_8cpp_1a5c3edaaad237014d12f44d7355479159" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TOPIC_MANIP_ASYNC<sp/>&quot;/tip_pos_async&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="manipulation__unit_8cpp_1ae01bd6357e88ba5fb5ff1b0f1f91c189" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SERVICE_RANDOM_ARM_SWITCH<sp/>&quot;/tip_pos_auto_switch&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="manipulation__unit_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_HOME<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="manipulation__unit_8cpp_1a06030c0476b31d6c53a3496ca5608802" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_LEFT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="manipulation__unit_8cpp_1a5a66ff8555e20f2484a2a83532528267" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_RIGHT<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="manipulation__unit_8cpp_1a2bc13395c8284555d9b193ca4374ba8c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_BACK<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="manipulation__unit_8cpp_1aed3716646a8175c63e37310e54bfa9a8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_LOW<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="manipulation__unit_8cpp_1a2e21a4fa5f2ccc9418ff883df052caa4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_LOW_LEFT<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="manipulation__unit_8cpp_1a84440ee207e077c6c6c1860e4c48b101" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_LOW_BACK<sp/>6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="manipulation__unit_8cpp_1a1217e464a63e2d74133b66b8d8efc8e6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_CAM_LOW_RIGHT<sp/>7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="manipulation__unit_8cpp_1a3b3f77ba6a26d6d6e9c9fbbe8e22778d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>POSE_HOME_LOW<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/********************************************/</highlight></codeline>
+<codeline lineno="72" refid="classnode__manipulation__unit" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classnode__manipulation__unit" kindref="compound">node_manipulation_unit</ref></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77" refid="classnode__manipulation__unit_1aa56cb61dac7f3270ca379827de41666e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__manipulation__unit_1aa56cb61dac7f3270ca379827de41666e" kindref="member">node_manipulation_unit</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>manipulation<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cl_manip<sp/>=<sp/>nh.serviceClient&lt;robocluedo_movement_controller_msgs::ManipulatorPosition&gt;(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!cl_manip.waitForExistence(<sp/>ros::Duration(<sp/>60<sp/>)<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a59b71c836719259a2e9b1428ec35504c" kindref="member">TERR</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>contact<sp/>the<sp/>server<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>timeout<sp/>expired<sp/>(60s)<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Opening<sp/>client<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" kindref="member">SERVICE_MANIP</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ae01bd6357e88ba5fb5ff1b0f1f91c189" kindref="member">SERVICE_RANDOM_ARM_SWITCH</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>srv_auto_manip_switch<sp/>=<sp/>nh.advertiseService(<sp/><ref refid="manipulation__unit_8cpp_1ae01bd6357e88ba5fb5ff1b0f1f91c189" kindref="member">SERVICE_RANDOM_ARM_SWITCH</ref>,<sp/>&amp;<ref refid="classnode__manipulation__unit_1a4229e20a3720e2606377abceddba52ae" kindref="member">node_manipulation_unit::cbk_auto_manip_switch</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="manipulation__unit_8cpp_1ae01bd6357e88ba5fb5ff1b0f1f91c189" kindref="member">SERVICE_RANDOM_ARM_SWITCH</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>publisher</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;publisher<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a5c3edaaad237014d12f44d7355479159" kindref="member">TOPIC_MANIP_ASYNC</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_motion_async<sp/>=<sp/>nh.advertise&lt;robocluedo_movement_controller_msgs::ManipulatorPositionAsync&gt;(<sp/><ref refid="manipulation__unit_8cpp_1a5c3edaaad237014d12f44d7355479159" kindref="member">TOPIC_MANIP_ASYNC</ref>,<sp/>3<sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;publisher<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="manipulation__unit_8cpp_1a5c3edaaad237014d12f44d7355479159" kindref="member">TOPIC_MANIP_ASYNC</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100" refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" kindref="member">spin</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::ManipulatorPositionAsync<sp/>msg;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Duration<sp/><ref refid="namespacesetup_1aa2586b6c4dd84a0aaaf49cb1565cee6e" kindref="member">d</ref>(<sp/>5<sp/>);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<sp/>ros::ok(<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>auto_manip_active<sp/>)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.command<sp/>=<sp/>rand(<sp/>)<sp/>%<sp/>9;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.enabled<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;new<sp/>pose:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msg.command<sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_motion_async.publish(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.command<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.enabled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_motion_async.publish(<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacesetup_1aa2586b6c4dd84a0aaaf49cb1565cee6e" kindref="member">d</ref>.sleep(<sp/>);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129" refid="classnode__manipulation__unit_1a4229e20a3720e2606377abceddba52ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__unit_1a4229e20a3720e2606377abceddba52ae" kindref="member">cbk_auto_manip_switch</ref>(<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std_srvs::SetBool::Request&amp;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>,<sp/>std_srvs::SetBool::Response&amp;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref><sp/>)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto_manip_active<sp/>=<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.data;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.data<sp/>)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;auto<sp/>manipulation<sp/>ENABLED&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;auto<sp/>manipulation<sp/>DISABLED&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="146" refid="classnode__manipulation__unit_1acc8dace053bce583b55a7109326042e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classnode__manipulation__unit_1acc8dace053bce583b55a7109326042e6" kindref="member">cbk_markers</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::MarkerArray::ConstPtr&amp;<sp/>data<sp/>)</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;reading<sp/>markers<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>the<sp/>markers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_h<sp/>=<sp/>0.f;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1aa7a01146ac8011dc898a4f74c6ee0c75" kindref="member">visualization_msgs::Marker</ref>&amp;<sp/>mrk<sp/>:<sp/>data-&gt;markers<sp/>)</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>marker_name<sp/>=<sp/>SS(&quot;wp&quot;)<sp/>+<sp/>SSS(i+1);</highlight></codeline>
-<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::Pose2D<sp/>markerpose;</highlight></codeline>
-<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.x<sp/>=<sp/>mrk.pose.position.x<sp/>*<sp/>SCALING_FACTOR;</highlight></codeline>
-<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.y<sp/>=<sp/>mrk.pose.position.y<sp/>*<sp/>SCALING_FACTOR;</highlight></codeline>
-<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>mrk.pose.position.z<sp/>&gt;<sp/>max_h<sp/>)</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max_h<sp/>=<sp/>mrk.pose.position.z;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.yaw<sp/>=<sp/>atan2(<sp/>markerpose.y,<sp/>markerpose.x<sp/>);<sp/>//<sp/>atan2<sp/>from<sp/>-pi<sp/>to<sp/>pi</highlight></codeline>
-<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>markerpose.yaw<sp/>&gt;<sp/>3.135<sp/>)</highlight></codeline>
-<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.yaw<sp/>=<sp/>3.135;<sp/></highlight></codeline>
-<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else<sp/>if(<sp/>markerpose.yaw<sp/>&lt;<sp/>-3.135<sp/>)</highlight></codeline>
-<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.yaw<sp/>=<sp/>3.135;</highlight></codeline>
-<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waypoints[marker_name]<sp/>=<sp/>markerpose;</highlight></codeline>
-<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++i;</highlight></codeline>
-<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TLOG(<sp/>&quot;received<sp/>(&quot;<sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/>&quot;)<sp/>marker<sp/>with<sp/>data<sp/>(x=&quot;<sp/>&lt;&lt;<sp/>markerpose.x<sp/>&lt;&lt;<sp/>&quot;,<sp/>y=&quot;<sp/>&lt;&lt;<sp/>markerpose.y<sp/>&lt;&lt;<sp/>&quot;,<sp/>yaw=<sp/>&quot;<sp/>&lt;&lt;<sp/>markerpose.yaw<sp/>&lt;&lt;<sp/>&quot;)&quot;<sp/>);</highlight></codeline>
-<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1aa7a01146ac8011dc898a4f74c6ee0c75" kindref="member">visualization_msgs::Marker</ref>&amp;<sp/>mrk<sp/>:<sp/>data-&gt;markers<sp/>)</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>marker_name<sp/>=<sp/><ref refid="manipulation__unit_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" kindref="member">SS</ref>(</highlight><highlight class="stringliteral">&quot;wp&quot;</highlight><highlight class="normal">)<sp/>+<sp/><ref refid="manipulation__unit_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" kindref="member">SSS</ref>(i+1);</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waypoint_heigth[marker_name]<sp/>=<sp/>(<sp/>mrk.pose.position.z<sp/>&gt;=<sp/>max_h<sp/>);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>even<sp/>add<sp/>the<sp/>center</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::Pose2D<sp/>markerpose;</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.y<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>markerpose.yaw<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waypoints[</highlight><highlight class="stringliteral">&quot;center&quot;</highlight><highlight class="normal">]<sp/>=<sp/>markerpose;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unsubscribe</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sub_markers.shutdown(<sp/>);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>found_markers<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;reading<sp/>markers<sp/>done<sp/>--<sp/>found<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>i<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>markers&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>srv_roboplan_manip;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceClient<sp/>cl_manip;</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::Subscriber<sp/>sub_markers;</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>found_markers<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>robocluedo_movement_controller_msgs::Pose2D&gt;<sp/>waypoints;</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;std::string,<sp/>bool&gt;<sp/>waypoint_heigth;</highlight></codeline>
-<codeline lineno="225"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228" refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sig<sp/>)</highlight></codeline>
-<codeline lineno="229"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;stopping...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::shutdown(<sp/>);</highlight></codeline>
-<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"></highlight></codeline>
-<codeline lineno="235" refid="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[]<sp/>)</highlight></codeline>
-<codeline lineno="236"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/><ref refid="manipulation__unit_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(<sp/>SIGINT,<sp/><ref refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref><sp/>);</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::AsyncSpinner<sp/>spinner(<sp/>4<sp/>);</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>spinner.start(<sp/>);</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;starting<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__manipulation__unit" kindref="compound">node_manipulation_unit</ref><sp/>node;</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>node.<ref refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" kindref="member">spin</ref>(<sp/>);</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceClient<sp/>cl_manip;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::Publisher<sp/>pub_motion_async;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>srv_auto_manip_switch;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>auto_manip_active<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sig<sp/>)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;stopping...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::shutdown(<sp/>);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="manipulation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[]<sp/>)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/><ref refid="manipulation__unit_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(<sp/>SIGINT,<sp/><ref refid="manipulation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref><sp/>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::AsyncSpinner<sp/>spinner(<sp/>1<sp/>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>spinner.start(<sp/>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;starting<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__manipulation__unit" kindref="compound">node_manipulation_unit</ref><sp/>node;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manipulation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" kindref="member">TLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>node.<ref refid="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8" kindref="member">spin</ref>(<sp/>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="robocluedo_mission_manager/src/manipulation_unit.cpp"/>
   </compounddef>

@@ -54,6 +54,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   Pose2D.msg
+  ManipulatorPositionAsync.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -74,10 +75,10 @@ add_service_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
+  std_msgs
   geometry_msgs
   moveit_msgs
   nav_msgs
-  std_msgs
 )
 
 ################################################

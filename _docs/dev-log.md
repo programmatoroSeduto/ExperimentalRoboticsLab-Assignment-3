@@ -451,8 +451,206 @@ sleep 2
 - funzionare funziona
 - **COMMIT**: "working on manipulation (new postures)"
 
+---
 
-- .... ma devo ammettere che non mi piace molto come il robot fa il planning
+- ... ma devo ammettere che non mi piace molto come il robot fa il planning, e non mi convince il fatto di non riuscire a fare il planning cartesiano, non mi convince proprio
+- vorrei provare a fare una modifica dell'attuale nodo (in caso, backup e si ritorna a quello funzionante)
+	- anzitutto, backup
+	- e importazione dell'attuale documentazione MoveIt in questo spazio di lavoro
+	- voglio provare con una configurazione più precisa di moveit
+	- iniziamo dal definire un end effector
+	- compila? compila
+	- ... ma la definizione dell'end effector non funziona: penso che il lavoro vada fatto da moveit setup assistant, proviamo
+	- ho provato ad aggiungere l'end effector da setup assistant, vediamo che fa ...
+	- *sembra acer accettato l'end effector!*
+
+**per creare l'end effector nel setup assistant**:
+	- crea un group che contiene solo un link (usa le advanced options), *cluedo_link*, chiamalo *ee*, solite impostazioni per i groups
+	- definisci un end effector di nome *cluedo_ee* con group *ee* parent link *arm_group* e parent link *arm_link_03*
+	- aggiorna il package (non serve aggiornare i gazebo, demo e demo_gazebo, dovrai riaggiornare solo i controllers yaml)
+
+e ora vediamo se funge...
+
+- aggiungo al messaggio il target dell'end effector
+- e aggiungo anche il planning cartesiano
+	- per ora, facile così
+	- compila? 
+
+fastidiosissimo:
+
+```
+The dependencies of the message/service 'robocluedo_movement_controller_msgs/ManipulatorPosition' have changed. Please rerun cmake.
+make[2]: *** [erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition.dir/build.make:57: erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition] Error 1
+make[1]: *** [CMakeFiles/Makefile2:24138: erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+```
+
+e la soluzione ancora meglio... [qui](https://stackoverflow.com/questions/56769404/following-error-occured-when-compiling-custom-message-in-ros)
+
+per risolvere questa roba improbabile è bastato ritoccare il cmake (ma veramente, invertire due dipendenze! e nient'altro) per far scattare la parte della compilazione che lui non faceva perchè ... motivo ignoto. ma si può? cazz
+
+- comunque, ora compila
+- e test ... niente, il planner non riesce a trovare la traiettoria
+
+- direi di tornare alla versione precedente. 
+- **COMMIT**: "working on manipulation (trying something more ... but not working)"
+
+---
+
+ora la parte noiosa: il package ROSPlan
+
+- aggiornamento della topologia nel pddl
+	- la topologia del terzo assignmento comprende 6 waypoint (più un centro, è sottinteso)
+		
+		```text
+		Room1: (-4,-3)
+		Room2: (-4,2)
+		Room3: (-4,7)
+		Room4: (5,-7)
+		Room5: (5,-3)
+		Room6: (5,1)
+		```
+	- modifica al problem pddl
+	- risolve? direi proprio di sì. *fatto*.
+	
+- aggiornamento della kb interface per tenere conto dei 6 waypoints
+	- aggiornamento
+	- e si compila
+	
+- l'oracolo dovrebbe pubblicare i markers anche qui (aggiungere la pubblicazione dei marker)
+	- solito meccanismo, prendi dall'assignment 2 ... o forse sarebbe meglio fare un nodo ausiliario che pubblichi i markers?
+	- *ecco sì, sarebbe meglio*: non voglio modificare il nodo del professore, il gioco è anche un po' quello, no?
+	- e quind, **nuovo nodo**: marker_publisher (c++, per motivi di profonda ... pigrizia)
+	- implementazione
+	- compila? compila. 
+	- e adesso proviamolo un po'
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2>/dev/null
+
+# shell 2
+rosrun exp_assignment3 simulation_marker_publisher
+
+```
+
+- direi che funge!
+
+- aggiornamento della topologia anche nel mission manager (navigation unit)
+	- se non ricordo male il nodo leggeva i waypoints direttamente dal canale dei markers... 
+	- come pensavo, quindi modifiche da fare non ce ne sono
+	- toglierei tutto il codice per distinguere le altezze, dato che tutti i markers sono "alla stessa altezza"
+		- sia dalla nav unit ...
+		- ... che dalla manip unit (ho altro in servo per lei) **NO**: qui serve un lavoro più dettagliato
+
+- aggiornamento della selezione del controller nella navigation unit
+	- c'era solo da cambiare uno 0 con un 1 ...
+	- proviamo se funziona ancora, giusto per
+	- **e infatti NON funziona** ... fortuna che faccio i test ogni volta che modifico
+
+		```bash
+		# shell 1
+		roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2>/dev/null
+
+		# shell 2
+		roslaunch robocluedo_movement_controller navigation_system.launch &
+		rosrun robocluedo_movement_controller navigation_manager &
+		rosrun exp_assignment3 simulation_marker_publisher &
+		rosrun robocluedo_mission_manager navigation_unit
+
+		# shell 3
+		rosservice call /robocluedo/navigation_command  "waypoint: 'wp1'"
+		rosservice call /robocluedo/navigation_command  "waypoint: 'wp2'"
+		rosservice call /robocluedo/navigation_command  "waypoint: 'wp3'"
+		rosservice call /robocluedo/navigation_command  "waypoint: 'wp4'"
+		rosservice call /robocluedo/navigation_command  "waypoint: 'wp5'"
+		rosservice call /robocluedo/navigation_command  "waypoint: 'wp6'"
+		rosservice call /robocluedo/navigation_command  "waypoint: 'center'"
+
+		```
+	
+	- *ora funziona.* 
+
+- l'azione *collect hint* diventa una simulated action in questa versione del progetto
+	- cambiare i percorsi del PDDL nei launcher del plan
+
+- ora, come ultima cosa, la modifica della manipulation unit, dopodichè dovrei essere pronto per iniziare l'implementazione di arUco
+	- essendo ora la *collect-hint* una simulated action, non dovrebbe più servire il servizio per la manipulation
+	- e non serve nemmeno ricevere dei markers
+	- voglio aprire un topic sul controller per far compiere al braccio movimenti asincroni (voglio che il braccio si muova tra le postures a disposizione mentr eil robot si muove, senza rimanere bloccato in un servizio)
+		- per fare questo ovviamente devo creare un nuovo messaggio...
+		- implementazione
+		- compila? compila
+		- (che fatica...)
+	- e proviamo
+	
+		```bash
+		# shell 1
+		roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2>/dev/null
+
+		# shell 2
+		rosrun robocluedo_movement_controller manipulation_controller 2>/dev/null
+
+		# shell 3
+		rostopic list | grep tip
+		# /tip_pos_async
+		
+		rostopic pub --once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync "command: 2
+		enabled: true" 
+		sleep 15
+		rostopic pub --once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync "command: 4
+		enabled: true" 
+		sleep 15
+		rostopic pub --once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync "command: 6
+		enabled: true" 
+		sleep 15
+		```
+	
+	- *e funziona*
+	- ultima cosa: topic aperto come publisher dalla manipulation unit
+	- e implementazione del publisher: una psoe a casotra le 9 disponibili ogni 10 secondi
+	- siccome potrebbe darmi fastidio che questo pubblichi una pose nuova senza dirmi nulla, voglio anche uno switch per questo nodo, basta una set bool
+	- compila? compila. 
+	- e si prova:
+	
+		```bash
+		# shell 1
+		roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2>/dev/null
+
+		# shell 2
+		rosrun robocluedo_movement_controller manipulation_controller 2>/dev/null
+		
+		# shell 3
+		rosrun robocluedo_mission_manager manipulation_unit
+		
+		# shell 4
+		rosservice list | grep tip
+		# /tip_pos
+		# /tip_pos_auto_switch
+		
+		rosservice call /tip_pos_auto_switch "data: true"
+		# 6 different poses
+		sleep 60 
+		rosservice call /tip_pos_auto_switch "data: false"
+		
+		```
+	
+	- funziona. 
+	- adesso, la domanda *spigolosa*: dove mettere le richieste per la automanipulation? dipende dal landmark
+		- dirty e solve non richiedono questo movimento automatico
+		- mentre collect lo richiede
+	- e la modifica va fatta in ...
+		- posso farla nel mission manager direttamente
+	- quindi, modifiche
+	- (non posso provare il mission manager ora, ma se compila è tutto a posto per il tipo di modifiche che ho fatto)
+
+- **COMMIT**: "changing PDDL topology, RViz markers, auto manipulation"
+
+---
+
+(pronti pr ArUco)
+
+
 
 
 

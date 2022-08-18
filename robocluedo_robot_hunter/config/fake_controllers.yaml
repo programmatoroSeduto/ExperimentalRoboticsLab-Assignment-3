@@ -6,6 +6,10 @@ controller_list:
       - arm_joint_02
       - arm_joint_03
       - arm_joint_04
+  - name: fake_ee_controller
+    type: $(arg execution_type)
+    joints:
+      - arm_joint_04
 initial:  # Define initial robot poses.
   - group: arm_group
     pose: home

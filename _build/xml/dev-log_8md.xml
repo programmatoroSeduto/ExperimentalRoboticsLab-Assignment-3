@@ -460,8 +460,206 @@
 <codeline><highlight class="normal">-<sp/>funzionare<sp/>funziona</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>manipulation<sp/>(new<sp/>postures)&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">-<sp/>....<sp/>ma<sp/>devo<sp/>ammettere<sp/>che<sp/>non<sp/>mi<sp/>piace<sp/>molto<sp/>come<sp/>il<sp/>robot<sp/>fa<sp/>il<sp/>planning</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>...<sp/>ma<sp/>devo<sp/>ammettere<sp/>che<sp/>non<sp/>mi<sp/>piace<sp/>molto<sp/>come<sp/>il<sp/>robot<sp/>fa<sp/>il<sp/>planning,<sp/>e<sp/>non<sp/>mi<sp/>convince<sp/>il<sp/>fatto<sp/>di<sp/>non<sp/>riuscire<sp/>a<sp/>fare<sp/>il<sp/>planning<sp/>cartesiano,<sp/>non<sp/>mi<sp/>convince<sp/>proprio</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>vorrei<sp/>provare<sp/>a<sp/>fare<sp/>una<sp/>modifica<sp/>dell&apos;attuale<sp/>nodo<sp/>(in<sp/>caso,<sp/>backup<sp/>e<sp/>si<sp/>ritorna<sp/>a<sp/>quello<sp/>funzionante)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>anzitutto,<sp/>backup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>importazione<sp/>dell&apos;attuale<sp/>documentazione<sp/>MoveIt<sp/>in<sp/>questo<sp/>spazio<sp/>di<sp/>lavoro</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>voglio<sp/>provare<sp/>con<sp/>una<sp/>configurazione<sp/>più<sp/>precisa<sp/>di<sp/>moveit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>iniziamo<sp/>dal<sp/>definire<sp/>un<sp/>end<sp/>effector</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>compila</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>ma<sp/>la<sp/>definizione<sp/>dell&apos;end<sp/>effector<sp/>non<sp/>funziona:<sp/>penso<sp/>che<sp/>il<sp/>lavoro<sp/>vada<sp/>fatto<sp/>da<sp/>moveit<sp/>setup<sp/>assistant,<sp/>proviamo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>ho<sp/>provato<sp/>ad<sp/>aggiungere<sp/>l&apos;end<sp/>effector<sp/>da<sp/>setup<sp/>assistant,<sp/>vediamo<sp/>che<sp/>fa<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>*sembra<sp/>acer<sp/>accettato<sp/>l&apos;end<sp/>effector!*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**per<sp/>creare<sp/>l&apos;end<sp/>effector<sp/>nel<sp/>setup<sp/>assistant**:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>crea<sp/>un<sp/>group<sp/>che<sp/>contiene<sp/>solo<sp/>un<sp/>link<sp/>(usa<sp/>le<sp/>advanced<sp/>options),<sp/>*cluedo_link*,<sp/>chiamalo<sp/>*ee*,<sp/>solite<sp/>impostazioni<sp/>per<sp/>i<sp/>groups</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>definisci<sp/>un<sp/>end<sp/>effector<sp/>di<sp/>nome<sp/>*cluedo_ee*<sp/>con<sp/>group<sp/>*ee*<sp/>parent<sp/>link<sp/>*arm_group*<sp/>e<sp/>parent<sp/>link<sp/>*arm_link_03*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>aggiorna<sp/>il<sp/>package<sp/>(non<sp/>serve<sp/>aggiornare<sp/>i<sp/>gazebo,<sp/>demo<sp/>e<sp/>demo_gazebo,<sp/>dovrai<sp/>riaggiornare<sp/>solo<sp/>i<sp/>controllers<sp/>yaml)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>ora<sp/>vediamo<sp/>se<sp/>funge...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>aggiungo<sp/>al<sp/>messaggio<sp/>il<sp/>target<sp/>dell&apos;end<sp/>effector</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>aggiungo<sp/>anche<sp/>il<sp/>planning<sp/>cartesiano</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>ora,<sp/>facile<sp/>così</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">fastidiosissimo:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>dependencies<sp/>of<sp/>the<sp/>message/service<sp/>&apos;robocluedo_movement_controller_msgs/ManipulatorPosition&apos;<sp/>have<sp/>changed.<sp/>Please<sp/>rerun<sp/>cmake.</highlight></codeline>
+<codeline><highlight class="normal">make[2]:<sp/>***<sp/>[erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition.dir/build.make:57:<sp/>erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition]<sp/>Error<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">make[1]:<sp/>***<sp/>[CMakeFiles/Makefile2:24138:<sp/>erl3/robocluedo_movement_controller_msgs/CMakeFiles/_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition.dir/all]<sp/>Error<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">make[1]:<sp/>***<sp/>Waiting<sp/>for<sp/>unfinished<sp/>jobs....</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>la<sp/>soluzione<sp/>ancora<sp/>meglio...<sp/>[qui](https://stackoverflow.com/questions/56769404/following-error-occured-when-compiling-custom-message-in-ros)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">per<sp/>risolvere<sp/>questa<sp/>roba<sp/>improbabile<sp/>è<sp/>bastato<sp/>ritoccare<sp/>il<sp/>cmake<sp/>(ma<sp/>veramente,<sp/>invertire<sp/>due<sp/>dipendenze!<sp/>e<sp/>nient&apos;altro)<sp/>per<sp/>far<sp/>scattare<sp/>la<sp/>parte<sp/>della<sp/>compilazione<sp/>che<sp/>lui<sp/>non<sp/>faceva<sp/>perchè<sp/>...<sp/>motivo<sp/>ignoto.<sp/>ma<sp/>si<sp/>può?<sp/>cazz</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>comunque,<sp/>ora<sp/>compila</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>test<sp/>...<sp/>niente,<sp/>il<sp/>planner<sp/>non<sp/>riesce<sp/>a<sp/>trovare<sp/>la<sp/>traiettoria</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>direi<sp/>di<sp/>tornare<sp/>alla<sp/>versione<sp/>precedente.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>manipulation<sp/>(trying<sp/>something<sp/>more<sp/>...<sp/>but<sp/>not<sp/>working)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ora<sp/>la<sp/>parte<sp/>noiosa:<sp/>il<sp/>package<sp/>ROSPlan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>aggiornamento<sp/>della<sp/>topologia<sp/>nel<sp/>pddl</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>la<sp/>topologia<sp/>del<sp/>terzo<sp/>assignmento<sp/>comprende<sp/>6<sp/>waypoint<sp/>(più<sp/>un<sp/>centro,<sp/>è<sp/>sottinteso)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```text</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Room1:<sp/>(-4,-3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Room2:<sp/>(-4,2)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Room3:<sp/>(-4,7)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Room4:<sp/>(5,-7)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Room5:<sp/>(5,-3)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Room6:<sp/>(5,1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>modifica<sp/>al<sp/>problem<sp/>pddl</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>risolve?<sp/>direi<sp/>proprio<sp/>di<sp/>sì.<sp/>*fatto*.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>aggiornamento<sp/>della<sp/>kb<sp/>interface<sp/>per<sp/>tenere<sp/>conto<sp/>dei<sp/>6<sp/>waypoints</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>aggiornamento</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>si<sp/>compila</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>l&apos;oracolo<sp/>dovrebbe<sp/>pubblicare<sp/>i<sp/>markers<sp/>anche<sp/>qui<sp/>(aggiungere<sp/>la<sp/>pubblicazione<sp/>dei<sp/>marker)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>solito<sp/>meccanismo,<sp/>prendi<sp/>dall&apos;assignment<sp/>2<sp/>...<sp/>o<sp/>forse<sp/>sarebbe<sp/>meglio<sp/>fare<sp/>un<sp/>nodo<sp/>ausiliario<sp/>che<sp/>pubblichi<sp/>i<sp/>markers?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>*ecco<sp/>sì,<sp/>sarebbe<sp/>meglio*:<sp/>non<sp/>voglio<sp/>modificare<sp/>il<sp/>nodo<sp/>del<sp/>professore,<sp/>il<sp/>gioco<sp/>è<sp/>anche<sp/>un<sp/>po&apos;<sp/>quello,<sp/>no?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>quind,<sp/>**nuovo<sp/>nodo**:<sp/>marker_publisher<sp/>(c++,<sp/>per<sp/>motivi<sp/>di<sp/>profonda<sp/>...<sp/>pigrizia)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>implementazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>compila.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>adesso<sp/>proviamolo<sp/>un<sp/>po&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>exp_assignment3<sp/>simulation_marker_publisher</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>direi<sp/>che<sp/>funge!</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>aggiornamento<sp/>della<sp/>topologia<sp/>anche<sp/>nel<sp/>mission<sp/>manager<sp/>(navigation<sp/>unit)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>se<sp/>non<sp/>ricordo<sp/>male<sp/>il<sp/>nodo<sp/>leggeva<sp/>i<sp/>waypoints<sp/>direttamente<sp/>dal<sp/>canale<sp/>dei<sp/>markers...<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>come<sp/>pensavo,<sp/>quindi<sp/>modifiche<sp/>da<sp/>fare<sp/>non<sp/>ce<sp/>ne<sp/>sono</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>toglierei<sp/>tutto<sp/>il<sp/>codice<sp/>per<sp/>distinguere<sp/>le<sp/>altezze,<sp/>dato<sp/>che<sp/>tutti<sp/>i<sp/>markers<sp/>sono<sp/>&quot;alla<sp/>stessa<sp/>altezza&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>sia<sp/>dalla<sp/>nav<sp/>unit<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>...<sp/>che<sp/>dalla<sp/>manip<sp/>unit<sp/>(ho<sp/>altro<sp/>in<sp/>servo<sp/>per<sp/>lei)<sp/>**NO**:<sp/>qui<sp/>serve<sp/>un<sp/>lavoro<sp/>più<sp/>dettagliato</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>aggiornamento<sp/>della<sp/>selezione<sp/>del<sp/>controller<sp/>nella<sp/>navigation<sp/>unit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>c&apos;era<sp/>solo<sp/>da<sp/>cambiare<sp/>uno<sp/>0<sp/>con<sp/>un<sp/>1<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>proviamo<sp/>se<sp/>funziona<sp/>ancora,<sp/>giusto<sp/>per</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>**e<sp/>infatti<sp/>NON<sp/>funziona**<sp/>...<sp/>fortuna<sp/>che<sp/>faccio<sp/>i<sp/>test<sp/>ogni<sp/>volta<sp/>che<sp/>modifico</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_movement_controller<sp/>navigation_system.launch<sp/>&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosrun<sp/>robocluedo_movement_controller<sp/>navigation_manager<sp/>&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosrun<sp/>exp_assignment3<sp/>simulation_marker_publisher<sp/>&amp;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosrun<sp/>robocluedo_mission_manager<sp/>navigation_unit</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;wp1&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;wp2&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;wp3&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;wp4&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;wp5&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;wp6&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/robocluedo/navigation_command<sp/><sp/>&quot;waypoint:<sp/>&apos;center&apos;&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>*ora<sp/>funziona.*<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>l&apos;azione<sp/>*collect<sp/>hint*<sp/>diventa<sp/>una<sp/>simulated<sp/>action<sp/>in<sp/>questa<sp/>versione<sp/>del<sp/>progetto</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>cambiare<sp/>i<sp/>percorsi<sp/>del<sp/>PDDL<sp/>nei<sp/>launcher<sp/>del<sp/>plan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>ora,<sp/>come<sp/>ultima<sp/>cosa,<sp/>la<sp/>modifica<sp/>della<sp/>manipulation<sp/>unit,<sp/>dopodichè<sp/>dovrei<sp/>essere<sp/>pronto<sp/>per<sp/>iniziare<sp/>l&apos;implementazione<sp/>di<sp/>arUco</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>essendo<sp/>ora<sp/>la<sp/>*collect-hint*<sp/>una<sp/>simulated<sp/>action,<sp/>non<sp/>dovrebbe<sp/>più<sp/>servire<sp/>il<sp/>servizio<sp/>per<sp/>la<sp/>manipulation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>non<sp/>serve<sp/>nemmeno<sp/>ricevere<sp/>dei<sp/>markers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>voglio<sp/>aprire<sp/>un<sp/>topic<sp/>sul<sp/>controller<sp/>per<sp/>far<sp/>compiere<sp/>al<sp/>braccio<sp/>movimenti<sp/>asincroni<sp/>(voglio<sp/>che<sp/>il<sp/>braccio<sp/>si<sp/>muova<sp/>tra<sp/>le<sp/>postures<sp/>a<sp/>disposizione<sp/>mentr<sp/>eil<sp/>robot<sp/>si<sp/>muove,<sp/>senza<sp/>rimanere<sp/>bloccato<sp/>in<sp/>un<sp/>servizio)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>per<sp/>fare<sp/>questo<sp/>ovviamente<sp/>devo<sp/>creare<sp/>un<sp/>nuovo<sp/>messaggio...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>implementazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>compila</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>(che<sp/>fatica...)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>proviamo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rostopic<sp/>list<sp/>|<sp/>grep<sp/>tip</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>/tip_pos_async</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rostopic<sp/>pub<sp/>--once<sp/>/tip_pos_async<sp/>robocluedo_movement_controller_msgs/ManipulatorPositionAsync<sp/>&quot;command:<sp/>2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enabled:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sleep<sp/>15</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rostopic<sp/>pub<sp/>--once<sp/>/tip_pos_async<sp/>robocluedo_movement_controller_msgs/ManipulatorPositionAsync<sp/>&quot;command:<sp/>4</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enabled:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sleep<sp/>15</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rostopic<sp/>pub<sp/>--once<sp/>/tip_pos_async<sp/>robocluedo_movement_controller_msgs/ManipulatorPositionAsync<sp/>&quot;command:<sp/>6</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enabled:<sp/>true&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sleep<sp/>15</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>*e<sp/>funziona*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>ultima<sp/>cosa:<sp/>topic<sp/>aperto<sp/>come<sp/>publisher<sp/>dalla<sp/>manipulation<sp/>unit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>implementazione<sp/>del<sp/>publisher:<sp/>una<sp/>psoe<sp/>a<sp/>casotra<sp/>le<sp/>9<sp/>disponibili<sp/>ogni<sp/>10<sp/>secondi</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>siccome<sp/>potrebbe<sp/>darmi<sp/>fastidio<sp/>che<sp/>questo<sp/>pubblichi<sp/>una<sp/>pose<sp/>nuova<sp/>senza<sp/>dirmi<sp/>nulla,<sp/>voglio<sp/>anche<sp/>uno<sp/>switch<sp/>per<sp/>questo<sp/>nodo,<sp/>basta<sp/>una<sp/>set<sp/>bool</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>compila.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>si<sp/>prova:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosrun<sp/>robocluedo_mission_manager<sp/>manipulation_unit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>list<sp/>|<sp/>grep<sp/>tip</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>/tip_pos</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>/tip_pos_auto_switch</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>true&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>6<sp/>different<sp/>poses</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sleep<sp/>60<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>false&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>funziona.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>adesso,<sp/>la<sp/>domanda<sp/>*spigolosa*:<sp/>dove<sp/>mettere<sp/>le<sp/>richieste<sp/>per<sp/>la<sp/>automanipulation?<sp/>dipende<sp/>dal<sp/>landmark</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>dirty<sp/>e<sp/>solve<sp/>non<sp/>richiedono<sp/>questo<sp/>movimento<sp/>automatico</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>mentre<sp/>collect<sp/>lo<sp/>richiede</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>la<sp/>modifica<sp/>va<sp/>fatta<sp/>in<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>posso<sp/>farla<sp/>nel<sp/>mission<sp/>manager<sp/>direttamente</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>quindi,<sp/>modifiche</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(non<sp/>posso<sp/>provare<sp/>il<sp/>mission<sp/>manager<sp/>ora,<sp/>ma<sp/>se<sp/>compila<sp/>è<sp/>tutto<sp/>a<sp/>posto<sp/>per<sp/>il<sp/>tipo<sp/>di<sp/>modifiche<sp/>che<sp/>ho<sp/>fatto)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;changing<sp/>PDDL<sp/>topology,<sp/>RViz<sp/>markers,<sp/>auto<sp/>manipulation&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(pronti<sp/>pr<sp/>ArUco)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
