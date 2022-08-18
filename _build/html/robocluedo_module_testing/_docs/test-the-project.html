@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testing the project &mdash; RobotCLuedo #3 1.0.0 documentation</title>
+  <title>Testing the project – RoboCLuedo no.3 &mdash; RobotCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -55,7 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
@@ -64,16 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – RoboCLuedo Module Testing</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing the project</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/rosplan_simulated_motion_system.html">CODE REFERENCE – node rosplan_simulated_motion_system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/test_armor.html">CODE REFERENCE – node test_armor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/test_armor_cluedo.html">CODE REFERENCE – node test_armor_cluedo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/test_armor_tools.html">CODE REFERENCE – node test_armor_tools</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
@@ -119,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – RoboCLuedo Module Testing</a> &raquo;</li>
-      <li>Testing the project</li>
+      <li>Testing the project – RoboCLuedo no.3</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_module_testing/_docs/test-the-project.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -129,11 +120,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="testing-the-project">
-<h1>Testing the project<a class="headerlink" href="#testing-the-project" title="Permalink to this heading"></a></h1>
+  <div class="section" id="testing-the-project-robocluedo-no-3">
+<h1>Testing the project – RoboCLuedo no.3<a class="headerlink" href="#testing-the-project-robocluedo-no-3" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing the project</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing the project – RoboCLuedo no.3</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#before-proceeding">before proceeding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-pkg-robocluedo-armor">TESTING PKG robocluedo_armor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pure-test-on-armor">pure test on aRMOR</a></li>
@@ -150,39 +143,43 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-same-test-with-launch-file">the same test with launch file</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#testing-pkg-robocluedo-robot">TESTING PKG robocluedo_robot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#testing-pkg-robocluedo-robot-hunter">TESTING PKG robocluedo_robot_hunter</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#before-the-tests">BEFORE THE TESTS…</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-most-simple-test">the most simple test!</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-pkg-robocluedo-vision">TESTING PKG robocluedo_vision</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-aruco-detection">running aruco detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aruco-decoder">aruco decoder</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-pkg-robocluedo-movement-controller">TESTING PKG robocluedo_movement_controller</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#go-to-opint">go to opint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go-to-point">go to point</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#head-orientation">head orientation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wall-follow-behaviour">wall follow behaviour</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-bug-m-module">the bug_m module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#testing-navigation-manager">testing navigation manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-navigation-manager-bug-m-controller">testing navigation manager – bug_m controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manipulation-controller">manipulation controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manipulation-controller-async-mode">manipulation controller – async mode</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-rosplan-plus-real-motion-controller">TESTING rosplan plus real motion controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-ai-motion-and-aruco">TESTING AI, motion and ArUco</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rcl2-components-and-aruco-no-armor">RCL2 components and ArUco (no armor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aruco-unit-separated">ARUCO unit separated</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hints-detection">hints detection</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#final-tests">Final Tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#first-test">first test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#another-test">another test</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#tests-outputs">TESTS OUTPUTS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#armor-only">armor only</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#armor-with-armor-tools">armor with armor_tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#armor-with-armor-cluedo-and-armor-tools">armor with armor_cluedo and armor_tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rosplan-pddl-model">ROSPlan – PDDL model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">simple ROSPlan pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">???</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
+<hr class="docutils" />
 <p>this document provides useful informations for testing the components of the architecture before running it entirely.</p>
 <p><em>this document also contains the expected outputs from the programs</em>, or at least the outputs not too much long.</p>
 <div class="section" id="before-proceeding">
@@ -360,41 +357,13 @@ rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_pr
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot; 
 </pre></div>
 </div>
-<p><strong>Notice that</strong> this sequence could ends to a <em>unsolvable problem</em> (it is due to the initial topology), and it makes sense because we’re using just simulated actions:</p>
+<p>another sequence:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
-<span class="c1"># UNSOLVABLE</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
-</pre></div>
-</div>
-<p>the topology that generated the unsolvable problem:</p>
-<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:init</span>
-	<span class="p">(</span><span class="nv">dirty</span> <span class="p">)</span>
-	
-	<span class="p">(</span><span class="nv">is-center</span> <span class="nv">center</span> <span class="p">)</span>
-		<span class="p">(</span><span class="nv">not-is-center</span> <span class="nv">wp1</span> <span class="p">)</span> <span class="p">(</span><span class="nv">not-is-center</span> <span class="nv">wp2</span> <span class="p">)</span> 
-		<span class="p">(</span><span class="nv">not-is-center</span> <span class="nv">wp3</span> <span class="p">)</span> <span class="p">(</span><span class="nv">not-is-center</span> <span class="nv">wp4</span> <span class="p">)</span>
-	
-	<span class="p">(</span><span class="nv">at</span> <span class="nv">center</span> <span class="p">)</span> <span class="p">(</span><span class="nv">at-center</span> <span class="p">)</span>
-	
-	<span class="p">(</span><span class="nv">passage</span> <span class="nv">center</span> <span class="nv">wp1</span> <span class="p">)</span> <span class="p">(</span><span class="nv">passage</span> <span class="nv">wp1</span> <span class="nv">center</span> <span class="p">)</span>
-	<span class="c1">;;(passage center wp2 ) (passage wp2 center )</span>
-	<span class="c1">;;(passage center wp3 ) (passage wp3 center )</span>
-	<span class="p">(</span><span class="nv">passage</span> <span class="nv">center</span> <span class="nv">wp4</span> <span class="p">)</span> <span class="p">(</span><span class="nv">passage</span> <span class="nv">wp4</span> <span class="nv">center</span> <span class="p">)</span>
-	<span class="p">(</span><span class="nv">passage</span> <span class="nv">wp1</span> <span class="nv">wp2</span> <span class="p">)</span> <span class="p">(</span><span class="nv">passage</span> <span class="nv">wp2</span> <span class="nv">wp3</span> <span class="p">)</span> <span class="p">(</span><span class="nv">passage</span> <span class="nv">wp3</span> <span class="nv">wp4</span> <span class="p">)</span>
-	
-	<span class="p">(</span><span class="nv">not-explored</span> <span class="nv">wp1</span> <span class="p">)</span> <span class="p">(</span><span class="nv">not-explored</span> <span class="nv">wp2</span> <span class="p">)</span> <span class="p">(</span><span class="nv">not-explored</span> <span class="nv">wp3</span> <span class="p">)</span> <span class="p">(</span><span class="nv">not-explored</span> <span class="nv">wp4</span> <span class="p">)</span>  
-	<span class="p">(</span><span class="nv">explored</span> <span class="nv">center</span> <span class="p">)</span>
-	
-	<span class="p">(</span><span class="nv">not-hint-collected</span> <span class="nv">wp1</span> <span class="p">)</span>
-	<span class="p">(</span><span class="nv">not-hint-collected</span> <span class="nv">wp2</span> <span class="p">)</span>
-	<span class="p">(</span><span class="nv">not-hint-collected</span> <span class="nv">wp3</span> <span class="p">)</span>
-	<span class="p">(</span><span class="nv">not-hint-collected</span> <span class="nv">wp4</span> <span class="p">)</span>
-	<span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">)</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -420,11 +389,7 @@ rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_pr
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot; 
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot; 
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;
-
-# ERRORE problema non risolvibile (correttamente segnalato dal pipeline manager)
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot; 
-
-# problema risolvibile
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot; 
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot; 
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot; 
@@ -445,12 +410,15 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
 
-<span class="c1"># ERRORE problema non risolvibile (correttamente segnalato dal pipeline manager)</span>
-rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+<span class="c1"># NON RISOLVIBILE</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span>
 
-<span class="c1"># problema risolvibile</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
@@ -459,8 +427,8 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 </div>
 </div>
 </div>
-<div class="section" id="testing-pkg-robocluedo-robot">
-<h2>TESTING PKG robocluedo_robot<a class="headerlink" href="#testing-pkg-robocluedo-robot" title="Permalink to this heading"></a></h2>
+<div class="section" id="testing-pkg-robocluedo-robot-hunter">
+<h2>TESTING PKG robocluedo_robot_hunter<a class="headerlink" href="#testing-pkg-robocluedo-robot-hunter" title="Permalink to this heading"></a></h2>
 <div class="section" id="before-the-tests">
 <h3>BEFORE THE TESTS…<a class="headerlink" href="#before-the-tests" title="Permalink to this heading"></a></h3>
 <p>make sure to have the updated version of the model.</p>
@@ -473,19 +441,57 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <h3>the most simple test!<a class="headerlink" href="#the-most-simple-test" title="Permalink to this heading"></a></h3>
 <p><em>try and guess?</em> let’s try to … execute the main launch file. You should not see something strange … or, worse, errors or crashes.</p>
 <p><strong>first test:</strong> Gazebo only</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot gazebo.launch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter gazebo.launch
 </pre></div>
 </div>
 <p><strong>second test:</strong> RViz only</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot demo.launch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter demo.launch rviz_config_file:<span class="o">=</span>moveit_2.rviz
 </pre></div>
 </div>
 <p><strong>Third test:</strong> Gazebo and RViz (it should generate loads of warnings on the console … )</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot demo_gazebo.launch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter demo_gazebo.launch rviz_config_file:<span class="o">=</span>moveit_2.rviz
 </pre></div>
 </div>
 <p>the same launcher, without warnings (not necessairly a good thing…):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot demo_gazebo.launch <span class="m">2</span>&gt;/dev/null
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter demo_gazebo.launch rviz_config_file:<span class="o">=</span>moveit_2.rviz <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="testing-pkg-robocluedo-vision">
+<h2>TESTING PKG robocluedo_vision<a class="headerlink" href="#testing-pkg-robocluedo-vision" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>here are only the basic tests. to see if ArUco is detecting the markers, it is needed to run the entire architecture. see later in this document.</p>
+</div>
+<div class="section" id="running-aruco-detection">
+<h3>running aruco detection<a class="headerlink" href="#running-aruco-detection" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>assignment3.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_vision aruco_detection
+</pre></div>
+</div>
+</div>
+<div class="section" id="aruco-decoder">
+<h3>aruco decoder<a class="headerlink" href="#aruco-decoder" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch exp_assignment3 run.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_vision aruco_decode.py
+
+<span class="c1"># shell 3</span>
+rostopic <span class="nb">echo</span> /oracle_hint
+
+<span class="c1"># shell 4</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 0&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 1&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 2&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 3&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 4&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 5&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -493,11 +499,11 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <div class="section" id="testing-pkg-robocluedo-movement-controller">
 <h2>TESTING PKG robocluedo_movement_controller<a class="headerlink" href="#testing-pkg-robocluedo-movement-controller" title="Permalink to this heading"></a></h2>
 <p>the package contains nodes for performing the navigation and the manipulation.</p>
-<div class="section" id="go-to-opint">
-<h3>go to opint<a class="headerlink" href="#go-to-opint" title="Permalink to this heading"></a></h3>
+<div class="section" id="go-to-point">
+<h3>go to point<a class="headerlink" href="#go-to-point" title="Permalink to this heading"></a></h3>
 <p>this py node performs a simple navigation between two points in a path without obstacles.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_robot gazebo.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2 (it takes minimum 4 seconds to start)</span>
 rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
@@ -541,7 +547,7 @@ rosservice call /go_to_point_switch <span class="s2">&quot;data: false&quot;</sp
 <h3>head orientation<a class="headerlink" href="#head-orientation" title="Permalink to this heading"></a></h3>
 <p>this node simply rotates the robot of a certain value of radiants.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_robot gazebo.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2 (it takes minimum 4 seconds to start)</span>
 rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
@@ -573,8 +579,12 @@ sleep <span class="m">15</span>
 </div>
 <div class="section" id="wall-follow-behaviour">
 <h3>wall follow behaviour<a class="headerlink" href="#wall-follow-behaviour" title="Permalink to this heading"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The node <code class="docutils literal notranslate"><span class="pre">wall_follow_service_m.py</span></code> will be removed soon: it is a very poor solution for path planning. better to use move_base for moving the robot in indoor environments.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_robot gazebo.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>indoor.world <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2 (it takes minimum 4 seconds to start)</span>
 rosrun robocluedo_movement_controller wall_follow_service_m.py
@@ -595,7 +605,7 @@ rosservice call /wall_follower_switch <span class="s2">&quot;data: false&quot;</
 </ul>
 <p>here’s the test:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_robot gazebo.launch
+roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
@@ -637,18 +647,19 @@ rosservice call /bug_switch <span class="s2">&quot;data: false&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="testing-navigation-manager">
-<h3>testing navigation manager<a class="headerlink" href="#testing-navigation-manager" title="Permalink to this heading"></a></h3>
+<div class="section" id="testing-navigation-manager-bug-m-controller">
+<h3>testing navigation manager – bug_m controller<a class="headerlink" href="#testing-navigation-manager-bug-m-controller" title="Permalink to this heading"></a></h3>
 <p>the so called node <em>navigation manager</em> allows</p>
 <ul class="simple">
 <li><p>to interact with the navigation system making an abstraction between the navigation command and the real component implementing the navigation</p></li>
 <li><p>to change at runtine navigation component in order to perform different kinds of movement depending on the situation</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_robot gazebo.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
-roslaunch robocluedo_movement_controller navigation_system.launch
+<span class="c1"># roslaunch robocluedo_movement_controller navigation_system.launch</span>
+roslaunch robocluedo_movement_controller navigation_system.launch launch_nav_controller:<span class="o">=</span><span class="nb">false</span>
 
 <span class="c1"># shell 3</span>
 rosrun robocluedo_movement_controller navigation_manager
@@ -690,16 +701,12 @@ rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</s
 <div class="section" id="manipulation-controller">
 <h3>manipulation controller<a class="headerlink" href="#manipulation-controller" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_robot demo_gazebo.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 3</span>
-
-rosservice list <span class="p">|</span> grep tip
-<span class="c1"># /tip_pos</span>
-
 rosservice call /tip_pos <span class="s2">&quot;command: 0&quot;</span> 
 sleep <span class="m">2</span>
 rosservice call /tip_pos <span class="s2">&quot;command: 1&quot;</span> 
@@ -710,14 +717,82 @@ rosservice call /tip_pos <span class="s2">&quot;command: 3&quot;</span>
 sleep <span class="m">2</span>
 rosservice call /tip_pos <span class="s2">&quot;command: 4&quot;</span> 
 sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 5&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 6&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 7&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 8&quot;</span> 
+sleep <span class="m">2</span>
 
 <span class="c1"># UNKNOWN POSE</span>
-rosservice call /tip_pos <span class="s2">&quot;command: 5&quot;</span> 
+rosservice call /tip_pos <span class="s2">&quot;command: 9&quot;</span> 
 sleep <span class="m">2</span>
 
-<span class="c1"># NOT A VALID POSE</span>
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: -1&quot;</span> 
+sleep <span class="m">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manipulation-controller-async-mode">
+<h3>manipulation controller – async mode<a class="headerlink" href="#manipulation-controller-async-mode" title="Permalink to this heading"></a></h3>
+<p>thye manipulation controller can work also in the so called “async mode”: simply the node asking for a certain pose, publishes a message to the manipulation controller, which applies the command. the node sending the request shall not wait for the new posture.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 3</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 0&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 1&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 2&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 3&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 4&quot;</span> 
+sleep <span class="m">2</span>
 rosservice call /tip_pos <span class="s2">&quot;command: 5&quot;</span> 
 sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 6&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 7&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 8&quot;</span> 
+sleep <span class="m">2</span>
+
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 9&quot;</span> 
+sleep <span class="m">2</span>
+
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: -1&quot;</span> 
+sleep <span class="m">2</span>
+</pre></div>
+</div>
+<p>another version of the same test:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>indoor.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_mission_manager manipulation_unit
+
+<span class="c1"># shell 4</span>
+rosservice list <span class="p">|</span> grep tip
+<span class="c1"># /tip_pos</span>
+<span class="c1"># /tip_pos_auto_switch</span>
+
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: true&quot;</span>
+<span class="c1"># 6 different poses</span>
+sleep <span class="m">60</span> 
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -726,23 +801,76 @@ sleep <span class="m">2</span>
 <h2>TESTING rosplan plus real motion controller<a class="headerlink" href="#testing-rosplan-plus-real-motion-controller" title="Permalink to this heading"></a></h2>
 <p>it is the same last test of robocluedo ROSPlan, but this time using the real movement controller.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components.launch <span class="m">2</span>&gt;/dev/null
-
-<span class="c1"># shell 2</span>
-rostopic <span class="nb">echo</span> /oracle_hint
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="testing-ai-motion-and-aruco">
+<h2>TESTING AI, motion and ArUco<a class="headerlink" href="#testing-ai-motion-and-aruco" title="Permalink to this heading"></a></h2>
+<div class="section" id="rcl2-components-and-aruco-no-armor">
+<h3>RCL2 components and ArUco (no armor)<a class="headerlink" href="#rcl2-components-and-aruco-no-armor" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="aruco-unit-separated">
+<h3>ARUCO unit separated<a class="headerlink" href="#aruco-unit-separated" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_vision run.launch
+
+<span class="c1"># shell 2</span>
+rostopic <span class="nb">echo</span> /oracle_hint
+
+<span class="c1"># shell 4</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints-detection">
+<h3>hints detection<a class="headerlink" href="#hints-detection" title="Permalink to this heading"></a></h3>
+<p>a variant of the abovementioned test which allows to see the hints from the unit <code class="docutils literal notranslate"><span class="pre">aruco_decode.py</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rostopic <span class="nb">echo</span> /oracle_hint
+
+<span class="c1"># shell 3</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="final-tests">
@@ -782,876 +910,6 @@ roslaunch robocluedo_rosplan run.launch
 
 <span class="c1"># shell 3</span>
 rosrun robocluedo_mission_manager mission_manager
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="tests-outputs">
-<h2>TESTS OUTPUTS<a class="headerlink" href="#tests-outputs" title="Permalink to this heading"></a></h2>
-<div class="section" id="armor-only">
-<h3>armor only<a class="headerlink" href="#armor-only" title="Permalink to this heading"></a></h3>
-<p><strong>SHELL 1:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>started roslaunch server http://3b17871017fd:43585/
-
-SUMMARY
-========
-
-PARAMETERS
- * /cluedo_max_hypotheses: 15
- * /cluedo_path_owlfile: /root/ros_ws/src/...
- * /cluedo_path_owlfile_backup: /root/ros_ws/src/...
- * /cluedo_path_what: /root/ros_ws/src/...
- * /cluedo_path_where: /root/ros_ws/src/...
- * /cluedo_path_who: /root/ros_ws/src/...
- * /rosdistro: noetic
- * /rosversion: 1.15.14
-
-NODES
-  /
-    armor_service (armor/execute)
-
-auto-starting new master
-process[master]: started with pid [1212]
-ROS_MASTER_URI=http://localhost:11311
-
-setting /run_id to 7984909e-1b00-11ed-af07-0242ac110002
-process[rosout-1]: started with pid [1237]
-started core service [/rosout]
-process[armor_service-2]: started with pid [1240]
-Loading node class: it.emarolab.armor.ARMORMainService
-log4j:WARN No appenders could be found for logger (org.ros.internal.node.client.Registrar).
-log4j:WARN Please initialize the log4j system properly.
-log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
-</pre></div>
-</div>
-<p><strong>TEST OUTPUT:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor# rosrun robocluedo_module_testing test_armor
-[ INFO] [1660392484.885474700]: [test_armor] Ontology found! [/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl] 
-[ INFO] [1660392484.886339200]: [test_armor] Requiring client [/armor_interface_srv] ...
-[ INFO] [1660392484.886751600]: [test_armor] Requiring client [/armor_interface_srv] ... OK
-[ INFO] [1660392484.886820800]: [test_armor] Requiring client [/armor_interface_serialized_srv] ...
-[ INFO] [1660392484.887235800]: [test_armor] Requiring client [/armor_interface_serialized_srv] ... OK
-[ INFO] [1660392484.887399800]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : LOAD
-	primary_command_spec : FILE
-	secondary_command_spec : 
-	args : [/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl http://www.emarolab.it/cluedo-ontology false PELLET true ]
-	---
-
-[ INFO] [1660392485.926716200]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.926796200]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : IND
-	secondary_command_spec : CLASS
-	args : [Jim PERSON    ]
-	---
-[ INFO] [1660392485.944448400]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.944523700]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : OBJECTPROP
-	secondary_command_spec : IND
-	args : [who HP3 Jim   ]
-	---
-[ INFO] [1660392485.955545300]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.955632300]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : IND
-	secondary_command_spec : CLASS
-	args : [Gun WEAPON    ]
-	---
-[ INFO] [1660392485.962069000]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.962144700]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : OBJECTPROP
-	secondary_command_spec : IND
-	args : [what HP3 Gun   ]
-	---
-[ INFO] [1660392485.967811800]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.967919500]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : IND
-	secondary_command_spec : CLASS
-	args : [Stadium PLACE    ]
-	---
-[ INFO] [1660392485.973594300]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.973706100]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : OBJECTPROP
-	secondary_command_spec : IND
-	args : [where HP3 Stadium   ]
-	---
-[ INFO] [1660392485.981074500]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.981191700]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : REASON
-	primary_command_spec : 
-	secondary_command_spec : 
-	args : [     ]
-	---
-[ INFO] [1660392485.992977900]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.993068900]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : IND
-	secondary_command_spec : CLASS
-	args : [Lounge PLACE    ]
-	---
-[ INFO] [1660392485.998666300]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392485.998737200]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : DISJOINT
-	primary_command_spec : IND
-	secondary_command_spec : 
-	args : [Lounge Stadium    ]
-	---
-[ INFO] [1660392486.015745500]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392486.015854100]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : ADD
-	primary_command_spec : OBJECTPROP
-	secondary_command_spec : IND
-	args : [where HP3 Lounge   ]
-	---
-[ INFO] [1660392486.021397900]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392486.021513800]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : REASON
-	primary_command_spec : 
-	secondary_command_spec : 
-	args : [     ]
-	---
-[ INFO] [1660392486.039751300]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392486.039833600]: [test_armor] Print Request: 
-	client_name : robocluedo
-	reference_name : cluedo_ontology
-	command : SAVE
-	primary_command_spec : INFERENCE
-	secondary_command_spec : 
-	args : [/root/Desktop/ROBOCLUEDO_ONTOLOGY.owl     ]
-	---
-[ INFO] [1660392486.200656300]: [test_armor] Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660392486.200766100]: [test_armor] closing...
-</pre></div>
-</div>
-</div>
-<div class="section" id="armor-with-armor-tools">
-<h3>armor with armor_tools<a class="headerlink" href="#armor-with-armor-tools" title="Permalink to this heading"></a></h3>
-<p><strong>SHELL 1:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor# roslaunch robocluedo_module_testing test_armor.launch
-... logging to /root/.ros/log/0cf4f092-1b03-11ed-ad08-0242ac110002/roslaunch-3b17871017fd-15182.log
-Checking log directory for disk usage. This may take a while.
-Press Ctrl-C to interrupt
-Done checking log file disk usage. Usage is &lt;1GB.
-
-started roslaunch server http://3b17871017fd:32951/
-
-SUMMARY
-========
-
-PARAMETERS
- * /cluedo_max_hypotheses: 15
- * /cluedo_path_owlfile: /root/ros_ws/src/...
- * /cluedo_path_owlfile_backup: /root/ros_ws/src/...
- * /cluedo_path_what: /root/ros_ws/src/...
- * /cluedo_path_where: /root/ros_ws/src/...
- * /cluedo_path_who: /root/ros_ws/src/...
- * /rosdistro: noetic
- * /rosversion: 1.15.14
-
-NODES
-  /
-    armor_service (armor/execute)
-
-auto-starting new master
-process[master]: started with pid [15220]
-ROS_MASTER_URI=http://localhost:11311
-
-setting /run_id to 0cf4f092-1b03-11ed-ad08-0242ac110002
-process[rosout-1]: started with pid [15245]
-started core service [/rosout]
-process[armor_service-2]: started with pid [15252]
-Loading node class: it.emarolab.armor.ARMORMainService
-log4j:WARN No appenders could be found for logger (org.ros.internal.node.client.Registrar).
-log4j:WARN Please initialize the log4j system properly.
-log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
-</pre></div>
-</div>
-<p><strong>SHELL 2:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor# rosrun robocluedo_module_testing test_armor_tools
-[ INFO] [1660394502.533233500]: [test_armor_tools] Ontology found! [/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl] 
-[ INFO] [1660394502.533945000]: [armor_tools] Requiring client [/armor_interface_srv] ...
-[ INFO] [1660394502.534393900]: [armor_tools] -&gt; OK
-[ INFO] [1660394503.535600400]: [test_armor_tools] (1) completed hypotheses:
-[ INFO] [1660394503.535726200]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.541773600]: [test_armor_tools] (1) inconsistent hypotheses:
-[ INFO] [1660394503.541849400]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.560990000]:    Print Request: 
-	client_name : armor_client
-	reference_name : cluedo
-	command : DISJOINT
-	primary_command_spec : IND
-	secondary_command_spec : CLASS
-	args : [     ]
-	---
-[ INFO] [1660394503.561065200]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.578151000]: [test_armor_tools] (2) completed hypotheses:
-[ INFO] [1660394503.591825200]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.591923700]: [test_armor_tools] (2) inconsistent hypotheses:
-[ INFO] [1660394503.597800300]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.610336500]: [test_armor_tools] (3) un disjoint strano:
-[ INFO] [1660394503.610436400]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.610522800]: [test_armor_tools] (3) inconsistent hypotheses:
-[ INFO] [1660394503.618661100]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.618737000]: [test_armor_tools] query elementi della classe PLACE
-[ INFO] [1660394503.637675800]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Study&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Stadium&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Lounge&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.637773600]: [test_armor_tools] query proprieta&#39; di hp3
-[ INFO] [1660394503.671939100]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#what&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#who&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#where&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.672028100]: [test_armor_tools] query di tutte le ipotesi
-[ INFO] [1660394503.686505400]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Jim&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Study&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Gun&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Stadium&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Lounge&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.686635900]: [test_armor_tools] query tutte le classi a cui HP3 apartiene
-[ INFO] [1660394503.714323400]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#COMPLETED&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HYPOTHESIS&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394503.714410400]: [test_armor_tools] salvataggio
-[ INFO] [1660394503.832474000]: [test_armor_tools] THAT&#39;S ALL FOLKS!
-</pre></div>
-</div>
-</div>
-<div class="section" id="armor-with-armor-cluedo-and-armor-tools">
-<h3>armor with armor_cluedo and armor_tools<a class="headerlink" href="#armor-with-armor-cluedo-and-armor-tools" title="Permalink to this heading"></a></h3>
-<p><strong>SHELL 1:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor# roslaunch robocluedo_module_testing test_armor.launch
-... logging to /root/.ros/log/c81a496a-1b05-11ed-9d7f-0242ac110002/roslaunch-3b17871017fd-27615.log
-Checking log directory for disk usage. This may take a while.
-Press Ctrl-C to interrupt
-Done checking log file disk usage. Usage is &lt;1GB.
-
-started roslaunch server http://3b17871017fd:43779/
-
-SUMMARY
-========
-
-PARAMETERS
- * /cluedo_max_hypotheses: 15
- * /cluedo_path_owlfile: /root/ros_ws/src/...
- * /cluedo_path_owlfile_backup: /root/ros_ws/src/...
- * /cluedo_path_what: /root/ros_ws/src/...
- * /cluedo_path_where: /root/ros_ws/src/...
- * /cluedo_path_who: /root/ros_ws/src/...
- * /rosdistro: noetic
- * /rosversion: 1.15.14
-
-NODES
-  /
-    armor_service (armor/execute)
-
-auto-starting new master
-process[master]: started with pid [27653]
-ROS_MASTER_URI=http://localhost:11311
-
-setting /run_id to c81a496a-1b05-11ed-9d7f-0242ac110002
-process[rosout-1]: started with pid [27678]
-started core service [/rosout]
-process[armor_service-2]: started with pid [27685]
-Loading node class: it.emarolab.armor.ARMORMainService
-log4j:WARN No appenders could be found for logger (org.ros.internal.node.client.Registrar).
-log4j:WARN Please initialize the log4j system properly.
-log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
-</pre></div>
-</div>
-<p><strong>SHELL 2:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor# rosrun robocluedo_module_testing test_armor_cluedo
-[ INFO] [1660394741.152181200]: [test_armor_tools] Ontology found! [/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl] 
-[ INFO] [1660394741.152996900]: [armor_tools] Requiring client [/armor_interface_srv] ...
-[ INFO] [1660394741.153395100]: [armor_tools] -&gt; OK
-[ INFO] [1660394742.072103100]: [test_armor_tools] 
-
-
- TEST COMANDI DIRETTI ARMOR 
-
-
-
-[ INFO] [1660394742.160877900]: [test_armor_tools] (0) completed hypotheses: (dovrebbe essere vuoto)
-[ INFO] [1660394742.160996300]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.170764500]: [test_armor_tools] (0) inconsistent hypotheses: (dovrebbe essere vuoto)
-[ INFO] [1660394742.170856100]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.228453400]: [test_armor_tools] (1) completed hypotheses: (dovrebbe comparire un&#39;ipotesi)
-[ INFO] [1660394742.228533900]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.233656100]: [test_armor_tools] (1) inconsistent hypotheses: (la lista dovrebbe essere vuota)
-[ INFO] [1660394742.233725800]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.317583600]: [test_armor_tools] (2) completed hypotheses: (sempre una sola ipotesi)
-[ INFO] [1660394742.317663000]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.325069700]: [test_armor_tools] (2) inconsistent hypotheses: (dovrebbe spuntare un&#39;ipotesi inconsistente)
-[ INFO] [1660394742.325156500]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.333623100]: [test_armor_tools] proprieta&#39; where dell&#39;ipotesi HP3:
-[ INFO] [1660394742.333695300]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Study&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#Stadium&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.333792700]: [test_armor_tools] test esistenza di HP3:
-[ INFO] [1660394742.334728000]:    Print Request: 
-	client_name : armor_client
-	reference_name : cluedo
-	command : QUERY
-	primary_command_spec : IND
-	secondary_command_spec : 
-	args : [HP3     ]
-	---
-[ INFO] [1660394742.377817900]: [test_armor_tools] esiste HP3? (atteso: yes) -&gt; yes
-[ INFO] [1660394742.377910200]:    Print Response: 
-	success : true
-	timeout : false
-	exit_code : 0
-	error_description : 
-	is_consistent : true
-	queried_objects :
-	-	&lt;http://www.emarolab.it/cluedo-ontology#INCONSISTENT&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#COMPLETED&gt;
-	-	&lt;http://www.emarolab.it/cluedo-ontology#HYPOTHESIS&gt;
-	sparql_queried_objects : 
-	---
-[ INFO] [1660394742.377993500]: [test_armor_tools] 
-
-
- TEST COMPLETO INTERFACCIA 
-
-
-
-[ INFO] [1660394742.378055900]: [test_armor_tools] 
-
-	======	TEST GetClassOfIndiv()
-[ INFO] [1660394742.378113400]: [test_armor_tools] classe dell&#39;individual Stadium(con la maiuscola, scritto correttamente, no deep search, atteso un solo elemento)
-[ INFO] [1660394742.382232000]: [test_armor_tools] 	numero 1 -&gt; PLACE
-[ INFO] [1660394742.382303900]: [test_armor_tools] 	numero 2 -&gt; HYPOTHESIS
-[ INFO] [1660394742.382366900]: 
-[ INFO] [1660394742.382428000]: [test_armor_tools] classe dell&#39;individual Stadium(con la maiuscola, scritto correttamente, usando la deep search, atteso un solo elemento)
-[ INFO] [1660394742.387964600]: [test_armor_tools] 	numero 1 -&gt; PLACE
-[ INFO] [1660394742.388033600]: 
-[ INFO] [1660394742.388091300]: [test_armor_tools] classe dell&#39;individual stadium(senza la maiuscola, sbagliato, no deep search, atteso 0)
-[ INFO] [1660394742.393586100]: [test_armor_tools] size==0
-[ INFO] [1660394742.393664900]: 
-[ INFO] [1660394742.393723200]: [test_armor_tools] 
-
-	======	TEST ExistsIndiv()
-[ INFO] [1660394742.397511500]: [test_armor_tools] esiste &#39;stadium&#39; senza la maiuscola? -&gt; no
-[ INFO] [1660394742.401432500]: [test_armor_tools] esiste &#39;Stadium&#39; con la maiuscola? -&gt; yes
-[ INFO] [1660394742.406154300]: [test_armor_tools] esiste &#39;HP0&#39; ? -&gt; no
-[ INFO] [1660394742.406253700]: [test_armor_tools] 
-
-	======	TEST GetIndivOfClass()
-[ INFO] [1660394742.406320500]: [test_armor_tools] tutti gli individuals della classe HYPOTHESIS(attesa ... un bel po&#39; di roba)
-[ INFO] [1660394742.411050000]: [test_armor_tools] 	numero 1 -&gt; Jim
-[ INFO] [1660394742.411111100]: [test_armor_tools] 	numero 2 -&gt; 
-[ INFO] [1660394742.411161000]: [test_armor_tools] 	numero 3 -&gt; Study
-[ INFO] [1660394742.411212300]: [test_armor_tools] 	numero 4 -&gt; Gun
-[ INFO] [1660394742.411269900]: [test_armor_tools] 	numero 5 -&gt; Stadium
-[ INFO] [1660394742.411323100]: [test_armor_tools] 	numero 6 -&gt; Lounge
-[ INFO] [1660394742.411372600]: [test_armor_tools] 	numero 7 -&gt; HP3
-[ INFO] [1660394742.411427000]: 
-[ INFO] [1660394742.411487200]: [test_armor_tools] tutti gli individuals della classe PLACE(attesi 3 elementi)
-[ INFO] [1660394742.414906100]: [test_armor_tools] 	numero 1 -&gt; Study
-[ INFO] [1660394742.414971500]: [test_armor_tools] 	numero 2 -&gt; Stadium
-[ INFO] [1660394742.415020800]: [test_armor_tools] 	numero 3 -&gt; Lounge
-[ INFO] [1660394742.415078600]: 
-[ INFO] [1660394742.415134300]: [test_armor_tools] 
-
-	======	TEST GetValuedOfIndiv()
-[ INFO] [1660394742.415210700]: [test_armor_tools] propriet?? where dell&#39;ipotesi HP3(attesi due elementi)
-[ INFO] [1660394742.418685800]: [test_armor_tools] 	numero 1 -&gt; Study
-[ INFO] [1660394742.418750900]: [test_armor_tools] 	numero 2 -&gt; Stadium
-[ INFO] [1660394742.418811100]: 
-[ INFO] [1660394742.418866600]: [test_armor_tools] 
-
-	======	TEST RemoveHypothesis()
-[ WARN] [1660394742.418928600]: [test_armor_tools] NOTA BENE: il comando REMOVE di aRMOR ?? buggato, non funziona. Per farlo funzionare occorre trovare un workaround nell&#39;interfaccia
-[ INFO] [1660394742.418987900]: [test_armor_tools] aggiungo l&#39;ipotesi HPtoremove (uso qui solo comandi dell&#39;interfaccia, non i diretti di aRMOR)
-[ INFO] [1660394742.448092200]: [test_armor_tools] esiste &#39;HPtoremove&#39; ? -&gt; yes
-[ INFO] [1660394742.448175000]: [test_armor_tools] classe dell&#39;individual HPtoremove? (atteso un solo elemento)
-[ INFO] [1660394742.451924800]: [test_armor_tools] 	numero 1 -&gt; HYPOTHESIS
-[ INFO] [1660394742.451996600]: [test_armor_tools] rimozione
-[ INFO] [1660394742.457330500]: [test_armor_tools] RemoveHypothesis( ) = yes
-[ INFO] [1660394742.465532300]: [test_armor_tools] esiste ancora &#39;HPtoremove&#39; ? -&gt; no
-[ INFO] [1660394742.465603300]: [test_armor_tools] 
-
-	======	TEST FindCompleteHypotheses()
-[ INFO] [1660394742.470117800]: [test_armor_tools] ricerca delle ipotesi complete (atteso: una sola ipotesi, escludendo quella scartata
-[ INFO] [1660394742.470200300]: [test_armor_tools] 	numero 1 -&gt; HP3
-[ INFO] [1660394742.470265300]: [test_armor_tools] 
-
-	======	TEST FindInconsistentHypotheses()
-[ INFO] [1660394742.474777500]: [test_armor_tools] ricerca delle ipotesi inconsistenti (atteso: solo una, o anche due, includendo quella scartata)
-[ INFO] [1660394742.474843000]: [test_armor_tools] 	numero 1 -&gt; HP3
-[ INFO] [1660394742.597462300]: [test_armor_tools] THAT&#39;S ALL FOLKS!
-</pre></div>
-</div>
-</div>
-<div class="section" id="rosplan-pddl-model">
-<h3>ROSPlan – PDDL model<a class="headerlink" href="#rosplan-pddl-model" title="Permalink to this heading"></a></h3>
-<p><strong>popf output (first goal):</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo# ./solve_popf.sh 
-Number of literals: 28
-Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%] [170%]
-Post filtering unreachable actions:  [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%] [170%]
-No analytic limits found, not considering limit effects of goal-only operators
-64% of the ground temporal actions in this problem are compression-safe
-Initial heuristic = 2.000
-b (1.000 | 0.990);;;; Solution Found
-; States evaluated: 3
-; Cost: 0.990
-; Time 0.00
-0.000: (replan)  [0.990]
-</pre></div>
-</div>
-<p><strong>popf output (second goal):</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo# ./solve_popf.sh 
-Number of literals: 28
-Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%] [170%]
-Post filtering unreachable actions:  [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%] [110%] [120%] [130%] [140%] [150%] [160%] [170%]
-No analytic limits found, not considering limit effects of goal-only operators
-64% of the ground temporal actions in this problem are compression-safe
-Initial heuristic = 11.000
-b (10.000 | 0.990)b (9.000 | 1.981)b (8.000 | 2.972)b (7.000 | 5.945)b (6.000 | 5.945)b (5.000 | 6.936)b (4.000 | 7.927)b (3.000 | 8.918)b (2.000 | 8.918)b (1.000 | 9.909);;;; Solution Found
-; States evaluated: 21
-; Cost: 10.900
-; Time 0.00
-0.000: (replan)  [0.990]
-0.991: (move-to center wp1)  [0.990]
-1.982: (signal-collect-hint wp1)  [0.990]
-2.973: (collect-hint wp1)  [0.990]
-3.964: (move-to wp1 wp2)  [0.990]
-4.955: (move-to wp2 wp3)  [0.990]
-5.946: (signal-collect-hint wp3)  [0.990]
-6.937: (collect-hint wp3)  [0.990]
-7.928: (move-to wp3 wp4)  [0.990]
-8.919: (move-to-center wp4 center)  [0.990]
-9.910: (solve)  [0.990]
-</pre></div>
-</div>
-</div>
-<div class="section" id="id1">
-<h3>simple ROSPlan pipeline<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
-<p><strong>SHELL 1:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660396623.534248300]: KCL: (/rosplan_knowledge_base) Starting a PDDL Knowledge Base
-process[popf_planner_interface-5]: started with pid [29974]
-process[rosplan_parsing_interface-6]: started with pid [29983]
-process[rosplan_plan_dispatcher-7]: started with pid [29987]
-[ INFO] [1660396623.553958400]: KCL: (/rosplan_problem_interface) Ready to receive
-process[rosplan_interface_replan-8]: started with pid [29995]
-process[rosplan_interface_move_to-9]: started with pid [30000]
-process[rosplan_interface_signal_collect_hint-10]: started with pid [30005]
-process[rosplan_interface_collect_hint-11]: started with pid [30011]
-process[rosplan_interface_move_to_center-12]: started with pid [30016]
-process[rosplan_interface_solve-13]: started with pid [30021]
-[ INFO] [1660396623.605888600]: KCL: (/rosplan_parsing_interface) Ready to receive
-[ INFO] [1660396623.625367500]: KCL: (/rosplan_planner_interface) Ready to receive
-[ INFO] [1660396623.628658600]: KCL: (/rosplan_knowledge_base) Parsing domain
-[ INFO] [1660396623.628842800]: KCL: (/rosplan_knowledge_base) Parsing domain: /root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_domain.pddl.
-[ INFO] [1660396623.629704400]: KCL: (/rosplan_knowledge_base) Parsing initial state
-[ INFO] [1660396623.629786800]: KCL: (/rosplan_knowledge_base) Parsing Problem File: /root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_problem.pddl.
-[ INFO] [1660396623.630342900]: KCL: (/rosplan_knowledge_base) Ready to receive
-[ INFO] [1660396623.650709100]: KCL: (/popf_planner_interface) Ready to receive
-[ INFO] [1660396623.667384500]: KCL: (/rosplan_plan_dispatcher) Ready to receive
-[ INFO] [1660396623.676432100]: KCL: (replan) Ready to receive
-[ INFO] [1660396623.706270300]: KCL: (signal-collect-hint) Ready to receive
-[ INFO] [1660396623.706488200]: KCL: (solve) Ready to receive
-[ INFO] [1660396623.727061100]: KCL: (move-to-center) Ready to receive
-[ INFO] [1660396623.727229700]: KCL: (collect-hint) Ready to receive
-[ INFO] [1660396623.743870700]: KCL: (move-to) Ready to receive
-[ INFO] [1660396630.438992500]: KCL: (/rosplan_problem_interface) (OUT.pddl) Generating problem file.
-[ INFO] [1660396630.780932100]: KCL: (/rosplan_problem_interface) (OUT.pddl) The problem was generated.
-[ INFO] [1660396630.781449900]: KCL: (/rosplan_planner_interface) Problem received.
-[ INFO] [1660396632.842210000]: KCL: (/rosplan_planner_interface) (OUT.pddl) Writing problem to file.
-[ INFO] [1660396632.842406600]: KCL: (/rosplan_planner_interface) (OUT.pddl) Running: timeout 10 /root/ros_ws/src/ROSPlan/rosplan_planning_system/common/bin/popf -T /root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_domain.pddl /root/ros_ws/src/erl2-new/robocluedo_rosplan/data/OUT.pddl &gt; /root/ros_ws/src/erl2-new/robocluedo_rosplan/data/plan.pddl
-[ INFO] [1660396632.846124800]: KCL: (/rosplan_planner_interface) (OUT.pddl) Planning complete
-[ INFO] [1660396632.846216600]: KCL: (/rosplan_planner_interface) (OUT.pddl) Plan was solved.
-[ INFO] [1660396632.846425800]: KCL: (/rosplan_parsing_interface) Planner output received.
-[ INFO] [1660396634.813932000]: KCL: (/rosplan_parsing_interface) Parsing planner output.
-[ INFO] [1660396634.814199200]: KCL: (/rosplan_plan_dispatcher) Plan received.
-[ INFO] [1660396636.957165700]: KCL: (/rosplan_plan_dispatcher) Dispatching plan
-[ INFO] [1660396636.980670300]: KCL: (/rosplan_plan_dispatcher) Dispatching action [0, replan(), 2.142903, 0.990000]
-[ INFO] [1660396636.981163300]: KCL: (replan) action received
-[ INFO] [1660396636.981305300]: KCL: (replan) Action completing with probability 1 and duration 1
-[ INFO] [1660396637.057456100]: KCL: (/rosplan_plan_dispatcher) Feedback received [0, 1]
-[ INFO] [1660396637.057576200]: KCL: (/rosplan_plan_dispatcher) Feedback received [0, 1]
-[ INFO] [1660396637.981581400]: KCL: (replan) action completed successfully
-[ INFO] [1660396637.990541600]: KCL: (/rosplan_knowledge_base) Removing Fact (dirty,0)
-[ INFO] [1660396637.990673000]: KCL: (/rosplan_knowledge_base) Adding fact (not-dirty, 0)
-[ INFO] [1660396638.057318500]: KCL: (/rosplan_plan_dispatcher) Feedback received [0, 2]
-[ INFO] [1660396638.157326600]: KCL: (/rosplan_plan_dispatcher) Dispatch complete.
-</pre></div>
-</div>
-<p><strong>SHELL 2:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl2-new# rosservice call /rosplan_problem_interface/problem_generation_server
-
-root@3b17871017fd:~/ros_ws/src/erl2-new# rostopic echo /rosplan_problem_interface/problem_instance -n 1 -p
-%time,field.data
-1660396631800734996,(define (problem task)
-(:domain robocluedo)
-(:objects
-    center wp1 wp2 wp3 wp4 - waypoint
-)
-(:init
-    (dirty)
-
-
-    (is-center center)
-
-    (not-is-center wp1)
-    (not-is-center wp2)
-    (not-is-center wp3)
-    (not-is-center wp4)
-
-    (at center)
-
-    (passage center wp1)
-    (passage wp1 center)
-    (passage center wp4)
-    (passage wp4 center)
-    (passage wp1 wp2)
-    (passage wp2 wp3)
-    (passage wp3 wp4)
-
-    (explored center)
-
-    (not-explored wp1)
-    (not-explored wp2)
-    (not-explored wp3)
-    (not-explored wp4)
-
-    (at-center)
-
-
-
-    (not-hint-ready)
-
-
-    (not-hint-collected wp1)
-    (not-hint-collected wp2)
-    (not-hint-collected wp3)
-    (not-hint-collected wp4)
-
-)
-(:goal (and
-    (not-dirty)
-))
-)
-
-root@3b17871017fd:~/ros_ws/src/erl2-new# rosservice call /rosplan_planner_interface/planning_server
-
-root@3b17871017fd:~/ros_ws/src/erl2-new# rostopic echo /rosplan_planner_interface/planner_output -p -n 1
-%time,field.data
-1660396633868040800,0.000: (replan)  [0.990]
-
-root@3b17871017fd:~/ros_ws/src/erl2-new# rosservice call /rosplan_parsing_interface/parse_plan
-
-root@3b17871017fd:~/ros_ws/src/erl2-new# rostopic echo /rosplan_parsing_interface/complete_plan -n 1
-plan: 
-  - 
-    action_id: 0
-    plan_id: 0
-    name: &quot;replan&quot;
-    parameters: []
-    duration: 0.9900000095367432
-    dispatch_time: 0.0
----
-root@3b17871017fd:~/ros_ws/src/erl2-new# rosservice call /rosplan_plan_dispatcher/dispatch_plan &quot;{}&quot; 
-success: True
-goal_achieved: True
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>???<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
-<p><strong>SHELL 1:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p><strong>SHELL 2:</strong></p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

@@ -956,8 +956,43 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 <li><p>e anche questa è andata</p></li>
 <li><p><strong>COMMIT</strong>: “aruco decoder ready”</p></li>
 </ul>
-</div>
 <hr class="docutils" />
+<p>e pronti per il testing completo!</p>
+<ul class="simple">
+<li><p>anzitutto, ho un documento per il module testing, che vorrei rivedere per questo caso specifico</p>
+<ul>
+<li><p>il piano è sempre lo stesso: pezzo per pezzo fino al progetto completo</p></li>
+</ul>
+</li>
+<li><p>… direi che i test con aRMOR li possiamo anche skippare</p></li>
+<li><p>aggiungo subito i test appena fatti con ArUco</p></li>
+<li><p>testing di rosplan</p></li>
+<li><p>la parte del testing del robot va aggiornata</p></li>
+<li><p>i test della parte di navigation vanno aggiornati tutti (anche se però sarebbe bello avere a disposizione veramente due tipi di navigation…)</p>
+<ul>
+<li><p>sai cosa? faccio la modifica</p></li>
+<li><p>ora ci sono 3 launch file (più due giusto per non dover rifare tutti i nomi in qualunque script io abbia scritto finora)</p></li>
+<li><p>a questo punto facciamo i test sulla navigation come se dovessero esserci tutti e due i sistemi operativi sullo stesso robot</p></li>
+<li><p>eliminerei il test del wall follow … a dirla tutta, devo proprio eliminare il nodo</p></li>
+<li><p>il test sul manipulation controller è cambiato, ce ne sono di più adesso</p></li>
+</ul>
+</li>
+<li><p>e siamo arrivati quasi ai test finali (il momento della verità si avvicina…)</p>
+<ul>
+<li><p><em>tutti i componenti del precedente assignment vanno benone</em></p></li>
+<li><p>ho anche fatto un po’ di aggiornamento</p></li>
+</ul>
+</li>
+<li><p>gli output dei test sono perfettamente inutili, eliminare</p></li>
+<li><p>ora, tutto tranne il mission manager</p>
+<ul>
+<li><p>per questo serviranno dei test che non ho ancora scritto (faccio subito)</p></li>
+</ul>
+</li>
+<li><p>va <em>quasi</em> tutto bene. aruco_detection non invia i marker sul topic</p></li>
+<li><p><strong>COMMIT</strong>: “testing (problems with aruco_detection not publishing the ids)”</p></li>
+</ul>
+</div>
 <div class="section" id="note">
 <h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
 <div class="section" id="utilizzo-di-move-base">

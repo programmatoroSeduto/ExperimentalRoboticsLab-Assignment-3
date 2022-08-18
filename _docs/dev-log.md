@@ -751,6 +751,29 @@ bool oracleCallback(exp_assignment3::Marker::Request &req, exp_assignment3::Mark
 
 --- 
 
+e pronti per il testing completo!
+
+- anzitutto, ho un documento per il module testing, che vorrei rivedere per questo caso specifico
+	- il piano è sempre lo stesso: pezzo per pezzo fino al progetto completo
+- ... direi che i test con aRMOR li possiamo anche skippare
+- aggiungo subito i test appena fatti con ArUco
+- testing di rosplan
+- la parte del testing del robot va aggiornata
+- i test della parte di navigation vanno aggiornati tutti (anche se però sarebbe bello avere a disposizione veramente due tipi di navigation...)
+	- sai cosa? faccio la modifica
+	- ora ci sono 3 launch file (più due giusto per non dover rifare tutti i nomi in qualunque script io abbia scritto finora)
+	- a questo punto facciamo i test sulla navigation come se dovessero esserci tutti e due i sistemi operativi sullo stesso robot
+	- eliminerei il test del wall follow ... a dirla tutta, devo proprio eliminare il nodo
+	- il test sul manipulation controller è cambiato, ce ne sono di più adesso
+- e siamo arrivati quasi ai test finali (il momento della verità si avvicina...)
+	- *tutti i componenti del precedente assignment vanno benone*
+	- ho anche fatto un po' di aggiornamento
+- gli output dei test sono perfettamente inutili, eliminare
+- ora, tutto tranne il mission manager
+	- per questo serviranno dei test che non ho ancora scritto (faccio subito)
+- va *quasi* tutto bene. aruco_detection non invia i marker sul topic
+- **COMMIT**: "testing (problems with aruco_detection not publishing the ids)"
+
 
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="launch_nav_controller" default="true" />
+
+<param name="des_pos_x" value="0.0" />
+<param name="des_pos_y" value="0.0" />
+<param name="des_yaw" value="0.0" />
+
+<node pkg="robocluedo_movement_controller" name="go_to_point_service_m" type="go_to_point_service_m.py" required="true" output="screen" />
+<node pkg="robocluedo_movement_controller" name="wall_follow_service_m" type="wall_follow_service_m.py" required="true" output="screen" />
+<node pkg="robocluedo_movement_controller" name="bug_m" type="bug_m.py" required="true" output="screen" />
+<node pkg="robocluedo_movement_controller" name="move_base_nav" type="move_base_nav.py" required="true" output="screen" />
+<node pkg="robocluedo_movement_controller" name="head_orientation" type="head_orientation.py" required="true" output="screen" /> 
+
+<!-- <node pkg="robocluedo_movement_controller" name="manipulation_controller" type="manipulation_controller" required="true" output="screen" /> -->
+<node pkg="robocluedo_movement_controller" name="navigation_manager" type="navigation_manager" required="true" output="screen" if="$(arg launch_nav_controller)"/> 
+
+</launch>

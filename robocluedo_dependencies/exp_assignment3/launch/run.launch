@@ -2,9 +2,11 @@
 
 <launch>
 
+<arg name="publish_markers" default="true" />
+
 <node pkg="exp_assignment3" name="final_oracle" type="final_oracle" required="true" output="screen" >
 	<remap from="/oracle_hint" to="/original_oracle_hint" />
 </node>
-<!-- <node pkg="exp_assignment3" name="simulation_marker_publisher" type="simulation_marker_publisher" required="true" output="screen" /> -->
+<node pkg="exp_assignment3" name="simulation_marker_publisher" type="simulation_marker_publisher" required="true" output="screen" if="$(arg publish_markers)" />
 
 </launch>

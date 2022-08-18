@@ -2,12 +2,42 @@
 
 <launch>
 
-<include file="$(find robocluedo_robot)/launch/run.launch" />
-<include file="$(find robocluedo_rosplan)/launch/run.launch" />
-<include file="$(find robocluedo_movement_controller)/launch/run.launch" />
-<node pkg="erl2" name="simulation" type="simulation" />
+<arg name="launch_robot" default="true" />
+<arg name="launch_rosplan" default="true" />
+<arg name="launch_motion_controllers" default="true" />
+<arg name="launch_oracle" default="true" />
+<arg name="launch_aruco" default="true" />
+<arg name="launch_mission_manager_components" default="true" />
+<arg name="launch_mission_manager" default="true" />
 
-<node pkg="robocluedo_mission_manager" name="navigation_unit" type="navigation_unit" output="screen" required="true" />
-<node pkg="robocluedo_mission_manager" name="manipulation_unit" type="manipulation_unit" output="screen" required="true" />
+<!-- RUN THE ROBOT MODEL and the simulation environment -->
+<include file="$(find robocluedo_robot_hunter)/launch/run.launch" if="$(arg launch_robot)" >
+	<arg name="world_name" value="assignment3.world" />
+	<arg name="rviz_config_file" value="sim_nav_stack_markers.rviz" />
+</include>
+
+<!-- RUN THE ARTIFICIAL INTELLIGENCE of the robot -->
+<include file="$(find robocluedo_rosplan)/launch/run.launch" if="$(arg launch_rosplan)" />
+
+<!-- RUN THE CONTROLLERS and the systems for navigation and manipulation -->
+<include file="$(find robocluedo_movement_controller)/launch/run.launch" if="$(arg launch_motion_controllers)" > 
+	<arg name="launch_nav_controller" value="true" />
+</include>
+
+<!-- RUN THE ORACLE and the marker publisher -->
+<include file="$(find exp_assignment3)/launch/run.launch" if="$(arg launch_oracle)" />
+
+<!-- RUN THE ARUCO UNITS -->
+<include file="$(find robocluedo_vision)/launch/run.launch" if="$(arg launch_aruco)" >
+	<arg name="detection" value="true" />
+	<arg name="decoding" value="true" />
+</include>
+
+<!-- RUN THE MISSION MANAGER UNITS --> 
+<node pkg="robocluedo_mission_manager" name="navigation_unit" type="navigation_unit" output="screen" required="true" if="$(arg launch_mission_manager_components)" />
+<node pkg="robocluedo_mission_manager" name="manipulation_unit" type="manipulation_unit" output="screen" required="true" if="$(arg launch_mission_manager_components)" />
+
+<!-- RUN THE MISSION MANAGER if requested -->
+<node pkg="robocluedo_mission_manager" name="mission_manager" type="mission_manager" output="screen" required="true" if="$(arg launch_mission_manager)" />
 
 </launch>

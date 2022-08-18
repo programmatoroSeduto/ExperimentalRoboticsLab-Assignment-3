@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<arg name="detection" default="true" />
+<arg name="decoding" default="true" />
+
+<node pkg="robocluedo_vision" name="aruco_detection" type="aruco_detection" required="true" output="screen" if="$(arg detection)" />
+<node pkg="robocluedo_vision" name="aruco_decode" type="aruco_decode.py" required="true" output="screen" if="$(arg decoding)" />
+
+</launch>

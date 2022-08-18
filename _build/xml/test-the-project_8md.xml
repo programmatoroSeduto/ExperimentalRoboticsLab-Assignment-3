@@ -8,11 +8,19 @@
     </detaileddescription>
     <programlisting>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>Testing<sp/>the<sp/>project</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Testing<sp/>the<sp/>project<sp/>--<sp/>RoboCLuedo<sp/>no.3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline><highlight class="normal">./test-the-project.md</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">this<sp/>document<sp/>provides<sp/>useful<sp/>informations<sp/>for<sp/>testing<sp/>the<sp/>components<sp/>of<sp/>the<sp/>architecture<sp/>before<sp/>running<sp/>it<sp/>entirely.<sp/></highlight></codeline>
 <codeline></codeline>
@@ -209,9 +217,10 @@
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;<sp/></highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**Notice<sp/>that**<sp/>this<sp/>sequence<sp/>could<sp/>ends<sp/>to<sp/>a<sp/>*unsolvable<sp/>problem*<sp/>(it<sp/>is<sp/>due<sp/>to<sp/>the<sp/>initial<sp/>topology),<sp/>and<sp/>it<sp/>makes<sp/>sense<sp/>because<sp/>we&apos;re<sp/>using<sp/>just<sp/>simulated<sp/>actions:</highlight></codeline>
+<codeline><highlight class="normal">another<sp/>sequence:</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
@@ -219,37 +228,8 @@
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">#<sp/>UNSOLVABLE</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">the<sp/>topology<sp/>that<sp/>generated<sp/>the<sp/>unsolvable<sp/>problem:</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```lisp</highlight></codeline>
-<codeline><highlight class="normal">(:init</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(dirty<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(is-center<sp/>center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(not-is-center<sp/>wp1<sp/>)<sp/>(not-is-center<sp/>wp2<sp/>)<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(not-is-center<sp/>wp3<sp/>)<sp/>(not-is-center<sp/>wp4<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(at<sp/>center<sp/>)<sp/>(at-center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>wp1<sp/>)<sp/>(passage<sp/>wp1<sp/>center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;(passage<sp/>center<sp/>wp2<sp/>)<sp/>(passage<sp/>wp2<sp/>center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>;;(passage<sp/>center<sp/>wp3<sp/>)<sp/>(passage<sp/>wp3<sp/>center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>wp4<sp/>)<sp/>(passage<sp/>wp4<sp/>center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>wp1<sp/>wp2<sp/>)<sp/>(passage<sp/>wp2<sp/>wp3<sp/>)<sp/>(passage<sp/>wp3<sp/>wp4<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>wp1<sp/>)<sp/>(not-explored<sp/>wp2<sp/>)<sp/>(not-explored<sp/>wp3<sp/>)<sp/>(not-explored<sp/>wp4<sp/>)<sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(explored<sp/>center<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp1<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp2<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp3<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp4<sp/>)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-ready<sp/>)</highlight></codeline>
-<codeline><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>ROSPlan<sp/>pipeline<sp/>manager<sp/>with<sp/>simulated<sp/>actions<sp/>--<sp/>NO<sp/>LAUNCH<sp/>FILE</highlight></codeline>
@@ -275,11 +255,7 @@
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">#<sp/>ERRORE<sp/>problema<sp/>non<sp/>risolvibile<sp/>(correttamente<sp/>segnalato<sp/>dal<sp/>pipeline<sp/>manager)</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">#<sp/>problema<sp/>risolvibile</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
@@ -301,12 +277,15 @@
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>ERRORE<sp/>problema<sp/>non<sp/>risolvibile<sp/>(correttamente<sp/>segnalato<sp/>dal<sp/>pipeline<sp/>manager)</highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">#<sp/>NON<sp/>RISOLVIBILE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>problema<sp/>risolvibile</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
@@ -314,7 +293,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>TESTING<sp/>PKG<sp/>robocluedo_robot</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>TESTING<sp/>PKG<sp/>robocluedo_robot_hunter</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>BEFORE<sp/>THE<sp/>TESTS...</highlight></codeline>
 <codeline></codeline>
@@ -330,28 +309,67 @@
 <codeline><highlight class="normal">**first<sp/>test:**<sp/>Gazebo<sp/>only</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">**second<sp/>test:**<sp/>RViz<sp/>only</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>demo.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>demo.launch<sp/>rviz_config_file:=moveit_2.rviz</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">**Third<sp/>test:**<sp/>Gazebo<sp/>and<sp/>RViz<sp/>(it<sp/>should<sp/>generate<sp/>loads<sp/>of<sp/>warnings<sp/>on<sp/>the<sp/>console<sp/>...<sp/>)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>demo_gazebo.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>demo_gazebo.launch<sp/>rviz_config_file:=moveit_2.rviz</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">the<sp/>same<sp/>launcher,<sp/>without<sp/>warnings<sp/>(not<sp/>necessairly<sp/>a<sp/>good<sp/>thing...):</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>demo_gazebo.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>demo_gazebo.launch<sp/>rviz_config_file:=moveit_2.rviz<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>TESTING<sp/>PKG<sp/>robocluedo_vision</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">here<sp/>are<sp/>only<sp/>the<sp/>basic<sp/>tests.<sp/>to<sp/>see<sp/>if<sp/>ArUco<sp/>is<sp/>detecting<sp/>the<sp/>markers,<sp/>it<sp/>is<sp/>needed<sp/>to<sp/>run<sp/>the<sp/>entire<sp/>architecture.<sp/>see<sp/>later<sp/>in<sp/>this<sp/>document.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>running<sp/>aruco<sp/>detection</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=assignment3.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_vision<sp/>aruco_detection</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>aruco<sp/>decoder</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>exp_assignment3<sp/>run.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_vision<sp/>aruco_decode.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>0&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>2&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>3&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>4&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>5&quot;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
@@ -359,13 +377,13 @@
 <codeline></codeline>
 <codeline><highlight class="normal">the<sp/>package<sp/>contains<sp/>nodes<sp/>for<sp/>performing<sp/>the<sp/>navigation<sp/>and<sp/>the<sp/>manipulation.<sp/></highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>go<sp/>to<sp/>opint</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>go<sp/>to<sp/>point</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">this<sp/>py<sp/>node<sp/>performs<sp/>a<sp/>simple<sp/>navigation<sp/>between<sp/>two<sp/>points<sp/>in<sp/>a<sp/>path<sp/>without<sp/>obstacles.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2<sp/>(it<sp/>takes<sp/>minimum<sp/>4<sp/>seconds<sp/>to<sp/>start)</highlight></codeline>
 <codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
@@ -411,7 +429,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2<sp/>(it<sp/>takes<sp/>minimum<sp/>4<sp/>seconds<sp/>to<sp/>start)</highlight></codeline>
 <codeline><highlight class="normal">rosparam<sp/>set<sp/>des_yaw<sp/>0.0</highlight></codeline>
@@ -443,9 +461,13 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>wall<sp/>follow<sp/>behaviour</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">```{warning}</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>node<sp/>`wall_follow_service_m.py`<sp/>will<sp/>be<sp/>removed<sp/>soon:<sp/>it<sp/>is<sp/>a<sp/>very<sp/>poor<sp/>solution<sp/>for<sp/>path<sp/>planning.<sp/>better<sp/>to<sp/>use<sp/>move_base<sp/>for<sp/>moving<sp/>the<sp/>robot<sp/>in<sp/>indoor<sp/>environments.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2<sp/>(it<sp/>takes<sp/>minimum<sp/>4<sp/>seconds<sp/>to<sp/>start)</highlight></codeline>
 <codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>wall_follow_service_m.py</highlight></codeline>
@@ -468,7 +490,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosparam<sp/>set<sp/>des_pos_x<sp/>0.0</highlight></codeline>
@@ -510,7 +532,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>testing<sp/>navigation<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>testing<sp/>navigation<sp/>manager<sp/>--<sp/>bug_m<sp/>controller</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">the<sp/>so<sp/>called<sp/>node<sp/>*navigation<sp/>manager*<sp/>allows</highlight></codeline>
 <codeline></codeline>
@@ -520,10 +542,11 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>gazebo.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>navigation_system.launch</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>roslaunch<sp/>robocluedo_movement_controller<sp/>navigation_system.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>navigation_system.launch<sp/>launch_nav_controller:=false</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
 <codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>navigation_manager</highlight></codeline>
@@ -566,16 +589,12 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot<sp/>demo_gazebo.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">rosservice<sp/>list<sp/>|<sp/>grep<sp/>tip</highlight></codeline>
-<codeline><highlight class="normal">#<sp/>/tip_pos</highlight></codeline>
-<codeline></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>0&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>1&quot;<sp/></highlight></codeline>
@@ -586,14 +605,87 @@
 <codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>4&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>5&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>6&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>7&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>8&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>5&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>9&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>NOT<sp/>A<sp/>VALID<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>-1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>manipulation<sp/>controller<sp/>--<sp/>async<sp/>mode</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">thye<sp/>manipulation<sp/>controller<sp/>can<sp/>work<sp/>also<sp/>in<sp/>the<sp/>so<sp/>called<sp/>&quot;async<sp/>mode&quot;:<sp/>simply<sp/>the<sp/>node<sp/>asking<sp/>for<sp/>a<sp/>certain<sp/>pose,<sp/>publishes<sp/>a<sp/>message<sp/>to<sp/>the<sp/>manipulation<sp/>controller,<sp/>which<sp/>applies<sp/>the<sp/>command.<sp/>the<sp/>node<sp/>sending<sp/>the<sp/>request<sp/>shall<sp/>not<sp/>wait<sp/>for<sp/>the<sp/>new<sp/>posture.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>0&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>2&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>3&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>4&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>5&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>6&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>7&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>8&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>9&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>-1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">another<sp/>version<sp/>of<sp/>the<sp/>same<sp/>test:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=indoor.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_mission_manager<sp/>manipulation_unit</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>list<sp/>|<sp/>grep<sp/>tip</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>/tip_pos</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>/tip_pos_auto_switch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>true&quot;</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>6<sp/>different<sp/>poses</highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>60<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>false&quot;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
@@ -603,22 +695,78 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>launch_aruco:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>TESTING<sp/>AI,<sp/>motion<sp/>and<sp/>ArUco</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>RCL2<sp/>components<sp/>and<sp/>ArUco<sp/>(no<sp/>armor)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>ARUCO<sp/>unit<sp/>separated</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_vision<sp/>run.launch</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;<sp/></highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>hints<sp/>detection</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">a<sp/>variant<sp/>of<sp/>the<sp/>abovementioned<sp/>test<sp/>which<sp/>allows<sp/>to<sp/>see<sp/>the<sp/>hints<sp/>from<sp/>the<sp/>unit<sp/>`aruco_decode.py`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
@@ -664,906 +812,6 @@
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
 <codeline><highlight class="normal">rosrun<sp/>robocluedo_mission_manager<sp/>mission_manager</highlight></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">##<sp/>TESTS<sp/>OUTPUTS</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">###<sp/>armor<sp/>only</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>1:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">started<sp/>roslaunch<sp/>server<sp/>http://3b17871017fd:43585/</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">SUMMARY</highlight></codeline>
-<codeline><highlight class="normal">========</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">PARAMETERS</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_max_hypotheses:<sp/>15</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_owlfile:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_owlfile_backup:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_what:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_where:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_who:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/rosdistro:<sp/>noetic</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/rosversion:<sp/>1.15.14</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">NODES</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>/</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor_service<sp/>(armor/execute)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">auto-starting<sp/>new<sp/>master</highlight></codeline>
-<codeline><highlight class="normal">process[master]:<sp/>started<sp/>with<sp/>pid<sp/>[1212]</highlight></codeline>
-<codeline><highlight class="normal">ROS_MASTER_URI=http://localhost:11311</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">setting<sp/>/run_id<sp/>to<sp/>7984909e-1b00-11ed-af07-0242ac110002</highlight></codeline>
-<codeline><highlight class="normal">process[rosout-1]:<sp/>started<sp/>with<sp/>pid<sp/>[1237]</highlight></codeline>
-<codeline><highlight class="normal">started<sp/>core<sp/>service<sp/>[/rosout]</highlight></codeline>
-<codeline><highlight class="normal">process[armor_service-2]:<sp/>started<sp/>with<sp/>pid<sp/>[1240]</highlight></codeline>
-<codeline><highlight class="normal">Loading<sp/>node<sp/>class:<sp/>it.emarolab.armor.ARMORMainService</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>No<sp/>appenders<sp/>could<sp/>be<sp/>found<sp/>for<sp/>logger<sp/>(org.ros.internal.node.client.Registrar).</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>Please<sp/>initialize<sp/>the<sp/>log4j<sp/>system<sp/>properly.</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>See<sp/>http://logging.apache.org/log4j/1.2/faq.html#noconfig<sp/>for<sp/>more<sp/>info.</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**TEST<sp/>OUTPUT:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor#<sp/>rosrun<sp/>robocluedo_module_testing<sp/>test_armor</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392484.885474700]:<sp/>[test_armor]<sp/>Ontology<sp/>found!<sp/>[/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl]<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392484.886339200]:<sp/>[test_armor]<sp/>Requiring<sp/>client<sp/>[/armor_interface_srv]<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392484.886751600]:<sp/>[test_armor]<sp/>Requiring<sp/>client<sp/>[/armor_interface_srv]<sp/>...<sp/>OK</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392484.886820800]:<sp/>[test_armor]<sp/>Requiring<sp/>client<sp/>[/armor_interface_serialized_srv]<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392484.887235800]:<sp/>[test_armor]<sp/>Requiring<sp/>client<sp/>[/armor_interface_serialized_srv]<sp/>...<sp/>OK</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392484.887399800]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>LOAD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>FILE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl<sp/>http://www.emarolab.it/cluedo-ontology<sp/>false<sp/>PELLET<sp/>true<sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.926716200]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.926796200]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>CLASS</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[Jim<sp/>PERSON<sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.944448400]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.944523700]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>OBJECTPROP</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[who<sp/>HP3<sp/>Jim<sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.955545300]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.955632300]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>CLASS</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[Gun<sp/>WEAPON<sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.962069000]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.962144700]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>OBJECTPROP</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[what<sp/>HP3<sp/>Gun<sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.967811800]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.967919500]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>CLASS</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[Stadium<sp/>PLACE<sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.973594300]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.973706100]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>OBJECTPROP</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[where<sp/>HP3<sp/>Stadium<sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.981074500]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.981191700]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>REASON</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[<sp/><sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.992977900]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.993068900]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>CLASS</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[Lounge<sp/>PLACE<sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.998666300]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392485.998737200]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>DISJOINT</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[Lounge<sp/>Stadium<sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.015745500]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.015854100]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>ADD</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>OBJECTPROP</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[where<sp/>HP3<sp/>Lounge<sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.021397900]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.021513800]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>REASON</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[<sp/><sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.039751300]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.039833600]:<sp/>[test_armor]<sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>robocluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo_ontology</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>SAVE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>INFERENCE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[/root/Desktop/ROBOCLUEDO_ONTOLOGY.owl<sp/><sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.200656300]:<sp/>[test_armor]<sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660392486.200766100]:<sp/>[test_armor]<sp/>closing...</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">###<sp/>armor<sp/>with<sp/>armor_tools<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>1:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor#<sp/>roslaunch<sp/>robocluedo_module_testing<sp/>test_armor.launch</highlight></codeline>
-<codeline><highlight class="normal">...<sp/>logging<sp/>to<sp/>/root/.ros/log/0cf4f092-1b03-11ed-ad08-0242ac110002/roslaunch-3b17871017fd-15182.log</highlight></codeline>
-<codeline><highlight class="normal">Checking<sp/>log<sp/>directory<sp/>for<sp/>disk<sp/>usage.<sp/>This<sp/>may<sp/>take<sp/>a<sp/>while.</highlight></codeline>
-<codeline><highlight class="normal">Press<sp/>Ctrl-C<sp/>to<sp/>interrupt</highlight></codeline>
-<codeline><highlight class="normal">Done<sp/>checking<sp/>log<sp/>file<sp/>disk<sp/>usage.<sp/>Usage<sp/>is<sp/>&lt;1GB.</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">started<sp/>roslaunch<sp/>server<sp/>http://3b17871017fd:32951/</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">SUMMARY</highlight></codeline>
-<codeline><highlight class="normal">========</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">PARAMETERS</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_max_hypotheses:<sp/>15</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_owlfile:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_owlfile_backup:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_what:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_where:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_who:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/rosdistro:<sp/>noetic</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/rosversion:<sp/>1.15.14</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">NODES</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>/</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor_service<sp/>(armor/execute)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">auto-starting<sp/>new<sp/>master</highlight></codeline>
-<codeline><highlight class="normal">process[master]:<sp/>started<sp/>with<sp/>pid<sp/>[15220]</highlight></codeline>
-<codeline><highlight class="normal">ROS_MASTER_URI=http://localhost:11311</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">setting<sp/>/run_id<sp/>to<sp/>0cf4f092-1b03-11ed-ad08-0242ac110002</highlight></codeline>
-<codeline><highlight class="normal">process[rosout-1]:<sp/>started<sp/>with<sp/>pid<sp/>[15245]</highlight></codeline>
-<codeline><highlight class="normal">started<sp/>core<sp/>service<sp/>[/rosout]</highlight></codeline>
-<codeline><highlight class="normal">process[armor_service-2]:<sp/>started<sp/>with<sp/>pid<sp/>[15252]</highlight></codeline>
-<codeline><highlight class="normal">Loading<sp/>node<sp/>class:<sp/>it.emarolab.armor.ARMORMainService</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>No<sp/>appenders<sp/>could<sp/>be<sp/>found<sp/>for<sp/>logger<sp/>(org.ros.internal.node.client.Registrar).</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>Please<sp/>initialize<sp/>the<sp/>log4j<sp/>system<sp/>properly.</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>See<sp/>http://logging.apache.org/log4j/1.2/faq.html#noconfig<sp/>for<sp/>more<sp/>info.</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>2:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor#<sp/>rosrun<sp/>robocluedo_module_testing<sp/>test_armor_tools</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394502.533233500]:<sp/>[test_armor_tools]<sp/>Ontology<sp/>found!<sp/>[/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl]<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394502.533945000]:<sp/>[armor_tools]<sp/>Requiring<sp/>client<sp/>[/armor_interface_srv]<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394502.534393900]:<sp/>[armor_tools]<sp/>-&gt;<sp/>OK</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.535600400]:<sp/>[test_armor_tools]<sp/>(1)<sp/>completed<sp/>hypotheses:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.535726200]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.541773600]:<sp/>[test_armor_tools]<sp/>(1)<sp/>inconsistent<sp/>hypotheses:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.541849400]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.560990000]:<sp/><sp/><sp/><sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>armor_client</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>DISJOINT</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/>CLASS</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[<sp/><sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.561065200]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.578151000]:<sp/>[test_armor_tools]<sp/>(2)<sp/>completed<sp/>hypotheses:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.591825200]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.591923700]:<sp/>[test_armor_tools]<sp/>(2)<sp/>inconsistent<sp/>hypotheses:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.597800300]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.610336500]:<sp/>[test_armor_tools]<sp/>(3)<sp/>un<sp/>disjoint<sp/>strano:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.610436400]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.610522800]:<sp/>[test_armor_tools]<sp/>(3)<sp/>inconsistent<sp/>hypotheses:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.618661100]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.618737000]:<sp/>[test_armor_tools]<sp/>query<sp/>elementi<sp/>della<sp/>classe<sp/>PLACE</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.637675800]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Study&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Stadium&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Lounge&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.637773600]:<sp/>[test_armor_tools]<sp/>query<sp/>proprieta&apos;<sp/>di<sp/>hp3</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.671939100]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#what&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#who&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#where&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.672028100]:<sp/>[test_armor_tools]<sp/>query<sp/>di<sp/>tutte<sp/>le<sp/>ipotesi</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.686505400]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Jim&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Study&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Gun&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Stadium&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Lounge&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.686635900]:<sp/>[test_armor_tools]<sp/>query<sp/>tutte<sp/>le<sp/>classi<sp/>a<sp/>cui<sp/>HP3<sp/>apartiene</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.714323400]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#COMPLETED&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HYPOTHESIS&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.714410400]:<sp/>[test_armor_tools]<sp/>salvataggio</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394503.832474000]:<sp/>[test_armor_tools]<sp/>THAT&apos;S<sp/>ALL<sp/>FOLKS!</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">###<sp/>armor<sp/>with<sp/>armor_cluedo<sp/>and<sp/>armor_tools</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>1:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor#<sp/>roslaunch<sp/>robocluedo_module_testing<sp/>test_armor.launch</highlight></codeline>
-<codeline><highlight class="normal">...<sp/>logging<sp/>to<sp/>/root/.ros/log/c81a496a-1b05-11ed-9d7f-0242ac110002/roslaunch-3b17871017fd-27615.log</highlight></codeline>
-<codeline><highlight class="normal">Checking<sp/>log<sp/>directory<sp/>for<sp/>disk<sp/>usage.<sp/>This<sp/>may<sp/>take<sp/>a<sp/>while.</highlight></codeline>
-<codeline><highlight class="normal">Press<sp/>Ctrl-C<sp/>to<sp/>interrupt</highlight></codeline>
-<codeline><highlight class="normal">Done<sp/>checking<sp/>log<sp/>file<sp/>disk<sp/>usage.<sp/>Usage<sp/>is<sp/>&lt;1GB.</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">started<sp/>roslaunch<sp/>server<sp/>http://3b17871017fd:43779/</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">SUMMARY</highlight></codeline>
-<codeline><highlight class="normal">========</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">PARAMETERS</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_max_hypotheses:<sp/>15</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_owlfile:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_owlfile_backup:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_what:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_where:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/cluedo_path_who:<sp/>/root/ros_ws/src/...</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/rosdistro:<sp/>noetic</highlight></codeline>
-<codeline><highlight class="normal"><sp/>*<sp/>/rosversion:<sp/>1.15.14</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">NODES</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>/</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>armor_service<sp/>(armor/execute)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">auto-starting<sp/>new<sp/>master</highlight></codeline>
-<codeline><highlight class="normal">process[master]:<sp/>started<sp/>with<sp/>pid<sp/>[27653]</highlight></codeline>
-<codeline><highlight class="normal">ROS_MASTER_URI=http://localhost:11311</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">setting<sp/>/run_id<sp/>to<sp/>c81a496a-1b05-11ed-9d7f-0242ac110002</highlight></codeline>
-<codeline><highlight class="normal">process[rosout-1]:<sp/>started<sp/>with<sp/>pid<sp/>[27678]</highlight></codeline>
-<codeline><highlight class="normal">started<sp/>core<sp/>service<sp/>[/rosout]</highlight></codeline>
-<codeline><highlight class="normal">process[armor_service-2]:<sp/>started<sp/>with<sp/>pid<sp/>[27685]</highlight></codeline>
-<codeline><highlight class="normal">Loading<sp/>node<sp/>class:<sp/>it.emarolab.armor.ARMORMainService</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>No<sp/>appenders<sp/>could<sp/>be<sp/>found<sp/>for<sp/>logger<sp/>(org.ros.internal.node.client.Registrar).</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>Please<sp/>initialize<sp/>the<sp/>log4j<sp/>system<sp/>properly.</highlight></codeline>
-<codeline><highlight class="normal">log4j:WARN<sp/>See<sp/>http://logging.apache.org/log4j/1.2/faq.html#noconfig<sp/>for<sp/>more<sp/>info.</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>2:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_module_testing/launch/test_armor#<sp/>rosrun<sp/>robocluedo_module_testing<sp/>test_armor_cluedo</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394741.152181200]:<sp/>[test_armor_tools]<sp/>Ontology<sp/>found!<sp/>[/root/ros_ws/src/erl2-new/robocluedo_armor/config/cluedo_owl_ontology/cluedo_ontology.owl]<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394741.152996900]:<sp/>[armor_tools]<sp/>Requiring<sp/>client<sp/>[/armor_interface_srv]<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394741.153395100]:<sp/>[armor_tools]<sp/>-&gt;<sp/>OK</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.072103100]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/>TEST<sp/>COMANDI<sp/>DIRETTI<sp/>ARMOR<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.160877900]:<sp/>[test_armor_tools]<sp/>(0)<sp/>completed<sp/>hypotheses:<sp/>(dovrebbe<sp/>essere<sp/>vuoto)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.160996300]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.170764500]:<sp/>[test_armor_tools]<sp/>(0)<sp/>inconsistent<sp/>hypotheses:<sp/>(dovrebbe<sp/>essere<sp/>vuoto)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.170856100]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.228453400]:<sp/>[test_armor_tools]<sp/>(1)<sp/>completed<sp/>hypotheses:<sp/>(dovrebbe<sp/>comparire<sp/>un&apos;ipotesi)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.228533900]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.233656100]:<sp/>[test_armor_tools]<sp/>(1)<sp/>inconsistent<sp/>hypotheses:<sp/>(la<sp/>lista<sp/>dovrebbe<sp/>essere<sp/>vuota)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.233725800]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.317583600]:<sp/>[test_armor_tools]<sp/>(2)<sp/>completed<sp/>hypotheses:<sp/>(sempre<sp/>una<sp/>sola<sp/>ipotesi)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.317663000]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.325069700]:<sp/>[test_armor_tools]<sp/>(2)<sp/>inconsistent<sp/>hypotheses:<sp/>(dovrebbe<sp/>spuntare<sp/>un&apos;ipotesi<sp/>inconsistente)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.325156500]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HP3&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.333623100]:<sp/>[test_armor_tools]<sp/>proprieta&apos;<sp/>where<sp/>dell&apos;ipotesi<sp/>HP3:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.333695300]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Study&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#Stadium&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.333792700]:<sp/>[test_armor_tools]<sp/>test<sp/>esistenza<sp/>di<sp/>HP3:</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.334728000]:<sp/><sp/><sp/><sp/>Print<sp/>Request:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>client_name<sp/>:<sp/>armor_client</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reference_name<sp/>:<sp/>cluedo</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>command<sp/>:<sp/>QUERY</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>primary_command_spec<sp/>:<sp/>IND</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>secondary_command_spec<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>args<sp/>:<sp/>[HP3<sp/><sp/><sp/><sp/><sp/>]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.377817900]:<sp/>[test_armor_tools]<sp/>esiste<sp/>HP3?<sp/>(atteso:<sp/>yes)<sp/>-&gt;<sp/>yes</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.377910200]:<sp/><sp/><sp/><sp/>Print<sp/>Response:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>success<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>timeout<sp/>:<sp/>false</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>exit_code<sp/>:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error_description<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>is_consistent<sp/>:<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>queried_objects<sp/>:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#INCONSISTENT&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#COMPLETED&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/><sp/><sp/>&lt;http://www.emarolab.it/cluedo-ontology#HYPOTHESIS&gt;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sparql_queried_objects<sp/>:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.377993500]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/>TEST<sp/>COMPLETO<sp/>INTERFACCIA<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.378055900]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>GetClassOfIndiv()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.378113400]:<sp/>[test_armor_tools]<sp/>classe<sp/>dell&apos;individual<sp/>Stadium(con<sp/>la<sp/>maiuscola,<sp/>scritto<sp/>correttamente,<sp/>no<sp/>deep<sp/>search,<sp/>atteso<sp/>un<sp/>solo<sp/>elemento)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.382232000]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>PLACE</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.382303900]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>2<sp/>-&gt;<sp/>HYPOTHESIS</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.382366900]:<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.382428000]:<sp/>[test_armor_tools]<sp/>classe<sp/>dell&apos;individual<sp/>Stadium(con<sp/>la<sp/>maiuscola,<sp/>scritto<sp/>correttamente,<sp/>usando<sp/>la<sp/>deep<sp/>search,<sp/>atteso<sp/>un<sp/>solo<sp/>elemento)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.387964600]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>PLACE</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.388033600]:<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.388091300]:<sp/>[test_armor_tools]<sp/>classe<sp/>dell&apos;individual<sp/>stadium(senza<sp/>la<sp/>maiuscola,<sp/>sbagliato,<sp/>no<sp/>deep<sp/>search,<sp/>atteso<sp/>0)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.393586100]:<sp/>[test_armor_tools]<sp/>size==0</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.393664900]:<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.393723200]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>ExistsIndiv()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.397511500]:<sp/>[test_armor_tools]<sp/>esiste<sp/>&apos;stadium&apos;<sp/>senza<sp/>la<sp/>maiuscola?<sp/>-&gt;<sp/>no</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.401432500]:<sp/>[test_armor_tools]<sp/>esiste<sp/>&apos;Stadium&apos;<sp/>con<sp/>la<sp/>maiuscola?<sp/>-&gt;<sp/>yes</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.406154300]:<sp/>[test_armor_tools]<sp/>esiste<sp/>&apos;HP0&apos;<sp/>?<sp/>-&gt;<sp/>no</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.406253700]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>GetIndivOfClass()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.406320500]:<sp/>[test_armor_tools]<sp/>tutti<sp/>gli<sp/>individuals<sp/>della<sp/>classe<sp/>HYPOTHESIS(attesa<sp/>...<sp/>un<sp/>bel<sp/>po&apos;<sp/>di<sp/>roba)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411050000]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>Jim</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411111100]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>2<sp/>-&gt;<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411161000]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>3<sp/>-&gt;<sp/>Study</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411212300]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>4<sp/>-&gt;<sp/>Gun</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411269900]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>5<sp/>-&gt;<sp/>Stadium</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411323100]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>6<sp/>-&gt;<sp/>Lounge</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411372600]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>7<sp/>-&gt;<sp/>HP3</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411427000]:<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.411487200]:<sp/>[test_armor_tools]<sp/>tutti<sp/>gli<sp/>individuals<sp/>della<sp/>classe<sp/>PLACE(attesi<sp/>3<sp/>elementi)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.414906100]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>Study</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.414971500]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>2<sp/>-&gt;<sp/>Stadium</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.415020800]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>3<sp/>-&gt;<sp/>Lounge</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.415078600]:<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.415134300]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>GetValuedOfIndiv()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.415210700]:<sp/>[test_armor_tools]<sp/>propriet??<sp/>where<sp/>dell&apos;ipotesi<sp/>HP3(attesi<sp/>due<sp/>elementi)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.418685800]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>Study</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.418750900]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>2<sp/>-&gt;<sp/>Stadium</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.418811100]:<sp/></highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.418866600]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>RemoveHypothesis()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>WARN]<sp/>[1660394742.418928600]:<sp/>[test_armor_tools]<sp/>NOTA<sp/>BENE:<sp/>il<sp/>comando<sp/>REMOVE<sp/>di<sp/>aRMOR<sp/>??<sp/>buggato,<sp/>non<sp/>funziona.<sp/>Per<sp/>farlo<sp/>funzionare<sp/>occorre<sp/>trovare<sp/>un<sp/>workaround<sp/>nell&apos;interfaccia</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.418987900]:<sp/>[test_armor_tools]<sp/>aggiungo<sp/>l&apos;ipotesi<sp/>HPtoremove<sp/>(uso<sp/>qui<sp/>solo<sp/>comandi<sp/>dell&apos;interfaccia,<sp/>non<sp/>i<sp/>diretti<sp/>di<sp/>aRMOR)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.448092200]:<sp/>[test_armor_tools]<sp/>esiste<sp/>&apos;HPtoremove&apos;<sp/>?<sp/>-&gt;<sp/>yes</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.448175000]:<sp/>[test_armor_tools]<sp/>classe<sp/>dell&apos;individual<sp/>HPtoremove?<sp/>(atteso<sp/>un<sp/>solo<sp/>elemento)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.451924800]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>HYPOTHESIS</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.451996600]:<sp/>[test_armor_tools]<sp/>rimozione</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.457330500]:<sp/>[test_armor_tools]<sp/>RemoveHypothesis(<sp/>)<sp/>=<sp/>yes</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.465532300]:<sp/>[test_armor_tools]<sp/>esiste<sp/>ancora<sp/>&apos;HPtoremove&apos;<sp/>?<sp/>-&gt;<sp/>no</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.465603300]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>FindCompleteHypotheses()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.470117800]:<sp/>[test_armor_tools]<sp/>ricerca<sp/>delle<sp/>ipotesi<sp/>complete<sp/>(atteso:<sp/>una<sp/>sola<sp/>ipotesi,<sp/>escludendo<sp/>quella<sp/>scartata</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.470200300]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>HP3</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.470265300]:<sp/>[test_armor_tools]<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>======<sp/><sp/>TEST<sp/>FindInconsistentHypotheses()</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.474777500]:<sp/>[test_armor_tools]<sp/>ricerca<sp/>delle<sp/>ipotesi<sp/>inconsistenti<sp/>(atteso:<sp/>solo<sp/>una,<sp/>o<sp/>anche<sp/>due,<sp/>includendo<sp/>quella<sp/>scartata)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.474843000]:<sp/>[test_armor_tools]<sp/><sp/>numero<sp/>1<sp/>-&gt;<sp/>HP3</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660394742.597462300]:<sp/>[test_armor_tools]<sp/>THAT&apos;S<sp/>ALL<sp/>FOLKS!</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">###<sp/>ROSPlan<sp/>--<sp/>PDDL<sp/>model</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**popf<sp/>output<sp/>(first<sp/>goal):**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo#<sp/>./solve_popf.sh<sp/></highlight></codeline>
-<codeline><highlight class="normal">Number<sp/>of<sp/>literals:<sp/>28</highlight></codeline>
-<codeline><highlight class="normal">Constructing<sp/>lookup<sp/>tables:<sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]<sp/>[110%]<sp/>[120%]<sp/>[130%]<sp/>[140%]<sp/>[150%]<sp/>[160%]<sp/>[170%]</highlight></codeline>
-<codeline><highlight class="normal">Post<sp/>filtering<sp/>unreachable<sp/>actions:<sp/><sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]<sp/>[110%]<sp/>[120%]<sp/>[130%]<sp/>[140%]<sp/>[150%]<sp/>[160%]<sp/>[170%]</highlight></codeline>
-<codeline><highlight class="normal">No<sp/>analytic<sp/>limits<sp/>found,<sp/>not<sp/>considering<sp/>limit<sp/>effects<sp/>of<sp/>goal-only<sp/>operators</highlight></codeline>
-<codeline><highlight class="normal">64%<sp/>of<sp/>the<sp/>ground<sp/>temporal<sp/>actions<sp/>in<sp/>this<sp/>problem<sp/>are<sp/>compression-safe</highlight></codeline>
-<codeline><highlight class="normal">Initial<sp/>heuristic<sp/>=<sp/>2.000</highlight></codeline>
-<codeline><highlight class="normal">b<sp/>(1.000<sp/>|<sp/>0.990);;;;<sp/>Solution<sp/>Found</highlight></codeline>
-<codeline><highlight class="normal">;<sp/>States<sp/>evaluated:<sp/>3</highlight></codeline>
-<codeline><highlight class="normal">;<sp/>Cost:<sp/>0.990</highlight></codeline>
-<codeline><highlight class="normal">;<sp/>Time<sp/>0.00</highlight></codeline>
-<codeline><highlight class="normal">0.000:<sp/>(replan)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**popf<sp/>output<sp/>(second<sp/>goal):**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo#<sp/>./solve_popf.sh<sp/></highlight></codeline>
-<codeline><highlight class="normal">Number<sp/>of<sp/>literals:<sp/>28</highlight></codeline>
-<codeline><highlight class="normal">Constructing<sp/>lookup<sp/>tables:<sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]<sp/>[110%]<sp/>[120%]<sp/>[130%]<sp/>[140%]<sp/>[150%]<sp/>[160%]<sp/>[170%]</highlight></codeline>
-<codeline><highlight class="normal">Post<sp/>filtering<sp/>unreachable<sp/>actions:<sp/><sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]<sp/>[110%]<sp/>[120%]<sp/>[130%]<sp/>[140%]<sp/>[150%]<sp/>[160%]<sp/>[170%]</highlight></codeline>
-<codeline><highlight class="normal">No<sp/>analytic<sp/>limits<sp/>found,<sp/>not<sp/>considering<sp/>limit<sp/>effects<sp/>of<sp/>goal-only<sp/>operators</highlight></codeline>
-<codeline><highlight class="normal">64%<sp/>of<sp/>the<sp/>ground<sp/>temporal<sp/>actions<sp/>in<sp/>this<sp/>problem<sp/>are<sp/>compression-safe</highlight></codeline>
-<codeline><highlight class="normal">Initial<sp/>heuristic<sp/>=<sp/>11.000</highlight></codeline>
-<codeline><highlight class="normal">b<sp/>(10.000<sp/>|<sp/>0.990)b<sp/>(9.000<sp/>|<sp/>1.981)b<sp/>(8.000<sp/>|<sp/>2.972)b<sp/>(7.000<sp/>|<sp/>5.945)b<sp/>(6.000<sp/>|<sp/>5.945)b<sp/>(5.000<sp/>|<sp/>6.936)b<sp/>(4.000<sp/>|<sp/>7.927)b<sp/>(3.000<sp/>|<sp/>8.918)b<sp/>(2.000<sp/>|<sp/>8.918)b<sp/>(1.000<sp/>|<sp/>9.909);;;;<sp/>Solution<sp/>Found</highlight></codeline>
-<codeline><highlight class="normal">;<sp/>States<sp/>evaluated:<sp/>21</highlight></codeline>
-<codeline><highlight class="normal">;<sp/>Cost:<sp/>10.900</highlight></codeline>
-<codeline><highlight class="normal">;<sp/>Time<sp/>0.00</highlight></codeline>
-<codeline><highlight class="normal">0.000:<sp/>(replan)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">0.991:<sp/>(move-to<sp/>center<sp/>wp1)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">1.982:<sp/>(signal-collect-hint<sp/>wp1)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">2.973:<sp/>(collect-hint<sp/>wp1)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">3.964:<sp/>(move-to<sp/>wp1<sp/>wp2)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">4.955:<sp/>(move-to<sp/>wp2<sp/>wp3)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">5.946:<sp/>(signal-collect-hint<sp/>wp3)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">6.937:<sp/>(collect-hint<sp/>wp3)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">7.928:<sp/>(move-to<sp/>wp3<sp/>wp4)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">8.919:<sp/>(move-to-center<sp/>wp4<sp/>center)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline><highlight class="normal">9.910:<sp/>(solve)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">###<sp/>simple<sp/>ROSPlan<sp/>pipeline</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>1:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.534248300]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Starting<sp/>a<sp/>PDDL<sp/>Knowledge<sp/>Base</highlight></codeline>
-<codeline><highlight class="normal">process[popf_planner_interface-5]:<sp/>started<sp/>with<sp/>pid<sp/>[29974]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_parsing_interface-6]:<sp/>started<sp/>with<sp/>pid<sp/>[29983]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_plan_dispatcher-7]:<sp/>started<sp/>with<sp/>pid<sp/>[29987]</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.553958400]:<sp/>KCL:<sp/>(/rosplan_problem_interface)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_interface_replan-8]:<sp/>started<sp/>with<sp/>pid<sp/>[29995]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_interface_move_to-9]:<sp/>started<sp/>with<sp/>pid<sp/>[30000]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_interface_signal_collect_hint-10]:<sp/>started<sp/>with<sp/>pid<sp/>[30005]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_interface_collect_hint-11]:<sp/>started<sp/>with<sp/>pid<sp/>[30011]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_interface_move_to_center-12]:<sp/>started<sp/>with<sp/>pid<sp/>[30016]</highlight></codeline>
-<codeline><highlight class="normal">process[rosplan_interface_solve-13]:<sp/>started<sp/>with<sp/>pid<sp/>[30021]</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.605888600]:<sp/>KCL:<sp/>(/rosplan_parsing_interface)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.625367500]:<sp/>KCL:<sp/>(/rosplan_planner_interface)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.628658600]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Parsing<sp/>domain</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.628842800]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Parsing<sp/>domain:<sp/>/root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_domain.pddl.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.629704400]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Parsing<sp/>initial<sp/>state</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.629786800]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Parsing<sp/>Problem<sp/>File:<sp/>/root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_problem.pddl.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.630342900]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.650709100]:<sp/>KCL:<sp/>(/popf_planner_interface)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.667384500]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.676432100]:<sp/>KCL:<sp/>(replan)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.706270300]:<sp/>KCL:<sp/>(signal-collect-hint)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.706488200]:<sp/>KCL:<sp/>(solve)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.727061100]:<sp/>KCL:<sp/>(move-to-center)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.727229700]:<sp/>KCL:<sp/>(collect-hint)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396623.743870700]:<sp/>KCL:<sp/>(move-to)<sp/>Ready<sp/>to<sp/>receive</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396630.438992500]:<sp/>KCL:<sp/>(/rosplan_problem_interface)<sp/>(OUT.pddl)<sp/>Generating<sp/>problem<sp/>file.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396630.780932100]:<sp/>KCL:<sp/>(/rosplan_problem_interface)<sp/>(OUT.pddl)<sp/>The<sp/>problem<sp/>was<sp/>generated.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396630.781449900]:<sp/>KCL:<sp/>(/rosplan_planner_interface)<sp/>Problem<sp/>received.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396632.842210000]:<sp/>KCL:<sp/>(/rosplan_planner_interface)<sp/>(OUT.pddl)<sp/>Writing<sp/>problem<sp/>to<sp/>file.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396632.842406600]:<sp/>KCL:<sp/>(/rosplan_planner_interface)<sp/>(OUT.pddl)<sp/>Running:<sp/>timeout<sp/>10<sp/>/root/ros_ws/src/ROSPlan/rosplan_planning_system/common/bin/popf<sp/>-T<sp/>/root/ros_ws/src/erl2-new/robocluedo_rosplan/pddl/robocluedo/robocluedo_domain.pddl<sp/>/root/ros_ws/src/erl2-new/robocluedo_rosplan/data/OUT.pddl<sp/>&gt;<sp/>/root/ros_ws/src/erl2-new/robocluedo_rosplan/data/plan.pddl</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396632.846124800]:<sp/>KCL:<sp/>(/rosplan_planner_interface)<sp/>(OUT.pddl)<sp/>Planning<sp/>complete</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396632.846216600]:<sp/>KCL:<sp/>(/rosplan_planner_interface)<sp/>(OUT.pddl)<sp/>Plan<sp/>was<sp/>solved.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396632.846425800]:<sp/>KCL:<sp/>(/rosplan_parsing_interface)<sp/>Planner<sp/>output<sp/>received.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396634.813932000]:<sp/>KCL:<sp/>(/rosplan_parsing_interface)<sp/>Parsing<sp/>planner<sp/>output.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396634.814199200]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Plan<sp/>received.</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396636.957165700]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Dispatching<sp/>plan</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396636.980670300]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Dispatching<sp/>action<sp/>[0,<sp/>replan(),<sp/>2.142903,<sp/>0.990000]</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396636.981163300]:<sp/>KCL:<sp/>(replan)<sp/>action<sp/>received</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396636.981305300]:<sp/>KCL:<sp/>(replan)<sp/>Action<sp/>completing<sp/>with<sp/>probability<sp/>1<sp/>and<sp/>duration<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396637.057456100]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Feedback<sp/>received<sp/>[0,<sp/>1]</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396637.057576200]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Feedback<sp/>received<sp/>[0,<sp/>1]</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396637.981581400]:<sp/>KCL:<sp/>(replan)<sp/>action<sp/>completed<sp/>successfully</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396637.990541600]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Removing<sp/>Fact<sp/>(dirty,0)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396637.990673000]:<sp/>KCL:<sp/>(/rosplan_knowledge_base)<sp/>Adding<sp/>fact<sp/>(not-dirty,<sp/>0)</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396638.057318500]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Feedback<sp/>received<sp/>[0,<sp/>2]</highlight></codeline>
-<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660396638.157326600]:<sp/>KCL:<sp/>(/rosplan_plan_dispatcher)<sp/>Dispatch<sp/>complete.</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>2:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rosservice<sp/>call<sp/>/rosplan_problem_interface/problem_generation_server</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rostopic<sp/>echo<sp/>/rosplan_problem_interface/problem_instance<sp/>-n<sp/>1<sp/>-p</highlight></codeline>
-<codeline><highlight class="normal">%time,field.data</highlight></codeline>
-<codeline><highlight class="normal">1660396631800734996,(define<sp/>(problem<sp/>task)</highlight></codeline>
-<codeline><highlight class="normal">(:domain<sp/>robocluedo)</highlight></codeline>
-<codeline><highlight class="normal">(:objects</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>center<sp/>wp1<sp/>wp2<sp/>wp3<sp/>wp4<sp/>-<sp/>waypoint</highlight></codeline>
-<codeline><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">(:init</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(dirty)</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(is-center<sp/>center)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-is-center<sp/>wp1)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-is-center<sp/>wp2)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-is-center<sp/>wp3)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-is-center<sp/>wp4)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(at<sp/>center)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>wp1)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>wp1<sp/>center)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>center<sp/>wp4)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>wp4<sp/>center)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>wp1<sp/>wp2)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>wp2<sp/>wp3)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(passage<sp/>wp3<sp/>wp4)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(explored<sp/>center)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>wp1)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>wp2)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>wp3)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-explored<sp/>wp4)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(at-center)</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-ready)</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp1)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp2)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp3)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-hint-collected<sp/>wp4)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal">(:goal<sp/>(and</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-dirty)</highlight></codeline>
-<codeline><highlight class="normal">))</highlight></codeline>
-<codeline><highlight class="normal">)</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rosservice<sp/>call<sp/>/rosplan_planner_interface/planning_server</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rostopic<sp/>echo<sp/>/rosplan_planner_interface/planner_output<sp/>-p<sp/>-n<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">%time,field.data</highlight></codeline>
-<codeline><highlight class="normal">1660396633868040800,0.000:<sp/>(replan)<sp/><sp/>[0.990]</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rosservice<sp/>call<sp/>/rosplan_parsing_interface/parse_plan</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rostopic<sp/>echo<sp/>/rosplan_parsing_interface/complete_plan<sp/>-n<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">plan:<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>-<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>action_id:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>plan_id:<sp/>0</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>name:<sp/>&quot;replan&quot;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>parameters:<sp/>[]</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>duration:<sp/>0.9900000095367432</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>dispatch_time:<sp/>0.0</highlight></codeline>
-<codeline><highlight class="normal">---</highlight></codeline>
-<codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl2-new#<sp/>rosservice<sp/>call<sp/>/rosplan_plan_dispatcher/dispatch_plan<sp/>&quot;{}&quot;<sp/></highlight></codeline>
-<codeline><highlight class="normal">success:<sp/>True</highlight></codeline>
-<codeline><highlight class="normal">goal_achieved:<sp/>True</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">###<sp/>???</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>1:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">**SHELL<sp/>2:**</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```text</highlight></codeline>
-<codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="robocluedo_module_testing/_docs/test-the-project.md"/>
