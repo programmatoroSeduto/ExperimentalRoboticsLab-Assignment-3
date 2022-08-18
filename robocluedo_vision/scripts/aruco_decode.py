@@ -68,7 +68,7 @@ def cbk_aruco_detection( idpack ):
 	
 	# ask the meaning to the Oracle
 	ask = MarkerRequest( )
-	ask.markerId = idpack.data
+	ask.markerId = idpack.data % 30
 	
 	oracle_res = None
 	try:

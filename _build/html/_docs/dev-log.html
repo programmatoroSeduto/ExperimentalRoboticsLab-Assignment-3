@@ -990,7 +990,80 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 </ul>
 </li>
 <li><p>va <em>quasi</em> tutto bene. aruco_detection non invia i marker sul topic</p></li>
+<li><p>(intanto un checkpoint nel dubbio…)</p></li>
 <li><p><strong>COMMIT</strong>: “testing (problems with aruco_detection not publishing the ids)”</p></li>
+<li><p>il mio piano geniale avrebbe anche funzionato … se non fosse che le dimensioni dei vettori non fossero misurate in size_t piuttosto che come int …</p></li>
+</ul>
+<p>per capirci, <code class="docutils literal notranslate"><span class="pre">vector.size()</span> <span class="pre">-</span> <span class="pre">1</span></code> ritorna questo orrore senza Dio:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660844701.851857500, 951.527000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.040326800, 951.626000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.292802100, 951.729000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.493988200, 951.831000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.703035300, 951.926000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.888891100, 952.026000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[INFO] [1660844702.891754, 952.028000]: (aruco_decode ) ready
+[ INFO] [1660844703.047278100, 952.127000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.309153800, 952.226000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.534099100, 952.326000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.534168700, 952.326000000]: (aruco_detection ) switching to camera with ID=2
+[ INFO] [1660844703.744395000, 952.426000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.981569700, 952.527000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844704.258705100, 952.629000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844704.427318800, 952.726000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e come si risolve la faccenda?</p></li>
+<li><p>se scrivo questo <code class="docutils literal notranslate"><span class="pre">((int)ids_to_publish.size(</span> <span class="pre">))</span> <span class="pre">-</span> <span class="pre">1</span></code> il problema sembra risolto, mentre se scrivo <code class="docutils literal notranslate"><span class="pre">ids_to_publish.size(</span> <span class="pre">)</span> <span class="pre">-</span> <span class="pre">1</span></code> viene fuori quella roba là sopra</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660844957.321987100, 957.825000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844957.521214800, 957.925000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844957.792062300, 958.025000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844957.993540900, 958.125000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.220654500, 958.225000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.471494800, 958.325000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.720852300, 958.425000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.984896700, 958.525000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844959.329034600, 958.625000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844959.619499500, 958.725000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844959.789824700, 958.826000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844960.082557000, 958.935000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844960.082637800, 958.935000000]: (aruco_detection ) switching to camera with ID=3
+[ INFO] [1660844960.283390600, 959.028000000]: (aruco_detection ) size-1=-1 -- idx=-1
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>proviamo anche la condizione così scritta: … eandiamo!</p></li>
+<li><p>ho notato inoltre che certe volte il decode non riesce a contattare l’oracolo (quando il sistema inizia ad essere piuttosto saturo di cose da fare, che accada qualche problema sulle chiamate a servizio c’è da aspettarselo … purtroppo)</p>
+<ul>
+<li><p>meglio aggiungere qualche strategia di recupero al decode</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> ho fatto girare un po’ il programma … e dopo 5min buoni ha crashato a seguito di una ricezione di un ID pari a 174…</p>
+<ul>
+<li><p>… e ricordo che nel precedente assignment, ogni tanto l’oracolo crashava prchè l’ID era troppo alto, non definito (aridanghete)</p></li>
+<li><p>sensato?</p></li>
+</ul>
+</li>
+</ul>
+<p>direi proprio confermato:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">markerID</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w"> </span>
+<span class="n">erl2</span><span class="o">::</span><span class="n">ErlOracle</span><span class="w"> </span><span class="n">oracle_msgs</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">// oracle_hint</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">oracleCallback</span><span class="p">(</span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Request</span><span class="w"> </span><span class="o">&amp;</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">res</span><span class="p">.</span><span class="n">oracle_hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oracle_msgs</span><span class="p">[</span><span class="n">req</span><span class="p">.</span><span class="n">markerId</span><span class="p">];</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>per risolvere il problema, il decoder dovrebbe usare l’operatore di modulo (le specifiche non trattano di preciso questo caso … perciò mi reputo autorizzato a fare quello che voglio qui)</p>
+<ul>
+<li><p>piccola modifica al decoder</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="note">

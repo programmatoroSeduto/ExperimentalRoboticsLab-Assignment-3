@@ -85,6 +85,8 @@ public:
 		{
 			r.sleep( );
 			
+			// ROS_INFO_STREAM( "(aruco_detection ) size-1=" << ((int)ids_to_publish.size( )) - 1 << " -- idx=" << last_id_published );
+			
 			// update camera
 			// if( ros::Time::now( ) >= t_update )
 			if( t0_greater_than_t1( ros::WallTime::now( ), t_update ) )
@@ -96,17 +98,22 @@ public:
 			}
 			
 			// publish a new marker id if any
-			if( ids_to_publish.size( ) - 1 > last_id_published )
+			if( ((int)ids_to_publish.size( )) - 1 > last_id_published )
 			{
 				std_msgs::Int32 msg;
 				
+				// ROS_INFO_STREAM( "(aruco_detection ) time to send new IDs! size-1=" << ((int)ids_to_publish.size( )) - 1 << " -- idx=" << last_id_published );
+				
 				mtx_detect.lock( );
-				while( ids_to_publish.size( ) - 1 > last_id_published )
+				while( ((int)ids_to_publish.size( )) - 1 > last_id_published )
 				{
-					msg.data = ids_to_publish[ ++last_id_published ];
+					ROS_INFO_STREAM( "(aruco_detection ) inside the while... size-1=" << ((int)ids_to_publish.size( )) - 1 << " -- idx=" << last_id_published );
+					
+					last_id_published++;
+					msg.data = ids_to_publish[ last_id_published ];
 					pub_marker_ids.publish( msg );
 					
-					ROS_INFO_STREAM( "(aruco_detection ) published ID=" << msg.data << "with idx=" << last_id_published );
+					ROS_INFO_STREAM( "(aruco_detection ) published ID=" << msg.data << " with idx=" << last_id_published );
 				}
 				mtx_detect.unlock( );
 			}

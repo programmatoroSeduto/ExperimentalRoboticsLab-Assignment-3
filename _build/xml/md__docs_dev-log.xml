@@ -836,7 +836,78 @@
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para>va <emphasis>quasi</emphasis> tutto bene. aruco_detection non invia i marker sul topic</para>
+</listitem><listitem><para>(intanto un checkpoint nel dubbio...)</para>
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;testing (problems with aruco_detection not publishing the ids)&quot;</para>
+</listitem><listitem><para>il mio piano geniale avrebbe anche funzionato ... se non fosse che le dimensioni dei vettori non fossero misurate in size_t piuttosto che come int ...</para>
+</listitem></itemizedlist>
+</para>
+<para>per capirci, <computeroutput>vector.size() - 1</computeroutput> ritorna questo orrore senza Dio:</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844701.851857500,<sp/>951.527000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.040326800,<sp/>951.626000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.292802100,<sp/>951.729000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.493988200,<sp/>951.831000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.703035300,<sp/>951.926000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.888891100,<sp/>952.026000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[INFO]<sp/>[1660844702.891754,<sp/>952.028000]:<sp/>(aruco_decode<sp/>)<sp/>ready</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.047278100,<sp/>952.127000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.309153800,<sp/>952.226000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.534099100,<sp/>952.326000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.534168700,<sp/>952.326000000]:<sp/>(aruco_detection<sp/>)<sp/>switching<sp/>to<sp/>camera<sp/>with<sp/>ID=2</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.744395000,<sp/>952.426000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.981569700,<sp/>952.527000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844704.258705100,<sp/>952.629000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844704.427318800,<sp/>952.726000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>e come si risolve la faccenda?</para>
+</listitem><listitem><para>se scrivo questo <computeroutput>((int)ids_to_publish.size( )) - 1</computeroutput> il problema sembra risolto, mentre se scrivo <computeroutput>ids_to_publish.size( ) - 1</computeroutput> viene fuori quella roba là sopra</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.321987100,<sp/>957.825000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.521214800,<sp/>957.925000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.792062300,<sp/>958.025000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.993540900,<sp/>958.125000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.220654500,<sp/>958.225000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.471494800,<sp/>958.325000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.720852300,<sp/>958.425000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.984896700,<sp/>958.525000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.329034600,<sp/>958.625000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.619499500,<sp/>958.725000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.789824700,<sp/>958.826000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.082557000,<sp/>958.935000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.082637800,<sp/>958.935000000]:<sp/>(aruco_detection<sp/>)<sp/>switching<sp/>to<sp/>camera<sp/>with<sp/>ID=3</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.283390600,<sp/>959.028000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>proviamo anche la condizione così scritta: ... eandiamo!</para>
+</listitem><listitem><para>ho notato inoltre che certe volte il decode non riesce a contattare l&apos;oracolo (quando il sistema inizia ad essere piuttosto saturo di cose da fare, che accada qualche problema sulle chiamate a servizio c&apos;è da aspettarselo ... purtroppo)<itemizedlist>
+<listitem><para>meglio aggiungere qualche strategia di recupero al decode</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>ISSUE</bold> ho fatto girare un po&apos; il programma ... e dopo 5min buoni ha crashato a seguito di una ricezione di un ID pari a 174...<itemizedlist>
+<listitem><para>... e ricordo che nel precedente assignment, ogni tanto l&apos;oracolo crashava prchè l&apos;ID era troppo alto, non definito (aridanghete)</para>
+</listitem><listitem><para>sensato?</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>direi proprio confermato:</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>markerID[30];<sp/></highlight></codeline>
+<codeline><highlight class="normal">erl2::ErlOracle<sp/>oracle_msgs[30];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>oracle_hint</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>oracleCallback(exp_assignment3::Marker::Request<sp/>&amp;req,<sp/>exp_assignment3::Marker::Response<sp/>&amp;res)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.oracle_hint<sp/>=<sp/>oracle_msgs[req.markerId];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>per risolvere il problema, il decoder dovrebbe usare l&apos;operatore di modulo (le specifiche non trattano di preciso questo caso ... perciò mi reputo autorizzato a fare quello che voglio qui)<itemizedlist>
+<listitem><para>piccola modifica al decoder</para>
+</listitem></itemizedlist>
+</para>
 </listitem></itemizedlist>
 </para>
 <sect2 id="md__docs_dev-log_1autotoc_md55">

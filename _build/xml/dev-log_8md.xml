@@ -781,8 +781,74 @@
 <codeline><highlight class="normal">-<sp/>ora,<sp/>tutto<sp/>tranne<sp/>il<sp/>mission<sp/>manager</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>questo<sp/>serviranno<sp/>dei<sp/>test<sp/>che<sp/>non<sp/>ho<sp/>ancora<sp/>scritto<sp/>(faccio<sp/>subito)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>va<sp/>*quasi*<sp/>tutto<sp/>bene.<sp/>aruco_detection<sp/>non<sp/>invia<sp/>i<sp/>marker<sp/>sul<sp/>topic</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(intanto<sp/>un<sp/>checkpoint<sp/>nel<sp/>dubbio...)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;testing<sp/>(problems<sp/>with<sp/>aruco_detection<sp/>not<sp/>publishing<sp/>the<sp/>ids)&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">-<sp/>il<sp/>mio<sp/>piano<sp/>geniale<sp/>avrebbe<sp/>anche<sp/>funzionato<sp/>...<sp/>se<sp/>non<sp/>fosse<sp/>che<sp/>le<sp/>dimensioni<sp/>dei<sp/>vettori<sp/>non<sp/>fossero<sp/>misurate<sp/>in<sp/>size_t<sp/>piuttosto<sp/>che<sp/>come<sp/>int<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">per<sp/>capirci,<sp/>`vector.size()<sp/>-<sp/>1`<sp/>ritorna<sp/>questo<sp/>orrore<sp/>senza<sp/>Dio:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844701.851857500,<sp/>951.527000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.040326800,<sp/>951.626000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.292802100,<sp/>951.729000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.493988200,<sp/>951.831000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.703035300,<sp/>951.926000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.888891100,<sp/>952.026000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[INFO]<sp/>[1660844702.891754,<sp/>952.028000]:<sp/>(aruco_decode<sp/>)<sp/>ready</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.047278100,<sp/>952.127000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.309153800,<sp/>952.226000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.534099100,<sp/>952.326000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.534168700,<sp/>952.326000000]:<sp/>(aruco_detection<sp/>)<sp/>switching<sp/>to<sp/>camera<sp/>with<sp/>ID=2</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.744395000,<sp/>952.426000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.981569700,<sp/>952.527000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844704.258705100,<sp/>952.629000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844704.427318800,<sp/>952.726000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>come<sp/>si<sp/>risolve<sp/>la<sp/>faccenda?<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>se<sp/>scrivo<sp/>questo<sp/>`((int)ids_to_publish.size(<sp/>))<sp/>-<sp/>1`<sp/>il<sp/>problema<sp/>sembra<sp/>risolto,<sp/>mentre<sp/>se<sp/>scrivo<sp/>`ids_to_publish.size(<sp/>)<sp/>-<sp/>1`<sp/>viene<sp/>fuori<sp/>quella<sp/>roba<sp/>là<sp/>sopra</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.321987100,<sp/>957.825000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.521214800,<sp/>957.925000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.792062300,<sp/>958.025000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.993540900,<sp/>958.125000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.220654500,<sp/>958.225000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.471494800,<sp/>958.325000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.720852300,<sp/>958.425000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.984896700,<sp/>958.525000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.329034600,<sp/>958.625000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.619499500,<sp/>958.725000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.789824700,<sp/>958.826000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.082557000,<sp/>958.935000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.082637800,<sp/>958.935000000]:<sp/>(aruco_detection<sp/>)<sp/>switching<sp/>to<sp/>camera<sp/>with<sp/>ID=3</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.283390600,<sp/>959.028000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>proviamo<sp/>anche<sp/>la<sp/>condizione<sp/>così<sp/>scritta:<sp/>...<sp/>eandiamo!</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>ho<sp/>notato<sp/>inoltre<sp/>che<sp/>certe<sp/>volte<sp/>il<sp/>decode<sp/>non<sp/>riesce<sp/>a<sp/>contattare<sp/>l&apos;oracolo<sp/>(quando<sp/>il<sp/>sistema<sp/>inizia<sp/>ad<sp/>essere<sp/>piuttosto<sp/>saturo<sp/>di<sp/>cose<sp/>da<sp/>fare,<sp/>che<sp/>accada<sp/>qualche<sp/>problema<sp/>sulle<sp/>chiamate<sp/>a<sp/>servizio<sp/>c&apos;è<sp/>da<sp/>aspettarselo<sp/>...<sp/>purtroppo)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>meglio<sp/>aggiungere<sp/>qualche<sp/>strategia<sp/>di<sp/>recupero<sp/>al<sp/>decode</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**ISSUE**<sp/>ho<sp/>fatto<sp/>girare<sp/>un<sp/>po&apos;<sp/>il<sp/>programma<sp/>...<sp/>e<sp/>dopo<sp/>5min<sp/>buoni<sp/>ha<sp/>crashato<sp/>a<sp/>seguito<sp/>di<sp/>una<sp/>ricezione<sp/>di<sp/>un<sp/>ID<sp/>pari<sp/>a<sp/>174...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>e<sp/>ricordo<sp/>che<sp/>nel<sp/>precedente<sp/>assignment,<sp/>ogni<sp/>tanto<sp/>l&apos;oracolo<sp/>crashava<sp/>prchè<sp/>l&apos;ID<sp/>era<sp/>troppo<sp/>alto,<sp/>non<sp/>definito<sp/>(aridanghete)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>sensato?<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">direi<sp/>proprio<sp/>confermato:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>markerID[30];<sp/></highlight></codeline>
+<codeline><highlight class="normal">erl2::ErlOracle<sp/>oracle_msgs[30];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>oracle_hint</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>oracleCallback(exp_assignment3::Marker::Request<sp/>&amp;req,<sp/>exp_assignment3::Marker::Response<sp/>&amp;res)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.oracle_hint<sp/>=<sp/>oracle_msgs[req.markerId];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>risolvere<sp/>il<sp/>problema,<sp/>il<sp/>decoder<sp/>dovrebbe<sp/>usare<sp/>l&apos;operatore<sp/>di<sp/>modulo<sp/>(le<sp/>specifiche<sp/>non<sp/>trattano<sp/>di<sp/>preciso<sp/>questo<sp/>caso<sp/>...<sp/>perciò<sp/>mi<sp/>reputo<sp/>autorizzato<sp/>a<sp/>fare<sp/>quello<sp/>che<sp/>voglio<sp/>qui)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>piccola<sp/>modifica<sp/>al<sp/>decoder</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
