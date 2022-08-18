@@ -16,13 +16,16 @@ caption: Indice
 - [un altro editor motlo carino per PlantText](https://www.planttext.com/)
 - [onlineGDB](https://www.onlinegdb.com/online_c++_compiler)
 
-## 15/08/2022 -- setup repository -- starter kit -- 
+## 15/08/2022 -- setup repository -- starter kit
+
+
 
 nuovo assignment, nuova avventura:
 
 - primo setup della repository
 - **COMMIT**: "simil-fork from erl2"
 - creazione di un nuovo log pulito (serve a me per riflettere e annotare cose che non so dove metterei altrimenti)
+- [il progetto per il perfezionamento della RAI è iniziato.](https://www.youtube.com/watch?v=mfRFLlQvDkE)
 - customizzazione della documentazione (... il 2 diventa un 3?)
 - **COMMIT**: "setup (docs)"
 
@@ -858,6 +861,16 @@ siamo moooolto vicini al momento della verità: questa sera gli dsi da il colpo 
 - **COMMIT**: "final testing (ready to test the whole system)"
 
 ---
+
+e andiamo con l'ultimo test: *il mission manager*
+
+- anzitutto, script del test
+- e voglio attivare la modalità di sviluppo nel mission manager, giusto per
+- essiamoprontiperprovare
+
+[congratulazioni.](https://www.youtube.com/watch?v=8FWUnyGlTOY)
+
+- **COMMIT**: "happy commit!"
 
 
 

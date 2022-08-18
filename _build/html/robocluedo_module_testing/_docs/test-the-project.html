@@ -55,7 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
@@ -64,7 +64,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – RoboCLuedo Module Testing</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing the project – RoboCLuedo no.3</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/rosplan_simulated_motion_system.html">CODE REFERENCE – node rosplan_simulated_motion_system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/test_armor.html">CODE REFERENCE – node test_armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/test_armor_cluedo.html">CODE REFERENCE – node test_armor_cluedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/test_armor_tools.html">CODE REFERENCE – node test_armor_tools</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
@@ -172,10 +181,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#final-tests">Final Tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#first-test">first test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#another-test">another test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-armor">checking aRMOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-rosplan">checking rosplan</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#the-trust-me-i-m-an-engineer-phase">The “trust me, I’m an engineer” phase</a></li>
 </ul>
 </li>
 </ul>
@@ -800,9 +810,9 @@ rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</s
 </div>
 <div class="section" id="testing-rosplan-plus-real-motion-controller">
 <h2>TESTING rosplan plus real motion controller<a class="headerlink" href="#testing-rosplan-plus-real-motion-controller" title="Permalink to this heading"></a></h2>
-<p>it is the same last test of robocluedo ROSPlan, but this time using the real movement controller.</p>
+<p>it is the same last test of robocluedo ROSPlan, but this time using the real movement controller. the package robocluedo_mission_manager has a GIANT launch file which allows to select which component of the architecture to run each time. you can use this launch multimple times in order to run the same architecture in two or more terminals.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
@@ -830,7 +840,7 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <div class="section" id="rcl2-components-and-aruco-no-armor">
 <h3>RCL2 components and ArUco (no armor)<a class="headerlink" href="#rcl2-components-and-aruco-no-armor" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
@@ -865,7 +875,7 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <h3>hints detection<a class="headerlink" href="#hints-detection" title="Permalink to this heading"></a></h3>
 <p>a variant of the abovementioned test which allows to see the hints from the unit <code class="docutils literal notranslate"><span class="pre">aruco_decode.py</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rostopic <span class="nb">echo</span> /oracle_hint
@@ -883,21 +893,35 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 </div>
 <div class="section" id="hints-detection-and-movements-of-the-arm">
 <h3>hints detection and movements of the arm<a class="headerlink" href="#hints-detection-and-movements-of-the-arm" title="Permalink to this heading"></a></h3>
-<p>let’s add the authomatic movements of the arm during the exploration of the environment:</p>
+<p>let’s add the authomatic movements of the arm during the exploration of the environment. The content of the test is very similar to the task executed by the mission manager.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
 rostopic <span class="nb">echo</span> /oracle_hint
 
 <span class="c1"># shell 3</span>
-rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: true&quot;</span>
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: true&quot;</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: true&quot;</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>
 </div>
@@ -914,34 +938,48 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <p>this option says the Oracle to send just the elements of th winner message and not all the other items. keys are selected randomly from the fields of the winner ID.</p>
 </li>
 </ul>
-<div class="section" id="first-test">
-<h3>first test<a class="headerlink" href="#first-test" title="Permalink to this heading"></a></h3>
+<div class="section" id="checking-armor">
+<h3>checking aRMOR<a class="headerlink" href="#checking-armor" title="Permalink to this heading"></a></h3>
 <p>this test allows to see the output from aRMOR.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
-roslaunch robocluedo_armor run.launch
+<span class="c1"># roslaunch robocluedo_armor run.launch</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span>
 
 <span class="c1"># shell 3</span>
-rosrun robocluedo_mission_manager mission_manager
+<span class="c1"># rosrun robocluedo_mission_manager mission_manager</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span> 
 </pre></div>
 </div>
 </div>
-<div class="section" id="another-test">
-<h3>another test<a class="headerlink" href="#another-test" title="Permalink to this heading"></a></h3>
+<div class="section" id="checking-rosplan">
+<h3>checking rosplan<a class="headerlink" href="#checking-rosplan" title="Permalink to this heading"></a></h3>
 <p>this test is used for checking the behaviour of ROSPlan, and in particular of the pipeline manager (which is written in Python unfortunately).</p>
 <p><em>this test corresponds to how to run the project.</em></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
-roslaunch robocluedo_mission_manager run_components_2.launch <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
 
 <span class="c1"># shell 2</span>
-roslaunch robocluedo_rosplan run.launch
+<span class="c1"># roslaunch robocluedo_rosplan run.launch</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span>
 
 <span class="c1"># shell 3</span>
-rosrun robocluedo_mission_manager mission_manager
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span> 
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="the-trust-me-i-m-an-engineer-phase">
+<h2>The “trust me, I’m an engineer” phase<a class="headerlink" href="#the-trust-me-i-m-an-engineer-phase" title="Permalink to this heading"></a></h2>
+<p>the project now works! it’s time to launch <em>everything</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell tab 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell tab 2</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span> 
+</pre></div>
 </div>
 </div>
 </div>

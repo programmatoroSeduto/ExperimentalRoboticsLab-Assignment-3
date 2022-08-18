@@ -682,11 +682,11 @@ rosservice call /tip_pos_auto_switch "data: false"
 
 ## TESTING rosplan plus real motion controller
 
-it is the same last test of robocluedo ROSPlan, but this time using the real movement controller. 
+it is the same last test of robocluedo ROSPlan, but this time using the real movement controller. the package robocluedo_mission_manager has a GIANT launch file which allows to select which component of the architecture to run each time. you can use this launch multimple times in order to run the same architecture in two or more terminals. 
 
 ```bash
 # shell 1
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_mission_manager_components:=true launch_mission_manager:=false launch_aruco:=false 2>/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=false launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=false launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
 
 # shell 2
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}" 
@@ -715,7 +715,7 @@ rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem
 
 ```bash
 # shell 1
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=false launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
 
 # shell 2
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}" 
@@ -753,7 +753,7 @@ a variant of the abovementioned test which allows to see the hints from the unit
 
 ```bash
 # shell 1
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=false launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
 
 # shell 2
 rostopic echo /oracle_hint
@@ -771,23 +771,37 @@ rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem
 
 ### hints detection and movements of the arm
 
-let's add the authomatic movements of the arm during the exploration of the environment:
+let's add the authomatic movements of the arm during the exploration of the environment. The content of the test is very similar to the task executed by the mission manager. 
 
 ```bash
 # shell 1
-roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=false launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
 
 # shell 2
 rostopic echo /oracle_hint
 
 # shell 3
-rosservice call /tip_pos_auto_switch "data: true"
+rosservice call /tip_pos_auto_switch "data: false"
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}" 
+
+rosservice call /tip_pos_auto_switch "data: true"
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
+
+rosservice call /tip_pos_auto_switch "data: false"
+rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}" 
+
+rosservice call /tip_pos_auto_switch "data: true"
+rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
+rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
+rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
+rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
+rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}" 
+
+rosservice call /tip_pos_auto_switch "data: false"
 rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}" 
 
 ```
@@ -804,22 +818,24 @@ rosservice call /robocluedo/pipeline_manager "{load_problem: true, solve_problem
 	
 	this option says the Oracle to send just the elements of th winner message and not all the other items. keys are selected randomly from the fields of the winner ID. 
 
-### first test
+### checking aRMOR
 
 this test allows to see the output from aRMOR.
 
 ```bash
 # shell 1
-roslaunch robocluedo_mission_manager run_components.launch 2>/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=false launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
 
 # shell 2
-roslaunch robocluedo_armor run.launch
+# roslaunch robocluedo_armor run.launch
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_armor:=true launch_rosplan:=false launch_motion_controllers:=false launch_oracle:=false launch_aruco:=false launch_mission_manager_components:=false launch_mission_manager:=false
 
 # shell 3
-rosrun robocluedo_mission_manager mission_manager
+# rosrun robocluedo_mission_manager mission_manager
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_armor:=false launch_rosplan:=false launch_motion_controllers:=false launch_oracle:=false launch_aruco:=false launch_mission_manager_components:=false launch_mission_manager:=true 
 ```
 
-### another test
+### checking rosplan
 
 this test is used for checking the behaviour of ROSPlan, and in particular of the pipeline manager (which is written in Python unfortunately).
 
@@ -827,11 +843,25 @@ this test is used for checking the behaviour of ROSPlan, and in particular of th
 
 ```bash
 # shell 1
-roslaunch robocluedo_mission_manager run_components_2.launch 2>/dev/null
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=true launch_rosplan:=false launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
 
 # shell 2
-roslaunch robocluedo_rosplan run.launch
+# roslaunch robocluedo_rosplan run.launch
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_armor:=false launch_rosplan:=true launch_motion_controllers:=false launch_oracle:=false launch_aruco:=false launch_mission_manager_components:=false launch_mission_manager:=false
 
 # shell 3
-rosrun robocluedo_mission_manager mission_manager
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_armor:=false launch_rosplan:=false launch_motion_controllers:=false launch_oracle:=false launch_aruco:=false launch_mission_manager_components:=false launch_mission_manager:=true 
+```
+
+## The "trust me, I'm an engineer" phase
+
+the project now works! it's time to launch *everything*.
+
+```bash
+# shell tab 1
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=true launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
+
+# shell tab 2
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_armor:=false launch_rosplan:=false launch_motion_controllers:=false launch_oracle:=false launch_aruco:=false launch_mission_manager_components:=false launch_mission_manager:=true 
+
 ```

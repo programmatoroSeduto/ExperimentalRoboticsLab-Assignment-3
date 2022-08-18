@@ -691,11 +691,11 @@
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>TESTING<sp/>rosplan<sp/>plus<sp/>real<sp/>motion<sp/>controller</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">it<sp/>is<sp/>the<sp/>same<sp/>last<sp/>test<sp/>of<sp/>robocluedo<sp/>ROSPlan,<sp/>but<sp/>this<sp/>time<sp/>using<sp/>the<sp/>real<sp/>movement<sp/>controller.<sp/></highlight></codeline>
+<codeline><highlight class="normal">it<sp/>is<sp/>the<sp/>same<sp/>last<sp/>test<sp/>of<sp/>robocluedo<sp/>ROSPlan,<sp/>but<sp/>this<sp/>time<sp/>using<sp/>the<sp/>real<sp/>movement<sp/>controller.<sp/>the<sp/>package<sp/>robocluedo_mission_manager<sp/>has<sp/>a<sp/>GIANT<sp/>launch<sp/>file<sp/>which<sp/>allows<sp/>to<sp/>select<sp/>which<sp/>component<sp/>of<sp/>the<sp/>architecture<sp/>to<sp/>run<sp/>each<sp/>time.<sp/>you<sp/>can<sp/>use<sp/>this<sp/>launch<sp/>multimple<sp/>times<sp/>in<sp/>order<sp/>to<sp/>run<sp/>the<sp/>same<sp/>architecture<sp/>in<sp/>two<sp/>or<sp/>more<sp/>terminals.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>launch_aruco:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=false<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
@@ -724,7 +724,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=false<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
@@ -762,7 +762,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=false<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
@@ -780,23 +780,37 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>hints<sp/>detection<sp/>and<sp/>movements<sp/>of<sp/>the<sp/>arm</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">let&apos;s<sp/>add<sp/>the<sp/>authomatic<sp/>movements<sp/>of<sp/>the<sp/>arm<sp/>during<sp/>the<sp/>exploration<sp/>of<sp/>the<sp/>environment:</highlight></codeline>
+<codeline><highlight class="normal">let&apos;s<sp/>add<sp/>the<sp/>authomatic<sp/>movements<sp/>of<sp/>the<sp/>arm<sp/>during<sp/>the<sp/>exploration<sp/>of<sp/>the<sp/>environment.<sp/>The<sp/>content<sp/>of<sp/>the<sp/>test<sp/>is<sp/>very<sp/>similar<sp/>to<sp/>the<sp/>task<sp/>executed<sp/>by<sp/>the<sp/>mission<sp/>manager.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=false<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
 <codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
-<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>true&quot;</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>false&quot;</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>true&quot;</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>false&quot;</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>0}&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>true&quot;</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>1}&quot;<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos_auto_switch<sp/>&quot;data:<sp/>false&quot;</highlight></codeline>
 <codeline><highlight class="normal">rosservice<sp/>call<sp/>/robocluedo/pipeline_manager<sp/>&quot;{load_problem:<sp/>true,<sp/>solve_problem:<sp/>true,<sp/>parse_plan:<sp/>true,<sp/>execute_plan:<sp/>true,<sp/>landmark:<sp/>2}&quot;<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
@@ -813,22 +827,24 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>this<sp/>option<sp/>says<sp/>the<sp/>Oracle<sp/>to<sp/>send<sp/>just<sp/>the<sp/>elements<sp/>of<sp/>th<sp/>winner<sp/>message<sp/>and<sp/>not<sp/>all<sp/>the<sp/>other<sp/>items.<sp/>keys<sp/>are<sp/>selected<sp/>randomly<sp/>from<sp/>the<sp/>fields<sp/>of<sp/>the<sp/>winner<sp/>ID.<sp/></highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>first<sp/>test</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>checking<sp/>aRMOR</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">this<sp/>test<sp/>allows<sp/>to<sp/>see<sp/>the<sp/>output<sp/>from<sp/>aRMOR.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=false<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_armor<sp/>run.launch</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>roslaunch<sp/>robocluedo_armor<sp/>run.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=false<sp/>launch_armor:=true<sp/>launch_rosplan:=false<sp/>launch_motion_controllers:=false<sp/>launch_oracle:=false<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=false<sp/>launch_mission_manager:=false</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
-<codeline><highlight class="normal">rosrun<sp/>robocluedo_mission_manager<sp/>mission_manager</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>rosrun<sp/>robocluedo_mission_manager<sp/>mission_manager</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=false<sp/>launch_armor:=false<sp/>launch_rosplan:=false<sp/>launch_motion_controllers:=false<sp/>launch_oracle:=false<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=false<sp/>launch_mission_manager:=true<sp/></highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>another<sp/>test</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>checking<sp/>rosplan</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">this<sp/>test<sp/>is<sp/>used<sp/>for<sp/>checking<sp/>the<sp/>behaviour<sp/>of<sp/>ROSPlan,<sp/>and<sp/>in<sp/>particular<sp/>of<sp/>the<sp/>pipeline<sp/>manager<sp/>(which<sp/>is<sp/>written<sp/>in<sp/>Python<sp/>unfortunately).</highlight></codeline>
 <codeline></codeline>
@@ -836,13 +852,27 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components_2.launch<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=true<sp/>launch_rosplan:=false<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_rosplan<sp/>run.launch</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>roslaunch<sp/>robocluedo_rosplan<sp/>run.launch</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=false<sp/>launch_armor:=false<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=false<sp/>launch_oracle:=false<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=false<sp/>launch_mission_manager:=false</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
-<codeline><highlight class="normal">rosrun<sp/>robocluedo_mission_manager<sp/>mission_manager</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=false<sp/>launch_armor:=false<sp/>launch_rosplan:=false<sp/>launch_motion_controllers:=false<sp/>launch_oracle:=false<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=false<sp/>launch_mission_manager:=true<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>The<sp/>&quot;trust<sp/>me,<sp/>I&apos;m<sp/>an<sp/>engineer&quot;<sp/>phase</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>project<sp/>now<sp/>works!<sp/>it&apos;s<sp/>time<sp/>to<sp/>launch<sp/>*everything*.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>tab<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=true<sp/>launch_armor:=true<sp/>launch_rosplan:=true<sp/>launch_motion_controllers:=true<sp/>launch_oracle:=true<sp/>launch_aruco:=true<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=false<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>tab<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=false<sp/>launch_armor:=false<sp/>launch_rosplan:=false<sp/>launch_motion_controllers:=false<sp/>launch_oracle:=false<sp/>launch_aruco:=false<sp/>launch_mission_manager_components:=false<sp/>launch_mission_manager:=true<sp/></highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="robocluedo_module_testing/_docs/test-the-project.md"/>

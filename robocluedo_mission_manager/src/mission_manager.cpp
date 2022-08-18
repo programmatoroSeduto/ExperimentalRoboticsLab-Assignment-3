@@ -36,9 +36,11 @@
 #include <map>
 #include <iostream>
 
+// #define WAITKEY_ENABLED false
 #define WAITKEY_ENABLED false
-#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" ; } }
 #define DEVELOP_PRINT_ENABLED false
+
+#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" ; } }
 #define WTLOG( msg )  { if( DEVELOP_PRINT_ENABLED ) { ROS_INFO_STREAM( OUTLABEL << msg ); } }
 #define WTWARN( msg ) { if( DEVELOP_PRINT_ENABLED ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
 #define WTERR( msg )  { if( DEVELOP_PRINT_ENABLED ) { ROS_ERR_STREAM( OUTLABEL << msg ); } }
