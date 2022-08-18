@@ -700,3 +700,11 @@ this version of the launch file adds a new parameter, `use_move_base` which allo
 roslaunch robocluedo_robot_hunter run.launch use_move_base:=true
 
 ```
+
+## Poses
+
+here's a list of poses of the robot defined in the MoveIt package.
+
+![robot_hunter_poses.png](robot_hunter_poses.png)
+
+

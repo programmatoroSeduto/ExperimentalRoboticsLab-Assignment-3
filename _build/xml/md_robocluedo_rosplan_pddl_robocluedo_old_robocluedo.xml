@@ -6,7 +6,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md285">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md288">
 <title>osservazioni iniziali</title>
 <para><itemizedlist>
 <listitem><para>il planner risolve il problema fino alla fine come se non ci fosse nessun problema</para>
@@ -17,7 +17,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md286">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md289">
 <title>system inizialization</title>
 <para>the system shall be initialized, which means to allocate the hints and to update the ontology before starting.</para>
 <para><programlisting><codeline><highlight class="normal">(init-planning-system<sp/>)</highlight></codeline>
@@ -29,7 +29,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*)<sp/>IF<sp/>almeno<sp/>una<sp/>ipotesi<sp/>ammissibile<sp/>-&gt;<sp/>REPLAN<sp/>(verso<sp/>la<sp/>soluzione)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>applica<sp/>l&apos;effetto<sp/>dell&apos;azione</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md287">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md290">
 <title>check hint status</title>
 <para><bold>assunzione</bold> : dopo un tentativo di esecuzione di soluzione fallito, la knowledge base conserva ancora i dati derivati dall&apos;ultima esecuzione.</para>
 <para>classificazione degli ID:</para>
@@ -46,7 +46,7 @@
 <para><bold>il problema non è risolvibile</bold> quando tutte le opzioni sono state escluse</para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md288">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md291">
 <title>movimento</title>
 <para>caratteristiche generali:</para>
 <para><itemizedlist>
@@ -71,7 +71,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>applica<sp/>l&apos;effetto<sp/>dell&apos;azione</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md289">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md292">
 <title>segnale di acquisizione</title>
 <para>il robot può continuare a muoversi nello spazio come vuole. Al momento però in cui bisogna fare l&apos;acquisizione di un hint, il robot deve <emphasis>segnalare</emphasis> la sua volontà di acquisire il suggerimento.</para>
 <para><programlisting><codeline><highlight class="normal">(signal-info-acquisition<sp/>?wp)</highlight></codeline>
@@ -80,7 +80,7 @@
 </programlisting></para>
 <para>anche una semplice azione standard è sufficiente per questa operazione.</para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md290">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md293">
 <title>avvicinamento manipolatore</title>
 <para><bold>quando il robot avvicina il manipolatore, l&apos;oracolo pubblica un messaggio con l&apos;hint</bold></para>
 <para><programlisting><codeline><highlight class="normal">(manipulator-near-marker<sp/>?wp<sp/>)</highlight></codeline>
@@ -92,7 +92,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>fine<sp/>dell&apos;azione,<sp/>aggiorna<sp/>la<sp/>knowledge<sp/>base</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md291">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md294">
 <title>cattura dell&apos;indizio</title>
 <para>qui il robot &quot;legge&quot; l&apos;indizio, vale a dire il sistema interpreta l&apos;indizio proveniente dall&apos;oracolo (precedentemente allocato)</para>
 <para><programlisting><codeline><highlight class="normal">(acquire-hint<sp/>?wp)</highlight></codeline>
@@ -105,7 +105,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>INFINE<sp/>applica<sp/>il<sp/>nuovo<sp/>stato<sp/>alla<sp/>KB</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md292">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md295">
 <title>riprotare il manipolatore alla posizione iniziale</title>
 <para>a questo punto il robot ha già acquisito l&apos;indizio.</para>
 <para><programlisting><codeline><highlight class="normal">(manipulator-far-marker<sp/>?wp<sp/>)</highlight></codeline>
@@ -115,7 +115,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>aggiorna<sp/>la<sp/>KB</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md293">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md296">
 <title>valutazione dello stato del problema</title>
 <para>questa azione viene eseguita subito dopo aver ritratto il manipolatore dopo l&apos;acquisizione dell&apos;hint, e consiste nella valutazione di risolubilità del problema in base allo stato attuale e al numero di mosse rimanenti.</para>
 <para>Non conviene fare questa mossa quando il manipolatore è ancora vicino al marker.</para>
@@ -132,7 +132,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>nel<sp/>caso<sp/>tutto<sp/>sia<sp/>andato<sp/>bene,<sp/>aggiorna<sp/>la<sp/>KB<sp/>e<sp/>vai<sp/>avanti</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md294">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md297">
 <title>preparazione alla soluzione finale</title>
 <para>l&apos;idea di base: il robot può proporre la sua soluzione solo una volta raggiunto il centro dell&apos;arena.</para>
 <para><programlisting><codeline><highlight class="normal">(bright-bulb-over-head<sp/>?wp<sp/>)</highlight></codeline>
@@ -140,7 +140,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>aggiorna<sp/>la<sp/>KB<sp/>e<sp/>vai<sp/>avanti</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md295">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md298">
 <title>la soluzione del caso</title>
 <para>il planner, dato che funziona offline, non può ricevere alcun dato sui vari ID delle ipotesi: purchè un&apos;ipotesi sia classificata valida, il planner può sempre sceglierla. Sempre nello stesso spirito: <emphasis>per il planner, tutto va a liscio liscio</emphasis>. E&apos; il sistema esterno che deve giudicare la soluzione proposta, evitando decisioni &quot;eccessivamente irrazionali&quot; da parte del planner, che comunque attua una scelta al termine dell&apos;investigazione, anche se non dettata da un effettivo ragionamento deduttivo.</para>
 <para>il planner può scegliere tra le opzioni attive, ed escluderà solo quelle risapute non valide <emphasis>a priori</emphasis>, quindi quelle escluse dal problem file prima di fare la ricerca della soluzione.</para>
@@ -164,21 +164,21 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>in<sp/>generale<sp/>meno<sp/>slot<sp/>ci<sp/>sono<sp/>da<sp/>riempire,<sp/>e<sp/>meno<sp/>iterazioni<sp/>serviranno<sp/>per<sp/>proporre<sp/>una<sp/>ipotesi<sp/>completa</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(*)<sp/>infine,<sp/>REPLAN<sp/>e<sp/>il<sp/>ciclo<sp/>ricomincia</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md296">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md299">
 <title>movimento verso il centro</title>
 <para>il robot si muove verso il centro dell&apos;arena per proporre la soluzione.</para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md297">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md300">
 <title>Landmarks</title>
 <para>riporto qui i landmarks che ho usato per debuggare e testare il codice PDDL, tutti a partire dallo stesso stato iniziale.</para>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md298">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md301">
 <title>solo init del sistema</title>
 <para>il sistema parte da stato <computeroutput>(pre-init )</computeroutput>. Nota che, di tutti questi stati, ce n&apos;è ad ogni azione solo uno acceso, come una sorta di segnalatore di stato.</para>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(investigating<sp/>))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md299">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md302">
 <title>init e movimento a w2</title>
 <para>il robot parte dal centro e arriva in w2</para>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/>(investigating<sp/>)<sp/>(robot-position<sp/>w2)))</highlight></codeline>
@@ -187,7 +187,7 @@
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(robot-position<sp/>w2))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md300">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md303">
 <title>in w2 e braccio verso il marker</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/>(robot-position<sp/>w2<sp/>)<sp/>(acquiring<sp/>)<sp/>(manipulator-on<sp/>)))</highlight></codeline>
 </programlisting></para>
@@ -195,7 +195,7 @@
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/>(robot-position<sp/>w2<sp/>)<sp/>(acquiring<sp/>)<sp/>(manipulator-on<sp/>)))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md301">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md304">
 <title>cattura il marker w2 col braccio vicino al marker</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/>(robot-position<sp/>w2<sp/>)<sp/>(acquired<sp/>)<sp/>(manipulator-on<sp/>)<sp/>(acquired-hint<sp/>w2)))</highlight></codeline>
 </programlisting></para>
@@ -203,12 +203,12 @@
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(acquired-hint<sp/>w2))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md302">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md305">
 <title>wp2 acquisito e manipolatore non attivo</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/>(manipulator-off<sp/>)<sp/>(acquired-hint<sp/>w2)))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md303">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md306">
 <title>wp2 e wp3 in due mosse</title>
 <para>il fluent <computeroutput>(remaining-moves )</computeroutput> viene inizializzato a 3 prima di far partire il problema.</para>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/>(manipulator-off<sp/>)<sp/>(acquired-hint<sp/>w2<sp/>)<sp/>(acquired-hint<sp/>w3<sp/>)<sp/>(&gt;=<sp/>(remaining-moves<sp/>)<sp/>1)))</highlight></codeline>
@@ -219,7 +219,7 @@
 <codeline><highlight class="normal">(:metric<sp/>maximize<sp/>(remaining-moves<sp/>))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md304">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md307">
 <title>wp1 wp2 wp3 poi in mezzo</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(acquired-hint<sp/>w1<sp/>)</highlight></codeline>
@@ -229,19 +229,19 @@
 <codeline><highlight class="normal">))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md305">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md308">
 <title>ciclo completo di indagine prima della soluzione</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(wanna-solve<sp/>))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md306">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md309">
 <title>in centro per proporre la soluzione</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(and</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(wanna-solve<sp/>)<sp/>(robot-position<sp/>center)</highlight></codeline>
 <codeline><highlight class="normal">))</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md307">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md310">
 <title>il ciclo di lavoro completo</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:goal<sp/>(elementary-whatson<sp/>))</highlight></codeline>
 <codeline></codeline>
@@ -249,9 +249,9 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md308">
+<sect1 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md311">
 <title>Checkpoints</title>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md309">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md312">
 <title>domain</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(define<sp/>(domain<sp/>robocluedo)</highlight></codeline>
 <codeline></codeline>
@@ -640,7 +640,7 @@
 <codeline><highlight class="normal">)</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md310">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md313">
 <title>problem</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(define<sp/>(problem<sp/>task)</highlight></codeline>
 <codeline></codeline>
@@ -722,7 +722,7 @@
 <codeline><highlight class="normal">)</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md311">
+<sect2 id="md_robocluedo_rosplan_pddl_robocluedo_old_robocluedo_1autotoc_md314">
 <title>ultimo log</title>
 <para><programlisting><codeline><highlight class="normal">Number<sp/>of<sp/>literals:<sp/>27</highlight></codeline>
 <codeline><highlight class="normal">Constructing<sp/>lookup<sp/>tables:<sp/>[10%]<sp/>[20%]<sp/>[30%]<sp/>[40%]<sp/>[50%]<sp/>[60%]<sp/>[70%]<sp/>[80%]<sp/>[90%]<sp/>[100%]</highlight></codeline>

@@ -132,6 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit –</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">18/08/2022</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#note">Note</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#utilizzo-di-move-base">utilizzo di move base</a></li>
 </ul>
@@ -564,6 +565,61 @@ rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</s
 <ul class="simple">
 <li><p>FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p></li>
 <li><p><strong>COMMIT</strong>: “working on navigation (controller implemented and tested, ready to use)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h2>18/08/2022<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>oggi, manipulation controller</p>
+<ul class="simple">
+<li><p>anzitutto, documentazione riguardo le poses del robot</p></li>
+<li><p>nel manipulation controller bisogna solo cambiare i codici e i nomi delle postures, tutto qui</p>
+<ul>
+<li><p>già solo cambiando i nomi delle costanti il lavoro è finito</p></li>
+<li><p>compila? e compila</p></li>
+</ul>
+</li>
+</ul>
+<p>giusto un  piccolo test per capire se ho scritto bene i nomi delle costanti (impossibile escludere qualche errore stupido)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 3</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 0&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 1&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 2&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 3&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 4&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 5&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 6&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 7&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 8&quot;</span> 
+sleep <span class="m">2</span>
+
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 9&quot;</span> 
+sleep <span class="m">2</span>
+
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: -1&quot;</span> 
+sleep <span class="m">2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>funzionare funziona</p></li>
+<li><p><strong>COMMIT</strong>: “working on manipulation (new postures)”</p></li>
+<li><p>…. ma devo ammettere che non mi piace molto come il robot fa il planning</p></li>
 </ul>
 </div>
 <div class="section" id="note">

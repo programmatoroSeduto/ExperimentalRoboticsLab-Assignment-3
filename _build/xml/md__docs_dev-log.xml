@@ -431,10 +431,66 @@
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;working on navigation (controller implemented and tested, ready to use)&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md34">
+<sect1 id="md__docs_dev-log_1autotoc_md35">
+<title>18/08/2022</title>
+<para>oggi, manipulation controller</para>
+<para><itemizedlist>
+<listitem><para>anzitutto, documentazione riguardo le poses del robot</para>
+</listitem><listitem><para>nel manipulation controller bisogna solo cambiare i codici e i nomi delle postures, tutto qui<itemizedlist>
+<listitem><para>già solo cambiando i nomi delle costanti il lavoro è finito</para>
+</listitem><listitem><para>compila? e compila</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>giusto un piccolo test per capire se ho scritto bene i nomi delle costanti (impossibile escludere qualche errore stupido)</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>0&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>2&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>3&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>4&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>5&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>6&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>7&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>8&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>9&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>-1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>funzionare funziona</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;working on manipulation (new postures)&quot;</para>
+</listitem><listitem><para>.... ma devo ammettere che non mi piace molto come il robot fa il planning</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__docs_dev-log_1autotoc_md36">
 <title>Note</title>
-<sect2 id="md__docs_dev-log_1autotoc_md35">
+<sect2 id="md__docs_dev-log_1autotoc_md37">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>

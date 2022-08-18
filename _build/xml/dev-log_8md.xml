@@ -408,6 +408,60 @@
 <codeline><highlight class="normal">-<sp/>FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>navigation<sp/>(controller<sp/>implemented<sp/>and<sp/>tested,<sp/>ready<sp/>to<sp/>use)&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>18/08/2022</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">oggi,<sp/>manipulation<sp/>controller</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>anzitutto,<sp/>documentazione<sp/>riguardo<sp/>le<sp/>poses<sp/>del<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>nel<sp/>manipulation<sp/>controller<sp/>bisogna<sp/>solo<sp/>cambiare<sp/>i<sp/>codici<sp/>e<sp/>i<sp/>nomi<sp/>delle<sp/>postures,<sp/>tutto<sp/>qui</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>già<sp/>solo<sp/>cambiando<sp/>i<sp/>nomi<sp/>delle<sp/>costanti<sp/>il<sp/>lavoro<sp/>è<sp/>finito</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>e<sp/>compila</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">giusto<sp/>un<sp/><sp/>piccolo<sp/>test<sp/>per<sp/>capire<sp/>se<sp/>ho<sp/>scritto<sp/>bene<sp/>i<sp/>nomi<sp/>delle<sp/>costanti<sp/>(impossibile<sp/>escludere<sp/>qualche<sp/>errore<sp/>stupido)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=square_room.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_movement_controller<sp/>manipulation_controller<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>0&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>2&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>3&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>4&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>5&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>6&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>7&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>8&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>9&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UNKNOWN<sp/>POSE</highlight></codeline>
+<codeline><highlight class="normal">rosservice<sp/>call<sp/>/tip_pos<sp/>&quot;command:<sp/>-1&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal">sleep<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>funzionare<sp/>funziona</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>manipulation<sp/>(new<sp/>postures)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>....<sp/>ma<sp/>devo<sp/>ammettere<sp/>che<sp/>non<sp/>mi<sp/>piace<sp/>molto<sp/>come<sp/>il<sp/>robot<sp/>fa<sp/>il<sp/>planning</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>

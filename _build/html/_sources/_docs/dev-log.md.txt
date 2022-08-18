@@ -399,6 +399,60 @@ force_enable: true"
 - FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 - **COMMIT**: "working on navigation (controller implemented and tested, ready to use)"
 
+---
+
+## 18/08/2022
+
+oggi, manipulation controller
+
+- anzitutto, documentazione riguardo le poses del robot
+- nel manipulation controller bisogna solo cambiare i codici e i nomi delle postures, tutto qui
+	- già solo cambiando i nomi delle costanti il lavoro è finito
+	- compila? e compila
+
+giusto un  piccolo test per capire se ho scritto bene i nomi delle costanti (impossibile escludere qualche errore stupido)
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch world_name:=square_room.world 2>/dev/null
+
+# shell 2
+rosrun robocluedo_movement_controller manipulation_controller 2>/dev/null
+
+# shell 3
+rosservice call /tip_pos "command: 0" 
+sleep 2
+rosservice call /tip_pos "command: 1" 
+sleep 2
+rosservice call /tip_pos "command: 2" 
+sleep 2
+rosservice call /tip_pos "command: 3" 
+sleep 2
+rosservice call /tip_pos "command: 4" 
+sleep 2
+rosservice call /tip_pos "command: 5" 
+sleep 2
+rosservice call /tip_pos "command: 6" 
+sleep 2
+rosservice call /tip_pos "command: 7" 
+sleep 2
+rosservice call /tip_pos "command: 8" 
+sleep 2
+
+# UNKNOWN POSE
+rosservice call /tip_pos "command: 9" 
+sleep 2
+
+# UNKNOWN POSE
+rosservice call /tip_pos "command: -1" 
+sleep 2
+```
+
+- funzionare funziona
+- **COMMIT**: "working on manipulation (new postures)"
+
+
+- .... ma devo ammettere che non mi piace molto come il robot fa il planning
 
 
 

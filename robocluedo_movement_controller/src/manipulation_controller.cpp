@@ -28,16 +28,25 @@
 #define SERVICE_MANIP "/tip_pos"
 
 #define POSE_HOME 0
-#define POSE_EXTENDED 1
-#define POSE_LOW 2
-#define POSE_FRONT_LOW 3
-#define POSE_FRONT_HIGH 4
+#define POSE_CAM_LEFT 1
+#define POSE_CAM_RIGHT 2
+#define POSE_CAM_BACK 3
+#define POSE_CAM_LOW 4
+#define POSE_CAM_LOW_LEFT 5
+#define POSE_CAM_LOW_BACK 6
+#define POSE_CAM_LOW_RIGHT 7
+#define POSE_HOME_LOW 8
 
 #define POSE_NAME_HOME "home"
-#define POSE_NAME_EXTENDED "extended"
-#define POSE_NAME_LOW "low"
-#define POSE_NAME_FRONT_LOW "front_low"
-#define POSE_NAME_FRONT_HIGH "front_high"
+#define POSE_NAME_CAM_LEFT "cam_left"
+#define POSE_NAME_CAM_RIGHT "cam_right"
+#define POSE_NAME_CAM_BACK "cam_back"
+#define POSE_NAME_CAM_LOW "cam_low"
+#define POSE_NAME_CAM_LOW_LEFT "cam_low_left"
+#define POSE_NAME_CAM_LOW_BACK "cam_low_back"
+#define POSE_NAME_CAM_LOW_RIGHT "cam_low_right"
+#define POSE_NAME_HOME_LOW "home_low"
+
 
 class node_manipulation_controller
 {
@@ -80,24 +89,44 @@ public:
 			cmd = POSE_NAME_HOME;
 		}
 		break;
-		case POSE_EXTENDED:
+		case POSE_CAM_LEFT:
 		{
-			cmd = POSE_NAME_EXTENDED;
+			cmd = POSE_NAME_CAM_LEFT;
 		}
 		break;
-		case POSE_LOW:
+		case POSE_CAM_RIGHT:
 		{
-			cmd = POSE_NAME_LOW;
+			cmd = POSE_NAME_CAM_RIGHT;
 		}
 		break;
-		case POSE_FRONT_LOW:
+		case POSE_CAM_BACK:
 		{
-			cmd = POSE_NAME_FRONT_LOW;
+			cmd = POSE_NAME_CAM_BACK;
 		}
 		break;
-		case POSE_FRONT_HIGH:
+		case POSE_CAM_LOW:
 		{
-			cmd = POSE_NAME_FRONT_HIGH;
+			cmd = POSE_NAME_CAM_LOW;
+		}
+		break;
+		case POSE_CAM_LOW_LEFT:
+		{
+			cmd = POSE_NAME_CAM_LOW_LEFT;
+		}
+		break;
+		case POSE_CAM_LOW_BACK:
+		{
+			cmd = POSE_NAME_CAM_LOW_BACK;
+		}
+		break;
+		case POSE_CAM_LOW_RIGHT:
+		{
+			cmd = POSE_NAME_CAM_LOW_RIGHT;
+		}
+		break;
+		case POSE_HOME_LOW:
+		{
+			cmd = POSE_NAME_HOME_LOW;
 		}
 		break;
 		default:
