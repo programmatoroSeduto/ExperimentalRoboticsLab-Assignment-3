@@ -338,12 +338,12 @@ def change_state( state ):
 
 
 
-replan_time = 15
+replan_time = 30 # seconds
 ''' the planner, in case the robot is requiring too much time for reaching
 	the point, can do a replanning request
 '''
 
-working_rate = 10
+working_rate = 10 # Hz
 ''' the working rate is the maximum update frequency of this node. the status
 	is checked with a frequency of 'working_rate' Hz.
 '''

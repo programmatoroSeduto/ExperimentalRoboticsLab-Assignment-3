@@ -168,6 +168,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rcl2-components-and-aruco-no-armor">RCL2 components and ArUco (no armor)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#aruco-unit-separated">ARUCO unit separated</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hints-detection">hints detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hints-detection-and-movements-of-the-arm">hints detection and movements of the arm</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#final-tests">Final Tests</a><ul>
@@ -854,6 +855,8 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>
 </div>
@@ -869,6 +872,31 @@ rostopic <span class="nb">echo</span> /oracle_hint
 
 <span class="c1"># shell 3</span>
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints-detection-and-movements-of-the-arm">
+<h3>hints detection and movements of the arm<a class="headerlink" href="#hints-detection-and-movements-of-the-arm" title="Permalink to this heading"></a></h3>
+<p>let’s add the authomatic movements of the arm during the exploration of the environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rostopic <span class="nb">echo</span> /oracle_hint
+
+<span class="c1"># shell 3</span>
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: true&quot;</span>
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 0}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
+rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>

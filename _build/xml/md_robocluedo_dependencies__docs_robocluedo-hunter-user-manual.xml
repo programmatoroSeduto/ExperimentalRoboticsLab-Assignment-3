@@ -15,7 +15,7 @@
 </programlisting></para>
 <para><hruler/>
 </para>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md156">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md158">
 <title>Model file structure</title>
 <para>inside the folder <computeroutput>robocluedo_hunter_urdf_model</computeroutput> there are these files:</para>
 <para><itemizedlist>
@@ -34,7 +34,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md157">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md159">
 <title>HOW TO generate the model</title>
 <para>execute the file <computeroutput>generate_model.sh</computeroutput>; the URDF and its schematic will be located into the folder <computeroutput>model</computeroutput> with names</para>
 <para><itemizedlist>
@@ -60,7 +60,7 @@
 <codeline><highlight class="normal">Created<sp/>file<sp/>robocluedo_robot.pdf</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md158">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md160">
 <title>HOW TO generate the package with Moveit</title>
 <para>first of all, use the setup assistant to generate the package. Inside the project, <computeroutput>robocluedo_robot</computeroutput>.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>moveit_setup_assistant<sp/>setup.assistant.launch</highlight></codeline>
@@ -77,7 +77,7 @@
 </listitem><listitem><para>(optional) install MoveBase</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md159">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md161">
 <title>file ros_controllers.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>Simulation<sp/>settings<sp/>for<sp/>using<sp/>moveit_sim_controllers</highlight></codeline>
 <codeline><highlight class="normal">moveit_sim_hw_interface:</highlight></codeline>
@@ -144,7 +144,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i_clamp:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md160">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md162">
 <title>file joint_limits.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">#<sp/>joint_limits.yaml<sp/>allows<sp/>the<sp/>dynamics<sp/>properties<sp/>specified<sp/>in<sp/>the<sp/>URDF<sp/>to<sp/>be<sp/>overwritten<sp/>or<sp/>augmented<sp/>as<sp/>needed</highlight></codeline>
 <codeline></codeline>
@@ -178,7 +178,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>max_acceleration:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md161">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md163">
 <title>Gazebo world files fix</title>
 <para>apply this code into the file <bold>gazebo.launch</bold> :</para>
 <para><programlisting filename=".xml"><codeline><highlight class="comment">&lt;!--<sp/>world<sp/>file<sp/>--&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -209,7 +209,7 @@
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md162">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md164">
 <title>RViz config file fix</title>
 <para><bold>demo.launch</bold> : replace the RViz calling with this:</para>
 <para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;</highlight><highlight class="keywordtype">arg</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">name</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;rviz_config_file&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">default</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;moveit_2.rviz&quot;</highlight><highlight class="normal"><sp/>/&gt;</highlight></codeline>
@@ -232,7 +232,7 @@
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">include</highlight><highlight class="normal">&gt;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md163">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md165">
 <title>(optional) run.launch</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">this<sp/>launch<sp/>file<sp/>assumes<sp/>that<sp/>the<sp/>other<sp/>two<sp/>fixes<sp/>have<sp/>been<sp/>applied<sp/>beforehand.<sp/></highlight></codeline>
 </programlisting></para>
@@ -298,7 +298,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md164">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md166">
 <title>HOW TO test the model with Gazebo</title>
 <para>launch this:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch</highlight></codeline>
@@ -308,14 +308,14 @@
 </para>
 <para><image type="html" name="robot_rviz.png" inline="yes"></image>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md165">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md167">
 <title>HOW TO Launch the simulation with other worlds file</title>
 <para>the package takes the world files from the package <emphasis>worlds</emphasis> located into the <emphasis>robocluedo_depedencied</emphasis> folder. The default world file is <emphasis>square_room.world</emphasis>.</para>
 <para>here&apos;s the syntax of the command:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo.launch<sp/>world_name:=indoor.world</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md166">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md168">
 <title>HOW TO launch a world &lt;em&gt;outside the package worlds&lt;/em&gt;</title>
 <para>in case the world file is not included in the <emphasis>worlds</emphasis> package, you have two possibilities.</para>
 <para>the first one is to specify both path and name in this way:</para>
@@ -326,7 +326,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md167">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md169">
 <title>RoboCLuedo Hunter sensors</title>
 <para>the RoboCLuedo Hunter is endowed with four cameras:</para>
 <para><itemizedlist>
@@ -336,7 +336,7 @@
 </listitem></itemizedlist>
 </para>
 <para>plus a laser sensor.</para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md168">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md170">
 <title>camera arm</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_arm/camera_info</highlight></codeline>
 <codeline><highlight class="normal">/robocluedo_robot/camera_arm/image_raw</highlight></codeline>
@@ -353,7 +353,7 @@
 <codeline><highlight class="normal">/robocluedo_robot/camera_arm/parameter_updates</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md169">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md171">
 <title>camera front low</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_front_low/camera_info</highlight></codeline>
 <codeline><highlight class="normal">/robocluedo_robot/camera_front_low/image_raw</highlight></codeline>
@@ -370,7 +370,7 @@
 <codeline><highlight class="normal">/robocluedo_robot/camera_front_low/parameter_updates</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md170">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md172">
 <title>camera left</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_left/camera_info</highlight></codeline>
 <codeline><highlight class="normal">/robocluedo_robot/camera_left/image_raw</highlight></codeline>
@@ -387,7 +387,7 @@
 <codeline><highlight class="normal">/robocluedo_robot/camera_left/parameter_updates</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md171">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md173">
 <title>camera right</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">/robocluedo_robot/camera_right/camera_info</highlight></codeline>
 <codeline><highlight class="normal">/robocluedo_robot/camera_right/image_raw</highlight></codeline>
@@ -404,13 +404,13 @@
 <codeline><highlight class="normal">/robocluedo_robot/camera_right/parameter_updates</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md172">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md174">
 <title>topc Laser sensor</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">/scan</highlight></codeline>
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md173">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md175">
 <title>HOW TO install the navigation stack</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">before<sp/>installing<sp/>the<sp/>navigation<sp/>stack<sp/>as<sp/>described<sp/>below,<sp/>check<sp/>that<sp/>the<sp/>laser<sp/>sensor<sp/>of<sp/>the<sp/>robot<sp/>is<sp/>publishing<sp/>on<sp/>a<sp/>topic<sp/>named<sp/>`/scan`.<sp/>The<sp/>plugin<sp/>publishing<sp/>the<sp/>laser<sp/>sensor<sp/>is<sp/>located<sp/>in<sp/>the<sp/>folder<sp/>`robocluedo_dependencies/robocluedo_hunter_urdf_model/robot/`<sp/>file<sp/>`robocluedo_gazebo_sensing.xacro`.</highlight></codeline>
 </programlisting></para>
@@ -422,7 +422,7 @@
 </listitem><listitem><para>(optional) launch the navigation stack from the <emphasis>run.launch</emphasis> file</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md174">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md176">
 <title>param – base_local_planner_params.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">TrajectoryPlannerROS:</highlight></codeline>
 <codeline></codeline>
@@ -466,7 +466,7 @@
 <codeline><highlight class="normal"><sp/><sp/>vy_samples:<sp/>0</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md175">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md177">
 <title>param – costmap_common_params.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">max_obstacle_height:<sp/>0.60<sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal">obstacle_range:<sp/>3.0</highlight></codeline>
@@ -485,7 +485,7 @@
 <codeline><highlight class="normal">scan:<sp/>{data_type:<sp/>LaserScan,<sp/>topic:<sp/>scan,<sp/>marking:<sp/>true,<sp/>clearing:<sp/>true,<sp/>min_obstacle_height:<sp/>0.05,<sp/>max_obstacle_height:<sp/>0.6}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md176">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md178">
 <title>param – global_costmap_params.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">global_costmap:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/>global_frame:<sp/>map</highlight></codeline>
@@ -499,7 +499,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cost_scaling_factor:<sp/>20</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md177">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md179">
 <title>param – local_costmap_params.yaml</title>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">local_costmap:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/>global_frame:<sp/>map</highlight></codeline>
@@ -517,7 +517,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cost_scaling_factor:<sp/>20</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md178">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md180">
 <title>param – move_base_params.yaml</title>
 <para>see also <ulink url="http://www.ros.org/wiki/move_base">move_base official wiki</ulink></para>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">shutdown_costmaps:<sp/>false</highlight></codeline>
@@ -532,7 +532,7 @@
 <codeline><highlight class="normal">oscillation_distance:<sp/>0.05</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md179">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md181">
 <title>launch file &lt;em&gt;nav_stack.launch&lt;/em&gt;</title>
 <para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;?</highlight><highlight class="keyword">xml</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">version</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">?&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -587,7 +587,7 @@
 <codeline><highlight class="normal">&lt;/</highlight><highlight class="keywordtype">launch</highlight><highlight class="normal">&gt;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md180">
+<sect2 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md182">
 <title>new &lt;em&gt;run.launch&lt;/em&gt; file</title>
 <para><programlisting filename=".xml"><codeline><highlight class="normal">&lt;?</highlight><highlight class="keyword">xml</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">version</highlight><highlight class="normal">=</highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">?&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -631,7 +631,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md181">
+<sect1 id="md_robocluedo_dependencies__docs_robocluedo-hunter-user-manual_1autotoc_md183">
 <title>Poses</title>
 <para>here&apos;s a list of poses of the robot defined in the MoveIt package.</para>
 <para><image type="html" name="robot_hunter_poses.png" inline="yes"></image>

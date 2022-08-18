@@ -781,20 +781,86 @@
 <codeline lineno="772"><highlight class="normal">-<sp/>ora,<sp/>tutto<sp/>tranne<sp/>il<sp/>mission<sp/>manager</highlight></codeline>
 <codeline lineno="773"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>questo<sp/>serviranno<sp/>dei<sp/><ref refid="test-the-project_8md_8txt_1ab9c30914b6e8a2a87c4305b70785cbfa" kindref="member">test</ref><sp/>che<sp/>non<sp/>ho<sp/>ancora<sp/>scritto<sp/>(faccio<sp/>subito)</highlight></codeline>
 <codeline lineno="774"><highlight class="normal">-<sp/>va<sp/>*quasi*<sp/>tutto<sp/>bene.<sp/>aruco_detection<sp/>non<sp/>invia<sp/>i<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ab9726311f2e3cea47176b0a4dcded711" kindref="member">marker</ref><sp/>sul<sp/>topic</highlight></codeline>
-<codeline lineno="775"><highlight class="normal">-<sp/>**COMMIT**:<sp/></highlight><highlight class="stringliteral">&quot;testing<sp/>(problems<sp/>with<sp/>aruco_detection<sp/>not<sp/>publishing<sp/>the<sp/>ids)&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="776"><highlight class="normal"></highlight></codeline>
+<codeline lineno="775"><highlight class="normal">-<sp/>(intanto<sp/>un<sp/>checkpoint<sp/>nel<sp/>dubbio...)</highlight></codeline>
+<codeline lineno="776"><highlight class="normal">-<sp/>**COMMIT**:<sp/></highlight><highlight class="stringliteral">&quot;testing<sp/>(problems<sp/>with<sp/>aruco_detection<sp/>not<sp/>publishing<sp/>the<sp/>ids)&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="777"><highlight class="normal"></highlight></codeline>
-<codeline lineno="778"><highlight class="normal"></highlight></codeline>
+<codeline lineno="778"><highlight class="normal">-<sp/>il<sp/>mio<sp/>piano<sp/>geniale<sp/>avrebbe<sp/>anche<sp/>funzionato<sp/>...<sp/>se<sp/>non<sp/>fosse<sp/>che<sp/>le<sp/>dimensioni<sp/>dei<sp/>vettori<sp/>non<sp/>fossero<sp/>misurate<sp/>in<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>piuttosto<sp/>che<sp/>come<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>...</highlight></codeline>
 <codeline lineno="779"><highlight class="normal"></highlight></codeline>
-<codeline lineno="780"><highlight class="normal"></highlight></codeline>
+<codeline lineno="780"><highlight class="normal">per<sp/>capirci,<sp/>`vector.size()<sp/>-<sp/>1`<sp/>ritorna<sp/>questo<sp/>orrore<sp/>senza<sp/>Dio:</highlight></codeline>
 <codeline lineno="781"><highlight class="normal"></highlight></codeline>
-<codeline lineno="782"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Note</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="783"><highlight class="normal"></highlight></codeline>
-<codeline lineno="784"><highlight class="normal"></highlight><highlight class="preprocessor">###<sp/>utilizzo<sp/>di<sp/>move<sp/>base</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="785"><highlight class="normal"></highlight></codeline>
-<codeline lineno="786"><highlight class="normal">-<sp/>il<sp/>nodo<sp/>che<sp/>si<sp/>occupa<sp/>di<sp/>fare<sp/>la<sp/>navigation<sp/>aggiorna<sp/>il<sp/>plan<sp/>parecchie<sp/>volte,<sp/>perchè<sp/>sulle<sp/>lunghe<sp/>tratte<sp/>move_base<sp/>tende<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>far<sp/>andare<sp/>il<sp/>robot<sp/>in<sp/>percorsi<sp/>che<sp/>non<sp/>hanno<sp/>molto<sp/>senso</highlight></codeline>
-<codeline lineno="787"><highlight class="normal">-<sp/>rifacendo<sp/>il<sp/>panning<sp/>ogni<sp/>tot<sp/>si<sp/>assicura<sp/>una<sp/>certa<sp/>sitabilità<sp/>sul<sp/>path<sp/>prescelto</highlight></codeline>
-<codeline lineno="788"><highlight class="normal">-<sp/>unico<sp/>difetto:<sp/>il<sp/>robot<sp/>si<sp/>ferma<sp/>spesso<sp/>per<sp/>fare<sp/>replanning,<sp/>causando<sp/>delle<sp/>oscillazioni<sp/>in<sp/>avanti<sp/>un<sp/>po</highlight><highlight class="stringliteral">&apos;<sp/>brusche</highlight></codeline>
+<codeline lineno="782"><highlight class="normal">```text</highlight></codeline>
+<codeline lineno="783"><highlight class="normal">[<sp/>INFO]<sp/>[1660844701.851857500,<sp/>951.527000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="784"><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.040326800,<sp/>951.626000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="785"><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.292802100,<sp/>951.729000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="786"><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.493988200,<sp/>951.831000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="787"><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.703035300,<sp/>951.926000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="788"><highlight class="normal">[<sp/>INFO]<sp/>[1660844702.888891100,<sp/>952.026000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="789"><highlight class="normal">[INFO]<sp/>[1660844702.891754,<sp/>952.028000]:<sp/>(<ref refid="namespacearuco__decode" kindref="compound">aruco_decode</ref><sp/>)<sp/>ready</highlight></codeline>
+<codeline lineno="790"><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.047278100,<sp/>952.127000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="791"><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.309153800,<sp/>952.226000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="792"><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.534099100,<sp/>952.326000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="793"><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.534168700,<sp/>952.326000000]:<sp/>(aruco_detection<sp/>)<sp/>switching<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref><sp/>camera<sp/>with<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1acc5905728f3f1ab997990f9b4ccaa13b" kindref="member">ID</ref>=2</highlight></codeline>
+<codeline lineno="794"><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.744395000,<sp/>952.426000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="795"><highlight class="normal">[<sp/>INFO]<sp/>[1660844703.981569700,<sp/>952.527000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="796"><highlight class="normal">[<sp/>INFO]<sp/>[1660844704.258705100,<sp/>952.629000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="797"><highlight class="normal">[<sp/>INFO]<sp/>[1660844704.427318800,<sp/>952.726000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=18446744073709551615<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="798"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="799"><highlight class="normal"></highlight></codeline>
+<codeline lineno="800"><highlight class="normal">-<sp/>e<sp/>come<sp/>si<sp/>risolve<sp/>la<sp/>faccenda?<sp/></highlight></codeline>
+<codeline lineno="801"><highlight class="normal">-<sp/>se<sp/>scrivo<sp/>questo<sp/>`((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)ids_to_publish.size(<sp/>))<sp/>-<sp/>1`<sp/>il<sp/>problema<sp/>sembra<sp/>risolto,<sp/>mentre<sp/>se<sp/>scrivo<sp/>`ids_to_publish.size(<sp/>)<sp/>-<sp/>1`<sp/>viene<sp/>fuori<sp/>quella<sp/>roba<sp/>là<sp/>sopra</highlight></codeline>
+<codeline lineno="802"><highlight class="normal"></highlight></codeline>
+<codeline lineno="803"><highlight class="normal">```text</highlight></codeline>
+<codeline lineno="804"><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.321987100,<sp/>957.825000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="805"><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.521214800,<sp/>957.925000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="806"><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.792062300,<sp/>958.025000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="807"><highlight class="normal">[<sp/>INFO]<sp/>[1660844957.993540900,<sp/>958.125000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="808"><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.220654500,<sp/>958.225000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="809"><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.471494800,<sp/>958.325000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="810"><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.720852300,<sp/>958.425000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="811"><highlight class="normal">[<sp/>INFO]<sp/>[1660844958.984896700,<sp/>958.525000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="812"><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.329034600,<sp/>958.625000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="813"><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.619499500,<sp/>958.725000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="814"><highlight class="normal">[<sp/>INFO]<sp/>[1660844959.789824700,<sp/>958.826000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="815"><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.082557000,<sp/>958.935000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="816"><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.082637800,<sp/>958.935000000]:<sp/>(aruco_detection<sp/>)<sp/>switching<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref><sp/>camera<sp/>with<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1acc5905728f3f1ab997990f9b4ccaa13b" kindref="member">ID</ref>=3</highlight></codeline>
+<codeline lineno="817"><highlight class="normal">[<sp/>INFO]<sp/>[1660844960.283390600,<sp/>959.028000000]:<sp/>(aruco_detection<sp/>)<sp/>size-1=-1<sp/>--<sp/>idx=-1</highlight></codeline>
+<codeline lineno="818"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"></highlight></codeline>
+<codeline lineno="820"><highlight class="normal">-<sp/>proviamo<sp/>anche<sp/>la<sp/>condizione<sp/>così<sp/>scritta:<sp/>...<sp/>eandiamo!</highlight></codeline>
+<codeline lineno="821"><highlight class="normal">-<sp/>ho<sp/>notato<sp/>inoltre<sp/>che<sp/>certe<sp/>volte<sp/>il<sp/>decode<sp/>non<sp/>riesce<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>contattare<sp/>l</highlight><highlight class="stringliteral">&apos;oracolo<sp/>(quando<sp/>il<sp/>sistema<sp/>inizia<sp/>ad<sp/>essere<sp/>piuttosto<sp/>saturo<sp/>di<sp/>cose<sp/>da<sp/>fare,<sp/>che<sp/>accada<sp/>qualche<sp/>problema<sp/>sulle<sp/>chiamate<sp/>a<sp/>servizio<sp/>c&apos;</highlight><highlight class="normal">è<sp/>da<sp/>aspettarselo<sp/>...<sp/>purtroppo)</highlight></codeline>
+<codeline lineno="822"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>meglio<sp/>aggiungere<sp/>qualche<sp/>strategia<sp/>di<sp/>recupero<sp/>al<sp/>decode</highlight></codeline>
+<codeline lineno="823"><highlight class="normal">-<sp/>**ISSUE**<sp/>ho<sp/>fatto<sp/>girare<sp/>un<sp/>po</highlight><highlight class="stringliteral">&apos;<sp/>il<sp/>programma<sp/>...<sp/>e<sp/>dopo<sp/>5min<sp/>buoni<sp/>ha<sp/>crashato<sp/>a<sp/>seguito<sp/>di<sp/>una<sp/>ricezione<sp/>di<sp/>un<sp/>ID<sp/>pari<sp/>a<sp/>174...</highlight></codeline>
+<codeline lineno="824"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>e<sp/>ricordo<sp/>che<sp/>nel<sp/>precedente<sp/>assignment,<sp/>ogni<sp/>tanto<sp/>l&apos;</highlight><highlight class="normal">oracolo<sp/>crashava<sp/>prchè<sp/>l</highlight><highlight class="stringliteral">&apos;ID<sp/>era<sp/>troppo<sp/>alto,<sp/>non<sp/>definito<sp/>(aridanghete)</highlight></codeline>
+<codeline lineno="825"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>-<sp/>sensato?<sp/></highlight></codeline>
+<codeline lineno="826"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="827"><highlight class="stringliteral">direi<sp/>proprio<sp/>confermato:</highlight></codeline>
+<codeline lineno="828"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="829"><highlight class="stringliteral">```c++</highlight></codeline>
+<codeline lineno="830"><highlight class="stringliteral">int<sp/>markerID[30];<sp/></highlight></codeline>
+<codeline lineno="831"><highlight class="stringliteral">erl2::ErlOracle<sp/>oracle_msgs[30];</highlight></codeline>
+<codeline lineno="832"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="833"><highlight class="stringliteral">//<sp/>oracle_hint</highlight></codeline>
+<codeline lineno="834"><highlight class="stringliteral">bool<sp/>oracleCallback(exp_assignment3::Marker::Request<sp/>&amp;req,<sp/>exp_assignment3::Marker::Response<sp/>&amp;res)</highlight></codeline>
+<codeline lineno="835"><highlight class="stringliteral">{</highlight></codeline>
+<codeline lineno="836"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>res.oracle_hint<sp/>=<sp/>oracle_msgs[req.markerId];</highlight></codeline>
+<codeline lineno="837"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline lineno="838"><highlight class="stringliteral">}</highlight></codeline>
+<codeline lineno="839"><highlight class="stringliteral">```</highlight></codeline>
+<codeline lineno="840"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="841"><highlight class="stringliteral">-<sp/>per<sp/>risolvere<sp/>il<sp/>problema,<sp/>il<sp/>decoder<sp/>dovrebbe<sp/>usare<sp/>l&apos;</highlight><highlight class="normal">operatore<sp/>di<sp/>modulo<sp/>(le<sp/>specifiche<sp/>non<sp/>trattano<sp/>di<sp/>preciso<sp/>questo<sp/>caso<sp/>...<sp/>perciò<sp/>mi<sp/>reputo<sp/>autorizzato<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>fare<sp/>quello<sp/>che<sp/>voglio<sp/>qui)</highlight></codeline>
+<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>piccola<sp/>modifica<sp/>al<sp/>decoder</highlight></codeline>
+<codeline lineno="843"><highlight class="normal"></highlight></codeline>
+<codeline lineno="844"><highlight class="normal"></highlight></codeline>
+<codeline lineno="845"><highlight class="normal"></highlight></codeline>
+<codeline lineno="846"><highlight class="normal"></highlight></codeline>
+<codeline lineno="847"><highlight class="normal"></highlight></codeline>
+<codeline lineno="848"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Note</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="849"><highlight class="normal"></highlight></codeline>
+<codeline lineno="850"><highlight class="normal"></highlight><highlight class="preprocessor">###<sp/>utilizzo<sp/>di<sp/>move<sp/>base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="851"><highlight class="normal"></highlight></codeline>
+<codeline lineno="852"><highlight class="normal">-<sp/>il<sp/>nodo<sp/>che<sp/>si<sp/>occupa<sp/>di<sp/>fare<sp/>la<sp/>navigation<sp/>aggiorna<sp/>il<sp/>plan<sp/>parecchie<sp/>volte,<sp/>perchè<sp/>sulle<sp/>lunghe<sp/>tratte<sp/>move_base<sp/>tende<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>far<sp/>andare<sp/>il<sp/>robot<sp/>in<sp/>percorsi<sp/>che<sp/>non<sp/>hanno<sp/>molto<sp/>senso</highlight></codeline>
+<codeline lineno="853"><highlight class="normal">-<sp/>rifacendo<sp/>il<sp/>panning<sp/>ogni<sp/>tot<sp/>si<sp/>assicura<sp/>una<sp/>certa<sp/>sitabilità<sp/>sul<sp/>path<sp/>prescelto</highlight></codeline>
+<codeline lineno="854"><highlight class="normal">-<sp/>unico<sp/>difetto:<sp/>il<sp/>robot<sp/>si<sp/>ferma<sp/>spesso<sp/>per<sp/>fare<sp/>replanning,<sp/>causando<sp/>delle<sp/>oscillazioni<sp/>in<sp/>avanti<sp/>un<sp/>po</highlight><highlight class="stringliteral">&apos;<sp/>brusche</highlight></codeline>
     </programlisting>
     <location file="_build/html/_sources/_docs/dev-log.md.txt"/>
   </compounddef>

@@ -16,7 +16,7 @@
     (not-is-center wp5)
     (not-is-center wp6)
 
-    (at center)
+    (at wp2)
 
     (passage center wp1)
     (passage wp1 center)
@@ -42,23 +42,23 @@
     (passage wp6 wp5)
 
     (explored center)
+    (explored wp1)
+    (explored wp2)
 
-    (not-explored wp1)
-    (not-explored wp2)
     (not-explored wp3)
     (not-explored wp4)
     (not-explored wp5)
     (not-explored wp6)
 
-    (at-center)
 
+    (not-at-center)
 
 
     (not-hint-ready)
 
+    (hint-collected wp1)
+    (hint-collected wp2)
 
-    (not-hint-collected wp1)
-    (not-hint-collected wp2)
     (not-hint-collected wp3)
     (not-hint-collected wp4)
     (not-hint-collected wp5)
@@ -66,7 +66,7 @@
 
 )
 (:goal (and
-    (at wp1)
-    (hint-collected wp1)
+    (at wp3)
+    (hint-collected wp3)
 ))
 )

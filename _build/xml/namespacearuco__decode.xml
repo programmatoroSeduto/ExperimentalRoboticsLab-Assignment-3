@@ -72,7 +72,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_vision/scripts/aruco_decode.py" line="41" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="41" bodyend="-1"/>
-        <referencedby refid="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" compoundref="aruco__decode_8py" startline="56" endline="87">cbk_aruco_detection</referencedby>
+        <referencedby refid="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" compoundref="aruco__decode_8py" startline="56" endline="84">cbk_aruco_detection</referencedby>
+        <referencedby refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" compoundref="aruco__decode_8py" startline="90" endline="115">resend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="namespacearuco__decode_1afb13921883ff7e751ca7d12ba3090c30" prot="public" static="no" mutable="no">
         <type>string</type>
@@ -102,6 +103,20 @@
         </inbodydescription>
         <location file="robocluedo_vision/scripts/aruco_decode.py" line="52" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="52" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="namespacearuco__decode_1a7a34a7e2fa621e06563b2a3b0bd0b7ed" prot="public" static="no" mutable="no">
+        <type>list</type>
+        <definition>list aruco_decode.resend_queue</definition>
+        <argsstring></argsstring>
+        <name>resend_queue</name>
+        <initializer>=  []</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/scripts/aruco_decode.py" line="85" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="85" bodyend="-1"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -126,8 +141,43 @@ Parameters:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_vision/scripts/aruco_decode.py" line="56" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="56" bodyend="87"/>
+        <location file="robocluedo_vision/scripts/aruco_decode.py" line="56" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="56" bodyend="84"/>
         <references refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" compoundref="aruco__decode_8py" startline="41">cl_oracle</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def aruco_decode.resend</definition>
+        <argsstring>()</argsstring>
+        <name>resend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>try again to send a message to the oracle
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/scripts/aruco_decode.py" line="90" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="90" bodyend="115"/>
+        <references refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" compoundref="aruco__decode_8py" startline="41">cl_oracle</references>
+        <referencedby refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" compoundref="aruco__decode_8py" startline="116" endline="128">resend_check</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def aruco_decode.resend_check</definition>
+        <argsstring>()</argsstring>
+        <name>resend_check</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>used by the main thread for checking if there are pending messages
+to try to send again and decode
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/scripts/aruco_decode.py" line="116" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="116" bodyend="128"/>
+        <references refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" compoundref="aruco__decode_8py" startline="90" endline="115">resend</references>
+        <referencedby refid="namespacearuco__decode_1a2a7c153aac9f48cf951c24df63c3275d" compoundref="aruco__decode_8py" startline="129" endline="136">on_shut</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacearuco__decode_1a2a7c153aac9f48cf951c24df63c3275d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>def</type>
@@ -142,7 +192,8 @@ Parameters:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_vision/scripts/aruco_decode.py" line="88" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="88" bodyend="95"/>
+        <location file="robocluedo_vision/scripts/aruco_decode.py" line="129" column="1" bodyfile="robocluedo_vision/scripts/aruco_decode.py" bodystart="129" bodyend="136"/>
+        <references refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" compoundref="aruco__decode_8py" startline="116" endline="128">resend_check</references>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -1062,10 +1062,34 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 <li><p>per risolvere il problema, il decoder dovrebbe usare l’operatore di modulo (le specifiche non trattano di preciso questo caso … perciò mi reputo autorizzato a fare quello che voglio qui)</p>
 <ul>
 <li><p>piccola modifica al decoder</p></li>
+<li><p>e ora funziona tutto a meraviglia</p></li>
 </ul>
 </li>
+<li><p><strong>COMMIT</strong>: “testing (aruco_detection publisher, oracle crash solved)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>siamo moooolto vicini al momento della verità: questa sera gli dsi da il colpo di grazia a questo progetto! poi sotto con la documentazione, e si consegna.</p>
+<ul class="simple">
+<li><p>anzitutto, piccola modifica al decode in modo da supportare l’invio in un secondo momento dell’hint</p>
+<ul>
+<li><p>(il principio: non riesco ad inviarlo ora? bene: me lo metto da parte, e lo invio in seguito)</p></li>
+<li><p>pare che funzioni</p></li>
+</ul>
+</li>
+<li><p>il tempo di replanning del nodo di move base è veramente troppo poco: solo 15s è niente, e rende il path piuttosto instabile</p>
+<ul>
+<li><p>alzarlo a 30s mi pare la cosa migliore</p></li>
+</ul>
+</li>
+<li><p>ora un test con i movimenti “a caso” del braccio</p>
+<ul>
+<li><p>riesce a prendere ancora più hint adesso! che bello</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “final testing (ready to test the whole system)”</p></li>
 </ul>
 </div>
+<hr class="docutils" />
 <div class="section" id="note">
 <h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
 <div class="section" id="utilizzo-di-move-base">

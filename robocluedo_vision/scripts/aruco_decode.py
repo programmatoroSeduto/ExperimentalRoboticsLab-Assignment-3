@@ -73,14 +73,55 @@ def cbk_aruco_detection( idpack ):
 	oracle_res = None
 	try:
 		oracle_res = cl_oracle( ask )
+		rospy.loginfo( f"({NODE_NAME} ) oracle says (ID={oracle_res.oracle_hint.ID}, key={oracle_res.oracle_hint.key}, value={oracle_res.oracle_hint.value})" )
+		pub_system.publish( oracle_res.oracle_hint )
 	except rospy.ServiceException:
 		rospy.loginfo( f"({NODE_NAME} ) ERROR: unable to contact the Oracle" )
+		resend_queue.add( ask )
+
+
+
+
+resend_queue = []
+''' the message the decoder was not able to send to the oracle are stored here
+waiting for a "second chance".
+'''
+
+def resend( ):
+	''' try again to send a message to the oracle
+	'''
+	global resend_queue
+	global cl_oracle
+	global pub_system
+	
+	if len(resend_queue) == 0:
 		return
 	
-	rospy.loginfo( f"({NODE_NAME} ) oracle says (ID={oracle_res.oracle_hint.ID}, key={oracle_res.oracle_hint.key}, value={oracle_res.oracle_hint.value})" )
+	for i in range(0, len(resend_queue)):
+		rospy.loginfo( f"({NODE_NAME} ) sending again (no.{i+1} out of {len(resend_queue)})" )
+		
+		try:
+			oracle_res = cl_oracle( resend_queue[0] )
+			rospy.loginfo( f"({NODE_NAME} ) oracle says (ID={oracle_res.oracle_hint.ID}, key={oracle_res.oracle_hint.key}, value={oracle_res.oracle_hint.value})" )
+			pub_system.publish( oracle_res.oracle_hint )
+			
+			resend_queue.pop( 0 )
+			
+		except rospy.ServiceException:
+			rospy.loginfo( f"({NODE_NAME} ) ERROR: unable to contact the Oracle" )
+			return
+
+
+
+def resend_check( ):
+	''' used by the main thread for checking if there are pending messages
+	to try to send again and decode
+	'''
 	
-	# echo the message
-	pub_system.publish( oracle_res.oracle_hint )
+	r = rospy.Rate( 0.5 )
+	while not rospy.is_shutdown( ):
+		r.sleep( )
+		resend( )
 
 
 
@@ -114,7 +155,6 @@ if __name__ == "__main__":
 	rospy.sleep( rospy.Duration( 1 ) )
 	rospy.loginfo( f"({NODE_NAME} publisher {topic_system}) ... OK" )
 	
-	
 	rospy.loginfo( f"({NODE_NAME} client {service_oracle}) ... " )
 	cl_oracle = rospy.ServiceProxy( service_oracle, Marker )
 	rospy.sleep( rospy.Duration( 1 ) )
@@ -126,4 +166,4 @@ if __name__ == "__main__":
 	rospy.sleep( rospy.Duration( 2 ) )
 	
 	rospy.loginfo( f"({NODE_NAME} ) ready" )
-	rospy.spin( )
+	resend_check( )

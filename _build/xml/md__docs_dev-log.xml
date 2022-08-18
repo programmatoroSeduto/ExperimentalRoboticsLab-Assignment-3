@@ -906,13 +906,37 @@
 <para><itemizedlist>
 <listitem><para>per risolvere il problema, il decoder dovrebbe usare l&apos;operatore di modulo (le specifiche non trattano di preciso questo caso ... perciò mi reputo autorizzato a fare quello che voglio qui)<itemizedlist>
 <listitem><para>piccola modifica al decoder</para>
+</listitem><listitem><para>e ora funziona tutto a meraviglia</para>
 </listitem></itemizedlist>
 </para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;testing (aruco_detection publisher, oracle crash solved)&quot;</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md__docs_dev-log_1autotoc_md55">
+<para><hruler/>
+</para>
+<para>siamo moooolto vicini al momento della verità: questa sera gli dsi da il colpo di grazia a questo progetto! poi sotto con la documentazione, e si consegna.</para>
+<para><itemizedlist>
+<listitem><para>anzitutto, piccola modifica al decode in modo da supportare l&apos;invio in un secondo momento dell&apos;hint<itemizedlist>
+<listitem><para>(il principio: non riesco ad inviarlo ora? bene: me lo metto da parte, e lo invio in seguito)</para>
+</listitem><listitem><para>pare che funzioni</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>il tempo di replanning del nodo di move base è veramente troppo poco: solo 15s è niente, e rende il path piuttosto instabile<itemizedlist>
+<listitem><para>alzarlo a 30s mi pare la cosa migliore</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>ora un test con i movimenti &quot;a caso&quot; del braccio<itemizedlist>
+<listitem><para>riesce a prendere ancora più hint adesso! che bello</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;final testing (ready to test the whole system)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<sect2 id="md__docs_dev-log_1autotoc_md57">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md56">
+<sect3 id="md__docs_dev-log_1autotoc_md58">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
