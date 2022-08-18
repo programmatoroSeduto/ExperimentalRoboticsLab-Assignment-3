@@ -410,7 +410,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>18/08/2022</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>18/08/2022<sp/>--<sp/>pddl<sp/>e<sp/>manipulation<sp/>unit<sp/>--<sp/>aruco</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">oggi,<sp/>manipulation<sp/>controller</highlight></codeline>
 <codeline></codeline>
@@ -657,8 +657,46 @@
 <codeline></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">(pronti<sp/>pr<sp/>ArUco)</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>iniziamo<sp/>a<sp/>lavorare<sp/>su<sp/>aruco:</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">-<sp/>anzitutto,<sp/>la<sp/>simulazione<sp/>funziona?<sp/>funziona.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=assignment3.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**nuovo<sp/>nodo**:<sp/>aruco_detection.cpp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>iniziamo<sp/>con<sp/>la<sp/>struttura<sp/>del<sp/>nod</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>implementazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>compila?<sp/>...<sp/>no</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>ero<sp/>convintissimo<sp/>di<sp/>aver<sp/>già<sp/>installato<sp/>open<sp/>cv<sp/>nel<sp/>package<sp/>vision<sp/>...<sp/>mi<sp/>sbagliavo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>*ora<sp/>compila*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>facciamo<sp/>subito<sp/>un<sp/>test<sp/>molto<sp/>veloce<sp/>(basta<sp/>solo<sp/>che<sp/>la<sp/>finestra<sp/>funzioni<sp/>come<sp/>si<sp/>deve<sp/>e<sp/>che<sp/>si<sp/>vedano<sp/>le<sp/>immagini<sp/>dalle<sp/>videocamere)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run.launch<sp/>world_name:=assignment3.world<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_vision<sp/>aruco_detection</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>AAAAAAA<sp/>LA<sp/>VIDEOCAMERA<sp/>CAMBIA<sp/>IN<sp/>CONTINUAZIONE!<sp/>ok,<sp/>meglio<sp/>correggere<sp/>questa<sp/>cosa<sp/>prima<sp/>che<sp/>mi<sp/>venga<sp/>una<sp/>crisi<sp/>epilettica</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>ros::Time<sp/>non<sp/>sembra<sp/>funzionare<sp/>bene,<sp/>per<sp/>qualche<sp/>strana<sp/>ragione:<sp/>la<sp/>comparison<sp/>è<sp/>sempre<sp/>vera,<sp/>quindi<sp/>la<sp/>videocamera<sp/>cambia<sp/>sempre</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>dovrò<sp/>farmi<sp/>un<sp/>metodo<sp/>a<sp/>manina<sp/>per<sp/>comparare<sp/>due<sp/>tempi<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>**e<sp/>ora<sp/>funziona**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>ora<sp/>però<sp/>c&apos;è<sp/>un<sp/>altro<sp/>problema:<sp/>*è<sp/>lentissimo*.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>posso<sp/>limitare<sp/>la<sp/>frequenza<sp/>dei<sp/>topic<sp/>con<sp/>una<sp/>rate.sleep(<sp/>)<sp/>nei<sp/>subscriber<sp/>(non<sp/>un&apos;ottima<sp/>idea<sp/>ma<sp/>potrebbe<sp/>funzionare)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>provo<sp/>anche<sp/>a<sp/>diminuire<sp/>il<sp/>rate<sp/>delle<sp/>immagini<sp/>dalle<sp/>videocamere</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>12fps<sp/>possono<sp/>bastare,<sp/>spero</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>ti<sp/>ricordi<sp/>quando<sp/>dicevamo<sp/>che<sp/>funzionava<sp/>bene<sp/>lo<sp/>switch?<sp/>**SCHERZONE**:<sp/>è<sp/>tornato<sp/>a<sp/>switchare<sp/>come<sp/>un<sp/>pazzo<sp/>...<sp/>motivo<sp/>sconosciuto<sp/>(ho<sp/>tolto<sp/>un<sp/>log!)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>temo<sp/>che<sp/>dovrò<sp/>usare<sp/>wallTime<sp/>invece<sp/>che<sp/>il<sp/>time<sp/>normale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>**ora<sp/>funziona<sp/>sul<sp/>serio**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>rimane<sp/>comunque<sp/>molto<sp/>pesante...<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>ridurre<sp/>ancora,<sp/>posso<sp/>droppare<sp/>qualche<sp/>richiesta<sp/>usando<sp/>il<sp/>mutex<sp/>con<sp/>trylock<sp/>piuttosto<sp/>che<sp/>lock,<sp/>e<sp/>quandoil<sp/>thread<sp/>non<sp/>riesce<sp/>a<sp/>bloccare<sp/>il<sp/>myutex,<sp/>ritorna<sp/>immediatamente</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>il<sp/>momento<sp/>son<sp/>soddisfatto<sp/>così.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>vision<sp/>(aruco<sp/>detection<sp/>node)&quot;</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>

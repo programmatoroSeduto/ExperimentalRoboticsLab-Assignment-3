@@ -1,0 +1,554 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classnode__aruco__detection" kind="class" language="C++" prot="public">
+    <compoundname>node_aruco_detection</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classnode__aruco__detection_1a607e45faf7da1b9631c8764159626ce6" prot="private" static="no" mutable="no">
+        <type>ros::NodeHandle</type>
+        <definition>ros::NodeHandle node_aruco_detection::nh</definition>
+        <argsstring></argsstring>
+        <name>nh</name>
+        <briefdescription>
+<para>ROS node handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="247" column="21" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a35a662c7ca9cf445b6aec1af579c88b4" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex node_aruco_detection::mtx_detect</definition>
+        <argsstring></argsstring>
+        <name>mtx_detect</name>
+        <briefdescription>
+<para>control semaphore for detection </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="250" column="12" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a842ac54f01c3d0cfc3f05f295c475d23" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex node_aruco_detection::mtx_show</definition>
+        <argsstring></argsstring>
+        <name>mtx_show</name>
+        <briefdescription>
+<para>control semaphore for image output </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="253" column="12" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a05839e60eb3be7e53bd79b8d3a1db58e" prot="private" static="no" mutable="no">
+        <type><ref refid="classaruco_1_1_camera_parameters" kindref="compound">aruco::CameraParameters</ref></type>
+        <definition>aruco::CameraParameters node_aruco_detection::camParam</definition>
+        <argsstring></argsstring>
+        <name>camParam</name>
+        <briefdescription>
+<para>arUco camera parameters </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="256" column="25" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1ad9b4e3f51743ba8f25e32bdbaaffcfb9" prot="private" static="no" mutable="no">
+        <type>image_transport::ImageTransport</type>
+        <definition>image_transport::ImageTransport node_aruco_detection::it</definition>
+        <argsstring></argsstring>
+        <name>it</name>
+        <briefdescription>
+<para>image transport object </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="259" column="33" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a92babd4135c3e496f0150832641c5949" prot="private" static="no" mutable="no">
+        <type>image_transport::Subscriber</type>
+        <definition>image_transport::Subscriber node_aruco_detection::image_sub_arm</definition>
+        <argsstring></argsstring>
+        <name>image_sub_arm</name>
+        <briefdescription>
+<para>input img subscriber : arm </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="262" column="29" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a969bcfdc8aa6b8278101ebd009fa7b5a" prot="private" static="no" mutable="no">
+        <type>image_transport::Subscriber</type>
+        <definition>image_transport::Subscriber node_aruco_detection::image_sub_front</definition>
+        <argsstring></argsstring>
+        <name>image_sub_front</name>
+        <briefdescription>
+<para>input img subscriber : front </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="265" column="29" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a74171c58eb719cf39845f1513e632c2c" prot="private" static="no" mutable="no">
+        <type>image_transport::Subscriber</type>
+        <definition>image_transport::Subscriber node_aruco_detection::image_sub_left</definition>
+        <argsstring></argsstring>
+        <name>image_sub_left</name>
+        <briefdescription>
+<para>input img subscriber : left </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="268" column="29" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="268" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a7071274252b9a2b67cabde02d5461e3d" prot="private" static="no" mutable="no">
+        <type>image_transport::Subscriber</type>
+        <definition>image_transport::Subscriber node_aruco_detection::image_sub_right</definition>
+        <argsstring></argsstring>
+        <name>image_sub_right</name>
+        <briefdescription>
+<para>input img subscriber : right </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="271" column="29" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1abcb4bc61aeaf2ddaa7abfb6b24751aa8" prot="private" static="no" mutable="no">
+        <type><ref refid="classaruco_1_1_marker_detector" kindref="compound">aruco::MarkerDetector</ref></type>
+        <definition>aruco::MarkerDetector node_aruco_detection::mDetector</definition>
+        <argsstring></argsstring>
+        <name>mDetector</name>
+        <briefdescription>
+<para>arUco detector </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="274" column="23" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1abef36bba20a94ad0b3484248d3f26ff3" prot="private" static="no" mutable="no">
+        <type><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1ae327ecbeb73df2f6640391f6d8775b50" kindref="member">std::set</ref>&lt; int &gt;</type>
+        <definition>std::set&lt;int&gt; node_aruco_detection::ids</definition>
+        <argsstring></argsstring>
+        <name>ids</name>
+        <briefdescription>
+<para>the set of the found IDs </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="277" column="10" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a8eb6d8f441c15d215edc8d295fd2247c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; node_aruco_detection::ids_to_publish</definition>
+        <argsstring></argsstring>
+        <name>ids_to_publish</name>
+        <briefdescription>
+<para>the list of IDs to publish </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="280" column="13" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a9e009be377fb7c72e22680c8cb89bcd9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int node_aruco_detection::last_id_published</definition>
+        <argsstring></argsstring>
+        <name>last_id_published</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>the last index sent in the vector </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="283" column="5" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a15f7939a0f2e47cd625295885c7fee0f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool node_aruco_detection::useCamInfo</definition>
+        <argsstring></argsstring>
+        <name>useCamInfo</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>use the camera parameters </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="286" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a43021ff3d35aab373deaf728672f13d8" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int node_aruco_detection::current_camera_id</definition>
+        <argsstring></argsstring>
+        <name>current_camera_id</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>current camera showing the image on the window </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="289" column="5" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1a07f1b22ff6913e2e35b97e31b6551bd3" prot="private" static="no" mutable="no">
+        <type>ros::Publisher</type>
+        <definition>ros::Publisher node_aruco_detection::pub_marker_ids</definition>
+        <argsstring></argsstring>
+        <name>pub_marker_ids</name>
+        <briefdescription>
+<para>marker ids publisher </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="292" column="16" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classnode__aruco__detection_1af32540c6557c11f137290ed78a01ec45" prot="private" static="no" mutable="no">
+        <type>ros::Rate</type>
+        <definition>ros::Rate node_aruco_detection::max_sub_rate</definition>
+        <argsstring></argsstring>
+        <name>max_sub_rate</name>
+        <briefdescription>
+<para>max rate of the subscribers </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="295" column="11" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>node_aruco_detection::node_aruco_detection</definition>
+        <argsstring>()</argsstring>
+        <name>node_aruco_detection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>node class constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="50" column="1" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="50" bodyend="68"/>
+        <references refid="aruco__detection_8cpp_1a4ba63f78da2ebe3c9c57b58d60ce1395" compoundref="aruco__detection_8cpp" startline="35">TOPIC_CAMERA_ARM</references>
+        <references refid="classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd" compoundref="aruco__detection_8cpp" startline="117" endline="131">cbk_cam_arm</references>
+        <references refid="aruco__detection_8cpp_1af40335a3070dd5846e1464763160925e" compoundref="aruco__detection_8cpp" startline="37">TOPIC_CAMERA_FRONT</references>
+        <references refid="classnode__aruco__detection_1ae51572f59a8124dfe8cdca3514c9ffda" compoundref="aruco__detection_8cpp" startline="134" endline="148">cbk_cam_front</references>
+        <references refid="aruco__detection_8cpp_1a065c688f7ac81f6c2818cf3f7c152b4c" compoundref="aruco__detection_8cpp" startline="39">TOPIC_CAMERA_LEFT</references>
+        <references refid="classnode__aruco__detection_1a657f1b6d746318bf2504e0bca06f62e6" compoundref="aruco__detection_8cpp" startline="151" endline="165">cbk_cam_left</references>
+        <references refid="aruco__detection_8cpp_1a439910ff4133e37a0cdd868663638f93" compoundref="aruco__detection_8cpp" startline="41">TOPIC_CAMERA_RIGHT</references>
+        <references refid="classnode__aruco__detection_1ad41c720ea1e290da6664bca32bef07bc" compoundref="aruco__detection_8cpp" startline="168" endline="182">cbk_cam_right</references>
+        <references refid="aruco__detection_8cpp_1aaff6821abb69310b0f85ec06ef42e3ff" compoundref="aruco__detection_8cpp" startline="43">TOPIC_DETECTED_IDS</references>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1a407c112c6ab8989c48ee3e55822bdb7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>node_aruco_detection::~node_aruco_detection</definition>
+        <argsstring>()</argsstring>
+        <name>~node_aruco_detection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>node class destructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="71" column="1" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="71" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1a1b672639359e9237e9b154f1901341b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::spin</definition>
+        <argsstring>()</argsstring>
+        <name>spin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>working cycle of the node </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="78" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="78" bodyend="114"/>
+        <references refid="aruco__detection_8cpp_1af706869d3f5c53d54533ee9eb6cd0450" compoundref="aruco__detection_8cpp" startline="28">UPDATE_TIME</references>
+        <references refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" compoundref="erl2-oracle-user-manual_8md_8txt" startline="127">r</references>
+        <references refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d">ROS_INFO_STREAM</references>
+        <referencedby refid="aruco__detection_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="aruco__detection_8cpp" startline="337" endline="352">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::cbk_cam_arm</definition>
+        <argsstring>(const sensor_msgs::ImageConstPtr &amp;msg)</argsstring>
+        <name>cbk_cam_arm</name>
+        <param>
+          <type>const sensor_msgs::ImageConstPtr &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sub arm camera </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="117" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="117" bodyend="131"/>
+        <references refid="namespacecv__bridge_1acbf2da402f4d3e505613e95b5a2aed35" compoundref="cv__bridge_8cpp" startline="425" endline="429">cv_bridge::toCvCopy</references>
+        <references refid="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29" compoundref="aruco__detection_8cpp" startline="185" endline="212">aruco_detect</references>
+        <references refid="aruco__detection_8cpp_1a31b2db41e3b0d0548633efd91011c43f" compoundref="aruco__detection_8cpp" startline="34">ID_CAMERA_ARM</references>
+        <references refid="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641" compoundref="aruco__detection_8cpp" startline="215" endline="242">show_camera</references>
+        <referencedby refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" compoundref="aruco__detection_8cpp" startline="50" endline="68">node_aruco_detection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1ae51572f59a8124dfe8cdca3514c9ffda" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::cbk_cam_front</definition>
+        <argsstring>(const sensor_msgs::ImageConstPtr &amp;msg)</argsstring>
+        <name>cbk_cam_front</name>
+        <param>
+          <type>const sensor_msgs::ImageConstPtr &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sub front camera </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="134" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="134" bodyend="148"/>
+        <references refid="namespacecv__bridge_1acbf2da402f4d3e505613e95b5a2aed35" compoundref="cv__bridge_8cpp" startline="425" endline="429">cv_bridge::toCvCopy</references>
+        <references refid="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29" compoundref="aruco__detection_8cpp" startline="185" endline="212">aruco_detect</references>
+        <references refid="aruco__detection_8cpp_1a09688581757864b3a229e25fa08c5cbd" compoundref="aruco__detection_8cpp" startline="36">ID_CAMERA_FRONT</references>
+        <references refid="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641" compoundref="aruco__detection_8cpp" startline="215" endline="242">show_camera</references>
+        <referencedby refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" compoundref="aruco__detection_8cpp" startline="50" endline="68">node_aruco_detection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1a657f1b6d746318bf2504e0bca06f62e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::cbk_cam_left</definition>
+        <argsstring>(const sensor_msgs::ImageConstPtr &amp;msg)</argsstring>
+        <name>cbk_cam_left</name>
+        <param>
+          <type>const sensor_msgs::ImageConstPtr &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sub left camera </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="151" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="151" bodyend="165"/>
+        <references refid="namespacecv__bridge_1acbf2da402f4d3e505613e95b5a2aed35" compoundref="cv__bridge_8cpp" startline="425" endline="429">cv_bridge::toCvCopy</references>
+        <references refid="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29" compoundref="aruco__detection_8cpp" startline="185" endline="212">aruco_detect</references>
+        <references refid="aruco__detection_8cpp_1a5a71dd8f7078d4af4bdf41b047dc5205" compoundref="aruco__detection_8cpp" startline="38">ID_CAMERA_LEFT</references>
+        <references refid="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641" compoundref="aruco__detection_8cpp" startline="215" endline="242">show_camera</references>
+        <referencedby refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" compoundref="aruco__detection_8cpp" startline="50" endline="68">node_aruco_detection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1ad41c720ea1e290da6664bca32bef07bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::cbk_cam_right</definition>
+        <argsstring>(const sensor_msgs::ImageConstPtr &amp;msg)</argsstring>
+        <name>cbk_cam_right</name>
+        <param>
+          <type>const sensor_msgs::ImageConstPtr &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sub right camera </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="168" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="168" bodyend="182"/>
+        <references refid="namespacecv__bridge_1acbf2da402f4d3e505613e95b5a2aed35" compoundref="cv__bridge_8cpp" startline="425" endline="429">cv_bridge::toCvCopy</references>
+        <references refid="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29" compoundref="aruco__detection_8cpp" startline="185" endline="212">aruco_detect</references>
+        <references refid="aruco__detection_8cpp_1a90c613f9fd1c144ddea8733a8671f2d3" compoundref="aruco__detection_8cpp" startline="40">ID_CAMERA_RIGHT</references>
+        <references refid="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641" compoundref="aruco__detection_8cpp" startline="215" endline="242">show_camera</references>
+        <referencedby refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" compoundref="aruco__detection_8cpp" startline="50" endline="68">node_aruco_detection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::aruco_detect</definition>
+        <argsstring>(int camera_id, cv::Mat &amp;image)</argsstring>
+        <name>aruco_detect</name>
+        <param>
+          <type>int</type>
+          <declname>camera_id</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>perform the ArUco detection </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="185" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="185" bodyend="212"/>
+        <references refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" compoundref="simple__double_8cpp" startline="57">markers</references>
+        <references refid="simple__double_8cpp_1a46ba90e214408b92c4329be16a5cd5d0" compoundref="simple__double_8cpp" startline="68">marker_size</references>
+        <references refid="classaruco_1_1_marker_detector_1adfb8f5e750be70433fff38e7270aaf82" compoundref="markerdetector_8cpp" startline="137" endline="142">aruco::MarkerDetector::detect</references>
+        <references refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d">ROS_INFO_STREAM</references>
+        <referencedby refid="classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd" compoundref="aruco__detection_8cpp" startline="117" endline="131">cbk_cam_arm</referencedby>
+        <referencedby refid="classnode__aruco__detection_1ae51572f59a8124dfe8cdca3514c9ffda" compoundref="aruco__detection_8cpp" startline="134" endline="148">cbk_cam_front</referencedby>
+        <referencedby refid="classnode__aruco__detection_1a657f1b6d746318bf2504e0bca06f62e6" compoundref="aruco__detection_8cpp" startline="151" endline="165">cbk_cam_left</referencedby>
+        <referencedby refid="classnode__aruco__detection_1ad41c720ea1e290da6664bca32bef07bc" compoundref="aruco__detection_8cpp" startline="168" endline="182">cbk_cam_right</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void node_aruco_detection::show_camera</definition>
+        <argsstring>(int camera_id, cv::Mat &amp;image)</argsstring>
+        <name>show_camera</name>
+        <param>
+          <type>int</type>
+          <declname>camera_id</declname>
+        </param>
+        <param>
+          <type>cv::Mat &amp;</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>show the image on the screen </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="215" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="215" bodyend="242"/>
+        <references refid="aruco__detection_8cpp_1a31b2db41e3b0d0548633efd91011c43f" compoundref="aruco__detection_8cpp" startline="34">ID_CAMERA_ARM</references>
+        <references refid="aruco__detection_8cpp_1a09688581757864b3a229e25fa08c5cbd" compoundref="aruco__detection_8cpp" startline="36">ID_CAMERA_FRONT</references>
+        <references refid="aruco__detection_8cpp_1a5a71dd8f7078d4af4bdf41b047dc5205" compoundref="aruco__detection_8cpp" startline="38">ID_CAMERA_LEFT</references>
+        <references refid="aruco__detection_8cpp_1a90c613f9fd1c144ddea8733a8671f2d3" compoundref="aruco__detection_8cpp" startline="40">ID_CAMERA_RIGHT</references>
+        <referencedby refid="classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd" compoundref="aruco__detection_8cpp" startline="117" endline="131">cbk_cam_arm</referencedby>
+        <referencedby refid="classnode__aruco__detection_1ae51572f59a8124dfe8cdca3514c9ffda" compoundref="aruco__detection_8cpp" startline="134" endline="148">cbk_cam_front</referencedby>
+        <referencedby refid="classnode__aruco__detection_1a657f1b6d746318bf2504e0bca06f62e6" compoundref="aruco__detection_8cpp" startline="151" endline="165">cbk_cam_left</referencedby>
+        <referencedby refid="classnode__aruco__detection_1ad41c720ea1e290da6664bca32bef07bc" compoundref="aruco__detection_8cpp" startline="168" endline="182">cbk_cam_right</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classnode__aruco__detection_1a41da5fcc6ec2d1be39a2ef3fb4243fc9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string node_aruco_detection::set2string</definition>
+        <argsstring>(std::set&lt; int &gt; &amp;st)</argsstring>
+        <name>set2string</name>
+        <param>
+          <type><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1ae327ecbeb73df2f6640391f6d8775b50" kindref="member">std::set</ref>&lt; int &gt; &amp;</type>
+          <declname>st</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convert a set into a string </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="298" column="13" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="298" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1a199a8882ee0c3d3d6b97ea9f9423aa31" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; node_aruco_detection::set2vector</definition>
+        <argsstring>(std::set&lt; int &gt; &amp;st)</argsstring>
+        <name>set2vector</name>
+        <param>
+          <type><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1ae327ecbeb73df2f6640391f6d8775b50" kindref="member">std::set</ref>&lt; int &gt; &amp;</type>
+          <declname>st</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>convert a set into a dynamic array </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="309" column="13" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="309" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="classnode__aruco__detection_1ad23c95af6683c361290defe48822b4f7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool node_aruco_detection::t0_greater_than_t1</definition>
+        <argsstring>(ros::WallTime t0, ros::WallTime t1)</argsstring>
+        <name>t0_greater_than_t1</name>
+        <param>
+          <type>ros::WallTime</type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>ros::WallTime</type>
+          <declname>t1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>comparison between two time instants: t0 &gt;= t1? </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="robocluedo_vision/src/aruco_detection.cpp" line="319" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="319" bodyend="323"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="robocluedo_vision/src/aruco_detection.cpp" line="46" column="1" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="45" bodyend="324"/>
+    <listofallmembers>
+      <member refid="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>aruco_detect</name></member>
+      <member refid="classnode__aruco__detection_1a05839e60eb3be7e53bd79b8d3a1db58e" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>camParam</name></member>
+      <member refid="classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>cbk_cam_arm</name></member>
+      <member refid="classnode__aruco__detection_1ae51572f59a8124dfe8cdca3514c9ffda" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>cbk_cam_front</name></member>
+      <member refid="classnode__aruco__detection_1a657f1b6d746318bf2504e0bca06f62e6" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>cbk_cam_left</name></member>
+      <member refid="classnode__aruco__detection_1ad41c720ea1e290da6664bca32bef07bc" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>cbk_cam_right</name></member>
+      <member refid="classnode__aruco__detection_1a43021ff3d35aab373deaf728672f13d8" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>current_camera_id</name></member>
+      <member refid="classnode__aruco__detection_1abef36bba20a94ad0b3484248d3f26ff3" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>ids</name></member>
+      <member refid="classnode__aruco__detection_1a8eb6d8f441c15d215edc8d295fd2247c" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>ids_to_publish</name></member>
+      <member refid="classnode__aruco__detection_1a92babd4135c3e496f0150832641c5949" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>image_sub_arm</name></member>
+      <member refid="classnode__aruco__detection_1a969bcfdc8aa6b8278101ebd009fa7b5a" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>image_sub_front</name></member>
+      <member refid="classnode__aruco__detection_1a74171c58eb719cf39845f1513e632c2c" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>image_sub_left</name></member>
+      <member refid="classnode__aruco__detection_1a7071274252b9a2b67cabde02d5461e3d" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>image_sub_right</name></member>
+      <member refid="classnode__aruco__detection_1ad9b4e3f51743ba8f25e32bdbaaffcfb9" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>it</name></member>
+      <member refid="classnode__aruco__detection_1a9e009be377fb7c72e22680c8cb89bcd9" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>last_id_published</name></member>
+      <member refid="classnode__aruco__detection_1af32540c6557c11f137290ed78a01ec45" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>max_sub_rate</name></member>
+      <member refid="classnode__aruco__detection_1abcb4bc61aeaf2ddaa7abfb6b24751aa8" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>mDetector</name></member>
+      <member refid="classnode__aruco__detection_1a35a662c7ca9cf445b6aec1af579c88b4" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>mtx_detect</name></member>
+      <member refid="classnode__aruco__detection_1a842ac54f01c3d0cfc3f05f295c475d23" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>mtx_show</name></member>
+      <member refid="classnode__aruco__detection_1a607e45faf7da1b9631c8764159626ce6" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>nh</name></member>
+      <member refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>node_aruco_detection</name></member>
+      <member refid="classnode__aruco__detection_1a07f1b22ff6913e2e35b97e31b6551bd3" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>pub_marker_ids</name></member>
+      <member refid="classnode__aruco__detection_1a41da5fcc6ec2d1be39a2ef3fb4243fc9" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>set2string</name></member>
+      <member refid="classnode__aruco__detection_1a199a8882ee0c3d3d6b97ea9f9423aa31" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>set2vector</name></member>
+      <member refid="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>show_camera</name></member>
+      <member refid="classnode__aruco__detection_1a1b672639359e9237e9b154f1901341b3" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>spin</name></member>
+      <member refid="classnode__aruco__detection_1ad23c95af6683c361290defe48822b4f7" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>t0_greater_than_t1</name></member>
+      <member refid="classnode__aruco__detection_1a15f7939a0f2e47cd625295885c7fee0f" prot="private" virt="non-virtual"><scope>node_aruco_detection</scope><name>useCamInfo</name></member>
+      <member refid="classnode__aruco__detection_1a407c112c6ab8989c48ee3e55822bdb7b" prot="public" virt="non-virtual"><scope>node_aruco_detection</scope><name>~node_aruco_detection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

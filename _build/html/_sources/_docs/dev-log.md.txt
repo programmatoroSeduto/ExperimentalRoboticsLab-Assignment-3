@@ -401,7 +401,7 @@ force_enable: true"
 
 ---
 
-## 18/08/2022
+## 18/08/2022 -- pddl e manipulation unit -- aruco
 
 oggi, manipulation controller
 
@@ -648,8 +648,46 @@ rosrun exp_assignment3 simulation_marker_publisher
 
 ---
 
-(pronti pr ArUco)
+e iniziamo a lavorare su aruco:
 
+- anzitutto, la simulazione funziona? funziona. 
+
+```bash
+roslaunch robocluedo_robot_hunter run.launch world_name:=assignment3.world 2>/dev/null
+```
+
+- **nuovo nodo**: aruco_detection.cpp
+	- iniziamo con la struttura del nod
+	- e implementazione
+	- compila? ... no
+	- ero convintissimo di aver già installato open cv nel package vision ... mi sbagliavo
+	- *ora compila*
+- e facciamo subito un test molto veloce (basta solo che la finestra funzioni come si deve e che si vedano le immagini dalle videocamere)
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter run.launch world_name:=assignment3.world 2>/dev/null
+
+# shell 2
+rosrun robocluedo_vision aruco_detection
+
+```
+
+- AAAAAAA LA VIDEOCAMERA CAMBIA IN CONTINUAZIONE! ok, meglio correggere questa cosa prima che mi venga una crisi epilettica
+	- ros::Time non sembra funzionare bene, per qualche strana ragione: la comparison è sempre vera, quindi la videocamera cambia sempre
+	- ... dovrò farmi un metodo a manina per comparare due tempi ...
+	**e ora funziona**
+- ora però c'è un altro problema: *è lentissimo*. 
+	- posso limitare la frequenza dei topic con una rate.sleep( ) nei subscriber (non un'ottima idea ma potrebbe funzionare)
+	- provo anche a diminuire il rate delle immagini dalle videocamere
+		- 12fps possono bastare, spero
+- ti ricordi quando dicevamo che funzionava bene lo switch? **SCHERZONE**: è tornato a switchare come un pazzo ... motivo sconosciuto (ho tolto un log!)
+	- temo che dovrò usare wallTime invece che il time normale
+	- **ora funziona sul serio**
+- rimane comunque molto pesante... 
+	- per ridurre ancora, posso droppare qualche richiesta usando il mutex con trylock piuttosto che lock, e quandoil thread non riesce a bloccare il myutex, ritorna immediatamente
+- per il momento son soddisfatto così.
+- **COMMIT**: "working on vision (aruco detection node)"
 
 
 

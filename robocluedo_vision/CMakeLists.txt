@@ -4,24 +4,36 @@ project(robocluedo_vision)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
+find_package(OpenCV REQUIRED)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  aruco
-  aruco_msgs
-  cv_bridge
-  dynamic_reconfigure
-  erl2
-  exp_assignment3
-  geometry_msgs
-  image_transport
-  nav_msgs
   roscpp
   rospy
-  sensor_msgs
+  
+  erl2
+  exp_assignment3
+  
   std_msgs
+  geometry_msgs
+  nav_msgs
+  sensor_msgs
+  
+  cv_bridge
+  image_transport
+  aruco
+  aruco_msgs
+  
+  dynamic_reconfigure
 )
+
+# generate_dynamic_reconfigure_options(
+#   cfg/ArucoThreshold.cfg
+# )
+
+add_compile_options(-std=c++11)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -117,6 +129,7 @@ catkin_package(
 #  LIBRARIES robocluedo_vision
 #  CATKIN_DEPENDS aruco aruco_msgs cv_bridge dynamic_reconfigure erl2 exp_assignment3 geometry_msgs image_transport nav_msgs roscpp rospy sensor_msgs std_msgs
 #  DEPENDS system_lib
+  DEPENDS OpenCV
 )
 
 ###########
@@ -159,6 +172,10 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable( aruco_detection src/aruco_detection.cpp )
+add_dependencies( aruco_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS} )
+target_link_libraries( aruco_detection ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} )
 
 #############
 ## Install ##

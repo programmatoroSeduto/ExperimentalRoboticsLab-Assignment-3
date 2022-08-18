@@ -131,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit –</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">18/08/2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pddl-e-manipulation-unit-aruco">18/08/2022 – pddl e manipulation unit – aruco</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#note">Note</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#utilizzo-di-move-base">utilizzo di move base</a></li>
 </ul>
@@ -567,8 +567,8 @@ rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</s
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id1">
-<h2>18/08/2022<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<div class="section" id="pddl-e-manipulation-unit-aruco">
+<h2>18/08/2022 – pddl e manipulation unit – aruco<a class="headerlink" href="#pddl-e-manipulation-unit-aruco" title="Permalink to this heading"></a></h2>
 <p>oggi, manipulation controller</p>
 <ul class="simple">
 <li><p>anzitutto, documentazione riguardo le poses del robot</p></li>
@@ -835,7 +835,64 @@ rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</s
 <li><p><strong>COMMIT</strong>: “changing PDDL topology, RViz markers, auto manipulation”</p></li>
 </ul>
 <hr class="docutils" />
-<p>(pronti pr ArUco)</p>
+<p>e iniziamo a lavorare su aruco:</p>
+<ul class="simple">
+<li><p>anzitutto, la simulazione funziona? funziona.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>assignment3.world <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>nuovo nodo</strong>: aruco_detection.cpp</p>
+<ul>
+<li><p>iniziamo con la struttura del nod</p></li>
+<li><p>e implementazione</p></li>
+<li><p>compila? … no</p></li>
+<li><p>ero convintissimo di aver già installato open cv nel package vision … mi sbagliavo</p></li>
+<li><p><em>ora compila</em></p></li>
+</ul>
+</li>
+<li><p>e facciamo subito un test molto veloce (basta solo che la finestra funzioni come si deve e che si vedano le immagini dalle videocamere)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>assignment3.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_vision aruco_detection
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AAAAAAA LA VIDEOCAMERA CAMBIA IN CONTINUAZIONE! ok, meglio correggere questa cosa prima che mi venga una crisi epilettica</p>
+<ul>
+<li><p>ros::Time non sembra funzionare bene, per qualche strana ragione: la comparison è sempre vera, quindi la videocamera cambia sempre</p></li>
+<li><p>… dovrò farmi un metodo a manina per comparare due tempi …
+<strong>e ora funziona</strong></p></li>
+</ul>
+</li>
+<li><p>ora però c’è un altro problema: <em>è lentissimo</em>.</p>
+<ul>
+<li><p>posso limitare la frequenza dei topic con una rate.sleep( ) nei subscriber (non un’ottima idea ma potrebbe funzionare)</p></li>
+<li><p>provo anche a diminuire il rate delle immagini dalle videocamere</p>
+<ul>
+<li><p>12fps possono bastare, spero</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ti ricordi quando dicevamo che funzionava bene lo switch? <strong>SCHERZONE</strong>: è tornato a switchare come un pazzo … motivo sconosciuto (ho tolto un log!)</p>
+<ul>
+<li><p>temo che dovrò usare wallTime invece che il time normale</p></li>
+<li><p><strong>ora funziona sul serio</strong></p></li>
+</ul>
+</li>
+<li><p>rimane comunque molto pesante…</p>
+<ul>
+<li><p>per ridurre ancora, posso droppare qualche richiesta usando il mutex con trylock piuttosto che lock, e quandoil thread non riesce a bloccare il myutex, ritorna immediatamente</p></li>
+</ul>
+</li>
+<li><p>per il momento son soddisfatto così.</p></li>
+<li><p><strong>COMMIT</strong>: “working on vision (aruco detection node)”</p></li>
+</ul>
 </div>
 <div class="section" id="note">
 <h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
