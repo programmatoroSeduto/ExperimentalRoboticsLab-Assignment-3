@@ -40,7 +40,7 @@ bool oracleService(erl2::Oracle::Request &req, erl2::Oracle::Response &res)
 // oracle_hint
 bool oracleCallback(exp_assignment3::Marker::Request &req, exp_assignment3::Marker::Response &res)
 {
-	res.oracle_hint = oracle_msgs[req.markerId-11];
+	res.oracle_hint = oracle_msgs[req.markerId];
 	return true;
 } 
 

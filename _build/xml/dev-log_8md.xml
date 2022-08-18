@@ -698,6 +698,69 @@
 <codeline><highlight class="normal">-<sp/>per<sp/>il<sp/>momento<sp/>son<sp/>soddisfatto<sp/>così.</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;working<sp/>on<sp/>vision<sp/>(aruco<sp/>detection<sp/>node)&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">possiamo<sp/>passare<sp/>ora<sp/>all&apos;ultimissimo<sp/>nodo<sp/>della<sp/>vision:<sp/>il<sp/>decode</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**nuovo<sp/>nodo**:<sp/>aruco_decode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(il<sp/>nodo<sp/>rimane<sp/>in<sp/>ascolto<sp/>degli<sp/>ID<sp/>dal<sp/>nodo<sp/>aruco_detection;<sp/>quando<sp/>ne<sp/>arriva<sp/>uno,<sp/>chiede<sp/>all&apos;oracolo<sp/>che<sp/>significa<sp/>e<sp/>ne<sp/>ritorna<sp/>il<sp/>messaggio<sp/>al<sp/>mission<sp/>manager)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>anzitutto,<sp/>bisogna<sp/>rimappare<sp/>il<sp/>topic<sp/>dell&apos;oracolo<sp/>affinchè<sp/>non<sp/>ci<sp/>siano<sp/>conflitti</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```xml</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;?xml<sp/>version=&quot;1.0&quot;?&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;launch&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;node<sp/>pkg=&quot;exp_assignment3&quot;<sp/>name=&quot;final_oracle&quot;<sp/>type=&quot;final_oracle&quot;<sp/>required=&quot;true&quot;<sp/>output=&quot;screen&quot;<sp/>&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;remap<sp/>from=&quot;/oracle_hint&quot;<sp/>to=&quot;/original_oracle_hint&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/node&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;!--<sp/>&lt;node<sp/>pkg=&quot;exp_assignment3&quot;<sp/>name=&quot;simulation_marker_publisher&quot;<sp/>type=&quot;simulation_marker_publisher&quot;<sp/>required=&quot;true&quot;<sp/>output=&quot;screen&quot;<sp/>/&gt;<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/launch&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>adesso,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>struttura<sp/>di<sp/>aruco_decode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>implementazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>proviamolo<sp/>un<sp/>po&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>exp_assignment3<sp/>run.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_vision<sp/>aruco_decode.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>0&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>2&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>3&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>4&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>5&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>...no<sp/>comment...<sp/>ma<sp/>prchè<sp/>c&apos;è<sp/>quel<sp/>diavolo<sp/>di<sp/>-11<sp/>nell&apos;oracolo<sp/>??????</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>oracle_hint</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>oracleCallback(exp_assignment3::Marker::Request<sp/>&amp;req,<sp/>exp_assignment3::Marker::Response<sp/>&amp;res)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.oracle_hint<sp/>=<sp/>oracle_msgs[req.markerId-11];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>anche<sp/>questa<sp/>è<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;aruco<sp/>decoder<sp/>ready&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>

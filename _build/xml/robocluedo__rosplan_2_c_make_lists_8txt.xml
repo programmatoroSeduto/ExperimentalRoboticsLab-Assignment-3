@@ -8,7 +8,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2_c_make_lists_8txt_1a568106bac57c72cd74c219299b3a2994" kindref="member">cmake_minimum_required</ref>(VERSION<sp/>3.0.2)</highlight></codeline>
-<codeline lineno="2"><highlight class="normal"><ref refid="robocluedo-hunter-user-manual_8md_8txt_1af7740bd233f62bf7e16cd57319d7ada2" kindref="member">project</ref>(robocluedo_rosplan)</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"><ref refid="namespaceconf_1aa2c6aefbed1597a70cfb45a760e5977c" kindref="member">project</ref>(robocluedo_rosplan)</highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Compile<sp/>as<sp/>C++11,<sp/>supported<sp/>in<sp/>ROS<sp/>Kinetic<sp/>and<sp/>newer</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>add_compile_options(-std=c++11)</highlight><highlight class="normal"></highlight></codeline>
@@ -153,7 +153,7 @@
 <codeline lineno="144"><highlight class="normal"><sp/><sp/>${catkin_INCLUDE_DIRS}</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">)</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal">##<sp/>Declare<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>C++<sp/>library</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">##<sp/>Declare<sp/>a<sp/>C++<sp/>library</highlight></codeline>
 <codeline lineno="148"><highlight class="normal">#<sp/>add_library(${PROJECT_NAME}</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>src/${PROJECT_NAME}/robocluedo_rosplan.cpp</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>)</highlight><highlight class="normal"></highlight></codeline>
@@ -164,14 +164,14 @@
 <codeline lineno="155"><highlight class="normal">add_library(<sp/>feedback_manager<sp/>src/knowledge_base_tools/feedback_manager.cpp<sp/>)</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><ref refid="robocluedo__dependencies_2vision__opencv_2image__geometry_2test_2_c_make_lists_8txt_1ae52e1693c2fb9f99471b9cb9caa26588" kindref="member">target_link_libraries</ref>(<sp/>feedback_manager<sp/>${catkin_LIBRARIES}<sp/>)</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal">##<sp/>Add<sp/>cmake<sp/><ref refid="bug-m_8md_8txt_1a121c428f444654781668f2553bd7dd47" kindref="member">target</ref><sp/><ref refid="_r_e_a_d_m_e_8md_8txt_1a94cdcf68452f98d58c54cc3fdf431167" kindref="member">dependencies</ref><sp/>of<sp/><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>library</highlight></codeline>
-<codeline lineno="159"><highlight class="normal">##<sp/>as<sp/>an<sp/>example,<sp/><ref refid="examples__tools_8md_8txt_1a9e62a1e988e0d3599a0e1f28d21142d8" kindref="member">code</ref><sp/>may<sp/>need<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref><sp/>be<sp/>generated<sp/>before<sp/>libraries</highlight></codeline>
-<codeline lineno="160"><highlight class="normal">##<sp/>either<sp/>from<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a613aec3cea90947774335a408726fd2e" kindref="member">message</ref><sp/>generation<sp/>or<sp/>dynamic<sp/>reconfigure</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">##<sp/>Add<sp/>cmake<sp/>target<sp/>dependencies<sp/>of<sp/>the<sp/>library</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">##<sp/>as<sp/>an<sp/>example,<sp/>code<sp/>may<sp/>need<sp/>to<sp/>be<sp/>generated<sp/>before<sp/>libraries</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">##<sp/>either<sp/>from<sp/>message<sp/>generation<sp/>or<sp/>dynamic<sp/>reconfigure</highlight></codeline>
 <codeline lineno="161"><highlight class="normal">#<sp/><ref refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2src_2_c_make_lists_8txt_1a3fc5a59643df1fdad4b47bf627460f9c" kindref="member">add_dependencies</ref>(${PROJECT_NAME}<sp/>${${PROJECT_NAME}_EXPORTED_TARGETS}<sp/>${catkin_EXPORTED_TARGETS})</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal">##<sp/>Declare<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>C++<sp/>executable</highlight></codeline>
-<codeline lineno="164"><highlight class="normal">##<sp/>With<sp/>catkin_make<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a236b1ef97e62e6ad334f9b644c237d28" kindref="member">all</ref><sp/>packages<sp/>are<sp/>built<sp/>within<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>single<sp/>CMake<sp/>context</highlight></codeline>
-<codeline lineno="165"><highlight class="normal">##<sp/>The<sp/>recommended<sp/>prefix<sp/>ensures<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a632de8b15e93d1707f094dd7429c5a99" kindref="member">that</ref><sp/><ref refid="bug-m_8md_8txt_1a121c428f444654781668f2553bd7dd47" kindref="member">target</ref><sp/>names<sp/>across<sp/>packages<sp/>don</highlight><highlight class="stringliteral">&apos;t<sp/>collide</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">##<sp/>Declare<sp/>a<sp/>C++<sp/>executable</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">##<sp/>With<sp/>catkin_make<sp/>all<sp/>packages<sp/>are<sp/>built<sp/>within<sp/>a<sp/>single<sp/>CMake<sp/>context</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">##<sp/>The<sp/>recommended<sp/>prefix<sp/>ensures<sp/>that<sp/>target<sp/>names<sp/>across<sp/>packages<sp/>don</highlight><highlight class="stringliteral">&apos;t<sp/>collide</highlight></codeline>
 <codeline lineno="166"><highlight class="stringliteral">#<sp/>add_executable(${PROJECT_NAME}_node<sp/>src/robocluedo_rosplan_node.cpp)</highlight></codeline>
 <codeline lineno="167"><highlight class="stringliteral"></highlight></codeline>
 <codeline lineno="168"><highlight class="stringliteral">add_executable(<sp/>kb_interface<sp/>src/kb_interface.cpp<sp/>)</highlight></codeline>

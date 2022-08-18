@@ -893,7 +893,71 @@ rosrun robocluedo_vision aruco_detection
 <li><p>per il momento son soddisfatto così.</p></li>
 <li><p><strong>COMMIT</strong>: “working on vision (aruco detection node)”</p></li>
 </ul>
+<hr class="docutils" />
+<p>possiamo passare ora all’ultimissimo nodo della vision: il decode</p>
+<ul>
+<li><p><strong>nuovo nodo</strong>: aruco_decode</p>
+<ul>
+<li><p>(il nodo rimane in ascolto degli ID dal nodo aruco_detection; quando ne arriva uno, chiede all’oracolo che significa e ne ritorna il messaggio al mission manager)</p></li>
+<li><p>anzitutto, bisogna rimappare il topic dell’oracolo affinchè non ci siano conflitti</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+
+<span class="nt">&lt;launch&gt;</span>
+
+<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;exp_assignment3&quot;</span> <span class="na">name=</span><span class="s">&quot;final_oracle&quot;</span> <span class="na">type=</span><span class="s">&quot;final_oracle&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">output=</span><span class="s">&quot;screen&quot;</span> <span class="nt">&gt;</span>
+	<span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/oracle_hint&quot;</span> <span class="na">to=</span><span class="s">&quot;/original_oracle_hint&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/node&gt;</span>
+<span class="c">&lt;!-- &lt;node pkg=&quot;exp_assignment3&quot; name=&quot;simulation_marker_publisher&quot; type=&quot;simulation_marker_publisher&quot; required=&quot;true&quot; output=&quot;screen&quot; /&gt; --&gt;</span>
+
+<span class="nt">&lt;/launch&gt;</span>
+</pre></div>
 </div>
+</li>
+</ul>
+</li>
+<li><p>adesso,</p>
+<ul class="simple">
+<li><p>struttura di aruco_decode</p></li>
+<li><p>e implementazione</p></li>
+<li><p>e proviamolo un po’</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch exp_assignment3 run.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_vision aruco_decode.py
+
+<span class="c1"># shell 3</span>
+rostopic <span class="nb">echo</span> /oracle_hint
+
+<span class="c1"># shell 4</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 0&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 1&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 2&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 3&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 4&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 5&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>…no comment… ma prchè c’è quel diavolo di -11 nell’oracolo ??????</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// oracle_hint</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">oracleCallback</span><span class="p">(</span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Request</span><span class="w"> </span><span class="o">&amp;</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">res</span><span class="p">.</span><span class="n">oracle_hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oracle_msgs</span><span class="p">[</span><span class="n">req</span><span class="p">.</span><span class="n">markerId</span><span class="mi">-11</span><span class="p">];</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e anche questa è andata</p></li>
+<li><p><strong>COMMIT</strong>: “aruco decoder ready”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
 <div class="section" id="note">
 <h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
 <div class="section" id="utilizzo-di-move-base">

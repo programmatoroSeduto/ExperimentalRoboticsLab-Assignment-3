@@ -468,7 +468,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_vision/src/aruco_detection.cpp" line="329" column="6" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="329" bodyend="333"/>
-        <references refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d">ROS_INFO_STREAM</references>
         <referencedby refid="aruco__detection_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="aruco__detection_8cpp" startline="337" endline="352">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="aruco__detection_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -494,7 +493,6 @@
         <location file="robocluedo_vision/src/aruco_detection.cpp" line="337" column="5" bodyfile="robocluedo_vision/src/aruco_detection.cpp" bodystart="337" bodyend="352"/>
         <references refid="aruco__detection_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" compoundref="aruco__detection_8cpp" startline="2">NODE_NAME</references>
         <references refid="aruco__detection_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="aruco__detection_8cpp" startline="329" endline="333">shut_msg</references>
-        <references refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d">ROS_INFO_STREAM</references>
         <references refid="classnode__aruco__detection_1a1b672639359e9237e9b154f1901341b3" compoundref="aruco__detection_8cpp" startline="78" endline="114">node_aruco_detection::spin</references>
       </memberdef>
       </sectiondef>
@@ -581,10 +579,10 @@
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>time<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>working<sp/>cycle</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::WallTime<sp/>t_update<sp/>=<sp/>ros::WallTime::now(<sp/>)<sp/>+<sp/>ros::WallDuration(<sp/><ref refid="aruco__detection_8cpp_1af706869d3f5c53d54533ee9eb6cd0450" kindref="member">UPDATE_TIME</ref><sp/>);</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Rate<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>(<sp/>10<sp/>);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Rate<sp/>r(<sp/>10<sp/>);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<sp/>ros::ok(<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>.sleep(<sp/>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r.sleep(<sp/>);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>update<sp/>camera</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if(<sp/>ros::Time::now(<sp/>)<sp/>&gt;=<sp/>t_update<sp/>)</highlight><highlight class="normal"></highlight></codeline>
@@ -593,7 +591,7 @@
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_camera_id<sp/>=<sp/>(<sp/>current_camera_id<sp/>+<sp/>1<sp/>)<sp/>%<sp/>4;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t_update<sp/>=<sp/>t_update<sp/>+<sp/>ros::WallDuration(<sp/><ref refid="aruco__detection_8cpp_1af706869d3f5c53d54533ee9eb6cd0450" kindref="member">UPDATE_TIME</ref><sp/>);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>switching<sp/>to<sp/>camera<sp/>with<sp/>ID=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>current_camera_id<sp/>);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>switching<sp/>to<sp/>camera<sp/>with<sp/>ID=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>current_camera_id<sp/>);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>publish<sp/>a<sp/>new<sp/>marker<sp/>id<sp/>if<sp/>any</highlight><highlight class="normal"></highlight></codeline>
@@ -607,7 +605,7 @@
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg.data<sp/>=<sp/>ids_to_publish[<sp/>++last_id_published<sp/>];</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_marker_ids.publish(<sp/>msg<sp/>);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>published<sp/>ID=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msg.data<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;with<sp/>idx=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>last_id_published<sp/>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>published<sp/>ID=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>msg.data<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;with<sp/>idx=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>last_id_published<sp/>);</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mtx_detect.unlock(<sp/>);</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -694,7 +692,7 @@
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<ref refid="classaruco_1_1_marker" kindref="compound">aruco::Marker</ref>&amp;<sp/>m<sp/>:<sp/><ref refid="simple__double_8cpp_1ad3609934b55a628fdda977ca8724ce34" kindref="member">markers</ref>)<sp/></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>(ids.insert(m.id)).second<sp/>)</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>[camera<sp/>id=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>camera_id<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>new<sp/>ID<sp/>detected<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>m.id<sp/>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>[camera<sp/>id=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>camera_id<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>new<sp/>ID<sp/>detected<sp/>:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>m.id<sp/>);</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ids_to_publish.push_back(<sp/>m.id<sp/>);</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -802,7 +800,7 @@
 <codeline lineno="327"><highlight class="normal"></highlight></codeline>
 <codeline lineno="329" refid="aruco__detection_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="aruco__detection_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sig<sp/>)</highlight></codeline>
 <codeline lineno="330"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>stopping...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>stopping...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::shutdown(<sp/>);</highlight></codeline>
 <codeline lineno="333"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"></highlight></codeline>
@@ -815,10 +813,10 @@
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::AsyncSpinner<sp/>spinner(6);</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>spinner.start(<sp/>);</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>starting...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>starting...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__aruco__detection" kindref="compound">node_aruco_detection</ref><sp/>node;</highlight></codeline>
 <codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>ready<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(<sp/></highlight><highlight class="stringliteral">&quot;(aruco_detection<sp/>)<sp/>ready<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>node.<ref refid="classnode__aruco__detection_1a1b672639359e9237e9b154f1901341b3" kindref="member">spin</ref>(<sp/>);</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>

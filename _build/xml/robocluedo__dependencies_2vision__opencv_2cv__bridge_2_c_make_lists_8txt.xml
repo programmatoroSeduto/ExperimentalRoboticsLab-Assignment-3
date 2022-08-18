@@ -61,7 +61,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2_c_make_lists_8txt_1a568106bac57c72cd74c219299b3a2994" kindref="member">cmake_minimum_required</ref>(VERSION<sp/>3.0.2)</highlight></codeline>
-<codeline lineno="2"><highlight class="normal"><ref refid="robocluedo-hunter-user-manual_8md_8txt_1af7740bd233f62bf7e16cd57319d7ada2" kindref="member">project</ref>(<ref refid="namespacecv__bridge" kindref="compound">cv_bridge</ref>)</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"><ref refid="namespaceconf_1aa2c6aefbed1597a70cfb45a760e5977c" kindref="member">project</ref>(<ref refid="namespacecv__bridge" kindref="compound">cv_bridge</ref>)</highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal">find_package(catkin<sp/>REQUIRED<sp/>COMPONENTS<sp/>rosconsole<sp/>sensor_msgs)</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
@@ -75,14 +75,14 @@
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#<sp/>Ubuntu<sp/>Focal</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>find_package(Boost<sp/>REQUIRED<sp/>python)</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/>endif()</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><ref refid="rosplan-kb_8md_8txt_1a0544c3fe466e421738dae463968b70ba" kindref="member">else</ref>()</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">else()</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">find_package(Boost<sp/>REQUIRED)</highlight></codeline>
 <codeline lineno="18"><highlight class="normal">endif()</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2src_2aruco_2_c_make_lists_8txt_1a490557a10016e2cc08409075b58fae6f" kindref="member">set</ref>(_opencv_version<sp/>4)</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">find_package(OpenCV<sp/>4<sp/>QUIET)</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><ref refid="examples__tools_8md_8txt_1ab7ba283e106143c7b2f5dbb2b4147982" kindref="member">if</ref>(NOT<sp/>OpenCV_FOUND)</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a613aec3cea90947774335a408726fd2e" kindref="member">message</ref>(STATUS<sp/>&quot;Did<sp/>not<sp/>find<sp/>OpenCV<sp/>4,<sp/>trying<sp/>OpenCV<sp/>3&quot;)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">if(NOT<sp/>OpenCV_FOUND)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>message(STATUS<sp/>&quot;Did<sp/>not<sp/>find<sp/>OpenCV<sp/>4,<sp/>trying<sp/>OpenCV<sp/>3&quot;)</highlight></codeline>
 <codeline lineno="24" refid="robocluedo__dependencies_2vision__opencv_2cv__bridge_2_c_make_lists_8txt_1ae327ecbeb73df2f6640391f6d8775b50" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="robocluedo__dependencies_2aruco__ros_2aruco_2src_2aruco_2_c_make_lists_8txt_1a490557a10016e2cc08409075b58fae6f" kindref="member">set</ref>(_opencv_version<sp/>3)</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">endif()</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
@@ -111,8 +111,8 @@
 <codeline lineno="49"><highlight class="normal">add_subdirectory(python)</highlight></codeline>
 <codeline lineno="50"><highlight class="normal">endif()</highlight></codeline>
 <codeline lineno="51"><highlight class="normal">add_subdirectory(src)</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><ref refid="examples__tools_8md_8txt_1ab7ba283e106143c7b2f5dbb2b4147982" kindref="member">if</ref>(CATKIN_ENABLE_TESTING)</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>add_subdirectory(<ref refid="__docs_2test-the-project_8md_8txt_1ab9c30914b6e8a2a87c4305b70785cbfa" kindref="member">test</ref>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">if(CATKIN_ENABLE_TESTING)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>add_subdirectory(test)</highlight></codeline>
 <codeline lineno="54"><highlight class="normal">endif()</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>install<sp/>the<sp/>include<sp/>folder</highlight><highlight class="normal"></highlight></codeline>

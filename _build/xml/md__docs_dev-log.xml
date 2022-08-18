@@ -750,9 +750,66 @@
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;working on vision (aruco detection node)&quot;</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md__docs_dev-log_1autotoc_md53">
+<para><hruler/>
+</para>
+<para>possiamo passare ora all&apos;ultimissimo nodo della vision: il decode</para>
+<para><itemizedlist>
+<listitem><para><bold>nuovo nodo</bold>: <ref refid="namespacearuco__decode" kindref="compound">aruco_decode</ref><itemizedlist>
+<listitem><para>(il nodo rimane in ascolto degli ID dal nodo aruco_detection; quando ne arriva uno, chiede all&apos;oracolo che significa e ne ritorna il messaggio al mission manager)</para>
+</listitem><listitem><para>anzitutto, bisogna rimappare il topic dell&apos;oracolo affinchè non ci siano conflitti</para>
+<para>```xml &lt;?xml version=&quot;1.0&quot;?&gt;</para>
+<para>&lt;launch&gt;</para>
+<para>&lt;node pkg=&quot;exp_assignment3&quot; name=&quot;final_oracle&quot; type=&quot;final_oracle&quot; required=&quot;true&quot; output=&quot;screen&quot; &gt; &lt;remap from=&quot;/oracle_hint&quot; to=&quot;/original_oracle_hint&quot; &gt; &lt;/node&gt;</para>
+<para>&lt;/launch&gt; ```</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>adesso,<itemizedlist>
+<listitem><para>struttura di <ref refid="namespacearuco__decode" kindref="compound">aruco_decode</ref></para>
+</listitem><listitem><para>e implementazione</para>
+</listitem><listitem><para>e proviamolo un po&apos;</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>exp_assignment3<sp/>run.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>robocluedo_vision<sp/>aruco_decode.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>echo<sp/>/oracle_hint</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>0&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>2&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>3&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>4&quot;</highlight></codeline>
+<codeline><highlight class="normal">rostopic<sp/>pub<sp/>--once<sp/>/aruco_detected_ids<sp/>std_msgs/Int32<sp/>&quot;data:<sp/>5&quot;</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>...no comment... ma prchè c&apos;è quel diavolo di -11 nell&apos;oracolo ??????</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>oracle_hint</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>oracleCallback(exp_assignment3::Marker::Request<sp/>&amp;req,<sp/>exp_assignment3::Marker::Response<sp/>&amp;res)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>res.oracle_hint<sp/>=<sp/>oracle_msgs[req.markerId-11];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">}<sp/></highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>e anche questa è andata</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;aruco decoder ready&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<sect2 id="md__docs_dev-log_1autotoc_md55">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md54">
+<sect3 id="md__docs_dev-log_1autotoc_md56">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>

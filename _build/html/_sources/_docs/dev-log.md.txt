@@ -689,6 +689,69 @@ rosrun robocluedo_vision aruco_detection
 - per il momento son soddisfatto così.
 - **COMMIT**: "working on vision (aruco detection node)"
 
+---
+
+possiamo passare ora all'ultimissimo nodo della vision: il decode
+
+- **nuovo nodo**: aruco_decode
+	- (il nodo rimane in ascolto degli ID dal nodo aruco_detection; quando ne arriva uno, chiede all'oracolo che significa e ne ritorna il messaggio al mission manager)
+	- anzitutto, bisogna rimappare il topic dell'oracolo affinchè non ci siano conflitti
+		
+		```xml
+		<?xml version="1.0"?>
+		
+		<launch>
+		
+		<node pkg="exp_assignment3" name="final_oracle" type="final_oracle" required="true" output="screen" >
+			<remap from="/oracle_hint" to="/original_oracle_hint" />
+		</node>
+		<!-- <node pkg="exp_assignment3" name="simulation_marker_publisher" type="simulation_marker_publisher" required="true" output="screen" /> -->
+		
+		</launch>
+		```
+
+- adesso, 
+	- struttura di aruco_decode
+	- e implementazione
+	- e proviamolo un po'
+
+```bash
+# shell 1
+roslaunch exp_assignment3 run.launch
+
+# shell 2
+rosrun robocluedo_vision aruco_decode.py
+
+# shell 3
+rostopic echo /oracle_hint
+
+# shell 4
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 "data: 0"
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 "data: 1"
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 "data: 2"
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 "data: 3"
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 "data: 4"
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 "data: 5"
+
+```
+
+- ...no comment... ma prchè c'è quel diavolo di -11 nell'oracolo ??????
+
+```c++
+// oracle_hint
+bool oracleCallback(exp_assignment3::Marker::Request &req, exp_assignment3::Marker::Response &res)
+{
+	res.oracle_hint = oracle_msgs[req.markerId-11];
+	return true;
+} 
+```
+
+- e anche questa è andata
+- **COMMIT**: "aruco decoder ready"
+
+--- 
+
+
 
 
 
