@@ -1338,6 +1338,37 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 </li>
 <li><p><strong>COMMIT</strong>: “deleting comments from the code (develop mode)”</p></li>
 </ul>
+<hr class="docutils" />
+<p>e andiamo ad eliminare il nodo wall follow</p>
+<ul class="simple">
+<li><p>anzitutto, eliminazione da bug_m</p></li>
+<li><p>test (giusto per capire se funziona … ancora) …</p>
+<ul>
+<li><p>avevo introdotto qualche bug nei file python</p></li>
+<li><p>ora è tutto risolto</p></li>
+</ul>
+</li>
+<li><p>modifica dei lauch files</p>
+<ul>
+<li><p>(che fatica)</p></li>
+<li><p>il run.launch va … leggermente ristrutturato</p></li>
+</ul>
+</li>
+</ul>
+<p>lo si prova un po’ questo nuovo launch file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>bugm
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>navstack
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>all
+
+<span class="c1"># for each of them,</span>
+rosnode list
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>funziona tutto (a parte per qualche errore di expected indentation)</p></li>
+<li><p>wall follow eliminato!</p></li>
+<li><p><strong>COMMIT</strong>: “wall follow deleted”</p></li>
+</ul>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p><strong>terzo assignment:</strong></p>
@@ -1348,6 +1379,7 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 <p><strong>secondo assignment:</strong></p>
 <ul class="simple">
 <li><p>introdurre uno script che permetta di lanciare tutti i componenti, proprio come fatto nel terzo assignment</p></li>
+<li><p>(tenta di non fare troppi aggiornamenti inutili … alla fin fine, il secondo assignment funziona bene così: inutile fare più del necessario)</p></li>
 </ul>
 </div>
 </div>

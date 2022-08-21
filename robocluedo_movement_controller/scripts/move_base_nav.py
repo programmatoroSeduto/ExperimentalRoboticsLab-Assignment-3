@@ -110,6 +110,7 @@ def send_signal( ):
 			
 		else:
 			#rospy.loginfo( f"(move_base_nav ) FOUND SERVICE {service_move_base_signal}" )
+			pass
 	
 	if cl_move_base_signal != None:
 		try:

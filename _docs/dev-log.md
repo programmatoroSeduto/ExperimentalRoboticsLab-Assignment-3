@@ -1088,6 +1088,33 @@ e si continua:
 	 - kb interface (c++)
 - **COMMIT**: "deleting comments from the code (develop mode)"
 
+---
+
+e andiamo ad eliminare il nodo wall follow
+
+- anzitutto, eliminazione da bug_m
+- test (giusto per capire se funziona ... ancora) ... 
+	- avevo introdotto qualche bug nei file python
+	- ora è tutto risolto
+- modifica dei lauch files
+	- (che fatica)
+	- il run.launch va ... leggermente ristrutturato
+
+lo si prova un po' questo nuovo launch file:
+
+```bash
+roslaunch robocluedo_movement_controller run.launch nav_type:=bugm
+roslaunch robocluedo_movement_controller run.launch nav_type:=navstack
+roslaunch robocluedo_movement_controller run.launch nav_type:=all
+
+# for each of them,
+rosnode list
+
+```
+
+- funziona tutto (a parte per qualche errore di expected indentation)
+- wall follow eliminato!
+- **COMMIT**: "wall follow deleted"
 
 
 ```{todo}
@@ -1099,6 +1126,7 @@ e si continua:
 **secondo assignment:**
 
 - introdurre uno script che permetta di lanciare tutti i componenti, proprio come fatto nel terzo assignment
+- (tenta di non fare troppi aggiornamenti inutili ... alla fin fine, il secondo assignment funziona bene così: inutile fare più del necessario)
 
 ```
 

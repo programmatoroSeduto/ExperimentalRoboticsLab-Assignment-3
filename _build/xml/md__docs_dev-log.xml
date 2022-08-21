@@ -1174,6 +1174,37 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;deleting comments from the code (develop mode)&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
+<para>e andiamo ad eliminare il nodo wall follow</para>
+<para><itemizedlist>
+<listitem><para>anzitutto, eliminazione da <ref refid="namespacebug__m" kindref="compound">bug_m</ref></para>
+</listitem><listitem><para>test (giusto per capire se funziona ... ancora) ...<itemizedlist>
+<listitem><para>avevo introdotto qualche bug nei file python</para>
+</listitem><listitem><para>ora è tutto risolto</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>modifica dei lauch files<itemizedlist>
+<listitem><para>(che fatica)</para>
+</listitem><listitem><para>il run.launch va ... leggermente ristrutturato</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>lo si prova un po&apos; questo nuovo launch file:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>nav_type:=bugm</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>nav_type:=navstack</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>nav_type:=all</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>for<sp/>each<sp/>of<sp/>them,</highlight></codeline>
+<codeline><highlight class="normal">rosnode<sp/>list</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>funziona tutto (a parte per qualche errore di expected indentation)</para>
+</listitem><listitem><para>wall follow eliminato!</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;wall follow deleted&quot;</para>
+</listitem></itemizedlist>
+</para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>aggiornare<sp/>documentazione<sp/>robot<sp/>Hunter<sp/>col<sp/>nuovo<sp/>run</highlight></codeline>
@@ -1182,10 +1213,11 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>introdurre<sp/>uno<sp/>script<sp/>che<sp/>permetta<sp/>di<sp/>lanciare<sp/>tutti<sp/>i<sp/>componenti,<sp/>proprio<sp/>come<sp/>fatto<sp/>nel<sp/>terzo<sp/>assignment</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>(tenta<sp/>di<sp/>non<sp/>fare<sp/>troppi<sp/>aggiornamenti<sp/>inutili<sp/>...<sp/>alla<sp/>fin<sp/>fine,<sp/>il<sp/>secondo<sp/>assignment<sp/>funziona<sp/>bene<sp/>così:<sp/>inutile<sp/>fare<sp/>più<sp/>del<sp/>necessario)</highlight></codeline>
 </programlisting></para>
-<sect2 id="md__docs_dev-log_1autotoc_md66">
+<sect2 id="md__docs_dev-log_1autotoc_md67">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md67">
+<sect3 id="md__docs_dev-log_1autotoc_md68">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1194,7 +1226,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md68">
+<sect3 id="md__docs_dev-log_1autotoc_md69">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

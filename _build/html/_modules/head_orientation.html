@@ -258,7 +258,7 @@
 	
 	<span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;head_orientation&#39;</span><span class="p">)</span>
 	
-	<span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;(head_orientation) starting...&quot;</span><span class="p">)</span>
+	<span class="c1">#rospy.loginfo(&quot;(head_orientation) starting...&quot;)</span>
 	<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 	
 	<span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -266,7 +266,7 @@
 	<span class="n">srv</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span><span class="s1">&#39;/head_orient_switch&#39;</span><span class="p">,</span> <span class="n">SetBool</span><span class="p">,</span> <span class="n">head_orient_switch</span><span class="p">)</span>
 	
 	<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-	<span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;(head_orientation) ready&quot;</span><span class="p">)</span>
+	<span class="c1">#rospy.loginfo(&quot;(head_orientation) ready&quot;)</span>
 	
 	<span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 	<span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
@@ -289,7 +289,8 @@
 					<span class="n">change_state</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 			
 			<span class="k">else</span><span class="p">:</span>
-				<span class="n">rospy</span><span class="o">.</span><span class="n">logerr</span><span class="p">(</span><span class="s1">&#39;Unknown state!&#39;</span><span class="p">)</span>
+				<span class="c1">#rospy.logerr(&#39;Unknown state!&#39;)</span>
+				<span class="k">pass</span>
 		
 		<span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 

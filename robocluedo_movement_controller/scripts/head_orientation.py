@@ -169,6 +169,7 @@ def main():
 			
 			else:
 				#rospy.logerr('Unknown state!')
+				pass
 		
 		rate.sleep()
 

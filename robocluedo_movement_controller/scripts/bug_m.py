@@ -26,7 +26,7 @@ active_ = False
 
 pub = None
 srv_client_go_to_point_ = None
-srv_client_wall_follower_ = None
+# srv_client_wall_follower_ = None
 srv_client_user_interface_ = None
 srv_client_head_orientation_ = None
 yaw_ = 0
@@ -79,7 +79,8 @@ def clbk_laser(msg):
 
 def change_state(state):
 	global state_, state_desc_
-	global srv_client_wall_follower_, srv_client_go_to_point_, srv_client_head_orientation_
+	# global srv_client_wall_follower_, srv_client_go_to_point_, srv_client_head_orientation_
+	global srv_client_go_to_point_, srv_client_head_orientation_
 	global srv_client_user_interface_
 	
 	state_ = state
@@ -89,17 +90,17 @@ def change_state(state):
 	
 	if state_ == 0:
 		srv_client_go_to_point_(True)
-		srv_client_wall_follower_(False)
+		# srv_client_wall_follower_(False)
 		srv_client_head_orientation_(False)
 		
 	elif state_ == 1:
 		srv_client_go_to_point_(False)
-		srv_client_wall_follower_(True)
+		# srv_client_wall_follower_(True)
 		srv_client_head_orientation_(False)
 		
 	elif state_ == 2:
 		srv_client_go_to_point_(False)
-		srv_client_wall_follower_(False)
+		# srv_client_wall_follower_(False)
 		srv_client_head_orientation_(False)
 		
 		twist_msg = Twist()
@@ -117,12 +118,12 @@ def change_state(state):
 		
 	elif state_ == 3:
 		srv_client_go_to_point_(False)
-		srv_client_wall_follower_(False)
+		# srv_client_wall_follower_(False)
 		srv_client_head_orientation_(True)
 	
 	elif state_ == 4:
 		srv_client_go_to_point_(False)
-		srv_client_wall_follower_(False)
+		# srv_client_wall_follower_(False)
 		srv_client_head_orientation_(False)
 
 
@@ -134,7 +135,8 @@ def normalize_angle(angle):
 
 def bug_switch(req):
 	global active_
-	global srv_client_wall_follower_, srv_client_go_to_point_, srv_client_head_orientation_
+	# global srv_client_wall_follower_, 
+	global srv_client_go_to_point_, srv_client_head_orientation_
 	
 	active_ = req.data
 	
@@ -143,6 +145,7 @@ def bug_switch(req):
 		change_state(2)
 	else:
 		# rospy.loginfo("(bug_m) ON ")
+		pass
 	
 	res = SetBoolResponse( )
 	res.success = True
@@ -153,7 +156,8 @@ def bug_switch(req):
 
 def main():
 	global regions_, position_, desired_position_, yaw_, yaw_error_allowed_
-	global srv_client_go_to_point_, srv_client_wall_follower_, srv_client_user_interface_, srv_client_head_orientation_
+	global srv_client_go_to_point_ #, srv_client_wall_follower_, 
+	global srv_client_user_interface_, srv_client_head_orientation_
 	global pub
 	global desired_yaw_, yaw_precision_, yaw_precision_2_
 	global active_, state_
@@ -172,10 +176,12 @@ def main():
 		#rospy.logwarn("(bug_m) srv_client_go_to_point_ == None")
 		return
 	
+	'''
 	srv_client_wall_follower_ = rospy.ServiceProxy('/wall_follower_switch', SetBool)
 	if( srv_client_wall_follower_ == None ):
 		# rospy.logwarn("(bug_m) srv_client_wall_follower_ == None")
 		return
+	'''
 	
 	srv_client_head_orientation_ = rospy.ServiceProxy('/head_orient_switch', SetBool)
 	if( srv_client_head_orientation_ == None ):

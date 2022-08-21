@@ -187,6 +187,7 @@ def main():
 				done(desired_position_)
 			else:
 				#rospy.logerr('Unknown state!')
+				pass
 
 		rate.sleep()
 
