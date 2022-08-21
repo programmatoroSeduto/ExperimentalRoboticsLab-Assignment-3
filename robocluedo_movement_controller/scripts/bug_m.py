@@ -139,10 +139,10 @@ def bug_switch(req):
 	active_ = req.data
 	
 	if not active_:
-		rospy.loginfo("(bug_m) OFF")
+		# rospy.loginfo("(bug_m) OFF")
 		change_state(2)
 	else:
-		rospy.loginfo("(bug_m) ON ")
+		# rospy.loginfo("(bug_m) ON ")
 	
 	res = SetBoolResponse( )
 	res.success = True
@@ -160,7 +160,7 @@ def main():
 
 	rospy.init_node('bug0')
 	
-	rospy.loginfo("(bug_m) starting...")
+	# rospy.loginfo("(bug_m) starting...")
 	rospy.sleep(rospy.Duration(2))
 
 	sub_laser = rospy.Subscriber('/scan', LaserScan, clbk_laser)
@@ -169,17 +169,17 @@ def main():
 	
 	srv_client_go_to_point_ = rospy.ServiceProxy('/go_to_point_switch', SetBool)
 	if( srv_client_go_to_point_ == None ):
-		rospy.logwarn("(bug_m) srv_client_go_to_point_ == None")
+		#rospy.logwarn("(bug_m) srv_client_go_to_point_ == None")
 		return
 	
 	srv_client_wall_follower_ = rospy.ServiceProxy('/wall_follower_switch', SetBool)
 	if( srv_client_wall_follower_ == None ):
-		rospy.logwarn("(bug_m) srv_client_wall_follower_ == None")
+		# rospy.logwarn("(bug_m) srv_client_wall_follower_ == None")
 		return
 	
 	srv_client_head_orientation_ = rospy.ServiceProxy('/head_orient_switch', SetBool)
 	if( srv_client_head_orientation_ == None ):
-		rospy.logwarn("(bug_m) srv_client_head_orientation_ == None")
+		# rospy.logwarn("(bug_m) srv_client_head_orientation_ == None")
 		return
 	
 	switch_srv = rospy.Service('/bug_switch', SetBool, bug_switch)
@@ -197,7 +197,7 @@ def main():
 	srv_client_user_interface_ = rospy.ServiceProxy('/bug_m_signal', Empty)
 	
 	rospy.sleep(rospy.Duration(2))
-	rospy.loginfo("(bug_m) ready")
+	# rospy.loginfo("(bug_m) ready")
 	
 	# initialize going to the point
 	change_state(2)
@@ -219,10 +219,10 @@ def main():
 			desired_position_.y = rospy.get_param('des_pos_y')
 			desired_yaw_ = rospy.get_param('des_yaw')
 			err_pos = math.sqrt(pow(desired_position_.y - position_.y, 2) + pow(desired_position_.x - position_.x, 2))
-			print( f"err_pos={err_pos}" )
+			#print( f"err_pos={err_pos}" )
 			err_yaw = normalize_angle(desired_yaw_ - yaw_)
-			print( f"err_yaw={err_yaw}" )
-			print( f"front region = {regions_['front']}" )
+			#print( f"err_yaw={err_yaw}" )
+			#print( f"front region = {regions_['front']}" )
 			
 			if state_ == 0:
 				''' 
@@ -230,7 +230,7 @@ def main():
 				wall_follow -- OFF
 				head orient -- OFF
 				'''
-				print("(bug_m) go to point")
+				#print("(bug_m) go to point")
 				err_pos = math.sqrt(pow(desired_position_.y - position_.y, 2) + pow(desired_position_.x - position_.x, 2))
 				
 				if(err_pos < 0.3):
@@ -246,7 +246,7 @@ def main():
 				wall_follow -- ON
 				head orient -- OFF
 				'''
-				print("(bug_m) wall follow")
+				#print("(bug_m) wall follow")
 				desired_yaw = math.atan2(desired_position_.y - position_.y, desired_position_.x - position_.x)
 				err_yaw = normalize_angle(desired_yaw - yaw_)
 				err_pos = math.sqrt(pow(desired_position_.y - position_.y, 2) + pow(desired_position_.x - position_.x, 2))
@@ -262,7 +262,7 @@ def main():
 				wall_follow -- OFF
 				head orient -- OFF
 				'''
-				print("(bug_m) end")
+				#print("(bug_m) end")
 				
 				# se il robot ha già raggiunto il target, rimarrà fermo
 				# altrimenti inizierà a muoversi
@@ -288,7 +288,7 @@ def main():
 				
 				change yaw
 				'''
-				print("(bug_m) change yaw")
+				#print("(bug_m) change yaw")
 				
 				if(err_pos > 0.35):
 					if regions_['front'] < 0.4:
@@ -306,7 +306,7 @@ def main():
 				
 				go backwards
 				'''
-				print("(bug_m) go back")
+				# print("(bug_m) go back")
 				
 				tw = Twist( )
 				tw.linear.x = -0.08

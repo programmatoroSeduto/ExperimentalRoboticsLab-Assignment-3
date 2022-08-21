@@ -137,7 +137,7 @@ def main():
 	
 	rospy.init_node('head_orientation')
 	
-	rospy.loginfo("(head_orientation) starting...")
+	#rospy.loginfo("(head_orientation) starting...")
 	rospy.sleep(rospy.Duration(2))
 	
 	pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
@@ -145,7 +145,7 @@ def main():
 	srv = rospy.Service('/head_orient_switch', SetBool, head_orient_switch)
 	
 	rospy.sleep(rospy.Duration(2))
-	rospy.loginfo("(head_orientation) ready")
+	#rospy.loginfo("(head_orientation) ready")
 	
 	rate = rospy.Rate(20)
 	while not rospy.is_shutdown():
@@ -168,7 +168,7 @@ def main():
 					change_state(0)
 			
 			else:
-				rospy.logerr('Unknown state!')
+				#rospy.logerr('Unknown state!')
 		
 		rate.sleep()
 

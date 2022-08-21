@@ -17,6 +17,16 @@
 #define TWARN( msg )      ROS_WARN_STREAM( OUTLABEL << "WARNING: " << msg )
 #define TERR( msg )       ROS_WARN_STREAM( OUTLABEL << "ERROR: " << msg )
 
+#define DEVELOP_MODE false
+
+#define DEVELOP_PRINT false
+#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL << msg ); } }
+#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+
+#define DEVELOP_WAIKEY false
+#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
+
 #include "ros/ros.h"
 #include "std_srvs/Empty.h"
 #include "knowledge_base_tools/kb_tools.h"
@@ -291,7 +301,7 @@ private:
 
 void shut_msg( int sig )
 {
-	TLOG( "stopping... " );
+	WTLOG( "stopping... " );
 	ros::shutdown( );
 }
 
@@ -303,21 +313,21 @@ int main( int argc, char* argv[] )
 	
 	ros::NodeHandle nh;
 	
-	TLOG( "starting ... " );
+	WTLOG( "starting ... " );
 	
 	kb_interface kbi;
 	
-	TLOG( "Advertising service " << LOGSQUARE( SERVICE_REPLAN  ) << "..." );
+	WTLOG( "Advertising service " << LOGSQUARE( SERVICE_REPLAN  ) << "..." );
 	ros::ServiceServer tsrv_replan = nh.advertiseService( SERVICE_REPLAN, &kb_interface::cbk_replan, &kbi );
 	srv_replan = &tsrv_replan;
-	TLOG( "Advertising service " << LOGSQUARE( SERVICE_REPLAN ) << "... OK" );
+	WTLOG( "Advertising service " << LOGSQUARE( SERVICE_REPLAN ) << "... OK" );
 	
-	TLOG( "Advertising service " << LOGSQUARE( SERVICE_UPDATE_GOAL  ) << "..." );
+	WTLOG( "Advertising service " << LOGSQUARE( SERVICE_UPDATE_GOAL  ) << "..." );
 	ros::ServiceServer tsrv_update_goal = nh.advertiseService( SERVICE_UPDATE_GOAL, &kb_interface::cbk_update_goal, &kbi );
 	srv_update_goal = &tsrv_update_goal;
-	TLOG( "Advertising service " << LOGSQUARE( SERVICE_UPDATE_GOAL ) << "... OK" );
+	WTLOG( "Advertising service " << LOGSQUARE( SERVICE_UPDATE_GOAL ) << "... OK" );
 	
-	TLOG( "ready" );
+	WTLOG( "ready" );
 	ros::spin( );
 	
 	return 0;

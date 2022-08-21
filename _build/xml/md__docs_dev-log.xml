@@ -955,11 +955,11 @@
 <para><itemizedlist>
 <listitem><para>(iniziamo dal lavoro di alleggerimento)</para>
 </listitem><listitem><para>fattori che riducono notevolmente le prestazioni:<itemizedlist>
-<listitem><para>essendo RViz solo uno strumento di visualizzazione, si potrebbe magari usare solo Gazebo per visualizzare la simulazione<itemizedlist>
+<listitem><para>(OK) essendo RViz solo uno strumento di visualizzazione, si potrebbe magari usare solo Gazebo per visualizzare la simulazione<itemizedlist>
 <listitem><para>quindi l&apos;attuale launcher per eseguire il progetto dovrebbe permettere di scegliere se lanciare solo Gazebo oppure entrambi</para>
 </listitem></itemizedlist>
 </para>
-</listitem><listitem><para>gmapping continuamente in esecuzione; sarebbe meglio usare amcl<itemizedlist>
+</listitem><listitem><para>(OK) gmapping continuamente in esecuzione; sarebbe meglio usare amcl<itemizedlist>
 <listitem><para><ulink url="http://wiki.ros.org/amcl">link wiki ufficiale AMCL</ulink></para>
 </listitem><listitem><para>bisognerà creare una mappa con teleop</para>
 </listitem><listitem><para>... oppure posso fare uno script che mappa l&apos;area in automatico? è possibile?</para>
@@ -1096,6 +1096,84 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 <para><bold>COMMIT</bold>: &quot;improving localization performances with AMCL&quot;</para>
+<para><hruler/>
+</para>
+<para>passiamo alla questione dei logs</para>
+<para><itemizedlist>
+<listitem><para>per quanto riguarda i nodi C++, l&apos;idea sarebbe quella di creare un sistema simile a quello del mission manager</para>
+</listitem><listitem><para>ci vuole un piccolo template, da adattare a seconda del caso.</para>
+</listitem><listitem><para>per i nodi C++,</para>
+<para>globale:</para>
+<para>```c++ #define DEVELOP_MODE false</para>
+<para>#define DEVELOP_PRINT false #define <ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG( msg )</ref> { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL &lt;&lt; msg ); } } #define <ref refid="kb__interface_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN( msg )</ref> { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL &lt;&lt; msg ); } } #define <ref refid="kb__interface_8cpp_1ab54fe75f2d341266c97d92509779e2f7" kindref="member">WTERR( msg )</ref> { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL &lt;&lt; msg ); } }</para>
+<para>#define DEVELOP_WAIKEY false #define WAITKEY { if( WAITKEY_ENABLED ) { std::cout &lt;&lt; &quot;press ENTER to continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } } ```</para>
+</listitem><listitem><para>per i nodi py la questione al solito non è così semplice... ci pensiamo poi</para>
+</listitem><listitem><para>provo la nuova macro sulla manipulation unit ... pare funzionare</para>
+</listitem><listitem><para>e vai con le sostituzioni<itemizedlist>
+<listitem><para>completare la manipulation unit</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>con cose del genere...</para>
+<para><programlisting><codeline><highlight class="normal">{c++}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>req.data<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>ENABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>DISABLED&quot;<sp/>);</highlight></codeline>
+</programlisting></para>
+<para>il compilatore ritorna un errore stranissimo:</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">/root/ros_ws/src/erl3/robocluedo_mission_manager/src/manipulation_unit.cpp:146:3:<sp/>error:<sp/>‘else’<sp/>without<sp/>a<sp/>previous<sp/>‘if’</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>146<sp/>|<sp/><sp/><sp/>else</highlight></codeline>
+</programlisting></para>
+<para>rendendo esplicito il contesto, il problema se ne va:</para>
+<para><programlisting><codeline><highlight class="normal">{c++}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>req.data<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>ENABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>DISABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>e ora, navigation unit ... liscio liscio</para>
+</listitem><listitem><para>in armor ce ne sono davvero pochi ... però quelli della ontology non mi vanno proprio benissimo<itemizedlist>
+<listitem><para>penso che metterò l&apos;output della ontology su log</para>
+</listitem><listitem><para>quelli della armor interface direi che non si toccano... almeno per il momento</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e ora il movement controller<itemizedlist>
+<listitem><para>manipulation controller</para>
+</listitem><listitem><para>navigation manager</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e per quanto riguarda i nodi py?<itemizedlist>
+<listitem><para>preferisco una soluzione più ... elementare: meglio commentare direttamente</para>
+</listitem><listitem><para>quindi <ref refid="namespacebug__m" kindref="compound">bug_m</ref></para>
+</listitem><listitem><para>go to point</para>
+</listitem><listitem><para>head orientation</para>
+</listitem><listitem><para>move base nav</para>
+</listitem><listitem><para>wall f... tanto devo eliminarlo</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para>e si continua:</para>
+<para><itemizedlist>
+<listitem><para>andamo con rosplan<itemizedlist>
+<listitem><para>il pipeline manager<itemizedlist>
+<listitem><para>kb interface (c++)</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;deleting comments from the code (develop mode)&quot;</para>
+</listitem></itemizedlist>
+</para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>aggiornare<sp/>documentazione<sp/>robot<sp/>Hunter<sp/>col<sp/>nuovo<sp/>run</highlight></codeline>
@@ -1104,11 +1182,10 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>introdurre<sp/>uno<sp/>script<sp/>che<sp/>permetta<sp/>di<sp/>lanciare<sp/>tutti<sp/>i<sp/>componenti,<sp/>proprio<sp/>come<sp/>fatto<sp/>nel<sp/>terzo<sp/>assignment</highlight></codeline>
-<codeline><highlight class="normal">-<sp/></highlight></codeline>
 </programlisting></para>
-<sect2 id="md__docs_dev-log_1autotoc_md64">
+<sect2 id="md__docs_dev-log_1autotoc_md66">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md65">
+<sect3 id="md__docs_dev-log_1autotoc_md67">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1117,7 +1194,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md66">
+<sect3 id="md__docs_dev-log_1autotoc_md68">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

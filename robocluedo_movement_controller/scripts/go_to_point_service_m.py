@@ -115,7 +115,7 @@ def fix_yaw(des_pos):
 
 	# state change conditions
 	if math.fabs(err_yaw) <= yaw_precision_2_:
-		print ('Yaw error: [%s]' % err_yaw)
+		# print ('Yaw error: [%s]' % err_yaw)
 		change_state(1)
 
 
@@ -135,7 +135,7 @@ def go_straight_ahead(des_pos):
 		twist_msg.angular.z = kp_a*err_yaw
 		pub.publish(twist_msg)
 	else:
-		print ('Position error: [%s]' % err_pos)
+		# print ('Position error: [%s]' % err_pos)
 		change_state(2)
 
 	# state change conditions
@@ -159,7 +159,7 @@ def main():
 
 	rospy.init_node('go_to_point')
 	
-	rospy.loginfo("(go to point) starting...")
+	#rospy.loginfo("(go to point) starting...")
 	rospy.sleep(rospy.Duration(2))
 
 	pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
@@ -167,7 +167,7 @@ def main():
 	srv = rospy.Service('go_to_point_switch', SetBool, go_to_point_switch)
 	
 	rospy.sleep(rospy.Duration(2))
-	rospy.loginfo("(go to point) ready")
+	#rospy.loginfo("(go to point) ready")
 	
 	state_ = 2
 
@@ -186,7 +186,7 @@ def main():
 			elif state_ == 2:
 				done(desired_position_)
 			else:
-				rospy.logerr('Unknown state!')
+				#rospy.logerr('Unknown state!')
 
 		rate.sleep()
 

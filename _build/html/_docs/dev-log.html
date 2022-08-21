@@ -1112,12 +1112,12 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 <li><p>(iniziamo dal lavoro di alleggerimento)</p></li>
 <li><p>fattori che riducono notevolmente le prestazioni:</p>
 <ul>
-<li><p>essendo RViz solo uno strumento di visualizzazione, si potrebbe magari usare solo Gazebo per visualizzare la simulazione</p>
+<li><p>(OK) essendo RViz solo uno strumento di visualizzazione, si potrebbe magari usare solo Gazebo per visualizzare la simulazione</p>
 <ul>
 <li><p>quindi l’attuale launcher per eseguire il progetto dovrebbe permettere di scegliere se lanciare solo Gazebo oppure entrambi</p></li>
 </ul>
 </li>
-<li><p>gmapping continuamente in esecuzione; sarebbe meglio usare amcl</p>
+<li><p>(OK) gmapping continuamente in esecuzione; sarebbe meglio usare amcl</p>
 <ul>
 <li><p><a class="reference external" href="http://wiki.ros.org/amcl">link wiki ufficiale AMCL</a></p></li>
 <li><p>bisognerà creare una mappa con teleop</p></li>
@@ -1252,6 +1252,92 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 </li>
 <li><p><strong>COMMIT</strong>: “improving localization performances with AMCL”</p></li>
 </ul>
+<hr class="docutils" />
+<p>passiamo alla questione dei logs</p>
+<ul>
+<li><p>per quanto riguarda i nodi C++, l’idea sarebbe quella di creare un sistema simile a quello del mission manager</p></li>
+<li><p>ci vuole un piccolo template, da adattare a seconda del caso.</p></li>
+<li><p>per i nodi C++,</p>
+<p>globale:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DEVELOP_MODE false</span>
+
+<span class="cp">#define DEVELOP_PRINT false</span>
+<span class="cp">#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL &lt;&lt; msg ); } }</span>
+<span class="cp">#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL &lt;&lt; msg ); } }</span>
+<span class="cp">#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL &lt;&lt; msg ); } }</span>
+
+<span class="cp">#define DEVELOP_WAIKEY false</span>
+<span class="cp">#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout &lt;&lt; &quot;press ENTER to continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } }</span>
+</pre></div>
+</div>
+</li>
+<li><p>per i nodi py la questione al solito non è così semplice… ci pensiamo poi</p></li>
+<li><p>provo la nuova macro sulla manipulation unit … pare funzionare</p></li>
+<li><p>e vai con le sostituzioni</p>
+<ul class="simple">
+<li><p>completare la manipulation unit</p></li>
+</ul>
+</li>
+</ul>
+<p>con cose del genere…</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation ENABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="k">else</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation DISABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>il compilatore ritorna un errore stranissimo:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/root/ros_ws/src/erl3/robocluedo_mission_manager/src/manipulation_unit.cpp:146:3: error: ‘else’ without a previous ‘if’
+  146 |   else
+</pre></div>
+</div>
+<p>rendendo esplicito il contesto, il problema se ne va:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation ENABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+<span class="w">		</span><span class="k">else</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation DISABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e ora, navigation unit … liscio liscio</p></li>
+<li><p>in armor ce ne sono davvero pochi … però quelli della ontology non mi vanno proprio benissimo</p>
+<ul>
+<li><p>penso che metterò l’output della ontology su log</p></li>
+<li><p>quelli della armor interface direi che non si toccano… almeno per il momento</p></li>
+</ul>
+</li>
+<li><p>e ora il movement controller</p>
+<ul>
+<li><p>manipulation controller</p></li>
+<li><p>navigation manager</p></li>
+</ul>
+</li>
+<li><p>e per quanto riguarda i nodi py?</p>
+<ul>
+<li><p>preferisco una soluzione più … elementare: meglio commentare direttamente</p></li>
+<li><p>quindi bug_m</p></li>
+<li><p>go to point</p></li>
+<li><p>head orientation</p></li>
+<li><p>move base nav</p></li>
+<li><p>wall f… tanto devo eliminarlo</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>e si continua:</p>
+<ul class="simple">
+<li><p>andamo con rosplan</p>
+<ul>
+<li><p>il pipeline manager</p></li>
+<li><p>kb interface (c++)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “deleting comments from the code (develop mode)”</p></li>
+</ul>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p><strong>terzo assignment:</strong></p>
@@ -1262,7 +1348,6 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 <p><strong>secondo assignment:</strong></p>
 <ul class="simple">
 <li><p>introdurre uno script che permetta di lanciare tutti i componenti, proprio come fatto nel terzo assignment</p></li>
-<li></li>
 </ul>
 </div>
 </div>

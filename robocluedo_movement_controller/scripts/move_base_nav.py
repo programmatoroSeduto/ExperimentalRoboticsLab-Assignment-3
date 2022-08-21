@@ -58,16 +58,17 @@ def move_base_switch( data ):
 	
 	# check the activity status
 	if active_ and not data.data:
-		rospy.loginfo( "(move_base_nav ) move_base navigation is OFF" )
+		# rospy.loginfo( "(move_base_nav ) move_base navigation is OFF" )
 		active_ = False
 		change_state( 0 )
 		
 	elif not active_ and data.data:
-		rospy.loginfo( "(move_base_nav ) move_base navigation is ON" )
+		#rospy.loginfo( "(move_base_nav ) move_base navigation is ON" )
 		active_ = True
 		
 	elif active_ and data.data:
-		rospy.loginfo( "(move_base_nav ) switching target" )
+		#rospy.loginfo( "(move_base_nav ) switching target" )
+		pass
 	
 	else:
 		res.message = "trying to disable something already off ..." 
@@ -77,7 +78,7 @@ def move_base_switch( data ):
 		desired_position_.y = rospy.get_param( "des_pos_y" )
 		desired_yaw_ = rospy.get_param( "des_yaw" )
 		
-		rospy.loginfo( f"(move_base_nav ) new target is (x={desired_position_.x}, y={desired_position_.y}, yaw={desired_yaw_})" )
+		#rospy.loginfo( f"(move_base_nav ) new target is (x={desired_position_.x}, y={desired_position_.y}, yaw={desired_yaw_})" )
 	
 	return res
 
@@ -100,21 +101,21 @@ def send_signal( ):
 	global service_move_base_signal
 	
 	if cl_move_base_signal == None:
-		rospy.loginfo( f"(move_base_nav ) TRYING client {service_move_base_signal} ... " )
+		#rospy.loginfo( f"(move_base_nav ) TRYING client {service_move_base_signal} ... " )
 		rospy.sleep(rospy.Duration(1))
 		cl_move_base_signal = rospy.ServiceProxy( service_move_base_signal, Empty )
 		if cl_move_base_signal == None:
-			rospy.loginfo( f"(move_base_nav ) unable to connect with {service_move_base_signal} -- retrying later..." )
+			#rospy.loginfo( f"(move_base_nav ) unable to connect with {service_move_base_signal} -- retrying later..." )
 			return
 			
 		else:
-			rospy.loginfo( f"(move_base_nav ) FOUND SERVICE {service_move_base_signal}" )
+			#rospy.loginfo( f"(move_base_nav ) FOUND SERVICE {service_move_base_signal}" )
 	
 	if cl_move_base_signal != None:
 		try:
 			cl_move_base_signal( )
 		except rospy.ServiceException:
-			rospy.loginfo( f"(move_base_nav ) unable to connect with {service_move_base_signal} -- service call failed" )
+			#rospy.loginfo( f"(move_base_nav ) unable to connect with {service_move_base_signal} -- service call failed" )
 			cl_move_base_signal = None
 
 
@@ -333,7 +334,7 @@ def change_state( state ):
 		
 	
 	else:
-		rospy.logwarn( f"(move_base_nav ) WARNING: unknown state {state_}" )
+		#rospy.logwarn( f"(move_base_nav ) WARNING: unknown state {state_}" )
 		change_state( 0 )
 
 
@@ -406,7 +407,7 @@ def main( ):
 			elapsed_time = elapsed_time + time_unit.to_sec()
 			
 			if elapsed_time > replan_time:
-				rospy.loginfo( f"(move_base_nav ) replanning move_base (timer expired, max {replan_time})" )
+				#rospy.loginfo( f"(move_base_nav ) replanning move_base (timer expired, max {replan_time})" )
 				change_state( 1 ) # -- replanning
 				continue
 			
@@ -425,12 +426,12 @@ def main( ):
 			change_state( 0 )
 		
 		else:
-			rospy.logwarn( f"(move_base_nav ) WARNING: unknown state {state_}" )
+			#rospy.logwarn( f"(move_base_nav ) WARNING: unknown state {state_}" )
 			change_state( 0 )
 		
 		# output : current status
 		if prev_output != state_description:
-			rospy.loginfo( f"(move_base_nav ) current state = {state_} ({state_description})" )
+			#rospy.loginfo( f"(move_base_nav ) current state = {state_} ({state_description})" )
 			prev_output = state_description
 
 
@@ -446,40 +447,40 @@ if __name__ == "__main__":
 	
 	# rospy.loginfo( f"(move_base_nav )" )
 	
-	rospy.loginfo( f"(move_base_nav ) starting..." )
+	#rospy.loginfo( f"(move_base_nav ) starting..." )
 	rospy.sleep(rospy.Duration(2))
 	
 	if not rospy.has_param( "des_pos_x" ) or not rospy.has_param( "des_pos_y" ) or not rospy.has_param( "des_yaw" ):
-		rospy.logerr( "(move_base_nav ) ERROR: parameters not found in the parameter server!" )
+		#rospy.logerr( "(move_base_nav ) ERROR: parameters not found in the parameter server!" )
 		
 		rospy.shutdown( )
 		rospy.sleep(rospy.Duration(1))
 		
 		os.exit( )
 	
-	rospy.loginfo( f"(move_base_nav ) service {service_move_base_switch} ... " )
+	#rospyloginfo( f"(move_base_nav ) service {service_move_base_switch} ... " )
 	srv_move_base_switch = rospy.Service( service_move_base_switch, SetBool, move_base_switch )
-	rospy.loginfo( f"(move_base_nav ) service {service_move_base_switch} ... OK" )
+	#rospy.loginfo( f"(move_base_nav ) service {service_move_base_switch} ... OK" )
 	
-	rospy.loginfo( f"(move_base_nav ) subscription: {topic_odometry} ... " )
+	#rospy.loginfo( f"(move_base_nav ) subscription: {topic_odometry} ... " )
 	sub_odometry = rospy.Subscriber( topic_odometry , Odometry, cbk_odometry )
 	rospy.sleep(rospy.Duration(1))
-	rospy.loginfo( f"(move_base_nav ) subscription: {topic_odometry} ... OK" )
+	#rospy.loginfo( f"(move_base_nav ) subscription: {topic_odometry} ... OK" )
 	
-	rospy.loginfo( f"(move_base_nav ) client: {service_head_orient_switch} ... " )
+	#rospy.loginfo( f"(move_base_nav ) client: {service_head_orient_switch} ... " )
 	cl_head_orient_switch = rospy.ServiceProxy( service_head_orient_switch, SetBool )
 	rospy.sleep(rospy.Duration(1))
-	rospy.loginfo( f"(move_base_nav ) client: {service_head_orient_switch} ... OK" )
+	#rospy.loginfo( f"(move_base_nav ) client: {service_head_orient_switch} ... OK" )
 	
-	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_goal} ... " )
+	#rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_goal} ... " )
 	pub_move_base_goal = rospy.Publisher( topic_move_base_goal, MoveBaseActionGoal, queue_size=10 )
-	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_goal} ... OK" )
+	#rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_goal} ... OK" )
 	
-	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_cancel} ... " )
+	#rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_cancel} ... " )
 	pub_move_base_cancel = rospy.Publisher( topic_move_base_cancel, GoalID, queue_size=10 )
-	rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_cancel} ... OK" )
+	#rospy.loginfo( f"(move_base_nav ) publisher: {topic_move_base_cancel} ... OK" )
 	
 	rospy.sleep(rospy.Duration(2))
 	
-	rospy.loginfo( f"(move_base_nav ) ready" )
+	#rospy.loginfo( f"(move_base_nav ) ready" )
 	main( )

@@ -247,13 +247,13 @@ def cbk_pipeline( req ):
 	if req.load_problem:
 		# needed a landmark!
 		if req.landmark < 0 or req.landmark > 2:
-			rospy.logwarn(f"({NODE_NAME}) not a valid landmark: {req.landmark}")
+			#rospy.logwarn(f"({NODE_NAME}) not a valid landmark: {req.landmark}")
 			
 			res.success_load_problem = False
 			res.success = False
 			return res
 		else:
-			rospy.loginfo(f"({NODE_NAME}) problem interface -- loading problem ...")
+			#rospy.loginfo(f"({NODE_NAME}) problem interface -- loading problem ...")
 			
 			# set the landmark into the ontology
 			newgoal = UpdateGoalRequest( )
@@ -263,17 +263,19 @@ def cbk_pipeline( req ):
 			if not newgoal_res.success:
 				
 				if newgoal_res.applicable:
-					rospy.logwarn(f"({NODE_NAME}) unable to apply the landmark {req.landmark} (reason: UNKNOWN)")
+					#rospy.logwarn(f"({NODE_NAME}) unable to apply the landmark {req.landmark} (reason: UNKNOWN)")
+					pass
 					
 				else:
-					rospy.logwarn(f"({NODE_NAME}) unable to apply the landmark {req.landmark} (reason: landmark not applicable)")
+					#rospy.logwarn(f"({NODE_NAME}) unable to apply the landmark {req.landmark} (reason: landmark not applicable)")
 					res.landmark_is_applicable = False
 				
 				res.success_load_problem = False
 				res.success = False
 				return res
 			else:
-				rospy.loginfo(f"({NODE_NAME}) problem interface -- applied landmark {req.landmark}")
+				#rospy.loginfo(f"({NODE_NAME}) problem interface -- applied landmark {req.landmark}")
+				pass
 			
 			problem_instance_text = ""
 			problem_instance_received = False
@@ -283,21 +285,23 @@ def cbk_pipeline( req ):
 			rospy.sleep(rospy.Duration(1))
 			
 			if not problem_instance_received:
-				rospy.logwarn(f"({NODE_NAME}) something went wrong while generating the problem instance")
+				#rospy.logwarn(f"({NODE_NAME}) something went wrong while generating the problem instance")
 				
 				res.success = False
 				res.success_load_problem = False
 				return res
 			else:
-				rospy.loginfo(f"({NODE_NAME}) problem interface -- problem loading SUCCEEDED with landmark {req.landmark}")
+				#rospy.loginfo(f"({NODE_NAME}) problem interface -- problem loading SUCCEEDED with landmark {req.landmark}")
+				pass
 	else:
-		rospy.loginfo(f"({NODE_NAME}) problem interface -- skipping problem generation")
+		#rospy.loginfo(f"({NODE_NAME}) problem interface -- skipping problem generation")
+		pass
 	
 	
 	## === PLANNER INTERFACE === ## 
 	
 	if req.solve_problem:
-		rospy.loginfo(f"({NODE_NAME}) planning interface -- trying to solve ...")
+		#rospy.loginfo(f"({NODE_NAME}) planning interface -- trying to solve ...")
 		
 		planner_interface_received = False
 		planner_interface_text = ""
@@ -308,32 +312,35 @@ def cbk_pipeline( req ):
 			cl_plan( )
 			rospy.sleep(rospy.Duration(1))
 		except rospy.ServiceException as serv_exc:
-			rospy.logwarn(f"({NODE_NAME}) planning interface -- raised an exception ({serv_exc})")
+			#rospy.logwarn(f"({NODE_NAME}) planning interface -- raised an exception ({serv_exc})")
 			exception_raised = True
 		
 		if (not planner_interface_received) or exception_raised:
-			rospy.logwarn(f"({NODE_NAME}) something went wrong in solving the problem")
+			#rospy.logwarn(f"({NODE_NAME}) something went wrong in solving the problem")
 			
 			res.success = False
 			res.success_solve_problem = False
 			res.problem_not_solvable = inspect_planner_output( planner_interface_solution_path )
 			
 			if res.problem_not_solvable:
-				rospy.logwarn(f"({NODE_NAME}) PROBLEM SEEMS UNSOLVABLE")
+				#rospy.logwarn(f"({NODE_NAME}) PROBLEM SEEMS UNSOLVABLE")
+				pass
 			
 			return res
 			
 		else:
-			rospy.loginfo(f"({NODE_NAME}) planning interface -- SOLVED")
+			#rospy.loginfo(f"({NODE_NAME}) planning interface -- SOLVED")
+			pass
 		
 	else:
-		rospy.loginfo(f"({NODE_NAME}) planning interface -- skipping problem solution")
+		#rospy.loginfo(f"({NODE_NAME}) planning interface -- skipping problem solution")
+		pass
 	
 	
 	## === PLANNER INTERFACE === ## 
 	
 	if req.parse_plan:
-		rospy.loginfo(f"({NODE_NAME}) parsing interface -- parsing...")
+		#rospy.loginfo(f"({NODE_NAME}) parsing interface -- parsing...")
 		
 		parsing_interface_received = False
 		parsing_interface_array = []
@@ -343,29 +350,31 @@ def cbk_pipeline( req ):
 			rospy.sleep(rospy.Duration(1))
 			
 		except rospy.ServiceException:
-			rospy.loginfo(f"({NODE_NAME}) parsing interface -- something went wrong while parsing the plan")
+			#rospy.loginfo(f"({NODE_NAME}) parsing interface -- something went wrong while parsing the plan")
 			
 			res.success = False
 			res.success_parse_plan = False
 			return res
 		
 		if not parsing_interface_received:
-			rospy.loginfo(f"({NODE_NAME}) parsing interface -- something went wrong while parsing the plan")
+			#rospy.loginfo(f"({NODE_NAME}) parsing interface -- something went wrong while parsing the plan")
 			
 			res.success = False
 			res.success_parse_plan = False
 			return res
 			
 		else:
-			rospy.loginfo(f"({NODE_NAME}) parsing interface -- plan parsing SUCCESS")
+			#rospy.loginfo(f"({NODE_NAME}) parsing interface -- plan parsing SUCCESS")
+			pass
 	else:
-		rospy.loginfo(f"({NODE_NAME}) parsing interface -- skipping plan parsing")
+		#rospy.loginfo(f"({NODE_NAME}) parsing interface -- skipping plan parsing")
+		pass
 	
 	
 	## === DISPATCH === ## 
 	
 	if req.execute_plan:
-		rospy.loginfo(f"({NODE_NAME}) dispatch -- dispatching plan")
+		#rospy.loginfo(f"({NODE_NAME}) dispatch -- dispatching plan")
 		
 		action_feedback_received = False
 		action_feedback_msg = None
@@ -377,7 +386,7 @@ def cbk_pipeline( req ):
 			res_disp = cl_dispatch()
 			rospy.sleep(rospy.Duration(1))
 		except rospy.serviceException as e:
-			rospy.logwarn(f"({NODE_NAME}) dispatch -- ERROR in calling the dispatch service ({e})")
+			#rospy.logwarn(f"({NODE_NAME}) dispatch -- ERROR in calling the dispatch service ({e})")
 			
 			res.success = False
 			res.success_execute_plan = False
@@ -394,10 +403,10 @@ def cbk_pipeline( req ):
 				res.feedback_received = True
 				res.feedback = action_feedback_msg
 				
-				rospy.logwarn(f"({NODE_NAME}) dispatch -- FAILURE with feedback received")
+				#rospy.logwarn(f"({NODE_NAME}) dispatch -- FAILURE with feedback received")
 			else:
 				# unable to explain the failure
-				rospy.logwarn(f"({NODE_NAME}) dispatch -- FAILURE with no feedback")
+				#rospy.logwarn(f"({NODE_NAME}) dispatch -- FAILURE with no feedback")
 				
 				res.feedback_received = False
 			
@@ -409,7 +418,8 @@ def cbk_pipeline( req ):
 			res.feedback.details = "goal achieved"
 		
 	else:
-		rospy.loginfo(f"({NODE_NAME}) dispatch -- skipping")
+		#rospy.loginfo(f"({NODE_NAME}) dispatch -- skipping")
+		pass
 	
 	return res
 
@@ -430,16 +440,16 @@ def open_cl( cl_name, cl_type ):
 	global SRV_TIMEOUT
 	global NODE_NAME
 	
-	rospy.loginfo(f"({NODE_NAME}) client: {cl_name} ... ")
+	#rospy.loginfo(f"({NODE_NAME}) client: {cl_name} ... ")
 	try:
 		rospy.wait_for_service( cl_name, timeout=SRV_TIMEOUT )
 		
 	except rospy.ROSException as e:
-		rospy.logwarn(f"({NODE_NAME}) client: {cl_name} UNABLE TO CONTACT within the timeout ({SRV_TIMEOUT}s) cause: {e}")
+		#rospy.logwarn(f"({NODE_NAME}) client: {cl_name} UNABLE TO CONTACT within the timeout ({SRV_TIMEOUT}s) cause: {e}")
 		raise e
 		
 	cl_this = rospy.ServiceProxy( cl_name, cl_type )
-	rospy.loginfo(f"({NODE_NAME}) OK")
+	#rospy.loginfo(f"({NODE_NAME}) OK")
 	
 	rospy.sleep(rospy.Duration(0.75))
 	
@@ -451,13 +461,14 @@ if __name__ == "__main__":
 		rospy.init_node( NODE_NAME )
 		rospy.on_shutdown( shut_msg )
 		
-		rospy.loginfo(f"{NODE_NAME} starting... ")
+		#rospy.loginfo(f"{NODE_NAME} starting... ")
 		
 		planner_interface_solution_path = rospy.get_param( "/output_problem_path", "" )
 		if planner_interface_solution_path == "" :
-			rospy.logwarn( f"({NODE_NAME}) plan output path missing! ('/output_problem_path' no defined in the parameter server)" )
+			#rospy.logwarn( f"({NODE_NAME}) plan output path missing! ('/output_problem_path' no defined in the parameter server)" )
+			pass
 		else:
-			rospy.loginfo(f"({NODE_NAME}) planning output path: {planner_interface_solution_path} (removed before flight)")
+			#rospy.loginfo(f"({NODE_NAME}) planning output path: {planner_interface_solution_path} (removed before flight)")
 			try:
 				os.remove( planner_interface_solution_path )
 			except FileNotFoundError:
@@ -470,32 +481,32 @@ if __name__ == "__main__":
 		
 		cl_update_goal = open_cl( service_update_goal, UpdateGoal )
 		
-		rospy.loginfo(f"({NODE_NAME}) service: {service_pipeline} ... ")
+		#rospy.loginfo(f"({NODE_NAME}) service: {service_pipeline} ... ")
 		srv_pipeline = rospy.Service( service_pipeline, RosplanPipelineManagerService, cbk_pipeline )
 		rospy.sleep(rospy.Duration(0.75))
-		rospy.loginfo(f"({NODE_NAME}) OK")
+		#rospy.loginfo(f"({NODE_NAME}) OK")
 		
-		rospy.loginfo(f"({NODE_NAME}) subscription: {topic_action_feedback} ... ")
+		#rospy.loginfo(f"({NODE_NAME}) subscription: {topic_action_feedback} ... ")
 		sub_action_feedback = rospy.Subscriber( topic_action_feedback, ActionFeedback, cbk_action_feedback )
 		rospy.sleep(rospy.Duration(0.75))
-		rospy.loginfo(f"({NODE_NAME}) OK")
+		#rospy.loginfo(f"({NODE_NAME}) OK")
 		
-		rospy.loginfo(f"({NODE_NAME}) subscription: {topic_problem_instance} ... ")
+		#rospy.loginfo(f"({NODE_NAME}) subscription: {topic_problem_instance} ... ")
 		sub_problem_instance = rospy.Subscriber( topic_problem_instance, String, cbk_problem_instance )
 		rospy.sleep(rospy.Duration(0.75))
-		rospy.loginfo(f"({NODE_NAME}) OK")
+		#rospy.loginfo(f"({NODE_NAME}) OK")
 		
-		rospy.loginfo(f"({NODE_NAME}) subscription: {topic_planner_interface} ... ")
+		#rospy.loginfo(f"({NODE_NAME}) subscription: {topic_planner_interface} ... ")
 		sub_planner_interface = rospy.Subscriber( topic_planner_interface, String, cbk_planning_interface )
 		rospy.sleep(rospy.Duration(0.75))
-		rospy.loginfo(f"({NODE_NAME}) OK")
+		#rospy.loginfo(f"({NODE_NAME}) OK")
 		
-		rospy.loginfo(f"({NODE_NAME}) subscription: {topic_parser_interface} ... ")
+		#rospy.loginfo(f"({NODE_NAME}) subscription: {topic_parser_interface} ... ")
 		sub_parser_interface = rospy.Subscriber( topic_parser_interface, CompletePlan, cbk_parsing_interface )
 		rospy.sleep(rospy.Duration(0.75))
-		rospy.loginfo(f"({NODE_NAME}) OK")
+		#rospy.loginfo(f"({NODE_NAME}) OK")
 		
-		rospy.loginfo(f"{NODE_NAME} ready")
+		#rospy.loginfo(f"{NODE_NAME} ready")
 		rospy.spin()
 		
 	except rospy.ROSException as e:

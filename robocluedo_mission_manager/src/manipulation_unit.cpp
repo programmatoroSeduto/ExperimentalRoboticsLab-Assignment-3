@@ -19,6 +19,16 @@
 #define TWARN( msg )      ROS_WARN_STREAM( OUTLABEL << "WARNING: " << msg )
 #define TERR( msg )       ROS_WARN_STREAM( OUTLABEL << "ERROR: " << msg )
 
+#define DEVELOP_MODE false
+
+#define DEVELOP_PRINT false
+#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL << msg ); } }
+#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+
+#define DEVELOP_WAIKEY false
+#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
+
 #include "ros/ros.h"
 #include "robocluedo_rosplan_msgs/ManipulationCommand.h"
 #include "robocluedo_movement_controller_msgs/ManipulatorPosition.h"
@@ -77,23 +87,23 @@ public:
 	node_manipulation_unit( )
 	{
 		// manipulation controller
-		TLOG( "Opening client " << LOGSQUARE( SERVICE_MANIP ) << "..." );
+		WTLOG( "Opening client " << LOGSQUARE( SERVICE_MANIP ) << "..." );
 		cl_manip = nh.serviceClient<robocluedo_movement_controller_msgs::ManipulatorPosition>( SERVICE_MANIP );
 		if( !cl_manip.waitForExistence( ros::Duration( 60 ) ) )
 		{
-			TERR( "unable to contact the server " << SERVICE_MANIP << " - timeout expired (60s) " );
+			WTERR( "unable to contact the server " << SERVICE_MANIP << " - timeout expired (60s) " );
 			return;
 		}
-		TLOG( "Opening client " << LOGSQUARE( SERVICE_MANIP ) << "... OK" );
+		WTLOG( "Opening client " << LOGSQUARE( SERVICE_MANIP ) << "... OK" );
 		
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ARM_SWITCH ) << "..." );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ARM_SWITCH ) << "..." );
 		srv_auto_manip_switch = nh.advertiseService( SERVICE_RANDOM_ARM_SWITCH, &node_manipulation_unit::cbk_auto_manip_switch, this );
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ARM_SWITCH ) << "... OK" );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_RANDOM_ARM_SWITCH ) << "... OK" );
 		
 		// publisher
-		TLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... " );
+		WTLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... " );
 		pub_motion_async = nh.advertise<robocluedo_movement_controller_msgs::ManipulatorPositionAsync>( TOPIC_MANIP_ASYNC, 3 );
-		TLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... OK" );
+		WTLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... OK" );
 	}
 	
 	/// spin function: send a new pose each 15 seconds
@@ -109,7 +119,7 @@ public:
 				msg.command = rand( ) % 9;
 				msg.enabled = true;
 				
-				TLOG( "new pose: " << msg.command );
+				WTLOG( "new pose: " << msg.command );
 				
 				pub_motion_async.publish( msg );
 			}
@@ -132,9 +142,13 @@ public:
 		auto_manip_active = req.data;
 		
 		if( req.data )
-			TLOG( "auto manipulation ENABLED" );
+		{
+			WTLOG( "auto manipulation ENABLED" );
+		}
 		else
-			TLOG( "auto manipulation DISABLED" );
+		{
+			WTLOG( "auto manipulation DISABLED" );
+		}
 		
 		res.success = true;
 		return true;
@@ -161,7 +175,7 @@ private:
 
 void shut_msg( int sig )
 {
-	TLOG( "stopping... " );
+	WTLOG( "stopping... " );
 	ros::shutdown( );
 }
 
@@ -174,10 +188,10 @@ int main( int argc, char* argv[] )
 	ros::AsyncSpinner spinner( 1 );
 	spinner.start( );
 	
-	TLOG( "starting ... " );
+	WTLOG( "starting ... " );
 	node_manipulation_unit node;
 	
-	TLOG( "ready" );
+	WTLOG( "ready" );
 	node.spin( );
 	
 	return 0;

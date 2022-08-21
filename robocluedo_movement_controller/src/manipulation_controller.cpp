@@ -7,6 +7,16 @@
 #define TWARN( msg )      ROS_WARN_STREAM( OUTLABEL << "WARNING: " << msg )
 #define TERR( msg )       ROS_WARN_STREAM( OUTLABEL << "ERROR: " << msg )
 
+#define DEVELOP_MODE false
+
+#define DEVELOP_PRINT false
+#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL << msg ); } }
+#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+
+#define DEVELOP_WAIKEY false
+#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
+
 #include "ros/ros.h"
 #include "moveit/move_group_interface/move_group_interface.h"
 #include "moveit/planning_scene_interface/planning_scene_interface.h"
@@ -60,13 +70,13 @@ public:
 	
 	node_manipulation_controller(  ) : mgi( ARM_PLANNING_GROUP )
 	{
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_MANIP ) << "..." );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_MANIP ) << "..." );
 		srv_manip = nh.advertiseService( SERVICE_MANIP, &node_manipulation_controller::cbk_manip, this );
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_MANIP ) << "... OK" );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_MANIP ) << "... OK" );
 		
-		TLOG( "Subscription to topic " << TOPIC_MANIP_ASYNC << " ... " );
+		WTLOG( "Subscription to topic " << TOPIC_MANIP_ASYNC << " ... " );
 		sub_moveit_async = nh.subscribe( TOPIC_MANIP_ASYNC, 3, &node_manipulation_controller::cbk_manip_async, this );
-		TLOG( "Subscription to topic " << TOPIC_MANIP_ASYNC << " ... OK" );
+		WTLOG( "Subscription to topic " << TOPIC_MANIP_ASYNC << " ... OK" );
 		
 		(ros::Duration(1.0)).sleep( );
 		
@@ -74,7 +84,7 @@ public:
 		// mgi.setPlanningTime(10.0);
 		
 		if( !mgi.setEndEffector( "cluedo_ee" ) )
-			TLOG( "unable to set the end effector 'cluedo_ee'" );
+		{	WTLOG( "unable to set the end effector 'cluedo_ee'" ); }
 		else
 		{
 			mgi.setGoalJointTolerance(0.01);
@@ -83,7 +93,7 @@ public:
 		}
 		
 		mgi.setPoseReferenceFrame("base_link");
-		TLOG("Planning frame: " << mgi.getPlanningFrame().c_str());
+		WTLOG("Planning frame: " << mgi.getPlanningFrame().c_str());
 		
 		mgi.setNumPlanningAttempts(10);
 		mgi.setPlanningTime(10.0);
@@ -180,7 +190,7 @@ public:
 		{
 			res.success = false;
 			res.details = SS("pose code unknown (received POSE=") + SSS(req.command) + SS(")");
-			TLOG( "" << res.details );
+			WTLOG( "" << res.details );
 			
 			return true;
 		}
@@ -194,7 +204,7 @@ public:
 			mtx.unlock();
 			res.success = false;
 			res.details = "motion planning phase failed -- unable to make a plan";
-			TLOG( "" << res.details );
+			WTLOG( "" << res.details );
 			
 			return true;
 		}
@@ -254,7 +264,7 @@ private:
 
 void shut_msg( int sig )
 {
-	TLOG( "stopping... " );
+	WTLOG( "stopping... " );
 	ros::shutdown( );
 }
 
@@ -269,11 +279,11 @@ int main( int argc, char* argv[] )
 	ros::AsyncSpinner spinner( 3 );
 	spinner.start( );
 	
-	TLOG( "starting ... " );
+	WTLOG( "starting ... " );
 	
 	node_manipulation_controller node;
 	
-	TLOG( "ready" );
+	WTLOG( "ready" );
 	
 	node.spin( );
 	

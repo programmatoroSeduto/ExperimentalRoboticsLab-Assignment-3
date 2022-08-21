@@ -23,6 +23,16 @@
 #define TWARN( msg )      ROS_WARN_STREAM( OUTLABEL << "WARNING: " << msg )
 #define TERR( msg )       ROS_WARN_STREAM( OUTLABEL << "ERROR: " << msg )
 
+#define DEVELOP_MODE false
+
+#define DEVELOP_PRINT false
+#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL << msg ); } }
+#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+
+#define DEVELOP_WAIKEY false
+#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
+
 #include "ros/ros.h"
 #include "robocluedo_movement_controller_msgs/Algorithm.h"
 #include "robocluedo_movement_controller_msgs/NavigationService.h"
@@ -140,19 +150,19 @@ public:
 		if( !channels_enabled )
 		{
 			// open the client /bug_switch : std_srvs/SetBool
-			TLOG( "Opening client " << LOGSQUARE( SERVICE_BUGM_SWITCH ) << "..." );
+			WTLOG( "Opening client " << LOGSQUARE( SERVICE_BUGM_SWITCH ) << "..." );
 			cl_bug_switch = nh.serviceClient<std_srvs::SetBool>( SERVICE_BUGM_SWITCH );
 			if( !cl_bug_switch.waitForExistence( ros::Duration( 60 ) ) )
 			{
-				TERR( "unable to contact the server " << SERVICE_BUGM_SWITCH << " - timeout expired (60s) " );
+				WTERR( "unable to contact the server " << SERVICE_BUGM_SWITCH << " - timeout expired (60s) " );
 				return false;
 			}
-			TLOG( "Opening client " << LOGSQUARE( SERVICE_BUGM_SWITCH ) << "... OK" );
+			WTLOG( "Opening client " << LOGSQUARE( SERVICE_BUGM_SWITCH ) << "... OK" );
 			
 			// open the service /bug_m_signal : std_srvs/Empty
-			TLOG( "advertising service " << LOGSQUARE( SERVICE_BUGM_SIGNAL ) << "..." );
+			WTLOG( "advertising service " << LOGSQUARE( SERVICE_BUGM_SIGNAL ) << "..." );
 			cl_bug_signal = nh.advertiseService( SERVICE_BUGM_SIGNAL, &nav_bug_m::cbk_bug_signal, this );
-			TLOG( "advertising service " << LOGSQUARE( SERVICE_BUGM_SIGNAL ) << "... OK" );
+			WTLOG( "advertising service " << LOGSQUARE( SERVICE_BUGM_SIGNAL ) << "... OK" );
 			
 			(ros::Duration(2)).sleep();
 			channels_enabled = true;
@@ -296,19 +306,19 @@ public:
 		if( !channels_enabled )
 		{
 			// open the client /nav_stack_switch : std_srvs/SetBool
-			TLOG( "Opening client " << LOGSQUARE( SERVICE_MOVE_BASE_SWITCH ) << "..." );
+			WTLOG( "Opening client " << LOGSQUARE( SERVICE_MOVE_BASE_SWITCH ) << "..." );
 			cl_move_base_switch = nh.serviceClient<std_srvs::SetBool>( SERVICE_MOVE_BASE_SWITCH );
 			if( !cl_move_base_switch.waitForExistence( ros::Duration( 60 ) ) )
 			{
-				TERR( "unable to contact the server " << SERVICE_MOVE_BASE_SWITCH << " - timeout expired (60s) " );
+				WTERR( "unable to contact the server " << SERVICE_MOVE_BASE_SWITCH << " - timeout expired (60s) " );
 				return false;
 			}
-			TLOG( "Opening client " << LOGSQUARE( SERVICE_MOVE_BASE_SWITCH ) << "... OK" );
+			WTLOG( "Opening client " << LOGSQUARE( SERVICE_MOVE_BASE_SWITCH ) << "... OK" );
 			
 			// open the service /nav_stack_signal : std_srvs/Empty
-			TLOG( "advertising service " << LOGSQUARE( SERVICE_MOVE_BASE_SIGNAL ) << "..." );
+			WTLOG( "advertising service " << LOGSQUARE( SERVICE_MOVE_BASE_SIGNAL ) << "..." );
 			srv_move_base_signal = nh.advertiseService( SERVICE_MOVE_BASE_SIGNAL, &nav_move_base::cbk_bug_signal, this );
-			TLOG( "advertising service " << LOGSQUARE( SERVICE_MOVE_BASE_SIGNAL ) << "... OK" );
+			WTLOG( "advertising service " << LOGSQUARE( SERVICE_MOVE_BASE_SIGNAL ) << "... OK" );
 			
 			(ros::Duration(2)).sleep();
 			channels_enabled = true;
@@ -427,14 +437,14 @@ public:
 	class_navigation_manager( )
 	{
 		// open the service for setting the navigation algorithm to use
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_SET_ALGORITHM  ) << "..." );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_SET_ALGORITHM  ) << "..." );
 		srv_set_algorithm = nh.advertiseService( SERVICE_SET_ALGORITHM, &class_navigation_manager::cbk_set_algorithm, this );
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_SET_ALGORITHM  ) << "... OK" );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_SET_ALGORITHM  ) << "... OK" );
 		
 		// open the main interface for the navigation
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_NAVIGATION  ) << "..." );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_NAVIGATION  ) << "..." );
 		srv_navigation = nh.advertiseService( SERVICE_NAVIGATION, &class_navigation_manager::cbk_navigation, this );
-		TLOG( "Advertising service " << LOGSQUARE( SERVICE_NAVIGATION  ) << "... OK" );
+		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_NAVIGATION  ) << "... OK" );
 	}
 	
 	/** class destructor */
@@ -631,7 +641,7 @@ private:
 /** shudown message */
 void shut_msg( int sig )
 {
-	TLOG( "stopping... " );
+	WTLOG( "stopping... " );
 	ros::shutdown( );
 }
 
@@ -648,7 +658,7 @@ int main( int argc, char* argv[] )
 	ros::AsyncSpinner spinner(3);
 	spinner.start( );
 	
-	TLOG( "starting ... " );
+	WTLOG( "starting ... " );
 	class_navigation_manager nav;
 	
 	// controller bug_m
@@ -661,7 +671,7 @@ int main( int argc, char* argv[] )
 	moveb.nav_name = "move_base_nav";
 	nav.register_algorithm( &moveb );
 	
-	TLOG( "ready" );
+	WTLOG( "ready" );
 	ros::waitForShutdown( );
 	
 	return 0;

@@ -889,10 +889,10 @@
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>(iniziamo<sp/>dal<sp/>lavoro<sp/>di<sp/>alleggerimento)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>fattori<sp/>che<sp/>riducono<sp/>notevolmente<sp/>le<sp/>prestazioni:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>essendo<sp/>RViz<sp/>solo<sp/>uno<sp/>strumento<sp/>di<sp/>visualizzazione,<sp/>si<sp/>potrebbe<sp/>magari<sp/>usare<sp/>solo<sp/>Gazebo<sp/>per<sp/>visualizzare<sp/>la<sp/>simulazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(OK)<sp/>essendo<sp/>RViz<sp/>solo<sp/>uno<sp/>strumento<sp/>di<sp/>visualizzazione,<sp/>si<sp/>potrebbe<sp/>magari<sp/>usare<sp/>solo<sp/>Gazebo<sp/>per<sp/>visualizzare<sp/>la<sp/>simulazione</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>quindi<sp/>l&apos;attuale<sp/>launcher<sp/>per<sp/>eseguire<sp/>il<sp/>progetto<sp/>dovrebbe<sp/>permettere<sp/>di<sp/>scegliere<sp/>se<sp/>lanciare<sp/>solo<sp/>Gazebo<sp/>oppure<sp/>entrambi</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>gmapping<sp/>continuamente<sp/>in<sp/>esecuzione;<sp/>sarebbe<sp/>meglio<sp/>usare<sp/>amcl</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(OK)<sp/>gmapping<sp/>continuamente<sp/>in<sp/>esecuzione;<sp/>sarebbe<sp/>meglio<sp/>usare<sp/>amcl</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[link<sp/>wiki<sp/>ufficiale<sp/>AMCL](http://wiki.ros.org/amcl)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>bisognerà<sp/>creare<sp/>una<sp/>mappa<sp/>con<sp/>teleop</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>...<sp/>oppure<sp/>posso<sp/>fare<sp/>uno<sp/>script<sp/>che<sp/>mappa<sp/>l&apos;area<sp/>in<sp/>automatico?<sp/>è<sp/>possibile?</highlight></codeline>
@@ -1016,6 +1016,88 @@
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;improving<sp/>localization<sp/>performances<sp/>with<sp/>AMCL&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">passiamo<sp/>alla<sp/>questione<sp/>dei<sp/>logs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>quanto<sp/>riguarda<sp/>i<sp/>nodi<sp/>C++,<sp/>l&apos;idea<sp/>sarebbe<sp/>quella<sp/>di<sp/>creare<sp/>un<sp/>sistema<sp/>simile<sp/>a<sp/>quello<sp/>del<sp/>mission<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>ci<sp/>vuole<sp/>un<sp/>piccolo<sp/>template,<sp/>da<sp/>adattare<sp/>a<sp/>seconda<sp/>del<sp/>caso.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>i<sp/>nodi<sp/>C++,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>globale:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```c++</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>DEVELOP_MODE<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>DEVELOP_PRINT<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>WTLOG(<sp/>msg<sp/>)<sp/><sp/>{<sp/>if(<sp/>DEVELOP_PRINT<sp/>)<sp/>{<sp/>ROS_INFO_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>msg<sp/>);<sp/>}<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>WTWARN(<sp/>msg<sp/>)<sp/>{<sp/>if(<sp/>DEVELOP_PRINT<sp/>)<sp/>{<sp/>ROS_WARN_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>msg<sp/>);<sp/>}<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>WTERR(<sp/>msg<sp/>)<sp/><sp/>{<sp/>if(<sp/>DEVELOP_PRINT<sp/>)<sp/>{<sp/>ROS_WARN_STREAM(<sp/>OUTLABEL<sp/>&lt;&lt;<sp/>msg<sp/>);<sp/>}<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>DEVELOP_WAIKEY<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>WAITKEY<sp/>{<sp/>if(<sp/>WAITKEY_ENABLED<sp/>)<sp/>{<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;press<sp/>ENTER<sp/>to<sp/>continue<sp/>...<sp/>&quot;<sp/>;<sp/>std::cin.get(<sp/>)<sp/>;<sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;go!&quot;<sp/>&lt;&lt;<sp/>std::endl<sp/>;<sp/>}<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>per<sp/>i<sp/>nodi<sp/>py<sp/>la<sp/>questione<sp/>al<sp/>solito<sp/>non<sp/>è<sp/>così<sp/>semplice...<sp/>ci<sp/>pensiamo<sp/>poi</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>provo<sp/>la<sp/>nuova<sp/>macro<sp/>sulla<sp/>manipulation<sp/>unit<sp/>...<sp/>pare<sp/>funzionare</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>vai<sp/>con<sp/>le<sp/>sostituzioni</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>completare<sp/>la<sp/>manipulation<sp/>unit</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">con<sp/>cose<sp/>del<sp/>genere...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>req.data<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>ENABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>DISABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>compilatore<sp/>ritorna<sp/>un<sp/>errore<sp/>stranissimo:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">/root/ros_ws/src/erl3/robocluedo_mission_manager/src/manipulation_unit.cpp:146:3:<sp/>error:<sp/>‘else’<sp/>without<sp/>a<sp/>previous<sp/>‘if’</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>146<sp/>|<sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">rendendo<sp/>esplicito<sp/>il<sp/>contesto,<sp/>il<sp/>problema<sp/>se<sp/>ne<sp/>va:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>req.data<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>ENABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WTLOG(<sp/>&quot;auto<sp/>manipulation<sp/>DISABLED&quot;<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>ora,<sp/>navigation<sp/>unit<sp/>...<sp/>liscio<sp/>liscio</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>in<sp/>armor<sp/>ce<sp/>ne<sp/>sono<sp/>davvero<sp/>pochi<sp/>...<sp/>però<sp/>quelli<sp/>della<sp/>ontology<sp/>non<sp/>mi<sp/>vanno<sp/>proprio<sp/>benissimo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>penso<sp/>che<sp/>metterò<sp/>l&apos;output<sp/>della<sp/>ontology<sp/>su<sp/>log</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>quelli<sp/>della<sp/>armor<sp/>interface<sp/>direi<sp/>che<sp/>non<sp/>si<sp/>toccano...<sp/>almeno<sp/>per<sp/>il<sp/>momento</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>ora<sp/>il<sp/>movement<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>manipulation<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>navigation<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>per<sp/>quanto<sp/>riguarda<sp/>i<sp/>nodi<sp/>py?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>preferisco<sp/>una<sp/>soluzione<sp/>più<sp/>...<sp/>elementare:<sp/>meglio<sp/>commentare<sp/>direttamente</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>quindi<sp/>bug_m</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>go<sp/>to<sp/>point</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>head<sp/>orientation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>move<sp/>base<sp/>nav</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>wall<sp/>f...<sp/>tanto<sp/>devo<sp/>eliminarlo</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>si<sp/>continua:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>andamo<sp/>con<sp/>rosplan</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>il<sp/>pipeline<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>-<sp/>kb<sp/>interface<sp/>(c++)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;deleting<sp/>comments<sp/>from<sp/>the<sp/>code<sp/>(develop<sp/>mode)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{todo}</highlight></codeline>
 <codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
@@ -1026,9 +1108,10 @@
 <codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>introdurre<sp/>uno<sp/>script<sp/>che<sp/>permetta<sp/>di<sp/>lanciare<sp/>tutti<sp/>i<sp/>componenti,<sp/>proprio<sp/>come<sp/>fatto<sp/>nel<sp/>terzo<sp/>assignment</highlight></codeline>
-<codeline><highlight class="normal">-<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>

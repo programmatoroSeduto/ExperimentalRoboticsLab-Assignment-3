@@ -19,6 +19,16 @@
 #define TWARN( msg )      ROS_WARN_STREAM( OUTLABEL << "WARNING: " << msg )
 #define TERR( msg )       ROS_WARN_STREAM( OUTLABEL << "ERROR: " << msg )
 
+#define DEVELOP_MODE false
+
+#define DEVELOP_PRINT false
+#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL << msg ); } }
+#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
+
+#define DEVELOP_WAIKEY false
+#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
+
 #include "ros/ros.h"
 #include "robocluedo_rosplan_msgs/NavigationCommand.h"
 #include "robocluedo_movement_controller_msgs/NavigationService.h"
@@ -56,34 +66,34 @@ public:
 	node_navigation_unit( )
 	{
 		// topic markers
-		TLOG( "sub topic " << TOPIC_MARMERS << " ... " );
+		WTLOG( "sub topic " << TOPIC_MARMERS << " ... " );
 		sub_markers = nh.subscribe( TOPIC_MARMERS, 1, &node_navigation_unit::cbk_markers, this );
-		TLOG( "sub topic " << TOPIC_MARMERS << " ...  OK" );
+		WTLOG( "sub topic " << TOPIC_MARMERS << " ...  OK" );
 		
 		// service rosplan to unit
-		TLOG( "advertising service " << SERVICE_ROSPLAN_NAVIGATION << " ... " );
+		WTLOG( "advertising service " << SERVICE_ROSPLAN_NAVIGATION << " ... " );
 		srv_rosplan_nav = nh.advertiseService( SERVICE_ROSPLAN_NAVIGATION, &node_navigation_unit::cbk_navigation, this );
-		TLOG( "advertising service " << SERVICE_ROSPLAN_NAVIGATION << " ... OK" );
+		WTLOG( "advertising service " << SERVICE_ROSPLAN_NAVIGATION << " ... OK" );
 		
 		// client navigation controller
-		TLOG( "opening client " << SERVICE_NAVIGATION << " ... " );
+		WTLOG( "opening client " << SERVICE_NAVIGATION << " ... " );
 		cl_nav = nh.serviceClient<robocluedo_movement_controller_msgs::NavigationService>( SERVICE_NAVIGATION );
 		if( !cl_nav.waitForExistence( ros::Duration(60) ) )
 		{
-			TERR( "unable to contact the server " << SERVICE_NAVIGATION << " - timeout expired (60s) " );
+			WTERR( "unable to contact the server " << SERVICE_NAVIGATION << " - timeout expired (60s) " );
 			return;
 		}
-		TLOG( "opening client " << SERVICE_NAVIGATION << " ... OK" );
+		WTLOG( "opening client " << SERVICE_NAVIGATION << " ... OK" );
 		
 		// client navigation algorithm
-		TLOG( "opening client " << SERVICE_SET_ALGORITHM << " ... " );
+		WTLOG( "opening client " << SERVICE_SET_ALGORITHM << " ... " );
 		cl_nav_algorithm = nh.serviceClient<robocluedo_movement_controller_msgs::Algorithm>( SERVICE_SET_ALGORITHM );
 		if( !cl_nav_algorithm.waitForExistence( ros::Duration(60) ) )
 		{
-			TERR( "unable to contact the server " << SERVICE_SET_ALGORITHM << " - timeout expired (60s) " );
+			WTERR( "unable to contact the server " << SERVICE_SET_ALGORITHM << " - timeout expired (60s) " );
 			return;
 		}
-		TLOG( "opening client " << SERVICE_SET_ALGORITHM << " ... OK" );
+		WTLOG( "opening client " << SERVICE_SET_ALGORITHM << " ... OK" );
 	}
 	
 	/** spin function: just wait for shutdown */
@@ -98,11 +108,11 @@ public:
 		robocluedo_rosplan_msgs::NavigationCommand::Request& req, 
 		robocluedo_rosplan_msgs::NavigationCommand::Response& res )
 	{
-		TLOG( "received a request (wp=)" << req.waypoint );
+		WTLOG( "received a request (wp=)" << req.waypoint );
 		
 		if( !mpl_enabled )
 		{
-			TLOG( "enabling motion planning algorithm..." );
+			WTLOG( "enabling motion planning algorithm..." );
 			
 			robocluedo_movement_controller_msgs::Algorithm algo;
 			// algo.request.algorithm = NAV_ALGO_BUG_M;
@@ -111,7 +121,7 @@ public:
 			
 			if( !cl_nav_algorithm.call( algo ) )
 			{
-				TWARN( "unable to contact the service to enable the navigation algorithm." );
+				WTWARN( "unable to contact the service to enable the navigation algorithm." );
 				
 				res.success = false;
 				return true;
@@ -119,44 +129,44 @@ public:
 			
 			if( !algo.response.success )
 			{
-				TWARN( "unable to activate the navigation controller! details: " << algo.response.details );
+				WTWARN( "unable to activate the navigation controller! details: " << algo.response.details );
 				
 				res.success = false;
 				return true;
 			}
 			
-			TLOG( "enabling motion planning algorithm... OK" );
+			WTLOG( "enabling motion planning algorithm... OK" );
 		}
 		
 		if( !found_markers )
 		{
-			TLOG( "waiting for markers... " );
+			WTLOG( "waiting for markers... " );
 			ros::Rate r(5);
 			do
 				r.sleep();
 			while( !found_markers );
-			TLOG( "found markers! " );
+			WTLOG( "found markers! " );
 		}
 		
 		// before starting, check if the marker exists
 		if( waypoints.find( req.waypoint ) == waypoints.end() )
 		{
-			TWARN( "the marker " << req.waypoint << " does not exist." );
+			WTWARN( "the marker " << req.waypoint << " does not exist." );
 			
 			res.success = false;
 			return true;
 		}
 		
 		// send the command
-		TLOG( "sending the navigation command..." );
+		WTLOG( "sending the navigation command..." );
 		
 		robocluedo_movement_controller_msgs::NavigationService cmd;
 		cmd.request.target = waypoints[req.waypoint];
-		TLOG("waypoint with coordinates (" << cmd.request.target.x << ", " << cmd.request.target.y << ", " << cmd.request.target.yaw << ")");
+		WTLOG("waypoint with coordinates (" << cmd.request.target.x << ", " << cmd.request.target.y << ", " << cmd.request.target.yaw << ")");
 		
 		if( !cl_nav.call( cmd ) )
 		{
-			TWARN( "unable to contact the navigation service" );
+			WTWARN( "unable to contact the navigation service" );
 			
 			res.success = false;
 			return true;
@@ -164,9 +174,9 @@ public:
 		
 		// check for success
 		if( !cmd.response.success )
-			TWARN( "navigation controlled FAILED -- explaination: " << cmd.response.details );
+			WTWARN( "navigation controlled FAILED -- explaination: " << cmd.response.details );
 		
-		TLOG("done!");
+		WTLOG("done!");
 		res.success = cmd.response.success;
 		return true;
 	}
@@ -174,7 +184,7 @@ public:
 	/** "one-shot" listener for the markers from the Oracle */
 	void cbk_markers( const visualization_msgs::MarkerArray::ConstPtr& data )
 	{
-		TLOG( "reading markers ... " );
+		WTLOG( "reading markers ... " );
 		
 		// read the markers
 		int i = 0;
@@ -197,7 +207,7 @@ public:
 			waypoints[marker_name] = markerpose;
 			
 			++i;
-			TLOG( "received (" << i << ") marker with data (x=" << markerpose.x << ", y=" << markerpose.y << ", yaw= " << markerpose.yaw << ")" );
+			WTLOG( "received (" << i << ") marker with data (x=" << markerpose.x << ", y=" << markerpose.y << ", yaw= " << markerpose.yaw << ")" );
 		}
 		
 		// even add the center
@@ -213,7 +223,7 @@ public:
 		sub_markers.shutdown( );
 		
 		found_markers = true;
-		TLOG( "reading markers done -- found " << i << " markers" );
+		WTLOG( "reading markers done -- found " << i << " markers" );
 	}
 
 private:
@@ -246,7 +256,7 @@ private:
 
 void shut_msg( int sig )
 {
-	TLOG( "stopping... " );
+	WTLOG( "stopping... " );
 	ros::shutdown( );
 }
 
@@ -259,10 +269,10 @@ int main( int argc, char* argv[] )
 	ros::AsyncSpinner spinner( 4 );
 	spinner.start( );
 	
-	TLOG( "starting ... " );
+	WTLOG( "starting ... " );
 	node_navigation_unit node;
 	
-	TLOG( "ready" );
+	WTLOG( "ready" );
 	node.spin( );
 	
 	return 0;
