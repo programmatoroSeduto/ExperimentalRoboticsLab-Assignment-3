@@ -135,6 +135,7 @@
         <location file="robocluedo_dependencies/vision_opencv/cv_bridge/test/utest2.cpp" line="71" column="1" bodyfile="robocluedo_dependencies/vision_opencv/cv_bridge/test/utest2.cpp" bodystart="71" bodyend="150"/>
         <references refid="utest2_8cpp_1abbe633f760aca6e543aefdd4f4458870" compoundref="utest2_8cpp" startline="55" endline="69">getEncodings</references>
         <references refid="namespacecv__bridge_1a60b43d74db6ef87fd6cd35d9305b1ef1" compoundref="cv__bridge_8cpp" startline="105" endline="146">cv_bridge::getCvType</references>
+        <references refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" compoundref="erl2-oracle-user-manual_8md_8txt" startline="127">r</references>
         <references refid="classcv__bridge_1_1_cv_image_1a943bd351cfeba6e67a0b961e3b4a1ba9" compoundref="cv__bridge_8cpp" startline="388" endline="393">cv_bridge::CvImage::toImageMsg</references>
         <references refid="namespacecv__bridge_1aafa38a1d9be98d9efaefe45fd873133c" compoundref="cv__bridge_8cpp" startline="439" endline="443">cv_bridge::toCvShare</references>
         <references refid="namespacecv__bridge_1ab9a4ba669b03a3b0a35651a6c0d77be1" compoundref="cv__bridge_8cpp" startline="462" endline="466">cv_bridge::cvtColor</references>
@@ -222,8 +223,8 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>src_encoding<sp/>=<sp/>encodings[i];</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_src_color_format<sp/>=<sp/>isColor(src_encoding)<sp/>||<sp/>isMono(src_encoding)<sp/>||<sp/>(src_encoding<sp/>==<sp/>sensor_msgs::image_encodings::YUV422);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::Mat<sp/>image_original(cv::Size(400,<sp/>400),<sp/><ref refid="namespacecv__bridge_1a60b43d74db6ef87fd6cd35d9305b1ef1" kindref="member">cv_bridge::getCvType</ref>(src_encoding));</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::RNG<sp/>r(77);</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>r.fill(image_original,<sp/>cv::RNG::UNIFORM,<sp/>0,<sp/>127);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::RNG<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>(77);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>.fill(image_original,<sp/>cv::RNG::UNIFORM,<sp/>0,<sp/>127);</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>sensor_msgs::Image<sp/>image_message;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcv__bridge_1_1_cv_image" kindref="compound">cv_bridge::CvImage</ref><sp/>image_bridge(std_msgs::Header(),<sp/>src_encoding,<sp/>image_original);</highlight></codeline>

@@ -3,22 +3,53 @@
 <launch>
 	
 <!-- 
+
+// === IN GENERAL
+
+this command allows to explicitly declare whether to run or not each component
 roslaunch robocluedo_mission_manager run_components.launch launch_robot:=true launch_armor:=true launch_rosplan:=true launch_motion_controllers:=true launch_oracle:=true launch_aruco:=true launch_mission_manager_components:=true launch_mission_manager:=false 2>/dev/null
+
+in case you just want to run one component, consider to use init
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_armor:=true
+
+the same init parameter can be used to launch all the components except for one among them:
+roslaunch robocluedo_mission_manager run_components.launch init:=true launch_armor:=false
+
+NOTE: ALL THE PARAMETERS ARE INITIALIZED WITH TRUE, hence the last case can be written also in this way, without the 'init' parameter
+roslaunch robocluedo_mission_manager run_components.launch launch_armor:=false
+
+// === ROBOT ENVIRONMENT
+
+here are the parameters with their init values:
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_robot:=true robot_env_type:=gazebo 
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_robot:=true world_name:=assignment3.world
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_robot:=true robot_env_type:=gazebo robot_nav_type:=gmapping 
+
 -->
 
-<arg name="launch_robot" default="true" />
-<arg name="launch_armor" default="true" />
-<arg name="launch_rosplan" default="true" />
-<arg name="launch_motion_controllers" default="true" />
-<arg name="launch_oracle" default="true" />
-<arg name="launch_aruco" default="true" />
-<arg name="launch_mission_manager_components" default="true" />
-<arg name="launch_mission_manager" default="true" />
+<arg name="init" default="true" />
+
+<arg name="launch_robot" default="$(arg init)" />
+	<arg name="robot_env_type" default="gazebo" /> <!-- gazebo, rviz, gazeborviz -->
+	<arg name="robot_nav_type" default="gmapping" /> <!-- gmapping, amcl -->
+	<arg name="world_name" default="assignment3.world" />
+<arg name="launch_armor" default="$(arg init)" />
+<arg name="launch_rosplan" default="$(arg init)" />
+<arg name="launch_motion_controllers" default="$(arg init)" />
+<arg name="launch_oracle" default="$(arg init)" />
+<arg name="launch_aruco" default="$(arg init)" />
+<arg name="launch_mission_manager_components" default="$(arg init)" />
+<arg name="launch_mission_manager" default="$(arg init)" />
 
 <!-- RUN THE ROBOT MODEL and the simulation environment -->
-<include file="$(find robocluedo_robot_hunter)/launch/run.launch" if="$(arg launch_robot)" >
-	<arg name="world_name" value="assignment3.world" />
+<include file="$(find robocluedo_robot_hunter)/launch/run2.launch" if="$(arg launch_robot)" >
+	<arg name="sim_type" value="$(arg robot_env_type)" />
+	
+	<arg name="world_name" value="$(arg world_name)" />
 	<arg name="rviz_config_file" value="sim_nav_stack_markers.rviz" />
+	
+	<arg name="launch_nav_stack" default="$(eval robot_nav_type == 'gmapping')" />
+	<arg name="launch_amcl" default="$(eval robot_nav_type == 'amcl')" />
 </include>
 
 <!-- RUN THE ARMOR ONTOLOGY -->

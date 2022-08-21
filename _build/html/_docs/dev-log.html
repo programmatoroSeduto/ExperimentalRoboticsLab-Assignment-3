@@ -82,6 +82,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapping.html">GMapping and AMCL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run-the-project.html">How to Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -132,8 +133,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pddl-e-manipulation-unit-aruco">18/08/2022 – pddl e manipulation unit – aruco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alleggerimento-documentazione">21/08/2022 – alleggerimento – documentazione</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#note">Note</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#utilizzo-di-move-base">utilizzo di move base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strano-warning-con-move-base">strano warning con move_base</a></li>
 </ul>
 </li>
 </ul>
@@ -1101,6 +1104,168 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 <li><p><strong>COMMIT</strong>: “happy commit!”</p></li>
 </ul>
 </div>
+<hr class="docutils" />
+<div class="section" id="alleggerimento-documentazione">
+<h2>21/08/2022 – alleggerimento – documentazione<a class="headerlink" href="#alleggerimento-documentazione" title="Permalink to this heading"></a></h2>
+<p>il piano di oggi è: alleggerire (per quanto possibile) l’applicazione, partendo dall’eliminare i log inutili, e documentare. Siccome c’è grande somiglianza tra i due progetti, posso partire col documentare il terzo per poi trasferire gran parte della documentazione sul secondo progetto. Per la documentazione del codice ci vorrà un pochino più di lavoro, ma per il resto dovrebbe risparmiarmi un bel po’ di fatica. E domani, scrittura dei due readme e via così.</p>
+<ul class="simple">
+<li><p>(iniziamo dal lavoro di alleggerimento)</p></li>
+<li><p>fattori che riducono notevolmente le prestazioni:</p>
+<ul>
+<li><p>essendo RViz solo uno strumento di visualizzazione, si potrebbe magari usare solo Gazebo per visualizzare la simulazione</p>
+<ul>
+<li><p>quindi l’attuale launcher per eseguire il progetto dovrebbe permettere di scegliere se lanciare solo Gazebo oppure entrambi</p></li>
+</ul>
+</li>
+<li><p>gmapping continuamente in esecuzione; sarebbe meglio usare amcl</p>
+<ul>
+<li><p><a class="reference external" href="http://wiki.ros.org/amcl">link wiki ufficiale AMCL</a></p></li>
+<li><p>bisognerà creare una mappa con teleop</p></li>
+<li><p>… oppure posso fare uno script che mappa l’area in automatico? è possibile?</p></li>
+<li><p><strong>fare uno script che crei una mappa in automatico dell’area</strong> usando l’attuale nav system e tutto il resto</p></li>
+</ul>
+</li>
+<li><p>logging dai programmi, che dovrebbero essere mostrati solo in caso di modalità di sviluppo</p>
+<ul>
+<li><p>tutte le applicazioni fanno logging inutile</p></li>
+<li><p>sarebbe meglio poter attivare la modalità di sviluppo a tempo di compilazione…</p></li>
+<li><p>… o ancora meglio, da parameter server (ma potrebbe risultare un po’ scomodo)</p></li>
+<li><p><strong>quindi, attivare le modalità di sviluppo a tempo di compilazione</strong></p></li>
+<li><p>quindi usando un approccio identico a quello impiegato nel mission manager</p></li>
+</ul>
+</li>
+<li><p>il nodo wall-follow non viene usato, perciò sarebbe meglio eliminarlo</p>
+<ul>
+<li><p>fare la modifica in modo tale che la stessa cosa funzioni anche nel secondo assignment</p></li>
+<li><p>bisognerà modificare i launcher</p></li>
+<li><p>e anche bug_m</p></li>
+<li><p>e anche il controller</p></li>
+<li><p><em>una modifica al controller</em>: impossibile attivare un controller quando uno dei canali necessari non risponde</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>e quindi, iniziamo da RViz e da AMCL:</p>
+<ul>
+<li><p>simulazione solo con Gazebo piuttosto che con Gazebo/RViz</p>
+<ul>
+<li><p>l’attuale inizializzazione è un po’ lunga per quanto riguarda missio manager / run.launch … introduco un parametro init</p>
+<ul class="simple">
+<li><p>init false -&gt; tutti i parametri vengono inizializzati a false</p></li>
+</ul>
+</li>
+<li><p>nuovo parametro <em>with_rviz</em> per decidere se lanciare o no anche RViz</p></li>
+<li><p>questo richiede una modifica del launcher del robot…</p>
+<ul class="simple">
+<li><p>c’è un modo di fare operazioni logiche negli if dei launch file?</p></li>
+<li><p><a class="reference external" href="https://answers.ros.org/question/12756/roslaunch-if-condition/">vedi questo post ufficiale</a></p></li>
+<li><p>quindi non con l’if, però c’è un replacement che si chiama “eval” e che esegue operazioni sui parametri</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval arg(&#39;debug&#39;) ==0)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;xxx&quot;</span> <span class="na">type=</span><span class="s">&quot;yyy&quot;</span> <span class="na">name=</span><span class="s">&quot;yyy&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>altro esempio, sempre nello stesso post:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;team&quot;</span> <span class="na">default=</span><span class="s">&quot;Red&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;type&quot;</span> <span class="na">default=</span><span class="s">&quot;painter&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval team == &#39;Red&#39;)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;painter&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/red/paintbot_red.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;attacker&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/red/attackbot_red.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+
+<span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval team == &#39;Blue&#39;)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;painter&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/blue/paintbot_blue.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;attacker&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/blue/attackbot_blue.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>mi ero anche dimenticato dell’esistenza dei raggruppamenti…</p></li>
+<li><p><em>devo ristrutturare il run</em></p></li>
+<li><p>meglio creare un <em>run2.launch</em> piuttosto di fare strane modifiche a roba che già funziona</p></li>
+<li><p>aggiungo già un parametro e una zona del launch per lanciare AMCL</p></li>
+<li><p>qualche test sul launch del robot, giusto per verificare di non aver scritto cose stupide …</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazebo gazebo_paused:<span class="o">=</span><span class="nb">false</span>
+roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>rviz rviz_config_file:<span class="o">=</span>moveit.rviz launch_nav_stack:<span class="o">=</span><span class="nb">false</span>
+roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e ora torniamo sul launch generale</p></li>
+<li><p>e si prova</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>rviz 
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazeborviz <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> world_name:<span class="o">=</span>assignment3.world
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_config:<span class="o">=</span>gmapping 
+</pre></div>
+</div>
+</li>
+<li><p>funziona tutto.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>è il momento di AMCL</p>
+<ul>
+<li><p>anzitutto, documentazione</p></li>
+<li><p>e modifica ai launch files</p></li>
+<li><p>e test … funziona!</p>
+<ul class="simple">
+<li><p>la localizzazione è un po’ più instabile su RViz, però sembra andare abbastanza bene.</p></li>
+</ul>
+</li>
+<li><p>ora bisognerebbe provare il launch generale: come reagisce con tutta la simulazione attiva usando AMCL?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> 
+
+<span class="c1"># shell 3</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>e funge!</strong> il comportamento del robot è leggermente più instabile, ma pare che sia riuscito a ridurre di qualche secondo le tempistiche di esecuzione</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “improving localization performances with AMCL”</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p><strong>terzo assignment:</strong></p>
+<ul class="simple">
+<li><p>aggiornare documentazione robot Hunter col nuovo run</p></li>
+<li><p>modificare il module testing del robot: aggiungere i test del log</p></li>
+</ul>
+<p><strong>secondo assignment:</strong></p>
+<ul class="simple">
+<li><p>introdurre uno script che permetta di lanciare tutti i componenti, proprio come fatto nel terzo assignment</p></li>
+<li></li>
+</ul>
+</div>
+</div>
 <div class="section" id="note">
 <h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
 <div class="section" id="utilizzo-di-move-base">
@@ -1110,6 +1275,191 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 <li><p>rifacendo il panning ogni tot si assicura una certa sitabilità sul path prescelto</p></li>
 <li><p>unico difetto: il robot si ferma spesso per fare replanning, causando delle oscillazioni in avanti un po’ brusche</p></li>
 </ul>
+</div>
+<div class="section" id="strano-warning-con-move-base">
+<h3>strano warning con move_base<a class="headerlink" href="#strano-warning-con-move-base" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.458000 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.458000 according to authority unknown_publisher
+
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.459500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.459500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.460500 according to authority unknown_publisher
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.460500 according to authority unknown_publisher
+         at line          at line 278278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+ in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.461500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.461500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.462500 according to authority unknown_publisherTF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.462500 according to authority unknown_publisher
+
+         at line 278         at line  in 278/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp in 
+/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.463500 according to authority unknown_publisherWarning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.463500 according to authority unknown_publisher
+         at line 
+278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.464500 according to authority unknown_publisher
+TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.464500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp         at line 278
+ in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.465500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.465500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.466500 according to authority unknown_publisher
+         at line 278TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.466500 according to authority unknown_publisher in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.467500 according to authority unknown_publisher
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.467500 according to authority unknown_publisher
+         at line          at line 278 in 278/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp in 
+/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.467000 according to authority unknown_publisher
+Warning:          at line TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.467000 according to authority unknown_publisher278 in 
+         at line /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp278
+ in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.468500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.468500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.469500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.469500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.470500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning: 
+TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.470500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.471500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.471500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.472500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.473500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.472500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.473500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.474500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.474500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.475500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.475500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.476500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.476500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.477500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.477500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.478500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning: 
+TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.478500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.479500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.479500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.479000 according to authority unknown_publisherTF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.479000 according to authority unknown_publisher
+
+         at line 278         at line  in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.480500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.480500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.481500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.481500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.482500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.482500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.483500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.483500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.484500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.484500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.483000 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.483000 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.485500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.485500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.487500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.487500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.488500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.488500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.489500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.489500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.490500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.490500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.491500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.491500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.492500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.492500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.493500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.493500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.496500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.496500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.497500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.497500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.498500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.498500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.499500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.499500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.500500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.500500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.501500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.501500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.502500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.502500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+</pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -5,7 +5,7 @@
 	<param name="use_sim_time" value="true"/>
 	
 	<!-- SLAM/GMapping -->
-	<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
+	<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" >
 		<param name="base_frame" value="base_link"/>
 		<param name="map_update_interval" value="5.0"/>
 		<param name="maxUrange" value="16.0"/>
@@ -39,7 +39,7 @@
 	</node>
 	
 	<!-- move base -->
-	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" >
 		<rosparam file="$(find robocluedo_robot_hunter)/param/costmap_common_params.yaml" command="load" ns="global_costmap"/>
 		<rosparam file="$(find robocluedo_robot_hunter)/param/costmap_common_params.yaml" command="load" ns="local_costmap"/>
 		<rosparam file="$(find robocluedo_robot_hunter)/param/local_costmap_params.yaml" command="load"/>

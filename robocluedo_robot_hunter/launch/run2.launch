@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<!--
+
+roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=true
+roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=false launch_nav_stack:=false launch_amcl:=true
+roslaunch robocluedo_robot_hunter run2.launch sim_type:=rviz 
+roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazeborviz 
+roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazeborviz launch_nav_stack:=false launch_amcl:=true
+
+-->
+
+<arg name="sim_type" default="gazebo" /> <!-- gazebo, rviz, gazeborviz -->
+<arg name="launch_nav_stack" default="true" />
+<arg name="launch_amcl" default="false" />
+
+<arg name="world_name" default="assignment3.world"/>
+<arg name="world_path" default="$(find worlds)"/>
+<arg name="world_file_path" default="$(arg world_path)/$(arg world_name)" />
+
+<arg name="rviz_config_file" default="none" if="$(eval sim_type == 'gazebo')" />
+<arg name="rviz_config_file_path" default="none" if="$(eval sim_type == 'gazebo')" />
+<arg name="rviz_config_file" default="moveit_2.rviz" if="$(eval sim_type == 'rviz')" />
+<arg name="rviz_config_file_path" default="$(find robocluedo_robot_hunter)/config/rviz/$(arg rviz_config_file)" if="$(eval sim_type == 'rviz')" />
+<arg name="rviz_config_file" default="sim_nav_stack.rviz" if="$(eval sim_type == 'gazeborviz')" />
+<arg name="rviz_config_file_path" default="$(find robocluedo_robot_hunter)/config/rviz/$(arg rviz_config_file)" if="$(eval sim_type == 'gazeborviz')" />
+
+<arg name="gazebo_paused" default="false" />
+
+
+<!-- RUN GAZEBO ONLY -->
+<group if="$(eval sim_type == 'gazebo')" >
+
+<include file="$(find robocluedo_robot_hunter)/launch/gazebo.launch" >
+	<arg name="paused" value="$(arg gazebo_paused)" />
+	
+	<arg name="world_name" value="$(arg world_name)" />
+	<arg name="world_path" value="$(arg world_path)" />
+	<arg name="world_file_path" value="$(arg world_file_path)" />
+</include>
+
+</group>
+
+
+<!-- RUN RVIZ ONLY -->
+<group if="$(eval sim_type == 'rviz')" >
+
+<include file="$(find robocluedo_robot_hunter)/launch/demo.launch" >
+	<arg name="rviz_config_file" value="$(arg rviz_config_file)" />
+	<arg name="rviz_config_file_path" value="$(arg rviz_config_file_path)" />
+</include>
+
+</group>
+
+
+<!-- RUN GAZEBO PLUS RVIZ -->
+<group if="$(eval sim_type == 'gazeborviz')" >
+
+<include file="$(find robocluedo_robot_hunter)/launch/demo_gazebo.launch" >
+	<arg name="world_name" value="$(arg world_name)" />
+	<arg name="world_path" value="$(arg world_path)" />
+	<arg name="world_file_path" value="$(arg world_file_path)" />
+	
+	<arg name="rviz_config_file" value="$(arg rviz_config_file)" />
+	<arg name="rviz_config_file_path" value="$(arg rviz_config_file_path)" />
+</include>
+
+</group>
+
+
+<!-- LAUNCH NAV_STACK if required -->
+<include file="$(find robocluedo_robot_hunter)/launch/nav_stack.launch" if="$(arg launch_nav_stack)"/>
+
+<!-- LAUNCH AMCL and move_base if required --> 
+<include file="$(find robocluedo_robot_hunter)/launch/amcl.launch" if="$(arg launch_amcl)"/>
+
+</launch>
+

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__docs_mapping" kind="page">
+    <compoundname>md__docs_mapping</compoundname>
+    <title>GMapping and AMCL</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md__docs_mapping_1autotoc_md72">
+<title>Save the map</title>
+<para>the exploration performed with GMapping can be saved.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>enable<sp/>the<sp/>robot<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=gazeborviz<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>do<sp/>some<sp/>exloration</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>teleop_keyboard<sp/>teleop_twist_keyboard.py</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>save<sp/>the<sp/>map</highlight></codeline>
+<codeline><highlight class="normal">rosrun<sp/>map_server<sp/>map_saver<sp/>-f<sp/>/root/ros_ws/src/erl3/robocluedo_dependencies/worlds/data/assignment3_map</highlight></codeline>
+</programlisting></para>
+<para>the output from the map_saver should be like this:</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl3/_docs#<sp/>rosrun<sp/>map_server<sp/>map_saver<sp/>-f<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661074988.866398200]:<sp/>Waiting<sp/>for<sp/>the<sp/>map</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.080666300,<sp/>1172.635000000]:<sp/>Received<sp/>a<sp/>1984<sp/>X<sp/>1984<sp/>map<sp/>@<sp/>0.050<sp/>m/pix</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.080824600,<sp/>1172.636000000]:<sp/>Writing<sp/>map<sp/>occupancy<sp/>data<sp/>to<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.pgm</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.166739700,<sp/>1172.691000000]:<sp/>Writing<sp/>map<sp/>occupancy<sp/>data<sp/>to<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.yaml</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.166996800,<sp/>1172.691000000]:<sp/>Done</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md__docs_mapping_1autotoc_md73">
+<title>Load the map with AMCL</title>
+<para>here&apos;s how to run AMCL via launch file:</para>
+<para><programlisting><codeline><highlight class="normal">&lt;?xml<sp/>version=&quot;1.0&quot;?&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;launch&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;node<sp/>pkg=&quot;map_server&quot;<sp/>name=&quot;map_server&quot;<sp/>type=&quot;map_server&quot;<sp/>arg=&quot;$(find<sp/>worlds)/data/assignment3_map.yaml&quot;<sp/>/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;param<sp/>name=&quot;use_sim_time&quot;<sp/>value=&quot;true&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;node<sp/>pkg=&quot;amcl&quot;<sp/>type=&quot;amcl&quot;<sp/>name=&quot;amcl&quot;<sp/>output=&quot;screen&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;base_frame_id&quot;<sp/>value=&quot;base_link&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;min_particles&quot;<sp/>value=&quot;1000&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;max_particles&quot;<sp/>value=&quot;5000&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;odom_alpha1&quot;<sp/>value=&quot;2&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;odom_alpha2&quot;<sp/>value=&quot;2&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/node&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;/launch&gt;</highlight></codeline>
+</programlisting></para>
+<para>here&apos;s the command to try the AMCL map of the environment:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=gazeborviz<sp/>launch_nav_stack:=false<sp/>launch_amcl:=true<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

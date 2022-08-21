@@ -881,6 +881,155 @@
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;happy<sp/>commit!&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>21/08/2022<sp/>--<sp/>alleggerimento<sp/>--<sp/>documentazione</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">il<sp/>piano<sp/>di<sp/>oggi<sp/>è:<sp/>alleggerire<sp/>(per<sp/>quanto<sp/>possibile)<sp/>l&apos;applicazione,<sp/>partendo<sp/>dall&apos;eliminare<sp/>i<sp/>log<sp/>inutili,<sp/>e<sp/>documentare.<sp/>Siccome<sp/>c&apos;è<sp/>grande<sp/>somiglianza<sp/>tra<sp/>i<sp/>due<sp/>progetti,<sp/>posso<sp/>partire<sp/>col<sp/>documentare<sp/>il<sp/>terzo<sp/>per<sp/>poi<sp/>trasferire<sp/>gran<sp/>parte<sp/>della<sp/>documentazione<sp/>sul<sp/>secondo<sp/>progetto.<sp/>Per<sp/>la<sp/>documentazione<sp/>del<sp/>codice<sp/>ci<sp/>vorrà<sp/>un<sp/>pochino<sp/>più<sp/>di<sp/>lavoro,<sp/>ma<sp/>per<sp/>il<sp/>resto<sp/>dovrebbe<sp/>risparmiarmi<sp/>un<sp/>bel<sp/>po&apos;<sp/>di<sp/>fatica.<sp/>E<sp/>domani,<sp/>scrittura<sp/>dei<sp/>due<sp/>readme<sp/>e<sp/>via<sp/>così.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>(iniziamo<sp/>dal<sp/>lavoro<sp/>di<sp/>alleggerimento)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>fattori<sp/>che<sp/>riducono<sp/>notevolmente<sp/>le<sp/>prestazioni:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>essendo<sp/>RViz<sp/>solo<sp/>uno<sp/>strumento<sp/>di<sp/>visualizzazione,<sp/>si<sp/>potrebbe<sp/>magari<sp/>usare<sp/>solo<sp/>Gazebo<sp/>per<sp/>visualizzare<sp/>la<sp/>simulazione</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>quindi<sp/>l&apos;attuale<sp/>launcher<sp/>per<sp/>eseguire<sp/>il<sp/>progetto<sp/>dovrebbe<sp/>permettere<sp/>di<sp/>scegliere<sp/>se<sp/>lanciare<sp/>solo<sp/>Gazebo<sp/>oppure<sp/>entrambi</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>gmapping<sp/>continuamente<sp/>in<sp/>esecuzione;<sp/>sarebbe<sp/>meglio<sp/>usare<sp/>amcl</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[link<sp/>wiki<sp/>ufficiale<sp/>AMCL](http://wiki.ros.org/amcl)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>bisognerà<sp/>creare<sp/>una<sp/>mappa<sp/>con<sp/>teleop</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>...<sp/>oppure<sp/>posso<sp/>fare<sp/>uno<sp/>script<sp/>che<sp/>mappa<sp/>l&apos;area<sp/>in<sp/>automatico?<sp/>è<sp/>possibile?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>**fare<sp/>uno<sp/>script<sp/>che<sp/>crei<sp/>una<sp/>mappa<sp/>in<sp/>automatico<sp/>dell&apos;area**<sp/>usando<sp/>l&apos;attuale<sp/>nav<sp/>system<sp/>e<sp/>tutto<sp/>il<sp/>resto</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>logging<sp/>dai<sp/>programmi,<sp/>che<sp/>dovrebbero<sp/>essere<sp/>mostrati<sp/>solo<sp/>in<sp/>caso<sp/>di<sp/>modalità<sp/>di<sp/>sviluppo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>tutte<sp/>le<sp/>applicazioni<sp/>fanno<sp/>logging<sp/>inutile</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>sarebbe<sp/>meglio<sp/>poter<sp/>attivare<sp/>la<sp/>modalità<sp/>di<sp/>sviluppo<sp/>a<sp/>tempo<sp/>di<sp/>compilazione...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>...<sp/>o<sp/>ancora<sp/>meglio,<sp/>da<sp/>parameter<sp/>server<sp/>(ma<sp/>potrebbe<sp/>risultare<sp/>un<sp/>po&apos;<sp/>scomodo)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>**quindi,<sp/>attivare<sp/>le<sp/>modalità<sp/>di<sp/>sviluppo<sp/>a<sp/>tempo<sp/>di<sp/>compilazione**</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>quindi<sp/>usando<sp/>un<sp/>approccio<sp/>identico<sp/>a<sp/>quello<sp/>impiegato<sp/>nel<sp/>mission<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>il<sp/>nodo<sp/>wall-follow<sp/>non<sp/>viene<sp/>usato,<sp/>perciò<sp/>sarebbe<sp/>meglio<sp/>eliminarlo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>fare<sp/>la<sp/>modifica<sp/>in<sp/>modo<sp/>tale<sp/>che<sp/>la<sp/>stessa<sp/>cosa<sp/>funzioni<sp/>anche<sp/>nel<sp/>secondo<sp/>assignment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>bisognerà<sp/>modificare<sp/>i<sp/>launcher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>e<sp/>anche<sp/>bug_m</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>e<sp/>anche<sp/>il<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>*una<sp/>modifica<sp/>al<sp/>controller*:<sp/>impossibile<sp/>attivare<sp/>un<sp/>controller<sp/>quando<sp/>uno<sp/>dei<sp/>canali<sp/>necessari<sp/>non<sp/>risponde</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>quindi,<sp/>iniziamo<sp/>da<sp/>RViz<sp/>e<sp/>da<sp/>AMCL:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>simulazione<sp/>solo<sp/>con<sp/>Gazebo<sp/>piuttosto<sp/>che<sp/>con<sp/>Gazebo/RViz</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>l&apos;attuale<sp/>inizializzazione<sp/>è<sp/>un<sp/>po&apos;<sp/>lunga<sp/>per<sp/>quanto<sp/>riguarda<sp/>missio<sp/>manager<sp/>/<sp/>run.launch<sp/>...<sp/>introduco<sp/>un<sp/>parametro<sp/>init</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>init<sp/>false<sp/>-&gt;<sp/>tutti<sp/>i<sp/>parametri<sp/>vengono<sp/>inizializzati<sp/>a<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>nuovo<sp/>parametro<sp/>*with_rviz*<sp/>per<sp/>decidere<sp/>se<sp/>lanciare<sp/>o<sp/>no<sp/>anche<sp/>RViz</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>questo<sp/>richiede<sp/>una<sp/>modifica<sp/>del<sp/>launcher<sp/>del<sp/>robot...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>c&apos;è<sp/>un<sp/>modo<sp/>di<sp/>fare<sp/>operazioni<sp/>logiche<sp/>negli<sp/>if<sp/>dei<sp/>launch<sp/>file?<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>[vedi<sp/>questo<sp/>post<sp/>ufficiale](https://answers.ros.org/question/12756/roslaunch-if-condition/)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>quindi<sp/>non<sp/>con<sp/>l&apos;if,<sp/>però<sp/>c&apos;è<sp/>un<sp/>replacement<sp/>che<sp/>si<sp/>chiama<sp/>&quot;eval&quot;<sp/>e<sp/>che<sp/>esegue<sp/>operazioni<sp/>sui<sp/>parametri</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```xml</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>arg(&apos;debug&apos;)<sp/>==0)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;node<sp/>pkg=&quot;xxx&quot;<sp/>type=&quot;yyy&quot;<sp/>name=&quot;yyy&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>altro<sp/>esempio,<sp/>sempre<sp/>nello<sp/>stesso<sp/>post:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```xml</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;team&quot;<sp/>default=&quot;Red&quot;/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;arg<sp/>name=&quot;type&quot;<sp/>default=&quot;painter&quot;/&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>team<sp/>==<sp/>&apos;Red&apos;)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>type<sp/>==<sp/>&apos;painter&apos;)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;robot_description&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command=&quot;$(find<sp/>xacro)/xacro<sp/>$(find<sp/>robopaint)/urdf/red/paintbot_red.urdf.xacro&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>type<sp/>==<sp/>&apos;attacker&apos;)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;robot_description&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command=&quot;$(find<sp/>xacro)/xacro<sp/>$(find<sp/>robopaint)/urdf/red/attackbot_red.urdf.xacro&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>team<sp/>==<sp/>&apos;Blue&apos;)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>type<sp/>==<sp/>&apos;painter&apos;)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;robot_description&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command=&quot;$(find<sp/>xacro)/xacro<sp/>$(find<sp/>robopaint)/urdf/blue/paintbot_blue.urdf.xacro&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;group<sp/>if=&quot;$(eval<sp/>type<sp/>==<sp/>&apos;attacker&apos;)&quot;&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;robot_description&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>command=&quot;$(find<sp/>xacro)/xacro<sp/>$(find<sp/>robopaint)/urdf/blue/attackbot_blue.urdf.xacro&quot;<sp/>/&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;/group&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>mi<sp/>ero<sp/>anche<sp/>dimenticato<sp/>dell&apos;esistenza<sp/>dei<sp/>raggruppamenti...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>*devo<sp/>ristrutturare<sp/>il<sp/>run*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>meglio<sp/>creare<sp/>un<sp/>*run2.launch*<sp/>piuttosto<sp/>di<sp/>fare<sp/>strane<sp/>modifiche<sp/>a<sp/>roba<sp/>che<sp/>già<sp/>funziona</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>aggiungo<sp/>già<sp/>un<sp/>parametro<sp/>e<sp/>una<sp/>zona<sp/>del<sp/>launch<sp/>per<sp/>lanciare<sp/>AMCL</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>qualche<sp/>test<sp/>sul<sp/>launch<sp/>del<sp/>robot,<sp/>giusto<sp/>per<sp/>verificare<sp/>di<sp/>non<sp/>aver<sp/>scritto<sp/>cose<sp/>stupide<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=gazebo<sp/>gazebo_paused:=false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=rviz<sp/>rviz_config_file:=moveit.rviz<sp/>launch_nav_stack:=false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=gazeborviz<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>e<sp/>ora<sp/>torniamo<sp/>sul<sp/>launch<sp/>generale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>e<sp/>si<sp/>prova</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazebo<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=rviz<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazeborviz<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>world_name:=assignment3.world</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazebo<sp/>robot_nav_config:=gmapping<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>funziona<sp/>tutto.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">è<sp/>il<sp/>momento<sp/>di<sp/>AMCL</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>anzitutto,<sp/>documentazione</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>modifica<sp/>ai<sp/>launch<sp/>files</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>test<sp/>...<sp/>funziona!</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>la<sp/>localizzazione<sp/>è<sp/>un<sp/>po&apos;<sp/>più<sp/>instabile<sp/>su<sp/>RViz,<sp/>però<sp/>sembra<sp/>andare<sp/>abbastanza<sp/>bene.<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>ora<sp/>bisognerebbe<sp/>provare<sp/>il<sp/>launch<sp/>generale:<sp/>come<sp/>reagisce<sp/>con<sp/>tutta<sp/>la<sp/>simulazione<sp/>attiva<sp/>usando<sp/>AMCL?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```bash<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazeborviz<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_robot:=false<sp/>launch_mission_manager:=false<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>**e<sp/>funge!**<sp/>il<sp/>comportamento<sp/>del<sp/>robot<sp/>è<sp/>leggermente<sp/>più<sp/>instabile,<sp/>ma<sp/>pare<sp/>che<sp/>sia<sp/>riuscito<sp/>a<sp/>ridurre<sp/>di<sp/>qualche<sp/>secondo<sp/>le<sp/>tempistiche<sp/>di<sp/>esecuzione</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;improving<sp/>localization<sp/>performances<sp/>with<sp/>AMCL&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{todo}</highlight></codeline>
+<codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>aggiornare<sp/>documentazione<sp/>robot<sp/>Hunter<sp/>col<sp/>nuovo<sp/>run</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>modificare<sp/>il<sp/>module<sp/>testing<sp/>del<sp/>robot:<sp/>aggiungere<sp/>i<sp/>test<sp/>del<sp/>log</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>introdurre<sp/>uno<sp/>script<sp/>che<sp/>permetta<sp/>di<sp/>lanciare<sp/>tutti<sp/>i<sp/>componenti,<sp/>proprio<sp/>come<sp/>fatto<sp/>nel<sp/>terzo<sp/>assignment</highlight></codeline>
+<codeline><highlight class="normal">-<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
@@ -894,6 +1043,191 @@
 <codeline><highlight class="normal">-<sp/>il<sp/>nodo<sp/>che<sp/>si<sp/>occupa<sp/>di<sp/>fare<sp/>la<sp/>navigation<sp/>aggiorna<sp/>il<sp/>plan<sp/>parecchie<sp/>volte,<sp/>perchè<sp/>sulle<sp/>lunghe<sp/>tratte<sp/>move_base<sp/>tende<sp/>a<sp/>far<sp/>andare<sp/>il<sp/>robot<sp/>in<sp/>percorsi<sp/>che<sp/>non<sp/>hanno<sp/>molto<sp/>senso</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>rifacendo<sp/>il<sp/>panning<sp/>ogni<sp/>tot<sp/>si<sp/>assicura<sp/>una<sp/>certa<sp/>sitabilità<sp/>sul<sp/>path<sp/>prescelto</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>unico<sp/>difetto:<sp/>il<sp/>robot<sp/>si<sp/>ferma<sp/>spesso<sp/>per<sp/>fare<sp/>replanning,<sp/>causando<sp/>delle<sp/>oscillazioni<sp/>in<sp/>avanti<sp/>un<sp/>po&apos;<sp/>brusche</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>strano<sp/>warning<sp/>con<sp/>move_base</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.459500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.459500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.460500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.460500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal"><sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.461500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.461500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.462500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisherTF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.462500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/><sp/>in<sp/>278/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp<sp/>in<sp/></highlight></codeline>
+<codeline><highlight class="normal">/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.463500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisherWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.463500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/></highlight></codeline>
+<codeline><highlight class="normal">278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.464500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal">TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.464500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278</highlight></codeline>
+<codeline><highlight class="normal"><sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.465500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.465500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.466500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.466500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.467500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.467500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>278/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp<sp/>in<sp/></highlight></codeline>
+<codeline><highlight class="normal">/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.467000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.467000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher278<sp/>in<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp278</highlight></codeline>
+<codeline><highlight class="normal"><sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.468500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.468500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.469500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.469500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.470500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/></highlight></codeline>
+<codeline><highlight class="normal">TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.470500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.471500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.471500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.472500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.473500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.472500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.473500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.474500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.474500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.475500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.475500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.476500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.476500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.477500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.477500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.478500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/></highlight></codeline>
+<codeline><highlight class="normal">TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.478500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.479500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.479500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.479000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisherTF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.479000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/><sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.480500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.480500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.481500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.481500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.482500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.482500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.483500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.483500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.484500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.484500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.483000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.483000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.485500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.485500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.487500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.487500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.488500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.488500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.489500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.489500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.490500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.490500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.491500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.491500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.492500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.492500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.493500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.493500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.496500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.496500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.497500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.497500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.498500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.498500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.499500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.499500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.500500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.500500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.501500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.501500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.502500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>odom<sp/>at<sp/>time<sp/>942.502500<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="_docs/dev-log.md"/>
   </compounddef>
