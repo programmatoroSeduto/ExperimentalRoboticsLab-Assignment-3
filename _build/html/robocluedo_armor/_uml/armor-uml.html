@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UML – aRMOR elements &mdash; RobotCLuedo #3 1.0.0 documentation</title>
+  <title>UML – aRMOR Interface design elements &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="CODE REFERENCE – class aRMOR CLuedo" href="../_code_reference/armor-cluedo.html" />
-    <link rel="prev" title="aRMOR UML CLASS – old schematics" href="armor-old-schematics.html" /> 
+    <link rel="prev" title="DOCS – HOW TO use RoboCLuedo aRMOR interface" href="../_docs/armor-how-to-use.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,7 +39,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> RobotCLuedo #3
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -60,8 +60,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/armor-commands.html">aRMOR commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="armor-old-schematics.html">aRMOR UML CLASS – old schematics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">UML – aRMOR elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UML – aRMOR Interface design elements</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CODE REFERENCE – class aRMOR CLuedo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CODE REFERENCE – class aRMOR Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">CODE REFERENCE – node CLuedo aRMOR interface</a></li>
@@ -117,7 +118,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">RobotCLuedo #3</a>
+          <a href="../../index.html">RoboCLuedo #3</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -126,7 +127,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
-      <li>UML – aRMOR elements</li>
+      <li>UML – aRMOR Interface design elements</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_armor/_uml/armor-uml.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -136,10 +137,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="uml-armor-elements">
-<h1>UML – aRMOR elements<a class="headerlink" href="#uml-armor-elements" title="Permalink to this heading"></a></h1>
+  <div class="section" id="uml-armor-interface-design-elements">
+<h1>UML – aRMOR Interface design elements<a class="headerlink" href="#uml-armor-interface-design-elements" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UML – aRMOR Interface design elements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#armor-interface-services">aRMOR interface services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add">ADD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#find">FIND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#del">DEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup">BACKUP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-services">aRMOR services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-interfaces-structure">aRMOR interfaces structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#package-armor">package aRMOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#armor-interface-component">aRMOR interface component</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-complete-schematic">THE COMPLETE SCHEMATIC</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
 <div class="section" id="armor-interface-services">
 <h2>aRMOR interface services<a class="headerlink" href="#armor-interface-services" title="Permalink to this heading"></a></h2>
+<p>here are some textUML diagrams ready to use concerning the interfaces exposed by this package. Remember to replace the symbol <code class="docutils literal notranslate"><span class="pre">???</span></code> with the proper name when required.</p>
+<div class="section" id="add">
+<h3>ADD<a class="headerlink" href="#add" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>@startuml
 
 () &quot;/cluedo_armor/add_hint&quot; as SRV_ARMOR_ADD
@@ -150,6 +178,9 @@ note on link: robocluedo_armor_msgs/AddHint.srv
 @enduml
 </pre></div>
 </div>
+</div>
+<div class="section" id="find">
+<h3>FIND<a class="headerlink" href="#find" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>@startuml
 
 () &quot;/cluedo_armor/find_consistent_h&quot; as SRV_ARMOR_FIND
@@ -160,6 +191,9 @@ note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
 @enduml
 </pre></div>
 </div>
+</div>
+<div class="section" id="del">
+<h3>DEL<a class="headerlink" href="#del" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="n">startuml</span><span class="w"></span>
 
 <span class="p">()</span><span class="w"> </span><span class="s">&quot;/cluedo_armor/wrong_hypothesis&quot;</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">SRV_ARMOR_DEL</span><span class="w"></span>
@@ -170,6 +204,9 @@ note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
 <span class="p">@</span><span class="n">enduml</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="backup">
+<h3>BACKUP<a class="headerlink" href="#backup" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="n">startuml</span><span class="w"></span>
 
 <span class="p">()</span><span class="w"> </span><span class="s">&quot;/cluedo_armor/backup&quot;</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">SRV_ARMOR_BACKUP</span><span class="w"></span>
@@ -181,8 +218,10 @@ note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="armor-services">
 <h2>aRMOR services<a class="headerlink" href="#armor-services" title="Permalink to this heading"></a></h2>
+<p>the package uses only one service from aRMOR.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>@startuml
 
 () &quot;/armor_interface_srv&quot; as SRV_ARMOR_DIRECTIVE
@@ -198,6 +237,7 @@ note on link: armor_msgs/ArmorDirective.srv
 <h2>aRMOR interfaces structure<a class="headerlink" href="#armor-interfaces-structure" title="Permalink to this heading"></a></h2>
 <div class="section" id="package-armor">
 <h3>package aRMOR<a class="headerlink" href="#package-armor" title="Permalink to this heading"></a></h3>
+<p>here’s a simplified representation of the base aRMOR, used by this package.</p>
 <p class="plantuml">
 <object data="../../_images/plantuml-0faec2d024aa4887eca73ffc67a1190d2ad464c7.svg" type="image/svg+xml" style="width:406px;height:284px;background:#FFFFFF;">
 <img src="../../_images/plantuml-0faec2d024aa4887eca73ffc67a1190d2ad464c7.png" alt="&#64;startuml
@@ -221,6 +261,7 @@ note on link: armor_msgs/ArmorDirective.srv
 </div>
 <div class="section" id="armor-interface-component">
 <h3>aRMOR interface component<a class="headerlink" href="#armor-interface-component" title="Permalink to this heading"></a></h3>
+<p>here is the component diagram of the two main classes <code class="docutils literal notranslate"><span class="pre">armor_tools</span></code> and <code class="docutils literal notranslate"><span class="pre">armor_cluedo</span></code>.</p>
 <p class="plantuml">
 <object data="../../_images/plantuml-7ef1c642dbf9b709f85d067bf0586dda9d2e28a7.svg" type="image/svg+xml" style="width:1337px;height:786px;background:#FFFFFF;">
 <img src="../../_images/plantuml-7ef1c642dbf9b709f85d067bf0586dda9d2e28a7.png" alt="&#64;startuml
@@ -371,7 +412,7 @@ note on link: std_srvs/Trigger.srv
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="armor-old-schematics.html" class="btn btn-neutral float-left" title="aRMOR UML CLASS – old schematics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_docs/armor-how-to-use.html" class="btn btn-neutral float-left" title="DOCS – HOW TO use RoboCLuedo aRMOR interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../_code_reference/armor-cluedo.html" class="btn btn-neutral float-right" title="CODE REFERENCE – class aRMOR CLuedo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

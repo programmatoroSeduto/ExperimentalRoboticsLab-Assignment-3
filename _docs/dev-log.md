@@ -1116,17 +1116,47 @@ rosnode list
 - wall follow eliminato!
 - **COMMIT**: "wall follow deleted"
 
+---
+
+e ora si parte col lavoro di documentazione vera, sempre con la solita filosofia: inizia a lavorare sull'assignment 3, e riporta la documentazione nel 2 per quanto possibile. 
+
+- **robocluedo_armor**
+	- pulizia dei documenti già presenti
+	- gli schematic vecchi li posso togliere
+	- (tutto quel che c'è da fare l'ho segnato nel todo)
+- **robocluedo_vision**
+	- mancano le code reference...
+		- le posso aggiungere subito senza problemi
+	- il resto mi toccherè aggiungerlo in seguito
+- **robocluedo rosplan**
+	- ...
+- **COMMIT**: "documentation review"
+
+
 
 ```{todo}
 **terzo assignment:**
 
 - aggiornare documentazione robot Hunter col nuovo run
 - modificare il module testing del robot: aggiungere i test del log
+- verificare che tutte le pagine ausiliarie abbiano la loro TOCtree interna, specie quando sono lunghe pagine
+- rifare la homepage in modo che le parti essenziali dell'assignment risultino "a vista"
+- rileggere la documentazione del codice di aRMOR
+	- descrizione nodo armor interface: eliminare il components diagram
+	- ... eliminare i see also che richiamano al tipo di servizio
+	- sarà il caso di aggiungere delle sezioni sul testing del package armor?
+- documentazione codice del pacchetto vision
+	- creare anche qualche UML del codice
+	- (ma non fare un lavoro *eccessivamente dettagliato*)
+- 
+
 
 **secondo assignment:**
 
 - introdurre uno script che permetta di lanciare tutti i componenti, proprio come fatto nel terzo assignment
 - (tenta di non fare troppi aggiornamenti inutili ... alla fin fine, il secondo assignment funziona bene così: inutile fare più del necessario)
+- importare la documentazione di aRMOR finale dal terzo assignment
+- la documentazione del package rosplan può essere riportata pari pari nell'assignment 2, perchè tanto è identica
 
 ```
 

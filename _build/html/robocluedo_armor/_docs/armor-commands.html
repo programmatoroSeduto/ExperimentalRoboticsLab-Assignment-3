@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>aRMOR commands &mdash; RobotCLuedo #3 1.0.0 documentation</title>
+  <title>aRMOR commands &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -39,7 +39,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> RobotCLuedo #3
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -60,8 +60,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">aRMOR commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-old-schematics.html">aRMOR UML CLASS – old schematics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR Interface design elements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CODE REFERENCE – class aRMOR CLuedo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CODE REFERENCE – class aRMOR Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">CODE REFERENCE – node CLuedo aRMOR interface</a></li>
@@ -117,7 +116,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">RobotCLuedo #3</a>
+          <a href="../../index.html">RoboCLuedo #3</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -138,6 +137,10 @@
              
   <div class="section" id="armor-commands">
 <h1>aRMOR commands<a class="headerlink" href="#armor-commands" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<hr class="docutils" />
+<div class="section" id="main-directives">
+<h2>Main directives<a class="headerlink" href="#main-directives" title="Permalink to this heading"></a></h2>
 <p>here’s a list of the most important aRMOR directives employed in this project.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm"> * disjoint di classe da un&#39;altra</span>
@@ -181,7 +184,7 @@
 <span class="cm"> * 	&quot;QUERY&quot;, &quot;CLASS&quot;, &quot;IND&quot;, &quot;HP3&quot;, &quot;false&quot;</span>
 <span class="cm"> * 	&lt;uri#HYPOTHESIS&gt;</span>
 <span class="cm"> * </span>
-<span class="cm"> * classe più profonda di un individual (caso bastardo, probabilmente bug)</span>
+<span class="cm"> * classe più profonda di un individual (BUGGATO: non funziona, vedi module testing)</span>
 <span class="cm"> * 	&quot;QUERY&quot;, &quot;CLASS&quot;, &quot;IND&quot;, &quot;HP3&quot;, &quot;true&quot;</span>
 <span class="cm"> * 	HYPOTHESIS</span>
 <span class="cm"> * </span>
@@ -192,6 +195,11 @@
 <span class="cm"> * </span>
 <span class="cm"> */</span><span class="w">	</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="query-class-ind-buggy">
+<h2>“QUERY CLASS IND” buggy<a class="headerlink" href="#query-class-ind-buggy" title="Permalink to this heading"></a></h2>
+<p>see the output from the node <code class="docutils literal notranslate"><span class="pre">robocluedo_module_testing</span> <span class="pre">test_armor</span></code>.</p>
 </div>
 </div>
 

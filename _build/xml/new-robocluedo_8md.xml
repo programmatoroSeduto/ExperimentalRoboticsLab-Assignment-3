@@ -8,20 +8,63 @@
     </detaileddescription>
     <programlisting>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>PDDL<sp/>description<sp/>--<sp/>the<sp/>new<sp/>RoboCLuedo</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>PDDL<sp/>Design<sp/>--<sp/>the<sp/>new<sp/>RoboCLuedo<sp/>PDDL<sp/>model</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>differences<sp/>from<sp/>the<sp/>previous<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">```{warning}</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>is<sp/>very<sp/>old,<sp/>and<sp/>for<sp/>sure<sp/>it<sp/>needs<sp/>to<sp/>be<sp/>updated.<sp/>You<sp/>can<sp/>find<sp/>the<sp/>current<sp/>model<sp/>in<sp/>the<sp/>folder<sp/>`/robocluedo_rosplan/pddl/robocluedo_3`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">I<sp/>leave<sp/>this<sp/>document<sp/>here<sp/>because<sp/>it<sp/>contains<sp/>the<sp/>very<sp/>first<sp/>design<sp/>process<sp/>of<sp/>the<sp/>current<sp/>PDDL,<sp/>which<sp/>is<sp/>changed<sp/>a<sp/>lot<sp/>during<sp/>the<sp/>development<sp/>of<sp/>the<sp/>project.<sp/>Here<sp/>are<sp/>the<sp/>basic<sp/>principles.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{todo}</highlight></codeline>
+<codeline><highlight class="normal">a<sp/>big<sp/>half<sp/>of<sp/>this<sp/>document<sp/>is<sp/>still<sp/>*in<sp/>italian*.<sp/>Remember<sp/>to<sp/>translate<sp/>it.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./new-robocluedo.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Differences<sp/>from<sp/>the<sp/>previous<sp/>version</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">see<sp/>[the<sp/>previous<sp/>version<sp/>of<sp/>the<sp/>RoboCLuedo<sp/>#2<sp/>Project](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>usage<sp/>of<sp/>*landmarks*<sp/>instead<sp/>of<sp/>only<sp/>one<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>the<sp/>PDDL<sp/>just<sp/>manages<sp/>the<sp/>movements<sp/>and<sp/>how<sp/>the<sp/>robot<sp/>works,<sp/>and<sp/>not<sp/>othe<sp/>rinformations</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>clear<sp/>distinction<sp/>between<sp/>the<sp/>KB<sp/>os<sp/>ROSPlan<sp/>and<sp/>the<sp/>aRMOR<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>a<sp/>landmark<sp/>is<sp/>a<sp/>sort<sp/>of<sp/>*checkpoint*,<sp/>and<sp/>in<sp/>particular<sp/>it<sp/>will<sp/>correspond<sp/>to<sp/>a<sp/>particular<sp/>phase<sp/>of<sp/>the<sp/>mission.<sp/>The<sp/>AI<sp/>will<sp/>will<sp/>work<sp/>on<sp/>two<sp/>levels:<sp/>the<sp/>highest<sp/>one,<sp/>the<sp/>*mission<sp/>level*,<sp/>will<sp/>decide<sp/>how<sp/>to<sp/>combine<sp/>landmarks<sp/>in<sp/>order<sp/>to<sp/>let<sp/>the<sp/>mission<sp/>succeed,<sp/>whereas<sp/>the<sp/>lowest<sp/>one,<sp/>implemented<sp/>using<sp/>rosplan,<sp/>plans<sp/>how<sp/>to<sp/>carry<sp/>out<sp/>the<sp/>single<sp/>action<sp/>depending<sp/>on<sp/>the<sp/>current<sp/>status<sp/>of<sp/>the<sp/>robot.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>For<sp/>instance,<sp/>the<sp/>mission<sp/>manager<sp/>could<sp/>say<sp/>&quot;COLLECT<sp/>A<sp/>HINT&quot;,<sp/>leavng<sp/>the<sp/>planner<sp/>the<sp/>task<sp/>to<sp/>decide<sp/>precisely<sp/>which<sp/>sequence<sp/>of<sp/>actions<sp/>the<sp/>robot<sp/>has<sp/>to<sp/>take<sp/>in<sp/>order<sp/>to<sp/>fulfill<sp/>the<sp/>current<sp/>mission<sp/>objective.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>PDDL<sp/>just<sp/>manages<sp/>the<sp/>movements<sp/>and<sp/>how<sp/>the<sp/>robot<sp/>works,<sp/>and<sp/>not<sp/>other<sp/>informations.<sp/>Clear<sp/>distinction<sp/>between<sp/>the<sp/>KB<sp/>os<sp/>ROSPlan<sp/>and<sp/>the<sp/>aRMOR<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>in<sp/>the<sp/>previous<sp/>version<sp/>of<sp/>the<sp/>model,<sp/>the<sp/>rosplan<sp/>KB<sp/>has<sp/>been<sp/>used<sp/>also<sp/>as<sp/>a<sp/>common<sp/>KB<sp/>for<sp/>the<sp/>reasoning.<sp/>This<sp/>requires<sp/>to<sp/>declare<sp/>predicates<sp/>inside<sp/>the<sp/>PDDL<sp/>domain,<sp/>and<sp/>to<sp/>decide<sp/>how<sp/>to<sp/>combine<sp/>two<sp/>sets<sp/>of<sp/>informations.<sp/>It<sp/>is<sp/>a<sp/>very<sp/>poor<sp/>design<sp/>choice,<sp/>which<sp/>lets<sp/>to<sp/>a<sp/>overcomplicated<sp/>implementation.<sp/>*It<sp/>is<sp/>simpler<sp/>to<sp/>separate<sp/>the<sp/>true<sp/>reasoning<sp/>from<sp/>the<sp/>simple<sp/>problem<sp/>solving*.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal">-<sp/>*a<sp/>simpler,<sp/>concise<sp/>model*:<sp/>this<sp/>increases<sp/>the<sp/>flexibility<sp/>of<sp/>the<sp/>model,<sp/>and<sp/>in<sp/>particular<sp/>it<sp/>makes<sp/>quicker<sp/>any<sp/>future<sp/>update<sp/>of<sp/>the<sp/>arch</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>much<sp/>more<sp/>like<sp/>a<sp/>stata<sp/>machine<sp/>than<sp/>the<sp/>previous<sp/>version<sp/>(or<sp/>also<sp/>like<sp/>a<sp/>flow<sp/>chart)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>much<sp/>more<sp/>like<sp/>a<sp/>stata<sp/>machine<sp/>than<sp/>the<sp/>previous<sp/>version</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal">-<sp/>*no<sp/>usage<sp/>of<sp/>fluents*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>in<sp/>this<sp/>case,<sp/>using<sp/>fluents<sp/>is<sp/>not<sp/>so<sp/>important.<sp/>In<sp/>order<sp/>to<sp/>keep<sp/>as<sp/>simpler<sp/>as<sp/>possible<sp/>the<sp/>declaration<sp/>of<sp/>the<sp/>problem,<sp/>it<sp/>is<sp/>better<sp/>to<sp/>rely<sp/>only<sp/>on<sp/>the<sp/>simple<sp/>predicates.</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>list<sp/>of<sp/>Landmarks</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">-<sp/>replan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>A<sp/>list<sp/>of<sp/>Landmarks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>implementation<sp/>of<sp/>the<sp/>landmarks<sp/>is<sp/>a<sp/>bit<sp/>more<sp/>cumbersome,<sp/>even<sp/>if<sp/>the<sp/>principle<sp/>is<sp/>the<sp/>one<sp/>outlined<sp/>here.<sp/>See<sp/>{any}`kb_interface`<sp/>for<sp/>more<sp/>informations.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>are<sp/>the<sp/>macro-objectives<sp/>the<sp/>mission<sp/>planner<sp/>could<sp/>require<sp/>to<sp/>the<sp/>ROSPlan<sp/>unit:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**replan**</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>preconditions:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```lisp</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(dirty<sp/>)</highlight></codeline>
@@ -30,7 +73,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```lisp</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-dirty<sp/>)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>propose<sp/>a<sp/>solution<sp/>--<sp/>solve</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**propose<sp/>a<sp/>solution<sp/>--<sp/>solve**</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>preconditions:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```lisp</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-dirty<sp/>)</highlight></codeline>
@@ -39,7 +82,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```lisp</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(dirty<sp/>)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>collect<sp/>a<sp/>new<sp/>hint<sp/>--<sp/>collect</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**collect<sp/>a<sp/>new<sp/>hint<sp/>--<sp/>collect**</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>preconditions:</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```lisp</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(not-dirty<sp/>)</highlight></codeline>
@@ -50,21 +93,19 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(hint-collected<sp/>?wp<sp/>)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>list<sp/>of<sp/>services<sp/>provided<sp/>by<sp/>the<sp/>kb<sp/>interface</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">-<sp/>write<sp/>a<sp/>predicate<sp/>into<sp/>the<sp/>kb</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>read<sp/>a<sp/>predicate<sp/>from<sp/>kb</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>read<sp/>the<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>set<sp/>the<sp/>goal</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">more<sp/>specific:</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">-<sp/>secure<sp/>clean</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>set<sp/>one<sp/>particular<sp/>objective<sp/>among<sp/>the<sp/>predefined<sp/>landmarks</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>list<sp/>of<sp/>actions</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>replan</highlight></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>reports<sp/>the<sp/>very<sp/>first<sp/>version<sp/>of<sp/>the<sp/>code,<sp/>*which<sp/>is<sp/>sometimes<sp/>not<sp/>correct*.<sp/>Please<sp/>refer<sp/>to<sp/>the<sp/>models<sp/>inside<sp/>the<sp/>folder<sp/>`/robocluedo_rosplan/pddl/robocluedo_3`.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">*document<sp/>in<sp/>italian*<sp/>(thinking<sp/>in<sp/>english<sp/>makes<sp/>everything<sp/>...<sp/>annoyingly<sp/>slower)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>REPLAN</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>**(ACTION)<sp/>replan**</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>c&apos;è<sp/>un<sp/>bool<sp/>`(dirty<sp/>)`<sp/>che<sp/>indica<sp/>quando<sp/>il<sp/>sistema<sp/>non<sp/>è<sp/>inizializzato</highlight></codeline>
@@ -119,7 +160,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>collect</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>COLLECT</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>**(ACTION)<sp/>move-to**</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>semplice<sp/>azione<sp/>di<sp/>movimento<sp/>da<sp/>un<sp/>punto<sp/>ad<sp/>un<sp/>altro</highlight></codeline>
@@ -296,7 +337,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>solve</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>SOLVE</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>**(ACTION)<sp/>move-to-center**<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>come<sp/>precondizione<sp/>il<sp/>robot<sp/>non<sp/>si<sp/>trova<sp/>al<sp/>centro,<sp/>quindi<sp/>la<sp/>posizione<sp/>attuale<sp/>è<sp/>`(not-is-center<sp/>?wp)`</highlight></codeline>

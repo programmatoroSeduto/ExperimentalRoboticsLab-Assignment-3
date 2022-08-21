@@ -1,18 +1,61 @@
 
-# PDDL description -- the new RoboCLuedo
+# PDDL Design -- the new RoboCLuedo PDDL model
 
-## differences from the previous version
+```{warning}
+This document is very old, and for sure it needs to be updated. You can find the current model in the folder `/robocluedo_rosplan/pddl/robocluedo_3`.
+
+I leave this document here because it contains the very first design process of the current PDDL, which is changed a lot during the development of the project. Here are the basic principles. 
+```
+
+```{todo}
+a big half of this document is still *in italian*. Remember to translate it. 
+```
+
+---
+
+```{toctree}
+---
+caption: Contents
+maxdepth: 3
+---
+./new-robocluedo.md
+```
+
+---
+
+## Differences from the previous version
+
+see [the previous version of the RoboCLuedo #2 Project](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git)
 
 - usage of *landmarks* instead of only one goal
-- the PDDL just manages the movements and how the robot works, and not othe rinformations
-- clear distinction between the KB os ROSPlan and the aRMOR KB
+	
+	a landmark is a sort of *checkpoint*, and in particular it will correspond to a particular phase of the mission. The AI will will work on two levels: the highest one, the *mission level*, will decide how to combine landmarks in order to let the mission succeed, whereas the lowest one, implemented using rosplan, plans how to carry out the single action depending on the current status of the robot. 
+	
+	For instance, the mission manager could say "COLLECT A HINT", leavng the planner the task to decide precisely which sequence of actions the robot has to take in order to fulfill the current mission objective. 
+	
+- the PDDL just manages the movements and how the robot works, and not other informations. Clear distinction between the KB os ROSPlan and the aRMOR KB
+	
+	in the previous version of the model, the rosplan KB has been used also as a common KB for the reasoning. This requires to declare predicates inside the PDDL domain, and to decide how to combine two sets of informations. It is a very poor design choice, which lets to a overcomplicated implementation. *It is simpler to separate the true reasoning from the simple problem solving*. 
+	
 - *a simpler, concise model*: this increases the flexibility of the model, and in particular it makes quicker any future update of the arch
-- much more like a stata machine than the previous version (or also like a flow chart)
+	
+- much more like a stata machine than the previous version
+	
 - *no usage of fluents*
+	
+	in this case, using fluents is not so important. In order to keep as simpler as possible the declaration of the problem, it is better to rely only on the simple predicates.
 
-## list of Landmarks
 
-- replan
+
+## A list of Landmarks
+
+```{note}
+the implementation of the landmarks is a bit more cumbersome, even if the principle is the one outlined here. See {any}`kb_interface` for more informations. 
+```
+
+Here are the macro-objectives the mission planner could require to the ROSPlan unit:
+
+- **replan**
 	preconditions:
 	```lisp
 	(dirty )
@@ -21,7 +64,7 @@
 	```lisp
 	(not-dirty )
 	```
-- propose a solution -- solve
+- **propose a solution -- solve**
 	preconditions:
 	```lisp
 	(not-dirty )
@@ -30,7 +73,7 @@
 	```lisp
 	(dirty )
 	```
-- collect a new hint -- collect
+- **collect a new hint -- collect**
 	preconditions:
 	```lisp
 	(not-dirty )
@@ -41,21 +84,19 @@
 	(hint-collected ?wp )
 	```
 
-### list of services provided by the kb interface
 
-- write a predicate into the kb
-- read a predicate from kb
-- read the goal
-- set the goal
-
-more specific:
-
-- secure clean
-- set one particular objective among the predefined landmarks
 
 ## list of actions
 
-### replan
+```{note}
+This document reports the very first version of the code, *which is sometimes not correct*. Please refer to the models inside the folder `/robocluedo_rosplan/pddl/robocluedo_3`.
+```
+
+```{note}
+*document in italian* (thinking in english makes everything ... annoyingly slower)
+```
+
+### REPLAN
 
 - **(ACTION) replan**
 	- c'è un bool `(dirty )` che indica quando il sistema non è inizializzato
@@ -110,7 +151,7 @@ note on link: robocluedo_rosplan_msgs/ActionFeedback
 @enduml
 ```
 
-### collect
+### COLLECT
 
 - **(ACTION) move-to**
 	- semplice azione di movimento da un punto ad un altro
@@ -287,7 +328,7 @@ ACT_COLLECT_HINT ..> DISP_FEEDBACK
 @enduml
 ```
 
-### solve
+### SOLVE
 
 - **(ACTION) move-to-center** 
 	- come precondizione il robot non si trova al centro, quindi la posizione attuale è `(not-is-center ?wp)`

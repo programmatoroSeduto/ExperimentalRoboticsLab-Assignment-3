@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDDL description – the new RoboCLuedo &mdash; RobotCLuedo #3 1.0.0 documentation</title>
+  <title>PDDL Design – the new RoboCLuedo PDDL model &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -39,7 +39,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> RobotCLuedo #3
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -55,26 +55,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PDDL description – the new RoboCLuedo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pddl-and-rosplan.html">PDDL and ROSPlan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/action_collect_hint.html">CODE REFERENCE – ROSPlan action collect_hint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/feedback_manager.html">CODE REFERENCE – class feedback manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_interface.html">CODE REFERENCE – node kb_interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_tools.html">CODE REFERENCE – class kb_tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/move_to.html">CODE REFERENCE – ROSPlan action move_to</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/move_to_center.html">CODE REFERENCE – ROSPlan action move_to_center</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/replan.html">CODE REFERENCE – ROSPlan action replan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/rosplan_pipeline_manager.html">CODE REFERENCE – node rosplan_pipeline_manager</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
@@ -117,7 +102,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">RobotCLuedo #3</a>
+          <a href="../../index.html">RoboCLuedo #3</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -126,7 +111,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
-      <li>PDDL description – the new RoboCLuedo</li>
+      <li>PDDL Design – the new RoboCLuedo PDDL model</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_rosplan/_docs/new-robocluedo.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -136,23 +121,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="pddl-description-the-new-robocluedo">
-<h1>PDDL description – the new RoboCLuedo<a class="headerlink" href="#pddl-description-the-new-robocluedo" title="Permalink to this heading"></a></h1>
-<div class="section" id="differences-from-the-previous-version">
-<h2>differences from the previous version<a class="headerlink" href="#differences-from-the-previous-version" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p>usage of <em>landmarks</em> instead of only one goal</p></li>
-<li><p>the PDDL just manages the movements and how the robot works, and not othe rinformations</p></li>
-<li><p>clear distinction between the KB os ROSPlan and the aRMOR KB</p></li>
-<li><p><em>a simpler, concise model</em>: this increases the flexibility of the model, and in particular it makes quicker any future update of the arch</p></li>
-<li><p>much more like a stata machine than the previous version (or also like a flow chart)</p></li>
-<li><p><em>no usage of fluents</em></p></li>
+  <div class="section" id="pddl-design-the-new-robocluedo-pddl-model">
+<h1>PDDL Design – the new RoboCLuedo PDDL model<a class="headerlink" href="#pddl-design-the-new-robocluedo-pddl-model" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This document is very old, and for sure it needs to be updated. You can find the current model in the folder <code class="docutils literal notranslate"><span class="pre">/robocluedo_rosplan/pddl/robocluedo_3</span></code>.</p>
+<p>I leave this document here because it contains the very first design process of the current PDDL, which is changed a lot during the development of the project. Here are the basic principles.</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>a big half of this document is still <em>in italian</em>. Remember to translate it.</p>
+</div>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PDDL Design – the new RoboCLuedo PDDL model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#differences-from-the-previous-version">Differences from the previous version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-list-of-landmarks">A list of Landmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-actions">list of actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#replan">REPLAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collect">COLLECT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solve">SOLVE</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="section" id="list-of-landmarks">
-<h2>list of Landmarks<a class="headerlink" href="#list-of-landmarks" title="Permalink to this heading"></a></h2>
+<hr class="docutils" />
+<div class="section" id="differences-from-the-previous-version">
+<h2>Differences from the previous version<a class="headerlink" href="#differences-from-the-previous-version" title="Permalink to this heading"></a></h2>
+<p>see <a class="reference external" href="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git">the previous version of the RoboCLuedo #2 Project</a></p>
 <ul>
-<li><p>replan
+<li><p>usage of <em>landmarks</em> instead of only one goal</p>
+<p>a landmark is a sort of <em>checkpoint</em>, and in particular it will correspond to a particular phase of the mission. The AI will will work on two levels: the highest one, the <em>mission level</em>, will decide how to combine landmarks in order to let the mission succeed, whereas the lowest one, implemented using rosplan, plans how to carry out the single action depending on the current status of the robot.</p>
+<p>For instance, the mission manager could say “COLLECT A HINT”, leavng the planner the task to decide precisely which sequence of actions the robot has to take in order to fulfill the current mission objective.</p>
+</li>
+<li><p>the PDDL just manages the movements and how the robot works, and not other informations. Clear distinction between the KB os ROSPlan and the aRMOR KB</p>
+<p>in the previous version of the model, the rosplan KB has been used also as a common KB for the reasoning. This requires to declare predicates inside the PDDL domain, and to decide how to combine two sets of informations. It is a very poor design choice, which lets to a overcomplicated implementation. <em>It is simpler to separate the true reasoning from the simple problem solving</em>.</p>
+</li>
+<li><p><em>a simpler, concise model</em>: this increases the flexibility of the model, and in particular it makes quicker any future update of the arch</p></li>
+<li><p>much more like a stata machine than the previous version</p></li>
+<li><p><em>no usage of fluents</em></p>
+<p>in this case, using fluents is not so important. In order to keep as simpler as possible the declaration of the problem, it is better to rely only on the simple predicates.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="a-list-of-landmarks">
+<h2>A list of Landmarks<a class="headerlink" href="#a-list-of-landmarks" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the implementation of the landmarks is a bit more cumbersome, even if the principle is the one outlined here. See <a class="reference internal" href="../_code_reference/kb_interface.html#_CPPv412kb_interface" title="kb_interface"><code class="xref any cpp cpp-class docutils literal notranslate"><span class="pre">kb_interface</span></code></a> for more informations.</p>
+</div>
+<p>Here are the macro-objectives the mission planner could require to the ROSPlan unit:</p>
+<ul>
+<li><p><strong>replan</strong>
 preconditions:</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">dirty</span> <span class="p">)</span>
 </pre></div>
@@ -162,7 +186,7 @@ preconditions:</p>
 </pre></div>
 </div>
 </li>
-<li><p>propose a solution – solve
+<li><p><strong>propose a solution – solve</strong>
 preconditions:</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span>
 </pre></div>
@@ -172,7 +196,7 @@ preconditions:</p>
 </pre></div>
 </div>
 </li>
-<li><p>collect a new hint – collect
+<li><p><strong>collect a new hint – collect</strong>
 preconditions:</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span>
 </pre></div>
@@ -184,25 +208,19 @@ preconditions:</p>
 </div>
 </li>
 </ul>
-<div class="section" id="list-of-services-provided-by-the-kb-interface">
-<h3>list of services provided by the kb interface<a class="headerlink" href="#list-of-services-provided-by-the-kb-interface" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p>write a predicate into the kb</p></li>
-<li><p>read a predicate from kb</p></li>
-<li><p>read the goal</p></li>
-<li><p>set the goal</p></li>
-</ul>
-<p>more specific:</p>
-<ul class="simple">
-<li><p>secure clean</p></li>
-<li><p>set one particular objective among the predefined landmarks</p></li>
-</ul>
-</div>
 </div>
 <div class="section" id="list-of-actions">
 <h2>list of actions<a class="headerlink" href="#list-of-actions" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document reports the very first version of the code, <em>which is sometimes not correct</em>. Please refer to the models inside the folder <code class="docutils literal notranslate"><span class="pre">/robocluedo_rosplan/pddl/robocluedo_3</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>document in italian</em> (thinking in english makes everything … annoyingly slower)</p>
+</div>
 <div class="section" id="replan">
-<h3>replan<a class="headerlink" href="#replan" title="Permalink to this heading"></a></h3>
+<h3>REPLAN<a class="headerlink" href="#replan" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>(ACTION) replan</strong></p>
 <ul>
@@ -260,7 +278,7 @@ note on link: robocluedo_rosplan_msgs/ActionFeedback
 </object></p>
 </div>
 <div class="section" id="collect">
-<h3>collect<a class="headerlink" href="#collect" title="Permalink to this heading"></a></h3>
+<h3>COLLECT<a class="headerlink" href="#collect" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>(ACTION) move-to</strong></p>
 <ul>
@@ -442,7 +460,7 @@ ACT_COLLECT_HINT ..&gt; DISP_FEEDBACK
 </object></p>
 </div>
 <div class="section" id="solve">
-<h3>solve<a class="headerlink" href="#solve" title="Permalink to this heading"></a></h3>
+<h3>SOLVE<a class="headerlink" href="#solve" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>(ACTION) move-to-center</strong></p>
 <ul>

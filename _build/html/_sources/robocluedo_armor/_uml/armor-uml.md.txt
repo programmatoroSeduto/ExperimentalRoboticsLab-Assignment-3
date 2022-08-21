@@ -1,7 +1,23 @@
 
-# UML -- aRMOR elements
+# UML -- aRMOR Interface design elements
+
+---
+
+```{toctree}
+---
+caption: Contents
+maxdepth: 3
+---
+./armor-uml.md
+```
+
+---
 
 ## aRMOR interface services
+
+here are some textUML diagrams ready to use concerning the interfaces exposed by this package. Remember to replace the symbol `???` with the proper name when required.
+
+### ADD
 
 ```
 @startuml
@@ -14,6 +30,8 @@ note on link: robocluedo_armor_msgs/AddHint.srv
 @enduml
 ```
 
+### FIND
+
 ```
 @startuml
 
@@ -25,6 +43,8 @@ note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
 @enduml
 ```
 
+### DEL
+
 ```
 @startuml
 
@@ -35,6 +55,8 @@ note on link: robocluedo_armor_msgs/DiscardHypothesis.srv
 
 @enduml
 ```
+
+### BACKUP
 
 ```
 @startuml
@@ -48,6 +70,8 @@ note on link: std_srvs/Trigger.srv
 ```
 
 ## aRMOR services
+
+the package uses only one service from aRMOR. 
 
 ```
 @startuml
@@ -63,6 +87,8 @@ note on link: armor_msgs/ArmorDirective.srv
 ## aRMOR interfaces structure
 
 ### package aRMOR
+
+here's a simplified representation of the base aRMOR, used by this package. 
 
 ```{uml}
 @startuml
@@ -84,6 +110,8 @@ note on link: armor_msgs/ArmorDirective.srv
 ```
 
 ### aRMOR interface component
+
+here is the component diagram of the two main classes `armor_tools` and `armor_cluedo`.
 
 ```{uml}
 @startuml

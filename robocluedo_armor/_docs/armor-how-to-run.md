@@ -1,6 +1,18 @@
 
 # DOCS -- how to run robocluedo armor
 
+---
+
+```{toctree}
+---
+caption: Contents
+maxdepth: 2
+---
+./armor-how-to-run.md
+```
+
+---
+
 ## Ontology paths configuration
 
 the package contains a file called *parameters.launch* inside the *config* folder.

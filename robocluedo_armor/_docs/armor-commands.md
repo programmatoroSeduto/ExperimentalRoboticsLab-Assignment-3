@@ -1,6 +1,20 @@
 
 # aRMOR commands 
 
+---
+
+```{toctree}
+---
+cation: contents:
+maxdepth: 2
+---
+./armor-commands.md
+```
+
+---
+
+## Main directives
+
 here's a list of the most important aRMOR directives employed in this project. 
 
 ```c++
@@ -46,7 +60,7 @@ here's a list of the most important aRMOR directives employed in this project.
  * 	"QUERY", "CLASS", "IND", "HP3", "false"
  * 	<uri#HYPOTHESIS>
  * 
- * classe più profonda di un individual (caso bastardo, probabilmente bug)
+ * classe più profonda di un individual (BUGGATO: non funziona, vedi module testing)
  * 	"QUERY", "CLASS", "IND", "HP3", "true"
  * 	HYPOTHESIS
  * 
@@ -57,3 +71,7 @@ here's a list of the most important aRMOR directives employed in this project.
  * 
  */	
 ```
+
+## "QUERY CLASS IND" buggy
+
+see the output from the node `robocluedo_module_testing test_armor`. 

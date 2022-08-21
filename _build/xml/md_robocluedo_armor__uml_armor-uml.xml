@@ -2,12 +2,25 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_robocluedo_armor__uml_armor-uml" kind="page">
     <compoundname>md_robocluedo_armor__uml_armor-uml</compoundname>
-    <title>UML – aRMOR elements</title>
+    <title>UML – aRMOR Interface design elements</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md144">
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./armor-uml.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md149">
 <title>aRMOR interface services</title>
+<para>here are some textUML diagrams ready to use concerning the interfaces exposed by this package. Remember to replace the symbol <computeroutput>???</computeroutput> with the proper name when required.</para>
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md150">
+<title>ADD</title>
 <para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
@@ -17,6 +30,9 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md151">
+<title>FIND</title>
 <para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
@@ -26,6 +42,9 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md152">
+<title>DEL</title>
 <para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
@@ -35,6 +54,9 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md153">
+<title>BACKUP</title>
 <para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
@@ -44,9 +66,11 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
+</sect2>
 </sect1>
-<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md145">
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md154">
 <title>aRMOR services</title>
+<para>the package uses only one service from aRMOR.</para>
 <para><programlisting><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/armor_interface_srv&quot;<sp/>as<sp/>SRV_ARMOR_DIRECTIVE</highlight></codeline>
@@ -57,10 +81,11 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md146">
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md155">
 <title>aRMOR interfaces structure</title>
-<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md147">
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md156">
 <title>package aRMOR</title>
+<para>here&apos;s a simplified representation of the base aRMOR, used by this package.</para>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
@@ -79,8 +104,9 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md148">
+<sect2 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md157">
 <title>aRMOR interface component</title>
+<para>here is the component diagram of the two main classes <computeroutput>armor_tools</computeroutput> and <computeroutput>armor_cluedo</computeroutput>.</para>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
@@ -144,7 +170,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md149">
+<sect1 id="md_robocluedo_armor__uml_armor-uml_1autotoc_md158">
 <title>THE COMPLETE SCHEMATIC</title>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>

@@ -27,11 +27,13 @@ sys.path.insert(0, os.path.abspath('./robocluedo_movement_controller/scripts'))
 sys.path.insert(0, os.path.abspath('./robocluedo_rosplan'))
 sys.path.insert(0, os.path.abspath('./robocluedo_rosplan/scripts'))
 sys.path.insert(0, os.path.abspath('./robocluedo_rosplan_msgs'))
+sys.path.insert(0, os.path.abspath('./robocluedo_vision'))
+sys.path.insert(0, os.path.abspath('./robocluedo_vision/scripts'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'RobotCLuedo #3'
+project = 'RoboCLuedo #3'
 copyright = '2022, Francesco Ganci'
 author = 'Francesco Ganci'
 

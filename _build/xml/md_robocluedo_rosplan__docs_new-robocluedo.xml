@@ -2,51 +2,62 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_robocluedo_rosplan__docs_new-robocluedo" kind="page">
     <compoundname>md_robocluedo_rosplan__docs_new-robocluedo</compoundname>
-    <title>PDDL description – the new RoboCLuedo</title>
+    <title>PDDL Design – the new RoboCLuedo PDDL model</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md313">
-<title>differences from the previous version</title>
+<para><programlisting filename=".warning"><codeline><highlight class="normal">This<sp/>document<sp/>is<sp/>very<sp/>old,<sp/>and<sp/>for<sp/>sure<sp/>it<sp/>needs<sp/>to<sp/>be<sp/>updated.<sp/>You<sp/>can<sp/>find<sp/>the<sp/>current<sp/>model<sp/>in<sp/>the<sp/>folder<sp/>`/robocluedo_rosplan/pddl/robocluedo_3`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">I<sp/>leave<sp/>this<sp/>document<sp/>here<sp/>because<sp/>it<sp/>contains<sp/>the<sp/>very<sp/>first<sp/>design<sp/>process<sp/>of<sp/>the<sp/>current<sp/>PDDL,<sp/>which<sp/>is<sp/>changed<sp/>a<sp/>lot<sp/>during<sp/>the<sp/>development<sp/>of<sp/>the<sp/>project.<sp/>Here<sp/>are<sp/>the<sp/>basic<sp/>principles.<sp/></highlight></codeline>
+</programlisting></para>
+<para><programlisting filename=".todo"><codeline><highlight class="normal">a<sp/>big<sp/>half<sp/>of<sp/>this<sp/>document<sp/>is<sp/>still<sp/>*in<sp/>italian*.<sp/>Remember<sp/>to<sp/>translate<sp/>it.<sp/></highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./new-robocluedo.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md327">
+<title>Differences from the previous version</title>
+<para>see <ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git">the previous version of the RoboCLuedo #2 Project</ulink></para>
 <para><itemizedlist>
 <listitem><para>usage of <emphasis>landmarks</emphasis> instead of only one goal</para>
-</listitem><listitem><para>the PDDL just manages the movements and how the robot works, and not othe rinformations</para>
-</listitem><listitem><para>clear distinction between the KB os ROSPlan and the aRMOR KB</para>
+<para>a landmark is a sort of <emphasis>checkpoint</emphasis>, and in particular it will correspond to a particular phase of the mission. The AI will will work on two levels: the highest one, the <emphasis>mission level</emphasis>, will decide how to combine landmarks in order to let the mission succeed, whereas the lowest one, implemented using rosplan, plans how to carry out the single action depending on the current status of the robot.</para>
+<para>For instance, the mission manager could say &quot;COLLECT A HINT&quot;, leavng the planner the task to decide precisely which sequence of actions the robot has to take in order to fulfill the current mission objective.</para>
+</listitem><listitem><para>the PDDL just manages the movements and how the robot works, and not other informations. Clear distinction between the KB os ROSPlan and the aRMOR KB</para>
+<para>in the previous version of the model, the rosplan KB has been used also as a common KB for the reasoning. This requires to declare predicates inside the PDDL domain, and to decide how to combine two sets of informations. It is a very poor design choice, which lets to a overcomplicated implementation. <emphasis>It is simpler to separate the true reasoning from the simple problem solving</emphasis>.</para>
 </listitem><listitem><para><emphasis>a simpler, concise model</emphasis>: this increases the flexibility of the model, and in particular it makes quicker any future update of the arch</para>
-</listitem><listitem><para>much more like a stata machine than the previous version (or also like a flow chart)</para>
+</listitem><listitem><para>much more like a stata machine than the previous version</para>
 </listitem><listitem><para><emphasis>no usage of fluents</emphasis></para>
+<para>in this case, using fluents is not so important. In order to keep as simpler as possible the declaration of the problem, it is better to rely only on the simple predicates.</para>
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md314">
-<title>list of Landmarks</title>
+<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md328">
+<title>A list of Landmarks</title>
+<para><programlisting filename=".note"><codeline><highlight class="normal">the<sp/>implementation<sp/>of<sp/>the<sp/>landmarks<sp/>is<sp/>a<sp/>bit<sp/>more<sp/>cumbersome,<sp/>even<sp/>if<sp/>the<sp/>principle<sp/>is<sp/>the<sp/>one<sp/>outlined<sp/>here.<sp/>See<sp/>{any}`kb_interface`<sp/>for<sp/>more<sp/>informations.<sp/></highlight></codeline>
+</programlisting></para>
+<para>Here are the macro-objectives the mission planner could require to the ROSPlan unit:</para>
 <para><itemizedlist>
-<listitem><para>replan preconditions: ```lisp (dirty ) ``` goal: ```lisp (not-dirty ) ```</para>
-</listitem><listitem><para>propose a solution <ndash/> solve preconditions: ```lisp (not-dirty ) ``` goal: ```lisp (dirty ) ```</para>
-</listitem><listitem><para>collect a new hint <ndash/> collect preconditions: ```lisp (not-dirty ) ``` goal: ```lisp (not-dirty ) (hint-collected ?wp ) ```</para>
+<listitem><para><bold>replan</bold> preconditions: ```lisp (dirty ) ``` goal: ```lisp (not-dirty ) ```</para>
+</listitem><listitem><para><bold>propose a solution <ndash/> solve</bold> preconditions: ```lisp (not-dirty ) ``` goal: ```lisp (dirty ) ```</para>
+</listitem><listitem><para><bold>collect a new hint <ndash/> collect</bold> preconditions: ```lisp (not-dirty ) ``` goal: ```lisp (not-dirty ) (hint-collected ?wp ) ```</para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md315">
-<title>list of services provided by the kb interface</title>
-<para><itemizedlist>
-<listitem><para>write a predicate into the kb</para>
-</listitem><listitem><para>read a predicate from kb</para>
-</listitem><listitem><para>read the goal</para>
-</listitem><listitem><para>set the goal</para>
-</listitem></itemizedlist>
-</para>
-<para>more specific:</para>
-<para><itemizedlist>
-<listitem><para>secure clean</para>
-</listitem><listitem><para>set one particular objective among the predefined landmarks</para>
-</listitem></itemizedlist>
-</para>
-</sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md316">
+<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md329">
 <title>list of actions</title>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md317">
-<title>replan</title>
+<para><programlisting filename=".note"><codeline><highlight class="normal">This<sp/>document<sp/>reports<sp/>the<sp/>very<sp/>first<sp/>version<sp/>of<sp/>the<sp/>code,<sp/>*which<sp/>is<sp/>sometimes<sp/>not<sp/>correct*.<sp/>Please<sp/>refer<sp/>to<sp/>the<sp/>models<sp/>inside<sp/>the<sp/>folder<sp/>`/robocluedo_rosplan/pddl/robocluedo_3`.</highlight></codeline>
+</programlisting></para>
+<para><programlisting filename=".note"><codeline><highlight class="normal">*document<sp/>in<sp/>italian*<sp/>(thinking<sp/>in<sp/>english<sp/>makes<sp/>everything<sp/>...<sp/>annoyingly<sp/>slower)</highlight></codeline>
+</programlisting></para>
+<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md330">
+<title>REPLAN</title>
 <para><itemizedlist>
 <listitem><para>**(ACTION) replan**<itemizedlist>
 <listitem><para>c&apos;è un bool <computeroutput>(dirty )</computeroutput> che indica quando il sistema non è inizializzato</para>
@@ -99,8 +110,8 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md318">
-<title>collect</title>
+<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md331">
+<title>COLLECT</title>
 <para><itemizedlist>
 <listitem><para>**(ACTION) move-to**<itemizedlist>
 <listitem><para>semplice azione di movimento da un punto ad un altro</para>
@@ -274,8 +285,8 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md321">
-<title>solve</title>
+<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md334">
+<title>SOLVE</title>
 <para><itemizedlist>
 <listitem><para>**(ACTION) move-to-center**<itemizedlist>
 <listitem><para>come precondizione il robot non si trova al centro, quindi la posizione attuale è <computeroutput>(not-is-center ?wp)</computeroutput></para>
