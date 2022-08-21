@@ -10,7 +10,22 @@
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>ROSPlann<sp/>Knowledge<sp/>base<sp/>--<sp/>formal<sp/>ROS<sp/>description</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./rosplan-kb.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>has<sp/>been<sp/>written<sp/>in<sp/>order<sp/>to<sp/>support<sp/>the<sp/>develop<sp/>of<sp/>the<sp/>package,<sp/>as<sp/>well<sp/>as<sp/>both<sp/>the<sp/>coding<sp/>and<sp/>the<sp/>testing<sp/>phases.<sp/></highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">##<sp/>schema<sp/>--<sp/>knowledge<sp/>base</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here<sp/>are<sp/>the<sp/>main<sp/>services<sp/>exposed<sp/>by<sp/>the<sp/>ROSPlan<sp/>knowledge<sp/>base.<sp/>The<sp/>graph<sp/>shows<sp/>the<sp/>ones<sp/>used<sp/>by<sp/>this<sp/>project.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -52,14 +67,16 @@
 <codeline><highlight class="normal">KB<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>SRV_QUERY</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>rosplan_knowledge_msgs/KnowledgeQueryService</highlight></codeline>
 <codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
-<codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>schema<sp/>--<sp/>CLASS<sp/>kb_tools</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{todo}</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>current<sp/>version<sp/>has<sp/>a<sp/>very<sp/>poor<sp/>support<sp/>for<sp/>the<sp/>PDDL<sp/>fluents,<sp/>because<sp/>not<sp/>required<sp/>by<sp/>this<sp/>kind<sp/>of<sp/>project.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>class<sp/>*kb_tools*<sp/>is<sp/>used<sp/>for<sp/>interacting<sp/>in<sp/>a<sp/>convenient<sp/>way<sp/>with<sp/>the<sp/>knowledge<sp/>base.<sp/>It<sp/>contains<sp/>methods<sp/>for<sp/>enabling<sp/>another<sp/>class<sp/>(by<sp/>inheritance)<sp/>both<sp/>to<sp/>read<sp/>and<sp/>write<sp/>to<sp/>the<sp/>Knowledge<sp/>Base.<sp/>This<sp/>little<sp/>schema<sp/>reports<sp/>the<sp/>most<sp/>important<sp/>methods<sp/>provided<sp/>by<sp/>the<sp/>class.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -106,9 +123,15 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>the<sp/>long<sp/>list<sp/>of<sp/>HOW<sp/>TOs<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>HOW<sp/>TO<sp/>read<sp/>a<sp/>predicate</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>(from<sp/>here)<sp/>The<sp/>long<sp/>list<sp/>of<sp/>HOW<sp/>TOs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here&apos;s<sp/>a<sp/>short<sp/>summary<sp/>about<sp/>how<sp/>to<sp/>deal<sp/>with<sp/>the<sp/>Knowledge<sp/>Base.<sp/>Mostly<sp/>of<sp/>the<sp/>snippets<sp/>introduced<sp/>here<sp/>are<sp/>written<sp/>in<sp/>C++<sp/>without<sp/>loss<sp/>of<sp/>generality.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>read<sp/>a<sp/>predicate</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">libraries<sp/>to<sp/>import:</highlight></codeline>
 <codeline></codeline>
@@ -145,7 +168,7 @@
 <codeline><highlight class="normal">TLOG(<sp/>&quot;Opening<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>SERVICE_QUERY<sp/>)<sp/>&lt;&lt;<sp/>&quot;...<sp/>OK&quot;<sp/>);</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">message<sp/>**rosplan_knowledge_msgs/KnowledgeQueryService**</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>message<sp/>**rosplan_knowledge_msgs/KnowledgeQueryService**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```text</highlight></codeline>
 <codeline><highlight class="normal">rosplan_knowledge_msgs/KnowledgeItem[]<sp/>knowledge</highlight></codeline>
@@ -155,7 +178,9 @@
 <codeline><highlight class="normal">rosplan_knowledge_msgs/KnowledgeItem[]<sp/>false_knowledge</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">message<sp/>**rosplan_knowledge_msgs/KnowledgeItem**<sp/>(needed<sp/>to<sp/>perform<sp/>the<sp/>request)</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>message<sp/>**rosplan_knowledge_msgs/KnowledgeItem**<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(needed<sp/>to<sp/>perform<sp/>the<sp/>request)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```text</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>A<sp/>knowledge<sp/>item<sp/>used<sp/>to<sp/>represent<sp/>a<sp/>piece<sp/>of<sp/>the<sp/>state<sp/>in<sp/>ROSPlan</highlight></codeline>
@@ -211,7 +236,7 @@
 <codeline><highlight class="normal">rosplan_knowledge_msgs/DomainInequality<sp/>ineq</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">message<sp/>**diagnostic_msgs/KeyValue**<sp/>:<sp/></highlight></codeline>
+<codeline><highlight class="normal">###<sp/>message<sp/>**diagnostic_msgs/KeyValue**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```text</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>what<sp/>to<sp/>label<sp/>this<sp/>value<sp/>when<sp/>viewing</highlight></codeline>
@@ -220,7 +245,7 @@
 <codeline><highlight class="normal">string<sp/>value</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">how<sp/>to<sp/>perform<sp/>the<sp/>reading:</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>how<sp/>to<sp/>perform<sp/>the<sp/>reading</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&gt;<sp/>reading<sp/>predicates<sp/>:<sp/>if<sp/>you&apos;re<sp/>sure<sp/>that<sp/>the<sp/>predicate<sp/>you&apos;re<sp/>asking<sp/>for<sp/>is<sp/>unique,<sp/>use<sp/>the<sp/>field<sp/>response.all_true;<sp/>or<sp/>also<sp/>.response.results\[]<sp/>showing<sp/>each<sp/>truth<sp/>value.</highlight></codeline>
 <codeline></codeline>
@@ -274,7 +299,7 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">how<sp/>to<sp/>perform<sp/>the<sp/>reading<sp/>using<sp/>KB<sp/>tools:</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>how<sp/>to<sp/>perform<sp/>the<sp/>reading<sp/>using<sp/>KB<sp/>tools</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```c++</highlight></codeline>
 <codeline><highlight class="normal">//<sp/>just<sp/>one<sp/>predicate!</highlight></codeline>
@@ -288,7 +313,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_ERR(&quot;kb<sp/>tools<sp/>get<sp/>predicate&quot;);</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>HOW<sp/>TO<sp/>modify<sp/>a<sp/>predicate</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>modify<sp/>a<sp/>predicate</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">libraries:</highlight></codeline>
 <codeline></codeline>
@@ -331,7 +356,7 @@
 <codeline><highlight class="normal">TLOG(<sp/>&quot;Opening<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>SERVICE_KB_UPDATE<sp/>)<sp/>&lt;&lt;<sp/>&quot;...<sp/>OK&quot;<sp/>);</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">service<sp/>**rosplan_knowledge_msgs::KnowledgeUpdateService**</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>service<sp/>**rosplan_knowledge_msgs::KnowledgeUpdateService**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```text</highlight></codeline>
 <codeline><highlight class="normal">uint8<sp/>update_type</highlight></codeline>
@@ -344,7 +369,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">message<sp/>**diagnostic_msgs/KeyValue**<sp/>(see<sp/>above)</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">how<sp/>to<sp/>perform<sp/>the<sp/>update:</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>how<sp/>to<sp/>perform<sp/>the<sp/>update</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```c++</highlight></codeline>
 <codeline><highlight class="normal">std::string<sp/>pname</highlight></codeline>
@@ -380,7 +405,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">how<sp/>to<sp/>perform<sp/>the<sp/>update<sp/>with<sp/>kb_tools:</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>how<sp/>to<sp/>perform<sp/>the<sp/>update<sp/>with<sp/>kb_tools:</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```c++</highlight></codeline>
 <codeline><highlight class="normal">std::string<sp/>pname</highlight></codeline>
@@ -460,13 +485,19 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">##<sp/>schema<sp/>--<sp/>NODE<sp/>kb_interface</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>ROS<sp/>node<sp/>provides<sp/>functionalities<sp/>for<sp/>replanning<sp/>and<sp/>for<sp/>altering/reading<sp/>the<sp/>knowledge<sp/>base<sp/>in<sp/>a<sp/>convenient,<sp/>general<sp/>way,<sp/>not<sp/>constraining<sp/>the<sp/>other<sp/>nodes<sp/>to<sp/>take<sp/>into<sp/>account<sp/>the<sp/>peculiarities<sp/>of<sp/>the<sp/>current<sp/>PDDL.<sp/>This<sp/>makes<sp/>the<sp/>system<sp/>more<sp/>flexible<sp/>and<sp/>adaptable<sp/>to<sp/>other<sp/>types<sp/>of<sp/>PDDL<sp/>problems.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>node<sp/>takes<sp/>advantage<sp/>of<sp/>the<sp/>class<sp/>*kb_tools*<sp/>which<sp/>is<sp/>applied<sp/>to<sp/>handle<sp/>the<sp/>data<sp/>inside<sp/>the<sp/>kb.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>robocluedo_armor<sp/>project<sp/>structure</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>robocluedo_rosplan<sp/>KB_INTERFACE<sp/>node</highlight></codeline>
 <codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
 <codeline><highlight class="normal">allow_mixing</highlight></codeline>
 <codeline></codeline>

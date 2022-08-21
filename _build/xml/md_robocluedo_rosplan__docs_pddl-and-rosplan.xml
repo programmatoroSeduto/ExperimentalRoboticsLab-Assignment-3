@@ -2,18 +2,27 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_robocluedo_rosplan__docs_pddl-and-rosplan" kind="page">
     <compoundname>md_robocluedo_rosplan__docs_pddl-and-rosplan</compoundname>
-    <title>PDDL and ROSPlan</title>
+    <title>DOCS – PDDL and ROSPlan</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./pddl-and-rosplan.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
 <para>Unfortunately, the ROS Plan knowledge base is able only to parse a very particular, limited version of the PDDL. And worse, this doesn&apos;t seem to appear in any documentation about ROS Plan!</para>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md337">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md340">
 <title>validation with Parser</title>
 <para>from inside the folder <computeroutput>(package robocluedo_rosplan_interface)/pddl/</computeroutput> run the command</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">./parser<sp/>&lt;domain<sp/>file&gt;<sp/>&lt;(opt)<sp/>problem<sp/>file&gt;</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md338">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md341">
 <title>solution with popf</title>
 <para>the repository contains a already compiled version of the planner popf. In case is doesn&apos;t work, you can find another executable in the folder <computeroutput>&lt;tour workspace&gt;/src/ROSPlan/rosplan_planning_system/common/bin/</computeroutput>.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">&lt;path&gt;/popf<sp/>DOMAIN<sp/>PROBLEM</highlight></codeline>
@@ -28,7 +37,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md339">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md342">
 <title>Specific rules for the PDDL in ROS Plan</title>
 <para>you can set the planner in a suitable way for your application by the <computeroutput>planner_command</computeroutput> parameter in the planner interface. BUT the knowledge base node is able to interpret a non-standard particular version of PDDL, otherwise it closes unexpectedly.</para>
 <para><itemizedlist>
@@ -51,7 +60,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md340">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md343">
 <title>Durative Actions - the right syntax</title>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:durative-action<sp/>???</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:parameters<sp/>(<sp/>???<sp/>)</highlight></codeline>
@@ -66,7 +75,7 @@
 <codeline><highlight class="normal">)</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md341">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md344">
 <title>Issue in the problem preprocessing</title>
 <para>even with a perfect PDDL code, the planner, after the preprocessing phase, could complain a mysterious syntax error...</para>
 <para>maybe you wrote this in the original problem:</para>
@@ -78,10 +87,10 @@
 <para><emphasis>that is syntactically wrong!</emphasis> It explains the strange message.</para>
 <para><bold>but notice that</bold> this is just a warning, therefore you can skip it.</para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md342">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md345">
 <title>ADL support</title>
 <para><bold>ROSPlan doesn&apos;t have a complete support for ADL</bold>, which is definitely a bad news. Classical planning isn&apos;t supported, in particular the common actions. When you set the requirement <emphasis>ADL</emphasis>, the message is this:</para>
-<para><programlisting><codeline><highlight class="normal">A<sp/>problem<sp/>has<sp/>been<sp/>encountered,<sp/>and<sp/>the<sp/>planner<sp/>has<sp/>to<sp/>terminate.</highlight></codeline>
+<para><programlisting filename=".text"><codeline><highlight class="normal">A<sp/>problem<sp/>has<sp/>been<sp/>encountered,<sp/>and<sp/>the<sp/>planner<sp/>has<sp/>to<sp/>terminate.</highlight></codeline>
 <codeline><highlight class="normal">-----------------------------------------------------------------</highlight></codeline>
 <codeline><highlight class="normal">Unfortunately,<sp/>at<sp/>present,<sp/>the<sp/>planner<sp/>does<sp/>not<sp/>fully<sp/>support<sp/>ADL</highlight></codeline>
 <codeline><highlight class="normal">unless<sp/>in<sp/>the<sp/>rules<sp/>for<sp/>derived<sp/>predicates.<sp/><sp/>Only<sp/>two<sp/>aspects<sp/>of</highlight></codeline>
@@ -97,14 +106,15 @@
 <codeline><highlight class="normal">for<sp/>them,<sp/>please<sp/>contact<sp/>the<sp/>authors<sp/>to<sp/>discuss<sp/>it<sp/>with<sp/>them,<sp/>who<sp/>may<sp/>be<sp/>able<sp/>to</highlight></codeline>
 <codeline><highlight class="normal">extend<sp/>the<sp/>planner<sp/>to<sp/>meet<sp/>your<sp/>needs.</highlight></codeline>
 </programlisting></para>
-<para>the funny thing is that <emphasis>the planners support ADL, but KB does not!</emphasis> And, since KB parses the problem, there&apos;s no way to parse things like classical planning, unless you don&apos;t want to throw away most of the ROS Plan framework.</para>
+<para>the funny thing is that <emphasis>the POPF planners support ADL, but tge ROSPlan KB does not!</emphasis> And, since KB parses the problem, there&apos;s no way to parse things like classical planning, unless you don&apos;t want to throw away most of the ROS Plan framework.</para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md343">
+<sect1 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md346">
 <title>Available Planners</title>
-<para><bold>Attention</bold> : Better to use POPF, as suggested in the official tutorial.</para>
-<sect2 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md344">
+<para><programlisting filename=".attention"><codeline><highlight class="normal">It<sp/>is<sp/>recommended<sp/>to<sp/>use<sp/>the<sp/>POPF<sp/>planner,<sp/>as<sp/>suggested<sp/>by<sp/>the<sp/>official<sp/>tutorials<sp/>as<sp/>well.<sp/></highlight></codeline>
+</programlisting></para>
+<sect2 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md347">
 <title>POPF help</title>
-<para>see <ulink url="https://planning.wiki/ref/planners/popf">popf infos</ulink></para>
+<para>see <ulink url="https://planning.wiki/ref/planners/popf">popf characteristics</ulink>.</para>
 <para><bold>temporal planner (supporting durative actions only)</bold>. Supported requirements:</para>
 <para><programlisting filename=".lisp"><codeline><highlight class="normal">(:requirements<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:strips<sp/></highlight></codeline>
@@ -114,7 +124,8 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>:durative-actions</highlight></codeline>
 <codeline><highlight class="normal">)</highlight></codeline>
 </programlisting></para>
-<para><bold>PLanning interface</bold> : <computeroutput>&lt;node pkg=&quot;rosplan_planning_system&quot; name=&quot;popf_planning_interface&quot; type=&quot;popf_planning_interface&quot;&gt;</computeroutput></para>
+<para><bold>PLanning interface</bold> : <verbatim>`&lt;node pkg=&quot;rosplan_planning_system&quot; name=&quot;popf_planning_interface&quot; type=&quot;popf_planning_interface&quot;&gt;`
+</verbatim></para>
 <para>help from the program:</para>
 <para><programlisting><codeline><highlight class="normal">root@dbfbde77a543:~/ros_ws/src/ROSPlan/rosplan_planning_system/common/bin#<sp/>./popf<sp/>--help</highlight></codeline>
 <codeline><highlight class="normal">Unrecognised<sp/>command-line<sp/>switch<sp/>&apos;-&apos;</highlight></codeline>
@@ -149,7 +160,7 @@
 <para><programlisting filename=".bash"><codeline><highlight class="normal">&lt;popf_path&gt;/popf<sp/>-n<sp/>-v2<sp/>DOMAIN<sp/>PROBLEM<sp/>&gt;<sp/>plan.pddl</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md345">
+<sect2 id="md_robocluedo_rosplan__docs_pddl-and-rosplan_1autotoc_md348">
 <title>Metric-ff help</title>
 <para>see <ulink url="https://planning.wiki/ref/planners/metricff">Metric-FF on planning.wiki</ulink></para>
 <para>see also the <ulink url="https://fai.cs.uni-saarland.de/hoffmann/metric-ff.html">official page of Metric-FF</ulink></para>

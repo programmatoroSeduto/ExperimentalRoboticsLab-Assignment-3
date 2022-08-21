@@ -1132,6 +1132,14 @@ e ora si parte col lavoro di documentazione vera, sempre con la solita filosofia
 	- ...
 - **COMMIT**: "documentation review"
 
+---
+
+avanti con la documentazione:
+
+- **robocluedo rosplan**
+	- pddl and rosplan
+	- gli UML per ROSPlan non mi convincono molto...ma quelli più estesi sono veramente difficili da tracciare: ci sono un sacco di connessioni, sono tutti ingarbugliati, e anche guardandoli non se ne capirebbe il senso. quindi, meglio tenersi sul semplice. 
+- **COMMIT**: "writing documentation"
 
 
 ```{todo}
@@ -1148,8 +1156,9 @@ e ora si parte col lavoro di documentazione vera, sempre con la solita filosofia
 - documentazione codice del pacchetto vision
 	- creare anche qualche UML del codice
 	- (ma non fare un lavoro *eccessivamente dettagliato*)
-- 
-
+- documentazione di rosplan
+	- per quanto riguarda l'attuale documentazione del codice, oltre a non esserci nulla, non si capisce se le cose documentate siano nodi, classi, azioni, ...
+	- organizzare un po' meglio la parte della code reference
 
 **secondo assignment:**
 
@@ -1157,6 +1166,9 @@ e ora si parte col lavoro di documentazione vera, sempre con la solita filosofia
 - (tenta di non fare troppi aggiornamenti inutili ... alla fin fine, il secondo assignment funziona bene così: inutile fare più del necessario)
 - importare la documentazione di aRMOR finale dal terzo assignment
 - la documentazione del package rosplan può essere riportata pari pari nell'assignment 2, perchè tanto è identica
+- documentazione di rosplan
+	- copiare per intero rosplan-arch.md
+	- c'è qualcosa di specifico da inserire in questo documento?
 
 ```
 

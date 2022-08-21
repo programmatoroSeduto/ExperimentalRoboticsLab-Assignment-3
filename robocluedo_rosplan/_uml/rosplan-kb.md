@@ -1,7 +1,22 @@
 
 # UML -- ROSPlann Knowledge base -- formal ROS description
 
+---
+
+```{toctree}
+---
+caption: Contents
+---
+./rosplan-kb.md
+```
+
+---
+
+This document has been written in order to support the develop of the package, as well as both the coding and the testing phases. 
+
 ## schema -- knowledge base
+
+here are the main services exposed by the ROSPlan knowledge base. The graph shows the ones used by this project. 
 
 ```{uml} 
 @startuml
@@ -43,14 +58,16 @@ note on link: rosplan_knowledge_msgs/KnowledgeUpdateServiceArray
 KB "srv" --> "cl" SRV_QUERY
 note on link: rosplan_knowledge_msgs/KnowledgeQueryService
 
-
-''' CONNECTIONS
-' ...
-
 @enduml
 ```
 
 ## schema -- CLASS kb_tools
+
+```{todo}
+the current version has a very poor support for the PDDL fluents, because not required by this kind of project. 
+```
+
+the class *kb_tools* is used for interacting in a convenient way with the knowledge base. It contains methods for enabling another class (by inheritance) both to read and write to the Knowledge Base. This little schema reports the most important methods provided by the class. 
 
 ```{uml} 
 @startuml
@@ -97,9 +114,15 @@ SRV_QUERY --> "cl" TOOLS
 @enduml
 ```
 
-## the long list of HOW TOs ...
+---
 
-### HOW TO read a predicate
+## (from here) The long list of HOW TOs
+
+here's a short summary about how to deal with the Knowledge Base. Mostly of the snippets introduced here are written in C++ without loss of generality. 
+
+---
+
+## HOW TO read a predicate
 
 libraries to import:
 
@@ -136,7 +159,7 @@ if( !this->cl_query.waitForExistence( ros::Duration( TIMEOUT_QUERY ) ) )
 TLOG( "Opening client " << LOGSQUARE( SERVICE_QUERY ) << "... OK" );
 ```
 
-message **rosplan_knowledge_msgs/KnowledgeQueryService**
+### message **rosplan_knowledge_msgs/KnowledgeQueryService**
 
 ```text
 rosplan_knowledge_msgs/KnowledgeItem[] knowledge
@@ -146,7 +169,9 @@ bool[] results
 rosplan_knowledge_msgs/KnowledgeItem[] false_knowledge
 ```
 
-message **rosplan_knowledge_msgs/KnowledgeItem** (needed to perform the request)
+### message **rosplan_knowledge_msgs/KnowledgeItem** 
+
+(needed to perform the request)
 
 ```text
 # A knowledge item used to represent a piece of the state in ROSPlan
@@ -202,7 +227,7 @@ rosplan_knowledge_msgs/ExprComposite expr
 rosplan_knowledge_msgs/DomainInequality ineq
 ```
 
-message **diagnostic_msgs/KeyValue** : 
+### message **diagnostic_msgs/KeyValue**
 
 ```text
 # what to label this value when viewing
@@ -211,7 +236,7 @@ string key
 string value
 ```
 
-how to perform the reading:
+### how to perform the reading
 
 > reading predicates : if you're sure that the predicate you're asking for is unique, use the field response.all_true; or also .response.results\[] showing each truth value.
 
@@ -265,7 +290,7 @@ else
 }
 ```
 
-how to perform the reading using KB tools:
+### how to perform the reading using KB tools
 
 ```c++
 // just one predicate!
@@ -279,7 +304,7 @@ if(!kbt->ok())
 	ROS_ERR("kb tools get predicate");
 ```
 
-### HOW TO modify a predicate
+## HOW TO modify a predicate
 
 libraries:
 
@@ -322,7 +347,7 @@ if( !this->cl_kb_update.waitForExistence( ros::Duration( TIMEOUT_KB_UPDATE ) ) )
 TLOG( "Opening client " << LOGSQUARE( SERVICE_KB_UPDATE ) << "... OK" );
 ```
 
-service **rosplan_knowledge_msgs::KnowledgeUpdateService**
+### service **rosplan_knowledge_msgs::KnowledgeUpdateService**
 
 ```text
 uint8 update_type
@@ -335,7 +360,7 @@ message **rosplan_knowledge_msgs/KnowledgeItem** (see above)
 
 message **diagnostic_msgs/KeyValue** (see above)
 
-how to perform the update:
+### how to perform the update
 
 ```c++
 std::string pname
@@ -371,7 +396,7 @@ bool success = kbm.response.success;
 
 ```
 
-how to perform the update with kb_tools:
+### how to perform the update with kb_tools:
 
 ```c++
 std::string pname
@@ -451,13 +476,19 @@ bool success = kbm.response.success;
 
 ```
 
+---
+
 ## schema -- NODE kb_interface
+
+this ROS node provides functionalities for replanning and for altering/reading the knowledge base in a convenient, general way, not constraining the other nodes to take into account the peculiarities of the current PDDL. This makes the system more flexible and adaptable to other types of PDDL problems. 
+
+The node takes advantage of the class *kb_tools* which is applied to handle the data inside the kb. 
 
 ```{uml} 
 @startuml
 
 ''' INFOS
-title robocluedo_armor project structure
+title robocluedo_rosplan KB_INTERFACE node
 skinparam Padding 8
 allow_mixing
 

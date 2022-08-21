@@ -2,12 +2,21 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_robocluedo_rosplan__uml_rosplan-arch" kind="page">
     <compoundname>md_robocluedo_rosplan__uml_rosplan-arch</compoundname>
-    <title>UML – robocluedo rosplan</title>
+    <title>UML – robocluedo rosplan – in a nutshell</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-arch_1autotoc_md347">
-<title>simple description</title>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./rosplan-arch.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-arch_1autotoc_md352">
+<title>elements</title>
 <para>nodes and components:</para>
 <para><itemizedlist>
 <listitem><para>knowledge base</para>
@@ -15,12 +24,19 @@
 </listitem><listitem><para>planning interface</para>
 </listitem><listitem><para>parsing interface</para>
 </listitem><listitem><para>plan dispatcher</para>
-</listitem><listitem><para>... actions ...</para>
-</listitem><listitem><para>feedback manager</para>
+</listitem></itemizedlist>
+</para>
+<para>... actions ...</para>
+<para><itemizedlist>
+<listitem><para>feedback manager</para>
 </listitem><listitem><para>rosplan kb interface</para>
 </listitem><listitem><para>rosplan pipeline manager</para>
 </listitem></itemizedlist>
 </para>
+</sect1>
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-arch_1autotoc_md353">
+<title>UML – Architecture (simplified)</title>
+<para>here&apos;s a essential representation of the package plus the ROSPlan system, controlled by this package:</para>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DIAGRAM<sp/>INFOS</highlight></codeline>
@@ -41,11 +57,11 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[parsing<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PARSE</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[plan<sp/>dispatcher]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>DISPATCH</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right-&gt;<sp/>PROBLEM</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PROBLEM<sp/>-down-&gt;<sp/>PLAN</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PLAN<sp/>-down-&gt;<sp/>PARSE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right--<sp/>PROBLEM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PROBLEM<sp/>-down--<sp/>PLAN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PLAN<sp/>-down--<sp/>PARSE</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right-<sp/>PARSE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PARSE<sp/>-down-&gt;<sp/>DISPATCH</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PARSE<sp/>-down--<sp/>DISPATCH</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-left-<sp/>DISPATCH</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
@@ -56,19 +72,19 @@
 <codeline><highlight class="normal">[feedback\nmanager]<sp/>as<sp/>FEEDBACK</highlight></codeline>
 <codeline><highlight class="normal">[ROSPlan\npipeline<sp/>manager]<sp/>&lt;&lt;node&gt;&gt;<sp/>as<sp/>MANAGER</highlight></codeline>
 <codeline><highlight class="normal">[KB<sp/>interface]<sp/>&lt;&lt;node&gt;&gt;<sp/>as<sp/>IKB</highlight></codeline>
-<codeline><highlight class="normal">ACTION<sp/>--&gt;<sp/>IKB</highlight></codeline>
+<codeline><highlight class="normal">ACTION<sp/>---<sp/>IKB</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">DISPATCH<sp/>-right-&gt;<sp/>ACTION</highlight></codeline>
-<codeline><highlight class="normal">PDDL_DOM<sp/>--&gt;<sp/>KB</highlight></codeline>
-<codeline><highlight class="normal">PDDL_PROB<sp/>--&gt;<sp/>KB</highlight></codeline>
-<codeline><highlight class="normal">IKB<sp/>&lt;--&gt;<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">DISPATCH<sp/>-right--<sp/>ACTION</highlight></codeline>
+<codeline><highlight class="normal">PDDL_DOM<sp/>---<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">PDDL_PROB<sp/>---<sp/>KB</highlight></codeline>
+<codeline><highlight class="normal">IKB<sp/>---<sp/>KB</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">ACTION<sp/>--&gt;<sp/>FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">ACTION<sp/>---<sp/>FEEDBACK</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">PROBLEM<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">PLAN<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">PARSE<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">DISPATCH<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">PROBLEM<sp/>-right--<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">PLAN<sp/>-right--<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">PARSE<sp/>-right--<sp/>MANAGER</highlight></codeline>
+<codeline><highlight class="normal">DISPATCH<sp/>-right--<sp/>MANAGER</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;feedback<sp/>topic&quot;<sp/>as<sp/>TOPIC_FEEDBACK</highlight></codeline>
@@ -78,7 +94,18 @@
 <codeline><highlight class="normal">()<sp/>&quot;KB<sp/>interface<sp/>service&quot;<sp/>as<sp/>SRV_IKB</highlight></codeline>
 <codeline><highlight class="normal">IKB<sp/>--&gt;<sp/>SRV_IKB</highlight></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
-</programlisting> </para>
+</programlisting></para>
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-arch_1autotoc_md354">
+<title>Blocks</title>
+<para>let&apos;s see better some important blocks:</para>
+<para><itemizedlist>
+<listitem><para>the <bold>rosplan pipeline manager</bold> controls the steps the ROSPlan architecture uses to make and execute the plan, from the problem loading phase to the dispatch. Another fundamental functionality provided by this block is to make explainable possible problems that could occur during the planning, with a rich feedback send to the node using the pipeline manager.</para>
+</listitem><listitem><para>the service for dispatching the plan provides just two informations: if the plan has been executed successfully, and if the goal has been fulfilled at the end of the dispatch, and unfortunately <emphasis>nothing else</emphasis>. Here&apos;s where the <bold>feedback manager</bold> comes in: role of the feedback manager is to make the ROSPlan actions able to explain in details each possible &quot;problematic&quot; situation which could happen during the plan dispatch. The action encountering something wrong <emphasis>publishes</emphasis> a precise type of feedback through a topic reserved for the feedback exchange, and the ROSPlan pipeline manager exploits such a feedback to explain what&apos;s wrong with the last plan dispatch.</para>
+</listitem><listitem><para>another fundamental tool inside the package is the so-called <bold>KB interface</bold>, which provides the ability to modify the predicates of the problem instance inside the knowledge base. This eposes services making easier to <emphasis>replan</emphasis> as well as to <emphasis>alter</emphasis> and to <emphasis>read</emphasis> the informations inside the knowledge base. Its implementation follows the particular characteristics of the PDDL domain, hence one of its roles is to <emphasis>hide the spcificity of the PDDL problem</emphasis>, providing a general, flexible interface for handling the problem in a (kinda) &quot;standard&quot; way.</para>
+</listitem><listitem><para>the dispach can interact with the system using a bunch of both ROS actions and Simulated Actions, enabling the system to perform functionalities such as navigation and manipulation. </para>
+</listitem></itemizedlist>
+</para>
+</sect2>
 </sect1>
     </detaileddescription>
   </compounddef>

@@ -1230,6 +1230,18 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation review&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
+<para>avanti con la documentazione:</para>
+<para><itemizedlist>
+<listitem><para><bold>robocluedo rosplan</bold><itemizedlist>
+<listitem><para>pddl and rosplan</para>
+</listitem><listitem><para>gli UML per ROSPlan non mi convincono molto...ma quelli più estesi sono veramente difficili da tracciare: ci sono un sacco di connessioni, sono tutti ingarbugliati, e anche guardandoli non se ne capirebbe il senso. quindi, meglio tenersi sul semplice.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;writing documentation&quot;</para>
+</listitem></itemizedlist>
+</para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>aggiornare<sp/>documentazione<sp/>robot<sp/>Hunter<sp/>col<sp/>nuovo<sp/>run</highlight></codeline>
@@ -1243,8 +1255,9 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>documentazione<sp/>codice<sp/>del<sp/>pacchetto<sp/>vision</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>creare<sp/>anche<sp/>qualche<sp/>UML<sp/>del<sp/>codice</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(ma<sp/>non<sp/>fare<sp/>un<sp/>lavoro<sp/>*eccessivamente<sp/>dettagliato*)</highlight></codeline>
-<codeline><highlight class="normal">-<sp/></highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>documentazione<sp/>di<sp/>rosplan</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>quanto<sp/>riguarda<sp/>l&apos;attuale<sp/>documentazione<sp/>del<sp/>codice,<sp/>oltre<sp/>a<sp/>non<sp/>esserci<sp/>nulla,<sp/>non<sp/>si<sp/>capisce<sp/>se<sp/>le<sp/>cose<sp/>documentate<sp/>siano<sp/>nodi,<sp/>classi,<sp/>azioni,<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>organizzare<sp/>un<sp/>po&apos;<sp/>meglio<sp/>la<sp/>parte<sp/>della<sp/>code<sp/>reference</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
@@ -1252,10 +1265,13 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>(tenta<sp/>di<sp/>non<sp/>fare<sp/>troppi<sp/>aggiornamenti<sp/>inutili<sp/>...<sp/>alla<sp/>fin<sp/>fine,<sp/>il<sp/>secondo<sp/>assignment<sp/>funziona<sp/>bene<sp/>così:<sp/>inutile<sp/>fare<sp/>più<sp/>del<sp/>necessario)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>importare<sp/>la<sp/>documentazione<sp/>di<sp/>aRMOR<sp/>finale<sp/>dal<sp/>terzo<sp/>assignment</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>la<sp/>documentazione<sp/>del<sp/>package<sp/>rosplan<sp/>può<sp/>essere<sp/>riportata<sp/>pari<sp/>pari<sp/>nell&apos;assignment<sp/>2,<sp/>perchè<sp/>tanto<sp/>è<sp/>identica</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>documentazione<sp/>di<sp/>rosplan</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>copiare<sp/>per<sp/>intero<sp/>rosplan-arch.md</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>c&apos;è<sp/>qualcosa<sp/>di<sp/>specifico<sp/>da<sp/>inserire<sp/>in<sp/>questo<sp/>documento?</highlight></codeline>
 </programlisting></para>
-<sect2 id="md__docs_dev-log_1autotoc_md68">
+<sect2 id="md__docs_dev-log_1autotoc_md69">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md69">
+<sect3 id="md__docs_dev-log_1autotoc_md70">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1264,7 +1280,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md70">
+<sect3 id="md__docs_dev-log_1autotoc_md71">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

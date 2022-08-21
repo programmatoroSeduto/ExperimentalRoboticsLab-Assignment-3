@@ -16,9 +16,9 @@
 <para><hruler/>
 </para>
 <para>here are some quick informations about how to set up and use the <bold>ROS Navigation Stack</bold>.</para>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md259">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md260">
 <title>install the Navigation Stack</title>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md260">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md261">
 <title>Slam - GMapping</title>
 <para>In order to run the project, you need the two packages you can find <ulink url="https://github.com/CarmineD8/slam_gmapping.git">here</ulink>. SLAM and GMapping are tools for managing the movement of a robot with noisy odometry: their purpose is to correct odometry in a way that the robot can get its position as precisely as possible.</para>
 <para>Copy the packages into the workspace you prefer. <bold>use branch : <emphasis>noetic</emphasis></bold></para>
@@ -29,7 +29,7 @@
 <codeline><highlight class="normal">sudo<sp/>apt-get<sp/>install<sp/>ros-noetic-navigation</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md261">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md262">
 <title>MoveBase</title>
 <para>MoveBase is a motion planner: given a goal, it can retrieve a path from the actual position to the desired one, recomputing the path depending on the informations gathered by sensors in conjunction with Slam-GMapping.</para>
 <para>Simply install it:</para>
@@ -37,7 +37,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md262">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md263">
 <title>A quick example with Gazebo and RViz</title>
 <para>see <ulink url="https://github.com/programmatoroSeduto/RT1_assignment_2">this project on GitHub</ulink></para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/programmatoroSeduto/RT1_assignment_2.git<sp/>-b<sp/>main<sp/>./test_nav_stack</highlight></codeline>
@@ -45,7 +45,7 @@
 <para>in particular see <ulink url="https://github.com/programmatoroSeduto/RT1_assignment_2#how-to-set-up-the-project">how to setup the project</ulink></para>
 <para>and see <ulink url="https://github.com/programmatoroSeduto/RT1_assignment_2#build-the-project">how to build the project</ulink></para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md263">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md264">
 <title>Names and Types of the Interfaces of MoveBase</title>
 <para><bold>services</bold>:</para>
 <para><programlisting><codeline><highlight class="normal">/move_base/NavfnROS/make_plan</highlight></codeline>
@@ -101,7 +101,7 @@
 <codeline><highlight class="normal">/move_base_simple/goal</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md264">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md265">
 <title>the action movebase</title>
 <para>movebase is meant to behave as an action:</para>
 <para><itemizedlist>
@@ -112,7 +112,7 @@
 </para>
 <para>for the complete list of interfaces opened by move-base, see <ulink url="http://docs.ros.org/en/fuerte/api/move_base_msgs/html/index-msg.html">move_base_msgs package</ulink></para>
 <para>also <ulink url="http://wiki.ros.org/move_base">the official wiki</ulink> is a good reference (very seldom, sometimes it happens...)</para>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md265">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md266">
 <title>A note about the action names</title>
 <para><itemizedlist>
 <listitem><para><emphasis>MoveBase.action</emphasis> <ndash/> the name of the action, file with 3 fields</para>
@@ -148,26 +148,26 @@
 <codeline><highlight class="normal">move_base_msgs::MoveBaseResult<sp/>result;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md266">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md267">
 <title>move_base_msgs/MoveBaseGoal</title>
 <para><programlisting><codeline><highlight class="normal">geometry_msgs/PoseStamped<sp/>target_pose</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md267">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md268">
 <title>move_base_msgs/MoveBaseFeedback</title>
 <para><programlisting><codeline><highlight class="normal">geometry_msgs/PoseStamped<sp/>base_position</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md268">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md269">
 <title>move_base_msgs/MoveBaseResult</title>
 <para><bold>empty means that</bold> the framework will sendo only a simple signal.</para>
 <para><programlisting><codeline><highlight class="normal">#<sp/>...<sp/>empty</highlight></codeline>
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md269">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md270">
 <title>other interfaces</title>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md270">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md271">
 <title>geometry_msgs/PoseStamped</title>
 <para>a pose with the recording time and <emphasis>the frame</emphasis></para>
 <para><programlisting><codeline><highlight class="normal">#<sp/>A<sp/>Pose<sp/>with<sp/>reference<sp/>coordinate<sp/>frame<sp/>and<sp/>timestamp</highlight></codeline>
@@ -178,7 +178,7 @@
 <para><programlisting filename=".python"><codeline><highlight class="normal">msg.goal.target_pose.header.frame_id<sp/>=<sp/>&quot;map&quot;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md271">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md272">
 <title>geometry_msgs/Pose</title>
 <para>a pose is made up of</para>
 <para><itemizedlist>
@@ -205,7 +205,7 @@
 </listitem></itemizedlist>
 </para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md272">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md273">
 <title>geometry_msgs/Quaternion</title>
 <para>representation of a rotation using 4 parameters.</para>
 <para><programlisting><codeline><highlight class="normal">#<sp/>This<sp/>represents<sp/>an<sp/>orientation<sp/>in<sp/>free<sp/>space<sp/>in<sp/>quaternion<sp/>form.</highlight></codeline>
@@ -228,7 +228,7 @@
 <codeline><highlight class="normal">m.getRPY(roll,<sp/>pitch,<sp/>yaw);</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md273">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md274">
 <title>geometry_msgs/Point</title>
 <para><programlisting><codeline><highlight class="normal">#<sp/>This<sp/>contains<sp/>the<sp/>position<sp/>of<sp/>a<sp/>point<sp/>in<sp/>free<sp/>space</highlight></codeline>
 <codeline><highlight class="normal">float64<sp/>x</highlight></codeline>
@@ -237,10 +237,10 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md274">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md275">
 <title>MoveBase action calls in C++</title>
 <para>here are some templates if you wnat (like me) to put the hands on without bothering too much with technical details (geeky geeky).</para>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md275">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md276">
 <title>C++ – headers</title>
 <para><programlisting><codeline><highlight class="normal"><sp/>{C++}</highlight></codeline>
 <codeline><highlight class="normal">#include<sp/>&quot;actionlib/client/simple_action_client.h&quot;</highlight></codeline>
@@ -284,7 +284,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>empty</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md276">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md277">
 <title>C++ – main with async spinner</title>
 <para><bold>use async-spinner</bold> for your node, in this way:</para>
 <para><programlisting><codeline><highlight class="normal">int<sp/>main(<sp/>int<sp/>argc,<sp/>char*<sp/>argv[]<sp/>)</highlight></codeline>
@@ -302,7 +302,7 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md277">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md278">
 <title>C++ – open the action client</title>
 <para><bold>declaration of the macros and pointers</bold>: declare globally</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{C++}</highlight></codeline>
@@ -328,7 +328,7 @@
 </programlisting></para>
 <para>now the simple action client should be online.</para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md278">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md279">
 <title>C++ – use the client – callback based approach</title>
 <para>see <ulink url="https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#a94b5a38fae6917f83331560b81eea341">waitForResult</ulink></para>
 <para>see also <ulink url="https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#ae6a2e6904495e7c20c59e96af0d86801">sendGoal</ulink></para>
@@ -542,7 +542,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md279">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md280">
 <title>SLAM and GMapping – navigation stack structure</title>
 <para>infos about <ulink url="http://wiki.ros.org/gmapping">GMapping</ulink></para>
 <para>see <ulink url="https://github.com/ros-perception/slam_gmapping">sma_gmapping on GitHub</ulink></para>
@@ -551,7 +551,7 @@
 <para><ulink url="https://openslam-org.github.io/gmapping.html">openSLAM official page</ulink></para>
 <para><ulink url="https://classic.gazebosim.org/tutorials?tut=ros_gzplugins">Gazebo Plugins</ulink></para>
 <para><emphasis>laser-based simultaneous localization and mapping</emphasis></para>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md280">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md281">
 <title>Hokuyo laser range finder</title>
 <para>ROS documentation about <ulink url="https://wiki.ros.org/hokuyo_node">hoyuko laser range finder</ulink></para>
 <para><bold>publishers</bold>:</para>
@@ -652,14 +652,14 @@
 </para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md281">
+<sect1 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md282">
 <title>Usare MoveBase senza ricorrere alla actionlib</title>
 <para><itemizedlist>
 <listitem><para>per inviare il goal, usa <computeroutput>di tipo</computeroutput></para>
 </listitem><listitem><para>per cancellare la richiesta, basta inviare un messaggio, <emphasis>anche vuoto</emphasis>, sul topic <computeroutput>di tipo</computeroutput></para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md282">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md283">
 <title>richiesta di cancellazione</title>
 <para>basta pubblicare un messaggio di tipo <computeroutput>actionlib_msgs/GoalID.msg</computeroutput> sul topic <computeroutput>/move_base/cancel</computeroutput>, anche vuoto, per annullare l&apos;ultima richiesta.</para>
 <para><programlisting filename=".text"><codeline><highlight class="normal">#<sp/>rostopic<sp/>info<sp/>/move_base/cancel<sp/></highlight></codeline>
@@ -676,7 +676,7 @@
 <codeline><highlight class="normal">string<sp/>id</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md283">
+<sect2 id="md_robocluedo_movement_controller__docs_how-to-nav-stack_1autotoc_md284">
 <title>richiesta di movimento verso un target</title>
 <para>pubblica la richiesta sul topic <computeroutput>/move_base/goal</computeroutput> di tipo <computeroutput>move_base_msgs/MoveBaseActionGoal</computeroutput>.</para>
 <para><programlisting filename=".text"><codeline><highlight class="normal">#<sp/>rostopic<sp/>info<sp/>/move_base/goal<sp/></highlight></codeline>

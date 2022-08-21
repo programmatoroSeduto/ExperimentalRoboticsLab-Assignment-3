@@ -7,7 +7,18 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline><highlight class="normal">#<sp/>PDDL<sp/>and<sp/>ROSPlan</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>DOCS<sp/>--<sp/>PDDL<sp/>and<sp/>ROSPlan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./pddl-and-rosplan.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">Unfortunately,<sp/>the<sp/>ROS<sp/>Plan<sp/>knowledge<sp/>base<sp/>is<sp/>able<sp/>only<sp/>to<sp/>parse<sp/>a<sp/>very<sp/>particular,<sp/>limited<sp/>version<sp/>of<sp/>the<sp/>PDDL.<sp/>And<sp/>worse,<sp/>this<sp/>doesn&apos;t<sp/>seem<sp/>to<sp/>appear<sp/>in<sp/>any<sp/>documentation<sp/>about<sp/>ROS<sp/>Plan!<sp/></highlight></codeline>
 <codeline></codeline>
@@ -154,7 +165,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">**ROSPlan<sp/>doesn&apos;t<sp/>have<sp/>a<sp/>complete<sp/>support<sp/>for<sp/>ADL**,<sp/>which<sp/>is<sp/>definitely<sp/>a<sp/>bad<sp/>news.<sp/>Classical<sp/>planning<sp/>isn&apos;t<sp/>supported,<sp/>in<sp/>particular<sp/>the<sp/>common<sp/>actions.<sp/>When<sp/>you<sp/>set<sp/>the<sp/>requirement<sp/>*ADL*,<sp/>the<sp/>message<sp/>is<sp/>this:</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
 <codeline><highlight class="normal">A<sp/>problem<sp/>has<sp/>been<sp/>encountered,<sp/>and<sp/>the<sp/>planner<sp/>has<sp/>to<sp/>terminate.</highlight></codeline>
 <codeline><highlight class="normal">-----------------------------------------------------------------</highlight></codeline>
 <codeline><highlight class="normal">Unfortunately,<sp/>at<sp/>present,<sp/>the<sp/>planner<sp/>does<sp/>not<sp/>fully<sp/>support<sp/>ADL</highlight></codeline>
@@ -172,15 +183,17 @@
 <codeline><highlight class="normal">extend<sp/>the<sp/>planner<sp/>to<sp/>meet<sp/>your<sp/>needs.</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">the<sp/>funny<sp/>thing<sp/>is<sp/>that<sp/>*the<sp/>planners<sp/>support<sp/>ADL,<sp/>but<sp/>KB<sp/>does<sp/>not!*<sp/>And,<sp/>since<sp/>KB<sp/>parses<sp/>the<sp/>problem,<sp/>there&apos;s<sp/>no<sp/>way<sp/>to<sp/>parse<sp/>things<sp/>like<sp/>classical<sp/>planning,<sp/>unless<sp/>you<sp/>don&apos;t<sp/>want<sp/>to<sp/>throw<sp/>away<sp/>most<sp/>of<sp/>the<sp/>ROS<sp/>Plan<sp/>framework.<sp/></highlight></codeline>
+<codeline><highlight class="normal">the<sp/>funny<sp/>thing<sp/>is<sp/>that<sp/>*the<sp/>POPF<sp/>planners<sp/>support<sp/>ADL,<sp/>but<sp/>tge<sp/>ROSPlan<sp/>KB<sp/>does<sp/>not!*<sp/>And,<sp/>since<sp/>KB<sp/>parses<sp/>the<sp/>problem,<sp/>there&apos;s<sp/>no<sp/>way<sp/>to<sp/>parse<sp/>things<sp/>like<sp/>classical<sp/>planning,<sp/>unless<sp/>you<sp/>don&apos;t<sp/>want<sp/>to<sp/>throw<sp/>away<sp/>most<sp/>of<sp/>the<sp/>ROS<sp/>Plan<sp/>framework.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Available<sp/>Planners</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**Attention**<sp/>:<sp/>Better<sp/>to<sp/>use<sp/>POPF,<sp/>as<sp/>suggested<sp/>in<sp/>the<sp/>official<sp/>tutorial.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```{attention}</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>is<sp/>recommended<sp/>to<sp/>use<sp/>the<sp/>POPF<sp/>planner,<sp/>as<sp/>suggested<sp/>by<sp/>the<sp/>official<sp/>tutorials<sp/>as<sp/>well.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>POPF<sp/>help</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">see<sp/>[popf<sp/>infos](https://planning.wiki/ref/planners/popf)</highlight></codeline>
+<codeline><highlight class="normal">see<sp/>[popf<sp/>characteristics](https://planning.wiki/ref/planners/popf).</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">**temporal<sp/>planner<sp/>(supporting<sp/>durative<sp/>actions<sp/>only)**.<sp/>Supported<sp/>requirements:</highlight></codeline>
 <codeline></codeline>
@@ -194,7 +207,9 @@
 <codeline><highlight class="normal">)</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**PLanning<sp/>interface**<sp/>:<sp/>`&lt;node<sp/>pkg=&quot;rosplan_planning_system&quot;<sp/>name=&quot;popf_planning_interface&quot;<sp/>type=&quot;popf_planning_interface&quot;&gt;`</highlight></codeline>
+<codeline><highlight class="normal">**PLanning<sp/>interface**<sp/>:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>`&lt;node<sp/>pkg=&quot;rosplan_planning_system&quot;<sp/>name=&quot;popf_planning_interface&quot;<sp/>type=&quot;popf_planning_interface&quot;&gt;`</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">help<sp/>from<sp/>the<sp/>program:</highlight></codeline>
 <codeline></codeline>
