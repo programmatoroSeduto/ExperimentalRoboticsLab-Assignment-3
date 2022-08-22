@@ -1529,6 +1529,32 @@ rosnode list
 <li><p><strong>E FUNZIONA!</strong></p></li>
 <li><p><strong>COMMIT</strong>: “documentation, ISSUE Gazebo-only SOLVED, improving launch files”</p></li>
 </ul>
+<hr class="docutils" />
+<p>già che ci sono, voglio testare un minimo le performances confrontando due casi:</p>
+<ul class="simple">
+<li><p><strong>SLAM/Gmapping e RViz+Gazebo</strong> : il real time factor non scende sotto 0.30, si mantiene in media su 0.39</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>gmapping <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>AMCL e solo Gazebo</strong> : il real time factor si mantiene sui 0.42 più freqentemente, e non scende sotto 0.38 (quindi sì, il lavoro tra ieri e oggi ha funzionato!)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>COMMIT</strong>: “playing a bit with the complete project, refreshing docs”</p></li>
+</ul>
+<hr class="docutils" />
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p><strong>terzo assignment:</strong></p>

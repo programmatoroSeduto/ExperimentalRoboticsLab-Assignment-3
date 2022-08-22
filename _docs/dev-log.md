@@ -1244,6 +1244,35 @@ rosnode list
 
 - **COMMIT**: "documentation, ISSUE Gazebo-only SOLVED, improving launch files"
 
+---
+
+già che ci sono, voglio testare un minimo le performances confrontando due casi:
+
+- **SLAM/Gmapping e RViz+Gazebo** : il real time factor non scende sotto 0.30, si mantiene in media su 0.39
+
+```bash
+# shell 1
+roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:=false robot_env_type:=gazeborviz robot_nav_type:=gmapping 1>/dev/null 2>/dev/null
+
+# shell 2
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mission_manager:=true
+```
+
+- **AMCL e solo Gazebo** : il real time factor si mantiene sui 0.42 più freqentemente, e non scende sotto 0.38 (quindi sì, il lavoro tra ieri e oggi ha funzionato!)
+
+```bash
+# shell 1
+roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:=false robot_env_type:=gazebo robot_nav_type:=amcl 1>/dev/null 2>/dev/null
+
+# shell 2
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mission_manager:=true
+```
+
+- **COMMIT**: "playing a bit with the complete project, refreshing docs"
+
+---
+
+
 
 
 ```{todo}

@@ -1253,6 +1253,35 @@
 <codeline></codeline>
 <codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;documentation,<sp/>ISSUE<sp/>Gazebo-only<sp/>SOLVED,<sp/>improving<sp/>launch<sp/>files&quot;</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">già<sp/>che<sp/>ci<sp/>sono,<sp/>voglio<sp/>testare<sp/>un<sp/>minimo<sp/>le<sp/>performances<sp/>confrontando<sp/>due<sp/>casi:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**SLAM/Gmapping<sp/>e<sp/>RViz+Gazebo**<sp/>:<sp/>il<sp/>real<sp/>time<sp/>factor<sp/>non<sp/>scende<sp/>sotto<sp/>0.30,<sp/>si<sp/>mantiene<sp/>in<sp/>media<sp/>su<sp/>0.39</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_mission_manager:=false<sp/>robot_env_type:=gazeborviz<sp/>robot_nav_type:=gmapping<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**AMCL<sp/>e<sp/>solo<sp/>Gazebo**<sp/>:<sp/>il<sp/>real<sp/>time<sp/>factor<sp/>si<sp/>mantiene<sp/>sui<sp/>0.42<sp/>più<sp/>freqentemente,<sp/>e<sp/>non<sp/>scende<sp/>sotto<sp/>0.38<sp/>(quindi<sp/>sì,<sp/>il<sp/>lavoro<sp/>tra<sp/>ieri<sp/>e<sp/>oggi<sp/>ha<sp/>funzionato!)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_mission_manager:=false<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;playing<sp/>a<sp/>bit<sp/>with<sp/>the<sp/>complete<sp/>project,<sp/>refreshing<sp/>docs&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{todo}</highlight></codeline>
