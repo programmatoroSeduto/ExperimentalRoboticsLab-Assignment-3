@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="main-launch-file_8md" kind="file" language="Markdown">
+    <compoundname>main-launch-file.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>HOW<sp/>TO<sp/>--<sp/>the<sp/>main<sp/>launch<sp/>file</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./main-launch-file.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>goes<sp/>through<sp/>how<sp/>to<sp/>run<sp/>the<sp/>project<sp/>using<sp/>the<sp/>main<sp/>launch<sp/>file.<sp/>It<sp/>can<sp/>be<sp/>very<sp/>helpful<sp/>in<sp/>running<sp/>each<sp/>part<sp/>of<sp/>the<sp/>architecture,<sp/>with<sp/>the<sp/>possibility<sp/>to<sp/>control<sp/>each<sp/>component<sp/>hiding<sp/>the<sp/>details<sp/>of<sp/>each<sp/>package.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>In<sp/>a<sp/>hurry?<sp/>Just<sp/>run<sp/>that!</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">Honestly,<sp/>I<sp/>don&apos;t<sp/>recommend<sp/>to<sp/>use<sp/>this<sp/>directly.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>launch<sp/>file<sp/>you<sp/>should<sp/>use<sp/>is<sp/>`run_components.launch`.<sp/>By<sp/>calling<sp/>that<sp/>in<sp/>this<sp/>way,<sp/>the<sp/>entire<sp/>project<sp/>will<sp/>be<sp/>run</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>with<sp/>Gazebo<sp/>and<sp/>RViz</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>with<sp/>SLAM/GMapping<sp/>and<sp/>move_base</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*with<sp/>a<sp/>bunch<sp/>of<sp/>useless<sp/>messages<sp/>on<sp/>the<sp/>screen*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>The<sp/>INIT<sp/>option<sp/>--<sp/>Run<sp/>component<sp/>by<sp/>component</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">what<sp/>about<sp/>if<sp/>you<sp/>want<sp/>to<sp/>run<sp/>just<sp/>one<sp/>component?<sp/>Well,<sp/>the<sp/>launch<sp/>file<sp/>provides<sp/>the<sp/>option<sp/>`init:=false`.<sp/>In<sp/>particular,<sp/>it&apos;s<sp/>important<sp/>to<sp/>point<sp/>out<sp/>that<sp/>the<sp/>following<sp/>does<sp/>nothing:<sp/>it<sp/>just<sp/>runs<sp/>the<sp/>ROS<sp/>master.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>aRMOR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Running<sp/>the<sp/>aRMOR<sp/>package<sp/>is<sp/>very<sp/>simple:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_armor:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>the<sp/>robot<sp/>environment</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">this<sp/>&apos;run.launch&apos;<sp/>file<sp/>exposes<sp/>the<sp/>most<sp/>important<sp/>parameters<sp/>only<sp/>for<sp/>the<sp/>project.<sp/>If<sp/>you<sp/>need<sp/>more<sp/>options,<sp/>consider<sp/>to<sp/>directly<sp/>use<sp/>the<sp/>launch<sp/>file<sp/>`robocluedo_robot_hunter<sp/>run2.launch`.<sp/>For<sp/>instance,<sp/>maybe<sp/>you<sp/>want<sp/>to<sp/>run<sp/>another<sp/>world<sp/>file<sp/>which<sp/>is<sp/>located<sp/>outside<sp/>the<sp/>`worlds`<sp/>package.<sp/>Another<sp/>case<sp/>is<sp/>if<sp/>you<sp/>want<sp/>to<sp/>run<sp/>the<sp/>robot<sp/>in<sp/>RViz<sp/>only:<sp/>this<sp/>launch<sp/>file<sp/>has<sp/>some<sp/>problem<sp/>in<sp/>this<sp/>case.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>order<sp/>to<sp/>run<sp/>the<sp/>robot,<sp/>you<sp/>can<sp/>use<sp/>these<sp/>arguments:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`robot_env_type`<sp/>(default:<sp/>*gazebo*)<sp/>:<sp/>the<sp/>tools<sp/>for<sp/>the<sp/>simulations<sp/>to<sp/>use</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>values:<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>gazebo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>rviz</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>gazeborviz</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`robot_nav_type`<sp/>(default:<sp/>*gmapping*)<sp/>:<sp/>thetype<sp/>of<sp/>navigation<sp/>stack<sp/>to<sp/>use</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>values:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>gmapping</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>amcl<sp/>(for<sp/>the<sp/>world<sp/>assignment3.world<sp/>only!)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`world_name`<sp/>(default:<sp/>*assignment3.world*)<sp/>:<sp/>the<sp/>world<sp/>file<sp/>to<sp/>execute</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here<sp/>are<sp/>the<sp/>bash<sp/>commands:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>default<sp/>launch<sp/>for<sp/>the<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>complete<sp/>command</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>world_name:=assignment3.world</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>rosplan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">you<sp/>can<sp/>easily<sp/>launch<sp/>the<sp/>AI<sp/>of<sp/>the<sp/>robot<sp/>using<sp/>the<sp/>option<sp/>`launch_rosplan:=true`.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_rosplan:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>the<sp/>movement<sp/>controller</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_motion_controllers:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>the<sp/>vision<sp/>module</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>vision<sp/>module<sp/>opens<sp/>a<sp/>new<sp/>window<sp/>shwing<sp/>what<sp/>the<sp/>cameras<sp/>are<sp/>seeing.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_aruco:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>the<sp/>Oracle</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>option<sp/>`launch_oracle:=true`<sp/>launches<sp/>two<sp/>nodes:<sp/>the<sp/>real<sp/>oracle<sp/>for<sp/>the<sp/>third<sp/>assignment,<sp/>and<sp/>the<sp/>markers<sp/>publisher.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>simple<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_oracle:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>complete<sp/>command</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_oracle:=true<sp/>publish_markers:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>run<sp/>the<sp/>mission<sp/>manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">for<sp/>running<sp/>the<sp/>mission<sp/>manager<sp/>package,<sp/>there<sp/>are<sp/>two<sp/>main<sp/>options:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`launch_mission_manager_components:=true`<sp/>:<sp/>launch<sp/>the<sp/>units<sp/>inside<sp/>the<sp/>mission<sp/>manager<sp/>of<sp/>the<sp/>node,<sp/>without<sp/>the<sp/>main<sp/>node</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`launch_mission_manager:=true`<sp/>:<sp/>launch<sp/>the<sp/>main<sp/>node<sp/>(not<sp/>the<sp/>components!)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>components<sp/>only</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager_components:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>main<sp/>node<sp/>only</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>the<sp/>entire<sp/>mission_manager<sp/>package</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>combine<sp/>the<sp/>launch<sp/>options</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">of<sp/>course,<sp/>the<sp/>init<sp/>option<sp/>allows<sp/>you<sp/>to<sp/>combine<sp/>different<sp/>options.<sp/>For<sp/>example,<sp/>if<sp/>you<sp/>need<sp/>to<sp/>run<sp/>both<sp/>aRMOR<sp/>and<sp/>the<sp/>robot<sp/>environment<sp/>in<sp/>one<sp/>call,<sp/>use<sp/>this:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_armor:=true<sp/>launch_robot:=true<sp/>robot_nav_type:=amcl</highlight></codeline>
+<codeline><highlight class="normal">```<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>HOW<sp/>TO<sp/>run<sp/>the<sp/>project</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>are<sp/>the<sp/>main<sp/>commands<sp/>for<sp/>running<sp/>this<sp/>complex<sp/>project.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>step<sp/>by<sp/>step</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">recommended<sp/>for<sp/>testing<sp/>the<sp/>project<sp/>after<sp/>the<sp/>installation.<sp/>In<sp/>case<sp/>of<sp/>problems,<sp/>remember<sp/>that<sp/>almost<sp/>all<sp/>the<sp/>nodes<sp/>in<sp/>the<sp/>project<sp/>(especially<sp/>the<sp/>ones<sp/>implemented<sp/>in<sp/>C++)<sp/>have<sp/>a<sp/>so-called<sp/>`DEVELOP_MODE`<sp/>and<sp/>other<sp/>options<sp/>to<sp/>understand<sp/>what&apos;s<sp/>wrong<sp/>using<sp/>logs<sp/>on<sp/>a<sp/>shell.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>a<sp/>hurry?<sp/>And<sp/>you<sp/>want<sp/>to<sp/>run<sp/>the<sp/>project<sp/>step<sp/>by<sp/>step?<sp/>Well,<sp/>this<sp/>little<sp/>bash<sp/>script<sp/>is<sp/>for<sp/>you:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>robot<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>oracle</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_oracle:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>motion<sp/>controllers</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_motion_controllers:=true<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>vision<sp/>system</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_aruco:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>aRMOR<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_armor:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>robocluedo<sp/>ROSPlan<sp/>package</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_rosplan:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>mission<sp/>manager<sp/>units</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager_components:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>main<sp/>node</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline><highlight class="normal">```<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>the<sp/>fastest<sp/>way<sp/>to<sp/>run<sp/>the<sp/>project</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">this<sp/>command<sp/>also<sp/>contains<sp/>the<sp/>most<sp/>important<sp/>settings<sp/>for<sp/>running<sp/>the<sp/>project:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>robot_env_type:=gazeborviz<sp/>robot_nav_type:=gmapping</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">these<sp/>options<sp/>allows<sp/>you<sp/>to<sp/>launch<sp/>the<sp/>roject<sp/>using<sp/>for<sp/>instance<sp/>amcl<sp/>and<sp/>gazebo<sp/>only.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>the<sp/>suggested<sp/>way</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">I<sp/>strongly<sp/>suggest<sp/>to<sp/>launch<sp/>the<sp/>project<sp/>in<sp/>this<sp/>way:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>don&apos;t<sp/>launch<sp/>RViz:<sp/>use<sp/>Gazebo<sp/>only</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>split<sp/>the<sp/>launch<sp/>in<sp/>two<sp/>shells:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>the<sp/>first<sp/>one<sp/>shows<sp/>the<sp/>output<sp/>from<sp/>the<sp/>mission<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>the<sp/>second<sp/>one<sp/>runs<sp/>everything<sp/>else</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*suppress<sp/>the<sp/>output<sp/>from<sp/>the<sp/>first<sp/>shell*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>using<sp/>the<sp/>option<sp/>`1&gt;/dev/null<sp/>2&gt;/dev/null`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>use<sp/>AMCL<sp/>for<sp/>the<sp/>localisation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**shell<sp/>1**:<sp/>the<sp/>components<sp/>of<sp/>the<sp/>architecture</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_mission_manager:=false<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**shell<sp/>2**:<sp/>the<sp/>mission<sp/>manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_mission_manager/_docs/main-launch-file.md"/>
+  </compounddef>
+</doxygen>

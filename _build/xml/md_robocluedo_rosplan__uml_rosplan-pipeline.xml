@@ -6,8 +6,21 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md377">
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./rosplan-pipeline.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para>This page shows the interfaces used for controlling the workflow of ROSPlan by the pipeline manager. As many other documents inside this project, this is a document written for supporting the development.</para>
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md434">
 <title>schema of ROSPlan</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">The<sp/>schema<sp/>doesn&apos;t<sp/>show<sp/>the<sp/>topics<sp/>used<sp/>by<sp/>the<sp/>pipeline<sp/>manager<sp/>for<sp/>checking<sp/>if<sp/>the<sp/>operation<sp/>went<sp/>good<sp/>or<sp/>not.<sp/></highlight></codeline>
+</programlisting></para>
+<para>This diagram shows the main service interfaces used for triggering the steps of the ROSPlan workflow.</para>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
@@ -58,14 +71,18 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
-<para>message <bold>rosplan_dispatch_msgs/DispatchService</bold> :</para>
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md435">
+<title>message &lt;strong&gt;rosplan_dispatch_msgs/DispatchService&lt;/strong&gt;</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">---</highlight></codeline>
 <codeline><highlight class="normal">bool<sp/>success</highlight></codeline>
 <codeline><highlight class="normal">bool<sp/>goal_achieved</highlight></codeline>
 </programlisting></para>
+</sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md378">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md436">
 <title>SCHEMA – rosplan_pipeline_manager</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">For<sp/>the<sp/>sake<sp/>of<sp/>simplicity,<sp/>the<sp/>schema<sp/>shows<sp/>only<sp/>the<sp/>services<sp/>for<sp/>using<sp/>ROSPlan<sp/>and<sp/>the<sp/>one<sp/>used<sp/>for<sp/>the<sp/>replanning<sp/>with<sp/>*kb_interface*.</highlight></codeline>
+</programlisting></para>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
@@ -102,9 +119,11 @@
 <codeline><highlight class="normal">RCL_PIPELINE<sp/>&quot;sub&quot;<sp/>&lt;-left-<sp/>TOPIC_ACT_FEEDBACK</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>robocluedo_rosplan_msgs/ActionFeedback</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">/&apos;</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/rosplan_problem_interface/problem_instance&quot;<sp/>as<sp/>TOPIC_PROBLEM_INSTANCE</highlight></codeline>
 <codeline><highlight class="normal">RCL_PIPELINE<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_PROBLEM_INSTANCE</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_msgs/String</highlight></codeline>
+<codeline><highlight class="normal">&apos;/</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/robocluedo/pipeline_manager&quot;<sp/>as<sp/>SRV_PIPELINE</highlight></codeline>
 <codeline><highlight class="normal">RCL_PIPELINE<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_PIPELINE</highlight></codeline>
@@ -116,7 +135,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md379">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-pipeline_1autotoc_md437">
 <title>SCHEMA – feedback manager</title>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
@@ -129,12 +148,15 @@
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
 <codeline><highlight class="normal">class<sp/>&quot;Feedback<sp/>Manager&quot;<sp/>as<sp/>FEEDBACK</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_???(<sp/>...params...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_failure()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_failure()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_navigation_failure()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_manipulation_failure()</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;/robocluedo/action_feedback&quot;<sp/>as<sp/>SRV_FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>SRV_FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/ActionFeedback</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo/action_feedback&quot;<sp/>as<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>&quot;pub&quot;<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/ActionFeedback.msg</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>

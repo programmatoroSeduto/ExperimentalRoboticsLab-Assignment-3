@@ -33,7 +33,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazeborviz launch_nav_st
 <!-- RUN GAZEBO ONLY -->
 <group if="$(eval sim_type == 'gazebo')" >
 
-<include file="$(find robocluedo_robot_hunter)/launch/gazebo.launch" >
+<include file="$(find robocluedo_robot_hunter)/launch/gazebo2.launch" >
 	<arg name="paused" value="$(arg gazebo_paused)" />
 	
 	<arg name="world_name" value="$(arg world_name)" />
@@ -46,12 +46,13 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazeborviz launch_nav_st
 
 <!-- RUN RVIZ ONLY -->
 <group if="$(eval sim_type == 'rviz')" >
-
+<!--
 <include file="$(find robocluedo_robot_hunter)/launch/demo.launch" >
 	<arg name="rviz_config_file" value="$(arg rviz_config_file)" />
 	<arg name="rviz_config_file_path" value="$(arg rviz_config_file_path)" />
 </include>
-
+-->
+<include file="$(find robocluedo_robot_hunter)/launch/demo.launch" />
 </group>
 
 

@@ -1,5 +1,5 @@
 
-# RoboCLuedo -- erl3 -- Development Log
+# LOG -- development log
 
 ---
 
@@ -1141,11 +1141,114 @@ avanti con la documentazione:
 	- gli UML per ROSPlan non mi convincono molto...ma quelli più estesi sono veramente difficili da tracciare: ci sono un sacco di connessioni, sono tutti ingarbugliati, e anche guardandoli non se ne capirebbe il senso. quindi, meglio tenersi sul semplice. 
 - **COMMIT**: "writing documentation"
 
+---
+
+## 22/08/2022 -- documentazione del progetto
+
+continuiamo con la scrittura della documentazione (per il momento, overview veloce della documentazione; più avanti passiamo a rivedere nel dettaglio gli altri punti)
+
+- **robocluedo rosplan**
+	- documento sulla rosplan pipeline
+	- metodi nel feedback manager
+- **robocluedo dependencies**
+	- anche vision cv ha la sua documentazione
+	- provo ad importarla... ok
+	- aggiorno la documentazione sul modello del robot ...
+	- manca la parte su amcl
+	- e revisione di tutto il codice riportato nel documento (c'è voluto un bel po')
+- **robocluedo movement controller**
+	- la documentazione su AMCL meglio spostarla qui dentro...
+	- gli UML del movement controller vanni aggiornati
+	- va documentato move_base_nav
+- giusto un'occhiata al resto della documentazione
+	- se non è essenziale per la comprensione del progetto, direi di nasconderla
+- una nota su come avviare il progetto (ottima occasione per fare un'ultimo test prima della consegna)
+	- mi sono accorto che manca un documento su come lanciare l'intero progetto col launcher! cazz
+	- lo scrivo subito
+- e test ...
+	- ... poteva mai andare tutto bene? *certo che no*.
+	- c'è un problema con l'unità del mission manager che gestisce la manipulation...
+	- (devo aver fatto qualche stupida modifica al codice)
+
+un piccolo test (proviamo a capire dove sta l'errore):
+
+```bash
+# shell 1
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_robot:=true robot_env_type:=gazeborviz robot_nav_type:=amcl 1>/dev/null 2>/dev/null
+
+# shell 2
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_motion_controllers:=true
+
+# shell 3
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mission_manager_components:=true
+
+# shell 4
+
+
+```
+
+- noto che non viene avviato il manipulation controller ... ci sarà qualcosa di sbagliato nel launch file del motion controller
+- *e in effetti nel launch file manca!* fortuna che stavolta è stato semplice risovlere questo problema: stavo iniziando a pensare al peggio (fortuna che testo sempre...)
+- e proviamo ancora ... e ovviamente ci sono degli errori sul launch file...
+- il launch file globale crasha, ma i singoli componenti no
+	- sono costretto a fare una esecuzione step by step per capire dove sta il problema...
+- potrebbe anche essere successo che sia scattato qualche timeout, dato che il servizio sulla manipulation non era stato attivato: non vedendo il servizio pubblicato, qualche nodo si è chiuso, determinando così la chiusura dell'intero programma
+- e altro errore, ovviamente! sempre dal manipulation.
+
+```text
+process[manipulation_controller-7]: started with pid [2768]
+[ERROR] [1661161333.204855700]: Robot semantic description not found. Did you forget to define or remap '/robot_description_semantic'?
+[ INFO] [1661161333.206055300]: Loading robot model 'robocluedo_robot'...
+[ INFO] [1661161333.206203300]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[FATAL] [1661161333.344392200]: Group 'arm_group' was not found.
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Group 'arm_group' was not found.
+================================================================================REQUIRED process [manipulation_controller-7] has died!
+process has died [pid 2768, exit code -6, cmd /root/ros_ws/devel/lib/robocluedo_movement_controller/manipulation_controller __name:=manipulation_controller __log:=/root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7.log].
+log file: /root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7*.log
+Initiating shutdown!
+================================================================================
+```
+
+- e se provassi ad avviare anche RViz?
+	- **con anche RVIZ sembra che vada** ...
+	- ... ma ieri andava anche senza RViz ... cos'è cambiato?
+- quindi ... senza RViz stavolta, MoveIt non va
+	- ieri ha funzionato anche senza ... oggi niente, boh
+	- può essere un problema nel run2 del robot
+- potrei aver capito dove sta il problema... proviamo così: ho creato un gazebo2.launch che è come demo_gazebo.launch ma senza lanciare RViz ... se ho intuito bene, questo dovrebbe lanciare sia gazebo che il modello del robot, cioè quello che serve per non far crashare quel launch file
+
+```bash
+# shell 1
+roslaunch robocluedo_robot_hunter gazebo2.launch
+
+# shell 2
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_motion_controllers:=true
+
+# shell 3
+roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mission_manager_components:=true
+
+# shell 4
+rosnode list
+```
+
+- **problema risolto**! La mia intuizione era corretta: il file di base generato dal setup assistant per lanciare solo Gazebo non esegue anche tutti gli strumenti che serve avviare per usare il framework moveit. Creando questo secondo launch file sono riuscito ad eseguire con successo anche la parte di manipolazione usando solo Gazebo
+- *adesso ho da aggiungere un 2 a qualunque cosa nel codice ...* 
+	- nel launch generale non servono modifiche
+	- modifica nel run2
+	- (non è stato così tragico...)
+	- vado a segnalare la issue nella documentazione del modello URDF
+- e riproviamo a lanciare il progetto, *stavolta senza RViz* ... 
+- (pensandoci bene, *ieri non ho testato fino in fondo questa feature...* comunque oggi l'ho fatto, bene che c'ho pensato)
+- **E FUNZIONA!**
+
+- **COMMIT**: "documentation, ISSUE Gazebo-only SOLVED, improving launch files"
+
+
 
 ```{todo}
 **terzo assignment:**
 
-- aggiornare documentazione robot Hunter col nuovo run
 - modificare il module testing del robot: aggiungere i test del log
 - verificare che tutte le pagine ausiliarie abbiano la loro TOCtree interna, specie quando sono lunghe pagine
 - rifare la homepage in modo che le parti essenziali dell'assignment risultino "a vista"
@@ -1159,6 +1262,15 @@ avanti con la documentazione:
 - documentazione di rosplan
 	- per quanto riguarda l'attuale documentazione del codice, oltre a non esserci nulla, non si capisce se le cose documentate siano nodi, classi, azioni, ...
 	- organizzare un po' meglio la parte della code reference
+	- spostare il testing all'interno del package
+- documentazione del codice nel movement controller
+	- in particolare descrivere l'idea dei controllers
+	- e scrivere un documento che dia i passaggi per implementare un nuovo controller
+- documentazione mission manager
+	- documentazione del codice (attualmente c'è solo quella inline, serve approfondire)
+- documentazione module testing
+	- distribuire i test nei vari packages 
+	- (tutti i test tranne quelli che includono del codice specifico contenuto nel package module testing)
 
 **secondo assignment:**
 
@@ -1169,6 +1281,13 @@ avanti con la documentazione:
 - documentazione di rosplan
 	- copiare per intero rosplan-arch.md
 	- c'è qualcosa di specifico da inserire in questo documento?
+- aggiornare la documentazione per il vecchio robot
+- documentazione mission manager
+	- per quanto riguarda la documentazione del mission manager main, la documentazione cambia di pochissimo
+		- casomai, indica quali differenze ci sono tra i due assignment
+	- la documentazione del manipulation manager cambia
+	- e anche quella della navigation unit (usa un algoritmo diverso)
+- elimina le cartelle inutilizzate su esempi e tutto il resto (se non servono, eliminale)
 
 ```
 

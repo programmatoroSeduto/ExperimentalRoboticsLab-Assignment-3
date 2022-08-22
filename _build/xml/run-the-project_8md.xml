@@ -8,9 +8,36 @@
     </detaileddescription>
     <programlisting>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>How<sp/>to<sp/>Run<sp/>this<sp/>Project</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>HOW<sp/>TO<sp/>Run<sp/>this<sp/>Project</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">...<sp/>well,<sp/>how<sp/>to<sp/>...<sp/>?</highlight></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>something<sp/>would<sp/>go<sp/>south,<sp/>please<sp/>consider<sp/>to<sp/>run<sp/>the<sp/>project<sp/>step<sp/>by<sp/>step;<sp/>see<sp/>the<sp/>package<sp/>robocluedo_mission_manager<sp/>for<sp/>further<sp/>informations<sp/>about<sp/>how<sp/>to<sp/>run<sp/>the<sp/>project.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>suggested<sp/>way<sp/>--<sp/>AMCL<sp/>and<sp/>no<sp/>logs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>project<sp/>is<sp/>very<sp/>heavy<sp/>to<sp/>run<sp/>on<sp/>a<sp/>machine,<sp/>reason<sp/>for<sp/>why<sp/>I<sp/>suggest<sp/>to<sp/>launch<sp/>the<sp/>project<sp/>using<sp/>these<sp/>options:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>(two<sp/>shells)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>use<sp/>*amcl*<sp/>for<sp/>the<sp/>localisation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>use<sp/>Gazebo<sp/>only,<sp/>don&apos;t<sp/>run<sp/>RViz</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>suppress<sp/>every<sp/>kind<sp/>of<sp/>output<sp/>in<sp/>the<sp/>first<sp/>shell<sp/>using<sp/>`1&gt;/dev/null<sp/>2&gt;/dev/null`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Shell<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">all<sp/>the<sp/>components,<sp/>without<sp/>the<sp/>`mission<sp/>manager`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_mission_manager:=false<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Shell<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>shell<sp/>will<sp/>show<sp/>the<sp/>output<sp/>from<sp/>the<sp/>mission<sp/>manager,<sp/>to<sp/>show<sp/>hot<sp/>the<sp/>investigation<sp/>is<sp/>proceeding.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="_docs/run-the-project.md"/>
   </compounddef>

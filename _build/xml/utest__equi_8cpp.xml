@@ -102,6 +102,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_dependencies/vision_opencv/image_geometry/test/utest_equi.cpp" line="56" column="1" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/test/utest_equi.cpp" bodystart="56" bodyend="88"/>
+        <references refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" compoundref="run-the-project_8md_8txt" startline="4">step</references>
       </memberdef>
       <memberdef kind="function" id="utest__equi_8cpp_1a3bc17170fe1f2929af04532434e69c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -123,6 +124,7 @@
 </xrefdescription></xrefsect></para>
         </inbodydescription>
         <location file="robocluedo_dependencies/vision_opencv/image_geometry/test/utest_equi.cpp" line="90" column="1" bodyfile="robocluedo_dependencies/vision_opencv/image_geometry/test/utest_equi.cpp" bodystart="90" bodyend="131"/>
+        <references refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" compoundref="run-the-project_8md_8txt" startline="4">step</references>
       </memberdef>
       <memberdef kind="function" id="utest__equi_8cpp_1a032cd186ecbe05bb758caec158e83ccf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -286,9 +288,9 @@
 <codeline lineno="74"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>projecting<sp/>to<sp/>3d<sp/>and<sp/>back<sp/>over<sp/>entire<sp/>image<sp/>is<sp/>accurate.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>step<sp/>=<sp/>10;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;=<sp/>cam_info_.height;<sp/>row<sp/>+=<sp/>step)<sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>col<sp/>=<sp/>0;<sp/>col<sp/>&lt;=<sp/>cam_info_.width;<sp/>col<sp/>+=<sp/>step)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" kindref="member">step</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;=<sp/>cam_info_.height;<sp/>row<sp/>+=<sp/><ref refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" kindref="member">step</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>col<sp/>=<sp/>0;<sp/>col<sp/>&lt;=<sp/>cam_info_.width;<sp/>col<sp/>+=<sp/><ref refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" kindref="member">step</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cv::Point2d<sp/>uv(row,<sp/>col),<sp/>uv_back;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cv::Point3d<sp/>xyz<sp/>=<sp/>model_.projectPixelTo3dRay(uv);</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uv_back<sp/>=<sp/>model_.project3dToPixel(xyz);</highlight></codeline>
@@ -329,9 +331,9 @@
 <codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>rectifying<sp/>then<sp/>unrectifying<sp/>is<sp/>accurate.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>step<sp/>=<sp/>5;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;=<sp/>cam_info_.height;<sp/>row<sp/>+=<sp/>step)<sp/>{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>col<sp/>=<sp/>0;<sp/>col<sp/>&lt;=<sp/>cam_info_.width;<sp/>col<sp/>+=<sp/>step)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" kindref="member">step</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;=<sp/>cam_info_.height;<sp/>row<sp/>+=<sp/><ref refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" kindref="member">step</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>col<sp/>=<sp/>0;<sp/>col<sp/>&lt;=<sp/>cam_info_.width;<sp/>col<sp/>+=<sp/><ref refid="run-the-project_8md_8txt_1a81eeb1c188ea41368eb194317402cfc0" kindref="member">step</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cv::Point2d<sp/>uv_raw(row,<sp/>col),<sp/>uv_rect,<sp/>uv_unrect;</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uv_rect<sp/>=<sp/>model_.rectifyPoint(uv_raw);</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uv_unrect<sp/>=<sp/>model_.unrectifyPoint(uv_rect);</highlight></codeline>

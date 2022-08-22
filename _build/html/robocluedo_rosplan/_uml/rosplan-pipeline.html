@@ -60,11 +60,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../_docs/new-robocluedo.html">PDDL description – the new RoboCLuedo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_docs/pddl-and-rosplan.html">PDDL and ROSPlan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rosplan-arch.html">UML – robocluedo rosplan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/new-robocluedo.html">PDDL Design – the new RoboCLuedo PDDL model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/pddl-and-rosplan.html">DOCS – PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosplan-arch.html">UML – robocluedo rosplan – in a nutshell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">UML – ROSPlan pipeline</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UML – ROSPlan pipeline</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/action_collect_hint.html">CODE REFERENCE – ROSPlan action collect_hint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/feedback_manager.html">CODE REFERENCE – class feedback manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_interface.html">CODE REFERENCE – node kb_interface</a></li>
@@ -87,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
@@ -95,7 +98,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – erl3 – Development Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/mapping.html">GMapping and AMCL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -138,8 +140,26 @@
              
   <div class="section" id="uml-rosplan-pipeline">
 <h1>UML – ROSPlan pipeline<a class="headerlink" href="#uml-rosplan-pipeline" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UML – ROSPlan pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#schema-of-rosplan">schema of ROSPlan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#message-rosplan-dispatch-msgs-dispatchservice">message <strong>rosplan_dispatch_msgs/DispatchService</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-rosplan-pipeline-manager">SCHEMA – rosplan_pipeline_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-feedback-manager">SCHEMA – feedback manager</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>This page shows the interfaces used for controlling the workflow of ROSPlan by the pipeline manager. As many other documents inside this project, this is a document written for supporting the development.</p>
 <div class="section" id="schema-of-rosplan">
 <h2>schema of ROSPlan<a class="headerlink" href="#schema-of-rosplan" title="Permalink to this heading"></a></h2>
+<p>This diagram shows the main service interfaces used for triggering the steps of the ROSPlan workflow.</p>
 <p class="plantuml">
 <object data="../../_images/plantuml-fbe55677ca046fb470168db86fa87f92f854cc40.svg" type="image/svg+xml" style="width:829px;height:892px;background:#FFFFFF;">
 <img src="../../_images/plantuml-fbe55677ca046fb470168db86fa87f92f854cc40.png" alt="&#64;startuml
@@ -193,18 +213,20 @@ RP_KB &lt;-up- DOMAIN
 &#64;enduml"/>
 
 </object></p>
-<p>message <strong>rosplan_dispatch_msgs/DispatchService</strong> :</p>
+<div class="section" id="message-rosplan-dispatch-msgs-dispatchservice">
+<h3>message <strong>rosplan_dispatch_msgs/DispatchService</strong><a class="headerlink" href="#message-rosplan-dispatch-msgs-dispatchservice" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>---
 bool success
 bool goal_achieved
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="schema-rosplan-pipeline-manager">
 <h2>SCHEMA – rosplan_pipeline_manager<a class="headerlink" href="#schema-rosplan-pipeline-manager" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
-<object data="../../_images/plantuml-63cc233c603f86a2672798479d24ac0d94fa81e4.svg" type="image/svg+xml" style="width:2208px;height:395px;background:#FFFFFF;">
-<img src="../../_images/plantuml-63cc233c603f86a2672798479d24ac0d94fa81e4.png" alt="&#64;startuml
+<object data="../../_images/plantuml-36159fa86ed2197a867575f3d1a46d6df67ca7e9.svg" type="image/svg+xml" style="width:1976px;height:395px;background:#FFFFFF;">
+<img src="../../_images/plantuml-36159fa86ed2197a867575f3d1a46d6df67ca7e9.png" alt="&#64;startuml
 
 ''' INFOS
 title ROSPlan main pipeline
@@ -240,9 +262,11 @@ note on link : robocluedo_rosplan_msgs/UpdateGoal
 RCL_PIPELINE &quot;sub&quot; &lt;-left- TOPIC_ACT_FEEDBACK
 note on link : robocluedo_rosplan_msgs/ActionFeedback
 
+/'
 () &quot;/rosplan_problem_interface/problem_instance&quot; as TOPIC_PROBLEM_INSTANCE
 RCL_PIPELINE &quot;sub&quot; &lt;-- TOPIC_PROBLEM_INSTANCE
 note on link : std_msgs/String
+'/
 
 () &quot;/robocluedo/pipeline_manager&quot; as SRV_PIPELINE
 RCL_PIPELINE &quot;srv&quot; -right-&gt; SRV_PIPELINE
@@ -258,8 +282,8 @@ note on link : robocluedo_rosplan_msgs/RosplanPipelineManagerService
 <div class="section" id="schema-feedback-manager">
 <h2>SCHEMA – feedback manager<a class="headerlink" href="#schema-feedback-manager" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
-<object data="../../_images/plantuml-05804ec79083e99d963ac68a423255fa38126dc6.svg" type="image/svg+xml" style="width:432px;height:375px;background:#FFFFFF;">
-<img src="../../_images/plantuml-05804ec79083e99d963ac68a423255fa38126dc6.png" alt="&#64;startuml
+<object data="../../_images/plantuml-51a970f4a3d401a6028095649020f8a76f68db67.svg" type="image/svg+xml" style="width:483px;height:483px;background:#FFFFFF;">
+<img src="../../_images/plantuml-51a970f4a3d401a6028095649020f8a76f68db67.png" alt="&#64;startuml
 
 ''' INFOS
 title ROSPlan feedback manager
@@ -270,12 +294,15 @@ allow_mixing
 ''' COMPONENTS
 class &quot;Feedback Manager&quot; as FEEDBACK
 {
-  + fb_???( ...params... )
+  + fb_failure()
+  + fb_hw_failure()
+  + fb_hw_navigation_failure()
+  + fb_hw_manipulation_failure()
 }
 
-() &quot;/robocluedo/action_feedback&quot; as SRV_FEEDBACK
-FEEDBACK --&gt; SRV_FEEDBACK
-note on link: robocluedo_rosplan_msgs/ActionFeedback
+() &quot;/robocluedo/action_feedback&quot; as TOPIC_FEEDBACK
+FEEDBACK --&gt; &quot;pub&quot; TOPIC_FEEDBACK
+note on link: robocluedo_rosplan_msgs/ActionFeedback.msg
 
 
 ''' CONNECTIONS

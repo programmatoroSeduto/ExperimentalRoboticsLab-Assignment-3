@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOW TO – the main launch file &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CODE REFERENCE – node manipulation_unit" href="../_code_reference/manipulation_unit.html" />
+    <link rel="prev" title="PKG DOCS – robocluedo_mission_manager" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">LOG – development log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">HOW TO Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_mission_manager</a> &raquo;</li>
+      <li>HOW TO – the main launch file</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_mission_manager/_docs/main-launch-file.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="how-to-the-main-launch-file">
+<h1>HOW TO – the main launch file<a class="headerlink" href="#how-to-the-main-launch-file" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO – the main launch file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#in-a-hurry-just-run-that">In a hurry? Just run that!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-init-option-run-component-by-component">The INIT option – Run component by component</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-armor">run aRMOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-robot-environment">run the robot environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-rosplan">run rosplan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-movement-controller">run the movement controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-vision-module">run the vision module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-oracle">run the Oracle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-mission-manager">run the mission manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combine-the-launch-options">combine the launch options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-run-the-project">HOW TO run the project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step">step by step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-fastest-way-to-run-the-project">the fastest way to run the project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-suggested-way">the suggested way</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>This document goes through how to run the project using the main launch file. It can be very helpful in running each part of the architecture, with the possibility to control each component hiding the details of each package.</p>
+<div class="section" id="in-a-hurry-just-run-that">
+<h2>In a hurry? Just run that!<a class="headerlink" href="#in-a-hurry-just-run-that" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Honestly, I don’t recommend to use this directly.</p>
+</div>
+<p>The launch file you should use is <code class="docutils literal notranslate"><span class="pre">run_components.launch</span></code>. By calling that in this way, the entire project will be run</p>
+<ul class="simple">
+<li><p>with Gazebo and RViz</p></li>
+<li><p>with SLAM/GMapping and move_base</p></li>
+<li><p><em>with a bunch of useless messages on the screen</em></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch 
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-init-option-run-component-by-component">
+<h2>The INIT option – Run component by component<a class="headerlink" href="#the-init-option-run-component-by-component" title="Permalink to this heading"></a></h2>
+<p>what about if you want to run just one component? Well, the launch file provides the option <code class="docutils literal notranslate"><span class="pre">init:=false</span></code>. In particular, it’s important to point out that the following does nothing: it just runs the ROS master.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+<div class="section" id="run-armor">
+<h3>run aRMOR<a class="headerlink" href="#run-armor" title="Permalink to this heading"></a></h3>
+<p>Running the aRMOR package is very simple:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-robot-environment">
+<h3>run the robot environment<a class="headerlink" href="#run-the-robot-environment" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this ‘run.launch’ file exposes the most important parameters only for the project. If you need more options, consider to directly use the launch file <code class="docutils literal notranslate"><span class="pre">robocluedo_robot_hunter</span> <span class="pre">run2.launch</span></code>. For instance, maybe you want to run another world file which is located outside the <code class="docutils literal notranslate"><span class="pre">worlds</span></code> package. Another case is if you want to run the robot in RViz only: this launch file has some problem in this case.</p>
+</div>
+<p>In order to run the robot, you can use these arguments:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_env_type</span></code> (default: <em>gazebo</em>) : the tools for the simulations to use</p>
+<p>values:</p>
+<ul class="simple">
+<li><p>gazebo</p></li>
+<li><p>rviz</p></li>
+<li><p>gazeborviz</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_nav_type</span></code> (default: <em>gmapping</em>) : thetype of navigation stack to use</p>
+<p>values:</p>
+<ul class="simple">
+<li><p>gmapping</p></li>
+<li><p>amcl (for the world assignment3.world only!)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">world_name</span></code> (default: <em>assignment3.world</em>) : the world file to execute</p></li>
+</ul>
+<p>here are the bash commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># default launch for the environment</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># the complete command</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl world_name:<span class="o">=</span>assignment3.world
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-rosplan">
+<h3>run rosplan<a class="headerlink" href="#run-rosplan" title="Permalink to this heading"></a></h3>
+<p>you can easily launch the AI of the robot using the option <code class="docutils literal notranslate"><span class="pre">launch_rosplan:=true</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-movement-controller">
+<h3>run the movement controller<a class="headerlink" href="#run-the-movement-controller" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-vision-module">
+<h3>run the vision module<a class="headerlink" href="#run-the-vision-module" title="Permalink to this heading"></a></h3>
+<p>the vision module opens a new window shwing what the cameras are seeing.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-oracle">
+<h3>run the Oracle<a class="headerlink" href="#run-the-oracle" title="Permalink to this heading"></a></h3>
+<p>the option <code class="docutils literal notranslate"><span class="pre">launch_oracle:=true</span></code> launches two nodes: the real oracle for the third assignment, and the markers publisher.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple version</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># the complete command</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> publish_markers:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-mission-manager">
+<h3>run the mission manager<a class="headerlink" href="#run-the-mission-manager" title="Permalink to this heading"></a></h3>
+<p>for running the mission manager package, there are two main options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">launch_mission_manager_components:=true</span></code> : launch the units inside the mission manager of the node, without the main node</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">launch_mission_manager:=true</span></code> : launch the main node (not the components!)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># components only</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># main node only</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># the entire mission_manager package</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="combine-the-launch-options">
+<h3>combine the launch options<a class="headerlink" href="#combine-the-launch-options" title="Permalink to this heading"></a></h3>
+<p>of course, the init option allows you to combine different options. For example, if you need to run both aRMOR and the robot environment in one call, use this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">true</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_nav_type:<span class="o">=</span>amcl
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-run-the-project">
+<h2>HOW TO run the project<a class="headerlink" href="#how-to-run-the-project" title="Permalink to this heading"></a></h2>
+<p>Here are the main commands for running this complex project.</p>
+<div class="section" id="step-by-step">
+<h3>step by step<a class="headerlink" href="#step-by-step" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>recommended for testing the project after the installation. In case of problems, remember that almost all the nodes in the project (especially the ones implemented in C++) have a so-called <code class="docutils literal notranslate"><span class="pre">DEVELOP_MODE</span></code> and other options to understand what’s wrong using logs on a shell.</p>
+</div>
+<p>In a hurry? And you want to run the project step by step? Well, this little bash script is for you:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># launch the robot environment</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># launch the oracle</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># launch the motion controllers</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># launch the vision system</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># launch aRMOR interface</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># launch the robocluedo ROSPlan package</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># launch the mission manager units</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># launch the main node</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-fastest-way-to-run-the-project">
+<h3>the fastest way to run the project<a class="headerlink" href="#the-fastest-way-to-run-the-project" title="Permalink to this heading"></a></h3>
+<p>this command also contains the most important settings for running the project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>gmapping
+</pre></div>
+</div>
+<p>these options allows you to launch the roject using for instance amcl and gazebo only.</p>
+</div>
+<div class="section" id="the-suggested-way">
+<h3>the suggested way<a class="headerlink" href="#the-suggested-way" title="Permalink to this heading"></a></h3>
+<p>I strongly suggest to launch the project in this way:</p>
+<ul class="simple">
+<li><p>don’t launch RViz: use Gazebo only</p></li>
+<li><p>split the launch in two shells:</p>
+<ul>
+<li><p>the first one shows the output from the mission manager</p></li>
+<li><p>the second one runs everything else</p></li>
+</ul>
+</li>
+<li><p><em>suppress the output from the first shell</em></p>
+<ul>
+<li><p>using the option <code class="docutils literal notranslate"><span class="pre">1&gt;/dev/null</span> <span class="pre">2&gt;/dev/null</span></code></p></li>
+</ul>
+</li>
+<li><p>use AMCL for the localisation</p></li>
+</ul>
+<p><strong>shell 1</strong>: the components of the architecture</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+<p><strong>shell 2</strong>: the mission manager</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="PKG DOCS – robocluedo_mission_manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_code_reference/manipulation_unit.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node manipulation_unit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -6,27 +6,13 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para><hruler/>
+</para>
 <para><programlisting filename=".toctree"><codeline><highlight class="normal">./bug-m.md</highlight></codeline>
 </programlisting></para>
-<para><ref refid="namespacebug__m" kindref="compound">bug_m</ref> combines the two behaviours <computeroutput>go_to_point.py</computeroutput> ans <computeroutput>wall_follow.py</computeroutput> in order to reach a given position in a indoor environment with walls.</para>
-<para>IN particular,</para>
-<para><itemizedlist>
-<listitem><para>(state 2) the robot is still, waiting for a target</para>
-</listitem><listitem><para>(a target distant at minimum 0.35m comes...)</para>
-</listitem><listitem><para>( <bold>state 0</bold> : go to point ) go ahead in straight line<itemizedlist>
-<listitem><para>change to state 1 if the robot encounters an obstacle</para>
-</listitem><listitem><para>change to state 0 if the robot reaches the target</para>
-</listitem></itemizedlist>
+<para><hruler/>
 </para>
-</listitem><listitem><para>( <bold>state 1</bold> : wall following ) find and follow the wall<itemizedlist>
-<listitem><para>change to 0 if the robot cannot go on (<emphasis>the robot could get stuck in a blind corner</emphasis>)</para>
-</listitem><listitem><para>change to state 2 if the robot is in the target</para>
-</listitem></itemizedlist>
-</para>
-</listitem></itemizedlist>
-</para>
-<para>the robot reaches a target with a threshold distance of <bold>0.35m from the marker</bold>.</para>
-<sect1 id="md_robocluedo_movement_controller__uml_bug-m_1autotoc_md311">
+<sect1 id="md_robocluedo_movement_controller__uml_bug-m_1autotoc_md360">
 <title>SCHEMA</title>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
@@ -71,9 +57,11 @@
 <codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_GOTO_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">/&apos;</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/wall_follower_switch&quot;<sp/>as<sp/>SRV_WALL_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_WALL_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline><highlight class="normal">&apos;/</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/head_orient_switch&quot;<sp/>as<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
@@ -86,7 +74,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__uml_bug-m_1autotoc_md312">
+<sect1 id="md_robocluedo_movement_controller__uml_bug-m_1autotoc_md361">
 <title>HOW TO use the node – basic way</title>
 <para>it requires another node listening for the odom channel and checking when to deactivate the service</para>
 <para><itemizedlist>
@@ -97,7 +85,7 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__uml_bug-m_1autotoc_md313">
+<sect1 id="md_robocluedo_movement_controller__uml_bug-m_1autotoc_md362">
 <title>HOW TO use the node – user interface</title>
 <para>the node can signal another node when the final position hasn&apos;t been reached.</para>
 <para><itemizedlist>

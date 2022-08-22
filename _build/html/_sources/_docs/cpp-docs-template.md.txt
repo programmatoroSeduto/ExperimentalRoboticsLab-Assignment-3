@@ -1,4 +1,16 @@
-# Documentation for c++ nodes and libraries
+# TEMPLATE -- C++ code documentation
+
+---
+
+```{toctree}
+---
+maxdepth: 3
+caption: Contents
+---
+./cpp-docs-template.md
+```
+
+---
 
 ## conventions
 

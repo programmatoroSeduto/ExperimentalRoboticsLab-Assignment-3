@@ -10,24 +10,13 @@
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>bug_m<sp/>PY<sp/>node</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```{toctree}<sp/></highlight></codeline>
 <codeline><highlight class="normal">./bug-m.md</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">bug_m<sp/>combines<sp/>the<sp/>two<sp/>behaviours<sp/>`go_to_point.py`<sp/>ans<sp/>`wall_follow.py`<sp/>in<sp/>order<sp/>to<sp/>reach<sp/>a<sp/>given<sp/>position<sp/>in<sp/>a<sp/>indoor<sp/>environment<sp/>with<sp/>walls.<sp/></highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">IN<sp/>particular,</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">-<sp/>(state<sp/>2)<sp/>the<sp/>robot<sp/>is<sp/>still,<sp/>waiting<sp/>for<sp/>a<sp/>target</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>(a<sp/>target<sp/>distant<sp/>at<sp/>minimum<sp/>0.35m<sp/>comes...)</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>(<sp/>**state<sp/>0**<sp/>:<sp/>go<sp/>to<sp/>point<sp/>)<sp/>go<sp/>ahead<sp/>in<sp/>straight<sp/>line<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>state<sp/>1<sp/>if<sp/>the<sp/>robot<sp/>encounters<sp/>an<sp/>obstacle</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>state<sp/>0<sp/>if<sp/>the<sp/>robot<sp/>reaches<sp/>the<sp/>target<sp/></highlight></codeline>
-<codeline><highlight class="normal">-<sp/>(<sp/>**state<sp/>1**<sp/>:<sp/>wall<sp/>following<sp/>)<sp/>find<sp/>and<sp/>follow<sp/>the<sp/>wall<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>0<sp/>if<sp/>the<sp/>robot<sp/>cannot<sp/>go<sp/>on<sp/>(*the<sp/>robot<sp/>could<sp/>get<sp/>stuck<sp/>in<sp/>a<sp/>blind<sp/>corner*)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>change<sp/>to<sp/>state<sp/>2<sp/>if<sp/>the<sp/>robot<sp/>is<sp/>in<sp/>the<sp/>target</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">the<sp/>robot<sp/>reaches<sp/>a<sp/>target<sp/>with<sp/>a<sp/>threshold<sp/>distance<sp/>of<sp/>**0.35m<sp/>from<sp/>the<sp/>marker**.<sp/></highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>SCHEMA</highlight></codeline>
 <codeline></codeline>
@@ -75,9 +64,11 @@
 <codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_GOTO_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">/&apos;</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/wall_follower_switch&quot;<sp/>as<sp/>SRV_WALL_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_WALL_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline><highlight class="normal">&apos;/</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/head_orient_switch&quot;<sp/>as<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
 <codeline><highlight class="normal">NODE_BUG_M<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>

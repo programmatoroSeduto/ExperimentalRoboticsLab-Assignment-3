@@ -3,6 +3,7 @@
 
 <arg name="nav_type" default="all" /> <!-- bugm, navstack, all -->
 <arg name="launch_nav_controller" default="true" />
+<arg name="launch_manip_controller" default="true" />
 
 
 <param name="des_pos_x" value="0.0" />
@@ -41,5 +42,8 @@
 
 <!-- MOVEMENT CONTROLLER -->
 <node pkg="robocluedo_movement_controller" name="navigation_manager" type="navigation_manager" required="true" output="screen" if="$(arg launch_nav_controller)"/> 
+
+<!-- MANIPULATION CONTROLLER -->
+<node pkg="robocluedo_movement_controller" name="manipulation_controller" type="manipulation_controller" required="true" output="screen" if="$(arg launch_manip_controller)"/> 
 
 </launch>

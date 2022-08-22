@@ -13,9 +13,3 @@ parameters from sensor_msgs/CameraInfo.
       :members:
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
-

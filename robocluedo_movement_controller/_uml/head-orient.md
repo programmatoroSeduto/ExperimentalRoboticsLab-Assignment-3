@@ -1,9 +1,17 @@
 
 # UML -- head orientation PY
 
+---
+
 ```{toctree} 
+---
+caption: Contents
+maxdepth: 3
+---
 ./head-orient.md
 ```
+
+---
 
 ## SCHEMA
 
@@ -11,7 +19,7 @@
 @startuml
 
 ''' INFOS
-title NODE go_to_point
+title NODE head_orientation
 skinparam Padding 8
 allow_mixing
 

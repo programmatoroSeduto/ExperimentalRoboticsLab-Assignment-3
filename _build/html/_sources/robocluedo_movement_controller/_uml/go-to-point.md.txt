@@ -47,7 +47,7 @@ note on link: std_srvs/SetBool.srv
 
 ## HOW it works
 
-the node ccan be used only when *there's no obstacle between the robot and the target to reach*. here's how it works:
+the node can be used only when *there's no obstacle between the robot and the target to reach*. here's how it works:
 
 - turn the head of the robot and orient it towards the target
 - *go straight* until the target hasn't been reached

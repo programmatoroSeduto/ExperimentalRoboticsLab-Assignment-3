@@ -10,7 +10,26 @@
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>ROSPlan<sp/>pipeline</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./rosplan-pipeline.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>page<sp/>shows<sp/>the<sp/>interfaces<sp/>used<sp/>for<sp/>controlling<sp/>the<sp/>workflow<sp/>of<sp/>ROSPlan<sp/>by<sp/>the<sp/>pipeline<sp/>manager.<sp/>As<sp/>many<sp/>other<sp/>documents<sp/>inside<sp/>this<sp/>project,<sp/>this<sp/>is<sp/>a<sp/>document<sp/>written<sp/>for<sp/>supporting<sp/>the<sp/>development.<sp/></highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">##<sp/>schema<sp/>of<sp/>ROSPlan</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">The<sp/>schema<sp/>doesn&apos;t<sp/>show<sp/>the<sp/>topics<sp/>used<sp/>by<sp/>the<sp/>pipeline<sp/>manager<sp/>for<sp/>checking<sp/>if<sp/>the<sp/>operation<sp/>went<sp/>good<sp/>or<sp/>not.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>diagram<sp/>shows<sp/>the<sp/>main<sp/>service<sp/>interfaces<sp/>used<sp/>for<sp/>triggering<sp/>the<sp/>steps<sp/>of<sp/>the<sp/>ROSPlan<sp/>workflow.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -64,7 +83,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">message<sp/>**rosplan_dispatch_msgs/DispatchService**<sp/>:<sp/></highlight></codeline>
+<codeline><highlight class="normal">###<sp/>message<sp/>**rosplan_dispatch_msgs/DispatchService**<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```text</highlight></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
@@ -73,6 +92,10 @@
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>SCHEMA<sp/>--<sp/>rosplan_pipeline_manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">For<sp/>the<sp/>sake<sp/>of<sp/>simplicity,<sp/>the<sp/>schema<sp/>shows<sp/>only<sp/>the<sp/>services<sp/>for<sp/>using<sp/>ROSPlan<sp/>and<sp/>the<sp/>one<sp/>used<sp/>for<sp/>the<sp/>replanning<sp/>with<sp/>*kb_interface*.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -111,9 +134,11 @@
 <codeline><highlight class="normal">RCL_PIPELINE<sp/>&quot;sub&quot;<sp/>&lt;-left-<sp/>TOPIC_ACT_FEEDBACK</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>robocluedo_rosplan_msgs/ActionFeedback</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">/&apos;</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/rosplan_problem_interface/problem_instance&quot;<sp/>as<sp/>TOPIC_PROBLEM_INSTANCE</highlight></codeline>
 <codeline><highlight class="normal">RCL_PIPELINE<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_PROBLEM_INSTANCE</highlight></codeline>
 <codeline><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_msgs/String</highlight></codeline>
+<codeline><highlight class="normal">&apos;/</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/robocluedo/pipeline_manager&quot;<sp/>as<sp/>SRV_PIPELINE</highlight></codeline>
 <codeline><highlight class="normal">RCL_PIPELINE<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_PIPELINE</highlight></codeline>
@@ -139,12 +164,15 @@
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
 <codeline><highlight class="normal">class<sp/>&quot;Feedback<sp/>Manager&quot;<sp/>as<sp/>FEEDBACK</highlight></codeline>
 <codeline><highlight class="normal">{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_???(<sp/>...params...<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_failure()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_failure()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_navigation_failure()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_manipulation_failure()</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;/robocluedo/action_feedback&quot;<sp/>as<sp/>SRV_FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>SRV_FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/ActionFeedback</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo/action_feedback&quot;<sp/>as<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>&quot;pub&quot;<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/ActionFeedback.msg</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>

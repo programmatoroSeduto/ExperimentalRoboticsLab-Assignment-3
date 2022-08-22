@@ -16,7 +16,7 @@
 <para><hruler/>
 </para>
 <para>This document has been written in order to support the develop of the package, as well as both the coding and the testing phases.</para>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md358">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md413">
 <title>schema – knowledge base</title>
 <para>here are the main services exposed by the ROSPlan knowledge base. The graph shows the ones used by this project.</para>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -61,7 +61,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md359">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md414">
 <title>schema – CLASS kb_tools</title>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">the<sp/>current<sp/>version<sp/>has<sp/>a<sp/>very<sp/>poor<sp/>support<sp/>for<sp/>the<sp/>PDDL<sp/>fluents,<sp/>because<sp/>not<sp/>required<sp/>by<sp/>this<sp/>kind<sp/>of<sp/>project.<sp/></highlight></codeline>
 </programlisting></para>
@@ -112,13 +112,13 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md361">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md416">
 <title>(from here) The long list of HOW TOs</title>
 <para>here&apos;s a short summary about how to deal with the Knowledge Base. Mostly of the snippets introduced here are written in C++ without loss of generality.</para>
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md363">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md418">
 <title>HOW TO read a predicate</title>
 <para>libraries to import:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -149,7 +149,7 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline><highlight class="normal">TLOG(<sp/>&quot;Opening<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>SERVICE_QUERY<sp/>)<sp/>&lt;&lt;<sp/>&quot;...<sp/>OK&quot;<sp/>);</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md364">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md419">
 <title>message &lt;strong&gt;rosplan_knowledge_msgs/KnowledgeQueryService&lt;/strong&gt;</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">rosplan_knowledge_msgs/KnowledgeItem[]<sp/>knowledge</highlight></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
@@ -158,7 +158,7 @@
 <codeline><highlight class="normal">rosplan_knowledge_msgs/KnowledgeItem[]<sp/>false_knowledge</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md365">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md420">
 <title>message &lt;strong&gt;rosplan_knowledge_msgs/KnowledgeItem&lt;/strong&gt;</title>
 <para>(needed to perform the request)</para>
 <para><programlisting filename=".text"><codeline><highlight class="normal">#<sp/>A<sp/>knowledge<sp/>item<sp/>used<sp/>to<sp/>represent<sp/>a<sp/>piece<sp/>of<sp/>the<sp/>state<sp/>in<sp/>ROSPlan</highlight></codeline>
@@ -214,7 +214,7 @@
 <codeline><highlight class="normal">rosplan_knowledge_msgs/DomainInequality<sp/>ineq</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md366">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md421">
 <title>message &lt;strong&gt;diagnostic_msgs/KeyValue&lt;/strong&gt;</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">#<sp/>what<sp/>to<sp/>label<sp/>this<sp/>value<sp/>when<sp/>viewing</highlight></codeline>
 <codeline><highlight class="normal">string<sp/>key</highlight></codeline>
@@ -222,7 +222,7 @@
 <codeline><highlight class="normal">string<sp/>value</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md367">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md422">
 <title>how to perform the reading</title>
 <para><blockquote><para>reading predicates : if you&apos;re sure that the predicate you&apos;re asking for is unique, use the field response.all_true; or also .response.results[] showing each truth value. </para>
 </blockquote></para>
@@ -276,7 +276,7 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md368">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md423">
 <title>how to perform the reading using KB tools</title>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
 <codeline><highlight class="normal">//<sp/>just<sp/>one<sp/>predicate!</highlight></codeline>
@@ -291,7 +291,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md369">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md424">
 <title>HOW TO modify a predicate</title>
 <para>libraries:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -328,7 +328,7 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline><highlight class="normal">TLOG(<sp/>&quot;Opening<sp/>client<sp/>&quot;<sp/>&lt;&lt;<sp/>LOGSQUARE(<sp/>SERVICE_KB_UPDATE<sp/>)<sp/>&lt;&lt;<sp/>&quot;...<sp/>OK&quot;<sp/>);</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md370">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md425">
 <title>service &lt;strong&gt;rosplan_knowledge_msgs::KnowledgeUpdateService&lt;/strong&gt;</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">uint8<sp/>update_type</highlight></codeline>
 <codeline><highlight class="normal">rosplan_knowledge_msgs/KnowledgeItem<sp/>knowledge</highlight></codeline>
@@ -338,7 +338,7 @@
 <para>message <bold>rosplan_knowledge_msgs/KnowledgeItem</bold> (see above)</para>
 <para>message <bold>diagnostic_msgs/KeyValue</bold> (see above)</para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md371">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md426">
 <title>how to perform the update</title>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
 <codeline><highlight class="normal">std::string<sp/>pname</highlight></codeline>
@@ -373,7 +373,7 @@
 <codeline><highlight class="normal">bool<sp/>success<sp/>=<sp/>kbm.response.success;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md372">
+<sect2 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md427">
 <title>how to perform the update with kb_tools:</title>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
 <codeline><highlight class="normal">std::string<sp/>pname</highlight></codeline>
@@ -388,7 +388,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md373">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md428">
 <title>dealing with goals</title>
 <para>libraries:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -448,7 +448,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md375">
+<sect1 id="md_robocluedo_rosplan__uml_rosplan-kb_1autotoc_md430">
 <title>schema – NODE kb_interface</title>
 <para>this ROS node provides functionalities for replanning and for altering/reading the knowledge base in a convenient, general way, not constraining the other nodes to take into account the peculiarities of the current PDDL. This makes the system more flexible and adaptable to other types of PDDL problems.</para>
 <para>The node takes advantage of the class <emphasis><ref refid="classkb__tools" kindref="compound">kb_tools</ref></emphasis> which is applied to handle the data inside the kb.</para>

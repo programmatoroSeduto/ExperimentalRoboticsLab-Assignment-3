@@ -2,11 +2,30 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md__docs_how-to-setup-doxy-sphinx-ws" kind="page">
     <compoundname>md__docs_how-to-setup-doxy-sphinx-ws</compoundname>
-    <title>How to setup a Doxygen/Sphinx workspace</title>
+    <title>SPHINX – setup doxygen/sphinx</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md73">
+<para><programlisting filename=".todo"><codeline><highlight class="normal">pay<sp/>attention<sp/>to<sp/>the<sp/>code<sp/>inside<sp/>this<sp/>page:<sp/>it<sp/>should<sp/>be<sp/>reviewed.<sp/>It<sp/>could<sp/>contains<sp/>some<sp/>little<sp/>mistakes.<sp/></highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./how-to-setup-doxy-sphinx-ws.md</highlight></codeline>
+<codeline><highlight class="normal">./sphinx-mock.md</highlight></codeline>
+</programlisting></para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>See<sp/>also</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./rest-directives.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md75">
 <title>1 – setup Sphinx</title>
 <para><orderedlist>
 <listitem><para><computeroutput>sphinx-quickstart</computeroutput> without separating the documentation and the code</para>
@@ -15,7 +34,7 @@
 </listitem></orderedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md74">
+<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md76">
 <title>2 – setup Doxygen</title>
 <para><orderedlist>
 <listitem><para>create a configuration file inside the root folder of the project using <computeroutput>doxywizard</computeroutput></para>
@@ -25,10 +44,12 @@
 </listitem></orderedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md75">
-<title>Sphinx – config file configuration</title>
+<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md77">
+<title>Sphinx – Essential &lt;em&gt;conf.py&lt;/em&gt; file configuration</title>
 <para>Here&apos;s the procedure I followed to configure this workspace.</para>
 <para>First lines, section <computeroutput>path setup</computeroutput>, copy and paste this:</para>
+<para><programlisting filename=".note"><codeline><highlight class="normal">remember<sp/>to<sp/>add<sp/>the<sp/>paths<sp/>of<sp/>the<sp/>scripts<sp/>files,<sp/>otherwise<sp/>Sphinx<sp/>won&apos;t<sp/>find<sp/>them.<sp/></highlight></codeline>
+</programlisting></para>
 <para><programlisting filename=".py"><codeline><highlight class="comment">#<sp/>--<sp/>Path<sp/>setup<sp/>--------------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>If<sp/>extensions<sp/>(or<sp/>modules<sp/>to<sp/>document<sp/>with<sp/>autodoc)<sp/>are<sp/>in<sp/>another<sp/>directory,</highlight><highlight class="normal"></highlight></codeline>
@@ -41,6 +62,8 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">sys.path.insert(0,<sp/>os.path.abspath(</highlight><highlight class="stringliteral">&apos;.&apos;</highlight><highlight class="normal">))</highlight></codeline>
 </programlisting></para>
+<sect2 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md78">
+<title>Extensions</title>
 <para>section <computeroutput>general configuration</computeroutput>: copy and paste this. Here are the most significant plugins:</para>
 <para><itemizedlist>
 <listitem><para><ulink url="https://myst-parser.readthedocs.io/en/latest/index.html"><computeroutput>myst_parser</computeroutput></ulink> : it enables Sphinx to parse the <computeroutput>.md</computeroutput> files. <ulink url="https://myst-parser.readthedocs.io/en/latest/configuration.html">Here</ulink> you can fnd many other configuration settings for myst parser.</para>
@@ -81,6 +104,9 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>This<sp/>pattern<sp/>also<sp/>affects<sp/>html_static_path<sp/>and<sp/>html_extra_path.</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">exclude_patterns<sp/>=<sp/>[</highlight><highlight class="stringliteral">&apos;_build&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;Thumbs.db&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;.DS_Store&apos;</highlight><highlight class="normal">]</highlight></codeline>
 </programlisting></para>
+</sect2>
+<sect2 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md79">
+<title>HTML output settings and syntax hilighting</title>
 <para>Section <computeroutput>Options for HTML output</computeroutput>:</para>
 <para><programlisting filename=".python"><codeline><highlight class="normal">#<sp/>--<sp/>Options<sp/>for<sp/>HTML<sp/>output<sp/>-------------------------------------------------</highlight></codeline>
 <codeline></codeline>
@@ -110,13 +136,19 @@
 <codeline><highlight class="normal">#<sp/>allow<sp/>Pygments<sp/>to<sp/>guess<sp/>the<sp/>language</highlight></codeline>
 <codeline><highlight class="normal">highlight_language<sp/>=<sp/>&apos;guess&apos;</highlight></codeline>
 </programlisting></para>
+</sect2>
+<sect2 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md80">
+<title>todo</title>
 <para>Add a new section for the todo list plugin:</para>
 <para><programlisting filename=".python"><codeline><highlight class="normal">#<sp/>--<sp/>Options<sp/>for<sp/>todo<sp/>extension<sp/>----------------------------------------------</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>If<sp/>true,<sp/>`todo`<sp/>and<sp/>`todoList`<sp/>produce<sp/>output,<sp/>else<sp/>they<sp/>produce<sp/>nothing.</highlight></codeline>
 <codeline><highlight class="normal">todo_include_todos<sp/>=<sp/>True</highlight></codeline>
 </programlisting></para>
-<para><bold>Breathe Options</bold>, add it to the config file (remember to replace <bold>???</bold> with the name of the project you gave in Doxygen)</para>
+</sect2>
+<sect2 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md81">
+<title>&lt;strong&gt;Breathe Options&lt;/strong&gt;</title>
+<para>add it to the config file (remember to replace <bold>???</bold> with the name of the project you gave in Doxygen)</para>
 <para><programlisting filename=".py"><codeline><highlight class="comment">#<sp/>--<sp/>Options<sp/>for<sp/>breathe<sp/>-----------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>generate<sp/>the<sp/>Doxygen<sp/>XML<sp/>documentation</highlight><highlight class="normal"></highlight></codeline>
@@ -131,7 +163,15 @@
 <codeline><highlight class="normal">breathe_default_project<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;robocluedo&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">breathe_default_members<sp/>=<sp/>(</highlight><highlight class="stringliteral">&apos;members&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;undoc-members&apos;</highlight><highlight class="normal">)</highlight></codeline>
 </programlisting></para>
-<para><bold>PlantUML</bold> : first modify the extensions, ...</para>
+</sect2>
+</sect1>
+<sect1 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md82">
+<title>Other tools</title>
+<sect2 id="md__docs_how-to-setup-doxy-sphinx-ws_1autotoc_md83">
+<title>&lt;strong&gt;PlantUML&lt;/strong&gt;</title>
+<para><programlisting filename=".note"><codeline><highlight class="normal">this<sp/>project<sp/>already<sp/>contains<sp/>a<sp/>working<sp/>installation<sp/>of<sp/>PlantUML<sp/>for<sp/>Sphinx.<sp/></highlight></codeline>
+</programlisting></para>
+<para>first modify the extensions, ...</para>
 <para><programlisting filename=".py"><codeline><highlight class="normal">extensions<sp/>=<sp/>[</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>...</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;sphinx.ext.graphviz&apos;</highlight><highlight class="normal">,<sp/></highlight></codeline>
@@ -141,8 +181,13 @@
 <para>... then add the module for PlantUML.</para>
 <para><programlisting filename=".py"><codeline><highlight class="comment">#<sp/>--<sp/>plantUML<sp/>extension<sp/>------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">plantuml<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;java<sp/>-Djava.awt.headless=true<sp/>-jar<sp/>./_ext/plantuml.jar&apos;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>path<sp/>of<sp/>the<sp/>jar<sp/>file<sp/>for<sp/>plantUML</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">plantuml<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;java<sp/>-jar<sp/>%s<sp/>-verbose&apos;</highlight><highlight class="normal"><sp/>%<sp/>os.path.join(os.path.dirname(__file__),<sp/></highlight><highlight class="stringliteral">&quot;_ext&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;plantuml.jar&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>output<sp/>format</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">plantuml_output_format<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;svg&apos;</highlight></codeline>
 </programlisting> </para>
+</sect2>
 </sect1>
     </detaileddescription>
   </compounddef>

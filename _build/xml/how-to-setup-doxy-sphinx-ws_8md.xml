@@ -8,7 +8,33 @@
     </detaileddescription>
     <programlisting>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>How<sp/>to<sp/>setup<sp/>a<sp/>Doxygen/Sphinx<sp/>workspace</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>SPHINX<sp/>--<sp/>setup<sp/>doxygen/sphinx</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{todo}</highlight></codeline>
+<codeline><highlight class="normal">pay<sp/>attention<sp/>to<sp/>the<sp/>code<sp/>inside<sp/>this<sp/>page:<sp/>it<sp/>should<sp/>be<sp/>reviewed.<sp/>It<sp/>could<sp/>contains<sp/>some<sp/>little<sp/>mistakes.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./how-to-setup-doxy-sphinx-ws.md</highlight></codeline>
+<codeline><highlight class="normal">./sphinx-mock.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>See<sp/>also</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./rest-directives.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>1<sp/>--<sp/>setup<sp/>Sphinx</highlight></codeline>
 <codeline></codeline>
@@ -28,11 +54,15 @@
 <codeline></codeline>
 <codeline><highlight class="normal">4.<sp/>*...<sp/>other<sp/>config<sp/>options?*</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>Sphinx<sp/>--<sp/>config<sp/>file<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Sphinx<sp/>--<sp/>Essential<sp/>*conf.py*<sp/>file<sp/>configuration</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">Here&apos;s<sp/>the<sp/>procedure<sp/>I<sp/>followed<sp/>to<sp/>configure<sp/>this<sp/>workspace.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">First<sp/>lines,<sp/>section<sp/>`path<sp/>setup`,<sp/>copy<sp/>and<sp/>paste<sp/>this:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">remember<sp/>to<sp/>add<sp/>the<sp/>paths<sp/>of<sp/>the<sp/>scripts<sp/>files,<sp/>otherwise<sp/>Sphinx<sp/>won&apos;t<sp/>find<sp/>them.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```py</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>--<sp/>Path<sp/>setup<sp/>--------------------------------------------------------------</highlight></codeline>
@@ -47,6 +77,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">sys.path.insert(0,<sp/>os.path.abspath(&apos;.&apos;))</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Extensions</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">section<sp/>`general<sp/>configuration`:<sp/>copy<sp/>and<sp/>paste<sp/>this.<sp/>Here<sp/>are<sp/>the<sp/>most<sp/>significant<sp/>plugins:</highlight></codeline>
 <codeline></codeline>
@@ -89,6 +121,8 @@
 <codeline><highlight class="normal">exclude_patterns<sp/>=<sp/>[&apos;_build&apos;,<sp/>&apos;Thumbs.db&apos;,<sp/>&apos;.DS_Store&apos;]</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">###<sp/>HTML<sp/>output<sp/>settings<sp/>and<sp/>syntax<sp/>hilighting</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">Section<sp/>`Options<sp/>for<sp/>HTML<sp/>output`:</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```python</highlight></codeline>
@@ -124,6 +158,8 @@
 <codeline><highlight class="normal">highlight_language<sp/>=<sp/>&apos;guess&apos;</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">###<sp/>todo</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">Add<sp/>a<sp/>new<sp/>section<sp/>for<sp/>the<sp/>todo<sp/>list<sp/>plugin:</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```python</highlight></codeline>
@@ -133,7 +169,9 @@
 <codeline><highlight class="normal">todo_include_todos<sp/>=<sp/>True</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**Breathe<sp/>Options**,<sp/>add<sp/>it<sp/>to<sp/>the<sp/>config<sp/>file<sp/>(remember<sp/>to<sp/>replace<sp/>**???**<sp/>with<sp/>the<sp/>name<sp/>of<sp/>the<sp/>project<sp/>you<sp/>gave<sp/>in<sp/>Doxygen)</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>**Breathe<sp/>Options**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">add<sp/>it<sp/>to<sp/>the<sp/>config<sp/>file<sp/>(remember<sp/>to<sp/>replace<sp/>**???**<sp/>with<sp/>the<sp/>name<sp/>of<sp/>the<sp/>project<sp/>you<sp/>gave<sp/>in<sp/>Doxygen)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```py</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>--<sp/>Options<sp/>for<sp/>breathe<sp/>-----------------------------------------------------</highlight></codeline>
@@ -151,7 +189,15 @@
 <codeline><highlight class="normal">breathe_default_members<sp/>=<sp/>(&apos;members&apos;,<sp/>&apos;undoc-members&apos;)</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**PlantUML**<sp/>:<sp/>first<sp/>modify<sp/>the<sp/>extensions,<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Other<sp/>tools</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**PlantUML**<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{note}</highlight></codeline>
+<codeline><highlight class="normal">this<sp/>project<sp/>already<sp/>contains<sp/>a<sp/>working<sp/>installation<sp/>of<sp/>PlantUML<sp/>for<sp/>Sphinx.<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">first<sp/>modify<sp/>the<sp/>extensions,<sp/>...</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```py</highlight></codeline>
 <codeline><highlight class="normal">extensions<sp/>=<sp/>[</highlight></codeline>
@@ -166,9 +212,15 @@
 <codeline><highlight class="normal">```py</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>--<sp/>plantUML<sp/>extension<sp/>------------------------------------------------------</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">plantuml<sp/>=<sp/>&apos;java<sp/>-Djava.awt.headless=true<sp/>-jar<sp/>./_ext/plantuml.jar&apos;</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>path<sp/>of<sp/>the<sp/>jar<sp/>file<sp/>for<sp/>plantUML</highlight></codeline>
+<codeline><highlight class="normal">plantuml<sp/>=<sp/>&apos;java<sp/>-jar<sp/>%s<sp/>-verbose&apos;<sp/>%<sp/>os.path.join(os.path.dirname(__file__),<sp/>&quot;_ext&quot;,<sp/>&quot;plantuml.jar&quot;)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>output<sp/>format</highlight></codeline>
+<codeline><highlight class="normal">plantuml_output_format<sp/>=<sp/>&apos;svg&apos;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
     </programlisting>
     <location file="_docs/how-to-setup-doxy-sphinx-ws.md"/>
   </compounddef>

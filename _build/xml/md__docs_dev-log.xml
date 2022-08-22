@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md__docs_dev-log" kind="page">
     <compoundname>md__docs_dev-log</compoundname>
-    <title>RoboCLuedo – erl3 – Development Log</title>
+    <title>LOG – development log</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -21,7 +21,7 @@
 </listitem><listitem><para><ulink url="https://www.onlinegdb.com/online_c++_compiler">onlineGDB</ulink></para>
 </listitem></itemizedlist>
 </para>
-<sect1 id="md__docs_dev-log_1autotoc_md22">
+<sect1 id="md__docs_dev-log_1autotoc_md20">
 <title>15/08/2022 – setup repository – starter kit</title>
 <para>nuovo assignment, nuova avventura:</para>
 <para><itemizedlist>
@@ -78,7 +78,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md26">
+<sect1 id="md__docs_dev-log_1autotoc_md24">
 <title>16/08/2022 – modello del robot</title>
 <para>cotinuiamo a lavorare sul modello del robot (oggi si fa poco...)</para>
 <para><itemizedlist>
@@ -208,7 +208,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md30">
+<sect1 id="md__docs_dev-log_1autotoc_md28">
 <title>17/08/2022 – move_base navigation</title>
 <para>iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)</para>
 <para><itemizedlist>
@@ -435,7 +435,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md35">
+<sect1 id="md__docs_dev-log_1autotoc_md33">
 <title>18/08/2022 – pddl e manipulation unit – aruco</title>
 <para>oggi, manipulation controller</para>
 <para><itemizedlist>
@@ -590,15 +590,15 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md38">
+<sect1 id="md__docs_dev-log_1autotoc_md36">
 <title>shell 1</title>
 <para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md39">
+<sect1 id="md__docs_dev-log_1autotoc_md37">
 <title>shell 2</title>
 <para>roslaunch robocluedo_movement_controller navigation_system.launch &amp; rosrun robocluedo_movement_controller navigation_manager &amp; rosrun exp_assignment3 simulation_marker_publisher &amp; rosrun robocluedo_mission_manager navigation_unit</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md40">
+<sect1 id="md__docs_dev-log_1autotoc_md38">
 <title>shell 3</title>
 <para>rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp1&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp2&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp3&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp4&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp5&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp6&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;center&apos;&quot;</para>
 <para>```</para>
@@ -625,19 +625,19 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md41">
+<sect1 id="md__docs_dev-log_1autotoc_md39">
 <title>shell 1</title>
 <para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md42">
+<sect1 id="md__docs_dev-log_1autotoc_md40">
 <title>shell 2</title>
 <para>rosrun robocluedo_movement_controller manipulation_controller 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md43">
+<sect1 id="md__docs_dev-log_1autotoc_md41">
 <title>shell 3</title>
 <para>rostopic list | grep tip </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md44">
+<sect1 id="md__docs_dev-log_1autotoc_md42">
 <title>/tip_pos_async</title>
 <para>rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 2
         enabled: true&quot; sleep 15 rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 4
@@ -654,30 +654,30 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md45">
+<sect1 id="md__docs_dev-log_1autotoc_md43">
 <title>shell 1</title>
 <para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md46">
+<sect1 id="md__docs_dev-log_1autotoc_md44">
 <title>shell 2</title>
 <para>rosrun robocluedo_movement_controller manipulation_controller 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md47">
+<sect1 id="md__docs_dev-log_1autotoc_md45">
 <title>shell 3</title>
 <para>rosrun robocluedo_mission_manager manipulation_unit</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md48">
+<sect1 id="md__docs_dev-log_1autotoc_md46">
 <title>shell 4</title>
 <para>rosservice list | grep tip </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md49">
+<sect1 id="md__docs_dev-log_1autotoc_md47">
 <title>/tip_pos</title>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md50">
+<sect1 id="md__docs_dev-log_1autotoc_md48">
 <title>/tip_pos_auto_switch</title>
 <para>rosservice call /tip_pos_auto_switch &quot;data: true&quot; </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md51">
+<sect1 id="md__docs_dev-log_1autotoc_md49">
 <title>6 different poses</title>
 <para>sleep 60 rosservice call /tip_pos_auto_switch &quot;data: false&quot;</para>
 <para>```</para>
@@ -949,7 +949,7 @@
 </para>
 <para><hruler/>
 </para>
-<sect2 id="md__docs_dev-log_1autotoc_md58">
+<sect2 id="md__docs_dev-log_1autotoc_md56">
 <title>21/08/2022 – alleggerimento – documentazione</title>
 <para>il piano di oggi è: alleggerire (per quanto possibile) l&apos;applicazione, partendo dall&apos;eliminare i log inutili, e documentare. Siccome c&apos;è grande somiglianza tra i due progetti, posso partire col documentare il terzo per poi trasferire gran parte della documentazione sul secondo progetto. Per la documentazione del codice ci vorrà un pochino più di lavoro, ma per il resto dovrebbe risparmiarmi un bel po&apos; di fatica. E domani, scrittura dei due readme e via così.</para>
 <para><itemizedlist>
@@ -1079,15 +1079,15 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </para>
 </sect2>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md61">
+<sect1 id="md__docs_dev-log_1autotoc_md59">
 <title>shell 1</title>
 <para>roslaunch robocluedo_mission_manager run_components.launch init:=false launch_robot:=true robot_env_type:=gazeborviz robot_nav_type:=amcl 1&gt;/dev/null 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md62">
+<sect1 id="md__docs_dev-log_1autotoc_md60">
 <title>shell 2</title>
 <para>roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_mission_manager:=false</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md63">
+<sect1 id="md__docs_dev-log_1autotoc_md61">
 <title>shell 3</title>
 <para>roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mission_manager:=true</para>
 <para>```</para>
@@ -1242,9 +1242,128 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;writing documentation&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
+<sect2 id="md__docs_dev-log_1autotoc_md68">
+<title>22/08/2022 – documentazione del progetto</title>
+<para>continuiamo con la scrittura della documentazione (per il momento, overview veloce della documentazione; più avanti passiamo a rivedere nel dettaglio gli altri punti)</para>
+<para><itemizedlist>
+<listitem><para><bold>robocluedo rosplan</bold><itemizedlist>
+<listitem><para>documento sulla rosplan pipeline</para>
+</listitem><listitem><para>metodi nel feedback manager</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>robocluedo dependencies</bold><itemizedlist>
+<listitem><para>anche vision cv ha la sua documentazione</para>
+</listitem><listitem><para>provo ad importarla... ok</para>
+</listitem><listitem><para>aggiorno la documentazione sul modello del robot ...</para>
+</listitem><listitem><para>manca la parte su amcl</para>
+</listitem><listitem><para>e revisione di tutto il codice riportato nel documento (c&apos;è voluto un bel po&apos;)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>robocluedo movement controller</bold><itemizedlist>
+<listitem><para>la documentazione su AMCL meglio spostarla qui dentro...</para>
+</listitem><listitem><para>gli UML del movement controller vanni aggiornati</para>
+</listitem><listitem><para>va documentato <ref refid="namespacemove__base__nav" kindref="compound">move_base_nav</ref></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>giusto un&apos;occhiata al resto della documentazione<itemizedlist>
+<listitem><para>se non è essenziale per la comprensione del progetto, direi di nasconderla</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>una nota su come avviare il progetto (ottima occasione per fare un&apos;ultimo test prima della consegna)<itemizedlist>
+<listitem><para>mi sono accorto che manca un documento su come lanciare l&apos;intero progetto col launcher! cazz</para>
+</listitem><listitem><para>lo scrivo subito</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e test ...<itemizedlist>
+<listitem><para>... poteva mai andare tutto bene? <emphasis>certo che no</emphasis>.</para>
+</listitem><listitem><para>c&apos;è un problema con l&apos;unità del mission manager che gestisce la manipulation...</para>
+</listitem><listitem><para>(devo aver fatto qualche stupida modifica al codice)</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>un piccolo test (proviamo a capire dove sta l&apos;errore):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazeborviz<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_motion_controllers:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager_components:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>noto che non viene avviato il manipulation controller ... ci sarà qualcosa di sbagliato nel launch file del motion controller</para>
+</listitem><listitem><para><emphasis>e in effetti nel launch file manca!</emphasis> fortuna che stavolta è stato semplice risovlere questo problema: stavo iniziando a pensare al peggio (fortuna che testo sempre...)</para>
+</listitem><listitem><para>e proviamo ancora ... e ovviamente ci sono degli errori sul launch file...</para>
+</listitem><listitem><para>il launch file globale crasha, ma i singoli componenti no<itemizedlist>
+<listitem><para>sono costretto a fare una esecuzione step by step per capire dove sta il problema...</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>potrebbe anche essere successo che sia scattato qualche timeout, dato che il servizio sulla manipulation non era stato attivato: non vedendo il servizio pubblicato, qualche nodo si è chiuso, determinando così la chiusura dell&apos;intero programma</para>
+</listitem><listitem><para>e altro errore, ovviamente! sempre dal manipulation.</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">process[manipulation_controller-7]:<sp/>started<sp/>with<sp/>pid<sp/>[2768]</highlight></codeline>
+<codeline><highlight class="normal">[ERROR]<sp/>[1661161333.204855700]:<sp/>Robot<sp/>semantic<sp/>description<sp/>not<sp/>found.<sp/>Did<sp/>you<sp/>forget<sp/>to<sp/>define<sp/>or<sp/>remap<sp/>&apos;/robot_description_semantic&apos;?</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661161333.206055300]:<sp/>Loading<sp/>robot<sp/>model<sp/>&apos;robocluedo_robot&apos;...</highlight></codeline>
+<codeline><highlight class="normal">[<sp/>INFO]<sp/>[1661161333.206203300]:<sp/>No<sp/>root/virtual<sp/>joint<sp/>specified<sp/>in<sp/>SRDF.<sp/>Assuming<sp/>fixed<sp/>joint</highlight></codeline>
+<codeline><highlight class="normal">[FATAL]<sp/>[1661161333.344392200]:<sp/>Group<sp/>&apos;arm_group&apos;<sp/>was<sp/>not<sp/>found.</highlight></codeline>
+<codeline><highlight class="normal">terminate<sp/>called<sp/>after<sp/>throwing<sp/>an<sp/>instance<sp/>of<sp/>&apos;std::runtime_error&apos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>what():<sp/><sp/>Group<sp/>&apos;arm_group&apos;<sp/>was<sp/>not<sp/>found.</highlight></codeline>
+<codeline><highlight class="normal">================================================================================REQUIRED<sp/>process<sp/>[manipulation_controller-7]<sp/>has<sp/>died!</highlight></codeline>
+<codeline><highlight class="normal">process<sp/>has<sp/>died<sp/>[pid<sp/>2768,<sp/>exit<sp/>code<sp/>-6,<sp/>cmd<sp/>/root/ros_ws/devel/lib/robocluedo_movement_controller/manipulation_controller<sp/>__name:=manipulation_controller<sp/>__log:=/root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7.log].</highlight></codeline>
+<codeline><highlight class="normal">log<sp/>file:<sp/>/root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7*.log</highlight></codeline>
+<codeline><highlight class="normal">Initiating<sp/>shutdown!</highlight></codeline>
+<codeline><highlight class="normal">================================================================================</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>e se provassi ad avviare anche RViz?<itemizedlist>
+<listitem><para><bold>con anche RVIZ sembra che vada</bold> ...</para>
+</listitem><listitem><para>... ma ieri andava anche senza RViz ... cos&apos;è cambiato?</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>quindi ... senza RViz stavolta, MoveIt non va<itemizedlist>
+<listitem><para>ieri ha funzionato anche senza ... oggi niente, boh</para>
+</listitem><listitem><para>può essere un problema nel run2 del robot</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>potrei aver capito dove sta il problema... proviamo così: ho creato un gazebo2.launch che è come demo_gazebo.launch ma senza lanciare RViz ... se ho intuito bene, questo dovrebbe lanciare sia gazebo che il modello del robot, cioè quello che serve per non far crashare quel launch file</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>shell<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>gazebo2.launch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_motion_controllers:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager_components:=true</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>shell<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">rosnode<sp/>list</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para><bold>problema risolto</bold>! La mia intuizione era corretta: il file di base generato dal setup assistant per lanciare solo Gazebo non esegue anche tutti gli strumenti che serve avviare per usare il framework moveit. Creando questo secondo launch file sono riuscito ad eseguire con successo anche la parte di manipolazione usando solo Gazebo</para>
+</listitem><listitem><para><emphasis>adesso ho da aggiungere un 2 a qualunque cosa nel codice ...</emphasis><itemizedlist>
+<listitem><para>nel launch generale non servono modifiche</para>
+</listitem><listitem><para>modifica nel run2</para>
+</listitem><listitem><para>(non è stato così tragico...)</para>
+</listitem><listitem><para>vado a segnalare la issue nella documentazione del modello URDF</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e riproviamo a lanciare il progetto, <emphasis>stavolta senza RViz</emphasis> ...</para>
+</listitem><listitem><para>(pensandoci bene, <emphasis>ieri non ho testato fino in fondo questa feature...</emphasis> comunque oggi l&apos;ho fatto, bene che c&apos;ho pensato)</para>
+</listitem><listitem><para><bold>E FUNZIONA!</bold></para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation, ISSUE Gazebo-only SOLVED, improving launch files&quot;</para>
+</listitem></itemizedlist>
+</para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">-<sp/>aggiornare<sp/>documentazione<sp/>robot<sp/>Hunter<sp/>col<sp/>nuovo<sp/>run</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>modificare<sp/>il<sp/>module<sp/>testing<sp/>del<sp/>robot:<sp/>aggiungere<sp/>i<sp/>test<sp/>del<sp/>log</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>verificare<sp/>che<sp/>tutte<sp/>le<sp/>pagine<sp/>ausiliarie<sp/>abbiano<sp/>la<sp/>loro<sp/>TOCtree<sp/>interna,<sp/>specie<sp/>quando<sp/>sono<sp/>lunghe<sp/>pagine</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>rifare<sp/>la<sp/>homepage<sp/>in<sp/>modo<sp/>che<sp/>le<sp/>parti<sp/>essenziali<sp/>dell&apos;assignment<sp/>risultino<sp/>&quot;a<sp/>vista&quot;</highlight></codeline>
@@ -1258,6 +1377,15 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>documentazione<sp/>di<sp/>rosplan</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>quanto<sp/>riguarda<sp/>l&apos;attuale<sp/>documentazione<sp/>del<sp/>codice,<sp/>oltre<sp/>a<sp/>non<sp/>esserci<sp/>nulla,<sp/>non<sp/>si<sp/>capisce<sp/>se<sp/>le<sp/>cose<sp/>documentate<sp/>siano<sp/>nodi,<sp/>classi,<sp/>azioni,<sp/>...</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>organizzare<sp/>un<sp/>po&apos;<sp/>meglio<sp/>la<sp/>parte<sp/>della<sp/>code<sp/>reference</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>spostare<sp/>il<sp/>testing<sp/>all&apos;interno<sp/>del<sp/>package</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>documentazione<sp/>del<sp/>codice<sp/>nel<sp/>movement<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>in<sp/>particolare<sp/>descrivere<sp/>l&apos;idea<sp/>dei<sp/>controllers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>scrivere<sp/>un<sp/>documento<sp/>che<sp/>dia<sp/>i<sp/>passaggi<sp/>per<sp/>implementare<sp/>un<sp/>nuovo<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>documentazione<sp/>mission<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>documentazione<sp/>del<sp/>codice<sp/>(attualmente<sp/>c&apos;è<sp/>solo<sp/>quella<sp/>inline,<sp/>serve<sp/>approfondire)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>documentazione<sp/>module<sp/>testing</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>distribuire<sp/>i<sp/>test<sp/>nei<sp/>vari<sp/>packages<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(tutti<sp/>i<sp/>test<sp/>tranne<sp/>quelli<sp/>che<sp/>includono<sp/>del<sp/>codice<sp/>specifico<sp/>contenuto<sp/>nel<sp/>package<sp/>module<sp/>testing)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
@@ -1268,7 +1396,15 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>documentazione<sp/>di<sp/>rosplan</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>copiare<sp/>per<sp/>intero<sp/>rosplan-arch.md</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>c&apos;è<sp/>qualcosa<sp/>di<sp/>specifico<sp/>da<sp/>inserire<sp/>in<sp/>questo<sp/>documento?</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>aggiornare<sp/>la<sp/>documentazione<sp/>per<sp/>il<sp/>vecchio<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>documentazione<sp/>mission<sp/>manager</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>quanto<sp/>riguarda<sp/>la<sp/>documentazione<sp/>del<sp/>mission<sp/>manager<sp/>main,<sp/>la<sp/>documentazione<sp/>cambia<sp/>di<sp/>pochissimo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>casomai,<sp/>indica<sp/>quali<sp/>differenze<sp/>ci<sp/>sono<sp/>tra<sp/>i<sp/>due<sp/>assignment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>la<sp/>documentazione<sp/>del<sp/>manipulation<sp/>manager<sp/>cambia</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>anche<sp/>quella<sp/>della<sp/>navigation<sp/>unit<sp/>(usa<sp/>un<sp/>algoritmo<sp/>diverso)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>elimina<sp/>le<sp/>cartelle<sp/>inutilizzate<sp/>su<sp/>esempi<sp/>e<sp/>tutto<sp/>il<sp/>resto<sp/>(se<sp/>non<sp/>servono,<sp/>eliminale)</highlight></codeline>
 </programlisting></para>
+</sect2>
 <sect2 id="md__docs_dev-log_1autotoc_md69">
 <title>Note</title>
 <sect3 id="md__docs_dev-log_1autotoc_md70">

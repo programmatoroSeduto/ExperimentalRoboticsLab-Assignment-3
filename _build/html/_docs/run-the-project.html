@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Run this Project &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>HOW TO Run this Project &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -30,7 +30,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sphinx for Py – modules mocking" href="sphinx-mock.html" />
+    <link rel="next" title="PlantUML – quick reference" href="../_ext/plant-uml-reference.html" />
     <link rel="prev" title="ReStructured Directives – practical documentation" href="rest-directives.html" /> 
 </head>
 
@@ -72,24 +72,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="catkin-notes.html">Notes about Catkin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev-log.html">RoboCLuedo – erl3 – Development Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mapping.html">GMapping and AMCL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log.html">LOG – development log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to Run this Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sphinx-yaml.html">YAML and Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/examples-index.html">Code Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
 <ul>
@@ -110,7 +102,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>How to Run this Project</li>
+      <li>HOW TO Run this Project</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_docs/run-the-project.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -121,8 +113,35 @@
            <div itemprop="articleBody">
              
   <div class="section" id="how-to-run-this-project">
-<h1>How to Run this Project<a class="headerlink" href="#how-to-run-this-project" title="Permalink to this heading"></a></h1>
-<p>… well, how to … ?</p>
+<h1>HOW TO Run this Project<a class="headerlink" href="#how-to-run-this-project" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If something would go south, please consider to run the project step by step; see the package robocluedo_mission_manager for further informations about how to run the project.</p>
+</div>
+<div class="section" id="suggested-way-amcl-and-no-logs">
+<h2>suggested way – AMCL and no logs<a class="headerlink" href="#suggested-way-amcl-and-no-logs" title="Permalink to this heading"></a></h2>
+<p>The project is very heavy to run on a machine, reason for why I suggest to launch the project using these options:</p>
+<ul class="simple">
+<li><p>(two shells)</p></li>
+<li><p>use <em>amcl</em> for the localisation</p></li>
+<li><p>use Gazebo only, don’t run RViz</p></li>
+<li><p>suppress every kind of output in the first shell using <code class="docutils literal notranslate"><span class="pre">1&gt;/dev/null</span> <span class="pre">2&gt;/dev/null</span></code></p></li>
+</ul>
+<div class="section" id="shell-1">
+<h3>Shell 1<a class="headerlink" href="#shell-1" title="Permalink to this heading"></a></h3>
+<p>all the components, without the <code class="docutils literal notranslate"><span class="pre">mission</span> <span class="pre">manager</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+</div>
+<div class="section" id="shell-2">
+<h3>Shell 2<a class="headerlink" href="#shell-2" title="Permalink to this heading"></a></h3>
+<p>the shell will show the output from the mission manager, to show hot the investigation is proceeding.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -130,7 +149,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="rest-directives.html" class="btn btn-neutral float-left" title="ReStructured Directives – practical documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="sphinx-mock.html" class="btn btn-neutral float-right" title="Sphinx for Py – modules mocking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../_ext/plant-uml-reference.html" class="btn btn-neutral float-right" title="PlantUML – quick reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

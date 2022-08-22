@@ -2,85 +2,85 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="mapping_8md_8txt" kind="file" language="C++">
     <compoundname>mapping.md.txt</compoundname>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="mapping_8md_8txt_1a6eaf26f7ad4610e116e6d89da359b479" prot="public" static="no" mutable="no">
-        <type><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref> exploration performed with GMapping can be saved <ref refid="test-the-project_8md_8txt_1acc99dd0b593cfb3b61d901d2d9f8870c" kindref="member">bash</ref> roslaunch robocluedo_robot_hunter run2 launch</type>
-        <definition>the exploration performed with GMapping can be saved bash roslaunch robocluedo_robot_hunter run2 launch sim_type</definition>
-        <argsstring></argsstring>
-        <name>sim_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="_build/html/_sources/_docs/mapping.md.txt" line="10" column="46" bodyfile="_build/html/_sources/_docs/mapping.md.txt" bodystart="24" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>GMapping<sp/>and<sp/>AMCL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>HOW<sp/>TO<sp/>perform<sp/>localization<sp/>with<sp/>AMCL</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Save<sp/>the<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">---</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>exploration<sp/>performed<sp/>with<sp/>GMapping<sp/>can<sp/>be<sp/>saved.</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal">```<ref refid="test-the-project_8md_8txt_1acc99dd0b593cfb3b61d901d2d9f8870c" kindref="member">bash</ref></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>enable<sp/>the<sp/>robot<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/><ref refid="mapping_8md_8txt_1a6eaf26f7ad4610e116e6d89da359b479" kindref="member">sim_type</ref>:=gazeborviz<sp/>1&gt;/dev/</highlight><highlight class="keyword">null</highlight><highlight class="normal"><sp/>2&gt;/dev/</highlight><highlight class="keyword">null</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>do<sp/>some<sp/>exloration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal">rosrun<sp/>teleop_keyboard<sp/>teleop_twist_keyboard.py</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">./mapping.md</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">---</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>save<sp/>the<sp/>map</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal">rosrun<sp/>map_server<sp/>map_saver<sp/>-f<sp/>/root/ros_ws/src/erl3/robocluedo_dependencies/worlds/data/assignment3_map</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">```{note}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="cpp-docs-template_8md_8txt_1a20ff6362005f038a891568b43d660996" kindref="member">the</ref><sp/></highlight><highlight class="keyword">package<sp/></highlight><highlight class="normal">`worlds`<sp/>already<sp/>contains<sp/>the<sp/>map<sp/>file<sp/>created<sp/>during<sp/>this<sp/>HOW<sp/>TO.</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">```</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>output<sp/>from<sp/><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>map_saver<sp/>should<sp/>be<sp/>like<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">##<sp/>Save<sp/>the<sp/>map</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal">```text</highlight></codeline>
-<codeline lineno="22"><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl3/_docs#<sp/>rosrun<sp/>map_server<sp/>map_saver<sp/>-f<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map</highlight></codeline>
-<codeline lineno="23"><highlight class="normal">[<sp/>INFO]<sp/>[1661074988.866398200]:<sp/>Waiting<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>map</highlight></codeline>
-<codeline lineno="24" refid="mapping_8md_8txt_1a6eaf26f7ad4610e116e6d89da359b479" refkind="member"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.080666300,<sp/>1172.635000000]:<sp/>Received<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>1984<sp/>X<sp/>1984<sp/>map<sp/>@<sp/>0.050<sp/>m/pix</highlight></codeline>
-<codeline lineno="25"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.080824600,<sp/>1172.636000000]:<sp/>Writing<sp/>map<sp/>occupancy<sp/>data<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref><sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.pgm</highlight></codeline>
-<codeline lineno="26"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.166739700,<sp/>1172.691000000]:<sp/>Writing<sp/>map<sp/>occupancy<sp/>data<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref><sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.yaml</highlight></codeline>
-<codeline lineno="27"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.166996800,<sp/>1172.691000000]:<sp/>Done</highlight></codeline>
-<codeline lineno="28"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">the<sp/>exploration<sp/>performed<sp/>with<sp/>GMapping<sp/>can<sp/>be<sp/>saved<sp/>using<sp/>`map_server<sp/>map_saver`.</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">```bash</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">#<sp/>enable<sp/>the<sp/>robot<sp/>environment</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=gazeborviz<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">#<sp/>do<sp/>some<sp/>exloration</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">rosrun<sp/>teleop_keyboard<sp/>teleop_twist_keyboard.py</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>Load<sp/>the<sp/>map<sp/>with<sp/>AMCL</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal">here</highlight><highlight class="stringliteral">&apos;s<sp/>how<sp/>to<sp/>run<sp/>AMCL<sp/>via<sp/>launch<sp/>file:</highlight></codeline>
-<codeline lineno="33"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="34"><highlight class="stringliteral">```</highlight></codeline>
-<codeline lineno="35"><highlight class="stringliteral">&lt;?xml<sp/>version=&quot;1.0&quot;?&gt;</highlight></codeline>
-<codeline lineno="36"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="37"><highlight class="stringliteral">&lt;launch&gt;</highlight></codeline>
-<codeline lineno="38"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="39"><highlight class="stringliteral">&lt;node<sp/>pkg=&quot;map_server&quot;<sp/>name=&quot;map_server&quot;<sp/>type=&quot;map_server&quot;<sp/>arg=&quot;$(find<sp/>worlds)/data/assignment3_map.yaml&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="40"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="41"><highlight class="stringliteral">&lt;param<sp/>name=&quot;use_sim_time&quot;<sp/>value=&quot;true&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="42"><highlight class="stringliteral">&lt;node<sp/>pkg=&quot;amcl&quot;<sp/>type=&quot;amcl&quot;<sp/>name=&quot;amcl&quot;<sp/>output=&quot;screen&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="43"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;base_frame_id&quot;<sp/>value=&quot;base_link&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="44"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;min_particles&quot;<sp/>value=&quot;1000&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="45"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;max_particles&quot;<sp/>value=&quot;5000&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="46"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;odom_alpha1&quot;<sp/>value=&quot;2&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="47"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;odom_alpha2&quot;<sp/>value=&quot;2&quot;<sp/>/&gt;</highlight></codeline>
-<codeline lineno="48"><highlight class="stringliteral">&lt;/node&gt;</highlight></codeline>
-<codeline lineno="49"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="50"><highlight class="stringliteral">&lt;/launch&gt;</highlight></codeline>
-<codeline lineno="51"><highlight class="stringliteral">```</highlight></codeline>
-<codeline lineno="52"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="53"><highlight class="stringliteral">here&apos;</highlight><highlight class="normal">s<sp/><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>command<sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/>AMCL<sp/>map<sp/>of<sp/><ref refid="cpp-docs-template_8md_8txt_1a8dfd148d0f4736cfd77e16fc5d110ad2" kindref="member">the</ref><sp/><ref refid="robocluedo_8md_8txt_1addc63bf7b58a728e484bbfd7df61bb1d" kindref="member">environment</ref>:</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal">```<ref refid="test-the-project_8md_8txt_1acc99dd0b593cfb3b61d901d2d9f8870c" kindref="member">bash</ref></highlight></codeline>
-<codeline lineno="56"><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/><ref refid="mapping_8md_8txt_1a6eaf26f7ad4610e116e6d89da359b479" kindref="member">sim_type</ref>:=gazeborviz<sp/>launch_nav_stack:=</highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>launch_amcl:=</highlight><highlight class="keyword">true</highlight><highlight class="normal"><sp/>1&gt;/dev/</highlight><highlight class="keyword">null</highlight><highlight class="normal"><sp/>2&gt;/dev/</highlight><highlight class="keyword">null</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">#<sp/>save<sp/>the<sp/>map</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">rosrun<sp/>map_server<sp/>map_saver<sp/>-f<sp/>/root/ros_ws/src/erl3/robocluedo_dependencies/worlds/data/assignment3_map</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">the<sp/>output<sp/>from<sp/>the<sp/>map_saver<sp/>should<sp/>be<sp/>like<sp/>this:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">```text</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">root@3b17871017fd:~/ros_ws/src/erl3/_docs#<sp/>rosrun<sp/>map_server<sp/>map_saver<sp/>-f<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">[<sp/>INFO]<sp/>[1661074988.866398200]:<sp/>Waiting<sp/>for<sp/>the<sp/>map</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.080666300,<sp/>1172.635000000]:<sp/>Received<sp/>a<sp/>1984<sp/>X<sp/>1984<sp/>map<sp/>@<sp/>0.050<sp/>m/pix</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.080824600,<sp/>1172.636000000]:<sp/>Writing<sp/>map<sp/>occupancy<sp/>data<sp/>to<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.pgm</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.166739700,<sp/>1172.691000000]:<sp/>Writing<sp/>map<sp/>occupancy<sp/>data<sp/>to<sp/>/root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.yaml</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">[<sp/>INFO]<sp/>[1661074989.166996800,<sp/>1172.691000000]:<sp/>Done</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">##<sp/>Load<sp/>the<sp/>map<sp/>with<sp/>AMCL</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">here&apos;s<sp/>how<sp/>to<sp/>run<sp/>AMCL<sp/>via<sp/>launch<sp/>file:</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">&lt;?xml<sp/>version=&quot;1.0&quot;?&gt;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">&lt;launch&gt;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">&lt;node<sp/>pkg=&quot;map_server&quot;<sp/>name=&quot;map_server&quot;<sp/>type=&quot;map_server&quot;<sp/>arg=&quot;$(find<sp/>worlds)/data/assignment3_map.yaml&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">&lt;param<sp/>name=&quot;use_sim_time&quot;<sp/>value=&quot;true&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">&lt;node<sp/>pkg=&quot;amcl&quot;<sp/>type=&quot;amcl&quot;<sp/>name=&quot;amcl&quot;<sp/>output=&quot;screen&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;base_frame_id&quot;<sp/>value=&quot;base_link&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;min_particles&quot;<sp/>value=&quot;1000&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;max_particles&quot;<sp/>value=&quot;5000&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;odom_alpha1&quot;<sp/>value=&quot;2&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>&lt;param<sp/>name=&quot;odom_alpha2&quot;<sp/>value=&quot;2&quot;<sp/>/&gt;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">&lt;/node&gt;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">&lt;/launch&gt;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">here&apos;s<sp/>the<sp/>command<sp/>to<sp/>try<sp/>the<sp/>AMCL<sp/>map<sp/>of<sp/>the<sp/>environment:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">```bash</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">roslaunch<sp/>robocluedo_robot_hunter<sp/>run2.launch<sp/>sim_type:=gazeborviz<sp/>launch_nav_stack:=false<sp/>launch_amcl:=true<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">```</highlight></codeline>
     </programlisting>
-    <location file="_build/html/_sources/_docs/mapping.md.txt"/>
+    <location file="_build/html/_sources/robocluedo_movement_controller/_docs/mapping.md.txt"/>
   </compounddef>
 </doxygen>

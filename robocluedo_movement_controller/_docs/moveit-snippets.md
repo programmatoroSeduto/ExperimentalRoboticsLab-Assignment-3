@@ -1,6 +1,8 @@
-# moveit snippets
+# HOW TO -- moveit snippets
 
-*directly from the official tutorial...*
+```{warning}
+this documents needs to be reviewed. The code here could not work, but the overall structure is correct. 
+```
 
 ---
 

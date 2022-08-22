@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_movement_controller__uml_move-base-nav" kind="page">
+    <compoundname>md_robocluedo_movement_controller__uml_move-base-nav</compoundname>
+    <title>UML – move_base_nav</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">maxdepth:<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./move-base-nav.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para>The node manages the navigation with move_base and the navigation stack, and coordinates move_base with the head orientation behaviour.</para>
+<sect1 id="md_robocluedo_movement_controller__uml_move-base-nav_1autotoc_md375">
+<title>SCHEMA</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>NODE<sp/>move_base_nav</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;ROS<sp/>parameter<sp/>server&quot;<sp/>as<sp/>PARAMETERS<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;des_pos_x&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;des_pos_y&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;move_base_nav&quot;<sp/>&lt;&lt;ROSPy<sp/>node&gt;&gt;<sp/>as<sp/>MOVE_BASE_NAV<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;move_base_nav_switch&quot;<sp/>as<sp/>MOVE_BASE_NAV.SWITCH</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>node<sp/>&quot;clbk_odom&quot;<sp/>as<sp/>MOVE_BASE_NAV.READ_ODOM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>&quot;get&quot;<sp/>&lt;--<sp/>PARAMETERS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/odom&quot;<sp/>as<sp/>TOPIC_ODOM</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV.READ_ODOM<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_ODOM</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>nav_msgs/Odometry.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cmd_vel&quot;<sp/>as<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_VEL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>geometry_msgs/Twist.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/move_base/goal&quot;<sp/>as<sp/>TOPIC_MOVE_BASE_GOAL</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_MOVE_BASE_GOAL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>move_base_msgs/MoveBaseActionGoal.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/move_base/cancel&quot;<sp/>as<sp/>TOPIC_MOVE_BASE_CANCEL</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_MOVE_BASE_CANCEL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>actionlib_msgs/GoalID.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/nav_stack_switch&quot;<sp/>as<sp/>SRV_MOVE_BASE_NAV_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV.SWITCH<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_MOVE_BASE_NAV_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/nav_stack_signal&quot;<sp/>as<sp/>SRV_MOVE_BASE_NAV_SIGNAL</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>&lt;--<sp/>&quot;cl&quot;<sp/>SRV_MOVE_BASE_NAV_SIGNAL</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Empty.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/head_orient_switch&quot;<sp/>as<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>&lt;--<sp/>&quot;cl&quot;<sp/>SRV_HEAD_ORIENT_SWITCH</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

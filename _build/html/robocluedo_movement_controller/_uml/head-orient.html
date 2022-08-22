@@ -30,7 +30,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="UML – wall follow PY node" href="wall-follow.html" />
+    <link rel="next" title="UML – move_base_nav" href="move-base-nav.html" />
     <link rel="prev" title="UML – go to point PY node" href="go-to-point.html" /> 
 </head>
 
@@ -63,14 +63,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">moveit snippets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Notes about Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/mapping.html">HOW TO perform localization with AMCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">UML – head orientation PY</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wall-follow.html">UML – wall follow PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move-base-nav.html">UML – move_base_nav</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/bug_m.html">CODE REFERENCE – node bug_m</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
@@ -89,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
@@ -97,7 +99,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">RoboCLuedo – erl3 – Development Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/mapping.html">GMapping and AMCL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">How to Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -140,7 +141,9 @@
              
   <div class="section" id="uml-head-orientation-py">
 <h1>UML – head orientation PY<a class="headerlink" href="#uml-head-orientation-py" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">UML – head orientation PY</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#schema">SCHEMA</a></li>
@@ -149,14 +152,15 @@
 </li>
 </ul>
 </div>
+<hr class="docutils" />
 <div class="section" id="schema">
 <h2>SCHEMA<a class="headerlink" href="#schema" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
-<object data="../../_images/plantuml-b71ef8b8771ddcb3240b31b88766e81abafc1206.svg" type="image/svg+xml" style="width:847px;height:513px;background:#FFFFFF;">
-<img src="../../_images/plantuml-b71ef8b8771ddcb3240b31b88766e81abafc1206.png" alt="&#64;startuml
+<object data="../../_images/plantuml-c55c259528b7113c39a4e074cc3960183b5a374a.svg" type="image/svg+xml" style="width:847px;height:513px;background:#FFFFFF;">
+<img src="../../_images/plantuml-c55c259528b7113c39a4e074cc3960183b5a374a.png" alt="&#64;startuml
 
 ''' INFOS
-title NODE go_to_point
+title NODE head_orientation
 skinparam Padding 8
 allow_mixing
 
@@ -207,7 +211,7 @@ note on link: std_srvs/SetBool.srv
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="go-to-point.html" class="btn btn-neutral float-left" title="UML – go to point PY node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="wall-follow.html" class="btn btn-neutral float-right" title="UML – wall follow PY node" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="move-base-nav.html" class="btn btn-neutral float-right" title="UML – move_base_nav" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

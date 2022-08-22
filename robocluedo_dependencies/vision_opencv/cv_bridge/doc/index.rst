@@ -10,9 +10,3 @@ OpenCV images.
       :members:
 
 .. autoclass:: cv_bridge.CvBridgeError
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`

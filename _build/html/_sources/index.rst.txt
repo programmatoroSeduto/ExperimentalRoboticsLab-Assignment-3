@@ -44,6 +44,8 @@ RCL -- the RoboCLuedo Project - part 3
    :glob:
    
    ./robocluedo_dependencies/_docs/*
+   ./robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.rst
+   .robocluedo_dependencies/vision_opencv/image_geometry/doc/index.rst
 
 
 .. toctree::

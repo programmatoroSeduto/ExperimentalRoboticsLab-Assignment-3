@@ -1,5 +1,17 @@
 
-# Notes about Navigation and Odometry
+# Messages -- Navigation and Odometry
+
+---
+
+```{toctree}
+---
+maxdepth: 3
+caption: Contents
+---
+./odometry-and-navigation.md
+```
+
+---
 
 ## Odometry message
 

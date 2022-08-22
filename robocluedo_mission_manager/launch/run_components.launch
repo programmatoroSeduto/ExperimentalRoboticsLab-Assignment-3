@@ -30,14 +30,21 @@ roslaunch robocluedo_mission_manager run_components.launch init:=false launch_ro
 <arg name="init" default="true" />
 
 <arg name="launch_robot" default="$(arg init)" />
-	<arg name="robot_env_type" default="gazebo" /> <!-- gazebo, rviz, gazeborviz -->
+	<arg name="robot_env_type" default="gazeborviz" /> <!-- gazebo, rviz, gazeborviz -->
 	<arg name="robot_nav_type" default="gmapping" /> <!-- gmapping, amcl -->
 	<arg name="world_name" default="assignment3.world" />
+
 <arg name="launch_armor" default="$(arg init)" />
+
 <arg name="launch_rosplan" default="$(arg init)" />
+
 <arg name="launch_motion_controllers" default="$(arg init)" />
+
 <arg name="launch_oracle" default="$(arg init)" />
+	<arg name="publish_markers" default="true" />
+
 <arg name="launch_aruco" default="$(arg init)" />
+
 <arg name="launch_mission_manager_components" default="$(arg init)" />
 <arg name="launch_mission_manager" default="$(arg init)" />
 
@@ -61,10 +68,13 @@ roslaunch robocluedo_mission_manager run_components.launch init:=false launch_ro
 <!-- RUN THE CONTROLLERS and the systems for navigation and manipulation -->
 <include file="$(find robocluedo_movement_controller)/launch/run.launch" if="$(arg launch_motion_controllers)" > 
 	<arg name="launch_nav_controller" value="true" />
+	<arg name="launch_manip_controller" value="true" />
 </include>
 
 <!-- RUN THE ORACLE and the marker publisher -->
-<include file="$(find exp_assignment3)/launch/run.launch" if="$(arg launch_oracle)" />
+<include file="$(find exp_assignment3)/launch/run.launch" if="$(arg launch_oracle)" >
+	<arg name="publish_markers" value="$(arg publish_markers)" />
+</include>
 
 <!-- RUN THE ARUCO UNITS -->
 <include file="$(find robocluedo_vision)/launch/run.launch" if="$(arg launch_aruco)" >

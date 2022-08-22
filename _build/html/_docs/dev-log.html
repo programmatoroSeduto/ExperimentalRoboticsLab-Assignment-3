@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RoboCLuedo – erl3 – Development Log &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>LOG – development log &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How to setup a Doxygen/Sphinx workspace" href="how-to-setup-doxy-sphinx-ws.html" />
-    <link rel="prev" title="Documentation for c++ nodes and libraries" href="cpp-docs-template.html" /> 
+    <link rel="next" title="SPHINX – setup doxygen/sphinx" href="how-to-setup-doxy-sphinx-ws.html" />
+    <link rel="prev" title="TEMPLATE – C++ code documentation" href="cpp-docs-template.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,26 +72,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="catkin-notes.html">Notes about Catkin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">Documentation for c++ nodes and libraries</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">RoboCLuedo – erl3 – Development Log</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LOG – development log</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mapping.html">GMapping and AMCL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">How to Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">HOW TO Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sphinx-yaml.html">YAML and Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/examples-index.html">Code Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
 <ul>
@@ -112,7 +104,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>RoboCLuedo – erl3 – Development Log</li>
+      <li>LOG – development log</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_docs/dev-log.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -122,18 +114,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="robocluedo-erl3-development-log">
-<h1>RoboCLuedo – erl3 – Development Log<a class="headerlink" href="#robocluedo-erl3-development-log" title="Permalink to this heading"></a></h1>
+  <div class="section" id="log-development-log">
+<h1>LOG – development log<a class="headerlink" href="#log-development-log" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Indice</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">RoboCLuedo – erl3 – Development Log</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LOG – development log</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pddl-e-manipulation-unit-aruco">18/08/2022 – pddl e manipulation unit – aruco</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#alleggerimento-documentazione">21/08/2022 – alleggerimento – documentazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentazione-del-progetto">22/08/2022 – documentazione del progetto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#note">Note</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#utilizzo-di-move-base">utilizzo di move base</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#strano-warning-con-move-base">strano warning con move_base</a></li>
@@ -1407,11 +1400,139 @@ rosnode list
 </li>
 <li><p><strong>COMMIT</strong>: “writing documentation”</p></li>
 </ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="documentazione-del-progetto">
+<h2>22/08/2022 – documentazione del progetto<a class="headerlink" href="#documentazione-del-progetto" title="Permalink to this heading"></a></h2>
+<p>continuiamo con la scrittura della documentazione (per il momento, overview veloce della documentazione; più avanti passiamo a rivedere nel dettaglio gli altri punti)</p>
+<ul class="simple">
+<li><p><strong>robocluedo rosplan</strong></p>
+<ul>
+<li><p>documento sulla rosplan pipeline</p></li>
+<li><p>metodi nel feedback manager</p></li>
+</ul>
+</li>
+<li><p><strong>robocluedo dependencies</strong></p>
+<ul>
+<li><p>anche vision cv ha la sua documentazione</p></li>
+<li><p>provo ad importarla… ok</p></li>
+<li><p>aggiorno la documentazione sul modello del robot …</p></li>
+<li><p>manca la parte su amcl</p></li>
+<li><p>e revisione di tutto il codice riportato nel documento (c’è voluto un bel po’)</p></li>
+</ul>
+</li>
+<li><p><strong>robocluedo movement controller</strong></p>
+<ul>
+<li><p>la documentazione su AMCL meglio spostarla qui dentro…</p></li>
+<li><p>gli UML del movement controller vanni aggiornati</p></li>
+<li><p>va documentato move_base_nav</p></li>
+</ul>
+</li>
+<li><p>giusto un’occhiata al resto della documentazione</p>
+<ul>
+<li><p>se non è essenziale per la comprensione del progetto, direi di nasconderla</p></li>
+</ul>
+</li>
+<li><p>una nota su come avviare il progetto (ottima occasione per fare un’ultimo test prima della consegna)</p>
+<ul>
+<li><p>mi sono accorto che manca un documento su come lanciare l’intero progetto col launcher! cazz</p></li>
+<li><p>lo scrivo subito</p></li>
+</ul>
+</li>
+<li><p>e test …</p>
+<ul>
+<li><p>… poteva mai andare tutto bene? <em>certo che no</em>.</p></li>
+<li><p>c’è un problema con l’unità del mission manager che gestisce la manipulation…</p></li>
+<li><p>(devo aver fatto qualche stupida modifica al codice)</p></li>
+</ul>
+</li>
+</ul>
+<p>un piccolo test (proviamo a capire dove sta l’errore):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 3</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 4</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>noto che non viene avviato il manipulation controller … ci sarà qualcosa di sbagliato nel launch file del motion controller</p></li>
+<li><p><em>e in effetti nel launch file manca!</em> fortuna che stavolta è stato semplice risovlere questo problema: stavo iniziando a pensare al peggio (fortuna che testo sempre…)</p></li>
+<li><p>e proviamo ancora … e ovviamente ci sono degli errori sul launch file…</p></li>
+<li><p>il launch file globale crasha, ma i singoli componenti no</p>
+<ul>
+<li><p>sono costretto a fare una esecuzione step by step per capire dove sta il problema…</p></li>
+</ul>
+</li>
+<li><p>potrebbe anche essere successo che sia scattato qualche timeout, dato che il servizio sulla manipulation non era stato attivato: non vedendo il servizio pubblicato, qualche nodo si è chiuso, determinando così la chiusura dell’intero programma</p></li>
+<li><p>e altro errore, ovviamente! sempre dal manipulation.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>process[manipulation_controller-7]: started with pid [2768]
+[ERROR] [1661161333.204855700]: Robot semantic description not found. Did you forget to define or remap &#39;/robot_description_semantic&#39;?
+[ INFO] [1661161333.206055300]: Loading robot model &#39;robocluedo_robot&#39;...
+[ INFO] [1661161333.206203300]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[FATAL] [1661161333.344392200]: Group &#39;arm_group&#39; was not found.
+terminate called after throwing an instance of &#39;std::runtime_error&#39;
+  what():  Group &#39;arm_group&#39; was not found.
+================================================================================REQUIRED process [manipulation_controller-7] has died!
+process has died [pid 2768, exit code -6, cmd /root/ros_ws/devel/lib/robocluedo_movement_controller/manipulation_controller __name:=manipulation_controller __log:=/root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7.log].
+log file: /root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7*.log
+Initiating shutdown!
+================================================================================
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e se provassi ad avviare anche RViz?</p>
+<ul>
+<li><p><strong>con anche RVIZ sembra che vada</strong> …</p></li>
+<li><p>… ma ieri andava anche senza RViz … cos’è cambiato?</p></li>
+</ul>
+</li>
+<li><p>quindi … senza RViz stavolta, MoveIt non va</p>
+<ul>
+<li><p>ieri ha funzionato anche senza … oggi niente, boh</p></li>
+<li><p>può essere un problema nel run2 del robot</p></li>
+</ul>
+</li>
+<li><p>potrei aver capito dove sta il problema… proviamo così: ho creato un gazebo2.launch che è come demo_gazebo.launch ma senza lanciare RViz … se ho intuito bene, questo dovrebbe lanciare sia gazebo che il modello del robot, cioè quello che serve per non far crashare quel launch file</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter gazebo2.launch
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 3</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 4</span>
+rosnode list
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>problema risolto</strong>! La mia intuizione era corretta: il file di base generato dal setup assistant per lanciare solo Gazebo non esegue anche tutti gli strumenti che serve avviare per usare il framework moveit. Creando questo secondo launch file sono riuscito ad eseguire con successo anche la parte di manipolazione usando solo Gazebo</p></li>
+<li><p><em>adesso ho da aggiungere un 2 a qualunque cosa nel codice …</em></p>
+<ul>
+<li><p>nel launch generale non servono modifiche</p></li>
+<li><p>modifica nel run2</p></li>
+<li><p>(non è stato così tragico…)</p></li>
+<li><p>vado a segnalare la issue nella documentazione del modello URDF</p></li>
+</ul>
+</li>
+<li><p>e riproviamo a lanciare il progetto, <em>stavolta senza RViz</em> …</p></li>
+<li><p>(pensandoci bene, <em>ieri non ho testato fino in fondo questa feature…</em> comunque oggi l’ho fatto, bene che c’ho pensato)</p></li>
+<li><p><strong>E FUNZIONA!</strong></p></li>
+<li><p><strong>COMMIT</strong>: “documentation, ISSUE Gazebo-only SOLVED, improving launch files”</p></li>
+</ul>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p><strong>terzo assignment:</strong></p>
 <ul class="simple">
-<li><p>aggiornare documentazione robot Hunter col nuovo run</p></li>
 <li><p>modificare il module testing del robot: aggiungere i test del log</p></li>
 <li><p>verificare che tutte le pagine ausiliarie abbiano la loro TOCtree interna, specie quando sono lunghe pagine</p></li>
 <li><p>rifare la homepage in modo che le parti essenziali dell’assignment risultino “a vista”</p></li>
@@ -1432,6 +1553,24 @@ rosnode list
 <ul>
 <li><p>per quanto riguarda l’attuale documentazione del codice, oltre a non esserci nulla, non si capisce se le cose documentate siano nodi, classi, azioni, …</p></li>
 <li><p>organizzare un po’ meglio la parte della code reference</p></li>
+<li><p>spostare il testing all’interno del package</p></li>
+</ul>
+</li>
+<li><p>documentazione del codice nel movement controller</p>
+<ul>
+<li><p>in particolare descrivere l’idea dei controllers</p></li>
+<li><p>e scrivere un documento che dia i passaggi per implementare un nuovo controller</p></li>
+</ul>
+</li>
+<li><p>documentazione mission manager</p>
+<ul>
+<li><p>documentazione del codice (attualmente c’è solo quella inline, serve approfondire)</p></li>
+</ul>
+</li>
+<li><p>documentazione module testing</p>
+<ul>
+<li><p>distribuire i test nei vari packages</p></li>
+<li><p>(tutti i test tranne quelli che includono del codice specifico contenuto nel package module testing)</p></li>
 </ul>
 </li>
 </ul>
@@ -1447,6 +1586,19 @@ rosnode list
 <li><p>c’è qualcosa di specifico da inserire in questo documento?</p></li>
 </ul>
 </li>
+<li><p>aggiornare la documentazione per il vecchio robot</p></li>
+<li><p>documentazione mission manager</p>
+<ul>
+<li><p>per quanto riguarda la documentazione del mission manager main, la documentazione cambia di pochissimo</p>
+<ul>
+<li><p>casomai, indica quali differenze ci sono tra i due assignment</p></li>
+</ul>
+</li>
+<li><p>la documentazione del manipulation manager cambia</p></li>
+<li><p>e anche quella della navigation unit (usa un algoritmo diverso)</p></li>
+</ul>
+</li>
+<li><p>elimina le cartelle inutilizzate su esempi e tutto il resto (se non servono, eliminale)</p></li>
 </ul>
 </div>
 </div>
@@ -1652,8 +1804,8 @@ Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cpp-docs-template.html" class="btn btn-neutral float-left" title="Documentation for c++ nodes and libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="how-to-setup-doxy-sphinx-ws.html" class="btn btn-neutral float-right" title="How to setup a Doxygen/Sphinx workspace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpp-docs-template.html" class="btn btn-neutral float-left" title="TEMPLATE – C++ code documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how-to-setup-doxy-sphinx-ws.html" class="btn btn-neutral float-right" title="SPHINX – setup doxygen/sphinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

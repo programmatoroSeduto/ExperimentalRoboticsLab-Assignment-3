@@ -1,5 +1,31 @@
 
-# How to setup a Doxygen/Sphinx workspace
+# SPHINX -- setup doxygen/sphinx
+
+```{todo}
+pay attention to the code inside this page: it should be reviewed. It could contains some little mistakes. 
+```
+
+---
+
+```{toctree}
+---
+maxdepth: 3
+caption: Contents
+---
+./how-to-setup-doxy-sphinx-ws.md
+./sphinx-mock.md
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: See also
+---
+./rest-directives.md
+```
+
+---
+
 
 ## 1 -- setup Sphinx
 
@@ -19,11 +45,15 @@
 
 4. *... other config options?*
 
-# Sphinx -- config file configuration
+## Sphinx -- Essential *conf.py* file configuration
 
 Here's the procedure I followed to configure this workspace. 
 
 First lines, section `path setup`, copy and paste this:
+
+```{note}
+remember to add the paths of the scripts files, otherwise Sphinx won't find them. 
+```
 
 ```py
 # -- Path setup --------------------------------------------------------------
@@ -38,6 +68,8 @@ import subprocess
 
 sys.path.insert(0, os.path.abspath('.'))
 ```
+
+### Extensions
 
 section `general configuration`: copy and paste this. Here are the most significant plugins:
 
@@ -80,6 +112,8 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 ```
 
+### HTML output settings and syntax hilighting
+
 Section `Options for HTML output`:
 
 ```python
@@ -115,6 +149,8 @@ Add a new section `Syntax Hilighting`:
 highlight_language = 'guess'
 ```
 
+### todo
+
 Add a new section for the todo list plugin:
 
 ```python
@@ -124,7 +160,9 @@ Add a new section for the todo list plugin:
 todo_include_todos = True
 ```
 
-**Breathe Options**, add it to the config file (remember to replace **???** with the name of the project you gave in Doxygen)
+### **Breathe Options**
+
+add it to the config file (remember to replace **???** with the name of the project you gave in Doxygen)
 
 ```py
 # -- Options for breathe -----------------------------------------------------
@@ -142,7 +180,15 @@ breathe_default_project = "robocluedo"
 breathe_default_members = ('members', 'undoc-members')
 ```
 
-**PlantUML** : first modify the extensions, ...
+## Other tools
+
+### **PlantUML** 
+
+```{note}
+this project already contains a working installation of PlantUML for Sphinx. 
+```
+
+first modify the extensions, ...
 
 ```py
 extensions = [
@@ -157,6 +203,12 @@ extensions = [
 ```py
 # -- plantUML extension ------------------------------------------------------
 
-plantuml = 'java -Djava.awt.headless=true -jar ./_ext/plantuml.jar'
+# path of the jar file for plantUML
+plantuml = 'java -jar %s -verbose' % os.path.join(os.path.dirname(__file__), "_ext", "plantuml.jar")
+
+# output format
+plantuml_output_format = 'svg'
 
 ```
+
+

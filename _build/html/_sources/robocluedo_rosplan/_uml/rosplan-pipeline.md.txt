@@ -1,7 +1,26 @@
 
 # UML -- ROSPlan pipeline
 
+---
+
+```{toctree}
+---
+caption: Contents
+---
+./rosplan-pipeline.md
+```
+
+---
+
+This page shows the interfaces used for controlling the workflow of ROSPlan by the pipeline manager. As many other documents inside this project, this is a document written for supporting the development. 
+
 ## schema of ROSPlan
+
+```{uml} 
+The schema doesn't show the topics used by the pipeline manager for checking if the operation went good or not. 
+```
+
+This diagram shows the main service interfaces used for triggering the steps of the ROSPlan workflow. 
 
 ```{uml} 
 @startuml
@@ -55,7 +74,7 @@ RP_KB <-up- DOMAIN
 @enduml
 ```
 
-message **rosplan_dispatch_msgs/DispatchService** : 
+### message **rosplan_dispatch_msgs/DispatchService** 
 
 ```text
 ---
@@ -64,6 +83,10 @@ bool goal_achieved
 ```
 
 ## SCHEMA -- rosplan_pipeline_manager
+
+```{uml} 
+For the sake of simplicity, the schema shows only the services for using ROSPlan and the one used for the replanning with *kb_interface*.
+```
 
 ```{uml} 
 @startuml
@@ -102,9 +125,11 @@ note on link : robocluedo_rosplan_msgs/UpdateGoal
 RCL_PIPELINE "sub" <-left- TOPIC_ACT_FEEDBACK
 note on link : robocluedo_rosplan_msgs/ActionFeedback
 
+/'
 () "/rosplan_problem_interface/problem_instance" as TOPIC_PROBLEM_INSTANCE
 RCL_PIPELINE "sub" <-- TOPIC_PROBLEM_INSTANCE
 note on link : std_msgs/String
+'/
 
 () "/robocluedo/pipeline_manager" as SRV_PIPELINE
 RCL_PIPELINE "srv" -right-> SRV_PIPELINE
@@ -130,12 +155,15 @@ allow_mixing
 ''' COMPONENTS
 class "Feedback Manager" as FEEDBACK
 {
-  + fb_???( ...params... )
+  + fb_failure()
+  + fb_hw_failure()
+  + fb_hw_navigation_failure()
+  + fb_hw_manipulation_failure()
 }
 
-() "/robocluedo/action_feedback" as SRV_FEEDBACK
-FEEDBACK --> SRV_FEEDBACK
-note on link: robocluedo_rosplan_msgs/ActionFeedback
+() "/robocluedo/action_feedback" as TOPIC_FEEDBACK
+FEEDBACK --> "pub" TOPIC_FEEDBACK
+note on link: robocluedo_rosplan_msgs/ActionFeedback.msg
 
 
 ''' CONNECTIONS

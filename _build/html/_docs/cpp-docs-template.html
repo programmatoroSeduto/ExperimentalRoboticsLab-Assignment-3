@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation for c++ nodes and libraries &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>TEMPLATE – C++ code documentation &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="RoboCLuedo – erl3 – Development Log" href="dev-log.html" />
-    <link rel="prev" title="Notes about Catkin" href="catkin-notes.html" /> 
+    <link rel="next" title="LOG – development log" href="dev-log.html" />
+    <link rel="prev" title="cv_bridge" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,20 +72,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="catkin-notes.html">Notes about Catkin</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation for c++ nodes and libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev-log.html">RoboCLuedo – erl3 – Development Log</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TEMPLATE – C++ code documentation</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log.html">LOG – development log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup a Doxygen/Sphinx workspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html#sphinx-config-file-configuration">Sphinx – config file configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mapping.html">GMapping and AMCL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run-the-project.html">How to Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-yaml.html">YAML and Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">General Code Examples</span></p>
 <ul>
@@ -110,7 +110,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Documentation for c++ nodes and libraries</li>
+      <li>TEMPLATE – C++ code documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_docs/cpp-docs-template.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -120,8 +120,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="documentation-for-c-nodes-and-libraries">
-<h1>Documentation for c++ nodes and libraries<a class="headerlink" href="#documentation-for-c-nodes-and-libraries" title="Permalink to this heading"></a></h1>
+  <div class="section" id="template-c-code-documentation">
+<h1>TEMPLATE – C++ code documentation<a class="headerlink" href="#template-c-code-documentation" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TEMPLATE – C++ code documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conventions">conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-documentation">file documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#header-documentation-node-documentation">Header documentation / node documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpp-file-documentation">Cpp file documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#code-elements-documentation">Code Elements Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#naive-doc">naive doc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classical-function-documentation">classical function documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-function-documentation">MAIN FUNCTION documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-implementation-documentation">service implementation documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publisher-callback-documentation">publisher-callback documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-doxygen-statements">useful doxygen statements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#todo-remarks">TODO remarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations-and-remarks">annotations and remarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#warnings-and-limitations">warnings and limitations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
 <div class="section" id="conventions">
 <h2>conventions<a class="headerlink" href="#conventions" title="Permalink to this heading"></a></h2>
 <ul class="simple">
@@ -381,8 +411,8 @@ This is the first paragraph.
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="catkin-notes.html" class="btn btn-neutral float-left" title="Notes about Catkin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dev-log.html" class="btn btn-neutral float-right" title="RoboCLuedo – erl3 – Development Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html" class="btn btn-neutral float-left" title="cv_bridge" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dev-log.html" class="btn btn-neutral float-right" title="LOG – development log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,11 +1,8 @@
 #! /usr/bin/env python
 
-'''
+'''navigation using MoveBase and the navigation stack
 
 @file move_base_nav.py
-
-@brief navigation using MoveBase and the navigation stack
-
 @author Francesco Ganci
 
 '''
