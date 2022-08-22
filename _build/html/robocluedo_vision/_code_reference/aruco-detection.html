@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node aruco_detection &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>CODE REFERENCE – aruco_detection.cpp &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -62,7 +62,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/opencv-aruco-setup.html">ArUco and OpenCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/arch.html">UML robocluedo_vision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="aruco-decode.html">CODE REFERENCE – node aruco_decode.py</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node aruco_detection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – aruco_detection.cpp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
@@ -109,7 +109,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_vision</a> &raquo;</li>
-      <li>CODE REFERENCE – node aruco_detection</li>
+      <li>CODE REFERENCE – aruco_detection.cpp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_vision/_code_reference/aruco-detection.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -119,8 +119,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-aruco-detection">
-<h1>CODE REFERENCE – node aruco_detection<a class="headerlink" href="#code-reference-node-aruco-detection" title="Permalink to this heading"></a></h1>
+  <div class="section" id="code-reference-aruco-detection-cpp">
+<span id="aruco-detection"></span><h1>CODE REFERENCE – aruco_detection.cpp<a class="headerlink" href="#code-reference-aruco-detection-cpp" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>see also the second step of the markers detection, <a class="reference internal" href="aruco-decode.html"><span class="doc">CODE REFERENCE – node aruco_decode.py</span></a></p>
+</div>
+<p>arUco markers detection on 4 cameras and images display </p>
+<p>
+This node implements two important functionalities: it displays what the cameras are seeing in a window, changing the video stream every 8 seconds; and, second, the most important thing, the node applies the detection of the ArUco markers distributed on the four cameras of the robot.<dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>it could be a good idea to expose the update time of the image to the parameter server</p>
+</dd></dl>
+
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>the program should decide (via parameter server) if to visualize or not the echo from the cameras. </p>
+</dd></dl>
+
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>the user could also decide how many windows to open. Let’s think for instance on a scenario in which the user wants to see two outputs at the same time. </p>
+</dd></dl>
+
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>enable the support for the develop mode (it is missing so far)</p>
+</dd></dl>
+
+</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -141,57 +182,68 @@
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.UPDATE_TIME">
 <span class="target" id="aruco__detection_8cpp_1af706869d3f5c53d54533ee9eb6cd0450"></span><span class="sig-name descname"><span class="n"><span class="pre">UPDATE_TIME</span></span></span><a class="headerlink" href="#c.UPDATE_TIME" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>the video stream changes every UPDATE_TIME seconds </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.MAX_SUB_RATE">
 <span class="target" id="aruco__detection_8cpp_1ac783c5698a57e6eb53900ee4843dd82b"></span><span class="sig-name descname"><span class="n"><span class="pre">MAX_SUB_RATE</span></span></span><a class="headerlink" href="#c.MAX_SUB_RATE" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>the maximum rate for the arUco detection </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ID_CAMERA_ARM">
 <span class="target" id="aruco__detection_8cpp_1a31b2db41e3b0d0548633efd91011c43f"></span><span class="sig-name descname"><span class="n"><span class="pre">ID_CAMERA_ARM</span></span></span><a class="headerlink" href="#c.ID_CAMERA_ARM" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>arm camera identifier </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.TOPIC_CAMERA_ARM">
 <span class="target" id="aruco__detection_8cpp_1a4ba63f78da2ebe3c9c57b58d60ce1395"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_CAMERA_ARM</span></span></span><a class="headerlink" href="#c.TOPIC_CAMERA_ARM" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>arm camera source topic </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ID_CAMERA_FRONT">
 <span class="target" id="aruco__detection_8cpp_1a09688581757864b3a229e25fa08c5cbd"></span><span class="sig-name descname"><span class="n"><span class="pre">ID_CAMERA_FRONT</span></span></span><a class="headerlink" href="#c.ID_CAMERA_FRONT" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>front camera identifier </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.TOPIC_CAMERA_FRONT">
 <span class="target" id="aruco__detection_8cpp_1af40335a3070dd5846e1464763160925e"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_CAMERA_FRONT</span></span></span><a class="headerlink" href="#c.TOPIC_CAMERA_FRONT" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>front camera source topic </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ID_CAMERA_LEFT">
 <span class="target" id="aruco__detection_8cpp_1a5a71dd8f7078d4af4bdf41b047dc5205"></span><span class="sig-name descname"><span class="n"><span class="pre">ID_CAMERA_LEFT</span></span></span><a class="headerlink" href="#c.ID_CAMERA_LEFT" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>left camera identifier </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.TOPIC_CAMERA_LEFT">
 <span class="target" id="aruco__detection_8cpp_1a065c688f7ac81f6c2818cf3f7c152b4c"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_CAMERA_LEFT</span></span></span><a class="headerlink" href="#c.TOPIC_CAMERA_LEFT" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>left camera source topic </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.ID_CAMERA_RIGHT">
 <span class="target" id="aruco__detection_8cpp_1a90c613f9fd1c144ddea8733a8671f2d3"></span><span class="sig-name descname"><span class="n"><span class="pre">ID_CAMERA_RIGHT</span></span></span><a class="headerlink" href="#c.ID_CAMERA_RIGHT" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>right camera identifier </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.TOPIC_CAMERA_RIGHT">
 <span class="target" id="aruco__detection_8cpp_1a439910ff4133e37a0cdd868663638f93"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_CAMERA_RIGHT</span></span></span><a class="headerlink" href="#c.TOPIC_CAMERA_RIGHT" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>right camera source topic </p>
+</dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.TOPIC_DETECTED_IDS">
 <span class="target" id="aruco__detection_8cpp_1aaff6821abb69310b0f85ec06ef42e3ff"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_DETECTED_IDS</span></span></span><a class="headerlink" href="#c.TOPIC_DETECTED_IDS" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>topic used for communicating the IDs when detected </p>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -214,67 +266,162 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv413OPENCV_WINDOW">
 <span id="_CPPv313OPENCV_WINDOW"></span><span id="_CPPv213OPENCV_WINDOW"></span><span id="OPENCV_WINDOW__ssC"></span><span class="target" id="aruco__detection_8cpp_1ac8b1805a7073a3ed84d89f2aaef3f254"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OPENCV_WINDOW</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;RoboCLuedo</span> <span class="pre">Cameras&quot;</span></span><a class="headerlink" href="#_CPPv413OPENCV_WINDOW" title="Permalink to this definition"></a><br /></dt>
-<dd><p>window name </p>
+<dd><p>‘echo’ windows title </p>
 </dd></dl>
 
 </div>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv420node_aruco_detection">
 <span id="_CPPv320node_aruco_detection"></span><span id="_CPPv220node_aruco_detection"></span><span id="node_aruco_detection"></span><span class="target" id="classnode__aruco__detection"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_aruco_detection</span></span></span><a class="headerlink" href="#_CPPv420node_aruco_detection" title="Permalink to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>node implementation (as class) </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection20node_aruco_detectionEv">
 <span id="_CPPv3N20node_aruco_detection20node_aruco_detectionEv"></span><span id="_CPPv2N20node_aruco_detection20node_aruco_detectionEv"></span><span id="node_aruco_detection::node_aruco_detection"></span><span class="target" id="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_aruco_detection</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection20node_aruco_detectionEv" title="Permalink to this definition"></a><br /></dt>
-<dd><p>node class constructor </p>
+<dd><p>class constructor </p>
+<p>the constructor opens all the subscriptions with the cameras, and instanciates the publisher that will transmit the new IDs when identified.</p>
+<p>done that, the constructor opens the window.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>let the user decide whether to open the window and when to close it. It could be a good idea to create a server for switching the window. </p>
+</dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the class uses the ImageTransport which enables the class to use a compressed way to read the images.</p>
+</div>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detectionD0Ev">
 <span id="_CPPv3N20node_aruco_detectionD0Ev"></span><span id="_CPPv2N20node_aruco_detectionD0Ev"></span><span id="node_aruco_detection::~node_aruco_detection"></span><span class="target" id="classnode__aruco__detection_1a407c112c6ab8989c48ee3e55822bdb7b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~node_aruco_detection</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detectionD0Ev" title="Permalink to this definition"></a><br /></dt>
-<dd><p>node class destructor </p>
+<dd><p>class destructor </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>see the constructor: it could be a good idea to provide the “user” the control on the window. </p>
+</dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection4spinEv">
 <span id="_CPPv3N20node_aruco_detection4spinEv"></span><span id="_CPPv2N20node_aruco_detection4spinEv"></span><span id="node_aruco_detection::spin"></span><span class="target" id="classnode__aruco__detection_1a1b672639359e9237e9b154f1901341b3"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection4spinEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>working cycle of the node </p>
+<p>This working cycle is executed in concurrency with the receiving and the detection from the cameras signals. Its main purpose is to detect when the set of IDs has changed size (i.e. when there are new IDs to send) and in that case, to publish them.</p>
+<p>This cycle also changes the video stream each UPDATE_TIME seconds.</p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>Very important to point out that <em>the node sends only the new IDs without repetitions</em>. The node could detect the same marker a number of times, but only one message is sent, corresponding to the first succeeded detection. This is another trick to not waste time: it is important to keep this node as much efficient as possible. </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection11cbk_cam_armERKN11sensor_msgs13ImageConstPtrE">
 <span id="_CPPv3N20node_aruco_detection11cbk_cam_armERKN11sensor_msgs13ImageConstPtrE"></span><span id="_CPPv2N20node_aruco_detection11cbk_cam_armERKN11sensor_msgs13ImageConstPtrE"></span><span id="node_aruco_detection::cbk_cam_arm__sensor_msgs::ImageConstPtrCR"></span><span class="target" id="classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_cam_arm</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">sensor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImageConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection11cbk_cam_armERKN11sensor_msgs13ImageConstPtrE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>sub arm camera </p>
+<dd><p>subscription to the camera topic </p>
+<p>The node has four subscription callbacks, one for each camera image topic, each one with pretty much the same structure: read the image, try to perform the detection, try to send the output to the window, and finally wait a bit.</p>
+<p>In particular, the last waiting ensures that the update rate of the camera isn’t going to be not so high. See MAX_SUB_RATE, which is the maximum frequency the subscriber can read the images. See also the class constructor, which ggives queue size 1 to all the topics: this causes a image drop if the rate from the cameras is too much high.</p>
+<p>There are other workarounds for overcome the performance issue, see the method for the detection. The point is that <em>the arUco detection process is quite heavy to carry out</em>: if the cameras would run the detection at each frame with a too much high frequency, the application would perform poorly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – the message from the camera </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection13cbk_cam_frontERKN11sensor_msgs13ImageConstPtrE">
 <span id="_CPPv3N20node_aruco_detection13cbk_cam_frontERKN11sensor_msgs13ImageConstPtrE"></span><span id="_CPPv2N20node_aruco_detection13cbk_cam_frontERKN11sensor_msgs13ImageConstPtrE"></span><span id="node_aruco_detection::cbk_cam_front__sensor_msgs::ImageConstPtrCR"></span><span class="target" id="classnode__aruco__detection_1ae51572f59a8124dfe8cdca3514c9ffda"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_cam_front</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">sensor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImageConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection13cbk_cam_frontERKN11sensor_msgs13ImageConstPtrE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>sub front camera </p>
+<dd><p>sub front camera callback </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd"><span class="std std-ref">cbk_cam_arm</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – the message from the camera</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection12cbk_cam_leftERKN11sensor_msgs13ImageConstPtrE">
 <span id="_CPPv3N20node_aruco_detection12cbk_cam_leftERKN11sensor_msgs13ImageConstPtrE"></span><span id="_CPPv2N20node_aruco_detection12cbk_cam_leftERKN11sensor_msgs13ImageConstPtrE"></span><span id="node_aruco_detection::cbk_cam_left__sensor_msgs::ImageConstPtrCR"></span><span class="target" id="classnode__aruco__detection_1a657f1b6d746318bf2504e0bca06f62e6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_cam_left</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">sensor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImageConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection12cbk_cam_leftERKN11sensor_msgs13ImageConstPtrE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>sub left camera </p>
+<dd><p>sub left camera callback </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd"><span class="std std-ref">cbk_cam_arm</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – the message from the camera</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection13cbk_cam_rightERKN11sensor_msgs13ImageConstPtrE">
 <span id="_CPPv3N20node_aruco_detection13cbk_cam_rightERKN11sensor_msgs13ImageConstPtrE"></span><span id="_CPPv2N20node_aruco_detection13cbk_cam_rightERKN11sensor_msgs13ImageConstPtrE"></span><span id="node_aruco_detection::cbk_cam_right__sensor_msgs::ImageConstPtrCR"></span><span class="target" id="classnode__aruco__detection_1ad41c720ea1e290da6664bca32bef07bc"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_cam_right</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">sensor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImageConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection13cbk_cam_rightERKN11sensor_msgs13ImageConstPtrE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>sub right camera </p>
+<dd><p>sub right camera callback </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#classnode__aruco__detection_1a41fd24f3c07665cf1299c29bc8707edd"><span class="std std-ref">cbk_cam_arm</span></a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – the message from the camera</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection12aruco_detectEiRN2cv3MatE">
 <span id="_CPPv3N20node_aruco_detection12aruco_detectEiRN2cv3MatE"></span><span id="_CPPv2N20node_aruco_detection12aruco_detectEiRN2cv3MatE"></span><span id="node_aruco_detection::aruco_detect__i.cv::MatR"></span><span class="target" id="classnode__aruco__detection_1accadff48488a2770614fc04f33857e29"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">aruco_detect</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">camera_id</span></span>, <span class="n"><span class="pre">cv</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Mat</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">image</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection12aruco_detectEiRN2cv3MatE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>perform the ArUco detection </p>
+<p>This function enables to use the arUco detector for detecting new markers in one camera frame.</p>
+<p>Since this is a very time-consuming operation, in order to not call this function with a prohibitive frequency, a number of workarounds have been put in action.</p>
+<p>First of all, the function can be called by one thread each time. There’s a semaphore to be acquired when the function is called, and released after the detection has been completed.</p>
+<p>Second, the ‘wait’ of the semaphore is not a lock, but a try_lock, meaning that if the thread can’t use the callback, the functon returns immediately and the frame dropped. The main assumption, satisfied in most of the cases, is that the frame of the cameras is high enough. Moreover, in this case the robot doesn’t move at a high velocity, hence the approach works well.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the two assumptions are: the frequency the robot acquires new images is high enough; and the robot doesn’t move too much fast. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera_id</strong> – the ID of the camera requiring the detection </p></li>
+<li><p><strong>image</strong> – the image read from the camera stream (one frame)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_aruco_detection11show_cameraEiRN2cv3MatE">
 <span id="_CPPv3N20node_aruco_detection11show_cameraEiRN2cv3MatE"></span><span id="_CPPv2N20node_aruco_detection11show_cameraEiRN2cv3MatE"></span><span id="node_aruco_detection::show_camera__i.cv::MatR"></span><span class="target" id="classnode__aruco__detection_1a3a90b963c7ae7791932c683bdfb61641"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">show_camera</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">camera_id</span></span>, <span class="n"><span class="pre">cv</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Mat</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">image</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_aruco_detection11show_cameraEiRN2cv3MatE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>show the image on the screen </p>
+<dd><p>update the image in the window </p>
+<p>The function shows a new frame into the window. It also applies a writing pointing out which camera the user is looking currently.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if the camera_id doesn’t coincide with the one set by the working cycle, the function returns immediately without updating the window. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>camera_id</strong> – the ID of the camera requiring the detection </p></li>
+<li><p><strong>image</strong> – the image read from the camera stream (one frame)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

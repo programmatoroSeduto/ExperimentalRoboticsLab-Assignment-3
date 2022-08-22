@@ -22,6 +22,12 @@
 <listitem><para><anchor id="todo_1_todo000006"/>use const auto &amp; </para>
 <para><anchor id="todo_1_todo000007"/>use const auto &amp;  </para>
 </listitem>
+<varlistentry><term>File <ref refid="aruco__detection_8cpp" kindref="compound">aruco_detection.cpp</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000032"/>it could be a good idea to expose the update time of the image to the parameter server</para>
+<para><anchor id="todo_1_todo000033"/>the program should decide (via parameter server) if to visualize or not the echo from the cameras. </para>
+<para><anchor id="todo_1_todo000034"/>the user could also decide how many windows to open. Let&apos;s think for instance on a scenario in which the user wants to see two outputs at the same time. </para>
+<para><anchor id="todo_1_todo000035"/>enable the support for the develop mode (it is missing so far) </para>
+</listitem>
 <varlistentry><term>Class <ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000025"/>Tests with simple values (R = identity, D = 0, P = K or simple scaling) </para>
 <para>Test projection functions for right stereo values, P(:,3) != 0 </para>
@@ -67,6 +73,12 @@
 <varlistentry><term>Member <ref refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" kindref="member">kb_tools::get_predicate</ref>  (const std::string &amp;pname, std::map&lt; std::string, std::string &gt; params)</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000031"/>the method assumes that only one result is returned, which is true for fully defined queries, but what about partial queries? </para>
 </listitem>
+<varlistentry><term>Member <ref refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" kindref="member">node_aruco_detection::node_aruco_detection</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000036"/>let the user decide whether to open the window and when to close it. It could be a good idea to create a server for switching the window.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classnode__aruco__detection_1a407c112c6ab8989c48ee3e55822bdb7b" kindref="member">node_aruco_detection::~node_aruco_detection</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000037"/>see the constructor: it could be a good idea to provide the &quot;user&quot; the control on the window.  </para>
+</listitem>
 <varlistentry><term>Class <ref refid="class_pinhole_test" kindref="compound">PinholeTest</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000021"/>Tests with simple values (R = identity, D = 0, P = K or simple scaling) </para>
 <para>Test projection functions for right stereo values, P(:,3) != 0 </para>
@@ -81,14 +93,14 @@
 <listitem><para><anchor id="todo_1_todo000029"/>translate logs from italian to English and reorder</para>
 <para><anchor id="todo_1_todo000030"/>translate logs from italian to English and reorder </para>
 </listitem>
-<varlistentry><term>Member <ref refid="utest__equi_8cpp_1a2f8893eef961af6d1cf2d169da04c7d8" kindref="member">TEST_F</ref>  (<ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>, rectifyIfCalibrated)</term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000027"/>use forward distortion for a better test  </para>
+<varlistentry><term>Member <ref refid="image__geometry_2test_2utest_8cpp_1a84705d60f0cde00bbb7bed971e6cfd69" kindref="member">TEST_F</ref>  (<ref refid="class_pinhole_test" kindref="compound">PinholeTest</ref>, rectifyPoint)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000022"/>Need R = identity for the principal point tests.  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="utest__equi_8cpp_1a3bc17170fe1f2929af04532434e69c06" kindref="member">TEST_F</ref>  (<ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>, rectifyPoint)</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000026"/>Need R = identity for the principal point tests.  </para>
 </listitem>
-<varlistentry><term>Member <ref refid="image__geometry_2test_2utest_8cpp_1a84705d60f0cde00bbb7bed971e6cfd69" kindref="member">TEST_F</ref>  (<ref refid="class_pinhole_test" kindref="compound">PinholeTest</ref>, rectifyPoint)</term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000022"/>Need R = identity for the principal point tests.  </para>
+<varlistentry><term>Member <ref refid="utest__equi_8cpp_1a2f8893eef961af6d1cf2d169da04c7d8" kindref="member">TEST_F</ref>  (<ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>, rectifyIfCalibrated)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000027"/>use forward distortion for a better test  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="image__geometry_2test_2utest_8cpp_1af8ce860c596a5c4676d888a0fd654bb8" kindref="member">TEST_F</ref>  (<ref refid="class_pinhole_test" kindref="compound">PinholeTest</ref>, rectifyIfCalibrated)</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000023"/>use forward distortion for a better test </para>

@@ -1272,13 +1272,22 @@ roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mi
 
 ---
 
+direi che adesso possiamo iniziare a fare il lavoro che mi sto segnando tra ieri e oggi, tra un bug e l'altro:
+
+- (andiamo con la documentazione *seria* del codice)
+- **robocluedo vision**
+	- aruco detecton c++
+	- (c'è voluta un bel po' di attenzione...)
+- **COMMIT**: "code documentation (aruco_detection)"
+
+
+
 
 
 
 ```{todo}
 **terzo assignment:**
 
-- modificare il module testing del robot: aggiungere i test del log
 - verificare che tutte le pagine ausiliarie abbiano la loro TOCtree interna, specie quando sono lunghe pagine
 - rifare la homepage in modo che le parti essenziali dell'assignment risultino "a vista"
 - rileggere la documentazione del codice di aRMOR

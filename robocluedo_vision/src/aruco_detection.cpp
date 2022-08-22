@@ -1,6 +1,34 @@
 
 #define NODE_NAME "aruco_detection"
 
+/********************************************//**
+*  
+* @file aruco_detection.cpp
+* @brief arUco markers detection on 4 cameras and images display
+* 
+* @authors Francesco Ganci
+* @version v1.0
+* 
+* This node implements two important functionalities: it displays what
+* the cameras are seeing in a window, changing the video stream every
+* 8 seconds; and, second, the most important thing, the node applies the
+* detection of the ArUco markers distributed on the four cameras of the 
+* robot. 
+* 
+* @todo it could be a good idea to expose the update time of the image 
+* 	to the parameter server
+* 
+* @todo the program should decide (via parameter server) if to visualize 
+* 	or not the echo from the cameras. 
+* 
+* @todo the user could also decide how many windows to open. Let's think 
+* 	for instance on a scenario in which the user wants to see two outputs
+* 	at the same time. 
+*  
+* @todo enable the support for the develop mode (it is missing so far)
+* 
+***********************************************/
+
 #include "ros/ros.h"
 
 #include <cv_bridge/cv_bridge.h>
@@ -16,7 +44,11 @@
 #include "std_msgs/Int32.h"
 
 #include <string>
+
+/// \private
 #define SS(chr) std::string( chr )
+
+/// \private
 #define SSS(el) std::to_string( el )
 
 #include <vector>
@@ -25,28 +57,65 @@
 #include <mutex>
 #include <signal.h>
 
+/// the video stream changes every UPDATE_TIME seconds
 #define UPDATE_TIME 8.0
+
+/// the maximum rate for the arUco detection
 #define MAX_SUB_RATE 8
 
-/// window name
+/// 'echo' windows title
 static const std::string OPENCV_WINDOW = "RoboCLuedo Cameras";
 
+/// arm camera identifier
 #define ID_CAMERA_ARM 0
+
+/// arm camera source topic
 #define TOPIC_CAMERA_ARM "/robocluedo_robot/camera_arm/image_raw"
+
+/// front camera identifier
 #define ID_CAMERA_FRONT 1
+
+/// front camera source topic
 #define TOPIC_CAMERA_FRONT "/robocluedo_robot/camera_front_low/image_raw"
+
+/// left camera identifier
 #define ID_CAMERA_LEFT 2
+
+/// left camera source topic
 #define TOPIC_CAMERA_LEFT "/robocluedo_robot/camera_left/image_raw"
+
+/// right camera identifier
 #define ID_CAMERA_RIGHT 3
+
+/// right camera source topic
 #define TOPIC_CAMERA_RIGHT "/robocluedo_robot/camera_right/image_raw"
 
+/// topic used for communicating the IDs when detected
 #define TOPIC_DETECTED_IDS "/aruco_detected_ids"
 
+/// node implementation (as class)
 class node_aruco_detection
 {
 public:
 	
-	/** node class constructor */
+	/********************************************//**
+	 *  
+	 * \brief class constructor
+	 * 
+	 * the constructor opens all the subscriptions with the cameras, and
+	 * instanciates the publisher that  will transmit the new IDs when 
+	 * identified. 
+	 * 
+	 * done that, the constructor opens the window. 
+	 * 
+	 * @note the class uses the ImageTransport which enables the class
+	 * 	to use a compressed way to read the images.
+	 * 
+	 * @todo let the user decide whether to open the window and when to 
+	 * 	close it. It could be a good idea to create a server for switching
+	 * 	the window. 
+	 * 
+	 ***********************************************/
 	node_aruco_detection( ) : 
 		nh("~"), it(nh), useCamInfo(true), max_sub_rate( MAX_SUB_RATE )
 	{
@@ -67,14 +136,38 @@ public:
 		cv::namedWindow( OPENCV_WINDOW );
 	}
 	
-	/** node class destructor */
+	/********************************************//**
+	 *  
+	 * \brief class destructor
+	 * 
+	 * @todo see the constructor: it could be a good idea to provide the
+	 * 	"user" the control on the window. 
+	 * 
+	 ***********************************************/
 	~node_aruco_detection( ) 
 	{
 		// destroy the window
 		cv::destroyWindow( OPENCV_WINDOW );
 	}
 	
-	/** working cycle of the node */
+	/********************************************//**
+	 *  
+	 * \brief working cycle of the node
+	 * 
+	 * This working cycle is executed in concurrency with the receiving
+	 * and the detection from the cameras signals. Its main purpose is
+	 * to detect when the set of IDs has changed size (i.e. when there
+	 * are new IDs to send) and in that case, to publish them.
+	 * 
+	 * This cycle also changes the video stream each UPDATE_TIME seconds.
+	 * 
+	 * @attention Very important to point out that <i>the node sends only
+	 * the new IDs without repetitions</i>. The node could detect the same 
+	 * marker a number of times, but only one message is sent, corresponding
+	 * to the first succeeded detection. This is another trick to not waste
+	 * time: it is important to keep this node as much efficient as possible. 
+	 * 
+	 ***********************************************/
 	void spin( )
 	{
 		// time at the beginning of the working cycle
@@ -120,7 +213,31 @@ public:
 		}
 	}
 	
-	/** sub arm camera */
+	/********************************************//**
+	 *  
+	 * \brief subscription to the camera topic
+	 * 
+	 * The node has four subscription callbacks, one for each camera 
+	 * image topic, each one with pretty much the same structure: read the
+	 * image, try to perform the detection, try to send the output to
+	 * the window, and finally wait a bit. 
+	 * 
+	 * In particular, the last waiting ensures that the update rate of 
+	 * the camera isn't going to be not so high. See MAX_SUB_RATE, which 
+	 * is the maximum frequency the subscriber can read the images. See 
+	 * also the class constructor, which ggives queue size 1 to all the
+	 * topics: this causes a image drop if the rate from the cameras is 
+	 * too much high. 
+	 * 
+	 * There are other workarounds for overcome the performance issue, see 
+	 * the method for the detection. The point is that <i>the arUco detection
+	 * process is quite heavy to carry out</i>: if the cameras would run 
+	 * the detection at each frame with a too much high frequency, the
+	 * application would perform poorly. 
+	 * 
+	 * @param msg the message from the camera
+	 * 
+	 ***********************************************/
 	void cbk_cam_arm( const sensor_msgs::ImageConstPtr& msg )
 	{
 		// get the image
@@ -137,7 +254,15 @@ public:
 		max_sub_rate.sleep( );
 	}
 	
-	/** sub front camera */
+	/********************************************//**
+	 *  
+	 * \brief sub front camera callback
+	 * 
+	 * @param msg the message from the camera
+	 * 
+	 * @see cbk_cam_arm
+	 * 
+	 ***********************************************/
 	void cbk_cam_front( const sensor_msgs::ImageConstPtr& msg )
 	{
 		// get the image
@@ -154,7 +279,15 @@ public:
 		max_sub_rate.sleep( );
 	}
 	
-	/** sub left camera */
+	/********************************************//**
+	 *  
+	 * \brief sub left camera callback
+	 * 
+	 * @param msg the message from the camera
+	 * 
+	 * @see cbk_cam_arm
+	 * 
+	 ***********************************************/
 	void cbk_cam_left( const sensor_msgs::ImageConstPtr& msg )
 	{
 		// get the image
@@ -171,7 +304,15 @@ public:
 		max_sub_rate.sleep( );
 	}
 	
-	/** sub right camera */
+	/********************************************//**
+	 *  
+	 * \brief sub right camera callback
+	 * 
+	 * @param msg the message from the camera
+	 * 
+	 * @see cbk_cam_arm
+	 * 
+	 ***********************************************/
 	void cbk_cam_right( const sensor_msgs::ImageConstPtr& msg )
 	{
 		// get the image
@@ -188,7 +329,36 @@ public:
 		max_sub_rate.sleep( );
 	}
 	
-	/** perform the ArUco detection */
+	/********************************************//**
+	 *  
+	 * \brief perform the ArUco detection 
+	 * 
+	 * This function enables to use the arUco detector for detecting
+	 * new markers in one camera frame. 
+	 * 
+	 * Since this is a very time-consuming operation, in order to not 
+	 * call this function with a prohibitive frequency, a number of
+	 * workarounds have been put in action. 
+	 * 
+	 * First of all, the function can be called by one thread each time. 
+	 * There's a semaphore to be acquired when the function is called, and
+	 * released after the detection has been completed. 
+	 * 
+	 * Second, the 'wait' of the semaphore is not a lock, but a try_lock, 
+	 * meaning that if the thread can't use the callback, the functon 
+	 * returns immediately and the frame dropped. The main assumption, 
+	 * satisfied in most of the cases, is that the frame of the cameras 
+	 * is high enough. Moreover, in this case the robot doesn't move at a
+	 * high velocity, hence the approach works well. 
+	 * 
+	 * @param camera_id the ID of the camera requiring the detection
+	 * @param image the image read from the camera stream (one frame)
+	 * 
+	 * @note the two assumptions are: the frequency the robot acquires
+	 * 	new images is high enough; and the robot doesn't move too much 
+	 * 	fast. 
+	 * 
+	 ***********************************************/
 	void aruco_detect( int camera_id, cv::Mat& image )
 	{
 		if( !mtx_detect.try_lock( ) ) return;
@@ -218,7 +388,21 @@ public:
 		mtx_detect.unlock( );
 	}
 	
-	/** show the image on the screen */
+	/********************************************//**
+	 *  
+	 * \brief update the image in the window
+	 * 
+	 * The function shows a new frame into the window. It also applies a
+	 * writing pointing out which camera the user is looking currently. 
+	 * 
+	 * @param camera_id the ID of the camera requiring the detection
+	 * @param image the image read from the camera stream (one frame)
+	 * 
+	 * @note if the camera_id doesn't coincide with the one set by the 
+	 * 	working cycle, the function returns immediately without updating
+	 * 	the window. 
+	 * 
+	 ***********************************************/
 	void show_camera( int camera_id, cv::Mat& image )
 	{
 		if( camera_id != current_camera_id ) return;
