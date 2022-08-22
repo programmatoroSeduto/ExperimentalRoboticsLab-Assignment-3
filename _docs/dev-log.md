@@ -1283,7 +1283,28 @@ direi che adesso possiamo iniziare a fare il lavoro che mi sto segnando tra ieri
 	- aruco decode
 - **COMMIT**: "code documentation (aruco decode)"
 - **robocluedo rosplan**
-	- 
+	- (tentiamo di seguire una logica...)
+	- action replan
+	- move-to
+	- move to center
+	- (tutte le altre servivano per il secondo progetto, per questo non servono)
+	- kb_interface
+	- kb tools
+	- feedback manager ... già documentato (me ne sto)
+	- pipeline manager
+- **COMMIT**: "code documentation (robocluedo rosplan)"
+- (è il momento di soffrire per davvero) **robocluedo movement controller**
+	- (anzitutto, una minima occhiata in giro...)
+	- bug_m
+	- go to point
+	- head orientation
+	- move base nav
+	- meglio scrivere ora il documento su come aggiornare il navigation manager...
+	- navigation manager 
+	- manipulation controller
+- (mi sono totalmente dimenticato dei launch files in giro per il progetto)
+- launch files:
+	- movement controller
 
 
 

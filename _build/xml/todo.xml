@@ -10,9 +10,6 @@
 <varlistentry><term>Member <ref refid="marker_8cpp_1a525335710b53cb064ca56b936120431e" kindref="member">_USE_MATH_DEFINES</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000008"/>set this definition in the cmake code  </para>
 </listitem>
-<varlistentry><term>Class <ref refid="class_armor_cluedo" kindref="compound">ArmorCluedo</ref>  </term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000001"/>maybe the issues with aRMOR are due to a lack in its documentation. The implemented workarounds could reduce the performances of the program.  </para>
-</listitem>
 <varlistentry><term>Class <ref refid="class_armor_tools" kindref="compound">ArmorTools</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000002"/>actually the class has some methods missing, for example methods for modifying client name and reference name.</para>
 <para><anchor id="todo_1_todo000003"/>sequential commands to aRMOR is not supported right now: only the single command service is used. </para>
@@ -26,12 +23,15 @@
 <para><anchor id="todo_1_todo000007"/>use const auto &amp;  </para>
 </listitem>
 <varlistentry><term>File <ref refid="aruco__detection_8cpp" kindref="compound">aruco_detection.cpp</ref>  </term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000032"/>it could be a good idea to expose the update time of the image to the parameter server</para>
-<para><anchor id="todo_1_todo000033"/>the program should decide (via parameter server) if to visualize or not the echo from the cameras. </para>
-<para><anchor id="todo_1_todo000034"/>the user could also decide how many windows to open. Let&apos;s think for instance on a scenario in which the user wants to see two outputs at the same time. </para>
-<para><anchor id="todo_1_todo000035"/>open a service allowing other nodes to read the entire set of IDs detected. </para>
-<para><anchor id="todo_1_todo000036"/>for each marker detected, try a way for also saving the first frames where them have been detected.</para>
-<para><anchor id="todo_1_todo000037"/>enable the support for the develop mode (it is missing so far) </para>
+<listitem><para><anchor id="todo_1_todo000043"/>it could be a good idea to expose the update time of the image to the parameter server</para>
+<para><anchor id="todo_1_todo000044"/>the program should decide (via parameter server) if to visualize or not the echo from the cameras. </para>
+<para><anchor id="todo_1_todo000045"/>the user could also decide how many windows to open. Let&apos;s think for instance on a scenario in which the user wants to see two outputs at the same time. </para>
+<para><anchor id="todo_1_todo000046"/>open a service allowing other nodes to read the entire set of IDs detected. </para>
+<para><anchor id="todo_1_todo000047"/>for each marker detected, try a way for also saving the first frames where them have been detected.</para>
+<para><anchor id="todo_1_todo000048"/>enable the support for the develop mode (it is missing so far) </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classclass__navigation__manager_1a8908d9ea148da8215a0cdc189f2546e9" kindref="member">class_navigation_manager::register_algorithm</ref>  (<ref refid="classnavigation__controller" kindref="compound">navigation_controller</ref> *algo)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000035"/>check for the null value as argument! Otherwise the function will try to call <ref refid="update-navigation-manager_8md_8txt_1a273f80be6bcdd9dda6f726f4d5d94079" kindref="member">disable()</ref> on a null, causing a segmentation fault error.  </para>
 </listitem>
 <varlistentry><term>Class <ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000025"/>Tests with simple values (R = identity, D = 0, P = K or simple scaling) </para>
@@ -42,6 +42,12 @@
 </listitem>
 <varlistentry><term>Member <ref refid="class_equidistant_test_1aba1177ec24f2d85b20003905baeb3c8c" kindref="member">EquidistantTest::SetUp</ref>  ()</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000028"/>Just load these from file  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="armor__cluedo_8h_1a327627da2bf2dc69d12331fec53d12c1" kindref="member">get_predicate</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000001"/>maybe the issues with aRMOR are due to a lack in its documentation. The implemented workarounds could reduce the performances of the program.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="armor__cluedo_8h_1a327627da2bf2dc69d12331fec53d12c1" kindref="member">get_predicate</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000001"/>maybe the issues with aRMOR are due to a lack in its documentation. The implemented workarounds could reduce the performances of the program.  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="classimage__geometry_1_1_pinhole_camera_model_1adcf644e58628954d28a89473beb4a03c" kindref="member">image_geometry::PinholeCameraModel::fromCameraInfo</ref>  (const sensor_msgs::CameraInfo &amp;msg)</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000010"/>Calculate and use rectified ROI </para>
@@ -69,14 +75,35 @@
 <varlistentry><term>Member <ref refid="classimage__geometry_1_1_stereo_camera_model_1a963876fbeafcc1ee53f3e11b139eadde" kindref="member">image_geometry::StereoCameraModel::baseline</ref>  () const</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000009"/>Currently assuming horizontal baseline  </para>
 </listitem>
+<varlistentry><term>Class <ref refid="classkb__interface" kindref="compound">kb_interface</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000040"/>the node should read the waypoints from the PDDL model; currently, the waypoints are hardcoded in the constructor. </para>
+<para><anchor id="todo_1_todo000041"/>the topology of the problem can be better handled by this node.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classkb__interface_1a66e8069a0f9c87f4064642b8e927f31a" kindref="member">kb_interface::kb_interface</ref>  ()</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000042"/>the node should read the waypoints from the PDDL model; currently, the waypoints are hardcoded in the constructor.  </para>
+</listitem>
+<varlistentry><term>File <ref refid="kb__tools_8h" kindref="compound">kb_tools.h</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000036"/>the class right now has a very limited support for the fluents.  </para>
+</listitem>
 <varlistentry><term>Member <ref refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" kindref="member">kb_tools::get_predicate</ref>  (const std::string &amp;pname, std::map&lt; std::string, std::string &gt; params)</term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000031"/>the method assumes that only one result is returned, which is true for fully defined queries, but what about partial queries? </para>
+<listitem><para><anchor id="todo_1_todo000037"/>the method assumes that only one result is returned, which is true for fully defined queries, but what about partial queries? </para>
+</listitem>
+<varlistentry><term>File <ref refid="manipulation__controller_8cpp" kindref="compound">manipulation_controller.cpp</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000031"/>implement the asynchronous movement using a ROS action instead. Or, at least, introduce a signal. </para>
+<para><anchor id="todo_1_todo000032"/>introduce cartesian planning and a clear end effector</para>
+<para><anchor id="todo_1_todo000033"/>the way the node uses moveit is a bit raw ... it would deserve a review.  </para>
+</listitem>
+<varlistentry><term>File <ref refid="move__to__center_8h" kindref="compound">move_to_center.h</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000038"/>join this action with RP_rcl_move_to </para>
 </listitem>
 <varlistentry><term>Member <ref refid="classnode__aruco__detection_1a4bb177d7130f384e5e6a35b6fa05b658" kindref="member">node_aruco_detection::node_aruco_detection</ref>  ()</term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000038"/>let the user decide whether to open the window and when to close it. It could be a good idea to create a server for switching the window.  </para>
+<listitem><para><anchor id="todo_1_todo000049"/>let the user decide whether to open the window and when to close it. It could be a good idea to create a server for switching the window.  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="classnode__aruco__detection_1a407c112c6ab8989c48ee3e55822bdb7b" kindref="member">node_aruco_detection::~node_aruco_detection</ref>  ()</term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000039"/>see the constructor: it could be a good idea to provide the &quot;user&quot; the control on the window.  </para>
+<listitem><para><anchor id="todo_1_todo000050"/>see the constructor: it could be a good idea to provide the &quot;user&quot; the control on the window.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2" kindref="member">node_manipulation_controller::cbk_manip_async</ref>  (const robocluedo_movement_controller_msgs::ManipulatorPositionAsync::ConstPtr &amp;req)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000034"/>implement a progress checking </para>
 </listitem>
 <varlistentry><term>Class <ref refid="class_pinhole_test" kindref="compound">PinholeTest</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000021"/>Tests with simple values (R = identity, D = 0, P = K or simple scaling) </para>
@@ -88,15 +115,18 @@
 <varlistentry><term>Member <ref refid="class_pinhole_test_1a8c1a0cd8b7b53e00a234619f340a47ea" kindref="member">PinholeTest::SetUp</ref>  ()</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000024"/>Just load these from file  </para>
 </listitem>
+<varlistentry><term>Class <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref>  </term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000039"/>this class should be better designed, or, even better, included into the currently available framework for the knowledge base. </para>
+</listitem>
 <varlistentry><term>File <ref refid="test__armor__tools_8cpp" kindref="compound">test_armor_tools.cpp</ref>  </term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000029"/>translate logs from italian to English and reorder</para>
 <para><anchor id="todo_1_todo000030"/>translate logs from italian to English and reorder </para>
 </listitem>
-<varlistentry><term>Member <ref refid="utest__equi_8cpp_1a3bc17170fe1f2929af04532434e69c06" kindref="member">TEST_F</ref>  (<ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>, rectifyPoint)</term></varlistentry>
-<listitem><para><anchor id="todo_1_todo000026"/>Need R = identity for the principal point tests.  </para>
-</listitem>
 <varlistentry><term>Member <ref refid="image__geometry_2test_2utest_8cpp_1af8ce860c596a5c4676d888a0fd654bb8" kindref="member">TEST_F</ref>  (<ref refid="class_pinhole_test" kindref="compound">PinholeTest</ref>, rectifyIfCalibrated)</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000023"/>use forward distortion for a better test  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="utest__equi_8cpp_1a3bc17170fe1f2929af04532434e69c06" kindref="member">TEST_F</ref>  (<ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>, rectifyPoint)</term></varlistentry>
+<listitem><para><anchor id="todo_1_todo000026"/>Need R = identity for the principal point tests.  </para>
 </listitem>
 <varlistentry><term>Member <ref refid="utest__equi_8cpp_1a2f8893eef961af6d1cf2d169da04c7d8" kindref="member">TEST_F</ref>  (<ref refid="class_equidistant_test" kindref="compound">EquidistantTest</ref>, rectifyIfCalibrated)</term></varlistentry>
 <listitem><para><anchor id="todo_1_todo000027"/>use forward distortion for a better test  </para>

@@ -114,6 +114,22 @@
   <h1>Source code for head_orientation</h1><div class="highlight"><pre>
 <span></span><span class="ch">#! /usr/bin/env python</span>
 
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This straightforward behaviour simply turns the robot in a target direction.</span>
+<span class="sd">As the other &quot;behavioural&quot; nodes, this continuously read the target from the </span>
+<span class="sd">parameter server and sends to the /cmd_vel topic a angular velocity until</span>
+<span class="sd">the target pose hasn&#39;t been achieved. Nothing more.</span>
+
+<span class="sd">This is meant to be used in composite behaviours to implement something </span>
+<span class="sd">more advanced. </span>
+
+<span class="sd">Authors</span>
+<span class="sd">	Francesco Ganci (S4143910)</span>
+
+<span class="sd">Version:</span>
+<span class="sd">	v1.0.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
 <span class="kn">import</span> <span class="nn">rospy</span>
 
 <span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Point</span>

@@ -1,5 +1,30 @@
 #! /usr/bin/env python
 
+'''
+
+This is maybe the most important node of the RoboCLuedo ROSPlan package:
+it allows other nodes to plan and to dispatch the solved plan with a simple
+interface. Moreover, it adds a large set of informations and details 
+about how the planning process proceeds, and in particular when something 
+wrong occurs, it makes this failure explainable. 
+
+The ROSPlan workflow is always the same: load the problem, try to solve it,
+parse the solved plan, and finally dispatch the solved plan. Each step
+must be "triggered" each time it is required. And each step, when finished
+its job, returns something via topic. In other words, it is a pipeline, 
+and this node collects all these triggers in only one place. 
+
+Authors:
+	Francesco Ganci (S4143910)
+
+Version 
+	v1.0.0
+'''
+
+NODE_NAME = "rosplan_pipeline_manager"
+''' nothing to say, node name
+'''
+
 import os
 import rospy
 from std_srvs.srv import Empty, EmptyRequest, EmptyResponse
@@ -10,24 +35,20 @@ from robocluedo_rosplan_msgs.srv import RosplanPipelineManagerService, RosplanPi
 from robocluedo_rosplan_msgs.srv import UpdateGoal, UpdateGoalRequest, UpdateGoalResponse
 from rosplan_dispatch_msgs.msg import CompletePlan
 
-NODE_NAME = "rosplan_pipeline_manager"
-''' nothing to say, node name
-'''
-
 SRV_TIMEOUT = rospy.Duration(60)
 ''' a timeout of 1min used for the client connection
 '''
 
 LANDMARK_REPLAN = 0
-''' landmark corresponding to : replan
+''' landmark corresponding to "REPLAN"
 '''
 
 LANDMARK_COLLECT = 1
-''' landmark corresponding to : collect
+''' landmark corresponding to "COLLECT"
 '''
 
 LANDMARK_SOLVE = 2
-''' landmark corresponding to : solve
+''' landmark corresponding to "SOLVE"
 '''
 
 service_problem = "/rosplan_problem_interface/problem_generation_server"
@@ -150,6 +171,17 @@ cl_update_goal = None
 
 def cbk_problem_instance( problem ): # std_msgs/String
 	''' this callback received the problem instance from the problem interface
+	
+	When the problem interface ended its work, it publishes on this topic
+	the preprocessed problem instance. The pipeline manager uses this topic
+	for understanding the outcome of this loading phase.
+	
+	Arguments:
+		problem (std_msgs/String):
+			the problem instance loaded into the knowledge base.
+	
+	Note:
+		if something goes wrong, the node publishes nothing! 
 	'''
 	
 	global problem_instance_received
@@ -161,6 +193,17 @@ def cbk_problem_instance( problem ): # std_msgs/String
 
 def cbk_planning_interface( plan ): # std_msgs/String
 	''' this callback receives the output from the planner, if any
+	
+	When the plannning interface ended its work, it publishes on this topic
+	the preprocessed problem instance. The pipeline manager uses this topic
+	for understanding the outcome of the problem solution phase.
+	
+	Arguments:
+		plan (std_msgs/String):
+			the solution of the problem
+	
+	Note:
+		if something goes wrong, the node publishes nothing! 
 	'''
 	
 	global planner_interface_received
@@ -172,6 +215,16 @@ def cbk_planning_interface( plan ): # std_msgs/String
 
 def cbk_parsing_interface( plan ): # rosplan_dispatch_msgs/CompletePlan
 	''' this callback receives the output from the parsing interface, if any
+	
+	this topic is used for understanding if the planning interface succeeded
+	in parsing the plan.
+	
+	Arguments:
+		plan (rosplan_dispatch_msgs/CompletePlan):
+			the parsed plan
+	
+	Note:
+		if something goes wrong, the node publishes nothing! 
 	'''
 	
 	global parsing_interface_received
@@ -183,6 +236,18 @@ def cbk_parsing_interface( plan ): # rosplan_dispatch_msgs/CompletePlan
 
 def cbk_action_feedback( feedback ):
 	''' receive a feedback from the ROSPlan action
+	
+	The feedback manager can provide an explaination of whatever problem
+	it could arise during the dispatch phase. It is used mostly for 
+	detecting a hardware failure, 
+	
+	Arguments:
+		plan (robocluedo_rosplan_msgs/ActionFeedback):
+			the feedback from the last executed action
+	
+	Attention:
+		the feedback manager does not send a "succes" feedbacl, meaning
+		that a feedback is sent only when something goes wrong. 
 	'''
 	
 	global action_feedback_msg
@@ -193,8 +258,22 @@ def cbk_action_feedback( feedback ):
 
 
 def inspect_planner_output( fpath ):
-	''' the function reurns true when the problem has been found
-		unsolvable. Otherwise, it returns false.
+	''' the function reurns true when the problem has been found unsolvable. Otherwise, it returns false.
+	
+	This function is used when there's something wrong with the planning
+	interface, and enables to distinguish the scenario in which the planner
+	is not solvable from the simple syntax error. 
+	
+	Arguments:
+		fpath (String):
+			the path of the output from the planner.
+	
+	Attention:
+		this function is good only for popf planner, because when the problem
+		is declared unsolvable, it writes a particular thing on the output,
+		the one that is searched by this function in order to understand
+		if the problem is unsolvable or simply badly formulated. Using other 
+		planners makes this function to be updated. 
 	'''
 	if not os.path.exists( fpath ):
 		return False
@@ -210,6 +289,16 @@ def inspect_planner_output( fpath ):
 
 def cbk_pipeline( req ):
 	''' implementation of the service pipeline manager
+	
+	This very long function allows to use the ROSPlan framework as a pipeline, 
+	in a simple way. 
+	
+	Arguments:
+		req (RosplanPipelineManagerServiceRequest):
+			the pipeline request
+	
+	Returns:
+		(RosplanPipelineManagerServiceResponse) the response to the caller. 
 	'''
 	
 	global cl_problem
@@ -435,6 +524,12 @@ def shut_msg( ):
 
 def open_cl( cl_name, cl_type ):
 	''' handful utility to open a client
+	
+	Arguments:
+		cl_name (string):
+			name of the client
+		cl_type :
+			type of message used by the service
 	'''
 	
 	global SRV_TIMEOUT

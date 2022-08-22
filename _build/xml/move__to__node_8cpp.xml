@@ -97,6 +97,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_rosplan/src/robocluedo_rosplan_actions/move_to_node.cpp" line="20" column="6" bodyfile="robocluedo_rosplan/src/robocluedo_rosplan_actions/move_to_node.cpp" bodystart="20" bodyend="24"/>
+        <references refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d">ROS_INFO_STREAM</references>
         <references refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" compoundref="action__name_8h" startline="15">ROSPLAN_ACTION_NAME</references>
         <referencedby refid="move__to__node_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="move__to__node_8cpp" startline="26" endline="41">main</referencedby>
       </memberdef>
@@ -120,8 +121,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_rosplan/src/robocluedo_rosplan_actions/move_to_node.cpp" line="26" column="5" bodyfile="robocluedo_rosplan/src/robocluedo_rosplan_actions/move_to_node.cpp" bodystart="26" bodyend="41"/>
+        <references refid="main-launch-file_8md_8txt_1acb5acd5cc43c0b557a25f3a47407448b" compoundref="main-launch-file_8md_8txt" startline="38">init</references>
         <references refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" compoundref="action__name_8h" startline="15">ROSPLAN_ACTION_NAME</references>
         <references refid="move__to__node_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="move__to__node_8cpp" startline="20" endline="24">shut_msg</references>
+        <references refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" compoundref="examples__tools_8md_8txt" startline="35">nh</references>
+        <references refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d">ROS_INFO_STREAM</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -139,22 +143,22 @@
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20" refid="move__to__node_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="move__to__node_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sig<sp/>)</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;]<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;</highlight><highlight class="stringliteral">&quot;stopping...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;]<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;</highlight><highlight class="stringliteral">&quot;stopping...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::shutdown(<sp/>);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26" refid="move__to__node_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="move__to__node_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv)<sp/></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(argc,<sp/>argv,<sp/><ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>,<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main-launch-file_8md_8txt_1acb5acd5cc43c0b557a25f3a47407448b" kindref="member">ros::init</ref>(argc,<sp/>argv,<sp/><ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>,<sp/></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::init_options::AnonymousName<sp/>|<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(SIGINT,<sp/><ref refid="move__to__node_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref>);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh(</highlight><highlight class="stringliteral">&quot;~&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>(</highlight><highlight class="stringliteral">&quot;~&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;]<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;</highlight><highlight class="stringliteral">&quot;starting...&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to" kindref="compound">KCL_rosplan::RP_rcl_move_to</ref><sp/>ac(<sp/>nh<sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;]<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;</highlight><highlight class="stringliteral">&quot;starting...&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to" kindref="compound">KCL_rosplan::RP_rcl_move_to</ref><sp/>ac(<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref><sp/>);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>ROS_INFO_STREAM(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;]<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;</highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>(</highlight><highlight class="stringliteral">&quot;[&quot;</highlight><highlight class="normal">&lt;&lt;<ref refid="action__name_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>&lt;&lt;</highlight><highlight class="stringliteral">&quot;]<sp/>&quot;</highlight><highlight class="normal">&lt;&lt;</highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>ac.runActionInterface(<sp/>);</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>

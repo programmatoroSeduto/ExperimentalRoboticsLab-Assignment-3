@@ -1,5 +1,7 @@
 
-CODE REFERENCE -- ROSPlan action move_to
+.. _action-move-to:
+
+ROSPlan action move_to
 ================================================
 
 Action Header

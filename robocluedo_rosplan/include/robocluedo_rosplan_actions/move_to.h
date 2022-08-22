@@ -4,8 +4,19 @@
 * @file move_to.h
 * @brief ROSPlan action implementation
 * 
+* This nodE implements the action (move-to ?from ?to) telling the robot to 
+* move from one "marker" to the other one. 
+* 
+* Very important to point out that, at this level, the system performs a
+* topological localization, leaving the service implementing the navigaiton
+* to assign the cartesian coordinates to the waypoints. 
+* 
 * @authors Francesco Ganci
 * @version v1.0
+* 
+* @note as other actions do, the move_to, in order to carry out the navigation,
+* 	assumes some other node implemented a service defined by this package, and 
+* 	then the node tries to connect to that service. 
 * 
 ***********************************************/
 

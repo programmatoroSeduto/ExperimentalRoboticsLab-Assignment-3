@@ -1,5 +1,6 @@
 
-CODE REFERENCE -- node manipulation controller
+
+NODE manipulation controller
 ================================================
 
 .. doxygenfile:: manipulation_controller.cpp

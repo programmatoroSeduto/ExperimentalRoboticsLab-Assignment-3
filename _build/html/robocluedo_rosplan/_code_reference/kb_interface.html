@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node kb_interface &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE kb_interface &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – class kb_tools" href="kb_tools.html" />
-    <link rel="prev" title="CODE REFERENCE – class feedback manager" href="feedback_manager.html" /> 
+    <link rel="next" title="Class kb_tools" href="kb_tools.html" />
+    <link rel="prev" title="Class feedback manager" href="feedback_manager.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,14 +65,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan – in a nutshell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="action_collect_hint.html">CODE REFERENCE – ROSPlan action collect_hint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feedback_manager.html">CODE REFERENCE – class feedback manager</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node kb_interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kb_tools.html">CODE REFERENCE – class kb_tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="move_to.html">CODE REFERENCE – ROSPlan action move_to</a></li>
-<li class="toctree-l2"><a class="reference internal" href="move_to_center.html">CODE REFERENCE – ROSPlan action move_to_center</a></li>
-<li class="toctree-l2"><a class="reference internal" href="replan.html">CODE REFERENCE – ROSPlan action replan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rosplan_pipeline_manager.html">CODE REFERENCE – node rosplan_pipeline_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feedback_manager.html">Class feedback manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_tools.html">Class kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to.html">ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to_center.html">ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replan.html">ROSPlan action replan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosplan_pipeline_manager.html">NODE rosplan_pipeline_manager.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
@@ -119,7 +118,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
-      <li>CODE REFERENCE – node kb_interface</li>
+      <li>NODE kb_interface</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_rosplan/_code_reference/kb_interface.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -129,9 +128,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-kb-interface">
-<h1>CODE REFERENCE – node kb_interface<a class="headerlink" href="#code-reference-node-kb-interface" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-kb-interface">
+<span id="id1"></span><h1>NODE kb_interface<a class="headerlink" href="#node-kb-interface" title="Permalink to this heading"></a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>see also <a class="reference internal" href="kb_tools.html#class-kb-tools"><span class="std std-ref">Class kb_tools</span></a></p>
+</div>
 <p>services for read/write on the rosplan kb </p>
+<p>This node exposes, as ROS service, some important functionalities for performing the replanning.</p>
+<p>Its role is mostly to hide the specificiy of some corrections on the knowledge base, due to the structure of the PDDL model in use for this project.</p>
 <p><dl class="simple">
 <dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
 </dd>
@@ -139,6 +144,10 @@
 </dd>
 </dl>
 </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It supports the develop mode: waitkey, develop print</p>
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -261,7 +270,15 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv418predicate_instance">
 <span id="_CPPv318predicate_instance"></span><span id="_CPPv218predicate_instance"></span><span id="predicate_instance"></span><span class="target" id="classpredicate__instance"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">predicate_instance</span></span></span><a class="headerlink" href="#_CPPv418predicate_instance" title="Permalink to this definition"></a><br /></dt>
-<dd><p>representation of one predicate </p>
+<dd><p>representation of a predicate </p>
+<p>This simple data structure is used for handling the predicates in a more convenient way.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>this class should be better designed, or, even better, included into the currently available framework for the knowledge base.</p>
+</dd></dl>
+
+</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -303,24 +320,79 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv412kb_interface">
 <span id="_CPPv312kb_interface"></span><span id="_CPPv212kb_interface"></span><span id="kb_interface"></span><span class="target" id="classkb__interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kb_interface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">private</span></span><span class="w"> </span><a class="reference internal" href="kb_tools.html#_CPPv48kb_tools" title="kb_tools"><span class="n"><span class="pre">kb_tools</span></span></a><a class="headerlink" href="#_CPPv412kb_interface" title="Permalink to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Implementation of the node <a class="reference internal" href="#classkb__interface"><span class="std std-ref">kb_interface</span></a> as class. </p>
+<p>The node provides a general service for replanning, as well as some utilities taking into account the particularities of the landmarks with respect to the structure of the PDDL model.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>the node should read the waypoints from the PDDL model; currently, the waypoints are hardcoded in the constructor. </p>
+</dd></dl>
+
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>the topology of the problem can be better handled by this node. </p>
+</dd></dl>
+
+</p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12kb_interface12kb_interfaceEv">
 <span id="_CPPv3N12kb_interface12kb_interfaceEv"></span><span id="_CPPv2N12kb_interface12kb_interfaceEv"></span><span id="kb_interface::kb_interface"></span><span class="target" id="classkb__interface_1a66e8069a0f9c87f4064642b8e927f31a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kb_interface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12kb_interface12kb_interfaceEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p><a class="reference internal" href="#classkb__interface"><span class="std std-ref">kb_interface</span></a> node constructor </p>
+<p>The constructor allocates the most relevant predicates of the PDDL model and their default values. These values are used when a landmark, or a replanning, is required by another node.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>the node should read the waypoints from the PDDL model; currently, the waypoints are hardcoded in the constructor. </p>
+</dd></dl>
+
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE">
 <span id="_CPPv3N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="_CPPv2N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="kb_interface::cbk_replan__std_srvs::Empty::RequestR.std_srvs::Empty::ResponseR"></span><span class="target" id="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_replan</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12kb_interface10cbk_replanERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>replan service </p>
+<dd><p>implementation of the replan service </p>
+<p>the service first of all restores the most relelvand values of the PDDL model inside the ontology, then adjusts the informations regarding the topological localisation in a way such that the only place explored is the one where the robot is currently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – (empty) </p></li>
+<li><p><strong>response</strong> – (empty) </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE">
 <span id="_CPPv3N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE"></span><span id="_CPPv2N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE"></span><span id="kb_interface::cbk_update_goal__robocluedo_rosplan_msgs::UpdateGoal::RequestR.robocluedo_rosplan_msgs::UpdateGoal::ResponseR"></span><span class="target" id="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_update_goal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UpdateGoal</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UpdateGoal</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12kb_interface15cbk_update_goalERN23robocluedo_rosplan_msgs10UpdateGoal7RequestERN23robocluedo_rosplan_msgs10UpdateGoal8ResponseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>update goal service </p>
+<p>implementation of service for updating goals</p>
+<p>Purpose of this service is to create the proper conditions in order to apply one of the three available landmarks: REPLAN, COLLECT and SOLVE.</p>
+<p>“REPLAN” simply sets the “dirty” flags in a way such that the plan, when found, is going to start with the (replan ) PDDL action. The localisation is not affected, or at least not by this node.</p>
+<p>“COLLECT” causes the node to look for a still unexplored waypoint. if all the waypoints have been explored, the node refuses the request, otherwise it sets the first available waypoint. The command doesn’t allow to decide which waypoint the robot can explore: the waypoint is choosen automatically by this node.</p>
+<p>“SOLVE” only sets the “dirty” flags as the “REPLAN” landmark does, but in a way such that the system has to necessairly call the PDDL action (solve ?wp) after moved to the center of the arena.</p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>the request is rejected with no effect on the knowledge base if the requested landark is not applicable. It could happen for instance when the robot has explored every single waypoint.</p>
+</dd>
+</dl>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>in any case, the goal is cancelled, hence a failure in applying one unapplicable landmark requires to set again one more landmark. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – it communicates the landmark to set </p></li>
+<li><p><strong>response</strong> – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -358,8 +430,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="feedback_manager.html" class="btn btn-neutral float-left" title="CODE REFERENCE – class feedback manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="kb_tools.html" class="btn btn-neutral float-right" title="CODE REFERENCE – class kb_tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="feedback_manager.html" class="btn btn-neutral float-left" title="Class feedback manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kb_tools.html" class="btn btn-neutral float-right" title="Class kb_tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

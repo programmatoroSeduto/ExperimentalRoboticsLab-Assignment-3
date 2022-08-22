@@ -1,11 +1,25 @@
 #! /usr/bin/env pythonù
 
 ''' 
-follow the walls using wall follow
-when near enough to the point to reach, go to point
-and that's all!
+This node orchestrates the combination of two different behaviours of the
+robot: go_to_point (a behaviour used for driving the robot straight to a 
+particular target point) and head_orientation (the robot turns about itself
+in order to reach a certain orientation with respect to the world frame). 
 
-the node uses other nodes exploiting the laser sensors
+It is a switchable component: it can be turned on and off depending 
+on the situation. 
+
+This version of the node also has a new state which can make the robot
+go back before start turning. The motion generally proceeds in this way: 
+go back until there's space enough for making manouver, turn towards
+the target, move straight towards the target, then rotate again for reaching 
+the final yaw, and finally stop the robot. 
+
+Authors
+	prof. Carmine Recchiuto (UniGe), Francesco Ganci (S4143910)
+
+Version:
+	v2.0.0
 '''
 
 import rospy

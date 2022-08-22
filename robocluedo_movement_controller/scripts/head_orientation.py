@@ -1,5 +1,21 @@
 #! /usr/bin/env python
 
+'''
+This straightforward behaviour simply turns the robot in a target direction.
+As the other "behavioural" nodes, this continuously read the target from the 
+parameter server and sends to the /cmd_vel topic a angular velocity until
+the target pose hasn't been achieved. Nothing more.
+
+This is meant to be used in composite behaviours to implement something 
+more advanced. 
+
+Authors
+	Francesco Ganci (S4143910)
+
+Version:
+	v1.0.0
+'''
+
 import rospy
 
 from geometry_msgs.msg import Twist, Point

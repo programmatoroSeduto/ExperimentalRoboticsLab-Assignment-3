@@ -1,5 +1,16 @@
 
-# ArUco and OpenCV
+# HOW TO setup ArUco and OpenCV
+
+---
+
+```{toctree}
+---
+caption: Contents
+---
+./opencv-aruco-setup.md
+```
+
+---
 
 ## OpenCV for ROS
 

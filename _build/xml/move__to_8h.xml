@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" line="15" column="9" bodyfile="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" bodystart="15" bodyend="-1"/>
+        <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" line="26" column="9" bodyfile="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="move__to_8h_1a86d0cfb83d16525602716fa35858cd2b" prot="public" static="no">
         <name>SRV_NAVIGATION</name>
@@ -109,62 +109,66 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" line="23" column="9" bodyfile="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" bodystart="23" bodyend="-1"/>
+        <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" line="34" column="9" bodyfile="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>ROSPlan action implementation. </para>
     </briefdescription>
     <detaileddescription>
+<para>This nodE implements the action (move-to ?from ?to) telling the robot to move from one &quot;marker&quot; to the other one.</para>
+<para>Very important to point out that, at this level, the system performs a topological localization, leaving the service implementing the navigaiton to assign the cartesian coordinates to the waypoints.</para>
 <para><simplesect kind="authors"><para>Francesco Ganci </para>
 </simplesect>
-<simplesect kind="version"><para>v1.0 </para>
+<simplesect kind="version"><para>v1.0</para>
+</simplesect>
+<simplesect kind="note"><para>as other actions do, the move_to, in order to carry out the navigation, assumes some other node implemented a service defined by this package, and then the node tries to connect to that service. </para>
 </simplesect>
 </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/********************************************/</highlight></codeline>
-<codeline lineno="12"><highlight class="preprocessor">#ifndef<sp/>__H_MOVE_TO_H__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__H_MOVE_TO_H__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="move__to_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ROSPLAN_ACTION_NAME<sp/>&quot;move_to&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ros/ros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rosplan_action_interface/RPActionInterface.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="feedback__manager_8h" kindref="compound">knowledge_base_tools/feedback_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rosplan_dispatch_msgs/ActionDispatch.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_rosplan_msgs/NavigationCommand.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="move__to_8h_1a86d0cfb83d16525602716fa35858cd2b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SRV_NAVIGATION<sp/>&quot;/robocluedo/navigation_command&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_k_c_l__rosplan" kindref="compound">KCL_rosplan</ref><sp/></highlight></codeline>
-<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor">#ifndef<sp/>__H_MOVE_TO_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__H_MOVE_TO_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="move__to_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ROSPLAN_ACTION_NAME<sp/>&quot;move_to&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to" kindref="compound">RP_rcl_move_to</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>RPActionInterface</highlight></codeline>
-<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to_1a02307dc878a7bfc57216a7ea284e9d3d" kindref="member">RP_rcl_move_to</ref>(<sp/>ros::NodeHandle&amp;<sp/>nh_<sp/>);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to_1a8132d9d1aa2637c852c5ae1700169335" kindref="member">~RP_rcl_move_to</ref>(<sp/>);</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to_1ac52760b641826a4348f0621617b5434a" kindref="member">concreteCallback</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rosplan_dispatch_msgs::ActionDispatch::ConstPtr&amp;<sp/>msg<sp/>);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ros/ros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rosplan_action_interface/RPActionInterface.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="feedback__manager_8h" kindref="compound">knowledge_base_tools/feedback_manager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rosplan_dispatch_msgs/ActionDispatch.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;robocluedo_rosplan_msgs/NavigationCommand.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="move__to_8h_1a86d0cfb83d16525602716fa35858cd2b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SRV_NAVIGATION<sp/>&quot;/robocluedo/navigation_command&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_k_c_l__rosplan" kindref="compound">KCL_rosplan</ref><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to" kindref="compound">RP_rcl_move_to</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>RPActionInterface</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle&amp;<sp/>nh;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to_1a02307dc878a7bfc57216a7ea284e9d3d" kindref="member">RP_rcl_move_to</ref>(<sp/>ros::NodeHandle&amp;<sp/>nh_<sp/>);</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaction__feedback__manager" kindref="compound">action_feedback_manager</ref><sp/>fb;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to_1a8132d9d1aa2637c852c5ae1700169335" kindref="member">~RP_rcl_move_to</ref>(<sp/>);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceClient<sp/>cl_navigation;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>action_name<sp/>=<sp/><ref refid="move__to_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_k_c_l__rosplan_1_1_r_p__rcl__move__to_1ac52760b641826a4348f0621617b5434a" kindref="member">concreteCallback</ref>(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rosplan_dispatch_msgs::ActionDispatch::ConstPtr&amp;<sp/>msg<sp/>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle&amp;<sp/>nh;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaction__feedback__manager" kindref="compound">action_feedback_manager</ref><sp/>fb;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceClient<sp/>cl_navigation;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>action_name<sp/>=<sp/><ref refid="move__to_8h_1a5fd6c7de99fa188561b1bbb00cc7ea50" kindref="member">ROSPLAN_ACTION_NAME</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="robocluedo_rosplan/include/robocluedo_rosplan_actions/move_to.h"/>
   </compounddef>

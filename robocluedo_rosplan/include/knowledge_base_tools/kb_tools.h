@@ -5,8 +5,13 @@
 * @brief basic tools for dealng with the ROSPLan
 * 	knowledge base.
 * 
+* Essential tools for handling the informations inside the ROSPlan knowledge
+* base in a more intuitive, convenient way. 
+* 
 * @authors Francesco Ganci
 * @version v1.0.0
+* 
+* @todo the class right now has a very limited support for the fluents. 
 * 
 ***********************************************/
 
@@ -26,19 +31,19 @@
 
 // === KB services
 
-// KB query (predicates only)
+/// KB query (predicates only)
 #define SERVICE_QUERY "/rosplan_knowledge_base/query_state"
 #define TIMEOUT_QUERY 60
 
-// KB propositions query
+/// KB propositions query
 #define SERVICE_QUERY_2 "/rosplan_knowledge_base/state/propositions"
 #define TIMEOUT_QUERY_2 60
 
-// KB update (fluents and predicates)
+/// KB update (fluents and predicates)
 #define SERVICE_KB_UPDATE "/rosplan_knowledge_base/update"
 #define TIMEOUT_KB_UPDATE 60
 
-// KB query (fluents only)
+/// KB query (fluents only)
 #define SERVICE_KB_GET_FLUENT "/rosplan_knowledge_base/state/functions"
 #define TIMEOUT_KB_GET_FLUENT 60
 

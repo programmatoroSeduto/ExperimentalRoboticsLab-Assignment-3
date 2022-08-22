@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="update-navigation-manager_8md" kind="file" language="Markdown">
+    <compoundname>update-navigation-manager.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>HOW<sp/>TO<sp/>update<sp/>the<sp/>navigation<sp/>manager</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./update-navigation-manager.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>current<sp/>navigation<sp/>manager<sp/>applies<sp/>the<sp/>C++<sp/>plymorphism<sp/>in<sp/>order<sp/>to<sp/>make<sp/>a<sp/>flexible<sp/>and<sp/>helpful<sp/>abstraction<sp/>layer<sp/>between<sp/>the<sp/>nodes<sp/>requiring<sp/>the<sp/>navigation<sp/>services<sp/>and<sp/>how<sp/>the<sp/>navigation<sp/>service<sp/>is<sp/>really<sp/>implemented.<sp/>After<sp/>all,<sp/>each<sp/>node<sp/>which<sp/>wants<sp/>to<sp/>use<sp/>the<sp/>navigation<sp/>should<sp/>just<sp/>tell<sp/>the<sp/>node<sp/>in<sp/>charge<sp/>to<sp/>manage<sp/>the<sp/>navigation<sp/>the<sp/>final<sp/>position<sp/>and,<sp/>in<sp/>case,<sp/>the<sp/>final<sp/>orientation<sp/>of<sp/>the<sp/>robot,<sp/>and<sp/>nothing<sp/>more<sp/>(at<sp/>least<sp/>in<sp/>a<sp/>very<sp/>simple<sp/>and<sp/>common<sp/>scenario).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>A<sp/>description<sp/>of<sp/>the<sp/>navigation<sp/>Manager<sp/>Node</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>navigation<sp/>manager<sp/>uses<sp/>the<sp/>*controllers*,<sp/>i.e.<sp/>modules<sp/>(objects)<sp/>using<sp/>the<sp/>low-level<sp/>implementation<sp/>of<sp/>the<sp/>navigation<sp/>in<sp/>order<sp/>to<sp/>reach<sp/>the<sp/>objective<sp/>provided.<sp/>In<sp/>particular,<sp/>here<sp/>are<sp/>some<sp/>characteristics<sp/>of<sp/>this<sp/>particular<sp/>system:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>navigation<sp/>manager<sp/>is<sp/>a<sp/>*list<sp/>of<sp/>controllers*<sp/>with<sp/>one<sp/>controller<sp/>active<sp/>set<sp/>apart<sp/>from<sp/>the<sp/>array</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>each<sp/>controller<sp/>can<sp/>be<sp/>enabled<sp/>or<sp/>disabled</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>all<sp/>the<sp/>services<sp/>and<sp/>topics<sp/>needed<sp/>to<sp/>make<sp/>the<sp/>low<sp/>level<sp/>work<sp/>are<sp/>hidden<sp/>in<sp/>the<sp/>controller,<sp/>whereas<sp/>the<sp/>navigation<sp/>manager<sp/>sees<sp/>alway<sp/>the<sp/>same<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>a<sp/>controller<sp/>can<sp/>be<sp/>replaced<sp/>*at<sp/>runtime*<sp/>depending<sp/>on<sp/>the<sp/>situation,<sp/>if<sp/>needed,<sp/>which<sp/>means<sp/>that<sp/>the<sp/>robot<sp/>can<sp/>use<sp/>many<sp/>combinations<sp/>of<sp/>the<sp/>low<sp/>level<sp/>behaviours<sp/>in<sp/>order<sp/>to<sp/>carry<sp/>out<sp/>the<sp/>objective</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>current<sp/>navigation<sp/>manager<sp/>(for<sp/>the<sp/>third<sp/>part<sp/>of<sp/>the<sp/>RoboCLuedo<sp/>project)<sp/>contains<sp/>two<sp/>controllers:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>controller<sp/>with<sp/>ID=0<sp/>controls:<sp/>bug_m,<sp/>and<sp/>indirectly<sp/>head_orientation<sp/>and<sp/>go_to_point</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>controller<sp/>with<sp/>ID=1<sp/>controls<sp/>move_base<sp/>and<sp/>indirectly<sp/>head_orientation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bu<sp/>for<sp/>instance<sp/>I<sp/>could<sp/>think<sp/>on<sp/>a<sp/>controller<sp/>which<sp/>makes<sp/>the<sp/>big<sp/>part<sp/>of<sp/>the<sp/>trave<sp/>with<sp/>move_base,<sp/>and<sp/>arrived<sp/>at<sp/>a<sp/>certain<sp/>distance<sp/>from<sp/>the<sp/>objective,<sp/>uses<sp/>the<sp/>bug_m<sp/>to<sp/>perform<sp/>the<sp/>final<sp/>steps<sp/>of<sp/>the<sp/>navigation.<sp/>This<sp/>could<sp/>be<sp/>implemented<sp/>in<sp/>a<sp/>controller<sp/>using<sp/>almost<sp/>all<sp/>the<sp/>behaviours<sp/>seen<sp/>above.<sp/>This<sp/>is<sp/>what<sp/>this<sp/>model<sp/>can<sp/>do.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>More<sp/>techincally<sp/>speaking</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">each<sp/>controller<sp/>is<sp/>implemented<sp/>as<sp/>a<sp/>class.<sp/>Here<sp/>is<sp/>its<sp/>&quot;blueprint&quot;:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>nav_???<sp/>:<sp/>public<sp/>navigation_controller</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>class<sp/>constructor<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>nav_???(<sp/>std::string<sp/>name<sp/>=<sp/>&quot;&quot;,<sp/>int<sp/>code<sp/>=<sp/>-1<sp/>)<sp/>:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>navigation_controller(<sp/>name,<sp/>code<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>class<sp/>destructor<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>~nav_???(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>turn<sp/>on<sp/>the<sp/>algorithm<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>enable(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>!channels_enabled<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...<sp/>try<sp/>opening<sp/>the<sp/>channels<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(ros::Duration(2)).sleep();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channels_enabled<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;enabled<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>use<sp/>the<sp/>algorithm<sp/>for<sp/>the<sp/>2D<sp/>navigation<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>perform_navigation(<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::NavigationService::Request&amp;<sp/>req,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::NavigationService::Response&amp;<sp/>res<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>!enabled<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.details<sp/>=<sp/>&quot;the<sp/>controller<sp/>isn&apos;t<sp/>active&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...<sp/>perform<sp/>the<sp/>navigation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.details<sp/>=<sp/>&quot;&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>turn<sp/>off<sp/>the<sp/>algorithm<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>disable(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;enabled<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>channels_enabled<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;channels_enabled<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">private:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>...<sp/>services<sp/>and<sp/>topics<sp/>for<sp/>the<sp/>navigation<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>channels<sp/>opened?</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>channels_enabled<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>the<sp/>class<sp/>Navigation<sp/>Controller</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">as<sp/>you<sp/>can<sp/>noticed<sp/>in<sp/>the<sp/>code<sp/>above,<sp/>all<sp/>the<sp/>controllers<sp/>must<sp/>inherit<sp/>from<sp/>a<sp/>class<sp/>called<sp/>`navigation_controller`<sp/>which<sp/>is<sp/>rewritten<sp/>here<sp/>for<sp/>your<sp/>convenience:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>navigation_controller</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>navigation<sp/>identfier</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nav_code<sp/>=<sp/>-1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>navigation<sp/>algorithm<sp/>name</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>nav_name<sp/>=<sp/>&quot;&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>class<sp/>constructor<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>navigation_controller(<sp/>std::string<sp/>name<sp/>=<sp/>&quot;&quot;,<sp/>int<sp/>code<sp/>=<sp/>-1<sp/>)<sp/>:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nav_code(<sp/>code<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if(<sp/>name<sp/>!=<sp/>&quot;&quot;<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;nav_name<sp/>=<sp/>name;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>class<sp/>destructor<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>~navigation_controller(<sp/>)<sp/>{<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>(virtual)<sp/>turn<sp/>on<sp/>the<sp/>algorithm<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>bool<sp/>enable(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;enabled<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>(virtual)<sp/>use<sp/>the<sp/>algorithm<sp/>for<sp/>the<sp/>2D<sp/>navigation<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>bool<sp/>perform_navigation(<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::NavigationService::Request&amp;<sp/>req,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::NavigationService::Response&amp;<sp/>res<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>this-&gt;enabled;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>(virtual)<sp/>turn<sp/>off<sp/>the<sp/>algorithm<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>bool<sp/>disable(<sp/>)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;enabled<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>/**<sp/>check<sp/>wether<sp/>the<sp/>algorithm<sp/>is<sp/>enabled<sp/>or<sp/>not<sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>is_enabled(<sp/>)<sp/>{<sp/>return<sp/>this-&gt;enabled;<sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">protected:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>ROS<sp/>Node<sp/>handle<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>activity<sp/>state<sp/>of<sp/>the<sp/>algorithm</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>enabled<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">you<sp/>can<sp/>notice<sp/>here<sp/>that<sp/>each<sp/>controller<sp/>has<sp/>some<sp/>very<sp/>important<sp/>methods<sp/>in<sp/>its<sp/>interface:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`bool<sp/>enable(<sp/>)`<sp/>:<sp/>called<sp/>for<sp/>turning<sp/>on<sp/>the<sp/>controller<sp/>when<sp/>selected;<sp/>here<sp/>the<sp/>controller<sp/>opens<sp/>the<sp/>channels<sp/>with<sp/>the<sp/>low<sp/>level,<sp/>if<sp/>they<sp/>are<sp/>yet<sp/>not<sp/>activated.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>here<sp/>I<sp/>suggest<sp/>to<sp/>open<sp/>up<sp/>the<sp/>interfaces<sp/>once,<sp/>and<sp/>then<sp/>to<sp/>check<sp/>for<sp/>their<sp/>validity<sp/>at<sp/>each<sp/>calling.<sp/>Another<sp/>approach<sp/>is<sp/>to<sp/>use<sp/>the<sp/>`enable()`<sp/>to<sp/>open<sp/>up<sp/>the<sp/>interfaces,<sp/>and<sp/>then<sp/>use<sp/>`disable()`<sp/>to<sp/>turn<sp/>them<sp/>off,<sp/>each<sp/>time<sp/>in<sp/>the<sp/>lifecycle<sp/>of<sp/>the<sp/>component.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`bool<sp/>perform_navigation(req,<sp/>res)`<sp/>is<sp/>function<sp/>called<sp/>by<sp/>the<sp/>general<sp/>service<sp/>of<sp/>the<sp/>navigation<sp/>manager.<sp/>It<sp/>should<sp/>return<sp/>true<sp/>when<sp/>the<sp/>navigation<sp/>succeeded,<sp/>and<sp/>false<sp/>when<sp/>there&apos;s<sp/>something<sp/>wrong;<sp/>it<sp/>also<sp/>returns<sp/>a<sp/>explaination<sp/>(if<sp/>possible)<sp/>of<sp/>the<sp/>error.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Notice<sp/>that<sp/>the<sp/>service<sp/>request<sp/>is<sp/>handled<sp/>by<sp/>the<sp/>navigation<sp/>manager,<sp/>but<sp/>it<sp/>is<sp/>job<sp/>of<sp/>this<sp/>function<sp/>to<sp/>manipulate<sp/>the<sp/>data<sp/>inside<sp/>the<sp/>message<sp/>according<sp/>to<sp/>the<sp/>proceeding<sp/>of<sp/>the<sp/>navigation,<sp/>exactly<sp/>as<sp/>this<sp/>would<sp/>be<sp/>the<sp/>real<sp/>service<sp/>call.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`bool<sp/>disable(<sp/>)`<sp/>turns<sp/>off<sp/>the<sp/>component</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>see<sp/>the<sp/>comment<sp/>under<sp/>the<sp/>`bool<sp/>enable(<sp/>)`<sp/>call.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>register<sp/>a<sp/>controller</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Implementing<sp/>the<sp/>controller<sp/>is<sp/>needed,<sp/>but<sp/>not<sp/>sufficient.<sp/>In<sp/>order<sp/>to<sp/>make<sp/>the<sp/>controller<sp/>available<sp/>inside<sp/>the<sp/>navigation<sp/>manager,<sp/>you<sp/>need<sp/>to<sp/>register<sp/>it.<sp/>Here&apos;s<sp/>a<sp/>example<sp/>you<sp/>can<sp/>use<sp/>for<sp/>this<sp/>task:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{attention}</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>service<sp/>for<sp/>changin<sp/>the<sp/>algorithm<sp/>assumes<sp/>to<sp/>use<sp/>a<sp/>ID<sp/>for<sp/>selecting<sp/>the<sp/>algorithm.<sp/>The<sp/>function<sp/>`.register_algorithm()`<sp/>assigns<sp/>a<sp/>ID<sp/>to<sp/>the<sp/>algorithm<sp/>*according<sp/>to<sp/>the<sp/>order<sp/>of<sp/>all<sp/>the<sp/>registrations*..<sp/>Hence,<sp/>be<sp/>sure<sp/>that<sp/>the<sp/>ID<sp/>is<sp/>always<sp/>the<sp/>same<sp/>for<sp/>that<sp/>algorithm:<sp/>choose<sp/>the<sp/>ID<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>project,<sp/>and<sp/>keep<sp/>this<sp/>forever<sp/>(unless<sp/>you<sp/>don&apos;t<sp/>want<sp/>to<sp/>modify<sp/>or<sp/>refactor<sp/>your<sp/>code).<sp/></highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c++</highlight></codeline>
+<codeline><highlight class="normal">class_navigation_manager<sp/>nav;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>controller<sp/>bug_m</highlight></codeline>
+<codeline><highlight class="normal">nav_bug_m<sp/>bug_m;</highlight></codeline>
+<codeline><highlight class="normal">bug_m.nav_name<sp/>=<sp/>&quot;bug_m&quot;;</highlight></codeline>
+<codeline><highlight class="normal">nav.register_algorithm(<sp/>&amp;bug_m<sp/>);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>controller<sp/>move_base_nav</highlight></codeline>
+<codeline><highlight class="normal">nav_move_base<sp/>moveb;</highlight></codeline>
+<codeline><highlight class="normal">moveb.nav_name<sp/>=<sp/>&quot;move_base_nav&quot;;</highlight></codeline>
+<codeline><highlight class="normal">nav.register_algorithm(<sp/>&amp;moveb<sp/>);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>this<sp/>example,<sp/>`bug_m`<sp/>will<sp/>have<sp/>ID=0<sp/>whereas<sp/>`move_base_nav`<sp/>will<sp/>have<sp/>ID=1<sp/>.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>(in<sp/>the<sp/>end)<sp/>how<sp/>to<sp/>create<sp/>a<sp/>new<sp/>component</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">here<sp/>are<sp/>the<sp/>steps:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>define<sp/>the<sp/>new<sp/>controller<sp/>exploiting<sp/>the<sp/>inheritance<sp/></highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>implement<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>register<sp/>the<sp/>controller<sp/>in<sp/>the<sp/>main<sp/>function</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">very<sp/>simple.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Observations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>one<sp/>controller<sp/>could<sp/>always<sp/>interact<sp/>with<sp/>the<sp/>parameter<sp/>server,<sp/>and<sp/>this<sp/>enables<sp/>to<sp/>overcome<sp/>the<sp/>simplicity<sp/>of<sp/>the<sp/>interface<sp/>for<sp/>communicating<sp/>with<sp/>the<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>naigation<sp/>manager<sp/>could<sp/>implement<sp/>many<sp/>versions<sp/>of<sp/>the<sp/>same<sp/>controller,<sp/>even<sp/>using<sp/>the<sp/>inheritance<sp/>if<sp/>it<sp/>is<sp/>a<sp/>good<sp/>idea,<sp/>in<sp/>order<sp/>to<sp/>make<sp/>a<sp/>more<sp/>detailed<sp/>control<sp/></highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_movement_controller/_docs/update-navigation-manager.md"/>
+  </compounddef>
+</doxygen>

@@ -1,6 +1,9 @@
 
-CODE REFERENCE -- ROSPlan action replan
+ROSPlan action replan
 ================================================
+
+.. seealso::
+	see also :any:`node-kb-interface`
 
 Action Header
 --------------

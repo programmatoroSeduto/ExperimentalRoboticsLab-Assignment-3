@@ -1,6 +1,9 @@
 
-CODE REFERENCE -- ROSPlan action move_to_center
+ROSPlan action move_to_center
 ================================================
+
+.. seealso::
+	the action should be joint with :any:`action-move-to`
 
 Action Header
 --------------

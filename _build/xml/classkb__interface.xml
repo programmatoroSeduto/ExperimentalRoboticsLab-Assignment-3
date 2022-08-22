@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="289" column="21" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="289" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="377" column="21" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="377" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classkb__interface_1a85b42761439f2b71ce47b2aeafad4f6f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref> &gt;</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="292" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="292" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="380" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="380" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classkb__interface_1a0261ae63bd1007b57d9699ee1462378b" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref> &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="295" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="295" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="383" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="383" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classkb__interface_1abc04eeb94129f16f32702dcb81013d6f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="298" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="298" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="386" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="386" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -70,13 +70,16 @@
 <para><ref refid="classkb__interface" kindref="compound">kb_interface</ref> node constructor </para>
         </briefdescription>
         <detaileddescription>
+<para>The constructor allocates the most relevant predicates of the PDDL model and their default values. These values are used when a landmark, or a replanning, is required by another node.</para>
+<para><xrefsect id="todo_1_todo000042"><xreftitle>Todo</xreftitle><xrefdescription><para>the node should read the waypoints from the PDDL model; currently, the waypoints are hardcoded in the constructor. </para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="86" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="86" bodyend="146"/>
-        <references refid="classpredicate__instance_1ada909861d7429830f3139bf987db8681" compoundref="kb__interface_8cpp" startline="56">predicate_instance::name</references>
-        <references refid="classpredicate__instance_1a56680bb5f2721c05d9056ff4ab4d652a" compoundref="kb__interface_8cpp" startline="62">predicate_instance::default_value</references>
-        <references refid="classpredicate__instance_1a4225683c001580c09308f7807776e34c" compoundref="kb__interface_8cpp" startline="65" endline="68">predicate_instance::set_param</references>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="130" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="130" bodyend="189"/>
+        <references refid="classpredicate__instance_1ada909861d7429830f3139bf987db8681" compoundref="kb__interface_8cpp" startline="75">predicate_instance::name</references>
+        <references refid="classpredicate__instance_1a56680bb5f2721c05d9056ff4ab4d652a" compoundref="kb__interface_8cpp" startline="81">predicate_instance::default_value</references>
+        <references refid="classpredicate__instance_1a4225683c001580c09308f7807776e34c" compoundref="kb__interface_8cpp" startline="84" endline="87">predicate_instance::set_param</references>
       </memberdef>
       <memberdef kind="function" id="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -92,16 +95,36 @@
           <declname>res</declname>
         </param>
         <briefdescription>
-<para>replan service </para>
+<para>implementation of the replan service </para>
         </briefdescription>
         <detaileddescription>
+<para>the service first of all restores the most relelvand values of the PDDL model inside the ontology, then adjusts the informations regarding the topological localisation in a way such that the only place explored is the one where the robot is currently.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>request</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(empty) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(empty) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="149" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="149" bodyend="200"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="204" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="204" bodyend="255"/>
         <references refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" compoundref="kb__tools_8cpp" startline="109" endline="141">kb_tools::set_predicate</references>
         <references refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" compoundref="kb__tools_8cpp" startline="69" endline="101">kb_tools::get_predicate</references>
-        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="309" endline="334">main</referencedby>
+        <references refid="bug__m_8rst_8txt_1a58306b7819d4924921d922ffdf9b396a" compoundref="bug__m_8rst_8txt" startline="9">m</references>
+        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="397" endline="422">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -120,22 +143,59 @@
 <para>update goal service </para>
         </briefdescription>
         <detaileddescription>
+<para>implementation of service for updating goals</para>
+<para>Purpose of this service is to create the proper conditions in order to apply one of the three available landmarks: REPLAN, COLLECT and SOLVE.</para>
+<para>&quot;REPLAN&quot; simply sets the &quot;dirty&quot; flags in a way such that the plan, when found, is going to start with the (replan ) PDDL action. The localisation is not affected, or at least not by this node.</para>
+<para>&quot;COLLECT&quot; causes the node to look for a still unexplored waypoint. if all the waypoints have been explored, the node refuses the request, otherwise it sets the first available waypoint. The command doesn&apos;t allow to decide which waypoint the robot can explore: the waypoint is choosen automatically by this node.</para>
+<para>&quot;SOLVE&quot; only sets the &quot;dirty&quot; flags as the &quot;REPLAN&quot; landmark does, but in a way such that the system has to necessairly call the PDDL action (solve ?wp) after moved to the center of the arena.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>request</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>it communicates the landmark to set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="attention"><para>the request is rejected with no effect on the knowledge base if the requested landark is not applicable. It could happen for instance when the robot has explored every single waypoint.</para>
+</simplesect>
+<simplesect kind="note"><para>in any case, the goal is cancelled, hence a failure in applying one unapplicable landmark requires to set again one more landmark. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="203" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="203" bodyend="284"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="291" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="291" bodyend="372"/>
         <references refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" compoundref="kb__tools_8cpp" startline="145" endline="176">kb_tools::set_goal</references>
-        <references refid="kb__interface_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8" compoundref="kb__interface_8cpp" startline="45">LANDMARK_REPLAN</references>
+        <references refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" compoundref="examples__tools_8md_8txt" startline="116">req</references>
+        <references refid="kb__interface_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8" compoundref="kb__interface_8cpp" startline="54">LANDMARK_REPLAN</references>
         <references refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" compoundref="kb__tools_8cpp" startline="109" endline="141">kb_tools::set_predicate</references>
-        <references refid="kb__interface_8cpp_1a24358e49160550a847f87e20cbae2755" compoundref="kb__interface_8cpp" startline="46">LANDMARK_COLLECT</references>
+        <references refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" compoundref="examples__tools_8md_8txt" startline="117">res</references>
+        <references refid="kb__interface_8cpp_1a24358e49160550a847f87e20cbae2755" compoundref="kb__interface_8cpp" startline="55">LANDMARK_COLLECT</references>
+        <references refid="bug__m_8rst_8txt_1a58306b7819d4924921d922ffdf9b396a" compoundref="bug__m_8rst_8txt" startline="9">m</references>
         <references refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" compoundref="kb__tools_8cpp" startline="69" endline="101">kb_tools::get_predicate</references>
-        <references refid="kb__interface_8cpp_1aeba69fa9266c50170be8cd6c57e4f2ef" compoundref="kb__interface_8cpp" startline="47">LANDMARK_SOLVE</references>
-        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="309" endline="334">main</referencedby>
+        <references refid="erl3-oracle-user-manual_8md_8txt_1a35a3b028ab44bd5cebbd489e60f27478" compoundref="erl3-oracle-user-manual_8md_8txt" startline="101">hint</references>
+        <references refid="kb__interface_8cpp_1aeba69fa9266c50170be8cd6c57e4f2ef" compoundref="kb__interface_8cpp" startline="56">LANDMARK_SOLVE</references>
+        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="397" endline="422">main</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Implementation of the node <ref refid="classkb__interface" kindref="compound">kb_interface</ref> as class. </para>
     </briefdescription>
     <detaileddescription>
+<para>The node provides a general service for replanning, as well as some utilities taking into account the particularities of the landmarks with respect to the structure of the PDDL model.</para>
+<para><xrefsect id="todo_1_todo000040"><xreftitle>Todo</xreftitle><xrefdescription><para>the node should read the waypoints from the PDDL model; currently, the waypoints are hardcoded in the constructor. </para>
+</xrefdescription></xrefsect></para>
+<para><xrefsect id="todo_1_todo000041"><xreftitle>Todo</xreftitle><xrefdescription><para>the topology of the problem can be better handled by this node. </para>
+</xrefdescription></xrefsect></para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -161,7 +221,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="robocluedo_rosplan/src/kb_interface.cpp" line="82" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="81" bodyend="299"/>
+    <location file="robocluedo_rosplan/src/kb_interface.cpp" line="115" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="114" bodyend="387"/>
     <listofallmembers>
       <member refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>cbk_replan</name></member>
       <member refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>cbk_update_goal</name></member>

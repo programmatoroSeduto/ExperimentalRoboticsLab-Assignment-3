@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node bug_m &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE bug_m &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – node go_to_point_service_m" href="go_to_point.html" />
+    <link rel="next" title="NODE go_to_point_service_m" href="go_to_point.html" />
     <link rel="prev" title="UML – move_base_nav" href="../_uml/move-base-nav.html" /> 
 </head>
 
@@ -67,15 +67,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">NODE navigation_manager</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
@@ -120,7 +122,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
-      <li>CODE REFERENCE – node bug_m</li>
+      <li>NODE bug_m</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_movement_controller/_code_reference/bug_m.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -130,12 +132,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-bug-m">
-<h1>CODE REFERENCE – node bug_m<a class="headerlink" href="#code-reference-node-bug-m" title="Permalink to this heading"></a></h1>
-<p>follow the walls using wall follow
-when near enough to the point to reach, go to point
-and that’s all!</p>
-<p>the node uses other nodes exploiting the laser sensors</p>
+  <div class="section" id="node-bug-m">
+<span id="id1"></span><h1>NODE bug_m<a class="headerlink" href="#node-bug-m" title="Permalink to this heading"></a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>the ROS <a class="reference internal" href="navigation_manager.html#node-navigation-manager"><span class="std std-ref">NODE navigation_manager</span></a> implements a handly abstraction
+of the node, making use of the concept of the <em>controllers</em>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>another interesting behaviour, with a idetical function to bug_m,
+is the ROS <a class="reference internal" href="move-base-nav.html#node-move-base-nav"><span class="std std-ref">NODE move_base_nav.py</span></a> which exploits move_base and
+the <a class="reference internal" href="head_orientation.html#node-head-orientation"><span class="std std-ref">NODE head_orientation</span></a> to reach a point.</p>
+</div>
+<p>This node orchestrates the combination of two different behaviours of the
+robot: go_to_point (a behaviour used for driving the robot straight to a
+particular target point) and head_orientation (the robot turns about itself
+in order to reach a certain orientation with respect to the world frame).</p>
+<p>It is a switchable component: it can be turned on and off depending
+on the situation.</p>
+<p>This version of the node also has a new state which can make the robot
+go back before start turning. The motion generally proceeds in this way:
+go back until there’s space enough for making manouver, turn towards
+the target, move straight towards the target, then rotate again for reaching
+the final yaw, and finally stop the robot.</p>
+<dl class="simple">
+<dt>Authors</dt><dd><p>prof. Carmine Recchiuto (UniGe), Francesco Ganci (S4143910)</p>
+</dd>
+<dt>Version:</dt><dd><p>v2.0.0</p>
+</dd>
+</dl>
 </div>
 
 
@@ -143,7 +169,7 @@ and that’s all!</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../_uml/move-base-nav.html" class="btn btn-neutral float-left" title="UML – move_base_nav" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="go_to_point.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node go_to_point_service_m" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="go_to_point.html" class="btn btn-neutral float-right" title="NODE go_to_point_service_m" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

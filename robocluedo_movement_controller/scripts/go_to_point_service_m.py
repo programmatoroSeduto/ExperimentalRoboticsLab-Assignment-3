@@ -1,11 +1,23 @@
 
 
 ''' 
-turn towards the point
-go straight
-and that's all!
+This simple behaviour is employed as basis of more complex behaviours. 
+In particular, this orients the robot towards the target, and then moves
+it in that direction until the distance is below a threshold, meaning
+that the robot has achieved the final position.
 
-(modify to reach a given final head orientation?)
+The node is switchable: it can be turned on and off depending on the
+situation, by a controller node.
+
+Compared to the original version, the robot has been modified a litte. 
+One of the updates concern the fact that the node starts in a 
+"disabled" state. 
+
+Authors
+	prof. Carmine Recchiuto (UniGe), Francesco Ganci (S4143910)
+
+Version:
+	v1.5.0
 '''
 
 # import ros stuff

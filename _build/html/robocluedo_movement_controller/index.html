@@ -66,16 +66,19 @@
 <li class="toctree-l2"><a class="reference internal" href="_docs/mapping.html">HOW TO perform localization with AMCL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/run-the-package.html">HOW TO run the package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/head-orient.html">UML – head orientation PY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/move-base-nav.html">UML – move_base_nav</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_code_reference/bug_m.html">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_code_reference/go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_code_reference/head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_code_reference/manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_code_reference/navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/navigation_manager.html">NODE navigation_manager</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
@@ -132,91 +135,32 @@
   <div class="section" id="pkg-docs-robocluedo-movement-controller">
 <span id="pkg-robocluedo-movement-controller"></span><h1>PKG DOCS – robocluedo_movement_controller<a class="headerlink" href="#pkg-docs-robocluedo-movement-controller" title="Permalink to this heading"></a></h1>
 <p>this package enables the robot to move the manipulator and to navigate into the environment, usign different methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this version of the movement controller has a lot of differences with the previous version:</p>
+<ul class="simple">
+<li><p>integration with MoveBase and the navigation stack</p></li>
+<li><p>improved launch files for running the project</p></li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#install-the-navigation-stack">install the Navigation Stack</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#slam-gmapping">Slam - GMapping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#movebase">MoveBase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#a-quick-example-with-gazebo-and-rviz">A quick example with Gazebo and RViz</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#names-and-types-of-the-interfaces-of-movebase">Names and Types of the Interfaces of MoveBase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#the-action-movebase">the action movebase</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#a-note-about-the-action-names">A note about the action names</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#move-base-msgs-movebasegoal">move_base_msgs/MoveBaseGoal</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#move-base-msgs-movebasefeedback">move_base_msgs/MoveBaseFeedback</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#move-base-msgs-movebaseresult">move_base_msgs/MoveBaseResult</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/mapping.html">HOW TO perform localization with AMCL</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#other-interfaces">other interfaces</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-posestamped">geometry_msgs/PoseStamped</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-pose">geometry_msgs/Pose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-quaternion">geometry_msgs/Quaternion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#geometry-msgs-point">geometry_msgs/Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/moveit-snippets.html">HOW TO – moveit snippets</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#movebase-action-calls-in-c">MoveBase action calls in C++</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-headers">C++ – headers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-main-with-async-spinner">C++ – main with async spinner</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-open-the-action-client">C++ – open the action client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#c-use-the-client-callback-based-approach">C++ – use the client – callback based approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#slam-and-gmapping-navigation-stack-structure">SLAM and GMapping – navigation stack structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#hokuyo-laser-range-finder">Hokuyo laser range finder</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html#usare-movebase-senza-ricorrere-alla-actionlib">Usare MoveBase senza ricorrere alla actionlib</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#richiesta-di-cancellazione">richiesta di cancellazione</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/how-to-nav-stack.html#richiesta-di-movimento-verso-un-target">richiesta di movimento verso un target</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="_docs/mapping.html">HOW TO perform localization with AMCL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_docs/mapping.html#save-the-map">Save the map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/mapping.html#load-the-map-with-amcl">Load the map with AMCL</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="_docs/moveit-snippets.html">HOW TO – moveit snippets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_docs/moveit-snippets.html#headers-and-setup">headers and Setup</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#basic">Basic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#compile-with-catkin">compile with catkin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#init-the-node-with-asyncspin">Init the node with AsyncSpin</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/moveit-snippets.html#a-moveit-oop-pattern-for-ros1">A MoveIt OOP pattern for ROS1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/moveit-snippets.html#moveit-ros1-c-snippets">MoveIt – ROS1 C++ snippets</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#move-group-interface-settings">Move Group Interface Settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#just-move-that">Just move that!</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#move-to-a-preset-pose">Move to a preset pose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#single-waypoint-path-moveit-with-explicit-planning">Single Waypoint Path – MoveIt with explicit planning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#single-waypoint-path-planning-in-the-joint-space-first-way">Single Waypoint Path – Planning in the Joint Space (first way)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#planning-in-the-joint-space-second-method">planning in the joint space (second method)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#multiple-waypoints-path-motion-using-cartesian-paths">Multiple Waypoints Path – Motion using Cartesian Paths</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#movement-constraints">Movement Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/moveit-snippets.html#easy-queries">Easy queries</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/moveit-snippets.html#useful-links">Useful Links</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html#odometry-message">Odometry message</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html#twistwithcovariance-message">TwistWithCovariance message</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="_docs/odometry-and-navigation.html#twist-message">Twist message</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_docs/odometry-and-navigation.html#vector3-message">Vector3 message</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html#posewithcovariance">PoseWithCovariance</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_docs/twist-keyboard.html#install">install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/twist-keyboard.html#run">run</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_docs/twist-keyboard.html#instructions">instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/update-navigation-manager.html">HOW TO update the navigation manager</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -250,11 +194,12 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">code reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_code_reference/bug_m.html">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_code_reference/go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_code_reference/head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_code_reference/manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_code_reference/navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/navigation_manager.html">NODE navigation_manager</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">

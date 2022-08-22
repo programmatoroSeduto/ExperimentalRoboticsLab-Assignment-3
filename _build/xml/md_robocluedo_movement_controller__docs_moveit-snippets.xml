@@ -250,7 +250,7 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>default<sp/>is<sp/>5</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.setPlanningTime(10.0);</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>plan</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success<sp/>=<sp/>(</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>=<sp/>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>move_group_interface.plan(my_plan)<sp/>==<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>AND<sp/>FINALLY<sp/>MOVE<sp/>THAT!</highlight><highlight class="normal"></highlight></codeline>
@@ -275,7 +275,7 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>AND<sp/>FINALLY<sp/>MOVE<sp/>THAT!</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(here<sp/>you<sp/>can<sp/>use<sp/>move()<sp/>as<sp/>well)</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">moveit::planning_interface::MoveGroupInterface::Plan<sp/>my_plan;</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success<sp/>=<sp/>(</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>=<sp/>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/>move_group_interface.plan(my_plan)<sp/>==<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS);</highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.execute(my_plan);<sp/></highlight><highlight class="comment">//<sp/>blocking</highlight></codeline>
 </programlisting></para>
@@ -296,7 +296,7 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>STEP<sp/>3a<sp/>--<sp/>setup<sp/>the<sp/>IK</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>moveit::core::JointModelGroup*<sp/>joint_model_group<sp/>=</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move_group_interface.getCurrentState()-&gt;getJointModelGroup(PLANNING_GROUP);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move_group_interface.getCurrentState()-&gt;getJointModelGroup(<ref refid="moveit-snippets_8md_8txt_1aa81aee9fb053c8a50c42f6846805aa2d" kindref="member">PLANNING_GROUP</ref>);</highlight></codeline>
 <codeline><highlight class="normal">moveit::core::RobotStatePtr<sp/>current_joint_state<sp/>=<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*move_group_interface.getCurrentState();</highlight></codeline>
 <codeline><highlight class="normal">moveit::core::RobotState<sp/>start_state(<sp/>current_joint_state<sp/>);</highlight></codeline>
@@ -310,9 +310,9 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(but<sp/>I<sp/>think<sp/>that<sp/>even<sp/>the<sp/>implicit<sp/>planning<sp/>+<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>should<sp/>work<sp/>well<sp/>here)</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.setPlanningTime(10.0);<sp/></highlight><highlight class="comment">//<sp/>suggested,<sp/>not<sp/>mandatory</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">success<sp/>=<sp/></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>=<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(move_group_interface.plan(my_plan)<sp/>==<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS);</highlight></codeline>
-<codeline><highlight class="normal">ROS_INFO(</highlight><highlight class="stringliteral">&quot;plan<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>success<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;FAILED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">ROS_INFO(</highlight><highlight class="stringliteral">&quot;plan<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;FAILED&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>AND<sp/>FINALLY<sp/>MOVE<sp/>THAT!</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.execute(my_plan);</highlight></codeline>
@@ -320,7 +320,7 @@
 </sect2>
 <sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md345">
 <title>Multiple Waypoints Path – Motion using Cartesian Paths</title>
-<para>The cartesian path allows to move the robot across many waypoints. Each waypoint is a <emphasis>pose</emphasis> message; to express a path, build a <computeroutput>std::vector&lt;geometry_msgs::Pose&gt;</computeroutput> and <computeroutput>.push_back()</computeroutput> each intermediate waypoint.</para>
+<para>The cartesian path allows to move the robot across many waypoints. Each waypoint is a <emphasis>pose</emphasis> message; to express a path, build a <computeroutput>std::vector&lt;geometry_msgs::Pose&gt;</computeroutput> and <computeroutput>.<ref refid="rosplan-kb_8md_8txt_1a122f6721bedfd0d97dfb71be8cee291e" kindref="member">push_back()</ref></computeroutput> each intermediate waypoint.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>STEP<sp/>1<sp/>--<sp/>waypoints</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">std::vector&lt;geometry_msgs::Pose&gt;<sp/>waypoints;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>

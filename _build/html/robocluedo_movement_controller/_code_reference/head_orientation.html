@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node head_orientation &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE head_orientation &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – node manipulation controller" href="manipulation_controller.html" />
-    <link rel="prev" title="CODE REFERENCE – node go_to_point_service_m" href="go_to_point.html" /> 
+    <link rel="next" title="NODE manipulation controller" href="manipulation_controller.html" />
+    <link rel="prev" title="NODE go_to_point_service_m" href="go_to_point.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,15 +67,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bug_m.html">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">NODE navigation_manager</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
@@ -120,7 +122,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
-      <li>CODE REFERENCE – node head_orientation</li>
+      <li>NODE head_orientation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_movement_controller/_code_reference/head_orientation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -130,8 +132,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-head-orientation">
-<h1>CODE REFERENCE – node head_orientation<a class="headerlink" href="#code-reference-node-head-orientation" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-head-orientation">
+<span id="id1"></span><h1>NODE head_orientation<a class="headerlink" href="#node-head-orientation" title="Permalink to this heading"></a></h1>
+<p>This straightforward behaviour simply turns the robot in a target direction.
+As the other “behavioural” nodes, this continuously read the target from the
+parameter server and sends to the /cmd_vel topic a angular velocity until
+the target pose hasn’t been achieved. Nothing more.</p>
+<p>This is meant to be used in composite behaviours to implement something
+more advanced.</p>
+<dl class="simple">
+<dt>Authors</dt><dd><p>Francesco Ganci (S4143910)</p>
+</dd>
+<dt>Version:</dt><dd><p>v1.0.0</p>
+</dd>
+</dl>
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">head_orientation.</span></span><span class="sig-name descname"><span class="pre">active_</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em></dt>
@@ -216,8 +230,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="go_to_point.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node go_to_point_service_m" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="manipulation_controller.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node manipulation controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="go_to_point.html" class="btn btn-neutral float-left" title="NODE go_to_point_service_m" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="manipulation_controller.html" class="btn btn-neutral float-right" title="NODE manipulation controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

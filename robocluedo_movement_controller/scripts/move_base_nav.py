@@ -2,9 +2,16 @@
 
 '''navigation using MoveBase and the navigation stack
 
-@file move_base_nav.py
-@author Francesco Ganci
+In a way very similar to how the :any:`node-bug-m` acts, this node
+implements a composite behaviour which drives the robot towards a target
+plus a final orientation. But in this case, the node uses MoveBase uses
+the navigation stack to reach the final position. 
 
+Authors
+	prof. Carmine Recchiuto (UniGe), Francesco Ganci (S4143910)
+
+Version:
+	v1.5.0
 '''
 
 import rospy
@@ -37,6 +44,9 @@ srv_move_base_switch = None
 def move_base_switch( data ):
 	''' used for switching the activity status of the node. 
 	
+	The node also updates the target, reading the new one from the parameters
+	server. 
+	
 	Arguments:
 		data (SetBool) :
 			the boolean SetBool.data inside the message is the new activity status
@@ -44,6 +54,12 @@ def move_base_switch( data ):
 	Note:
 		before calling the service, make sure the three ros parameters
 		'des_pos_x' , 'des_pos_y' and 'des_yaw' have been set.
+	
+	Todo:
+		differently from the other behavioural nodes, this node requires
+		to be retriggered using this service each time the objective changes. 
+		this could be a desin issue. The node should update automatically
+		the objective when it changes. 
 	'''
 	
 	global active_

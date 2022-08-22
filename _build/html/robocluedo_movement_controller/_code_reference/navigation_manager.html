@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node navigation_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE navigation_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="PKG DOCS – robocluedo_movement_msgs" href="../../robocluedo_movement_controller_msgs/index.html" />
-    <link rel="prev" title="CODE REFERENCE – node manipulation controller" href="manipulation_controller.html" /> 
+    <link rel="prev" title="NODE move_base_nav.py" href="move-base-nav.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,16 +66,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/mapping.html">HOW TO perform localization with AMCL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/run-the-package.html">HOW TO run the package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bug_m.html">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE navigation_manager</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
@@ -120,7 +123,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
-      <li>CODE REFERENCE – node navigation_manager</li>
+      <li>NODE navigation_manager</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_movement_controller/_code_reference/navigation_manager.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -130,17 +133,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-navigation-manager">
-<h1>CODE REFERENCE – node navigation_manager<a class="headerlink" href="#code-reference-node-navigation-manager" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-navigation-manager">
+<span id="id1"></span><h1>NODE navigation_manager<a class="headerlink" href="#node-navigation-manager" title="Permalink to this heading"></a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>see also the user documentation concerning the navigation manager node. In particular, check HOW TO update the navigation manager node.</p>
+</div>
 <p>interface with the navigation system. </p>
 <p>the project could have may navigation algorihms implemented, in order to make the robot behaviour more adaptable to the current situation. hence, the task of the navigation mannager is to provide an abstraction, hiding the detals of many algorithms and allowing the program to choose one of the algorithms at runtine.</p>
 <p><dl class="simple">
 <dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
 </dd>
-<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+<dt><strong>Version</strong></dt><dd><p>v2.0</p>
 </dd>
 </dl>
 </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this implementation supports the developer mode: waitkey, print develop. </p>
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -260,7 +271,8 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv44mainiA_Pc">
 <span id="_CPPv34mainiA_Pc"></span><span id="_CPPv24mainiA_Pc"></span><span id="main__i.cPA"></span><span class="target" id="navigation__manager_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><br /></dt>
-<dd><p>ROS Main </p>
+<dd><p>ROS node main - Navigation Manager. </p>
+<p>Here are instanciated and registered the controllers used for the navigation. </p>
 </dd></dl>
 
 </div>
@@ -347,7 +359,14 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv49nav_bug_m">
 <span id="_CPPv39nav_bug_m"></span><span id="_CPPv29nav_bug_m"></span><span id="nav_bug_m"></span><span class="target" id="classnav__bug__m"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_bug_m</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><a class="headerlink" href="#_CPPv49nav_bug_m" title="Permalink to this definition"></a><br /></dt>
-<dd><p>nav service for the bug_m algorithm </p>
+<dd><p>nav service for the low level bug_m algorithm </p>
+<p>This controller uses the bug_m implementation to navigate to the target and achieve whatever final orientation pose.</p>
+<p>This low level is a bit limited in many aspects:<ul class="simple">
+<li><p>it cannot check if the target is reachable</p></li>
+<li><p>the algorithm doesn’t work in complex environments with obstacles</p></li>
+</ul>
+</p>
+<p>The implementation turns on the channels at the first enable call, and leaves them active for the entire lifecycle of the navigation manager. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -372,6 +391,23 @@
 <dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
 <span id="_CPPv3N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="nav_bug_m::perform_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classnav__bug__m_1a9d40a065e7d0271add1afa94fee6fade"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perform_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>use the algorithm for the 2D navigation </p>
+<p>The controller first sends the target to the low level using the parameter server as required by bug_m; then , it waits for the ending signal from the low level.</p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>The waiting is endless if a way to reach the final target doesn’t exist. There’s not a timeout. </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the objective </p></li>
+<li><p><strong>response</strong> – the result of the navigation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>false if the navigation fails or the node is not enabled</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
@@ -436,6 +472,7 @@
 <span id="_CPPv313nav_move_base"></span><span id="_CPPv213nav_move_base"></span><span id="nav_move_base"></span><span class="target" id="classnav__move__base"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_move_base</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><a class="headerlink" href="#_CPPv413nav_move_base" title="Permalink to this definition"></a><br /></dt>
 <dd><p>move_base navigation </p>
 <p>this class implements the workflow with the navigation algorithm implemented in the node ‘move_base_nav.py’. The way it works is quite similar to the one of ‘bug_m’ except for the different navigation system.</p>
+<p>The implementation turns on the channels at the first enable call, and leaves them active for the entire lifecycle of the navigation manager.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this kind of navigation is particularly indicated for indoor environments. </p>
@@ -464,6 +501,18 @@
 <dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
 <span id="_CPPv3N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="nav_move_base::perform_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classnav__move__base_1af6a2463054b7b7452e4eb95c4a211c46"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perform_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>use the algorithm for the 2D navigation </p>
+<p>The controller first sends the target to the low level using the parameter server as required by move_base_nav; then , it waits for the ending signal from the low level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the objective </p></li>
+<li><p><strong>response</strong> – the result of the navigation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>false if the navigation fails or the node is not enabled </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
@@ -527,12 +576,22 @@
 <dt class="sig sig-object cpp" id="_CPPv424class_navigation_manager">
 <span id="_CPPv324class_navigation_manager"></span><span id="_CPPv224class_navigation_manager"></span><span id="class_navigation_manager"></span><span class="target" id="classclass__navigation__manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">class_navigation_manager</span></span></span><a class="headerlink" href="#_CPPv424class_navigation_manager" title="Permalink to this definition"></a><br /></dt>
 <dd><p>implementation of the node as class </p>
+<p>The navigation manager uses the <em>controllers</em>, i.e. modules (objects) using the low-level implementation of the navigation in order to reach the objective provided. In particular, here are some characteristics of this particular system:</p>
+<p><ul class="simple">
+<li><p>the navigation manager is a <em>list of controllers</em> with one controller active set apart from the array</p></li>
+<li><p>each controller can be enabled or disabled</p></li>
+<li><p>all the services and topics needed to make the low level work are hidden in the controller, whereas the navigation manager sees alway the same interface</p></li>
+<li><p>a controller can be replaced <em>at runtime</em> depending on the situation, if needed, which means that the robot can use many combinations of the low level behaviours in order to carry out the objective</p></li>
+</ul>
+</p>
+<p>see the documentationof the package for further informations. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager24class_navigation_managerEv">
 <span id="_CPPv3N24class_navigation_manager24class_navigation_managerEv"></span><span id="_CPPv2N24class_navigation_manager24class_navigation_managerEv"></span><span id="class_navigation_manager::class_navigation_manager"></span><span class="target" id="classclass__navigation__manager_1ae271731df0d61f4553a403b62567e7a6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">class_navigation_manager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager24class_navigation_managerEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>class constructor </p>
+<p>The cnode class constructor opens only two services: the first one used for selecting the algorithm among the ones registered; and the second one, for performing the navigation in a synchronous way. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -545,9 +604,17 @@
 <dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager18register_algorithmEP21navigation_controller">
 <span id="_CPPv3N24class_navigation_manager18register_algorithmEP21navigation_controller"></span><span id="_CPPv2N24class_navigation_manager18register_algorithmEP21navigation_controller"></span><span id="class_navigation_manager::register_algorithm__navigation_controllerP"></span><span class="target" id="classclass__navigation__manager_1a8908d9ea148da8215a0cdc189f2546e9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">register_algorithm</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">algo</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager18register_algorithmEP21navigation_controller" title="Permalink to this definition"></a><br /></dt>
 <dd><p>register one navigation algorithm</p>
+<p>The function first of all disables the algorithm provided, then it allocates its address inside an array of controllers.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>check for the null value as argument! Otherwise the function will try to call disable() on a null, causing a segmentation fault error. </p>
+</dd></dl>
+
+</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>the function will disable the algorithm before registering it </p>
+<p>the function will disable the algorithm before registering it</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -563,6 +630,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager17switch_controllerEi">
 <span id="_CPPv3N24class_navigation_manager17switch_controllerEi"></span><span id="_CPPv2N24class_navigation_manager17switch_controllerEi"></span><span id="class_navigation_manager::switch_controller__i"></span><span class="target" id="classclass__navigation__manager_1a0e3da10f29486044c2c9e723d1784a69"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">switch_controller</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">controller_code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager17switch_controllerEi" title="Permalink to this definition"></a><br /></dt>
 <dd><p>activate one controller</p>
+<p>the function disables the currently enabled controller, and replaces that with the selected one, only if feasible.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>controller_code</strong> – the index of the controller</p>
@@ -576,7 +644,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager10set_statusEb">
 <span id="_CPPv3N24class_navigation_manager10set_statusEb"></span><span id="_CPPv2N24class_navigation_manager10set_statusEb"></span><span id="class_navigation_manager::set_status__b"></span><span class="target" id="classclass__navigation__manager_1ac0a8dd3af206c82fa5fcd45bec8b84b4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_status</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">new_status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager10set_statusEb" title="Permalink to this definition"></a><br /></dt>
-<dd><p>switch the status of the currentcontroller </p>
+<dd><p>switch the status of the current controller </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -589,12 +657,39 @@
 <dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE">
 <span id="_CPPv3N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE"></span><span id="_CPPv2N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE"></span><span id="class_navigation_manager::cbk_set_algorithm__robocluedo_movement_controller_msgs::Algorithm::RequestR.robocluedo_movement_controller_msgs::Algorithm::ResponseR"></span><span class="target" id="classclass__navigation__manager_1a67db56090eef62327094b8e8e04cd987"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_set_algorithm</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Algorithm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Algorithm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>set one algorithm among the available ones and activate it </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>you cannot call the navigation until you haven’t selected an algorithm with this service! </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the algorithm to activate (see the details of the message) </p></li>
+<li><p><strong>response</strong> – the result of the operation</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
 <span id="_CPPv3N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="class_navigation_manager::cbk_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classclass__navigation__manager_1a257df23d80f741f8681bc27cfb63b523"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>use the currently running algorithm for the 2D navigation (blocking) </p>
+<p>the method just tries to pass the calling to the currently active controller, if any.</p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>there must be a controller selected before calling this function! See the algorithm selection service. </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the navigation objective </p></li>
+<li><p><strong>response</strong> – the result of the operation</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -645,7 +740,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="manipulation_controller.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node manipulation controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="move-base-nav.html" class="btn btn-neutral float-left" title="NODE move_base_nav.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../../robocluedo_movement_controller_msgs/index.html" class="btn btn-neutral float-right" title="PKG DOCS – robocluedo_movement_msgs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

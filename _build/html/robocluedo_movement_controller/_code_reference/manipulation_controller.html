@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node manipulation controller &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE manipulation controller &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – node navigation_manager" href="navigation_manager.html" />
-    <link rel="prev" title="CODE REFERENCE – node head_orientation" href="head_orientation.html" /> 
+    <link rel="next" title="NODE move_base_nav.py" href="move-base-nav.html" />
+    <link rel="prev" title="NODE head_orientation" href="head_orientation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,16 +66,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/mapping.html">HOW TO perform localization with AMCL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/run-the-package.html">HOW TO run the package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bug_m.html">CODE REFERENCE – node bug_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">CODE REFERENCE – node go_to_point_service_m</a></li>
-<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">CODE REFERENCE – node head_orientation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node manipulation controller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">CODE REFERENCE – node navigation_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation_manager.html">NODE navigation_manager</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
@@ -120,7 +123,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
-      <li>CODE REFERENCE – node manipulation controller</li>
+      <li>NODE manipulation controller</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_movement_controller/_code_reference/manipulation_controller.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -130,8 +133,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-manipulation-controller">
-<h1>CODE REFERENCE – node manipulation controller<a class="headerlink" href="#code-reference-node-manipulation-controller" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-manipulation-controller">
+<h1>NODE manipulation controller<a class="headerlink" href="#node-manipulation-controller" title="Permalink to this heading"></a></h1>
+<p>controller for performig the manipulation </p>
+<p>In a nutshell, this node implements a very simple service able to communicate with moveit in order to perform a manipulation with the RoboCLuedo hunter manipulator. The robot comes with a set of predefined poses, that the controller can call under request.</p>
+<p>This version of the node, except for containing new poses referred to the new model of robot, introduces a very raw implementation of a asynchronous movement, performed using a simple topic.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>implement the asynchronous movement using a ROS action instead. Or, at least, introduce a signal. </p>
+</dd></dl>
+
+<dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.2</p>
+</dd>
+</dl>
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>introduce cartesian planning and a clear end effector</p>
+</dd></dl>
+
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>the way the node uses moveit is a bit raw … it would deserve a review. </p>
+</dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this implementation supports the developer mode: waitkey, print develop.</p>
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -344,8 +381,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="head_orientation.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node head_orientation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="navigation_manager.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node navigation_manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="head_orientation.html" class="btn btn-neutral float-left" title="NODE head_orientation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="move-base-nav.html" class="btn btn-neutral float-right" title="NODE move_base_nav.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

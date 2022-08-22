@@ -4,7 +4,8 @@
 PKG DOCS -- robocluedo_vision
 ==========================================
 
-This package is needed in order to read the ArUco markers across the environment. 
+This package is needed in order to read the ArUco markers across the 
+evironment. The detection has been designed to be as much quick as possible. 
 
 
 .. toctree::

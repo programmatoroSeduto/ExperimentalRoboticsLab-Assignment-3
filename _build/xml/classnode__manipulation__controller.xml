@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="254" column="21" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="254" bodyend="-1"/>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="315" column="21" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="315" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classnode__manipulation__controller_1a0afedf7078d4427414b71e9a7cf7e434" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="257" column="10" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="257" bodyend="-1"/>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="318" column="10" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="318" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classnode__manipulation__controller_1afdcc27acbe1c9911436184428da1b685" prot="private" static="no" mutable="no">
         <type>std::mutex</type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="260" column="16" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="260" bodyend="-1"/>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="321" column="16" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="321" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -170,6 +170,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_movement_controller/manipulation_controller_backup.cpp" line="79" column="6" bodyfile="robocluedo_movement_controller/manipulation_controller_backup.cpp" bodystart="79" bodyend="161"/>
+        <references refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" compoundref="examples__tools_8md_8txt" startline="116">req</references>
         <references refid="manipulation__controller__backup_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" compoundref="manipulation__controller__backup_8cpp" startline="30">POSE_HOME</references>
         <references refid="manipulation__controller__backup_8cpp_1a1b83047d26830308bd9184c03567d5c2" compoundref="manipulation__controller__backup_8cpp" startline="40">POSE_NAME_HOME</references>
         <references refid="manipulation__controller__backup_8cpp_1a06030c0476b31d6c53a3496ca5608802" compoundref="manipulation__controller__backup_8cpp" startline="31">POSE_CAM_LEFT</references>
@@ -188,11 +189,12 @@
         <references refid="manipulation__controller__backup_8cpp_1a3f47a7dee3f8800d1baef505a13b4085" compoundref="manipulation__controller__backup_8cpp" startline="47">POSE_NAME_CAM_LOW_RIGHT</references>
         <references refid="manipulation__controller__backup_8cpp_1a3b3f77ba6a26d6d6e9c9fbbe8e22778d" compoundref="manipulation__controller__backup_8cpp" startline="38">POSE_HOME_LOW</references>
         <references refid="manipulation__controller__backup_8cpp_1aec7c0fb8b255afb96aa6e9811b3b00c5" compoundref="manipulation__controller__backup_8cpp" startline="48">POSE_NAME_HOME_LOW</references>
+        <references refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" compoundref="examples__tools_8md_8txt" startline="117">res</references>
         <references refid="manipulation__controller__backup_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" compoundref="manipulation__controller__backup_8cpp" startline="23">SS</references>
         <references refid="manipulation__controller__backup_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" compoundref="manipulation__controller__backup_8cpp" startline="24">SSS</references>
         <references refid="manipulation__controller__backup_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" compoundref="manipulation__controller__backup_8cpp" startline="6">TLOG</references>
         <referencedby refid="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39" compoundref="manipulation__controller__backup_8cpp" startline="55" endline="72">node_manipulation_controller</referencedby>
-        <referencedby refid="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2" compoundref="manipulation__controller_8cpp" startline="223" endline="234">cbk_manip_async</referencedby>
+        <referencedby refid="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2" compoundref="manipulation__controller_8cpp" startline="284" endline="295">cbk_manip_async</referencedby>
       </memberdef>
       <memberdef kind="function" id="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -200,19 +202,22 @@
         <argsstring>()</argsstring>
         <name>node_manipulation_controller</name>
         <briefdescription>
+<para>class constructor </para>
         </briefdescription>
         <detaileddescription>
+<para>the class constructor performs the initialisation of the move group interface, then sets up some parameters, and finally mves the arm in the home position.</para>
+<para>When launched, the node first of all puts the robotic manipulator in a known state, which is the home position. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="71" column="1" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="71" bodyend="105"/>
-        <references refid="manipulation__controller_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" compoundref="manipulation__controller_8cpp" startline="13">WTLOG</references>
-        <references refid="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" compoundref="manipulation__controller_8cpp" startline="4">LOGSQUARE</references>
-        <references refid="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" compoundref="manipulation__controller_8cpp" startline="41">SERVICE_MANIP</references>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="112" column="1" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="112" bodyend="146"/>
+        <references refid="manipulation__controller_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" compoundref="manipulation__controller_8cpp" startline="42">WTLOG</references>
+        <references refid="manipulation__controller_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" compoundref="manipulation__controller_8cpp" startline="33">LOGSQUARE</references>
+        <references refid="manipulation__controller_8cpp_1ad4c51c23cd787eed92cb27695d54fa3b" compoundref="manipulation__controller_8cpp" startline="70">SERVICE_MANIP</references>
         <references refid="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b" compoundref="manipulation__controller__backup_8cpp" startline="79" endline="161">cbk_manip</references>
-        <references refid="manipulation__controller_8cpp_1a5c3edaaad237014d12f44d7355479159" compoundref="manipulation__controller_8cpp" startline="42">TOPIC_MANIP_ASYNC</references>
-        <references refid="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2" compoundref="manipulation__controller_8cpp" startline="223" endline="234">cbk_manip_async</references>
-        <references refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" compoundref="manipulation__controller_8cpp" startline="56">POSE_NAME_HOME</references>
+        <references refid="manipulation__controller_8cpp_1a5c3edaaad237014d12f44d7355479159" compoundref="manipulation__controller_8cpp" startline="71">TOPIC_MANIP_ASYNC</references>
+        <references refid="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2" compoundref="manipulation__controller_8cpp" startline="284" endline="295">cbk_manip_async</references>
+        <references refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" compoundref="manipulation__controller_8cpp" startline="85">POSE_NAME_HOME</references>
       </memberdef>
       <memberdef kind="function" id="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -220,12 +225,13 @@
         <argsstring>()</argsstring>
         <name>spin</name>
         <briefdescription>
+<para>simple spin (wait for shutdown) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="107" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="107" bodyend="110"/>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="149" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="149" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -241,33 +247,55 @@
           <declname>res</declname>
         </param>
         <briefdescription>
+<para>sybchronous manipulation </para>
         </briefdescription>
         <detaileddescription>
+<para>given a poture, the service sets it and moves the robotic manipulator until it hasn&apos;t achieved that.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the posture to be set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>res</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the motion planning succeeded or not </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="112" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="112" bodyend="220"/>
-        <references refid="manipulation__controller_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" compoundref="manipulation__controller_8cpp" startline="46">POSE_HOME</references>
-        <references refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" compoundref="manipulation__controller_8cpp" startline="56">POSE_NAME_HOME</references>
-        <references refid="manipulation__controller_8cpp_1a06030c0476b31d6c53a3496ca5608802" compoundref="manipulation__controller_8cpp" startline="47">POSE_CAM_LEFT</references>
-        <references refid="manipulation__controller_8cpp_1a334bc578d0bb6abbdf7cae18b04368f7" compoundref="manipulation__controller_8cpp" startline="57">POSE_NAME_CAM_LEFT</references>
-        <references refid="manipulation__controller_8cpp_1a5a66ff8555e20f2484a2a83532528267" compoundref="manipulation__controller_8cpp" startline="48">POSE_CAM_RIGHT</references>
-        <references refid="manipulation__controller_8cpp_1a758d165837e70bcb67aa9f9d055441fc" compoundref="manipulation__controller_8cpp" startline="58">POSE_NAME_CAM_RIGHT</references>
-        <references refid="manipulation__controller_8cpp_1a2bc13395c8284555d9b193ca4374ba8c" compoundref="manipulation__controller_8cpp" startline="49">POSE_CAM_BACK</references>
-        <references refid="manipulation__controller_8cpp_1aa9848350ec3b30235b5df6b8889bd69f" compoundref="manipulation__controller_8cpp" startline="59">POSE_NAME_CAM_BACK</references>
-        <references refid="manipulation__controller_8cpp_1aed3716646a8175c63e37310e54bfa9a8" compoundref="manipulation__controller_8cpp" startline="50">POSE_CAM_LOW</references>
-        <references refid="manipulation__controller_8cpp_1a44ad01120a43d691525cf871f94a1d80" compoundref="manipulation__controller_8cpp" startline="60">POSE_NAME_CAM_LOW</references>
-        <references refid="manipulation__controller_8cpp_1a2e21a4fa5f2ccc9418ff883df052caa4" compoundref="manipulation__controller_8cpp" startline="51">POSE_CAM_LOW_LEFT</references>
-        <references refid="manipulation__controller_8cpp_1af355f6e4e47279ca4125aa29ace9d3d5" compoundref="manipulation__controller_8cpp" startline="61">POSE_NAME_CAM_LOW_LEFT</references>
-        <references refid="manipulation__controller_8cpp_1a84440ee207e077c6c6c1860e4c48b101" compoundref="manipulation__controller_8cpp" startline="52">POSE_CAM_LOW_BACK</references>
-        <references refid="manipulation__controller_8cpp_1a99868655948b70f0fb624be25093a1b6" compoundref="manipulation__controller_8cpp" startline="62">POSE_NAME_CAM_LOW_BACK</references>
-        <references refid="manipulation__controller_8cpp_1a1217e464a63e2d74133b66b8d8efc8e6" compoundref="manipulation__controller_8cpp" startline="53">POSE_CAM_LOW_RIGHT</references>
-        <references refid="manipulation__controller_8cpp_1a3f47a7dee3f8800d1baef505a13b4085" compoundref="manipulation__controller_8cpp" startline="63">POSE_NAME_CAM_LOW_RIGHT</references>
-        <references refid="manipulation__controller_8cpp_1a3b3f77ba6a26d6d6e9c9fbbe8e22778d" compoundref="manipulation__controller_8cpp" startline="54">POSE_HOME_LOW</references>
-        <references refid="manipulation__controller_8cpp_1aec7c0fb8b255afb96aa6e9811b3b00c5" compoundref="manipulation__controller_8cpp" startline="64">POSE_NAME_HOME_LOW</references>
-        <references refid="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" compoundref="manipulation__controller_8cpp" startline="34">SS</references>
-        <references refid="manipulation__controller_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" compoundref="manipulation__controller_8cpp" startline="35">SSS</references>
-        <references refid="manipulation__controller_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" compoundref="manipulation__controller_8cpp" startline="13">WTLOG</references>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="165" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="165" bodyend="273"/>
+        <references refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" compoundref="examples__tools_8md_8txt" startline="116">req</references>
+        <references refid="manipulation__controller_8cpp_1a1f285fd20a5c25b9c992b9a6161f75ab" compoundref="manipulation__controller_8cpp" startline="75">POSE_HOME</references>
+        <references refid="manipulation__controller_8cpp_1a1b83047d26830308bd9184c03567d5c2" compoundref="manipulation__controller_8cpp" startline="85">POSE_NAME_HOME</references>
+        <references refid="manipulation__controller_8cpp_1a06030c0476b31d6c53a3496ca5608802" compoundref="manipulation__controller_8cpp" startline="76">POSE_CAM_LEFT</references>
+        <references refid="manipulation__controller_8cpp_1a334bc578d0bb6abbdf7cae18b04368f7" compoundref="manipulation__controller_8cpp" startline="86">POSE_NAME_CAM_LEFT</references>
+        <references refid="manipulation__controller_8cpp_1a5a66ff8555e20f2484a2a83532528267" compoundref="manipulation__controller_8cpp" startline="77">POSE_CAM_RIGHT</references>
+        <references refid="manipulation__controller_8cpp_1a758d165837e70bcb67aa9f9d055441fc" compoundref="manipulation__controller_8cpp" startline="87">POSE_NAME_CAM_RIGHT</references>
+        <references refid="manipulation__controller_8cpp_1a2bc13395c8284555d9b193ca4374ba8c" compoundref="manipulation__controller_8cpp" startline="78">POSE_CAM_BACK</references>
+        <references refid="manipulation__controller_8cpp_1aa9848350ec3b30235b5df6b8889bd69f" compoundref="manipulation__controller_8cpp" startline="88">POSE_NAME_CAM_BACK</references>
+        <references refid="manipulation__controller_8cpp_1aed3716646a8175c63e37310e54bfa9a8" compoundref="manipulation__controller_8cpp" startline="79">POSE_CAM_LOW</references>
+        <references refid="manipulation__controller_8cpp_1a44ad01120a43d691525cf871f94a1d80" compoundref="manipulation__controller_8cpp" startline="89">POSE_NAME_CAM_LOW</references>
+        <references refid="manipulation__controller_8cpp_1a2e21a4fa5f2ccc9418ff883df052caa4" compoundref="manipulation__controller_8cpp" startline="80">POSE_CAM_LOW_LEFT</references>
+        <references refid="manipulation__controller_8cpp_1af355f6e4e47279ca4125aa29ace9d3d5" compoundref="manipulation__controller_8cpp" startline="90">POSE_NAME_CAM_LOW_LEFT</references>
+        <references refid="manipulation__controller_8cpp_1a84440ee207e077c6c6c1860e4c48b101" compoundref="manipulation__controller_8cpp" startline="81">POSE_CAM_LOW_BACK</references>
+        <references refid="manipulation__controller_8cpp_1a99868655948b70f0fb624be25093a1b6" compoundref="manipulation__controller_8cpp" startline="91">POSE_NAME_CAM_LOW_BACK</references>
+        <references refid="manipulation__controller_8cpp_1a1217e464a63e2d74133b66b8d8efc8e6" compoundref="manipulation__controller_8cpp" startline="82">POSE_CAM_LOW_RIGHT</references>
+        <references refid="manipulation__controller_8cpp_1a3f47a7dee3f8800d1baef505a13b4085" compoundref="manipulation__controller_8cpp" startline="92">POSE_NAME_CAM_LOW_RIGHT</references>
+        <references refid="manipulation__controller_8cpp_1a3b3f77ba6a26d6d6e9c9fbbe8e22778d" compoundref="manipulation__controller_8cpp" startline="83">POSE_HOME_LOW</references>
+        <references refid="manipulation__controller_8cpp_1aec7c0fb8b255afb96aa6e9811b3b00c5" compoundref="manipulation__controller_8cpp" startline="93">POSE_NAME_HOME_LOW</references>
+        <references refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" compoundref="examples__tools_8md_8txt" startline="117">res</references>
+        <references refid="manipulation__controller_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" compoundref="manipulation__controller_8cpp" startline="63">SS</references>
+        <references refid="manipulation__controller_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" compoundref="manipulation__controller_8cpp" startline="64">SSS</references>
+        <references refid="manipulation__controller_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" compoundref="manipulation__controller_8cpp" startline="42">WTLOG</references>
       </memberdef>
       <memberdef kind="function" id="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -279,20 +307,26 @@
           <declname>req</declname>
         </param>
         <briefdescription>
+<para>async manpulation command (from topic) </para>
         </briefdescription>
         <detaileddescription>
-<para>asunc manipulation command </para>
+<para><simplesect kind="note"><para>once activated, there&apos;s no way to stop the motion!</para>
+</simplesect>
+<xrefsect id="todo_1_todo000034"><xreftitle>Todo</xreftitle><xrefdescription><para>implement a progress checking</para>
+</xrefdescription></xrefsect></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="223" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="223" bodyend="234"/>
+        <location file="robocluedo_movement_controller/src/manipulation_controller.cpp" line="284" column="6" bodyfile="robocluedo_movement_controller/src/manipulation_controller.cpp" bodystart="284" bodyend="295"/>
+        <references refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" compoundref="examples__tools_8md_8txt" startline="116">req</references>
         <references refid="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b" compoundref="manipulation__controller__backup_8cpp" startline="79" endline="161">cbk_manip</references>
-        <referencedby refid="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39" compoundref="manipulation__controller_8cpp" startline="71" endline="105">node_manipulation_controller</referencedby>
+        <referencedby refid="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39" compoundref="manipulation__controller_8cpp" startline="112" endline="146">node_manipulation_controller</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para>implementation of the node </para>
     </detaileddescription>
     <location file="robocluedo_movement_controller/manipulation_controller_backup.cpp" line="52" column="1" bodyfile="robocluedo_movement_controller/manipulation_controller_backup.cpp" bodystart="51" bodyend="180"/>
     <listofallmembers>

@@ -13,7 +13,9 @@
 * one of the algorithms at runtine. 
 * 
 * @authors Francesco Ganci
-* @version v1.0
+* @version v2.0
+* 
+* @note this implementation supports the developer mode: waitkey, print develop.
 * 
 ***********************************************/
 
@@ -121,7 +123,17 @@ protected:
 
 /********************************************//**
  *  
- * \brief nav service for the bug_m algorithm
+ * \brief nav service for the low level bug_m algorithm
+ * 
+ * This controller uses the bug_m implementation to navigate to the target
+ * and achieve whatever final orientation pose. 
+ * 
+ * This low level is a bit limited in many aspects:
+ * - it cannot check if the target is reachable
+ * - the algorithm doesn't work in complex environments with obstacles
+ * 
+ * The implementation turns on the channels at the first enable call, and
+ * leaves them active for the entire lifecycle of the navigation manager. 
  * 
  ***********************************************/
 class nav_bug_m : public navigation_controller
@@ -175,7 +187,23 @@ public:
 		return true;
 	}
 	
-	/** use the algorithm for the 2D navigation */
+	/********************************************//**
+	 *  
+	 * \brief use the algorithm for the 2D navigation
+	 * 
+	 * The controller first sends the target to the low level using the 
+	 * parameter server as required by bug_m; then , it waits for the 
+	 * ending signal from the low level. 
+	 * 
+	 * @param request the objective
+	 * @param response the result of the navigation
+	 * 
+	 * @returns false if the navigation fails or the node is not enabled
+	 * 
+	 * @attention The waiting is endless if a way to reach the final 
+	 * 	target doesn't exist. There's not a timeout. 
+	 * 
+	 ***********************************************/
 	bool perform_navigation( 
 		robocluedo_movement_controller_msgs::NavigationService::Request& req,
 		robocluedo_movement_controller_msgs::NavigationService::Response& res )
@@ -276,6 +304,9 @@ private:
  * quite similar to the one of 'bug_m' except for the different
  * navigation system. 
  * 
+ * The implementation turns on the channels at the first enable call, and
+ * leaves them active for the entire lifecycle of the navigation manager. 
+ * 
  * \note this kind of navigation is particularly indicated for indoor
  * environments. 
  * 
@@ -331,7 +362,20 @@ public:
 		return true;
 	}
 	
-	/** use the algorithm for the 2D navigation */
+	/********************************************//**
+	 *  
+	 * \brief use the algorithm for the 2D navigation
+	 * 
+	 * The controller first sends the target to the low level using the 
+	 * parameter server as required by move_base_nav; then , it waits for the 
+	 * ending signal from the low level. 
+	 * 
+	 * @param request the objective
+	 * @param response the result of the navigation
+	 * 
+	 * @returns false if the navigation fails or the node is not enabled
+	 * 
+	 ***********************************************/
 	bool perform_navigation( 
 		robocluedo_movement_controller_msgs::NavigationService::Request& req,
 		robocluedo_movement_controller_msgs::NavigationService::Response& res )
@@ -428,12 +472,29 @@ private:
  *  
  * \brief implementation of the node as class
  * 
+ * The navigation manager uses the *controllers*, i.e. modules (objects) using the low-level implementation of the navigation in order to reach the objective provided. In particular, here are some characteristics of this particular system:
+ * 
+ * - the navigation manager is a *list of controllers* with one controller active set apart from the array<br>
+ * - each controller can be enabled or disabled<br>
+ * - all the services and topics needed to make the low level work are hidden in the controller, whereas the navigation manager sees alway the same interface<br>
+ * - a controller can be replaced *at runtime* depending on the situation, if needed, which means that the robot can use many combinations of the low level behaviours in order to carry out the objective<br>
+ * 
+ * see the documentationof the package for further informations. 
+ * 
  ***********************************************/
 class class_navigation_manager
 {
 public:
 	
-	/** class constructor */
+	/********************************************//**
+	 *  
+	 * \brief class constructor
+	 * 
+	 * The cnode class constructor opens only two services: the first one 
+	 * used for selecting the algorithm among the ones registered; and
+	 * the second one, for performing the navigation in a synchronous way. 
+	 * 
+	 ***********************************************/
 	class_navigation_manager( )
 	{
 		// open the service for setting the navigation algorithm to use
@@ -455,11 +516,18 @@ public:
 	
 	/** register one navigation algorithm 
 	 * 
+	 * The function first of all disables the algorithm provided, then
+	 * it allocates its address inside an array of controllers. 
+	 * 
 	 * @param algo (navigation controller &) the implementation of one algorithm
 	 * 
 	 * @returns the index associated with the algorithm
 	 * 
 	 * @note the function will disable the algorithm before registering it
+	 * 
+	 * @todo check for the null value as argument! Otherwise the function 
+	 * 	will try to call disable() on a null, causing a segmentation
+	 * 	fault error. 
 	 * 
 	 * */
 	int register_algorithm( navigation_controller *algo )
@@ -477,6 +545,9 @@ public:
 	}
 	
 	/** activate one controller
+	 * 
+	 * the function disables the currently enabled controller, and replaces
+	 * that with the selected one, only if feasible. 
 	 * 
 	 * @param controller_code the index of the controller
 	 * 
@@ -515,7 +586,7 @@ public:
 		}
 	}
 	
-	/** switch the status of the currentcontroller */
+	/** switch the status of the current controller */
 	bool set_status( bool new_status )
 	{
 		// check if there's a current controller
@@ -537,7 +608,17 @@ public:
 		return( (running_controller!=nullptr) && (running_controller->is_enabled( )) );
 	}
 	
-	/** set one algorithm among the available ones and activate it */
+	/********************************************//**
+	 *  
+	 * \brief set one algorithm among the available ones and activate it
+	 * 
+	 * @param request the algorithm to activate (see the details of the message)
+	 * @param response the result of the operation
+	 * 
+	 * @attention you cannot call the navigation until you haven't selected
+	 * 	an algorithm with this service!
+	 * 
+	 ***********************************************/
 	bool cbk_set_algorithm( 
 		robocluedo_movement_controller_msgs::Algorithm::Request& req,
 		robocluedo_movement_controller_msgs::Algorithm::Response& res )
@@ -571,7 +652,21 @@ public:
 		return true;
 	}
 	
-	/** use the currently running algorithm for the 2D navigation (blocking) */
+	/********************************************//**
+	 *  
+	 * \brief use the currently running algorithm for the 2D navigation (blocking)
+	 * 
+	 * the method just tries to pass the calling to the currently active 
+	 * controller, if any. 
+	 * 
+	 * @param request the navigation objective
+	 * @param response the result of the operation
+	 * 
+	 * @attention there must be a controller selected before calling this 
+	 * 	function! See the algorithm selection service. 
+	 * 
+	 ***********************************************/
+	
 	bool cbk_navigation( 
 		robocluedo_movement_controller_msgs::NavigationService::Request& req,
 		robocluedo_movement_controller_msgs::NavigationService::Response& res )
@@ -647,7 +742,14 @@ void shut_msg( int sig )
 
 
 
-/** ROS Main */
+/********************************************//**
+ *  
+ * \brief ROS node main - Navigation Manager
+ * 
+ * Here are instanciated and registered the controllers used for the 
+ * navigation. 
+ * 
+ ***********************************************/
 int main( int argc, char* argv[] )
 {
 	ros::init( argc, argv, NODE_NAME, ros::init_options::NoSigintHandler );

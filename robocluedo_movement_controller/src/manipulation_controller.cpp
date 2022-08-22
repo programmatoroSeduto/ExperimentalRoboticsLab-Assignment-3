@@ -1,6 +1,35 @@
 
 #define NODE_NAME "manipulation_controller"
 
+/********************************************//**
+*  
+* @file manipulation_controller.cpp
+* @brief controller for performig the manipulation
+* 
+* In a nutshell, this node implements a very simple service able to 
+* communicate with moveit in order to perform a manipulation with
+* the RoboCLuedo hunter manipulator. The robot comes with a set of
+* predefined poses, that the controller can call under request. 
+* 
+* This version of the node, except for containing new poses referred
+* to the new model of robot, introduces a very raw implementation of
+* a asynchronous movement, performed using a simple topic. 
+* 
+* @authors Francesco Ganci
+* @version v1.2
+* 
+* @note this implementation supports the developer mode: waitkey, print develop.
+* 
+* @todo implement the asynchronous movement using a ROS action instead. Or,
+* 	at least, introduce a signal. 
+* 
+* @todo introduce cartesian planning and a clear end effector
+* 
+* @todo the way the node uses moveit is a bit raw ... it would deserve a 
+* 	review. 
+* 
+***********************************************/
+
 #define LOGSQUARE( str )  "[" << str << "] "
 #define OUTLABEL          LOGSQUARE( NODE_NAME )
 #define TLOG( msg )       ROS_INFO_STREAM( OUTLABEL << msg )
@@ -63,11 +92,23 @@
 #define POSE_NAME_CAM_LOW_RIGHT "cam_low_right"
 #define POSE_NAME_HOME_LOW "home_low"
 
-
+/** implementation of the node */
 class node_manipulation_controller
 {
 public:
 	
+	/********************************************//**
+	 *  
+	 * \brief class constructor
+	 * 
+	 * the class constructor performs the initialisation of the
+	 * move group interface, then sets up some parameters, and finally 
+	 * mves the arm in the home position.
+	 * 
+	 * When launched, the node first of all puts the robotic manipulator
+	 * in a known state, which is the home position. 
+	 * 
+	 ***********************************************/
 	node_manipulation_controller(  ) : mgi( ARM_PLANNING_GROUP )
 	{
 		WTLOG( "Advertising service " << LOGSQUARE( SERVICE_MANIP ) << "..." );
@@ -104,11 +145,23 @@ public:
 		mgi.move( );
 	}
 	
+	/// simple spin (wait for shutdown)
 	void spin( )
 	{
 		ros::waitForShutdown( );
 	}
 	
+	/********************************************//**
+	 *  
+	 * \brief sybchronous manipulation
+	 * 
+	 * given a poture, the service sets it and moves the robotic manipulator
+	 * until it hasn't achieved that. 
+	 * 
+	 * @param req the posture to be set
+	 * @param res if the motion planning succeeded or not
+	 * 
+	 ***********************************************/
 	bool cbk_manip( 
 		robocluedo_movement_controller_msgs::ManipulatorPosition::Request& req, 
 		robocluedo_movement_controller_msgs::ManipulatorPosition::Response& res )
@@ -219,7 +272,15 @@ public:
 		return true;
 	}
 	
-	/** asunc manipulation command */
+	/********************************************//**
+	 *  
+	 * \brief async manpulation command (from topic)
+	 * 
+	 * @note once activated, there's no way to stop the motion!
+	 * 
+	 * @todo implement a progress checking
+	 * 
+	 ***********************************************/
 	void cbk_manip_async( const robocluedo_movement_controller_msgs::ManipulatorPositionAsync::ConstPtr& req )
 	{
 		movement_async_enabled = req->enabled;

@@ -6,6 +6,15 @@
 * @file kb_interface.cpp
 * @brief services for read/write on the rosplan kb
 * 
+* This node exposes, as ROS service, some important functionalities for
+* performing the replanning. 
+* 
+* Its role is mostly to hide the specificiy of some corrections on the
+* knowledge base, due to the structure of the PDDL model in use for this
+* project. 
+* 
+* @note It supports the develop mode: waitkey, develop print
+* 
 * @authors Francesco Ganci
 * @version v1.0
 * 
@@ -47,7 +56,17 @@ ros::ServiceServer *srv_update_goal;
 #define LANDMARK_SOLVE   2
 
 
-/// representation of one predicate
+/********************************************//**
+ *  
+ * \brief representation of a predicate
+ * 
+ * This simple data structure is used for handling the predicates in a more
+ * convenient way. 
+ * 
+ * @todo this class should be better designed, or, even better, included
+ * 	into the currently available framework for the knowledge base.
+ * 
+ ***********************************************/
 class predicate_instance
 {
 public:
@@ -78,11 +97,36 @@ public:
 };
 
 
+/********************************************//**
+ *  
+ * \brief Implementation of the node kb_interface as class
+ * 
+ * The node provides a general service for replanning, as well as some
+ * utilities taking into account the particularities of the landmarks
+ * with respect to the structure of the PDDL model. 
+ * 
+ * @todo the node should read the waypoints from the PDDL model; currently,
+ * 	the waypoints are hardcoded in the constructor. 
+ * 
+ * @todo the topology of the problem can be better handled by this node. 
+ * 
+ ***********************************************/
 class kb_interface : kb_tools
 {
 public:
 	
-	/// kb_interface node constructor
+	/********************************************//**
+	 *  
+	 * \brief kb_interface node constructor
+	 * 
+	 * The constructor allocates the most relevant predicates of the PDDL
+	 * model and their default values. These values are used when a 
+	 * landmark, or a replanning, is required by another node. 
+	 * 
+	 * @todo the node should read the waypoints from the PDDL model; currently,
+	 * 	the waypoints are hardcoded in the constructor. 
+	 * 
+	 ***********************************************/
 	kb_interface( ) : kb_tools( )
 	{
 		// waypoints (center excluded)
@@ -92,7 +136,6 @@ public:
 		wps.push_back("wp4");
 		wps.push_back("wp5");
 		wps.push_back("wp6");
-		
 		
 		// === init predicates === //
 		
@@ -145,7 +188,19 @@ public:
 		}
 	}
 	
-	/// replan service
+	/********************************************//**
+	 *  
+	 * \brief implementation of the replan service
+	 * 
+	 * the service first of all restores the most relelvand values of the 
+	 * PDDL model inside the ontology, then adjusts the informations regarding
+	 * the topological localisation in a way such that the only place 
+	 * explored is the one where the robot is currently. 
+	 * 
+	 * @param request (empty)
+	 * @param response (empty)
+	 * 
+	 ***********************************************/
 	bool cbk_replan( std_srvs::Empty::Request& req, std_srvs::Empty::Response& res )
 	{
 		// reset the init state
@@ -200,6 +255,39 @@ public:
 	}
 	
 	/// update goal service
+	/********************************************//**
+	 *  
+	 * \brief implementation of service for updating goals
+	 * 
+	 * Purpose of this service is to create the proper conditions in order
+	 * to apply one of the three available landmarks: REPLAN, COLLECT and
+	 * SOLVE. 
+	 * 
+	 * "REPLAN" simply sets the "dirty" flags in a way such that the plan,
+	 * when found, is going to start with the (replan ) PDDL action. 
+	 * The localisation is not affected, or at least not by this node. 
+	 * 
+	 * "COLLECT" causes the node to look for a still unexplored waypoint.
+	 * if all the waypoints have been explored, the node refuses the request,
+	 * otherwise it sets the first available waypoint. The command doesn't 
+	 * allow to decide which waypoint the robot can explore: the waypoint is 
+	 * choosen automatically by this node. 
+	 * 
+	 * "SOLVE" only sets the "dirty" flags as the "REPLAN" landmark does, 
+	 * but in a way such that the system has to necessairly call the 
+	 * PDDL action (solve ?wp) after moved to the center of the arena. 
+	 * 
+	 * @param request it communicates the landmark to set
+	 * @param response 
+	 * 
+	 * @attention the request is rejected with no effect on the knowledge
+	 * 	base if the requested landark is not applicable. It could happen for
+	 * 	instance when the robot has explored every single waypoint. 
+	 * 
+	 * @note in any case, the goal is cancelled, hence a failure in applying
+	 * 	one unapplicable landmark requires to set again one more landmark.
+	 * 
+	 ***********************************************/
 	bool cbk_update_goal( robocluedo_rosplan_msgs::UpdateGoal::Request& req, robocluedo_rosplan_msgs::UpdateGoal::Response& res )
 	{
 		// clear the goal

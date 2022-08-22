@@ -114,6 +114,31 @@
   <h1>Source code for rosplan_pipeline_manager</h1><div class="highlight"><pre>
 <span></span><span class="ch">#! /usr/bin/env python</span>
 
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">This is maybe the most important node of the RoboCLuedo ROSPlan package:</span>
+<span class="sd">it allows other nodes to plan and to dispatch the solved plan with a simple</span>
+<span class="sd">interface. Moreover, it adds a large set of informations and details </span>
+<span class="sd">about how the planning process proceeds, and in particular when something </span>
+<span class="sd">wrong occurs, it makes this failure explainable. </span>
+
+<span class="sd">The ROSPlan workflow is always the same: load the problem, try to solve it,</span>
+<span class="sd">parse the solved plan, and finally dispatch the solved plan. Each step</span>
+<span class="sd">must be &quot;triggered&quot; each time it is required. And each step, when finished</span>
+<span class="sd">its job, returns something via topic. In other words, it is a pipeline, </span>
+<span class="sd">and this node collects all these triggers in only one place. </span>
+
+<span class="sd">Authors:</span>
+<span class="sd">	Francesco Ganci (S4143910)</span>
+
+<span class="sd">Version </span>
+<span class="sd">	v1.0.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">NODE_NAME</span> <span class="o">=</span> <span class="s2">&quot;rosplan_pipeline_manager&quot;</span>
+<span class="sd">&#39;&#39;&#39; nothing to say, node name</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">rospy</span>
 <span class="kn">from</span> <span class="nn">std_srvs.srv</span> <span class="kn">import</span> <span class="n">Empty</span><span class="p">,</span> <span class="n">EmptyRequest</span><span class="p">,</span> <span class="n">EmptyResponse</span>
@@ -124,24 +149,20 @@
 <span class="kn">from</span> <span class="nn">robocluedo_rosplan_msgs.srv</span> <span class="kn">import</span> <span class="n">UpdateGoal</span><span class="p">,</span> <span class="n">UpdateGoalRequest</span><span class="p">,</span> <span class="n">UpdateGoalResponse</span>
 <span class="kn">from</span> <span class="nn">rosplan_dispatch_msgs.msg</span> <span class="kn">import</span> <span class="n">CompletePlan</span>
 
-<span class="n">NODE_NAME</span> <span class="o">=</span> <span class="s2">&quot;rosplan_pipeline_manager&quot;</span>
-<span class="sd">&#39;&#39;&#39; nothing to say, node name</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
 <span class="n">SRV_TIMEOUT</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="sd">&#39;&#39;&#39; a timeout of 1min used for the client connection</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">LANDMARK_REPLAN</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="sd">&#39;&#39;&#39; landmark corresponding to : replan</span>
+<span class="sd">&#39;&#39;&#39; landmark corresponding to &quot;REPLAN&quot;</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">LANDMARK_COLLECT</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="sd">&#39;&#39;&#39; landmark corresponding to : collect</span>
+<span class="sd">&#39;&#39;&#39; landmark corresponding to &quot;COLLECT&quot;</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">LANDMARK_SOLVE</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="sd">&#39;&#39;&#39; landmark corresponding to : solve</span>
+<span class="sd">&#39;&#39;&#39; landmark corresponding to &quot;SOLVE&quot;</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">service_problem</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_problem_interface/problem_generation_server&quot;</span>
@@ -264,6 +285,17 @@
 
 <div class="viewcode-block" id="cbk_problem_instance"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_problem_instance">[docs]</a><span class="k">def</span> <span class="nf">cbk_problem_instance</span><span class="p">(</span> <span class="n">problem</span> <span class="p">):</span> <span class="c1"># std_msgs/String</span>
 	<span class="sd">&#39;&#39;&#39; this callback received the problem instance from the problem interface</span>
+<span class="sd">	</span>
+<span class="sd">	When the problem interface ended its work, it publishes on this topic</span>
+<span class="sd">	the preprocessed problem instance. The pipeline manager uses this topic</span>
+<span class="sd">	for understanding the outcome of this loading phase.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		problem (std_msgs/String):</span>
+<span class="sd">			the problem instance loaded into the knowledge base.</span>
+<span class="sd">	</span>
+<span class="sd">	Note:</span>
+<span class="sd">		if something goes wrong, the node publishes nothing! </span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">global</span> <span class="n">problem_instance_received</span>
@@ -275,6 +307,17 @@
 
 <div class="viewcode-block" id="cbk_planning_interface"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_planning_interface">[docs]</a><span class="k">def</span> <span class="nf">cbk_planning_interface</span><span class="p">(</span> <span class="n">plan</span> <span class="p">):</span> <span class="c1"># std_msgs/String</span>
 	<span class="sd">&#39;&#39;&#39; this callback receives the output from the planner, if any</span>
+<span class="sd">	</span>
+<span class="sd">	When the plannning interface ended its work, it publishes on this topic</span>
+<span class="sd">	the preprocessed problem instance. The pipeline manager uses this topic</span>
+<span class="sd">	for understanding the outcome of the problem solution phase.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		plan (std_msgs/String):</span>
+<span class="sd">			the solution of the problem</span>
+<span class="sd">	</span>
+<span class="sd">	Note:</span>
+<span class="sd">		if something goes wrong, the node publishes nothing! </span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">global</span> <span class="n">planner_interface_received</span>
@@ -286,6 +329,16 @@
 
 <div class="viewcode-block" id="cbk_parsing_interface"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_parsing_interface">[docs]</a><span class="k">def</span> <span class="nf">cbk_parsing_interface</span><span class="p">(</span> <span class="n">plan</span> <span class="p">):</span> <span class="c1"># rosplan_dispatch_msgs/CompletePlan</span>
 	<span class="sd">&#39;&#39;&#39; this callback receives the output from the parsing interface, if any</span>
+<span class="sd">	</span>
+<span class="sd">	this topic is used for understanding if the planning interface succeeded</span>
+<span class="sd">	in parsing the plan.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		plan (rosplan_dispatch_msgs/CompletePlan):</span>
+<span class="sd">			the parsed plan</span>
+<span class="sd">	</span>
+<span class="sd">	Note:</span>
+<span class="sd">		if something goes wrong, the node publishes nothing! </span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">global</span> <span class="n">parsing_interface_received</span>
@@ -297,6 +350,18 @@
 
 <div class="viewcode-block" id="cbk_action_feedback"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_action_feedback">[docs]</a><span class="k">def</span> <span class="nf">cbk_action_feedback</span><span class="p">(</span> <span class="n">feedback</span> <span class="p">):</span>
 	<span class="sd">&#39;&#39;&#39; receive a feedback from the ROSPlan action</span>
+<span class="sd">	</span>
+<span class="sd">	The feedback manager can provide an explaination of whatever problem</span>
+<span class="sd">	it could arise during the dispatch phase. It is used mostly for </span>
+<span class="sd">	detecting a hardware failure, </span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		plan (robocluedo_rosplan_msgs/ActionFeedback):</span>
+<span class="sd">			the feedback from the last executed action</span>
+<span class="sd">	</span>
+<span class="sd">	Attention:</span>
+<span class="sd">		the feedback manager does not send a &quot;succes&quot; feedbacl, meaning</span>
+<span class="sd">		that a feedback is sent only when something goes wrong. </span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">global</span> <span class="n">action_feedback_msg</span>
@@ -307,8 +372,22 @@
 
 
 <div class="viewcode-block" id="inspect_planner_output"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.inspect_planner_output">[docs]</a><span class="k">def</span> <span class="nf">inspect_planner_output</span><span class="p">(</span> <span class="n">fpath</span> <span class="p">):</span>
-	<span class="sd">&#39;&#39;&#39; the function reurns true when the problem has been found</span>
-<span class="sd">		unsolvable. Otherwise, it returns false.</span>
+	<span class="sd">&#39;&#39;&#39; the function reurns true when the problem has been found unsolvable. Otherwise, it returns false.</span>
+<span class="sd">	</span>
+<span class="sd">	This function is used when there&#39;s something wrong with the planning</span>
+<span class="sd">	interface, and enables to distinguish the scenario in which the planner</span>
+<span class="sd">	is not solvable from the simple syntax error. </span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		fpath (String):</span>
+<span class="sd">			the path of the output from the planner.</span>
+<span class="sd">	</span>
+<span class="sd">	Attention:</span>
+<span class="sd">		this function is good only for popf planner, because when the problem</span>
+<span class="sd">		is declared unsolvable, it writes a particular thing on the output,</span>
+<span class="sd">		the one that is searched by this function in order to understand</span>
+<span class="sd">		if the problem is unsolvable or simply badly formulated. Using other </span>
+<span class="sd">		planners makes this function to be updated. </span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span> <span class="n">fpath</span> <span class="p">):</span>
 		<span class="k">return</span> <span class="kc">False</span>
@@ -324,6 +403,16 @@
 
 <div class="viewcode-block" id="cbk_pipeline"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_pipeline">[docs]</a><span class="k">def</span> <span class="nf">cbk_pipeline</span><span class="p">(</span> <span class="n">req</span> <span class="p">):</span>
 	<span class="sd">&#39;&#39;&#39; implementation of the service pipeline manager</span>
+<span class="sd">	</span>
+<span class="sd">	This very long function allows to use the ROSPlan framework as a pipeline, </span>
+<span class="sd">	in a simple way. </span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		req (RosplanPipelineManagerServiceRequest):</span>
+<span class="sd">			the pipeline request</span>
+<span class="sd">	</span>
+<span class="sd">	Returns:</span>
+<span class="sd">		(RosplanPipelineManagerServiceResponse) the response to the caller. </span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">global</span> <span class="n">cl_problem</span>
@@ -549,6 +638,12 @@
 
 <div class="viewcode-block" id="open_cl"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.open_cl">[docs]</a><span class="k">def</span> <span class="nf">open_cl</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">cl_type</span> <span class="p">):</span>
 	<span class="sd">&#39;&#39;&#39; handful utility to open a client</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		cl_name (string):</span>
+<span class="sd">			name of the client</span>
+<span class="sd">		cl_type :</span>
+<span class="sd">			type of message used by the service</span>
 <span class="sd">	&#39;&#39;&#39;</span>
 	
 	<span class="k">global</span> <span class="n">SRV_TIMEOUT</span>

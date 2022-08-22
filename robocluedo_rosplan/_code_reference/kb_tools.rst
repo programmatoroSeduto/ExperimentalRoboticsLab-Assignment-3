@@ -1,7 +1,12 @@
 
+.. _class-kb-tools:
 
-CODE REFERENCE -- class kb_tools
+Class kb_tools
 ================================================
+
+.. seealso::
+	see also :any:`node-kb-interface` which is an application of the services
+	offered by this class. 
 
 Header
 -------

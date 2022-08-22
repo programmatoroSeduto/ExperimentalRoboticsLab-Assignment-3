@@ -2,7 +2,7 @@
 /********************************************//**
 *  
 * @file collect_hint.h
-* @brief ROSPlan action implementation
+* @brief ROSPlan action implementation of (collect-hint ?wp)
 * 
 * @authors Francesco Ganci
 * @version v1.0

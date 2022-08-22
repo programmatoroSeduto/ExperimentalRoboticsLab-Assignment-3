@@ -4,6 +4,13 @@
 * @file replan.h
 * @brief ROSPlan action implementation
 * 
+* Implementation of the PDDL action (replan ), which is used for setting
+* up the system. It is used als oas starting point for the marker REPLAN. 
+* 
+* The role of the node is simple right now: when disatched, it calls the 
+* service for replanning in the kb_interface, restoring the initial conditions
+* for the execution of the other landmarks.
+* 
 * @authors Francesco Ganci
 * @version v1.0
 * 

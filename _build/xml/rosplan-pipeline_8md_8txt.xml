@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="rosplan-pipeline_8md_8txt" kind="file" language="C++">
+    <compoundname>rosplan-pipeline.md.txt</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>UML<sp/>--<sp/>ROSPlan<sp/>pipeline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">```{toctree}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">./<ref refid="test-the-project_8md_8txt_1a02cf8e56bf8e60000d70191b4b870ddc" kindref="member">rosplan</ref>-pipeline.md</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">This<sp/>page<sp/>shows<sp/><ref refid="cpp-docs-template_8md_8txt_1a20ff6362005f038a891568b43d660996" kindref="member">the</ref><sp/>interfaces<sp/>used<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>controlling<sp/><ref refid="cpp-docs-template_8md_8txt_1a20ff6362005f038a891568b43d660996" kindref="member">the</ref><sp/>workflow<sp/>of<sp/>ROSPlan<sp/>by<sp/><ref refid="cpp-docs-template_8md_8txt_1a20ff6362005f038a891568b43d660996" kindref="member">the</ref><sp/>pipeline<sp/><ref refid="navigation__manager_8rst_8txt_1a57e4fd7993b26c384ad730f8982bdcca" kindref="member">manager</ref>.<sp/>As<sp/>many<sp/>other<sp/>documents<sp/>inside<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/><ref refid="robocluedo-hunter-user-manual_8md_8txt_1ae143a0ce6a5ef5ace6629890d495ff2c" kindref="member">project</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>is<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1ad06afa07b0e26dd80f556e318c747644" kindref="member">a</ref><sp/>document<sp/>written<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>supporting<sp/><ref refid="cpp-docs-template_8md_8txt_1a20ff6362005f038a891568b43d660996" kindref="member">the</ref><sp/>development.<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>schema<sp/>of<sp/>ROSPlan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">The<sp/>schema<sp/>doesn</highlight><highlight class="stringliteral">&apos;t<sp/>show<sp/>the<sp/>topics<sp/>used<sp/>by<sp/>the<sp/>pipeline<sp/>manager<sp/>for<sp/>checking<sp/>if<sp/>the<sp/>operation<sp/>went<sp/>good<sp/>or<sp/>not.<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral">```</highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral">This<sp/>diagram<sp/>shows<sp/>the<sp/>main<sp/>service<sp/>interfaces<sp/>used<sp/>for<sp/>triggering<sp/>the<sp/>steps<sp/>of<sp/>the<sp/>ROSPlan<sp/>workflow.<sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral">```{uml}<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="stringliteral">@startuml</highlight></codeline>
+<codeline lineno="27"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="28"><highlight class="stringliteral">&apos;</highlight><highlight class="stringliteral">&apos;&apos;</highlight><highlight class="normal"><sp/>INFOS</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">title<sp/>ROSPlan<sp/><ref refid="examples__cluedo_8md_8txt_1a0055e76cf5ab9e6852445b755e20c0b6" kindref="member">main</ref><sp/>pipeline</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">skinparam<sp/>Padding<sp/>10</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="charliteral">&apos;&apos;&apos;</highlight><highlight class="normal"><sp/>COMPONENTS</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><ref refid="armor-how-to-use_8md_8txt_1a9c3579e1f6790861ba288d0f61d41dc9" kindref="member">file</ref><sp/></highlight><highlight class="stringliteral">&quot;robolcuedo\nproblem&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<ref refid="new-robocluedo_8md_8txt_1ad462451e3bf901bad99bcffcfea6aec5" kindref="member">PDDL</ref>&gt;&gt;<sp/>as<sp/>PROBLEM</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><ref refid="armor-how-to-use_8md_8txt_1a9c3579e1f6790861ba288d0f61d41dc9" kindref="member">file</ref><sp/></highlight><highlight class="stringliteral">&quot;robolcuedo\ndomain&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<ref refid="new-robocluedo_8md_8txt_1ad462451e3bf901bad99bcffcfea6aec5" kindref="member">PDDL</ref>&gt;&gt;<sp/>as<sp/>DOMAIN</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">package<sp/></highlight><highlight class="normal">&quot;ROSPlan&quot;{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>database<sp/>&quot;Knowledge<sp/>Base&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>RP_KB</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>component<sp/>&quot;Problem<sp/>Interface&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>RP_PROBLEM</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>component<sp/>&quot;Planning<sp/>Interface&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>RP_PLAN</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>component<sp/>&quot;Plan<sp/>Parsing&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>RP_PARSE</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>component<sp/>&quot;Plan<sp/>Dispatcher&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>RP_DISPATCH</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>RP_KB<sp/>-right-&gt;<sp/>RP_PROBLEM</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>RP_PROBLEM<sp/>--&gt;<sp/>RP_PLAN</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>RP_PLAN<sp/>--&gt;<sp/>RP_PARSE</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>RP_KB<sp/>--&gt;<sp/>RP_PARSE</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>RP_PARSE<sp/>--&gt;<sp/>RP_DISPATCH</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>RP_KB<sp/>--&gt;<sp/>RP_DISPATCH</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">()<sp/>&quot;/rosplan_problem_interface/problem_generation_server&quot;<sp/>as<sp/>SRV_PROBLEM_TRIG</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">RP_PROBLEM<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_PROBLEM_TRIG</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_srvs/Empty</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">()<sp/>&quot;/rosplan_planner_interface/planning_server&quot;<sp/>as<sp/>SRV_PLAN_TRIG</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">RP_PLAN<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_PLAN_TRIG</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_srvs/Empty</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">()<sp/>&quot;/rosplan_parsing_interface/parse_plan&quot;<sp/>as<sp/>SRV_PARSE_TRIG</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">RP_PARSE<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_PARSE_TRIG</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_srvs/Empty</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">()<sp/>&quot;/rosplan_plan_dispatcher/dispatch_plan&quot;<sp/>as<sp/>SRV_DISPATCH_TRIG</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">RP_DISPATCH<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_DISPATCH_TRIG</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>rosplan_dispatch_msgs/DispatchService</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">RP_KB<sp/>&lt;-up-<sp/>PROBLEM</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">RP_KB<sp/>&lt;-up-<sp/>DOMAIN</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">@enduml</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">###<sp/>message<sp/>**rosplan_dispatch_msgs/DispatchService**<sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">```text</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">---</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">bool<sp/>success</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">bool<sp/>goal_achieved</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">##<sp/>SCHEMA<sp/>--<sp/>rosplan_pipeline_manager</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">For<sp/>the<sp/>sake<sp/>of<sp/>simplicity,<sp/>the<sp/>schema<sp/>shows<sp/>only<sp/>the<sp/>services<sp/>for<sp/>using<sp/>ROSPlan<sp/>and<sp/>the<sp/>one<sp/>used<sp/>for<sp/>the<sp/>replanning<sp/>with<sp/>*kb_interface*.</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">@startuml</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">title<sp/>ROSPlan<sp/>main<sp/>pipeline</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">skinparam<sp/>Padding<sp/>10</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">component<sp/>&quot;rosplan<sp/>\n<sp/>pipeline<sp/>manager&quot;<sp/>&lt;&lt;RoboCLuedo&gt;&gt;<sp/>as<sp/>RCL_PIPELINE</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">()<sp/>&quot;/rosplan_problem_interface/problem_generation_server&quot;<sp/>as<sp/>SRV_PROBLEM_TRIG</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">RCL_PIPELINE<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_PROBLEM_TRIG</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_srvs/Empty</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal">()<sp/>&quot;/rosplan_planner_interface/planning_server&quot;<sp/>as<sp/>SRV_PLAN_TRIG</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">RCL_PIPELINE<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_PLAN_TRIG</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_srvs/Empty</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">()<sp/>&quot;rosservice<sp/>call<sp/>/rosplan_parsing_interface/parse_plan&quot;<sp/>as<sp/>SRV_PARSE_TRIG</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">RCL_PIPELINE<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_PARSE_TRIG</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_srvs/Empty</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">()<sp/>&quot;/rosplan_plan_dispatcher/dispatch_plan&quot;<sp/>as<sp/>SRV_DISPATCH_TRIG</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">RCL_PIPELINE<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_DISPATCH_TRIG</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>rosplan_dispatch_msgs/DispatchService</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal">()<sp/>&quot;/update_goal&quot;<sp/>as<sp/>SRV_UPDATE_GOAL</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">RCL_PIPELINE<sp/>&quot;cl&quot;<sp/>&lt;--<sp/>SRV_UPDATE_GOAL</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>robocluedo_rosplan_msgs/UpdateGoal</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">()<sp/>&quot;/robocluedo/action_feedback&quot;<sp/>as<sp/>TOPIC_ACT_FEEDBACK</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">RCL_PIPELINE<sp/>&quot;sub&quot;<sp/>&lt;-left-<sp/>TOPIC_ACT_FEEDBACK</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>robocluedo_rosplan_msgs/ActionFeedback</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">/&apos;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">()<sp/>&quot;/rosplan_problem_interface/problem_instance&quot;<sp/>as<sp/>TOPIC_PROBLEM_INSTANCE</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">RCL_PIPELINE<sp/>&quot;sub&quot;<sp/>&lt;--<sp/>TOPIC_PROBLEM_INSTANCE</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>std_msgs/String</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">&apos;/</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">()<sp/>&quot;/robocluedo/pipeline_manager&quot;<sp/>as<sp/>SRV_PIPELINE</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">RCL_PIPELINE<sp/>&quot;srv&quot;<sp/>-right-&gt;<sp/>SRV_PIPELINE</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">note<sp/>on<sp/>link<sp/>:<sp/>robocluedo_rosplan_msgs/RosplanPipelineManagerService</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">@enduml</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">```</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">##<sp/>SCHEMA<sp/>--<sp/>feedback<sp/>manager</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal">```{uml}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">@startuml</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">title<sp/>ROSPlan<sp/>feedback<sp/>manager</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">skinparam<sp/>Padding<sp/>10</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">class<sp/>&quot;Feedback<sp/>Manager&quot;<sp/>as<sp/>FEEDBACK</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>+<sp/>fb_failure()</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_failure()</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_navigation_failure()</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>+<sp/>fb_hw_manipulation_failure()</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal">()<sp/>&quot;/robocluedo/action_feedback&quot;<sp/>as<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>&quot;pub&quot;<sp/>TOPIC_FEEDBACK</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/ActionFeedback.msg</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal">@enduml</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="_build/html/_sources/robocluedo_rosplan/_uml/rosplan-pipeline.md.txt"/>
+  </compounddef>
+</doxygen>

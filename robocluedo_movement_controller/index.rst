@@ -6,9 +6,16 @@ PKG DOCS -- robocluedo_movement_controller
 
 this package enables the robot to move the manipulator and to navigate into the environment, usign different methods. 
 
+.. note::
+	this version of the movement controller has a lot of differences with the previous version:
+	
+	- integration with MoveBase and the navigation stack
+	- improved launch files for running the project
+
 
 .. toctree::
 	:caption: User Documentation
+	:titlesonly:
 	:glob:
 	
 	./_docs/*

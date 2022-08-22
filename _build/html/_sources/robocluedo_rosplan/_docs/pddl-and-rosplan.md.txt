@@ -1,5 +1,9 @@
 # DOCS -- PDDL and ROSPlan
 
+```{seealso}
+This document comes from [this Wiki about ROSPlan](https://github.com/programmatoroSeduto/ros-plan/wiki), written to go deeper in ROSPlan and in particolar to overcome some important lacks in the official documentation. 
+```
+
 ---
 
 ```{toctree}

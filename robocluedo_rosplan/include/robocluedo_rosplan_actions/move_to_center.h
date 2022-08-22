@@ -4,8 +4,12 @@
 * @file move_to_center.h
 * @brief ROSPlan action implementation
 * 
+* @todo join this action with \ref RP_rcl_move_to
+* 
 * @authors Francesco Ganci
 * @version v1.0
+* 
+* @see move_to.h
 * 
 ***********************************************/
 

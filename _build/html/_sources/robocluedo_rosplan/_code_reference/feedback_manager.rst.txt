@@ -1,5 +1,5 @@
 
-CODE REFERENCE -- class feedback manager
+Class feedback manager
 ================================================
 
 Header

@@ -1,5 +1,7 @@
 
-CODE REFERENCE -- node head_orientation
+.. _node-head-orientation:
+
+NODE head_orientation
 ==========================================
 
 .. automodule:: head_orientation
