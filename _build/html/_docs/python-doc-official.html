@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Google Docstring – an official example &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HOW TO Run this Project" href="run-the-project.html" />
+    <link rel="prev" title="ReStructured Directives – practical documentation" href="rest-directives.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log.html">LOG – development log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Google Docstring – an official example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">HOW TO Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Python Google Docstring – an official example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_docs/python-doc-official.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="python-google-docstring-an-official-example">
+<h1>Python Google Docstring – an official example<a class="headerlink" href="#python-google-docstring-an-official-example" title="Permalink to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Example Google style docstrings.</span>
+
+<span class="sd">This module demonstrates documentation as specified by the `Google Python</span>
+<span class="sd">Style Guide`_. Docstrings may extend over multiple lines. Sections are created</span>
+<span class="sd">with a section header and a colon followed by a block of indented text.</span>
+
+<span class="sd">Example:</span>
+<span class="sd">    Examples can be given using either the ``Example`` or ``Examples``</span>
+<span class="sd">    sections. Sections support any reStructuredText formatting, including</span>
+<span class="sd">    literal blocks::</span>
+
+<span class="sd">        $ python example_google.py</span>
+
+<span class="sd">Section breaks are created by resuming unindented text. Section breaks</span>
+<span class="sd">are also implicitly created anytime a new section starts.</span>
+
+<span class="sd">Attributes:</span>
+<span class="sd">    module_level_variable1 (int): Module level variables may be documented in</span>
+<span class="sd">        either the ``Attributes`` section of the module docstring, or in an</span>
+<span class="sd">        inline docstring immediately following the variable.</span>
+
+<span class="sd">        Either form is acceptable, but the two should not be mixed. Choose</span>
+<span class="sd">        one convention to document module level variables and be consistent</span>
+<span class="sd">        with it.</span>
+
+<span class="sd">Todo:</span>
+<span class="sd">    * For module TODOs</span>
+<span class="sd">    * You have to also use ``sphinx.ext.todo`` extension</span>
+
+<span class="sd">.. _Google Python Style Guide:</span>
+<span class="sd">   http://google.github.io/styleguide/pyguide.html</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">module_level_variable1</span> <span class="o">=</span> <span class="mi">12345</span>
+
+<span class="n">module_level_variable2</span> <span class="o">=</span> <span class="mi">98765</span>
+<span class="sd">&quot;&quot;&quot;int: Module level variable documented inline.</span>
+
+<span class="sd">The docstring may span multiple lines. The type may optionally be specified</span>
+<span class="sd">on the first line, separated by a colon.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">function_with_types_in_docstring</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Example function with types documented in the docstring.</span>
+
+<span class="sd">    `PEP 484`_ type annotations are supported. If attribute, parameter, and</span>
+<span class="sd">    return types are annotated according to `PEP 484`_, they do not need to be</span>
+<span class="sd">    included in the docstring:</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param1 (int): The first parameter.</span>
+<span class="sd">        param2 (str): The second parameter.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: The return value. True for success, False otherwise.</span>
+
+<span class="sd">    .. _PEP 484:</span>
+<span class="sd">        https://www.python.org/dev/peps/pep-0484/</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">function_with_pep484_type_annotations</span><span class="p">(</span><span class="n">param1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">param2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Example function with PEP 484 type annotations.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param1: The first parameter.</span>
+<span class="sd">        param2: The second parameter.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The return value. True for success, False otherwise.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">module_level_function</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This is an example of a module level function.</span>
+
+<span class="sd">    Function parameters should be documented in the ``Args`` section. The name</span>
+<span class="sd">    of each parameter is required. The type and description of each parameter</span>
+<span class="sd">    is optional, but should be included if not obvious.</span>
+
+<span class="sd">    If \*args or \*\*kwargs are accepted,</span>
+<span class="sd">    they should be listed as ``*args`` and ``**kwargs``.</span>
+
+<span class="sd">    The format for a parameter is::</span>
+
+<span class="sd">        name (type): description</span>
+<span class="sd">            The description may span multiple lines. Following</span>
+<span class="sd">            lines should be indented. The &quot;(type)&quot; is optional.</span>
+
+<span class="sd">            Multiple paragraphs are supported in parameter</span>
+<span class="sd">            descriptions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        param1 (int): The first parameter.</span>
+<span class="sd">        param2 (:obj:`str`, optional): The second parameter. Defaults to None.</span>
+<span class="sd">            Second line of description should be indented.</span>
+<span class="sd">        *args: Variable length argument list.</span>
+<span class="sd">        **kwargs: Arbitrary keyword arguments.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if successful, False otherwise.</span>
+
+<span class="sd">        The return type is optional and may be specified at the beginning of</span>
+<span class="sd">        the ``Returns`` section followed by a colon.</span>
+
+<span class="sd">        The ``Returns`` section may span multiple lines and paragraphs.</span>
+<span class="sd">        Following lines should be indented to match the first line.</span>
+
+<span class="sd">        The ``Returns`` section supports any reStructuredText formatting,</span>
+<span class="sd">        including literal blocks::</span>
+
+<span class="sd">            {</span>
+<span class="sd">                &#39;param1&#39;: param1,</span>
+<span class="sd">                &#39;param2&#39;: param2</span>
+<span class="sd">            }</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AttributeError: The ``Raises`` section is a list of all exceptions</span>
+<span class="sd">            that are relevant to the interface.</span>
+<span class="sd">        ValueError: If `param2` is equal to `param1`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">param1</span> <span class="o">==</span> <span class="n">param2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;param1 may not be equal to param2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">example_generator</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generators have a ``Yields`` section instead of a ``Returns`` section.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n (int): The upper limit of the range to generate, from 0 to `n` - 1.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        int: The next number in the range of 0 to `n` - 1.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        Examples should be written in doctest format, and should illustrate how</span>
+<span class="sd">        to use the function.</span>
+
+<span class="sd">        &gt;&gt;&gt; print([i for i in example_generator(4)])</span>
+<span class="sd">        [0, 1, 2, 3]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">i</span>
+
+
+<span class="k">class</span> <span class="nc">ExampleError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exceptions are documented in the same way as classes.</span>
+
+<span class="sd">    The __init__ method may be documented in either the class level</span>
+<span class="sd">    docstring, or as a docstring on the __init__ method itself.</span>
+
+<span class="sd">    Either form is acceptable, but the two should not be mixed. Choose one</span>
+<span class="sd">    convention to document the __init__ method and be consistent with it.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Do not include the `self` parameter in the ``Args`` section.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        msg (str): Human readable string describing the exception.</span>
+<span class="sd">        code (:obj:`int`, optional): Error code.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        msg (str): Human readable string describing the exception.</span>
+<span class="sd">        code (int): Exception error code.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+
+
+<span class="k">class</span> <span class="nc">ExampleClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The summary line for a class docstring should fit on one line.</span>
+
+<span class="sd">    If the class has public attributes, they may be documented here</span>
+<span class="sd">    in an ``Attributes`` section and follow the same formatting as a</span>
+<span class="sd">    function&#39;s ``Args`` section. Alternatively, attributes may be documented</span>
+<span class="sd">    inline with the attribute&#39;s declaration (see __init__ method below).</span>
+
+<span class="sd">    Properties created with the ``@property`` decorator should be documented</span>
+<span class="sd">    in the property&#39;s getter method.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        attr1 (str): Description of `attr1`.</span>
+<span class="sd">        attr2 (:obj:`int`, optional): Description of `attr2`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="n">param3</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Example of docstring on the __init__ method.</span>
+
+<span class="sd">        The __init__ method may be documented in either the class level</span>
+<span class="sd">        docstring, or as a docstring on the __init__ method itself.</span>
+
+<span class="sd">        Either form is acceptable, but the two should not be mixed. Choose one</span>
+<span class="sd">        convention to document the __init__ method and be consistent with it.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            Do not include the `self` parameter in the ``Args`` section.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            param1 (str): Description of `param1`.</span>
+<span class="sd">            param2 (:obj:`int`, optional): Description of `param2`. Multiple</span>
+<span class="sd">                lines are supported.</span>
+<span class="sd">            param3 (:obj:`list` of :obj:`str`): Description of `param3`.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr1</span> <span class="o">=</span> <span class="n">param1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">param2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr3</span> <span class="o">=</span> <span class="n">param3</span>  <span class="c1">#: Doc comment *inline* with attribute</span>
+
+        <span class="c1">#: list of str: Doc comment *before* attribute, with type specified</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr4</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;attr4&#39;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr5</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="sd">&quot;&quot;&quot;str: Docstring *after* attribute, with type specified.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">readonly_property</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;str: Properties should be documented in their getter method.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;readonly_property&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">readwrite_property</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;:obj:`list` of :obj:`str`: Properties with both a getter and setter</span>
+<span class="sd">        should only be documented in their getter method.</span>
+
+<span class="sd">        If the setter method contains notable behavior, it should be</span>
+<span class="sd">        mentioned here.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;readwrite_property&#39;</span><span class="p">]</span>
+
+    <span class="nd">@readwrite_property</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">readwrite_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">example_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class methods are similar to regular functions.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            Do not include the `self` parameter in the ``Args`` section.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            param1: The first parameter.</span>
+<span class="sd">            param2: The second parameter.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            True if successful, False otherwise.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">__special__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;By default special members with docstrings are not included.</span>
+
+<span class="sd">        Special members are any methods or attributes that start with and</span>
+<span class="sd">        end with a double underscore. Any special member with a docstring</span>
+<span class="sd">        will be included in the output, if</span>
+<span class="sd">        ``napoleon_include_special_with_doc`` is set to True.</span>
+
+<span class="sd">        This behavior can be enabled by changing the following setting in</span>
+<span class="sd">        Sphinx&#39;s conf.py::</span>
+
+<span class="sd">            napoleon_include_special_with_doc = True</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">__special_without_docstring__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_private</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;By default private members are not included.</span>
+
+<span class="sd">        Private members are any methods or attributes that start with an</span>
+<span class="sd">        underscore and are *not* special. By default they are not included</span>
+<span class="sd">        in the output.</span>
+
+<span class="sd">        This behavior can be changed such that private members *are* included</span>
+<span class="sd">        by changing the following setting in Sphinx&#39;s conf.py::</span>
+
+<span class="sd">            napoleon_include_private_with_doc = True</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_private_without_docstring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rest-directives.html" class="btn btn-neutral float-left" title="ReStructured Directives – practical documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="run-the-project.html" class="btn btn-neutral float-right" title="HOW TO Run this Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

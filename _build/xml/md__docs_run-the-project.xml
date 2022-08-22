@@ -8,7 +8,7 @@
     <detaileddescription>
 <para><programlisting filename=".note"><codeline><highlight class="normal">If<sp/>something<sp/>would<sp/>go<sp/>south,<sp/>please<sp/>consider<sp/>to<sp/>run<sp/>the<sp/>project<sp/>step<sp/>by<sp/>step;<sp/>see<sp/>the<sp/>package<sp/>robocluedo_mission_manager<sp/>for<sp/>further<sp/>informations<sp/>about<sp/>how<sp/>to<sp/>run<sp/>the<sp/>project.<sp/></highlight></codeline>
 </programlisting></para>
-<sect1 id="md__docs_run-the-project_1autotoc_md111">
+<sect1 id="md__docs_run-the-project_1autotoc_md113">
 <title>suggested way – AMCL and no logs</title>
 <para>The project is very heavy to run on a machine, reason for why I suggest to launch the project using these options:</para>
 <para><itemizedlist>
@@ -18,13 +18,13 @@
 </listitem><listitem><para>suppress every kind of output in the first shell using <computeroutput>1&gt;/dev/null 2&gt;/dev/null</computeroutput></para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md__docs_run-the-project_1autotoc_md112">
+<sect2 id="md__docs_run-the-project_1autotoc_md114">
 <title>Shell 1</title>
 <para>all the components, without the <computeroutput>mission manager</computeroutput></para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_mission_manager:=false<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md__docs_run-the-project_1autotoc_md113">
+<sect2 id="md__docs_run-the-project_1autotoc_md115">
 <title>Shell 2</title>
 <para>the shell will show the output from the mission manager, to show hot the investigation is proceeding.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>

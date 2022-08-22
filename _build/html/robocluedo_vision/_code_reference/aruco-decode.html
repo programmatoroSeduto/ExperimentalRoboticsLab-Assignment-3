@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node aruco_decode.py &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE aruco_decode.py &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – aruco_detection.cpp" href="aruco-detection.html" />
+    <link rel="next" title="NODE aruco_detection.cpp" href="aruco-detection.html" />
     <link rel="prev" title="UML robocluedo_vision" href="../_uml/arch.html" /> 
 </head>
 
@@ -61,8 +61,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_vision</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../_docs/opencv-aruco-setup.html">ArUco and OpenCV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/arch.html">UML robocluedo_vision</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node aruco_decode.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="aruco-detection.html">CODE REFERENCE – aruco_detection.cpp</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE aruco_decode.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aruco-detection.html">NODE aruco_detection.cpp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
@@ -85,6 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">LOG – development log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/python-doc-official.html">Python Google Docstring – an official example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">HOW TO Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -109,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_vision</a> &raquo;</li>
-      <li>CODE REFERENCE – node aruco_decode.py</li>
+      <li>NODE aruco_decode.py</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_vision/_code_reference/aruco-decode.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -119,15 +120,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-aruco-decode-py">
-<span id="aruco-decode"></span><h1>CODE REFERENCE – node aruco_decode.py<a class="headerlink" href="#code-reference-node-aruco-decode-py" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-aruco-decode-py">
+<span id="aruco-decode"></span><h1>NODE aruco_decode.py<a class="headerlink" href="#node-aruco-decode-py" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>see also the second step of the markers detection, <a class="reference internal" href="aruco-detection.html"><span class="doc">CODE REFERENCE – aruco_detection.cpp</span></a></p>
+<p>see also the second step of the markers detection, <a class="reference internal" href="aruco-detection.html"><span class="doc">NODE aruco_detection.cpp</span></a></p>
 </div>
-<p>&#64;brief find the hint associates to a received aruco id</p>
-<p>&#64;authors Francesco Ganci
-&#64;version 1.0.0</p>
+<p>Find the hint associates to a received aruco id</p>
+<p>This node has a simple, fundamental, task to carry out: listen for hints
+from the detection node, and interrogate the Oracle about them to retrieve
+the hint associated to them. Once the corresponding ID has been received,
+the node sends them through a topic to the mission manager.</p>
+<p>Important to say that the node <em>replaces the Oracle of the second project</em>:
+this node has beed designed in order to apply as less changes as possible
+to the code of the previous project.</p>
+<p>The node als implements streategies to retry the reqest to the Oracle in
+case of service failure. This requires because the detection phase sends
+each detected ID only one time. When a ID has been sent, the node doesn’t
+send again it, hence each failure has to be handles with attention.</p>
+<dl class="simple">
+<dt>Author</dt><dd><p>Francesco Ganci</p>
+</dd>
+<dt>Version</dt><dd><p>1.0.0</p>
+</dd>
+</dl>
 <dl class="py data">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">aruco_decode.</span></span><span class="sig-name descname"><span class="pre">NODE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'aruco_decode'</span></em></dt>
@@ -215,7 +231,7 @@ waiting for a “second chance”.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../_uml/arch.html" class="btn btn-neutral float-left" title="UML robocluedo_vision" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="aruco-detection.html" class="btn btn-neutral float-right" title="CODE REFERENCE – aruco_detection.cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="aruco-detection.html" class="btn btn-neutral float-right" title="NODE aruco_detection.cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

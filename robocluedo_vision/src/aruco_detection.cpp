@@ -24,6 +24,12 @@
 * @todo the user could also decide how many windows to open. Let's think 
 * 	for instance on a scenario in which the user wants to see two outputs
 * 	at the same time. 
+* 
+* @todo open a service allowing other nodes to read the entire set of IDs
+* 	detected. 
+* 
+* @todo for each marker detected, try a way for also saving the first frames
+* 	where them have been detected.
 *  
 * @todo enable the support for the develop mode (it is missing so far)
 * 

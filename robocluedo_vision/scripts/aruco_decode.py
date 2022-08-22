@@ -1,11 +1,26 @@
 #! /usr/bin/env python
 
-'''
+'''Find the hint associates to a received aruco id
 
-@brief find the hint associates to a received aruco id
+This node has a simple, fundamental, task to carry out: listen for hints 
+from the detection node, and interrogate the Oracle about them to retrieve
+the hint associated to them. Once the corresponding ID has been received,
+the node sends them through a topic to the mission manager. 
 
-@authors Francesco Ganci
-@version 1.0.0
+Important to say that the node *replaces the Oracle of the second project*:
+this node has beed designed in order to apply as less changes as possible 
+to the code of the previous project. 
+
+The node als implements streategies to retry the reqest to the Oracle in 
+case of service failure. This requires because the detection phase sends
+each detected ID only one time. When a ID has been sent, the node doesn't 
+send again it, hence each failure has to be handles with attention. 
+
+Author
+	Francesco Ganci
+
+Version
+	1.0.0
 
 '''
 

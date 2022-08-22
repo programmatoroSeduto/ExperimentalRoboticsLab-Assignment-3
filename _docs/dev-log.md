@@ -1279,6 +1279,11 @@ direi che adesso possiamo iniziare a fare il lavoro che mi sto segnando tra ieri
 	- aruco detecton c++
 	- (c'è voluta un bel po' di attenzione...)
 - **COMMIT**: "code documentation (aruco_detection)"
+- **robocluedo vision**
+	- aruco decode
+- **COMMIT**: "code documentation (aruco decode)"
+- **robocluedo rosplan**
+	- 
 
 
 

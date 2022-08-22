@@ -10,173 +10,188 @@
     <programlisting>
 <codeline lineno="1" refid="namespacearuco__decode" refkind="compound"><highlight class="comment">#!<sp/>/usr/bin/env<sp/>python</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;Find<sp/>the<sp/>hint<sp/>associates<sp/>to<sp/>a<sp/>received<sp/>aruco<sp/>id</highlight></codeline>
 <codeline lineno="4"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="5"><highlight class="stringliteral">@brief<sp/>find<sp/>the<sp/>hint<sp/>associates<sp/>to<sp/>a<sp/>received<sp/>aruco<sp/>id</highlight></codeline>
-<codeline lineno="6"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="7"><highlight class="stringliteral">@authors<sp/>Francesco<sp/>Ganci</highlight></codeline>
-<codeline lineno="8"><highlight class="stringliteral">@version<sp/>1.0.0</highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral">This<sp/>node<sp/>has<sp/>a<sp/>simple,<sp/>fundamental,<sp/>task<sp/>to<sp/>carry<sp/>out:<sp/>listen<sp/>for<sp/>hints<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">from<sp/>the<sp/>detection<sp/>node,<sp/>and<sp/>interrogate<sp/>the<sp/>Oracle<sp/>about<sp/>them<sp/>to<sp/>retrieve</highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral">the<sp/>hint<sp/>associated<sp/>to<sp/>them.<sp/>Once<sp/>the<sp/>corresponding<sp/>ID<sp/>has<sp/>been<sp/>received,</highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral">the<sp/>node<sp/>sends<sp/>them<sp/>through<sp/>a<sp/>topic<sp/>to<sp/>the<sp/>mission<sp/>manager.<sp/></highlight></codeline>
 <codeline lineno="9"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="10"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>std_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Int32</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>erl2.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ErlOracle</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>exp_assignment3.srv<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Marker,<sp/>MarkerRequest,<sp/>MarkerResponse</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="namespacearuco__decode_1a576f25ea850a86803aff20416ca9ba0f" refkind="member"><highlight class="normal">NODE_NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;aruco_decode&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>ROS<sp/>name<sp/>of<sp/>the<sp/>node</highlight></codeline>
-<codeline lineno="21"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="namespacearuco__decode_1a7bfbabe76d7a4bee05eb9d68ba835c79" refkind="member"><highlight class="normal">topic_system<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/oracle_hint&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>topic<sp/>through<sp/>which<sp/>transmit<sp/>the<sp/>meaning<sp/>of<sp/>the<sp/>ID</highlight></codeline>
-<codeline lineno="28"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30" refid="namespacearuco__decode_1a25fde62a573b7e55dcb42fcd7959f8af" refkind="member"><highlight class="normal">pub_system<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(publisher<sp/>handle)<sp/></highlight></codeline>
-<codeline lineno="32"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral">Important<sp/>to<sp/>say<sp/>that<sp/>the<sp/>node<sp/>*replaces<sp/>the<sp/>Oracle<sp/>of<sp/>the<sp/>second<sp/>project*:</highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral">this<sp/>node<sp/>has<sp/>beed<sp/>designed<sp/>in<sp/>order<sp/>to<sp/>apply<sp/>as<sp/>less<sp/>changes<sp/>as<sp/>possible<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="stringliteral">to<sp/>the<sp/>code<sp/>of<sp/>the<sp/>previous<sp/>project.<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="14"><highlight class="stringliteral">The<sp/>node<sp/>als<sp/>implements<sp/>streategies<sp/>to<sp/>retry<sp/>the<sp/>reqest<sp/>to<sp/>the<sp/>Oracle<sp/>in<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="stringliteral">case<sp/>of<sp/>service<sp/>failure.<sp/>This<sp/>requires<sp/>because<sp/>the<sp/>detection<sp/>phase<sp/>sends</highlight></codeline>
+<codeline lineno="16"><highlight class="stringliteral">each<sp/>detected<sp/>ID<sp/>only<sp/>one<sp/>time.<sp/>When<sp/>a<sp/>ID<sp/>has<sp/>been<sp/>sent,<sp/>the<sp/>node<sp/>doesn&apos;t<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="stringliteral">send<sp/>again<sp/>it,<sp/>hence<sp/>each<sp/>failure<sp/>has<sp/>to<sp/>be<sp/>handles<sp/>with<sp/>attention.<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="19"><highlight class="stringliteral">Author</highlight></codeline>
+<codeline lineno="20"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Francesco<sp/>Ganci</highlight></codeline>
+<codeline lineno="21"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="22"><highlight class="stringliteral">Version</highlight></codeline>
+<codeline lineno="23"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>1.0.0</highlight></codeline>
+<codeline lineno="24"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="25"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>os</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>std_msgs.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Int32</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>erl2.msg<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>ErlOracle</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/>exp_assignment3.srv<sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Marker,<sp/>MarkerRequest,<sp/>MarkerResponse</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="namespacearuco__decode_1af92f191974c5b77f0614629bd133ff5f" refkind="member"><highlight class="normal">service_oracle<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/original_oracle_hint&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>channel<sp/>for<sp/>interrogat<sp/>the<sp/>Oracle<sp/>about<sp/>the<sp/>meaning<sp/>of<sp/>the<sp/>detected<sp/>ID</highlight></codeline>
-<codeline lineno="39"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="namespacearuco__decode_1a576f25ea850a86803aff20416ca9ba0f" refkind="member"><highlight class="normal">NODE_NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;aruco_decode&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>ROS<sp/>name<sp/>of<sp/>the<sp/>node</highlight></codeline>
+<codeline lineno="36"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" refkind="member"><highlight class="normal">cl_oracle<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(client<sp/>handle)</highlight></codeline>
+<codeline lineno="41" refid="namespacearuco__decode_1a7bfbabe76d7a4bee05eb9d68ba835c79" refkind="member"><highlight class="normal">topic_system<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/oracle_hint&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>topic<sp/>through<sp/>which<sp/>transmit<sp/>the<sp/>meaning<sp/>of<sp/>the<sp/>ID</highlight></codeline>
 <codeline lineno="43"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="namespacearuco__decode_1afb13921883ff7e751ca7d12ba3090c30" refkind="member"><highlight class="normal">topic_aruco_detection<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/aruco_detected_ids&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>topic<sp/>from<sp/>which<sp/>the<sp/>node<sp/>received<sp/>the<sp/>IDs<sp/>from<sp/>the<sp/>aruco<sp/>detection<sp/>unit</highlight></codeline>
-<codeline lineno="50"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="namespacearuco__decode_1a25fde62a573b7e55dcb42fcd7959f8af" refkind="member"><highlight class="normal">pub_system<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(publisher<sp/>handle)<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="namespacearuco__decode_1a9d3050cc6725de3e43dc7340bd2c09b2" refkind="member"><highlight class="normal">sub_aruco_detection<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(subscription<sp/>handle)<sp/>receive<sp/>the<sp/>IDs<sp/>from<sp/>ArUco<sp/>detection</highlight></codeline>
+<codeline lineno="52" refid="namespacearuco__decode_1af92f191974c5b77f0614629bd133ff5f" refkind="member"><highlight class="normal">service_oracle<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/original_oracle_hint&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>channel<sp/>for<sp/>interrogat<sp/>the<sp/>Oracle<sp/>about<sp/>the<sp/>meaning<sp/>of<sp/>the<sp/>detected<sp/>ID</highlight></codeline>
 <codeline lineno="54"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" kindref="member">cbk_aruco_detection</ref>(<sp/>idpack<sp/>):</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>read<sp/>a<sp/>ArUco<sp/>ID<sp/>from<sp/>the<sp/>detection<sp/>unti,<sp/>find<sp/>its<sp/>meaning,<sp/>and</highlight></codeline>
-<codeline lineno="58"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>retransmit<sp/>the<sp/>associated<sp/>hint<sp/>to<sp/>the<sp/>system.</highlight></codeline>
-<codeline lineno="59"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="60"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Parameters:</highlight></codeline>
-<codeline lineno="61"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idpack<sp/>(std_msgs/Int32):</highlight></codeline>
-<codeline lineno="62"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>ID<sp/>from<sp/>the<sp/>detection<sp/>unit,<sp/>see<sp/>idpack.data</highlight></codeline>
-<codeline lineno="63"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>pub_system</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>cl_oracle</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>received<sp/>ID={idpack.data}&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>ask<sp/>the<sp/>meaning<sp/>to<sp/>the<sp/>Oracle</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>ask<sp/>=<sp/>MarkerRequest(<sp/>)</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>ask.markerId<sp/>=<sp/>idpack.data<sp/>%<sp/>30</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>oracle_res<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oracle_res<sp/>=<sp/><ref refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" kindref="member">cl_oracle</ref>(<sp/>ask<sp/>)</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>oracle<sp/>says<sp/>(ID={oracle_res.oracle_hint.ID},<sp/>key={oracle_res.oracle_hint.key},<sp/>value={oracle_res.oracle_hint.value})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_system.publish(<sp/>oracle_res.oracle_hint<sp/>)</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>rospy.ServiceException:</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ERROR:<sp/>unable<sp/>to<sp/>contact<sp/>the<sp/>Oracle&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resend_queue.add(<sp/>ask<sp/>)</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="namespacearuco__decode_1a7a34a7e2fa621e06563b2a3b0bd0b7ed" refkind="member"><highlight class="normal">resend_queue<sp/>=<sp/>[]</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>message<sp/>the<sp/>decoder<sp/>was<sp/>not<sp/>able<sp/>to<sp/>send<sp/>to<sp/>the<sp/>oracle<sp/>are<sp/>stored<sp/>here</highlight></codeline>
-<codeline lineno="87"><highlight class="stringliteral">waiting<sp/>for<sp/>a<sp/>&quot;second<sp/>chance&quot;.</highlight></codeline>
-<codeline lineno="88"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" kindref="member">resend</ref>(<sp/>):</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>try<sp/>again<sp/>to<sp/>send<sp/>a<sp/>message<sp/>to<sp/>the<sp/>oracle</highlight></codeline>
-<codeline lineno="92"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>resend_queue</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>cl_oracle</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>pub_system</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(resend_queue)<sp/>==<sp/>0:</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>i<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>range(0,<sp/>len(resend_queue)):</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>sending<sp/>again<sp/>(no.{i+1}<sp/>out<sp/>of<sp/>{len(resend_queue)})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oracle_res<sp/>=<sp/><ref refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" kindref="member">cl_oracle</ref>(<sp/>resend_queue[0]<sp/>)</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>oracle<sp/>says<sp/>(ID={oracle_res.oracle_hint.ID},<sp/>key={oracle_res.oracle_hint.key},<sp/>value={oracle_res.oracle_hint.value})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_system.publish(<sp/>oracle_res.oracle_hint<sp/>)</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resend_queue.pop(<sp/>0<sp/>)</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>rospy.ServiceException:</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ERROR:<sp/>unable<sp/>to<sp/>contact<sp/>the<sp/>Oracle&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" kindref="member">resend_check</ref>(<sp/>):</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>used<sp/>by<sp/>the<sp/>main<sp/>thread<sp/>for<sp/>checking<sp/>if<sp/>there<sp/>are<sp/>pending<sp/>messages</highlight></codeline>
-<codeline lineno="118"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>to<sp/>try<sp/>to<sp/>send<sp/>again<sp/>and<sp/>decode</highlight></codeline>
-<codeline lineno="119"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>=<sp/>rospy.Rate(<sp/>0.5<sp/>)</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.is_shutdown(<sp/>):</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r.sleep(<sp/>)</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" kindref="member">resend</ref>(<sp/>)</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" refkind="member"><highlight class="normal">cl_oracle<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(client<sp/>handle)</highlight></codeline>
+<codeline lineno="58"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="namespacearuco__decode_1afb13921883ff7e751ca7d12ba3090c30" refkind="member"><highlight class="normal">topic_aruco_detection<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/aruco_detected_ids&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>topic<sp/>from<sp/>which<sp/>the<sp/>node<sp/>received<sp/>the<sp/>IDs<sp/>from<sp/>the<sp/>aruco<sp/>detection<sp/>unit</highlight></codeline>
+<codeline lineno="65"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="namespacearuco__decode_1a9d3050cc6725de3e43dc7340bd2c09b2" refkind="member"><highlight class="normal">sub_aruco_detection<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>(subscription<sp/>handle)<sp/>receive<sp/>the<sp/>IDs<sp/>from<sp/>ArUco<sp/>detection</highlight></codeline>
+<codeline lineno="69"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a343b87e8146fd77d0f78ae26cfde004f" kindref="member">cbk_aruco_detection</ref>(<sp/>idpack<sp/>):</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>read<sp/>a<sp/>ArUco<sp/>ID<sp/>from<sp/>the<sp/>detection<sp/>unti,<sp/>find<sp/>its<sp/>meaning,<sp/>and</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>retransmit<sp/>the<sp/>associated<sp/>hint<sp/>to<sp/>the<sp/>system.</highlight></codeline>
+<codeline lineno="74"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>Parameters:</highlight></codeline>
+<codeline lineno="76"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idpack<sp/>(std_msgs/Int32):</highlight></codeline>
+<codeline lineno="77"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>ID<sp/>from<sp/>the<sp/>detection<sp/>unit,<sp/>see<sp/>idpack.data</highlight></codeline>
+<codeline lineno="78"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>pub_system</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>cl_oracle</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>received<sp/>ID={idpack.data}&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>ask<sp/>the<sp/>meaning<sp/>to<sp/>the<sp/>Oracle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>ask<sp/>=<sp/>MarkerRequest(<sp/>)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>ask.markerId<sp/>=<sp/>idpack.data<sp/>%<sp/>30</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>oracle_res<sp/>=<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oracle_res<sp/>=<sp/><ref refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" kindref="member">cl_oracle</ref>(<sp/>ask<sp/>)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>oracle<sp/>says<sp/>(ID={oracle_res.oracle_hint.ID},<sp/>key={oracle_res.oracle_hint.key},<sp/>value={oracle_res.oracle_hint.value})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_system.publish(<sp/>oracle_res.oracle_hint<sp/>)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>rospy.ServiceException:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ERROR:<sp/>unable<sp/>to<sp/>contact<sp/>the<sp/>Oracle&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resend_queue.add(<sp/>ask<sp/>)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="namespacearuco__decode_1a7a34a7e2fa621e06563b2a3b0bd0b7ed" refkind="member"><highlight class="normal">resend_queue<sp/>=<sp/>[]</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>the<sp/>message<sp/>the<sp/>decoder<sp/>was<sp/>not<sp/>able<sp/>to<sp/>send<sp/>to<sp/>the<sp/>oracle<sp/>are<sp/>stored<sp/>here</highlight></codeline>
+<codeline lineno="102"><highlight class="stringliteral">waiting<sp/>for<sp/>a<sp/>&quot;second<sp/>chance&quot;.</highlight></codeline>
+<codeline lineno="103"><highlight class="stringliteral">&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" kindref="member">resend</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>try<sp/>again<sp/>to<sp/>send<sp/>a<sp/>message<sp/>to<sp/>the<sp/>oracle</highlight></codeline>
+<codeline lineno="107"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>resend_queue</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>cl_oracle</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">global</highlight><highlight class="normal"><sp/>pub_system</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>len(resend_queue)<sp/>==<sp/>0:</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>i<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>range(0,<sp/>len(resend_queue)):</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>sending<sp/>again<sp/>(no.{i+1}<sp/>out<sp/>of<sp/>{len(resend_queue)})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oracle_res<sp/>=<sp/><ref refid="namespacearuco__decode_1af7db1d9b788df4afc7b6dbc93828b04b" kindref="member">cl_oracle</ref>(<sp/>resend_queue[0]<sp/>)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>oracle<sp/>says<sp/>(ID={oracle_res.oracle_hint.ID},<sp/>key={oracle_res.oracle_hint.key},<sp/>value={oracle_res.oracle_hint.value})&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pub_system.publish(<sp/>oracle_res.oracle_hint<sp/>)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resend_queue.pop(<sp/>0<sp/>)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">except</highlight><highlight class="normal"><sp/>rospy.ServiceException:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ERROR:<sp/>unable<sp/>to<sp/>contact<sp/>the<sp/>Oracle&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129" refid="namespacearuco__decode_1a2a7c153aac9f48cf951c24df63c3275d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a2a7c153aac9f48cf951c24df63c3275d" kindref="member">on_shut</ref>(<sp/>):</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>simple<sp/>message<sp/>saying<sp/>that<sp/>the<sp/>node<sp/>is<sp/>going<sp/>to<sp/>close</highlight></codeline>
-<codeline lineno="131"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>closing...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;__main__&quot;</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.init_node(<sp/>NODE_NAME<sp/>)</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.on_shutdown(<sp/>on_shut<sp/>)</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>rospy.loginfo(<sp/>f&quot;({NODE_NAME}<sp/>)&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>starting<sp/>...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>2<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>subscription<sp/>{topic_aruco_detection})<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>sub_aruco_detection<sp/>=<sp/>rospy.Subscriber(<sp/>topic_aruco_detection,<sp/>Int32,<sp/>cbk_aruco_detection<sp/>)</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>1<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>subscription<sp/>{topic_aruco_detection})<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>publisher<sp/>{topic_system})<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>pub_system<sp/>=<sp/>rospy.Publisher(<sp/>topic_system,<sp/>ErlOracle,<sp/>queue_size=1000<sp/>)</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>1<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>publisher<sp/>{topic_system})<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>client<sp/>{service_oracle})<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>cl_oracle<sp/>=<sp/>rospy.ServiceProxy(<sp/>service_oracle,<sp/>Marker<sp/>)</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>1<sp/>)<sp/>)</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cl_oracle<sp/>==<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ERROR:<sp/>cl_oracle==None<sp/>--<sp/>closing<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>os.exit(<sp/>)</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>client<sp/>{service_oracle})<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>2<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" kindref="member">resend_check</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>used<sp/>by<sp/>the<sp/>main<sp/>thread<sp/>for<sp/>checking<sp/>if<sp/>there<sp/>are<sp/>pending<sp/>messages</highlight></codeline>
+<codeline lineno="133"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>to<sp/>try<sp/>to<sp/>send<sp/>again<sp/>and<sp/>decode</highlight></codeline>
+<codeline lineno="134"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>=<sp/>rospy.Rate(<sp/>0.5<sp/>)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>rospy.is_shutdown(<sp/>):</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r.sleep(<sp/>)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacearuco__decode_1a35a4e8b6f939fe7438d121cb937f985d" kindref="member">resend</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="namespacearuco__decode_1a2a7c153aac9f48cf951c24df63c3275d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearuco__decode_1a2a7c153aac9f48cf951c24df63c3275d" kindref="member">on_shut</ref>(<sp/>):</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&apos;&apos;&apos;<sp/>simple<sp/>message<sp/>saying<sp/>that<sp/>the<sp/>node<sp/>is<sp/>going<sp/>to<sp/>close</highlight></codeline>
+<codeline lineno="146"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&apos;&apos;&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;(move_base_nav<sp/>)<sp/>closing...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;__main__&quot;</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.init_node(<sp/>NODE_NAME<sp/>)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.on_shutdown(<sp/>on_shut<sp/>)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">#<sp/>rospy.loginfo(<sp/>f&quot;({NODE_NAME}<sp/>)&quot;<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>starting<sp/>...&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>2<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>subscription<sp/>{topic_aruco_detection})<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>sub_aruco_detection<sp/>=<sp/>rospy.Subscriber(<sp/>topic_aruco_detection,<sp/>Int32,<sp/>cbk_aruco_detection<sp/>)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>1<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>subscription<sp/>{topic_aruco_detection})<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ready&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" kindref="member">resend_check</ref>(<sp/>)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>publisher<sp/>{topic_system})<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>pub_system<sp/>=<sp/>rospy.Publisher(<sp/>topic_system,<sp/>ErlOracle,<sp/>queue_size=1000<sp/>)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>1<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>publisher<sp/>{topic_system})<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>client<sp/>{service_oracle})<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>cl_oracle<sp/>=<sp/>rospy.ServiceProxy(<sp/>service_oracle,<sp/>Marker<sp/>)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>1<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>cl_oracle<sp/>==<sp/></highlight><highlight class="keywordtype">None</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ERROR:<sp/>cl_oracle==None<sp/>--<sp/>closing<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>os.exit(<sp/>)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>client<sp/>{service_oracle})<sp/>...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.sleep(<sp/>rospy.Duration(<sp/>2<sp/>)<sp/>)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>rospy.loginfo(<sp/>f</highlight><highlight class="stringliteral">&quot;({NODE_NAME}<sp/>)<sp/>ready&quot;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacearuco__decode_1a5a3002eca5a8475db572c3c6d429c242" kindref="member">resend_check</ref>(<sp/>)</highlight></codeline>
     </programlisting>
     <location file="robocluedo_vision/scripts/aruco_decode.py"/>
   </compounddef>

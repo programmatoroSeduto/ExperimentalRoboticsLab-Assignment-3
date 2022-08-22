@@ -117,7 +117,7 @@
       <memberdef kind="define" id="kb__interface_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" prot="public" static="no">
         <name>TLOG</name>
         <param><defname>msg</defname></param>
-        <initializer><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg )</initializer>
+        <initializer>ROS_INFO_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg )</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -175,7 +175,7 @@
       <memberdef kind="define" id="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" prot="public" static="no">
         <name>WTLOG</name>
         <param><defname>msg</defname></param>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { <ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
+        <initializer>{ if( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_INFO_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -187,7 +187,7 @@
       <memberdef kind="define" id="kb__interface_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" prot="public" static="no">
         <name>WTWARN</name>
         <param><defname>msg</defname></param>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
+        <initializer>{ if( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -199,7 +199,7 @@
       <memberdef kind="define" id="kb__interface_8cpp_1ab54fe75f2d341266c97d92509779e2f7" prot="public" static="no">
         <name>WTERR</name>
         <param><defname>msg</defname></param>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
+        <initializer>{ if( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -221,7 +221,7 @@
       </memberdef>
       <memberdef kind="define" id="kb__interface_8cpp_1a8a9bdfb2d1bf4dd388f35c1bfa853892" prot="public" static="no">
         <name>WAITKEY</name>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="mission__manager_8cpp_1a78d2d73e2e7d4f0d40720190efa53f77" kindref="member">WAITKEY_ENABLED</ref> ) { std::cout &lt;&lt; &quot;press ENTER <ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref> continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } }</initializer>
+        <initializer>{ if( <ref refid="mission__manager_8cpp_1a78d2d73e2e7d4f0d40720190efa53f77" kindref="member">WAITKEY_ENABLED</ref> ) { std::cout &lt;&lt; &quot;press ENTER to continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -357,10 +357,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_rosplan/src/kb_interface.cpp" line="309" column="5" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="309" bodyend="334"/>
-        <references refid="main-launch-file_8md_8txt_1acb5acd5cc43c0b557a25f3a47407448b" compoundref="main-launch-file_8md_8txt" startline="38">init</references>
         <references refid="kb__interface_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" compoundref="kb__interface_8cpp" startline="2">NODE_NAME</references>
         <references refid="kb__interface_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="kb__interface_8cpp" startline="302" endline="306">shut_msg</references>
-        <references refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" compoundref="examples__tools_8md_8txt" startline="35">nh</references>
         <references refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" compoundref="kb__interface_8cpp" startline="23">WTLOG</references>
         <references refid="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" compoundref="kb__interface_8cpp" startline="14">LOGSQUARE</references>
         <references refid="kb__interface_8cpp_1a70e8f2a0877a3bce00060e809cc9c598" compoundref="kb__interface_8cpp" startline="39">SERVICE_REPLAN</references>
@@ -369,7 +367,6 @@
         <references refid="kb__interface_8cpp_1afb9ddc61b30142ae234ee958e6d2e7de" compoundref="kb__interface_8cpp" startline="42">SERVICE_UPDATE_GOAL</references>
         <references refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" compoundref="kb__interface_8cpp" startline="203" endline="284">kb_interface::cbk_update_goal</references>
         <references refid="kb__interface_8cpp_1adc4cb6e10ff53f2bf24bed463cd076ab" compoundref="kb__interface_8cpp" startline="43">srv_update_goal</references>
-        <references refid="moveit-snippets_8md_8txt_1a94746a96dcd774d592c90c07aec27a7d" compoundref="moveit-snippets_8md_8txt" startline="125" endline="144">spin</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -514,7 +511,7 @@
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="149" refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" kindref="member">cbk_replan</ref>(<sp/>std_srvs::Empty::Request&amp;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>,<sp/>std_srvs::Empty::Response&amp;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref><sp/>)</highlight></codeline>
+<codeline lineno="149" refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" kindref="member">cbk_replan</ref>(<sp/>std_srvs::Empty::Request&amp;<sp/>req,<sp/>std_srvs::Empty::Response&amp;<sp/>res<sp/>)</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reset<sp/>the<sp/>init<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref>&amp;<sp/>p<sp/>:<sp/>init_pred)</highlight></codeline>
@@ -567,14 +564,14 @@
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="203" refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" kindref="member">cbk_update_goal</ref>(<sp/>robocluedo_rosplan_msgs::UpdateGoal::Request&amp;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>,<sp/>robocluedo_rosplan_msgs::UpdateGoal::Response&amp;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref><sp/>)</highlight></codeline>
+<codeline lineno="203" refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" kindref="member">cbk_update_goal</ref>(<sp/>robocluedo_rosplan_msgs::UpdateGoal::Request&amp;<sp/>req,<sp/>robocluedo_rosplan_msgs::UpdateGoal::Response&amp;<sp/>res<sp/>)</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>the<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref>&amp;<sp/>p<sp/>:<sp/>goal_pred)</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" kindref="member">set_goal</ref>(<sp/>p.name,<sp/>p.params,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>depending<sp/>on<sp/>the<sp/>selected<sp/>goal...</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(<ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.landmark)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(req.landmark)</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="kb__interface_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8" kindref="member">LANDMARK_REPLAN</ref><sp/>:</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
@@ -585,8 +582,8 @@
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>not<sp/>dirty<sp/>as<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" kindref="member">set_goal</ref>(<sp/></highlight><highlight class="stringliteral">&quot;not-dirty&quot;</highlight><highlight class="normal">,<sp/>{},<sp/>true<sp/>);</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.applicable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.applicable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="kb__interface_8cpp_1a24358e49160550a847f87e20cbae2755" kindref="member">LANDMARK_COLLECT</ref><sp/>:</highlight></codeline>
@@ -604,8 +601,8 @@
 <codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!at)</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>there&apos;s<sp/>still<sp/>a<sp/>hint<sp/>there</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1a35a3b028ab44bd5cebbd489e60f27478" kindref="member">hint</ref><sp/>=<sp/>this-&gt;<ref refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" kindref="member">get_predicate</ref>(<sp/></highlight><highlight class="stringliteral">&quot;not-hint-collected&quot;</highlight><highlight class="normal">,<sp/>m<sp/>);</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="erl3-oracle-user-manual_8md_8txt_1a35a3b028ab44bd5cebbd489e60f27478" kindref="member">hint</ref>)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hint<sp/>=<sp/>this-&gt;<ref refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" kindref="member">get_predicate</ref>(<sp/></highlight><highlight class="stringliteral">&quot;not-hint-collected&quot;</highlight><highlight class="normal">,<sp/>m<sp/>);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(hint)</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>you<sp/>can<sp/>go<sp/>there!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wp_target<sp/>=<sp/>wp;</highlight></codeline>
@@ -625,8 +622,8 @@
 <codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>action<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.applicable<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.applicable<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -644,8 +641,8 @@
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.applicable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.applicable<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -672,27 +669,27 @@
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
 <codeline lineno="309" refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[]<sp/>)</highlight></codeline>
 <codeline lineno="310"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main-launch-file_8md_8txt_1acb5acd5cc43c0b557a25f3a47407448b" kindref="member">ros::init</ref>(<sp/>argc,<sp/>argv,<sp/><ref refid="kb__interface_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/><ref refid="kb__interface_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(<sp/>SIGINT,<sp/><ref refid="kb__interface_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref><sp/>);</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::NodeHandle<sp/>nh;</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;starting<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classkb__interface" kindref="compound">kb_interface</ref><sp/>kbi;</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="kb__interface_8cpp_1a70e8f2a0877a3bce00060e809cc9c598" kindref="member">SERVICE_REPLAN</ref><sp/><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>tsrv_replan<sp/>=<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>.advertiseService(<sp/><ref refid="kb__interface_8cpp_1a70e8f2a0877a3bce00060e809cc9c598" kindref="member">SERVICE_REPLAN</ref>,<sp/>&amp;<ref refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" kindref="member">kb_interface::cbk_replan</ref>,<sp/>&amp;kbi<sp/>);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>tsrv_replan<sp/>=<sp/>nh.advertiseService(<sp/><ref refid="kb__interface_8cpp_1a70e8f2a0877a3bce00060e809cc9c598" kindref="member">SERVICE_REPLAN</ref>,<sp/>&amp;<ref refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" kindref="member">kb_interface::cbk_replan</ref>,<sp/>&amp;kbi<sp/>);</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1aeb74a807105c4586e22380a700abdebc" kindref="member">srv_replan</ref><sp/>=<sp/>&amp;tsrv_replan;</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="kb__interface_8cpp_1a70e8f2a0877a3bce00060e809cc9c598" kindref="member">SERVICE_REPLAN</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="kb__interface_8cpp_1afb9ddc61b30142ae234ee958e6d2e7de" kindref="member">SERVICE_UPDATE_GOAL</ref><sp/><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>tsrv_update_goal<sp/>=<sp/><ref refid="examples__tools_8md_8txt_1a8c8f15207982b3e185f86e1b4968e70d" kindref="member">nh</ref>.advertiseService(<sp/><ref refid="kb__interface_8cpp_1afb9ddc61b30142ae234ee958e6d2e7de" kindref="member">SERVICE_UPDATE_GOAL</ref>,<sp/>&amp;<ref refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" kindref="member">kb_interface::cbk_update_goal</ref>,<sp/>&amp;kbi<sp/>);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::ServiceServer<sp/>tsrv_update_goal<sp/>=<sp/>nh.advertiseService(<sp/><ref refid="kb__interface_8cpp_1afb9ddc61b30142ae234ee958e6d2e7de" kindref="member">SERVICE_UPDATE_GOAL</ref>,<sp/>&amp;<ref refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" kindref="member">kb_interface::cbk_update_goal</ref>,<sp/>&amp;kbi<sp/>);</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1adc4cb6e10ff53f2bf24bed463cd076ab" kindref="member">srv_update_goal</ref><sp/>=<sp/>&amp;tsrv_update_goal;</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;Advertising<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="kb__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0" kindref="member">LOGSQUARE</ref>(<sp/><ref refid="kb__interface_8cpp_1afb9ddc61b30142ae234ee958e6d2e7de" kindref="member">SERVICE_UPDATE_GOAL</ref><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;...<sp/>OK&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kb__interface_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="moveit-snippets_8md_8txt_1a94746a96dcd774d592c90c07aec27a7d" kindref="member">ros::spin</ref>(<sp/>);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::spin(<sp/>);</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="334"><highlight class="normal">}</highlight></codeline>

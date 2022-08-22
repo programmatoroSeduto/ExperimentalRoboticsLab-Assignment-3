@@ -77,6 +77,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../_docs/cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/dev-log.html">LOG – development log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/python-doc-official.html">Python Google Docstring – an official example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/run-the-project.html">HOW TO Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -113,12 +114,27 @@
   <h1>Source code for aruco_decode</h1><div class="highlight"><pre>
 <span></span><span class="ch">#! /usr/bin/env python</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">&#39;&#39;&#39;Find the hint associates to a received aruco id</span>
 
-<span class="sd">@brief find the hint associates to a received aruco id</span>
+<span class="sd">This node has a simple, fundamental, task to carry out: listen for hints </span>
+<span class="sd">from the detection node, and interrogate the Oracle about them to retrieve</span>
+<span class="sd">the hint associated to them. Once the corresponding ID has been received,</span>
+<span class="sd">the node sends them through a topic to the mission manager. </span>
 
-<span class="sd">@authors Francesco Ganci</span>
-<span class="sd">@version 1.0.0</span>
+<span class="sd">Important to say that the node *replaces the Oracle of the second project*:</span>
+<span class="sd">this node has beed designed in order to apply as less changes as possible </span>
+<span class="sd">to the code of the previous project. </span>
+
+<span class="sd">The node als implements streategies to retry the reqest to the Oracle in </span>
+<span class="sd">case of service failure. This requires because the detection phase sends</span>
+<span class="sd">each detected ID only one time. When a ID has been sent, the node doesn&#39;t </span>
+<span class="sd">send again it, hence each failure has to be handles with attention. </span>
+
+<span class="sd">Author</span>
+<span class="sd">	Francesco Ganci</span>
+
+<span class="sd">Version</span>
+<span class="sd">	1.0.0</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 
