@@ -1,5 +1,5 @@
 
-CODE REFERENCE -- node manipulation_unit
+NODE manipulation_unit
 ================================================
 
 .. doxygenfile:: manipulation_unit.cpp

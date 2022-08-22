@@ -1305,6 +1305,28 @@ direi che adesso possiamo iniziare a fare il lavoro che mi sto segnando tra ieri
 - (mi sono totalmente dimenticato dei launch files in giro per il progetto)
 - launch files:
 	- movement controller
+- **COMMIT**: "code documentation (...endless...)"
+
+---
+
+avanti con la documentazione dei packages:
+
+- launch files:
+	- movement controller (pronto)
+	- vision
+	- rosplan
+	- armor ... *già fatto?* sono efficientissimo
+- (e stop, il mission manager l'ho documentato stamattina, quindi tutto ok)
+- e riprendiamo con la documentazione del codice (ormai ne manca poco, per fortuna)
+	- minimo lavoro di revisione, giusto per capire se è tutto a posto...
+- ancora documentazione del codice (ultimo round) **mission manager**
+	- navigation unit
+	- manipulation unit
+	- mission manager
+- ancora un giro nella documentazione per capire se c'è altro che posso fare (dovrei aver terminato il lavoro sul codice)
+- UML generale del progetto (stavolta molto semplice ... inutile stressare troppo plantUML: rimane comunque uno strumento abbastanza limitato, per quanto utile)
+- anche all'ultimissimo test è sopravvissuto
+- **COMMIT**: "documentation (ready for the README)"
 
 
 

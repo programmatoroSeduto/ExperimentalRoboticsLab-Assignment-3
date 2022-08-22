@@ -8,153 +8,47 @@
     </detaileddescription>
     <programlisting>
 <codeline></codeline>
-<codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>components<sp/>schema<sp/>of<sp/>the<sp/>project</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>Overall<sp/>Architecture</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">##<sp/>pkg<sp/>--<sp/>robocluedo_rosplan</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
-<codeline><highlight class="normal">@startuml</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DIAGRAM<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>&quot;robocluedo<sp/>rosplan&quot;</highlight></codeline>
-<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DIAGRAM<sp/>ELEMENTS</highlight></codeline>
-<codeline><highlight class="normal">package<sp/>&quot;robocluedo<sp/>rosplan&quot;<sp/>{</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">file<sp/>&quot;pddl\ndomain&quot;<sp/>as<sp/>PDDL_DOM</highlight></codeline>
-<codeline><highlight class="normal">file<sp/>&quot;pddl\nproblem&quot;<sp/>as<sp/>PDDL_PROB</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">package<sp/>&quot;ROSplan&quot;<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>database<sp/>&quot;knowledge<sp/>base&quot;<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>KB</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[problem<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PROBLEM</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[planning<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PLAN</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[parsing<sp/>interface]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>PARSE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[plan<sp/>dispatcher]<sp/>&lt;&lt;ROSPlan&gt;&gt;<sp/>as<sp/>DISPATCH</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right-&gt;<sp/>PROBLEM</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PROBLEM<sp/>-down-&gt;<sp/>PLAN</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PLAN<sp/>-down-&gt;<sp/>PARSE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-right-<sp/>PARSE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PARSE<sp/>-down-&gt;<sp/>DISPATCH</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>KB<sp/>-left-<sp/>DISPATCH</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">package<sp/>&quot;actions<sp/>dispatch&quot;<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[action]<sp/>as<sp/>ACTION</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">[feedback\nmanager]<sp/>as<sp/>FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">[ROSPlan\npipeline<sp/>manager]<sp/>&lt;&lt;node&gt;&gt;<sp/>as<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">[KB<sp/>interface]<sp/>&lt;&lt;node&gt;&gt;<sp/>as<sp/>IKB</highlight></codeline>
-<codeline><highlight class="normal">ACTION<sp/>--&gt;<sp/>IKB</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">DISPATCH<sp/>-right-&gt;<sp/>ACTION</highlight></codeline>
-<codeline><highlight class="normal">PDDL_DOM<sp/>--&gt;<sp/>KB</highlight></codeline>
-<codeline><highlight class="normal">PDDL_PROB<sp/>--&gt;<sp/>KB</highlight></codeline>
-<codeline><highlight class="normal">IKB<sp/>&lt;--&gt;<sp/>KB</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">ACTION<sp/>--&gt;<sp/>FEEDBACK</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">PROBLEM<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">PLAN<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">PARSE<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">DISPATCH<sp/>-right-&gt;<sp/>MANAGER</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;feedback<sp/>topic&quot;<sp/>as<sp/>TOPIC_FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>TOPIC_FEEDBACK</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;service<sp/>pipeline<sp/>manager&quot;<sp/>as<sp/>SRV_MANAGER</highlight></codeline>
-<codeline><highlight class="normal">MANAGER<sp/>--&gt;<sp/>SRV_MANAGER</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;KB<sp/>interface<sp/>service&quot;<sp/>as<sp/>SRV_IKB</highlight></codeline>
-<codeline><highlight class="normal">IKB<sp/>--&gt;<sp/>SRV_IKB</highlight></codeline>
-<codeline><highlight class="normal">@enduml</highlight></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">##<sp/>pkg<sp/>--<sp/>robocluedo_movement_controller</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
+<codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>robocluedo<sp/>movement<sp/>controller</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture</highlight></codeline>
 <codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
 <codeline><highlight class="normal">allow_mixing</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
-<codeline><highlight class="normal">package<sp/>&quot;pkg<sp/>movement<sp/>controller&quot;<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">component<sp/>&quot;navigation&quot;<sp/>as<sp/>NAV</highlight></codeline>
-<codeline><highlight class="normal">component<sp/>&quot;manipulation&quot;<sp/>as<sp/>MANIP</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;Navigation<sp/>Stack&quot;<sp/>as<sp/>NAVSTACK</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;ROSPlan&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">node<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>Vision&quot;<sp/>as<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>aRMOR<sp/>interface&quot;<sp/>as<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>ROSPlan&quot;<sp/>as<sp/>RCL_ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>Movement<sp/>Controller&quot;<sp/>as<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>hunter<sp/>environment&quot;<sp/>as<sp/>ENVIRONMENT</highlight></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;nav<sp/>service&quot;<sp/>as<sp/>SRV_NAV</highlight></codeline>
-<codeline><highlight class="normal">NAV<sp/>--&gt;<sp/>SRV_NAV</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;cmd<sp/>vel&quot;<sp/>as<sp/>TOPIC_VEL</highlight></codeline>
-<codeline><highlight class="normal">NAV<sp/>-up-&gt;<sp/>TOPIC_VEL</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;odometry&quot;<sp/>as<sp/>TOPIC_ODOM</highlight></codeline>
-<codeline><highlight class="normal">NAV<sp/>&lt;-up-<sp/>TOPIC_ODOM</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;manip<sp/>service&quot;<sp/>as<sp/>SRV_MANIP</highlight></codeline>
-<codeline><highlight class="normal">MANIP<sp/>--&gt;<sp/>SRV_MANIP</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">MOVEIT<sp/>--&gt;<sp/>MANIP</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">@enduml</highlight></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">##<sp/>pkg<sp/>--<sp/>robocluedo_armor</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
-<codeline><highlight class="normal">@startuml</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>package<sp/>robocluedo_armor</highlight></codeline>
-<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
-<codeline><highlight class="normal">allow_mixing</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
-<codeline><highlight class="normal">package<sp/>&quot;aRMOR&quot;<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>database<sp/>&quot;knowledge<sp/>base&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>A_KB</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>component<sp/>&quot;services&quot;<sp/>&lt;&lt;aRMOR&gt;&gt;<sp/>as<sp/>A_SRV</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A_KB<sp/>-right-<sp/>A_SRV</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">package<sp/>&quot;aRMOR<sp/>tools&quot;<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>&quot;aRMOR<sp/>tools&quot;<sp/>as<sp/>A_TOOLS<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>&quot;aRMOR<sp/>cluedo&quot;<sp/>as<sp/>A_CLUEDO<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A_TOOLS<sp/>-up-|&gt;<sp/>A_CLUEDO</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>component<sp/>&quot;aRMOR<sp/>interface&quot;<sp/>&lt;&lt;ROS<sp/>node&gt;&gt;<sp/>as<sp/>A_NODE</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A_CLUEDO<sp/>-up-|&gt;<sp/>A_NODE</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;add<sp/>hint&quot;<sp/>as<sp/>SRV_ADD</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;mark<sp/>wrong<sp/>hint&quot;<sp/>as<sp/>SRV_DELETE</highlight></codeline>
-<codeline><highlight class="normal">()<sp/>&quot;check<sp/>hints&quot;<sp/>as<sp/>SRV_GET</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
-<codeline><highlight class="normal">A_SRV<sp/>-right-&gt;<sp/>A_TOOLS</highlight></codeline>
-<codeline><highlight class="normal">A_NODE<sp/>--&gt;<sp/>SRV_ADD</highlight></codeline>
-<codeline><highlight class="normal">A_NODE<sp/>--&gt;<sp/>SRV_DELETE</highlight></codeline>
-<codeline><highlight class="normal">A_NODE<sp/>--&gt;<sp/>SRV_GET</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>&lt;--&gt;<sp/>NAVSTACK</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>&lt;--&gt;<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>&lt;--&gt;<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">NAVSTACK<sp/>&lt;--&gt;<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">MOVEIT<sp/>&lt;--&gt;<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">MOVEMENT<sp/>&lt;--&gt;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;--&gt;<sp/>RCL_ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN<sp/>&lt;--&gt;<sp/>RCL_ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;--&gt;<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">ARMOR<sp/>&lt;--&gt;<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;--&gt;<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">VISION<sp/>&lt;--&gt;<sp/>ORACLE</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
-<codeline><highlight class="normal">```</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">##<sp/>pkg<sp/>--<sp/>robocluedo_mission_manager</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">```{uml}<sp/></highlight></codeline>
-<codeline></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
     </programlisting>
     <location file="_uml/arch.md"/>

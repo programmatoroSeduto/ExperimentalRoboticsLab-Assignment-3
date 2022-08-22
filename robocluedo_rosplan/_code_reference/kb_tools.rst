@@ -1,7 +1,7 @@
 
 .. _class-kb-tools:
 
-Class kb_tools
+CLASS kb_tools
 ================================================
 
 .. seealso::

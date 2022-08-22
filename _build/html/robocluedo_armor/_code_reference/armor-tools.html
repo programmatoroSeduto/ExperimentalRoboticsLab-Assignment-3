@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – class aRMOR Tools &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>CLASS armor_tools.cpp &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – node CLuedo aRMOR interface" href="cluedo-armor-interface.html" />
-    <link rel="prev" title="CODE REFERENCE – class aRMOR CLuedo" href="armor-cluedo.html" /> 
+    <link rel="next" title="NODE cluedo_armor_interface.cpp" href="cluedo-armor-interface.html" />
+    <link rel="prev" title="CLASS armor_cluedo.cpp" href="armor-cluedo.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,11 +61,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR Interface design elements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="armor-cluedo.html">CODE REFERENCE – class aRMOR CLuedo</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – class aRMOR Tools</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="armor-cluedo.html">CLASS armor_cluedo.cpp</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CLASS armor_tools.cpp</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cluedo-armor-interface.html">CODE REFERENCE – node CLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluedo-armor-interface.html">NODE cluedo_armor_interface.cpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
@@ -84,9 +84,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
@@ -120,7 +120,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
-      <li>CODE REFERENCE – class aRMOR Tools</li>
+      <li>CLASS armor_tools.cpp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_armor/_code_reference/armor-tools.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -130,11 +130,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-class-armor-tools">
-<h1>CODE REFERENCE – class aRMOR Tools<a class="headerlink" href="#code-reference-class-armor-tools" title="Permalink to this heading"></a></h1>
+  <div class="section" id="class-armor-tools-cpp">
+<h1>CLASS armor_tools.cpp<a class="headerlink" href="#class-armor-tools-cpp" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CODE REFERENCE – class aRMOR Tools</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CLASS armor_tools.cpp</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#class-armor-tools-header">class aRMOR Tools – header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#class-armor-tools-cpp-implementation">class aRMOR Tools – cpp implementation</a></li>
 </ul>
@@ -703,8 +703,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="armor-cluedo.html" class="btn btn-neutral float-left" title="CODE REFERENCE – class aRMOR CLuedo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cluedo-armor-interface.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node CLuedo aRMOR interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="armor-cluedo.html" class="btn btn-neutral float-left" title="CLASS armor_cluedo.cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cluedo-armor-interface.html" class="btn btn-neutral float-right" title="NODE cluedo_armor_interface.cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

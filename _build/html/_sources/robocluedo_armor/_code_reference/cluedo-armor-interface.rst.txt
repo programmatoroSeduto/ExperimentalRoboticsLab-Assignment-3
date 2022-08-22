@@ -1,5 +1,5 @@
 
-CODE REFERENCE -- node CLuedo aRMOR interface
+NODE cluedo_armor_interface.cpp
 ================================================
 
 .. doxygenfile:: cluedo_armor_interface.cpp

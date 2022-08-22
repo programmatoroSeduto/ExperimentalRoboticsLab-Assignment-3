@@ -1,5 +1,5 @@
 
-CODE REFERENCE -- class aRMOR Tools
+CLASS armor_tools.cpp
 ==========================================
 
 .. toctree::

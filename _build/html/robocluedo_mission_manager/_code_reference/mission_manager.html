@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node mission_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE mission_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – node navigation_unit" href="nagivation_unit.html" />
-    <link rel="prev" title="CODE REFERENCE – node manipulation_unit" href="manipulation_unit.html" /> 
+    <link rel="next" title="NODE navigation_unit" href="nagivation_unit.html" />
+    <link rel="prev" title="NODE manipulation_unit" href="manipulation_unit.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,18 +65,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_mission_manager</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../_docs/main-launch-file.html">HOW TO – the main launch file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manipulation_unit.html">CODE REFERENCE – node manipulation_unit</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node mission_manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nagivation_unit.html">CODE REFERENCE – node navigation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulation_unit.html">NODE manipulation_unit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE mission_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nagivation_unit.html">NODE navigation_unit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
@@ -110,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_mission_manager</a> &raquo;</li>
-      <li>CODE REFERENCE – node mission_manager</li>
+      <li>NODE mission_manager</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_mission_manager/_code_reference/mission_manager.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -120,16 +120,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-mission-manager">
-<h1>CODE REFERENCE – node mission_manager<a class="headerlink" href="#code-reference-node-mission-manager" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-mission-manager">
+<h1>NODE mission_manager<a class="headerlink" href="#node-mission-manager" title="Permalink to this heading"></a></h1>
 <p>the main node of the architecture, launched at last, and combining the ROSPlan flow with the aRMOR ontology. </p>
+<p>During the coding phase, the objective was to not modify this node since the version v1.0.0 … and we did it! With a very little adding.</p>
+<p>The node implements the high-level mission control of the robot, whereas the ROSPlan framework is used to get the precise plan referred to the high-level actions required by the mission manager. The mission manager has the main role to combine ROSPlan and the aRMOR ontology, as the navigation unit does, for instance. It is, technically speaking, a state machine, mixing the landmarks of the ROSPlan side with updates and queries with aRMOR.</p>
+<p>An advantage of such approach is to hide the details of the problem: for instance, thinking in terms of landmarks instead of entire plan makes the system updatable in a simple way, because changing the PDDL doesn’t affect the high-level solution. The only condition is that, at least at a high level of abstraction, the way to accomplish the objective can be described “with the same terms”. For instance, the second part of the project used the manipulation action to collect the hints, whereas the third one used cameras; but, aat high level of abstraction, the “policy” is always the same, so it has been sufficient to change a bit the implementation of the actions dispatched by ROSPlan to make it work.</p>
 <p><dl class="simple">
 <dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
 </dd>
-<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+<dt><strong>Version</strong></dt><dd><p>v1.1</p>
 </dd>
 </dl>
 </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the node supports the develop mode (since version v1.0.0, even if not standard) </p>
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -254,19 +261,19 @@
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.MISSION_STATUS_REPLAN">
 <span class="target" id="mission__manager_8cpp_1a2ce63008cc07bc6a6893f29a282a7830"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_REPLAN</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_REPLAN" title="Permalink to this definition"></a><br /></dt>
-<dd><p>landmark REPLAN &amp;#8212; the system is restarting the exploration </p>
+<dd><p>landmark REPLAN : the system is restarting the exploration </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.MISSION_STATUS_COLLECT">
 <span class="target" id="mission__manager_8cpp_1ab09398cdd7a42f5405fae795bc106db5"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_COLLECT</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_COLLECT" title="Permalink to this definition"></a><br /></dt>
-<dd><p>landmark COLLECT &amp;#8212; the system is sill looking for hypotheses </p>
+<dd><p>landmark COLLECT : the system is sill looking for hypotheses </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.MISSION_STATUS_SOLVE">
 <span class="target" id="mission__manager_8cpp_1a463f713aa5573b0d056e6c0922377ba8"></span><span class="sig-name descname"><span class="n"><span class="pre">MISSION_STATUS_SOLVE</span></span></span><a class="headerlink" href="#c.MISSION_STATUS_SOLVE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>landmark SOLVE &amp;#8212; the system has a solution to prsent </p>
+<dd><p>landmark SOLVE : the system has a solution to prsent </p>
 </dd></dl>
 
 <dl class="cpp macro">
@@ -327,13 +334,26 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager20node_mission_managerEv">
 <span id="_CPPv3N20node_mission_manager20node_mission_managerEv"></span><span id="_CPPv2N20node_mission_manager20node_mission_managerEv"></span><span id="node_mission_manager::node_mission_manager"></span><span class="target" id="classnode__mission__manager_1aad994f8fbf26d35e540ae1f6476143b0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_mission_manager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager20node_mission_managerEv" title="Permalink to this definition"></a><br /></dt>
-<dd><p>node class constructor </p>
+<dd><p>node class constructor (open all the interfaces) </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager4spinEv">
 <span id="_CPPv3N20node_mission_manager4spinEv"></span><span id="_CPPv2N20node_mission_manager4spinEv"></span><span id="node_mission_manager::spin"></span><span class="target" id="classnode__mission__manager_1aa2d1e70fe39f8f16bf82bd29393ad3a2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager4spinEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>node working cycle </p>
+<p>This is where the state machine has been implemented. Currently the state machine implements 8 states.</p>
+<p>MISSION_STATUS_REPLAN corresponds to the landmark REPLAN: the node calls that landmark via pipeline manager (so, planning and dispatch). Notice that this action is used also as a intermediate step for passing from ASK_ONTOLOGY to SOLVE.</p>
+<p>MISSION_STATUS_COLLECT is the second landmark COLLECT: the mission manager makes a plan towards one waypoint (which one is not important) and dispatch a plan making the robot to collect the hint in that position.</p>
+<p>MISSION_STATUS_ASK_ONTOLOGY is performed after the COLLECT. Here the mission manager asks to the aRMOR framework if there are consistent hypotheses to propose to the Oracle.</p>
+<p>The common cycle is REPLAN -&gt; COLLECT -&gt; ASK_ONTOLOGY. If there are no hypotheses reasy to be proposed to the Oracle, the cycle restarts from COLLECT, and in case all the waypoints have been explored (in this case the <a class="reference internal" href="../../robocluedo_rosplan/_code_reference/kb_interface.html#classkb__interface"><span class="std std-ref">kb_interface</span></a> blocks the loading phase because the landmark COLLECT is no longer applicable) the cycle restarts from REPLAN, then COLLECT and again the same route.</p>
+<p>MISSION_STATUS_SOLVE happens when the robot has at least one consistent hypothesis. In this case, the robot tries to move to the center of the environment for proposing its solution to the Oracle. In case the robot has finished the available paths (topologically speaking) the transition issues a intermediate MISSION_STATUS_REPLAN which cleans all the flags for the explored landmarks. The robot moves to the center.</p>
+<p>the last status is MISSION_STATUS_ASK_ORACLE in which the mission manager interrogates the Oracle to understand if the solution is the winning one, or it is false. if false, the system restarts from MISSION_STATUS_REPLAN.</p>
+<p>Something could go wrong for any reason. There are some well known cases, handled by the policy pointed out until now. But there are many other cases in which, for instance, making a service call doesn’t work, or maybe some expected errors from the planner. For these problematic cases, the state machine implements a recovery policy.</p>
+<p>the state MISSION_STATUS_COUNT_FAULT decrements a “fault counter”, which is initialised according to the macro MAX_FAULT_COUNT . The next status is decided according to the mission status which has generated the error. If the counter becomes zero, the machine breaks in status MISSION_STATUS_FAULT, meaning that too many errors have occurred. This strategy is motivated by the fast that sometimes, during the tests, it has been observed that when the workload of the system becomes significant, some service call could fail unexpectedly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if there are more than one hypothesis, the robot will ask for only one of them, then, if the solution is wrong, the robot will always collect at least one other hint before the other solution proposal. </p>
+</div>
 </dd></dl>
 
 <dl class="cpp function">
@@ -351,7 +371,14 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE">
 <span id="_CPPv3N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE"></span><span id="_CPPv2N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE"></span><span id="node_mission_manager::cbk_oracle_hint__erl2::ErlOracle::ConstPtrCR"></span><span class="target" id="classnode__mission__manager_1a2009dd0ef3eafac889a2d088bcff2ec4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_oracle_hint</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">erl2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ErlOracle</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">hint</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_mission_manager15cbk_oracle_hintERKN4erl29ErlOracle8ConstPtrE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>receive a hint from the Oracle </p>
+<dd><p>receive a hint from the Oracle and directly store it </p>
+<p>The callback receives a hit from the Oracle (or, in the third part of the RoboCLuedo project) and directly stores it into the aRMOR ontology. This function also checks whether a hint is valid or not before adding it into the database.</p>
+<p>The callback could also ask for a backup of the ontology.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hint</strong> – the hint from the oracle (or from the decoder) </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
@@ -465,8 +492,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="manipulation_unit.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node manipulation_unit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="nagivation_unit.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node navigation_unit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="manipulation_unit.html" class="btn btn-neutral float-left" title="NODE manipulation_unit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nagivation_unit.html" class="btn btn-neutral float-right" title="NODE navigation_unit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

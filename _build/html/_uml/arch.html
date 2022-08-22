@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UML – components schema of the project &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>UML – Overall Architecture &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -68,9 +68,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
@@ -103,7 +103,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>UML – components schema of the project</li>
+      <li>UML – Overall Architecture</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/_uml/arch.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -113,158 +113,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="uml-components-schema-of-the-project">
-<h1>UML – components schema of the project<a class="headerlink" href="#uml-components-schema-of-the-project" title="Permalink to this heading"></a></h1>
-<div class="section" id="pkg-robocluedo-rosplan">
-<h2>pkg – robocluedo_rosplan<a class="headerlink" href="#pkg-robocluedo-rosplan" title="Permalink to this heading"></a></h2>
+  <div class="section" id="uml-overall-architecture">
+<h1>UML – Overall Architecture<a class="headerlink" href="#uml-overall-architecture" title="Permalink to this heading"></a></h1>
 <p class="plantuml">
-<object data="../_images/plantuml-2b730d5f3ddcaab05e73d157fccf745ae4016dd2.svg" type="image/svg+xml" style="width:1027px;height:1149px;background:#FFFFFF;">
-<img src="../_images/plantuml-2b730d5f3ddcaab05e73d157fccf745ae4016dd2.png" alt="&#64;startuml
-
-''' DIAGRAM INFOS
-title &quot;robocluedo rosplan&quot;
-skinparam Padding 8
-
-
-''' DIAGRAM ELEMENTS
-package &quot;robocluedo rosplan&quot; {
-
-file &quot;pddl\ndomain&quot; as PDDL_DOM
-file &quot;pddl\nproblem&quot; as PDDL_PROB
-
-package &quot;ROSplan&quot; {
-	database &quot;knowledge base&quot; &lt;&lt;ROSPlan&gt;&gt; as KB
-	[problem interface] &lt;&lt;ROSPlan&gt;&gt; as PROBLEM
-	[planning interface] &lt;&lt;ROSPlan&gt;&gt; as PLAN
-	[parsing interface] &lt;&lt;ROSPlan&gt;&gt; as PARSE
-	[plan dispatcher] &lt;&lt;ROSPlan&gt;&gt; as DISPATCH
-
-	KB -right-&gt; PROBLEM
-	PROBLEM -down-&gt; PLAN
-	PLAN -down-&gt; PARSE
-	KB -right- PARSE
-	PARSE -down-&gt; DISPATCH
-	KB -left- DISPATCH
-}
-
-package &quot;actions dispatch&quot; {
-	[action] as ACTION
-}
-
-[feedback\nmanager] as FEEDBACK
-[ROSPlan\npipeline manager] &lt;&lt;node&gt;&gt; as MANAGER
-[KB interface] &lt;&lt;node&gt;&gt; as IKB
-ACTION --&gt; IKB
-
-DISPATCH -right-&gt; ACTION
-PDDL_DOM --&gt; KB
-PDDL_PROB --&gt; KB
-IKB &lt;--&gt; KB
-
-ACTION --&gt; FEEDBACK
-
-PROBLEM -right-&gt; MANAGER
-PLAN -right-&gt; MANAGER
-PARSE -right-&gt; MANAGER
-DISPATCH -right-&gt; MANAGER
-}
-
-() &quot;feedback topic&quot; as TOPIC_FEEDBACK
-FEEDBACK --&gt; TOPIC_FEEDBACK
-() &quot;service pipeline manager&quot; as SRV_MANAGER
-MANAGER --&gt; SRV_MANAGER
-() &quot;KB interface service&quot; as SRV_IKB
-IKB --&gt; SRV_IKB
-&#64;enduml"/>
-
-</object></p>
-</div>
-<div class="section" id="pkg-robocluedo-movement-controller">
-<h2>pkg – robocluedo_movement_controller<a class="headerlink" href="#pkg-robocluedo-movement-controller" title="Permalink to this heading"></a></h2>
-<p class="plantuml">
-<object data="../_images/plantuml-351b7025655f2c35274883279255e550710831e4.svg" type="image/svg+xml" style="width:410px;height:415px;background:#FFFFFF;">
-<img src="../_images/plantuml-351b7025655f2c35274883279255e550710831e4.png" alt="&#64;startuml
+<object data="../_images/plantuml-1dc376936a3ae1ea91443a199d734f53e2aeeae4.svg" type="image/svg+xml" style="width:587px;height:738px;background:#FFFFFF;">
+<img src="../_images/plantuml-1dc376936a3ae1ea91443a199d734f53e2aeeae4.png" alt="&#64;startuml
 
 ''' INFOS
-title robocluedo movement controller
+title Project Architecture
 skinparam Padding 8
 allow_mixing
 
 
 ''' COMPONENTS
-package &quot;pkg movement controller&quot; {
-component &quot;navigation&quot; as NAV
-component &quot;manipulation&quot; as MANIP
-}
+database &quot;aRMOR&quot; as ARMOR
+component &quot;MoveIt!&quot; as MOVEIT
+component &quot;Navigation Stack&quot; as NAVSTACK
+component &quot;erl3 Oracle&quot; as ORACLE
+component &quot;ROSPlan&quot; as ROSPLAN
 
-node &quot;MoveIt!&quot; as MOVEIT
+component &quot;RCL mission manager&quot; as MISSION_MANAGER
+component &quot;RCL Vision&quot; as VISION
+component &quot;RCL aRMOR interface&quot; as RCL_ARMOR
+component &quot;RCL ROSPlan&quot; as RCL_ROSPLAN
+component &quot;RCL Movement Controller&quot; as MOVEMENT
+component &quot;RCL hunter environment&quot; as ENVIRONMENT
 
 
 ''' CONNECTIONS
-() &quot;nav service&quot; as SRV_NAV
-NAV --&gt; SRV_NAV
-() &quot;cmd vel&quot; as TOPIC_VEL
-NAV -up-&gt; TOPIC_VEL
-() &quot;odometry&quot; as TOPIC_ODOM
-NAV &lt;-up- TOPIC_ODOM
-
-() &quot;manip service&quot; as SRV_MANIP
-MANIP --&gt; SRV_MANIP
-
-MOVEIT --&gt; MANIP
+ENVIRONMENT &lt;--&gt; NAVSTACK
+ENVIRONMENT &lt;--&gt; MOVEIT
+ENVIRONMENT &lt;--&gt; VISION
+NAVSTACK &lt;--&gt; MOVEMENT
+MOVEIT &lt;--&gt; MOVEMENT
+MOVEMENT &lt;--&gt; MISSION_MANAGER
+MISSION_MANAGER &lt;--&gt; RCL_ROSPLAN
+ROSPLAN &lt;--&gt; RCL_ROSPLAN
+MISSION_MANAGER &lt;--&gt; RCL_ARMOR
+ARMOR &lt;--&gt; RCL_ARMOR
+MISSION_MANAGER &lt;--&gt; VISION
+VISION &lt;--&gt; ORACLE
 
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="pkg-robocluedo-armor">
-<h2>pkg – robocluedo_armor<a class="headerlink" href="#pkg-robocluedo-armor" title="Permalink to this heading"></a></h2>
-<p class="plantuml">
-<object data="../_images/plantuml-b2291c3c6c1491e692001503e6f0ca6445163668.svg" type="image/svg+xml" style="width:995px;height:540px;background:#FFFFFF;">
-<img src="../_images/plantuml-b2291c3c6c1491e692001503e6f0ca6445163668.png" alt="&#64;startuml
-
-''' INFOS
-title package robocluedo_armor
-skinparam Padding 8
-allow_mixing
-
-''' COMPONENTS
-package &quot;aRMOR&quot; {
-	database &quot;knowledge base&quot; &lt;&lt;aRMOR&gt;&gt; as A_KB
-	component &quot;services&quot; &lt;&lt;aRMOR&gt;&gt; as A_SRV
-	A_KB -right- A_SRV
-}
-
-package &quot;aRMOR tools&quot; {
-	class &quot;aRMOR tools&quot; as A_TOOLS 
-	class &quot;aRMOR cluedo&quot; as A_CLUEDO 
-	A_TOOLS -up-|&gt; A_CLUEDO
-	component &quot;aRMOR interface&quot; &lt;&lt;ROS node&gt;&gt; as A_NODE
-	A_CLUEDO -up-|&gt; A_NODE
-}
-
-() &quot;add hint&quot; as SRV_ADD
-() &quot;mark wrong hint&quot; as SRV_DELETE
-() &quot;check hints&quot; as SRV_GET
-
-''' CONNECTIONS
-A_SRV -right-&gt; A_TOOLS
-A_NODE --&gt; SRV_ADD
-A_NODE --&gt; SRV_DELETE
-A_NODE --&gt; SRV_GET
-
-&#64;enduml"/>
-
-</object></p>
-</div>
-<div class="section" id="pkg-robocluedo-mission-manager">
-<h2>pkg – robocluedo_mission_manager<a class="headerlink" href="#pkg-robocluedo-mission-manager" title="Permalink to this heading"></a></h2>
-<p class="plantuml">
-<object data="../_images/plantuml-cf2932e3e83692c0187e07f0adef5d2bc0651379.svg" type="image/svg+xml" style="">
-<img src="../_images/plantuml-cf2932e3e83692c0187e07f0adef5d2bc0651379.png" alt=""/>
-
-</object></p>
-</div>
 </div>
 
 

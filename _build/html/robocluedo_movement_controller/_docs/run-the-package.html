@@ -87,9 +87,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
@@ -147,32 +147,35 @@
 <p>the move_base launch option requires move_base running and ready to use</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># bug_m only</span>
-roslaunch robocluedo_movement_controller.launch nav_type:<span class="o">=</span>bugm
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>bugm
 
 <span class="c1"># move_base only</span>
-roslaunch robocluedo_movement_controller.launch nav_type:<span class="o">=</span>navstack
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>navstack
 
 <span class="c1"># both the navigation systems</span>
-roslaunch robocluedo_movement_controller.launch nav_type:<span class="o">=</span>all
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>all
 </pre></div>
 </div>
 </div>
 <div class="section" id="one-component">
 <h2>one component<a class="headerlink" href="#one-component" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># navigation only</span>
-roslaunch robocluedo_movement_controller.launch launch_nav_controller:<span class="o">=</span><span class="nb">true</span> launch_manip_controller:<span class="o">=</span><span class="nb">false</span>
+roslaunch robocluedo_movement_controller run.launch launch_nav_controller:<span class="o">=</span><span class="nb">true</span> launch_manip_controller:<span class="o">=</span><span class="nb">false</span>
 
 <span class="c1"># manipulation only</span>
-roslaunch robocluedo_movement_controller.launch launch_manip_controller:<span class="o">=</span><span class="nb">true</span> launch_nav_controller:<span class="o">=</span><span class="nb">false</span>
+roslaunch robocluedo_movement_controller run.launch launch_manip_controller:<span class="o">=</span><span class="nb">true</span> launch_nav_controller:<span class="o">=</span><span class="nb">false</span>
 
 <span class="c1"># both (default)</span>
-roslaunch robocluedo_movement_controller.launch 
+roslaunch robocluedo_movement_controller run.launch 
+
+<span class="c1"># launch the low level only</span>
+roslaunch robocluedo_movement_controller run.launch launch_manip_controller:<span class="o">=</span><span class="nb">false</span> launch_nav_controller:<span class="o">=</span><span class="nb">false</span>
 </pre></div>
 </div>
 <div class="section" id="combining-the-options">
 <h3>combining the options<a class="headerlink" href="#combining-the-options" title="Permalink to this heading"></a></h3>
 <p>of course you can combine the options. for instance,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_movement_controller.launch launch_nav_controller:<span class="o">=</span><span class="nb">true</span> launch_manip_controller:<span class="o">=</span><span class="nb">false</span> nav_type:<span class="o">=</span>navstack
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_movement_controller run.launch launch_nav_controller:<span class="o">=</span><span class="nb">true</span> launch_manip_controller:<span class="o">=</span><span class="nb">false</span> nav_type:<span class="o">=</span>navstack
 </pre></div>
 </div>
 </div>

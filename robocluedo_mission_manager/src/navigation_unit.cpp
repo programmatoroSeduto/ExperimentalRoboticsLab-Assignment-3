@@ -6,8 +6,23 @@
 * @brief mission manager bridge between the robocluedo ROSPlan framework 
 * 	and the navigation controller
 * 
+* This node is a bridge between the ROSPlan framework, which assumes 
+* some other node implemented the service for the navigation from rosplan, 
+* and the navigation system: a service call into a service call. 
+* 
+* The task of this node is quite simple: when received a request from the
+* ROSPlan module, the node associates the cartesian coordinates of the
+* pointed waypoint, then calls the navigation service; when the navigation
+* has finished, the node adapt and returns the response to ROSPlan.
+* 
+* There are also other sub-tasks performed by this node: listening for the
+* markers in order to find the coordinates of the waypoints, for instance,
+* using a one-shot subscriber. Or also to initialise the navigation system. 
+* 
+* @note This implementation supports the develop mode: waitey, debug print
+* 
 * @authors Francesco Ganci
-* @version v1.0 
+* @version v1.1
 * 
 ***********************************************/
 
@@ -27,7 +42,7 @@
 #define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL << msg ); } }
 
 #define DEVELOP_WAIKEY false
-#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
+#define WAITKEY { if( DEVELOP_WAITKEY ) { std::cout << "press ENTER to continue ... " ; std::cin.get( ) ; std::cout << "go!" << std::endl ; } }
 
 #include "ros/ros.h"
 #include "robocluedo_rosplan_msgs/NavigationCommand.h"
@@ -58,11 +73,25 @@
 
 #define SCALING_FACTOR 1.0
 
+/********************************************//**
+ *  
+ * \brief implementation of the node
+ * 
+ * The navigation unit is implemented as a class containing all the services
+ * and the topics needed to perform the navigation. 
+ * 
+ ***********************************************/
 class node_navigation_unit
 {
 public:
 	
-	/** node class constructor */
+	/********************************************//**
+	 *  
+	 * \brief node class constructor
+	 * 
+	 * here the node opens all the channels with the other components. 
+	 * 
+	 ***********************************************/
 	node_navigation_unit( )
 	{
 		// topic markers
@@ -103,7 +132,24 @@ public:
 		ros::waitForShutdown( );
 	}
 	
-	/** the service required by the rosplan package */
+	/********************************************//**
+	 *  
+	 * \brief the service required by the rosplan package
+	 * 
+	 * A service call inside the service call: the node, after received the
+	 * request, translates it into a request for the navigation manager, then
+	 * calls that service and waits. When the navigation ends, the service 
+	 * of this node returns a proper response to the ROSPlan framework. 
+	 * 
+	 * The service does also something else. First of all, it tries to
+	 * set the algorithm the first time it is called. And second, it waits
+	 * for the first reading of the markers from the markers publisher. These
+	 * operations are performed only during the first service call. 
+	 * 
+	 * @param request the waypoint to reach
+	 * @param response success or not?
+	 * 
+	 ***********************************************/
 	bool cbk_navigation( 
 		robocluedo_rosplan_msgs::NavigationCommand::Request& req, 
 		robocluedo_rosplan_msgs::NavigationCommand::Response& res )
@@ -181,7 +227,19 @@ public:
 		return true;
 	}
 	
-	/** "one-shot" listener for the markers from the Oracle */
+	/********************************************//**
+	 *  
+	 * \brief "one-shot" listener for the markers from the Oracle
+	 * 
+	 * The callback stores the markers, then turns off the subscription to
+	 * not waste computational resources in a continuous updating of the 
+	 * markers.
+	 * 
+	 * @note we're assuming here that the markers don't change during
+	 * the simulation. If the markers are able to move though, the 
+	 * subscription should keep opened. 
+	 * 
+	 ***********************************************/
 	void cbk_markers( const visualization_msgs::MarkerArray::ConstPtr& data )
 	{
 		WTLOG( "reading markers ... " );

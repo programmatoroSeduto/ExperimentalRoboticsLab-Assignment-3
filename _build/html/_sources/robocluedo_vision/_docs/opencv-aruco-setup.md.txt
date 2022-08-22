@@ -1,6 +1,10 @@
 
 # HOW TO setup ArUco and OpenCV
 
+```{note}
+You don't need to download these packages: the project already includes these dependencies in the folder `robocluedo_dependencies`. 
+```
+
 ---
 
 ```{toctree}

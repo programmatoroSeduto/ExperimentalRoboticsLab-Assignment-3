@@ -9,35 +9,38 @@
 <para><programlisting filename=".attention"><codeline><highlight class="normal">before<sp/>running<sp/>the<sp/>package,<sp/>make<sp/>sure<sp/>to<sp/>have<sp/>a<sp/>robotic<sp/>environment<sp/>to<sp/>run.<sp/></highlight></codeline>
 </programlisting></para>
 <para>This package can be launched using the <computeroutput>run.launch</computeroutput> package, providing these ways to launch the project:</para>
-<sect1 id="md_robocluedo_movement_controller__docs_run-the-package_1autotoc_md358">
+<sect1 id="md_robocluedo_movement_controller__docs_run-the-package_1autotoc_md355">
 <title>Navigation Type</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">the<sp/>move_base<sp/>launch<sp/>option<sp/>requires<sp/>move_base<sp/>running<sp/>and<sp/>ready<sp/>to<sp/>use</highlight></codeline>
 </programlisting></para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>bug_m<sp/>only</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/>nav_type:=bugm</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>nav_type:=bugm</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>move_base<sp/>only</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/>nav_type:=navstack</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>nav_type:=navstack</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>both<sp/>the<sp/>navigation<sp/>systems</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/>nav_type:=all</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>nav_type:=all</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_run-the-package_1autotoc_md359">
+<sect1 id="md_robocluedo_movement_controller__docs_run-the-package_1autotoc_md356">
 <title>one component</title>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>navigation<sp/>only</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/>launch_nav_controller:=true<sp/>launch_manip_controller:=false</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>launch_nav_controller:=true<sp/>launch_manip_controller:=false</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>manipulation<sp/>only</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/>launch_manip_controller:=true<sp/>launch_nav_controller:=false</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>launch_manip_controller:=true<sp/>launch_nav_controller:=false</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>both<sp/>(default)</highlight></codeline>
-<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/></highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>launch<sp/>the<sp/>low<sp/>level<sp/>only</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>launch_manip_controller:=false<sp/>launch_nav_controller:=false</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_movement_controller__docs_run-the-package_1autotoc_md360">
+<sect2 id="md_robocluedo_movement_controller__docs_run-the-package_1autotoc_md357">
 <title>combining the options</title>
 <para>of course you can combine the options. for instance,</para>
-<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller.launch<sp/>launch_nav_controller:=true<sp/>launch_manip_controller:=false<sp/>nav_type:=navstack</highlight></codeline>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_movement_controller<sp/>run.launch<sp/>launch_nav_controller:=true<sp/>launch_manip_controller:=false<sp/>nav_type:=navstack</highlight></codeline>
 </programlisting> </para>
 </sect2>
 </sect1>

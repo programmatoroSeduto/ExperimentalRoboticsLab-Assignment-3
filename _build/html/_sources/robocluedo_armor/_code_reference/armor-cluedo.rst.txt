@@ -1,5 +1,5 @@
 
-CODE REFERENCE -- class aRMOR CLuedo
+CLASS armor_cluedo.cpp
 ==========================================
 
 .. toctree::

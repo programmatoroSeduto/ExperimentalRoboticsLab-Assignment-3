@@ -1,5 +1,5 @@
 
-Class feedback manager
+CLASS feedback manager
 ================================================
 
 Header

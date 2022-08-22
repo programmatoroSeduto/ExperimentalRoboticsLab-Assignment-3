@@ -19,6 +19,7 @@ RCL -- the RoboCLuedo Project - part 3
 
 .. toctree::
    :titlesonly:
+   :maxdepth: 1
    :caption: Packages Documentation
    :glob:
    
@@ -40,6 +41,7 @@ RCL -- the RoboCLuedo Project - part 3
 
 .. toctree::
    :titlesonly:
+   :maxdepth: 1
    :caption: Dependencies Documentation
    :glob:
    
@@ -50,6 +52,7 @@ RCL -- the RoboCLuedo Project - part 3
 
 .. toctree::
    :titlesonly:
+   :maxdepth: 1
    :caption: Other Documents
    :glob:
    
@@ -58,14 +61,7 @@ RCL -- the RoboCLuedo Project - part 3
 
 .. toctree::
    :titlesonly:
-   :caption: General Code Examples
-   :glob:
-   
-   _examples/examples-index.md
-
-
-.. toctree::
-   :titlesonly:
+   :maxdepth: 1
    :caption: Extensions and other references
    :glob:
    

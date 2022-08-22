@@ -6,6 +6,11 @@
 * @brief mission manager bridge between the robocluedo ROSPlan framework 
 * 	and the manipulation controller.
 * 
+* since this ROSPlan part of this third project doesn't require the manipulation,
+* this version of the mission manager plays a role that is a little different
+* than before: it has the task to make the manipulator assuming randomly 
+* one pose from the set of allowed codes. 
+* 
 * @authors Francesco Ganci
 * @version v1.0 
 * 
@@ -71,8 +76,7 @@
  *  
  * \class nove_manipulation_unit
  * 
- * \brief bridge between robocluedo ROSPlan interface and the manipulation
- * 	controller
+ * \brief class implementation of the node
  * 
  * @note in future, someone maybe wants to add functionalities to ROSPlan
  * robocluedo interface: that's why this bridge is located in its node, and
@@ -106,7 +110,20 @@ public:
 		WTLOG( "publisher " << TOPIC_MANIP_ASYNC << " ... OK" );
 	}
 	
-	/// spin function: send a new pose each 15 seconds
+	/********************************************//**
+	 *  
+	 * \brief spin function: send a new pose each 5 seconds
+	 * 
+	 * When activated, the unit sends a new pose, randomly taken from 
+	 * the set of the valid ones, to the manipulation controller, and
+	 * makes it running asynchronosly. 
+	 * 
+	 * @note currently the manipulation controller in asynchronous mode
+	 * doesn't implement a check for the progress, so the node sends a new
+	 * position with a regular time interval which is assumed to be large
+	 * enough to complete the transition from one position to another. 
+	 * 
+	 ***********************************************/
 	void spin( )
 	{
 		robocluedo_movement_controller_msgs::ManipulatorPositionAsync msg;
@@ -135,7 +152,14 @@ public:
 		}
 	}
 	
-	/** switch for the automatic manipulation */
+	/********************************************//**
+	 *  
+	 * \brief switch the automatic manipulation
+	 * 
+	 * the service allows to switch on and off the random automatic 
+	 * movements of the arm. 
+	 * 
+	 ***********************************************/
 	bool cbk_auto_manip_switch( 
 		std_srvs::SetBool::Request& req, std_srvs::SetBool::Response& res )
 	{

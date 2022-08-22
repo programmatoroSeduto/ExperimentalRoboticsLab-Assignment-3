@@ -1,5 +1,5 @@
 
-# the RoboCLuedo Project no.3 -- robot "hunter" URDF model -- User Manual
+# the RoboCLuedo "hunter" URDF model -- User Manual
 
 ---
 

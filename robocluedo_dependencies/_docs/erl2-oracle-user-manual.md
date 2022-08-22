@@ -1,5 +1,5 @@
 
-# Oracle (for the ERL project no.2) -- User Documentation
+# Oracle2 -- User Documentation
 
 ```{toctree}
 ./erl2-oracle-user-manual.md

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node manipulation_unit &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE manipulation_unit &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -30,7 +30,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="CODE REFERENCE – node mission_manager" href="mission_manager.html" />
+    <link rel="next" title="NODE mission_manager" href="mission_manager.html" />
     <link rel="prev" title="HOW TO – the main launch file" href="../_docs/main-launch-file.html" /> 
 </head>
 
@@ -65,18 +65,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_mission_manager</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../_docs/main-launch-file.html">HOW TO – the main launch file</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node manipulation_unit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mission_manager.html">CODE REFERENCE – node mission_manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nagivation_unit.html">CODE REFERENCE – node navigation_unit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE manipulation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mission_manager.html">NODE mission_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nagivation_unit.html">NODE navigation_unit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
@@ -110,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_mission_manager</a> &raquo;</li>
-      <li>CODE REFERENCE – node manipulation_unit</li>
+      <li>NODE manipulation_unit</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_mission_manager/_code_reference/manipulation_unit.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -120,9 +120,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-manipulation-unit">
-<h1>CODE REFERENCE – node manipulation_unit<a class="headerlink" href="#code-reference-node-manipulation-unit" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-manipulation-unit">
+<h1>NODE manipulation_unit<a class="headerlink" href="#node-manipulation-unit" title="Permalink to this heading"></a></h1>
 <p>mission manager bridge between the robocluedo ROSPlan framework and the manipulation controller. </p>
+<p>since this ROSPlan part of this third project doesn’t require the manipulation, this version of the mission manager plays a role that is a little different than before: it has the task to make the manipulator assuming randomly one pose from the set of allowed codes.</p>
 <p><dl class="simple">
 <dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
 </dd>
@@ -305,13 +306,19 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N22node_manipulation_unit4spinEv">
 <span id="_CPPv3N22node_manipulation_unit4spinEv"></span><span id="_CPPv2N22node_manipulation_unit4spinEv"></span><span id="node_manipulation_unit::spin"></span><span class="target" id="classnode__manipulation__unit_1a10a18deee7bcb8de1be692c182ef49a8"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22node_manipulation_unit4spinEv" title="Permalink to this definition"></a><br /></dt>
-<dd><p>spin function: send a new pose each 15 seconds </p>
+<dd><p>spin function: send a new pose each 5 seconds </p>
+<p>When activated, the unit sends a new pose, randomly taken from the set of the valid ones, to the manipulation controller, and makes it running asynchronosly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>currently the manipulation controller in asynchronous mode doesn’t implement a check for the progress, so the node sends a new position with a regular time interval which is assumed to be large enough to complete the transition from one position to another. </p>
+</div>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N22node_manipulation_unit21cbk_auto_manip_switchERN8std_srvs7SetBool7RequestERN8std_srvs7SetBool8ResponseE">
 <span id="_CPPv3N22node_manipulation_unit21cbk_auto_manip_switchERN8std_srvs7SetBool7RequestERN8std_srvs7SetBool8ResponseE"></span><span id="_CPPv2N22node_manipulation_unit21cbk_auto_manip_switchERN8std_srvs7SetBool7RequestERN8std_srvs7SetBool8ResponseE"></span><span id="node_manipulation_unit::cbk_auto_manip_switch__std_srvs::SetBool::RequestR.std_srvs::SetBool::ResponseR"></span><span class="target" id="classnode__manipulation__unit_1a4229e20a3720e2606377abceddba52ae"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_auto_manip_switch</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">SetBool</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">SetBool</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N22node_manipulation_unit21cbk_auto_manip_switchERN8std_srvs7SetBool7RequestERN8std_srvs7SetBool8ResponseE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>switch for the automatic manipulation </p>
+<dd><p>switch the automatic manipulation </p>
+<p>the service allows to switch on and off the random automatic movements of the arm. </p>
 </dd></dl>
 
 </div>
@@ -357,7 +364,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../_docs/main-launch-file.html" class="btn btn-neutral float-left" title="HOW TO – the main launch file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mission_manager.html" class="btn btn-neutral float-right" title="CODE REFERENCE – node mission_manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mission_manager.html" class="btn btn-neutral float-right" title="NODE mission_manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

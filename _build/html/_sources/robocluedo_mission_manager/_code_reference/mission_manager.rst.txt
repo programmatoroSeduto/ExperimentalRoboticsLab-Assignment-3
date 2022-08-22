@@ -1,5 +1,5 @@
 
-CODE REFERENCE -- node mission_manager
+NODE mission_manager
 ================================================
 
 .. doxygenfile:: mission_manager.cpp

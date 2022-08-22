@@ -16,13 +16,13 @@ the move_base launch option requires move_base running and ready to use
 
 ```bash
 # bug_m only
-roslaunch robocluedo_movement_controller.launch nav_type:=bugm
+roslaunch robocluedo_movement_controller run.launch nav_type:=bugm
 
 # move_base only
-roslaunch robocluedo_movement_controller.launch nav_type:=navstack
+roslaunch robocluedo_movement_controller run.launch nav_type:=navstack
 
 # both the navigation systems
-roslaunch robocluedo_movement_controller.launch nav_type:=all
+roslaunch robocluedo_movement_controller run.launch nav_type:=all
 
 ```
 
@@ -30,13 +30,16 @@ roslaunch robocluedo_movement_controller.launch nav_type:=all
 
 ```bash
 # navigation only
-roslaunch robocluedo_movement_controller.launch launch_nav_controller:=true launch_manip_controller:=false
+roslaunch robocluedo_movement_controller run.launch launch_nav_controller:=true launch_manip_controller:=false
 
 # manipulation only
-roslaunch robocluedo_movement_controller.launch launch_manip_controller:=true launch_nav_controller:=false
+roslaunch robocluedo_movement_controller run.launch launch_manip_controller:=true launch_nav_controller:=false
 
 # both (default)
-roslaunch robocluedo_movement_controller.launch 
+roslaunch robocluedo_movement_controller run.launch 
+
+# launch the low level only
+roslaunch robocluedo_movement_controller run.launch launch_manip_controller:=false launch_nav_controller:=false
 
 ```
 
@@ -45,5 +48,5 @@ roslaunch robocluedo_movement_controller.launch
 of course you can combine the options. for instance,
 
 ```bash
-roslaunch robocluedo_movement_controller.launch launch_nav_controller:=true launch_manip_controller:=false nav_type:=navstack
+roslaunch robocluedo_movement_controller run.launch launch_nav_controller:=true launch_manip_controller:=false nav_type:=navstack
 ```

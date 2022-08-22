@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CODE REFERENCE – node navigation_unit &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+  <title>NODE navigation_unit &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="PKG DOCS – RoboCLuedo Module Testing" href="../../robocluedo_module_testing/index.html" />
-    <link rel="prev" title="CODE REFERENCE – node mission_manager" href="mission_manager.html" /> 
+    <link rel="prev" title="NODE mission_manager" href="mission_manager.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,18 +65,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_mission_manager</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../_docs/main-launch-file.html">HOW TO – the main launch file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manipulation_unit.html">CODE REFERENCE – node manipulation_unit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mission_manager.html">CODE REFERENCE – node mission_manager</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CODE REFERENCE – node navigation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulation_unit.html">NODE manipulation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mission_manager.html">NODE mission_manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE navigation_unit</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle (for the ERL project no.2) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle (for the ERL project no.3) – User Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo Project no.3 – robot “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
 </ul>
@@ -110,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">PKG DOCS – robocluedo_mission_manager</a> &raquo;</li>
-      <li>CODE REFERENCE – node navigation_unit</li>
+      <li>NODE navigation_unit</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/robocluedo_mission_manager/_code_reference/nagivation_unit.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -120,16 +120,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="code-reference-node-navigation-unit">
-<h1>CODE REFERENCE – node navigation_unit<a class="headerlink" href="#code-reference-node-navigation-unit" title="Permalink to this heading"></a></h1>
+  <div class="section" id="node-navigation-unit">
+<h1>NODE navigation_unit<a class="headerlink" href="#node-navigation-unit" title="Permalink to this heading"></a></h1>
 <p>mission manager bridge between the robocluedo ROSPlan framework and the navigation controller </p>
+<p>This node is a bridge between the ROSPlan framework, which assumes some other node implemented the service for the navigation from rosplan, and the navigation system: a service call into a service call.</p>
+<p>The task of this node is quite simple: when received a request from the ROSPlan module, the node associates the cartesian coordinates of the pointed waypoint, then calls the navigation service; when the navigation has finished, the node adapt and returns the response to ROSPlan.</p>
+<p>There are also other sub-tasks performed by this node: listening for the markers in order to find the coordinates of the waypoints, for instance, using a one-shot subscriber. Or also to initialise the navigation system.</p>
 <p><dl class="simple">
 <dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
 </dd>
-<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+<dt><strong>Version</strong></dt><dd><p>v1.1 </p>
 </dd>
 </dl>
 </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This implementation supports the develop mode: waitey, debug print</p>
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -259,12 +266,15 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv420node_navigation_unit">
 <span id="_CPPv320node_navigation_unit"></span><span id="_CPPv220node_navigation_unit"></span><span id="node_navigation_unit"></span><span class="target" id="classnode__navigation__unit"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_navigation_unit</span></span></span><a class="headerlink" href="#_CPPv420node_navigation_unit" title="Permalink to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>implementation of the node </p>
+<p>The navigation unit is implemented as a class containing all the services and the topics needed to perform the navigation. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_navigation_unit20node_navigation_unitEv">
 <span id="_CPPv3N20node_navigation_unit20node_navigation_unitEv"></span><span id="_CPPv2N20node_navigation_unit20node_navigation_unitEv"></span><span id="node_navigation_unit::node_navigation_unit"></span><span class="target" id="classnode__navigation__unit_1a8e006d7a32c49cbbe77391da6cc81a85"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_navigation_unit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_navigation_unit20node_navigation_unitEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>node class constructor </p>
+<p>here the node opens all the channels with the other components. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -277,12 +287,27 @@
 <dt class="sig sig-object cpp" id="_CPPv4N20node_navigation_unit14cbk_navigationERN23robocluedo_rosplan_msgs17NavigationCommand7RequestERN23robocluedo_rosplan_msgs17NavigationCommand8ResponseE">
 <span id="_CPPv3N20node_navigation_unit14cbk_navigationERN23robocluedo_rosplan_msgs17NavigationCommand7RequestERN23robocluedo_rosplan_msgs17NavigationCommand8ResponseE"></span><span id="_CPPv2N20node_navigation_unit14cbk_navigationERN23robocluedo_rosplan_msgs17NavigationCommand7RequestERN23robocluedo_rosplan_msgs17NavigationCommand8ResponseE"></span><span id="node_navigation_unit::cbk_navigation__robocluedo_rosplan_msgs::NavigationCommand::RequestR.robocluedo_rosplan_msgs::NavigationCommand::ResponseR"></span><span class="target" id="classnode__navigation__unit_1aeb2f63387b054d89dc6a78c434d73441"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationCommand</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationCommand</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_navigation_unit14cbk_navigationERN23robocluedo_rosplan_msgs17NavigationCommand7RequestERN23robocluedo_rosplan_msgs17NavigationCommand8ResponseE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>the service required by the rosplan package </p>
+<p>A service call inside the service call: the node, after received the request, translates it into a request for the navigation manager, then calls that service and waits. When the navigation ends, the service of this node returns a proper response to the ROSPlan framework.</p>
+<p>The service does also something else. First of all, it tries to set the algorithm the first time it is called. And second, it waits for the first reading of the markers from the markers publisher. These operations are performed only during the first service call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the waypoint to reach </p></li>
+<li><p><strong>response</strong> – success or not? </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N20node_navigation_unit11cbk_markersERKN18visualization_msgs11MarkerArray8ConstPtrE">
 <span id="_CPPv3N20node_navigation_unit11cbk_markersERKN18visualization_msgs11MarkerArray8ConstPtrE"></span><span id="_CPPv2N20node_navigation_unit11cbk_markersERKN18visualization_msgs11MarkerArray8ConstPtrE"></span><span id="node_navigation_unit::cbk_markers__visualization_msgs::MarkerArray::ConstPtrCR"></span><span class="target" id="classnode__navigation__unit_1a38f8c50c557734f1b3e8f462f8a01cf1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_markers</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">visualization_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MarkerArray</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N20node_navigation_unit11cbk_markersERKN18visualization_msgs11MarkerArray8ConstPtrE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>“one-shot” listener for the markers from the Oracle </p>
+<p>The callback stores the markers, then turns off the subscription to not waste computational resources in a continuous updating of the markers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>we’re assuming here that the markers don’t change during the simulation. If the markers are able to move though, the subscription should keep opened. </p>
+</div>
 </dd></dl>
 
 </div>
@@ -345,7 +370,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="mission_manager.html" class="btn btn-neutral float-left" title="CODE REFERENCE – node mission_manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mission_manager.html" class="btn btn-neutral float-left" title="NODE mission_manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../../robocluedo_module_testing/index.html" class="btn btn-neutral float-right" title="PKG DOCS – RoboCLuedo Module Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

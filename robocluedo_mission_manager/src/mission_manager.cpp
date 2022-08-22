@@ -6,12 +6,37 @@
 * @brief the main node of the architecture, launched at last, and combining
 * 	the ROSPlan flow with the aRMOR ontology. 
 * 
+* During the coding phase, the objective was to not modify this node since
+* the version v1.0.0 ... and we did it! With a very little adding. 
+* 
+* The node implements the high-level mission control of the robot, whereas 
+* the ROSPlan framework is used to get the precise plan referred to the
+* high-level actions required by the mission manager. The mission manager
+* has the main role to combine ROSPlan and the aRMOR ontology, as the 
+* navigation unit does, for instance. It is, technically speaking, a 
+* state machine, mixing the landmarks of the ROSPlan side with updates
+* and queries with aRMOR. 
+* 
+* An advantage of such approach is to hide the details of the problem: for
+* instance, thinking in terms of landmarks instead of entire plan makes
+* the system updatable in a simple way, because changing the PDDL doesn't 
+* affect the high-level solution. The only condition is that, at least at
+* a high level of abstraction, the way to accomplish the objective can be
+* described "with the same terms". For instance, the second part of the 
+* project used the manipulation action to collect the hints, whereas the
+* third one used cameras; but, aat high level of abstraction, the "policy"
+* is always the same, so it has been sufficient to change a bit the 
+* implementation of the actions dispatched by ROSPlan to make it work. 
+* 
 * @authors Francesco Ganci
-* @version v1.0 
+* @version v1.1 
+* 
+* @note the node supports the develop mode (since version v1.0.0, even if
+* not standard)
 * 
 ***********************************************/
 
-#define NODE_NAME "RoboCLuedo"
+#define NODE_NAME "robocluedo_mission_manager"
 
 #define LOGSQUARE( str )  "[" << str << "] "
 // #define OUTLABEL       LOGSQUARE( NODE_NAME )
@@ -78,13 +103,13 @@ string value
 /// landmark SOLVE identifier
 #define LANDMARK_SOLVE 2
 
-/// landmark REPLAN -- the system is restarting the exploration
+/// landmark REPLAN : the system is restarting the exploration
 #define MISSION_STATUS_REPLAN 0
 
-/// landmark COLLECT -- the system is sill looking for hypotheses
+/// landmark COLLECT : the system is sill looking for hypotheses
 #define MISSION_STATUS_COLLECT 1
 
-/// landmark SOLVE -- the system has a solution to prsent
+/// landmark SOLVE : the system has a solution to prsent
 #define MISSION_STATUS_SOLVE 2
 
 /// propose the solution to the Oracle ans check if the mystery has been solved
@@ -109,7 +134,7 @@ class node_mission_manager
 {
 public:
 	
-	/** node class constructor */
+	/** node class constructor (open all the interfaces) */
 	node_mission_manager( )
 	{
 		// rosplan service
@@ -138,7 +163,69 @@ public:
 			return;
 	}
 	
-	/** node working cycle */
+	/********************************************//**
+	 *  
+	 * \brief node working cycle
+	 * 
+	 * This is where the state machine has been implemented. Currently the
+	 * state machine implements 8 states.
+	 * 
+	 * MISSION_STATUS_REPLAN corresponds to the landmark REPLAN: the node
+	 * calls that landmark via pipeline manager (so, planning and dispatch). 
+	 * Notice that this action is used also as a intermediate step for passing
+	 * from ASK_ONTOLOGY to SOLVE. 
+	 * 
+	 * MISSION_STATUS_COLLECT is the second landmark COLLECT: the mission 
+	 * manager makes a plan towards one waypoint (which one is not important)
+	 * and dispatch a plan making the robot to collect the hint in that position.
+	 * 
+	 * MISSION_STATUS_ASK_ONTOLOGY is performed after the COLLECT. Here 
+	 * the mission manager asks to the aRMOR framework if there are consistent
+	 * hypotheses to propose to the Oracle. 
+	 * 
+	 * The common cycle is REPLAN -> COLLECT -> ASK_ONTOLOGY. If there are 
+	 * no hypotheses reasy to be proposed to the Oracle, the cycle restarts
+	 * from COLLECT, and in case all the waypoints have been explored (in
+	 * this case the kb_interface blocks the loading phase because the 
+	 * landmark COLLECT is no longer applicable) the cycle restarts 
+	 * from REPLAN, then COLLECT and again the same route. 
+	 * 
+	 * MISSION_STATUS_SOLVE happens when the robot has at least one 
+	 * consistent hypothesis. In this case, the robot tries to move to the
+	 * center of the environment for proposing its solution to the Oracle.
+	 * In case the robot has finished the available paths (topologically
+	 * speaking) the transition issues a intermediate MISSION_STATUS_REPLAN
+	 * which cleans all the flags for the explored landmarks. The robot 
+	 * moves to the center. 
+	 * 
+	 * the last status is MISSION_STATUS_ASK_ORACLE in which the mission
+	 * manager interrogates the Oracle to understand if the solution is 
+	 * the winning one, or it is false. if false, the system restarts
+	 * from MISSION_STATUS_REPLAN.
+	 * 
+	 * Something could go wrong for any reason. There are some well known
+	 * cases, handled by the policy pointed out until now. But there are 
+	 * many other cases in which, for instance, making a service call 
+	 * doesn't work, or maybe some expected errors from the planner. 
+	 * For these problematic cases, the state machine implements a recovery
+	 * policy.
+	 * 
+	 * the state MISSION_STATUS_COUNT_FAULT decrements a "fault counter", 
+	 * which is initialised according to the macro MAX_FAULT_COUNT . The 
+	 * next status is decided according to the mission status which has 
+	 * generated the error. If the counter becomes zero, the machine
+	 * breaks in status MISSION_STATUS_FAULT, meaning that too many errors
+	 * have occurred. This strategy is motivated by the fast that sometimes, 
+	 * during the tests, it has been observed that when the workload of
+	 * the system becomes significant, some service call could fail
+	 * unexpectedly. 
+	 * 
+	 * @note if there are more than one hypothesis, the robot will ask 
+	 * for only one of them, then, if the solution is wrong, the robot will
+	 * always collect at least one other hint before the other solution
+	 * proposal. 
+	 * 
+	 ***********************************************/
 	void spin( )
 	{
 		// counter of faults
@@ -696,8 +783,20 @@ public:
 		return cmd.response;
 	}
 	
-	
-	/** receive a hint from the Oracle */
+	/********************************************//**
+	 *  
+	 * \brief receive a hint from the Oracle and directly store it
+	 * 
+	 * The callback receives a hit from the Oracle (or, in the third part 
+	 * of the RoboCLuedo project) and directly stores it into the aRMOR
+	 * ontology. This function also checks whether a hint is valid or
+	 * not before adding it into the database. 
+	 * 
+	 * The callback could also ask for a backup of the ontology.
+	 * 
+	 * @param hint the hint from the oracle (or from the decoder)
+	 * 
+	 ***********************************************/
 	void cbk_oracle_hint( const erl2::ErlOracle::ConstPtr& hint )
 	{
 		TLOG( "A clue, RoboWatson! It says (ID=" << hint->ID << ", key=" << hint->key << ", value=" << hint->value << ")" );
