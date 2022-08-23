@@ -1665,6 +1665,15 @@ anche il diagramma a stati è abbastanza osceno ... ma perlomeno meglio dell'alt
 - adesso, il diagramma a stati
 - **COMMIT**: "documentation (temporal diagrams done)"
 
+---
+
+- qualche commento ai diagrammi nel readme (ma gusto pochissimi)
+- *diagrammi mancanti*
+	- pianificazione di un landmark con il pipeline manager
+- direi di fare un plan per ogni landmark:
+	- REPLAN
+	
+
 
 
 

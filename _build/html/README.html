@@ -228,49 +228,6 @@
 <h3>Components – simplified schema<a class="headerlink" href="#components-simplified-schema" title="Permalink to this heading"></a></h3>
 <p>It highlights the centralized structure of the architecture. Each component here corresponds to a package used by the project.</p>
 <p>The mission manager contains the bridges above-mentioned (there are bridges for both the navigation and the manipulation), as well as the <em>main node</em> providing a high-layer planning by means of landmarks and aRMOR operations.</p>
-<p class="plantuml">
-<object data="_images/plantuml-030d10039e63c33c6e4920edd6e39241088b8a21.svg" type="image/svg+xml" style="width:652px;height:766px;background:#FFFFFF;">
-<img src="_images/plantuml-030d10039e63c33c6e4920edd6e39241088b8a21.png" alt="&#64;startuml
-
-''' INFOS
-title Project Architecture
-skinparam Padding 10
-allow_mixing
-
-
-''' COMPONENTS
-database &quot;aRMOR&quot; as ARMOR
-component &quot;MoveIt!&quot; as MOVEIT
-component &quot;Navigation Stack&quot; as NAVSTACK
-component &quot;erl3 Oracle&quot; as ORACLE
-component &quot;ROSPlan&quot; as ROSPLAN
-
-node &quot;RCL mission manager&quot; as MISSION_MANAGER
-component &quot;RCL Vision&quot; as VISION
-component &quot;RCL aRMOR interface&quot; as RCL_ARMOR
-component &quot;RCL ROSPlan&quot; as RCL_ROSPLAN
-component &quot;RCL Movement Controller&quot; as MOVEMENT
-component &quot;RCL hunter environment&quot; as ENVIRONMENT
-
-
-''' CONNECTIONS
-ENVIRONMENT &lt;--&gt; NAVSTACK
-ENVIRONMENT &lt;--&gt; MOVEIT
-ENVIRONMENT &lt;--&gt; VISION
-NAVSTACK &lt;--&gt; MOVEMENT
-MOVEIT &lt;--&gt; MOVEMENT
-MOVEMENT &lt;--&gt; MISSION_MANAGER
-MISSION_MANAGER &lt;--&gt; RCL_ROSPLAN
-ROSPLAN &lt;--&gt; RCL_ROSPLAN
-MISSION_MANAGER &lt;--&gt; RCL_ARMOR
-ARMOR &lt;--&gt; RCL_ARMOR
-MISSION_MANAGER &lt;--&gt; VISION
-VISION &lt;--&gt; ORACLE
-MISSION_MANAGER -- ORACLE
-
-&#64;enduml"/>
-
-</object></p>
 </div>
 <hr class="docutils" />
 <div class="section" id="components-extended-schema">
@@ -300,11 +257,11 @@ MISSION_MANAGER -- ORACLE
 </ul>
 <p>Here’s the diagram (I suggest you to open the image in a new tab of the browser… it is quite big)</p>
 <p class="plantuml">
-<object data="_images/plantuml-8785a4e0039a2229f206995b0e930ed857902f9f.svg" type="image/svg+xml" style="width:2586px;height:803px;background:#FFFFFF;">
-<img src="_images/plantuml-8785a4e0039a2229f206995b0e930ed857902f9f.png" alt="&#64;startuml
+<object data="_images/plantuml-89ac28042f96018e90b15aed258ca8d4be4cd9cf.svg" type="image/svg+xml" style="width:2586px;height:803px;background:#FFFFFF;">
+<img src="_images/plantuml-89ac28042f96018e90b15aed258ca8d4be4cd9cf.png" alt="&#64;startuml
 
 ''' INFOS
-title Project Architecture
+title Project Architecture - extended
 ''' skinparam Padding 8
 allow_mixing
 
@@ -415,9 +372,18 @@ NAV_UNIT -- ROSPLAN_ACTIONS
 <div class="section" id="sw-arch-communication-protocols-overview">
 <h2>SW Arch – communication protocols overview<a class="headerlink" href="#sw-arch-communication-protocols-overview" title="Permalink to this heading"></a></h2>
 <p>Here are the temporal diagrams of the project, describing just the essential steps performed in communicating between packages</p>
+<div class="section" id="foreword-diagrams-conventions">
+<h3>Foreword – diagrams conventions<a class="headerlink" href="#foreword-diagrams-conventions" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>the <em>package temporal diagram</em> represents how different independe packages work together</p></li>
+<li><p>the <em>node temporal diagram</em> is more specific and goes deeper into how the nodes communicate each other</p></li>
+<li><p>the square note is used for exposing scenarios and hypotheses</p></li>
+<li><p>the rhomboid annotation underlines an operation inside the node or the package</p></li>
+</ul>
+</div>
 <div class="section" id="navigation-using-move-base-rcl-3">
 <h3>navigation using move_base (RCL#3)<a class="headerlink" href="#navigation-using-move-base-rcl-3" title="Permalink to this heading"></a></h3>
-<p><strong>package temporal diagram</strong>:</p>
+<p><strong>package temporal diagram</strong>. The RCL#3 integrates a behaviour involving <em>move_base</em>. As said before, the package <em>robocluedo_mission_manager</em> offers delegates to enable the communicaton between two different packages.</p>
 <p class="plantuml">
 <object data="_images/plantuml-023565fddd86f1c69c5078ab2811966ed6f56306.svg" type="image/svg+xml" style="width:496px;height:464px;background:#FFFFFF;">
 <img src="_images/plantuml-023565fddd86f1c69c5078ab2811966ed6f56306.png" alt="&#64;startuml
@@ -449,7 +415,7 @@ ROSPLAN &lt;- MISSION : navigation ended
 &#64;enduml"/>
 
 </object></p>
-<p><strong>node temporal diagram</strong>:</p>
+<p><strong>node temporal diagram</strong>. The navigation is divided into many layers: the delegate (NAVIGATION_UNIT) inside the <em>robocluedo_mission_manager</em> package, the manager (NAVIGATION_MANAGER), the controller (NAVIGATION_CONTROLLER), the composite behaviour (MOVE_BASE_NAV) and the elementary behaviours (in this case only HEAD_ORIENTATION since MOVE_BASE is another framework, but in this case let’s assume it is a behaviour similar to the GOTO_POIN in RCL#2). The robot first travels with a complex path towards the target, then, reached it, rotates to reach the final orientation.</p>
 <p class="plantuml">
 <object data="_images/plantuml-bcc6dfb5401b4f27c38f9fd9b4fdcaa42d0c0550.svg" type="image/svg+xml" style="width:1234px;height:915px;background:#FFFFFF;">
 <img src="_images/plantuml-bcc6dfb5401b4f27c38f9fd9b4fdcaa42d0c0550.png" alt="&#64;startuml
@@ -520,11 +486,12 @@ MOVE_TO &lt;- NAVIGATION_UNIT : response (RCL ROSPlan)
 </div>
 <div class="section" id="navigation-using-bug-m-rcl-2">
 <h3>navigation using bug_m (RCL#2)<a class="headerlink" href="#navigation-using-bug-m-rcl-2" title="Permalink to this heading"></a></h3>
+<p><strong>package temporal diagram</strong>. The RCL#2 uses simple behaviours in order to perform the navigation. The package <em>robocluedo_mission_manager</em> offers delegates to enable the communicaton between two different packages: RCL ROSPlan, and the movement controller package.</p>
 <p class="plantuml">
-<object data="_images/plantuml-e1d93a4f8b42a5193f937d04bb470bbb850ad751.svg" type="image/svg+xml" style="width:501px;height:479px;background:#FFFFFF;">
-<img src="_images/plantuml-e1d93a4f8b42a5193f937d04bb470bbb850ad751.png" alt="&#64;startuml
+<object data="_images/plantuml-a097e5646d49ce29eb649a520ca09d12c8165e75.svg" type="image/svg+xml" style="width:501px;height:479px;background:#FFFFFF;">
+<img src="_images/plantuml-a097e5646d49ce29eb649a520ca09d12c8165e75.png" alt="&#64;startuml
 
-title RCL#3 bug_m navigation - package temporal diagram
+title bug_m navigation - package temporal diagram
 
 ''' ENTITIES 
 collections ROSPLAN
@@ -554,14 +521,13 @@ ROSPLAN &lt;- MISSION : navigation ended
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="manipulation-rcl-2-synchronous-manipulation">
-<h3>manipulation (RCL#2) – synchronous manipulation<a class="headerlink" href="#manipulation-rcl-2-synchronous-manipulation" title="Permalink to this heading"></a></h3>
+<p><strong>node temporal diagram</strong>. The navigation is divided into many layers: the delegate (NAVIGATION_UNIT) inside the <em>robocluedo_mission_manager</em> package, the manager (NAVIGATION_MANAGER), the controller (NAVIGATION_CONTROLLER), the composite behaviour (BUGM_NAV) and the elementary behaviours (in this case HEAD_ORIENTATION and GOTO_POINT).</p>
+<p>The robot moves backwards very slowly, trying to gain space for then performing the rotation. Successively, it rotates orienting its head towards the target. The trasvel proceeds along a straight line from the starting point to the target one. And finally, the robot orients itself to reach the final pose.</p>
 <p class="plantuml">
-<object data="_images/plantuml-4f9ea27dffabc1872c4fdf9ac5eb4e9dd6bcfb74.svg" type="image/svg+xml" style="width:1156px;height:1110px;background:#FFFFFF;">
-<img src="_images/plantuml-4f9ea27dffabc1872c4fdf9ac5eb4e9dd6bcfb74.png" alt="&#64;startuml
+<object data="_images/plantuml-a40f12feeeff2a17d88d1c61181562a0911b071f.svg" type="image/svg+xml" style="width:1156px;height:1110px;background:#FFFFFF;">
+<img src="_images/plantuml-a40f12feeeff2a17d88d1c61181562a0911b071f.png" alt="&#64;startuml
 
-title RCL#3 move_base navigation - node temporal diagram
+title bug_m navigation - node temporal diagram
 ' header ...
 ' footer ...
 
@@ -654,6 +620,8 @@ MOVE_TO &lt;- NAVIGATION_UNIT : response (RCL ROSPlan)
 </div>
 <div class="section" id="manipulation-rcl-3-asynchrononus-manipulation">
 <h3>manipulation (RCL#3) – asynchrononus manipulation<a class="headerlink" href="#manipulation-rcl-3-asynchrononus-manipulation" title="Permalink to this heading"></a></h3>
+<p><strong>node temporal diagram</strong>. This feature has been introduced for collecting much more hints in the space than in the case when the robot performs a manipulation always in the same way. The manipulator continuously changes the camera framing for spotting new markers in the space. This often causes a quicker solution time.</p>
+<p>Here’s how this feature works. The mission manager keeps it active, and turns off it only during the SOLVE phase.</p>
 <p class="plantuml">
 <object data="_images/plantuml-211cba3d68eb8fb6771b2f34ef7b8e4aeeeb4217.svg" type="image/svg+xml" style="width:710px;height:1026px;background:#FFFFFF;">
 <img src="_images/plantuml-211cba3d68eb8fb6771b2f34ef7b8e4aeeeb4217.png" alt="&#64;startuml
@@ -732,12 +700,12 @@ MANIPULATION_CONTROLLER &lt;-- MOVEIT : end of the motion
 </div>
 <div class="section" id="vision-system-workflow">
 <h3>Vision system workflow<a class="headerlink" href="#vision-system-workflow" title="Permalink to this heading"></a></h3>
-<p><strong>node temporal diagram</strong>:</p>
+<p><strong>node temporal diagram</strong>. This schema wants to clarify how the vision works. Take into account that <em>markers detected twice don’t cause a new publication from the VISION_DETECT node</em>, for performance reasons.</p>
 <p class="plantuml">
-<object data="_images/plantuml-06568ba6e8d09852b4ae3bccc3fae1ece5541558.svg" type="image/svg+xml" style="width:910px;height:1748px;background:#FFFFFF;">
-<img src="_images/plantuml-06568ba6e8d09852b4ae3bccc3fae1ece5541558.png" alt="&#64;startuml
+<object data="_images/plantuml-c92863db11c2d98fd9d741889a2ea778397abca4.svg" type="image/svg+xml" style="width:910px;height:1748px;background:#FFFFFF;">
+<img src="_images/plantuml-c92863db11c2d98fd9d741889a2ea778397abca4.png" alt="&#64;startuml
 
-title Aruco vision - RCL#3
+title Vision - RCL#3
 
 ''' ENTITIES
 participant ENVIRON
@@ -858,8 +826,11 @@ MISSION_MANAGER &lt;- ARMOR : &lt;i&gt;success&lt;/i&gt;
 
 </object></p>
 </div>
+</div>
 <div class="section" id="mission-manager-workflow">
-<h3>Mission manager workflow<a class="headerlink" href="#mission-manager-workflow" title="Permalink to this heading"></a></h3>
+<h2>Mission manager workflow<a class="headerlink" href="#mission-manager-workflow" title="Permalink to this heading"></a></h2>
+<p>Here’s the state diagram of the mission manager. Please take into account that the states REPLAN, COLLECT, and SOLVE, are <em>landmarks</em>; see the documentation about the <em>robocluedo_rosplan</em> package for further informations.</p>
+<p>The diagram doesn’t show the status FAULT_COUNT which, as the name suggests, counts the unexpected (and unexplained) failures. The node has a counter of failures, and when the counter reaches zero, the node closes wuthout succeeding the mission. This strategy <em>could be replaced, or altered, in future updates.</em></p>
 <p class="plantuml">
 <object data="_images/plantuml-efda8d46c90c64546f99a491b0ec79867075f406.svg" type="image/svg+xml" style="width:835px;height:875px;background:#FFFFFF;">
 <img src="_images/plantuml-efda8d46c90c64546f99a491b0ec79867075f406.png" alt="&#64;startuml
@@ -897,6 +868,81 @@ ASK_ORACLE --&gt; REPLAN : solution wrong
 &#64;enduml"/>
 
 </object></p>
+</div>
+<div class="section" id="rosplan-landmarks-temporal-diagrams">
+<h2>ROSPlan landmarks – temporal diagrams<a class="headerlink" href="#rosplan-landmarks-temporal-diagrams" title="Permalink to this heading"></a></h2>
+<p>The mission manager makes a high level planning, whereas the RCL ROSPlan framework performs a <em>mid-level planning</em>: the mission manager divides the mission into a <em>policy</em> made of some macro-steps, and the ROSPlan package decides how to perform such macrosteps expanding them in a sequence of actions according to the situation registered in the ROSPlan knowledge base.</p>
+<p>This leads to a more elaborated architecture for this framework, but also makes more flexible the behaviour of the system.</p>
+<p>The following diagrams shows not only what happens when a landmark is requested, but also how the MISSION_MANAGER carries out the ellaboration of the landmarks.</p>
+<div class="section" id="replan-landmark">
+<h3>REPLAN landmark<a class="headerlink" href="#replan-landmark" title="Permalink to this heading"></a></h3>
+<p class="plantuml">
+<object data="_images/plantuml-7c53a6cd9b222b68a24d141d3d15ed3c3c736f46.svg" type="image/svg+xml" style="width:861px;height:935px;background:#FFFFFF;">
+<img src="_images/plantuml-7c53a6cd9b222b68a24d141d3d15ed3c3c736f46.png" alt="&#64;startuml
+
+title landmark execution - REPLAN
+
+''' ENTITIES
+participant MISSION_MANAGER
+participant PIPELINE
+participant KB_INTERFACE
+participant LOAD
+participant PLAN
+participant PARSE
+participant DISPATCH
+
+'' TEMPORAL DIAGRAM
+== planning phase ==
+
+note over MISSION_MANAGER: try to load and solve the problem
+
+MISSION_MANAGER -&gt; PIPELINE : load (landmark REPLAN) and solve
+
+PIPELINE -&gt; KB_INTERFACE : prepare REPLAN
+PIPELINE &lt;- KB_INTERFACE : &lt;i&gt;always success&lt;/i&gt;
+
+PIPELINE -&gt; LOAD : trigger loading
+PIPELINE &lt;- LOAD : &lt;i&gt;success&lt;/i&gt; (immediately)
+hnote over PIPELINE: waiting 'load' output
+PIPELINE &lt;- LOAD : 'load' output
+
+note over PIPELINE
+let's assume that everything went fine
+end note
+
+PIPELINE -&gt; PLAN : solve the problem
+PIPELINE &lt;- PLAN : &lt;i&gt;success&lt;/i&gt; (immediately)
+hnote over PIPELINE: waiting 'solve' output
+PIPELINE &lt;- PLAN : 'solve' output
+
+note over PIPELINE
+let's assume that everything went fine
+end note
+
+MISSION_MANAGER &lt;- PIPELINE : &lt;i&gt;success&lt;/i&gt;
+
+== dispatch phase ==
+
+MISSION_MANAGER -&gt; PIPELINE : parse and dispatch
+
+PIPELINE -&gt; PARSE : parse plan
+PIPELINE &lt;- PARSE
+hnote over PIPELINE: waiting 'parse' output
+PIPELINE &lt;- PARSE : 'parse'
+
+PIPELINE -&gt; DISPATCH : parse plan
+note over MISSION_MANAGER, DISPATCH : it requires a lot of time: the system is running the RCL ROSPlan actions
+PIPELINE &lt;- DISPATCH : end execution
+
+MISSION_MANAGER &lt;- PIPELINE : &lt;i&gt;success&lt;/i&gt;
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="collect-and-solve-landmarks">
+<h3>COLLECT and SOLVE landmarks<a class="headerlink" href="#collect-and-solve-landmarks" title="Permalink to this heading"></a></h3>
+<p>the procedure is always the same for the other landmarks: the mission manager splits the landmark execution in two phases in the same way. Obviously, if something could go wrong, the procedure would be shorter, and the MISSION_MANAGER would spend a bit to understand what went wrong.</p>
 </div>
 </div>
 </div>

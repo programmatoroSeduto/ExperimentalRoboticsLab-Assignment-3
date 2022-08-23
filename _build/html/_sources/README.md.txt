@@ -128,7 +128,7 @@ The mission manager contains the bridges above-mentioned (there are bridges for 
 @startuml
 
 ''' INFOS
-title Project Architecture
+title Project Architecture - simplified
 skinparam Padding 10
 allow_mixing
 
@@ -137,7 +137,7 @@ allow_mixing
 database "aRMOR" as ARMOR
 component "MoveIt!" as MOVEIT
 component "Navigation Stack" as NAVSTACK
-component "erl3 Oracle" as ORACLE
+component "erl3 Oracle" as OR ACLE
 component "ROSPlan" as ROSPLAN
 
 node "RCL mission manager" as MISSION_MANAGER
@@ -200,7 +200,7 @@ Here's the diagram (I suggest you to open the image in a new tab of the browser.
 @startuml
 
 ''' INFOS
-title Project Architecture
+title Project Architecture - extended
 ''' skinparam Padding 8
 allow_mixing
 
@@ -311,9 +311,16 @@ NAV_UNIT -- ROSPLAN_ACTIONS
 
 Here are the temporal diagrams of the project, describing just the essential steps performed in communicating between packages
 
+### Foreword -- diagrams conventions
+
+- the *package temporal diagram* represents how different independe packages work together
+- the *node temporal diagram* is more specific and goes deeper into how the nodes communicate each other
+- the square note is used for exposing scenarios and hypotheses
+- the rhomboid annotation underlines an operation inside the node or the package
+
 ### navigation using move_base (RCL#3)
 
-**package temporal diagram**: 
+**package temporal diagram**. The RCL#3 integrates a behaviour involving *move_base*. As said before, the package *robocluedo_mission_manager* offers delegates to enable the communicaton between two different packages. 
 
 ```{uml}
 @startuml
@@ -345,7 +352,7 @@ ROSPLAN <- MISSION : navigation ended
 @enduml
 ```
 
-**node temporal diagram**: 
+**node temporal diagram**. The navigation is divided into many layers: the delegate (NAVIGATION_UNIT) inside the *robocluedo_mission_manager* package, the manager (NAVIGATION_MANAGER), the controller (NAVIGATION_CONTROLLER), the composite behaviour (MOVE_BASE_NAV) and the elementary behaviours (in this case only HEAD_ORIENTATION since MOVE_BASE is another framework, but in this case let's assume it is a behaviour similar to the GOTO_POIN in RCL#2). The robot first travels with a complex path towards the target, then, reached it, rotates to reach the final orientation. 
 
 ```{uml}
 @startuml
@@ -415,10 +422,12 @@ MOVE_TO <- NAVIGATION_UNIT : response (RCL ROSPlan)
 
 ### navigation using bug_m (RCL#2)
 
+**package temporal diagram**. The RCL#2 uses simple behaviours in order to perform the navigation. The package *robocluedo_mission_manager* offers delegates to enable the communicaton between two different packages: RCL ROSPlan, and the movement controller package.
+
 ```{uml}
 @startuml
 
-title RCL#3 bug_m navigation - package temporal diagram
+title bug_m navigation - package temporal diagram
 
 ''' ENTITIES 
 collections ROSPLAN
@@ -448,12 +457,14 @@ ROSPLAN <- MISSION : navigation ended
 @enduml
 ```
 
-### manipulation (RCL#2) -- synchronous manipulation
+**node temporal diagram**. The navigation is divided into many layers: the delegate (NAVIGATION_UNIT) inside the *robocluedo_mission_manager* package, the manager (NAVIGATION_MANAGER), the controller (NAVIGATION_CONTROLLER), the composite behaviour (BUGM_NAV) and the elementary behaviours (in this case HEAD_ORIENTATION and GOTO_POINT). 
+
+The robot moves backwards very slowly, trying to gain space for then performing the rotation. Successively, it rotates orienting its head towards the target. The trasvel proceeds along a straight line from the starting point to the target one. And finally, the robot orients itself to reach the final pose. 
 
 ```{uml}
 @startuml
 
-title RCL#3 move_base navigation - node temporal diagram
+title bug_m navigation - node temporal diagram
 ' header ...
 ' footer ...
 
@@ -545,6 +556,10 @@ MOVE_TO <- NAVIGATION_UNIT : response (RCL ROSPlan)
 
 ### manipulation (RCL#3) -- asynchrononus manipulation
 
+**node temporal diagram**. This feature has been introduced for collecting much more hints in the space than in the case when the robot performs a manipulation always in the same way. The manipulator continuously changes the camera framing for spotting new markers in the space. This often causes a quicker solution time. 
+
+Here's how this feature works. The mission manager keeps it active, and turns off it only during the SOLVE phase. 
+
 ```{uml}
 @startuml
 
@@ -621,12 +636,12 @@ MANIPULATION_CONTROLLER <-- MOVEIT : end of the motion
 
 ### Vision system workflow
 
-**node temporal diagram**:
+**node temporal diagram**. This schema wants to clarify how the vision works. Take into account that *markers detected twice don't cause a new publication from the VISION_DETECT node*, for performance reasons. 
 
 ```{uml}
 @startuml
 
-title Aruco vision - RCL#3
+title Vision - RCL#3
 
 ''' ENTITIES
 participant ENVIRON
@@ -746,7 +761,11 @@ MISSION_MANAGER <- ARMOR : <i>success</i>
 @enduml
 ```
 
-### Mission manager workflow
+## Mission manager workflow
+
+Here's the state diagram of the mission manager. Please take into account that the states REPLAN, COLLECT, and SOLVE, are *landmarks*; see the documentation about the *robocluedo_rosplan* package for further informations. 
+
+The diagram doesn't show the status FAULT_COUNT which, as the name suggests, counts the unexpected (and unexplained) failures. The node has a counter of failures, and when the counter reaches zero, the node closes wuthout succeeding the mission. This strategy *could be replaced, or altered, in future updates.*
 
 ```{uml}
 @startuml
@@ -783,3 +802,79 @@ ASK_ORACLE --> REPLAN : solution wrong
 
 @enduml
 ```
+
+## ROSPlan landmarks -- temporal diagrams
+
+The mission manager makes a high level planning, whereas the RCL ROSPlan framework performs a *mid-level planning*: the mission manager divides the mission into a *policy* made of some macro-steps, and the ROSPlan package decides how to perform such macrosteps expanding them in a sequence of actions according to the situation registered in the ROSPlan knowledge base.
+
+This leads to a more elaborated architecture for this framework, but also makes more flexible the behaviour of the system. 
+
+The following diagrams shows not only what happens when a landmark is requested, but also how the MISSION_MANAGER carries out the ellaboration of the landmarks. 
+
+### REPLAN landmark
+
+```{uml}
+@startuml
+
+title landmark execution - REPLAN
+
+''' ENTITIES
+participant MISSION_MANAGER
+participant PIPELINE
+participant KB_INTERFACE
+participant LOAD
+participant PLAN
+participant PARSE
+participant DISPATCH
+
+'' TEMPORAL DIAGRAM
+== planning phase ==
+
+note over MISSION_MANAGER: try to load and solve the problem
+
+MISSION_MANAGER -> PIPELINE : load (landmark REPLAN) and solve
+
+PIPELINE -> KB_INTERFACE : prepare REPLAN
+PIPELINE <- KB_INTERFACE : <i>always success</i>
+
+PIPELINE -> LOAD : trigger loading
+PIPELINE <- LOAD : <i>success</i> (immediately)
+hnote over PIPELINE: waiting 'load' output
+PIPELINE <- LOAD : 'load' output
+
+note over PIPELINE
+let's assume that everything went fine
+end note
+
+PIPELINE -> PLAN : solve the problem
+PIPELINE <- PLAN : <i>success</i> (immediately)
+hnote over PIPELINE: waiting 'solve' output
+PIPELINE <- PLAN : 'solve' output
+
+note over PIPELINE
+let's assume that everything went fine
+end note
+
+MISSION_MANAGER <- PIPELINE : <i>success</i>
+
+== dispatch phase ==
+
+MISSION_MANAGER -> PIPELINE : parse and dispatch
+
+PIPELINE -> PARSE : parse plan
+PIPELINE <- PARSE
+hnote over PIPELINE: waiting 'parse' output
+PIPELINE <- PARSE : 'parse'
+
+PIPELINE -> DISPATCH : parse plan
+note over MISSION_MANAGER, DISPATCH : it requires a lot of time: the system is running the RCL ROSPlan actions
+PIPELINE <- DISPATCH : end execution
+
+MISSION_MANAGER <- PIPELINE : <i>success</i>
+
+@enduml
+```
+
+### COLLECT and SOLVE landmarks
+
+the procedure is always the same for the other landmarks: the mission manager splits the landmark execution in two phases in the same way. Obviously, if something could go wrong, the procedure would be shorter, and the MISSION_MANAGER would spend a bit to understand what went wrong. 

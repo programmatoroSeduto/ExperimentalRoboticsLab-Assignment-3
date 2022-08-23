@@ -137,7 +137,7 @@
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture<sp/>-<sp/>simplified</highlight></codeline>
 <codeline><highlight class="normal">skinparam<sp/>Padding<sp/>10</highlight></codeline>
 <codeline><highlight class="normal">allow_mixing</highlight></codeline>
 <codeline></codeline>
@@ -146,7 +146,7 @@
 <codeline><highlight class="normal">database<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;Navigation<sp/>Stack&quot;<sp/>as<sp/>NAVSTACK</highlight></codeline>
-<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>OR<sp/>ACLE</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;ROSPlan&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">node<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
@@ -209,7 +209,7 @@
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture<sp/>-<sp/>extended</highlight></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>skinparam<sp/>Padding<sp/>8</highlight></codeline>
 <codeline><highlight class="normal">allow_mixing</highlight></codeline>
 <codeline></codeline>
@@ -320,9 +320,16 @@
 <codeline></codeline>
 <codeline><highlight class="normal">Here<sp/>are<sp/>the<sp/>temporal<sp/>diagrams<sp/>of<sp/>the<sp/>project,<sp/>describing<sp/>just<sp/>the<sp/>essential<sp/>steps<sp/>performed<sp/>in<sp/>communicating<sp/>between<sp/>packages</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Foreword<sp/>--<sp/>diagrams<sp/>conventions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>*package<sp/>temporal<sp/>diagram*<sp/>represents<sp/>how<sp/>different<sp/>independe<sp/>packages<sp/>work<sp/>together</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>*node<sp/>temporal<sp/>diagram*<sp/>is<sp/>more<sp/>specific<sp/>and<sp/>goes<sp/>deeper<sp/>into<sp/>how<sp/>the<sp/>nodes<sp/>communicate<sp/>each<sp/>other</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>square<sp/>note<sp/>is<sp/>used<sp/>for<sp/>exposing<sp/>scenarios<sp/>and<sp/>hypotheses</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>rhomboid<sp/>annotation<sp/>underlines<sp/>an<sp/>operation<sp/>inside<sp/>the<sp/>node<sp/>or<sp/>the<sp/>package</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">###<sp/>navigation<sp/>using<sp/>move_base<sp/>(RCL#3)</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**package<sp/>temporal<sp/>diagram**:<sp/></highlight></codeline>
+<codeline><highlight class="normal">**package<sp/>temporal<sp/>diagram**.<sp/>The<sp/>RCL#3<sp/>integrates<sp/>a<sp/>behaviour<sp/>involving<sp/>*move_base*.<sp/>As<sp/>said<sp/>before,<sp/>the<sp/>package<sp/>*robocluedo_mission_manager*<sp/>offers<sp/>delegates<sp/>to<sp/>enable<sp/>the<sp/>communicaton<sp/>between<sp/>two<sp/>different<sp/>packages.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -354,7 +361,7 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**:<sp/></highlight></codeline>
+<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**.<sp/>The<sp/>navigation<sp/>is<sp/>divided<sp/>into<sp/>many<sp/>layers:<sp/>the<sp/>delegate<sp/>(NAVIGATION_UNIT)<sp/>inside<sp/>the<sp/>*robocluedo_mission_manager*<sp/>package,<sp/>the<sp/>manager<sp/>(NAVIGATION_MANAGER),<sp/>the<sp/>controller<sp/>(NAVIGATION_CONTROLLER),<sp/>the<sp/>composite<sp/>behaviour<sp/>(MOVE_BASE_NAV)<sp/>and<sp/>the<sp/>elementary<sp/>behaviours<sp/>(in<sp/>this<sp/>case<sp/>only<sp/>HEAD_ORIENTATION<sp/>since<sp/>MOVE_BASE<sp/>is<sp/>another<sp/>framework,<sp/>but<sp/>in<sp/>this<sp/>case<sp/>let&apos;s<sp/>assume<sp/>it<sp/>is<sp/>a<sp/>behaviour<sp/>similar<sp/>to<sp/>the<sp/>GOTO_POIN<sp/>in<sp/>RCL#2).<sp/>The<sp/>robot<sp/>first<sp/>travels<sp/>with<sp/>a<sp/>complex<sp/>path<sp/>towards<sp/>the<sp/>target,<sp/>then,<sp/>reached<sp/>it,<sp/>rotates<sp/>to<sp/>reach<sp/>the<sp/>final<sp/>orientation.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -424,10 +431,12 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>navigation<sp/>using<sp/>bug_m<sp/>(RCL#2)</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">**package<sp/>temporal<sp/>diagram**.<sp/>The<sp/>RCL#2<sp/>uses<sp/>simple<sp/>behaviours<sp/>in<sp/>order<sp/>to<sp/>perform<sp/>the<sp/>navigation.<sp/>The<sp/>package<sp/>*robocluedo_mission_manager*<sp/>offers<sp/>delegates<sp/>to<sp/>enable<sp/>the<sp/>communicaton<sp/>between<sp/>two<sp/>different<sp/>packages:<sp/>RCL<sp/>ROSPlan,<sp/>and<sp/>the<sp/>movement<sp/>controller<sp/>package.</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>RCL#3<sp/>bug_m<sp/>navigation<sp/>-<sp/>package<sp/>temporal<sp/>diagram</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>bug_m<sp/>navigation<sp/>-<sp/>package<sp/>temporal<sp/>diagram</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
 <codeline><highlight class="normal">collections<sp/>ROSPLAN</highlight></codeline>
@@ -457,12 +466,14 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>manipulation<sp/>(RCL#2)<sp/>--<sp/>synchronous<sp/>manipulation</highlight></codeline>
+<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**.<sp/>The<sp/>navigation<sp/>is<sp/>divided<sp/>into<sp/>many<sp/>layers:<sp/>the<sp/>delegate<sp/>(NAVIGATION_UNIT)<sp/>inside<sp/>the<sp/>*robocluedo_mission_manager*<sp/>package,<sp/>the<sp/>manager<sp/>(NAVIGATION_MANAGER),<sp/>the<sp/>controller<sp/>(NAVIGATION_CONTROLLER),<sp/>the<sp/>composite<sp/>behaviour<sp/>(BUGM_NAV)<sp/>and<sp/>the<sp/>elementary<sp/>behaviours<sp/>(in<sp/>this<sp/>case<sp/>HEAD_ORIENTATION<sp/>and<sp/>GOTO_POINT).<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>robot<sp/>moves<sp/>backwards<sp/>very<sp/>slowly,<sp/>trying<sp/>to<sp/>gain<sp/>space<sp/>for<sp/>then<sp/>performing<sp/>the<sp/>rotation.<sp/>Successively,<sp/>it<sp/>rotates<sp/>orienting<sp/>its<sp/>head<sp/>towards<sp/>the<sp/>target.<sp/>The<sp/>trasvel<sp/>proceeds<sp/>along<sp/>a<sp/>straight<sp/>line<sp/>from<sp/>the<sp/>starting<sp/>point<sp/>to<sp/>the<sp/>target<sp/>one.<sp/>And<sp/>finally,<sp/>the<sp/>robot<sp/>orients<sp/>itself<sp/>to<sp/>reach<sp/>the<sp/>final<sp/>pose.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>RCL#3<sp/>move_base<sp/>navigation<sp/>-<sp/>node<sp/>temporal<sp/>diagram</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>bug_m<sp/>navigation<sp/>-<sp/>node<sp/>temporal<sp/>diagram</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>header<sp/>...</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>footer<sp/>...</highlight></codeline>
 <codeline></codeline>
@@ -554,6 +565,10 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>manipulation<sp/>(RCL#3)<sp/>--<sp/>asynchrononus<sp/>manipulation</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**.<sp/>This<sp/>feature<sp/>has<sp/>been<sp/>introduced<sp/>for<sp/>collecting<sp/>much<sp/>more<sp/>hints<sp/>in<sp/>the<sp/>space<sp/>than<sp/>in<sp/>the<sp/>case<sp/>when<sp/>the<sp/>robot<sp/>performs<sp/>a<sp/>manipulation<sp/>always<sp/>in<sp/>the<sp/>same<sp/>way.<sp/>The<sp/>manipulator<sp/>continuously<sp/>changes<sp/>the<sp/>camera<sp/>framing<sp/>for<sp/>spotting<sp/>new<sp/>markers<sp/>in<sp/>the<sp/>space.<sp/>This<sp/>often<sp/>causes<sp/>a<sp/>quicker<sp/>solution<sp/>time.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here&apos;s<sp/>how<sp/>this<sp/>feature<sp/>works.<sp/>The<sp/>mission<sp/>manager<sp/>keeps<sp/>it<sp/>active,<sp/>and<sp/>turns<sp/>off<sp/>it<sp/>only<sp/>during<sp/>the<sp/>SOLVE<sp/>phase.<sp/></highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
@@ -630,12 +645,12 @@
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>Vision<sp/>system<sp/>workflow</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**:</highlight></codeline>
+<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**.<sp/>This<sp/>schema<sp/>wants<sp/>to<sp/>clarify<sp/>how<sp/>the<sp/>vision<sp/>works.<sp/>Take<sp/>into<sp/>account<sp/>that<sp/>*markers<sp/>detected<sp/>twice<sp/>don&apos;t<sp/>cause<sp/>a<sp/>new<sp/>publication<sp/>from<sp/>the<sp/>VISION_DETECT<sp/>node*,<sp/>for<sp/>performance<sp/>reasons.<sp/></highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>Aruco<sp/>vision<sp/>-<sp/>RCL#3</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Vision<sp/>-<sp/>RCL#3</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES</highlight></codeline>
 <codeline><highlight class="normal">participant<sp/>ENVIRON</highlight></codeline>
@@ -755,7 +770,11 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>Mission<sp/>manager<sp/>workflow</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Mission<sp/>manager<sp/>workflow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here&apos;s<sp/>the<sp/>state<sp/>diagram<sp/>of<sp/>the<sp/>mission<sp/>manager.<sp/>Please<sp/>take<sp/>into<sp/>account<sp/>that<sp/>the<sp/>states<sp/>REPLAN,<sp/>COLLECT,<sp/>and<sp/>SOLVE,<sp/>are<sp/>*landmarks*;<sp/>see<sp/>the<sp/>documentation<sp/>about<sp/>the<sp/>*robocluedo_rosplan*<sp/>package<sp/>for<sp/>further<sp/>informations.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>diagram<sp/>doesn&apos;t<sp/>show<sp/>the<sp/>status<sp/>FAULT_COUNT<sp/>which,<sp/>as<sp/>the<sp/>name<sp/>suggests,<sp/>counts<sp/>the<sp/>unexpected<sp/>(and<sp/>unexplained)<sp/>failures.<sp/>The<sp/>node<sp/>has<sp/>a<sp/>counter<sp/>of<sp/>failures,<sp/>and<sp/>when<sp/>the<sp/>counter<sp/>reaches<sp/>zero,<sp/>the<sp/>node<sp/>closes<sp/>wuthout<sp/>succeeding<sp/>the<sp/>mission.<sp/>This<sp/>strategy<sp/>*could<sp/>be<sp/>replaced,<sp/>or<sp/>altered,<sp/>in<sp/>future<sp/>updates.*</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
@@ -792,6 +811,82 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>ROSPlan<sp/>landmarks<sp/>--<sp/>temporal<sp/>diagrams</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>mission<sp/>manager<sp/>makes<sp/>a<sp/>high<sp/>level<sp/>planning,<sp/>whereas<sp/>the<sp/>RCL<sp/>ROSPlan<sp/>framework<sp/>performs<sp/>a<sp/>*mid-level<sp/>planning*:<sp/>the<sp/>mission<sp/>manager<sp/>divides<sp/>the<sp/>mission<sp/>into<sp/>a<sp/>*policy*<sp/>made<sp/>of<sp/>some<sp/>macro-steps,<sp/>and<sp/>the<sp/>ROSPlan<sp/>package<sp/>decides<sp/>how<sp/>to<sp/>perform<sp/>such<sp/>macrosteps<sp/>expanding<sp/>them<sp/>in<sp/>a<sp/>sequence<sp/>of<sp/>actions<sp/>according<sp/>to<sp/>the<sp/>situation<sp/>registered<sp/>in<sp/>the<sp/>ROSPlan<sp/>knowledge<sp/>base.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>leads<sp/>to<sp/>a<sp/>more<sp/>elaborated<sp/>architecture<sp/>for<sp/>this<sp/>framework,<sp/>but<sp/>also<sp/>makes<sp/>more<sp/>flexible<sp/>the<sp/>behaviour<sp/>of<sp/>the<sp/>system.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>diagrams<sp/>shows<sp/>not<sp/>only<sp/>what<sp/>happens<sp/>when<sp/>a<sp/>landmark<sp/>is<sp/>requested,<sp/>but<sp/>also<sp/>how<sp/>the<sp/>MISSION_MANAGER<sp/>carries<sp/>out<sp/>the<sp/>ellaboration<sp/>of<sp/>the<sp/>landmarks.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>REPLAN<sp/>landmark</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}</highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>landmark<sp/>execution<sp/>-<sp/>REPLAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>PIPELINE</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>KB_INTERFACE</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>LOAD</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>PLAN</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>PARSE</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>DISPATCH</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;<sp/>TEMPORAL<sp/>DIAGRAM</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>planning<sp/>phase<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MISSION_MANAGER:<sp/>try<sp/>to<sp/>load<sp/>and<sp/>solve<sp/>the<sp/>problem</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>PIPELINE<sp/>:<sp/>load<sp/>(landmark<sp/>REPLAN)<sp/>and<sp/>solve</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>-&gt;<sp/>KB_INTERFACE<sp/>:<sp/>prepare<sp/>REPLAN</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>KB_INTERFACE<sp/>:<sp/>&lt;i&gt;always<sp/>success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>-&gt;<sp/>LOAD<sp/>:<sp/>trigger<sp/>loading</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>LOAD<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;<sp/>(immediately)</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>PIPELINE:<sp/>waiting<sp/>&apos;load&apos;<sp/>output</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>LOAD<sp/>:<sp/>&apos;load&apos;<sp/>output</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>PIPELINE</highlight></codeline>
+<codeline><highlight class="normal">let&apos;s<sp/>assume<sp/>that<sp/>everything<sp/>went<sp/>fine</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>-&gt;<sp/>PLAN<sp/>:<sp/>solve<sp/>the<sp/>problem</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>PLAN<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;<sp/>(immediately)</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>PIPELINE:<sp/>waiting<sp/>&apos;solve&apos;<sp/>output</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>PLAN<sp/>:<sp/>&apos;solve&apos;<sp/>output</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>PIPELINE</highlight></codeline>
+<codeline><highlight class="normal">let&apos;s<sp/>assume<sp/>that<sp/>everything<sp/>went<sp/>fine</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>PIPELINE<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>dispatch<sp/>phase<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>PIPELINE<sp/>:<sp/>parse<sp/>and<sp/>dispatch</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>-&gt;<sp/>PARSE<sp/>:<sp/>parse<sp/>plan</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>PARSE</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>PIPELINE:<sp/>waiting<sp/>&apos;parse&apos;<sp/>output</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>PARSE<sp/>:<sp/>&apos;parse&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>-&gt;<sp/>DISPATCH<sp/>:<sp/>parse<sp/>plan</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MISSION_MANAGER,<sp/>DISPATCH<sp/>:<sp/>it<sp/>requires<sp/>a<sp/>lot<sp/>of<sp/>time:<sp/>the<sp/>system<sp/>is<sp/>running<sp/>the<sp/>RCL<sp/>ROSPlan<sp/>actions</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&lt;-<sp/>DISPATCH<sp/>:<sp/>end<sp/>execution</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>PIPELINE<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>COLLECT<sp/>and<sp/>SOLVE<sp/>landmarks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">the<sp/>procedure<sp/>is<sp/>always<sp/>the<sp/>same<sp/>for<sp/>the<sp/>other<sp/>landmarks:<sp/>the<sp/>mission<sp/>manager<sp/>splits<sp/>the<sp/>landmark<sp/>execution<sp/>in<sp/>two<sp/>phases<sp/>in<sp/>the<sp/>same<sp/>way.<sp/>Obviously,<sp/>if<sp/>something<sp/>could<sp/>go<sp/>wrong,<sp/>the<sp/>procedure<sp/>would<sp/>be<sp/>shorter,<sp/>and<sp/>the<sp/>MISSION_MANAGER<sp/>would<sp/>spend<sp/>a<sp/>bit<sp/>to<sp/>understand<sp/>what<sp/>went<sp/>wrong.<sp/></highlight></codeline>
     </programlisting>
     <location file="README.md"/>
   </compounddef>
