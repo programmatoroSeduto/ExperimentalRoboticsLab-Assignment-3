@@ -1672,7 +1672,17 @@ anche il diagramma a stati è abbastanza osceno ... ma perlomeno meglio dell'alt
 	- pianificazione di un landmark con il pipeline manager
 - direi di fare un plan per ogni landmark:
 	- REPLAN
-	
+	- ... e gli altri sono identici
+- **COMMIT**: "documentation (landmarks execution diagram)"
+
+---
+
+e torniamo al lavoro:
+
+- (per l'installazione ci penso più tardi)
+- (la runnin procedure è ampiamente spiegata con dovizia di particolari nella documentazione del progetto)
+- workig hypotheses and environment
+- **COMMIT**: "documentaton (working assumptions)"
 
 
 

@@ -228,6 +228,49 @@
 <h3>Components – simplified schema<a class="headerlink" href="#components-simplified-schema" title="Permalink to this heading"></a></h3>
 <p>It highlights the centralized structure of the architecture. Each component here corresponds to a package used by the project.</p>
 <p>The mission manager contains the bridges above-mentioned (there are bridges for both the navigation and the manipulation), as well as the <em>main node</em> providing a high-layer planning by means of landmarks and aRMOR operations.</p>
+<p class="plantuml">
+<object data="_images/plantuml-ae16c651795a389d4fe79bed369869741557cca5.svg" type="image/svg+xml" style="width:652px;height:766px;background:#FFFFFF;">
+<img src="_images/plantuml-ae16c651795a389d4fe79bed369869741557cca5.png" alt="&#64;startuml
+
+''' INFOS
+title Project Architecture simplified
+skinparam Padding 10
+allow_mixing
+
+
+''' COMPONENTS
+database &quot;aRMOR&quot; as ARMOR
+component &quot;MoveIt!&quot; as MOVEIT
+component &quot;Navigation Stack&quot; as NAVSTACK
+component &quot;erl3 Oracle&quot; as ORACLE
+component &quot;ROSPlan&quot; as ROSPLAN
+
+node &quot;RCL mission manager&quot; as MISSION_MANAGER
+component &quot;RCL Vision&quot; as VISION
+component &quot;RCL aRMOR interface&quot; as RCL_ARMOR
+component &quot;RCL ROSPlan&quot; as RCL_ROSPLAN
+component &quot;RCL Movement Controller&quot; as MOVEMENT
+component &quot;RCL hunter environment&quot; as ENVIRONMENT
+
+
+''' CONNECTIONS
+ENVIRONMENT &lt;--&gt; NAVSTACK
+ENVIRONMENT &lt;--&gt; MOVEIT
+ENVIRONMENT &lt;--&gt; VISION
+NAVSTACK &lt;--&gt; MOVEMENT
+MOVEIT &lt;--&gt; MOVEMENT
+MOVEMENT &lt;--&gt; MISSION_MANAGER
+MISSION_MANAGER &lt;--&gt; RCL_ROSPLAN
+ROSPLAN &lt;--&gt; RCL_ROSPLAN
+MISSION_MANAGER &lt;--&gt; RCL_ARMOR
+ARMOR &lt;--&gt; RCL_ARMOR
+MISSION_MANAGER &lt;--&gt; VISION
+VISION &lt;--&gt; ORACLE
+MISSION_MANAGER -- ORACLE
+
+&#64;enduml"/>
+
+</object></p>
 </div>
 <hr class="docutils" />
 <div class="section" id="components-extended-schema">
@@ -940,10 +983,90 @@ MISSION_MANAGER &lt;- PIPELINE : &lt;i&gt;success&lt;/i&gt;
 
 </object></p>
 </div>
-<div class="section" id="collect-and-solve-landmarks">
-<h3>COLLECT and SOLVE landmarks<a class="headerlink" href="#collect-and-solve-landmarks" title="Permalink to this heading"></a></h3>
+<div class="section" id="about-collect-and-solve-landmarks">
+<h3>About COLLECT and SOLVE landmarks<a class="headerlink" href="#about-collect-and-solve-landmarks" title="Permalink to this heading"></a></h3>
 <p>the procedure is always the same for the other landmarks: the mission manager splits the landmark execution in two phases in the same way. Obviously, if something could go wrong, the procedure would be shorter, and the MISSION_MANAGER would spend a bit to understand what went wrong.</p>
 </div>
+</div>
+<div class="section" id="working-hypotheses">
+<h2>working hypotheses<a class="headerlink" href="#working-hypotheses" title="Permalink to this heading"></a></h2>
+<p>Few assumptions are needed, since the architecture tries to interact with general-purpose frameworks, using standard ways for interacting with the low level system. The most important assumption is that <em>the rules of the game are satisfied</em>, otherwise the behaviour of the robot is not determined.</p>
+<div class="section" id="about-the-environment">
+<h3>About the environment<a class="headerlink" href="#about-the-environment" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>the robot moves on a flat floor: always room can be reached by moving the roobot on the same floor (the house has only one, perfectly flat, floor)</p></li>
+<li><p>the environment could be “maze-like”, but there should be space enough for allowing the robot to manouver</p></li>
+<li><p>the topology of the environment is well known, as well as the cartesian coordinates of the waypoints</p>
+<ul>
+<li><p>there’s a node publishing the cartesian positions of the markers</p></li>
+<li><p>and the <em>topological map of the environment</em> is known in advance</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="about-the-markers-and-the-sensing">
+<h3>About the markers and the sensing<a class="headerlink" href="#about-the-markers-and-the-sensing" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>all the informations inside the environment are valid ArUco markers</p></li>
+<li><p>the stream from the cameras is informative enough</p>
+<ul>
+<li><p>there are four cameras, at a low frequency each of them, but there are “x4” informations from around the robot</p></li>
+<li><p>this means that, despite the methods designed to make the detection faster (mainly based on <em>drop some frames</em>), the system detects a lot of markers even with these conditions</p></li>
+<li><p>in other words, the system discards fewer useful frames than it accepts, keeping the stream uniformly informative</p></li>
+<li><p>so, <em>why taking the entire volume of data from the cameras?</em> We can discard some frames, i.e. <em>not executing the ArUco detection on these frames</em></p></li>
+</ul>
+</li>
+<li><p>the ArUco markers are clearly visible</p>
+<ul>
+<li><p>there are no “hidden markers” inside the environment</p></li>
+</ul>
+</li>
+<li><p><em>the solution can be found in the markers of the environment</em></p>
+<ul>
+<li><p>the robot system has not a way to understand when the solution cannot be found in the environment</p></li>
+<li><p>such a feature would require to detect and count the markers</p></li>
+<li><p>but … how to be sure that the markers detected are all the markers inside the space? After all, the robot vision system could easily miss one marker</p></li>
+<li><p>hence, the robot can do no more than <em>keeping going aroung in search of a decisive hint</em></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="about-the-reasoning">
+<h3>About the reasoning<a class="headerlink" href="#about-the-reasoning" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>the mystery can be solved at least with a two-steps policy COLLECT, SOLVE</p>
+<ul>
+<li><p>it is mostly due to the rules of the game</p></li>
+<li><p><em>if the game changes, the policy should be reviewed</em> accordingly to the new rules</p></li>
+<li><p>in particular, if the problem cannot be reduced in a combination of two general steps, the planner shall provide other landmarks</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>the robot can work only in well-known environments. It doesn’t support free exploration</p>
+<ul>
+<li><p>the free exploration requires the robot to choose by itself the waypoints, maybe based on the measurements from the laser sensor, or other systems</p></li>
+<li><p>currently, there’s no such a functionality</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="improvements-and-future-develops">
+<h2>Improvements and future develops<a class="headerlink" href="#improvements-and-future-develops" title="Permalink to this heading"></a></h2>
+<p><strong>Create a distributed version of the architecture</strong>. Thanks to the strict separation between the components applied during the design and then during the implementation, the architecture can be extended to many robots inside the same environment. Some components can be centralized, such as the part concerning the ontology. The main problem in this case could be the to find a tradeoff between the       bandwidth required to enable the robots to communicate with the central system, and the computational capabilities onboard.</p>
+<p><strong>Architecture Review of the ROSPlan package</strong>. Currently the knowledge base interface inside the <em>robocluedo_rosplan</em> package is of no use for nodes outside. There are many situations in which having directives exposed by the knowledge base interface can be useful. For instance, the code of the pipeline manager, currently <em>too much complex</em>, can be simplified a lot distributing the capability to explain a failure on two nodes. And, finally, the capability to write inside the ontology, taking into account the characteristics of the PDDL problem, is always useful. For these reasons, the ROSPlan implementation should be reviewed in order to provide a better supporto to the working cycle. The current package can be considered a <em>first prototype</em>, and it shall be formalized from the architectural point of view, and reimplemented, taking into account also the <em>directives</em> and the <em>features</em> given the PDDL model.</p>
+<p><strong>Manipulation</strong>. The manipulation approch can be heavily reviewed. The robot currently uses a very raw implementation of a moveit-based controller using well-known poses. The cartesian plan should be introduced, and the asynchronous manipulation should be improved. Even a end effector should be defined.</p>
+</div>
+<div class="section" id="author-and-contacts">
+<h2>Author and Contacts<a class="headerlink" href="#author-and-contacts" title="Permalink to this heading"></a></h2>
+<p>A project designed and developed by Francesco Ganci (S4143910)</p>
+<ul class="simple">
+<li><p><strong>Email</strong> : <span class="xref myst"><em>S4143910&#64;studenti.unige.it</em></span></p></li>
+</ul>
 </div>
 </div>
 

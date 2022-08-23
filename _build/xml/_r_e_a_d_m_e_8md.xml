@@ -137,7 +137,7 @@
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
-<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture<sp/>-<sp/>simplified</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture<sp/>simplified</highlight></codeline>
 <codeline><highlight class="normal">skinparam<sp/>Padding<sp/>10</highlight></codeline>
 <codeline><highlight class="normal">allow_mixing</highlight></codeline>
 <codeline></codeline>
@@ -146,7 +146,7 @@
 <codeline><highlight class="normal">database<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;Navigation<sp/>Stack&quot;<sp/>as<sp/>NAVSTACK</highlight></codeline>
-<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>OR<sp/>ACLE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;ROSPlan&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">node<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
@@ -884,9 +884,64 @@
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>COLLECT<sp/>and<sp/>SOLVE<sp/>landmarks</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>About<sp/>COLLECT<sp/>and<sp/>SOLVE<sp/>landmarks</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">the<sp/>procedure<sp/>is<sp/>always<sp/>the<sp/>same<sp/>for<sp/>the<sp/>other<sp/>landmarks:<sp/>the<sp/>mission<sp/>manager<sp/>splits<sp/>the<sp/>landmark<sp/>execution<sp/>in<sp/>two<sp/>phases<sp/>in<sp/>the<sp/>same<sp/>way.<sp/>Obviously,<sp/>if<sp/>something<sp/>could<sp/>go<sp/>wrong,<sp/>the<sp/>procedure<sp/>would<sp/>be<sp/>shorter,<sp/>and<sp/>the<sp/>MISSION_MANAGER<sp/>would<sp/>spend<sp/>a<sp/>bit<sp/>to<sp/>understand<sp/>what<sp/>went<sp/>wrong.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>working<sp/>hypotheses</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Few<sp/>assumptions<sp/>are<sp/>needed,<sp/>since<sp/>the<sp/>architecture<sp/>tries<sp/>to<sp/>interact<sp/>with<sp/>general-purpose<sp/>frameworks,<sp/>using<sp/>standard<sp/>ways<sp/>for<sp/>interacting<sp/>with<sp/>the<sp/>low<sp/>level<sp/>system.<sp/>The<sp/>most<sp/>important<sp/>assumption<sp/>is<sp/>that<sp/>*the<sp/>rules<sp/>of<sp/>the<sp/>game<sp/>are<sp/>satisfied*,<sp/>otherwise<sp/>the<sp/>behaviour<sp/>of<sp/>the<sp/>robot<sp/>is<sp/>not<sp/>determined.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>About<sp/>the<sp/>environment</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>robot<sp/>moves<sp/>on<sp/>a<sp/>flat<sp/>floor:<sp/>always<sp/>room<sp/>can<sp/>be<sp/>reached<sp/>by<sp/>moving<sp/>the<sp/>roobot<sp/>on<sp/>the<sp/>same<sp/>floor<sp/>(the<sp/>house<sp/>has<sp/>only<sp/>one,<sp/>perfectly<sp/>flat,<sp/>floor)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>environment<sp/>could<sp/>be<sp/>&quot;maze-like&quot;,<sp/>but<sp/>there<sp/>should<sp/>be<sp/>space<sp/>enough<sp/>for<sp/>allowing<sp/>the<sp/>robot<sp/>to<sp/>manouver<sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>topology<sp/>of<sp/>the<sp/>environment<sp/>is<sp/>well<sp/>known,<sp/>as<sp/>well<sp/>as<sp/>the<sp/>cartesian<sp/>coordinates<sp/>of<sp/>the<sp/>waypoints</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>there&apos;s<sp/>a<sp/>node<sp/>publishing<sp/>the<sp/>cartesian<sp/>positions<sp/>of<sp/>the<sp/>markers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>and<sp/>the<sp/>*topological<sp/>map<sp/>of<sp/>the<sp/>environment*<sp/>is<sp/>known<sp/>in<sp/>advance</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>About<sp/>the<sp/>markers<sp/>and<sp/>the<sp/>sensing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>all<sp/>the<sp/>informations<sp/>inside<sp/>the<sp/>environment<sp/>are<sp/>valid<sp/>ArUco<sp/>markers</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>stream<sp/>from<sp/>the<sp/>cameras<sp/>is<sp/>informative<sp/>enough</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>there<sp/>are<sp/>four<sp/>cameras,<sp/>at<sp/>a<sp/>low<sp/>frequency<sp/>each<sp/>of<sp/>them,<sp/>but<sp/>there<sp/>are<sp/>&quot;x4&quot;<sp/>informations<sp/>from<sp/>around<sp/>the<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>this<sp/>means<sp/>that,<sp/>despite<sp/>the<sp/>methods<sp/>designed<sp/>to<sp/>make<sp/>the<sp/>detection<sp/>faster<sp/>(mainly<sp/>based<sp/>on<sp/>*drop<sp/>some<sp/>frames*),<sp/>the<sp/>system<sp/>detects<sp/>a<sp/>lot<sp/>of<sp/>markers<sp/>even<sp/>with<sp/>these<sp/>conditions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>in<sp/>other<sp/>words,<sp/>the<sp/>system<sp/>discards<sp/>fewer<sp/>useful<sp/>frames<sp/>than<sp/>it<sp/>accepts,<sp/>keeping<sp/>the<sp/>stream<sp/>uniformly<sp/>informative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>so,<sp/>*why<sp/>taking<sp/>the<sp/>entire<sp/>volume<sp/>of<sp/>data<sp/>from<sp/>the<sp/>cameras?*<sp/>We<sp/>can<sp/>discard<sp/>some<sp/>frames,<sp/>i.e.<sp/>*not<sp/>executing<sp/>the<sp/>ArUco<sp/>detection<sp/>on<sp/>these<sp/>frames*</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>ArUco<sp/>markers<sp/>are<sp/>clearly<sp/>visible</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>there<sp/>are<sp/>no<sp/>&quot;hidden<sp/>markers&quot;<sp/>inside<sp/>the<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>*the<sp/>solution<sp/>can<sp/>be<sp/>found<sp/>in<sp/>the<sp/>markers<sp/>of<sp/>the<sp/>environment*</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>the<sp/>robot<sp/>system<sp/>has<sp/>not<sp/>a<sp/>way<sp/>to<sp/>understand<sp/>when<sp/>the<sp/>solution<sp/>cannot<sp/>be<sp/>found<sp/>in<sp/>the<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>such<sp/>a<sp/>feature<sp/>would<sp/>require<sp/>to<sp/>detect<sp/>and<sp/>count<sp/>the<sp/>markers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>but<sp/>...<sp/>how<sp/>to<sp/>be<sp/>sure<sp/>that<sp/>the<sp/>markers<sp/>detected<sp/>are<sp/>all<sp/>the<sp/>markers<sp/>inside<sp/>the<sp/>space?<sp/>After<sp/>all,<sp/>the<sp/>robot<sp/>vision<sp/>system<sp/>could<sp/>easily<sp/>miss<sp/>one<sp/>marker</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>hence,<sp/>the<sp/>robot<sp/>can<sp/>do<sp/>no<sp/>more<sp/>than<sp/>*keeping<sp/>going<sp/>aroung<sp/>in<sp/>search<sp/>of<sp/>a<sp/>decisive<sp/>hint*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>About<sp/>the<sp/>reasoning</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>mystery<sp/>can<sp/>be<sp/>solved<sp/>at<sp/>least<sp/>with<sp/>a<sp/>two-steps<sp/>policy<sp/>COLLECT,<sp/>SOLVE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>it<sp/>is<sp/>mostly<sp/>due<sp/>to<sp/>the<sp/>rules<sp/>of<sp/>the<sp/>game</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>*if<sp/>the<sp/>game<sp/>changes,<sp/>the<sp/>policy<sp/>should<sp/>be<sp/>reviewed*<sp/>accordingly<sp/>to<sp/>the<sp/>new<sp/>rules</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>in<sp/>particular,<sp/>if<sp/>the<sp/>problem<sp/>cannot<sp/>be<sp/>reduced<sp/>in<sp/>a<sp/>combination<sp/>of<sp/>two<sp/>general<sp/>steps,<sp/>the<sp/>planner<sp/>shall<sp/>provide<sp/>other<sp/>landmarks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Limitations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>the<sp/>robot<sp/>can<sp/>work<sp/>only<sp/>in<sp/>well-known<sp/>environments.<sp/>It<sp/>doesn&apos;t<sp/>support<sp/>free<sp/>exploration</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>the<sp/>free<sp/>exploration<sp/>requires<sp/>the<sp/>robot<sp/>to<sp/>choose<sp/>by<sp/>itself<sp/>the<sp/>waypoints,<sp/>maybe<sp/>based<sp/>on<sp/>the<sp/>measurements<sp/>from<sp/>the<sp/>laser<sp/>sensor,<sp/>or<sp/>other<sp/>systems</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>currently,<sp/>there&apos;s<sp/>no<sp/>such<sp/>a<sp/>functionality</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Improvements<sp/>and<sp/>future<sp/>develops</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Create<sp/>a<sp/>distributed<sp/>version<sp/>of<sp/>the<sp/>architecture**.<sp/>Thanks<sp/>to<sp/>the<sp/>strict<sp/>separation<sp/>between<sp/>the<sp/>components<sp/>applied<sp/>during<sp/>the<sp/>design<sp/>and<sp/>then<sp/>during<sp/>the<sp/>implementation,<sp/>the<sp/>architecture<sp/>can<sp/>be<sp/>extended<sp/>to<sp/>many<sp/>robots<sp/>inside<sp/>the<sp/>same<sp/>environment.<sp/>Some<sp/>components<sp/>can<sp/>be<sp/>centralized,<sp/>such<sp/>as<sp/>the<sp/>part<sp/>concerning<sp/>the<sp/>ontology.<sp/>The<sp/>main<sp/>problem<sp/>in<sp/>this<sp/>case<sp/>could<sp/>be<sp/>the<sp/>to<sp/>find<sp/>a<sp/>tradeoff<sp/>between<sp/>the<sp/><sp/><sp/><sp/><sp/><sp/><sp/>bandwidth<sp/>required<sp/>to<sp/>enable<sp/>the<sp/>robots<sp/>to<sp/>communicate<sp/>with<sp/>the<sp/>central<sp/>system,<sp/>and<sp/>the<sp/>computational<sp/>capabilities<sp/>onboard.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Architecture<sp/>Review<sp/>of<sp/>the<sp/>ROSPlan<sp/>package**.<sp/>Currently<sp/>the<sp/>knowledge<sp/>base<sp/>interface<sp/>inside<sp/>the<sp/>*robocluedo_rosplan*<sp/>package<sp/>is<sp/>of<sp/>no<sp/>use<sp/>for<sp/>nodes<sp/>outside.<sp/>There<sp/>are<sp/>many<sp/>situations<sp/>in<sp/>which<sp/>having<sp/>directives<sp/>exposed<sp/>by<sp/>the<sp/>knowledge<sp/>base<sp/>interface<sp/>can<sp/>be<sp/>useful.<sp/>For<sp/>instance,<sp/>the<sp/>code<sp/>of<sp/>the<sp/>pipeline<sp/>manager,<sp/>currently<sp/>*too<sp/>much<sp/>complex*,<sp/>can<sp/>be<sp/>simplified<sp/>a<sp/>lot<sp/>distributing<sp/>the<sp/>capability<sp/>to<sp/>explain<sp/>a<sp/>failure<sp/>on<sp/>two<sp/>nodes.<sp/>And,<sp/>finally,<sp/>the<sp/>capability<sp/>to<sp/>write<sp/>inside<sp/>the<sp/>ontology,<sp/>taking<sp/>into<sp/>account<sp/>the<sp/>characteristics<sp/>of<sp/>the<sp/>PDDL<sp/>problem,<sp/>is<sp/>always<sp/>useful.<sp/>For<sp/>these<sp/>reasons,<sp/>the<sp/>ROSPlan<sp/>implementation<sp/>should<sp/>be<sp/>reviewed<sp/>in<sp/>order<sp/>to<sp/>provide<sp/>a<sp/>better<sp/>supporto<sp/>to<sp/>the<sp/>working<sp/>cycle.<sp/>The<sp/>current<sp/>package<sp/>can<sp/>be<sp/>considered<sp/>a<sp/>*first<sp/>prototype*,<sp/>and<sp/>it<sp/>shall<sp/>be<sp/>formalized<sp/>from<sp/>the<sp/>architectural<sp/>point<sp/>of<sp/>view,<sp/>and<sp/>reimplemented,<sp/>taking<sp/>into<sp/>account<sp/>also<sp/>the<sp/>*directives*<sp/>and<sp/>the<sp/>*features*<sp/>given<sp/>the<sp/>PDDL<sp/>model.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Manipulation**.<sp/>The<sp/>manipulation<sp/>approch<sp/>can<sp/>be<sp/>heavily<sp/>reviewed.<sp/>The<sp/>robot<sp/>currently<sp/>uses<sp/>a<sp/>very<sp/>raw<sp/>implementation<sp/>of<sp/>a<sp/>moveit-based<sp/>controller<sp/>using<sp/>well-known<sp/>poses.<sp/>The<sp/>cartesian<sp/>plan<sp/>should<sp/>be<sp/>introduced,<sp/>and<sp/>the<sp/>asynchronous<sp/>manipulation<sp/>should<sp/>be<sp/>improved.<sp/>Even<sp/>a<sp/>end<sp/>effector<sp/>should<sp/>be<sp/>defined.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Author<sp/>and<sp/>Contacts</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>project<sp/>designed<sp/>and<sp/>developed<sp/>by<sp/>Francesco<sp/>Ganci<sp/>(S4143910)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Email**<sp/>:<sp/>[*S4143910@studenti.unige.it*]()</highlight></codeline>
     </programlisting>
     <location file="README.md"/>
   </compounddef>

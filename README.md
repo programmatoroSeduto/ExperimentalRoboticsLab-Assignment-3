@@ -128,7 +128,7 @@ The mission manager contains the bridges above-mentioned (there are bridges for 
 @startuml
 
 ''' INFOS
-title Project Architecture - simplified
+title Project Architecture simplified
 skinparam Padding 10
 allow_mixing
 
@@ -137,7 +137,7 @@ allow_mixing
 database "aRMOR" as ARMOR
 component "MoveIt!" as MOVEIT
 component "Navigation Stack" as NAVSTACK
-component "erl3 Oracle" as OR ACLE
+component "erl3 Oracle" as ORACLE
 component "ROSPlan" as ROSPLAN
 
 node "RCL mission manager" as MISSION_MANAGER
@@ -875,6 +875,61 @@ MISSION_MANAGER <- PIPELINE : <i>success</i>
 @enduml
 ```
 
-### COLLECT and SOLVE landmarks
+### About COLLECT and SOLVE landmarks
 
 the procedure is always the same for the other landmarks: the mission manager splits the landmark execution in two phases in the same way. Obviously, if something could go wrong, the procedure would be shorter, and the MISSION_MANAGER would spend a bit to understand what went wrong. 
+
+## working hypotheses
+
+Few assumptions are needed, since the architecture tries to interact with general-purpose frameworks, using standard ways for interacting with the low level system. The most important assumption is that *the rules of the game are satisfied*, otherwise the behaviour of the robot is not determined. 
+
+### About the environment
+
+- the robot moves on a flat floor: always room can be reached by moving the roobot on the same floor (the house has only one, perfectly flat, floor)
+- the environment could be "maze-like", but there should be space enough for allowing the robot to manouver 
+- the topology of the environment is well known, as well as the cartesian coordinates of the waypoints
+	- there's a node publishing the cartesian positions of the markers
+	- and the *topological map of the environment* is known in advance
+
+### About the markers and the sensing
+
+- all the informations inside the environment are valid ArUco markers
+- the stream from the cameras is informative enough
+	- there are four cameras, at a low frequency each of them, but there are "x4" informations from around the robot
+	- this means that, despite the methods designed to make the detection faster (mainly based on *drop some frames*), the system detects a lot of markers even with these conditions
+	- in other words, the system discards fewer useful frames than it accepts, keeping the stream uniformly informative
+	- so, *why taking the entire volume of data from the cameras?* We can discard some frames, i.e. *not executing the ArUco detection on these frames*
+- the ArUco markers are clearly visible
+	- there are no "hidden markers" inside the environment
+- *the solution can be found in the markers of the environment*
+	- the robot system has not a way to understand when the solution cannot be found in the environment
+	- such a feature would require to detect and count the markers
+	- but ... how to be sure that the markers detected are all the markers inside the space? After all, the robot vision system could easily miss one marker
+	- hence, the robot can do no more than *keeping going aroung in search of a decisive hint*
+
+### About the reasoning
+
+- the mystery can be solved at least with a two-steps policy COLLECT, SOLVE
+	- it is mostly due to the rules of the game
+	- *if the game changes, the policy should be reviewed* accordingly to the new rules
+	- in particular, if the problem cannot be reduced in a combination of two general steps, the planner shall provide other landmarks
+
+## Limitations
+
+- the robot can work only in well-known environments. It doesn't support free exploration
+	- the free exploration requires the robot to choose by itself the waypoints, maybe based on the measurements from the laser sensor, or other systems
+	- currently, there's no such a functionality
+
+## Improvements and future develops
+
+**Create a distributed version of the architecture**. Thanks to the strict separation between the components applied during the design and then during the implementation, the architecture can be extended to many robots inside the same environment. Some components can be centralized, such as the part concerning the ontology. The main problem in this case could be the to find a tradeoff between the       bandwidth required to enable the robots to communicate with the central system, and the computational capabilities onboard. 
+
+**Architecture Review of the ROSPlan package**. Currently the knowledge base interface inside the *robocluedo_rosplan* package is of no use for nodes outside. There are many situations in which having directives exposed by the knowledge base interface can be useful. For instance, the code of the pipeline manager, currently *too much complex*, can be simplified a lot distributing the capability to explain a failure on two nodes. And, finally, the capability to write inside the ontology, taking into account the characteristics of the PDDL problem, is always useful. For these reasons, the ROSPlan implementation should be reviewed in order to provide a better supporto to the working cycle. The current package can be considered a *first prototype*, and it shall be formalized from the architectural point of view, and reimplemented, taking into account also the *directives* and the *features* given the PDDL model. 
+
+**Manipulation**. The manipulation approch can be heavily reviewed. The robot currently uses a very raw implementation of a moveit-based controller using well-known poses. The cartesian plan should be introduced, and the asynchronous manipulation should be improved. Even a end effector should be defined. 
+
+## Author and Contacts
+
+A project designed and developed by Francesco Ganci (S4143910)
+
+- **Email** : [*S4143910@studenti.unige.it*]()
