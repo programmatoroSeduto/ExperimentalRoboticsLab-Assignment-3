@@ -1532,7 +1532,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>entità</highlight></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>FUNZIONA<sp/>ANCHE<sp/>SENZA<sp/>DICHIARAZIONI<sp/></highlight></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/><sp/>ma<sp/>in<sp/>caso...</highlight></codeline>
-<codeline><highlight class="normal">partecipant<sp/>&quot;node<sp/>name&quot;<sp/>as<sp/>NODE_NAME</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>&quot;node<sp/>name&quot;<sp/>as<sp/>NODE_NAME</highlight></codeline>
 <codeline><highlight class="normal">collections<sp/>&quot;package<sp/>name&quot;<sp/>as<sp/>PACKAGE_NAME</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>collegamenti<sp/>tra<sp/>entità</highlight></codeline>
@@ -1609,6 +1609,18 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
+<para>altro esempio molo stupido:</para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">collections<sp/>COLL</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">COLL<sp/>-&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>-&gt;<sp/>B</highlight></codeline>
+<codeline><highlight class="normal">B<sp/>-&gt;<sp/>C</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>&lt;-<sp/>C</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
 <para><itemizedlist>
 <listitem><para><bold>pronti per UML-eggiare</bold><itemizedlist>
 <listitem><para><bold>navigation with move base</bold></para>
@@ -1617,6 +1629,20 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation (writing the readme)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><itemizedlist>
+<listitem><para><bold>navigation with move base</bold><itemizedlist>
+<listitem><para>temporal node diagram</para>
+</listitem><listitem><para>(per i components non sarà il massimo ... ma per i temporal, plantUML è fenomelae, comodissimo, e fa dei diagrammi molto belli)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>navigation usando <ref refid="namespacebug__m" kindref="compound">bug_m</ref></bold> (inizio a mettere avanti un po&apos; di lavoro per l&apos;altro progetto)<itemizedlist>
+<listitem><para>temporal package diagram</para>
+</listitem></itemizedlist>
+</para>
 </listitem></itemizedlist>
 </para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
@@ -1645,9 +1671,9 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>verificare<sp/>che<sp/>tutte<sp/>le<sp/>pagine<sp/>ausiliarie<sp/>abbiano<sp/>la<sp/>loro<sp/>TOCtree<sp/>interna,<sp/>specie<sp/>quando<sp/>sono<sp/>lunghe<sp/>pagine</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md__docs_dev-log_1autotoc_md74">
+<sect2 id="md__docs_dev-log_1autotoc_md75">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md75">
+<sect3 id="md__docs_dev-log_1autotoc_md76">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1656,7 +1682,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md76">
+<sect3 id="md__docs_dev-log_1autotoc_md77">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

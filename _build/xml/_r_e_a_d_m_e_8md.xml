@@ -330,17 +330,17 @@
 <codeline><highlight class="normal">title<sp/>RCL#3<sp/>move_base<sp/>navigation<sp/>-<sp/>package<sp/>temporal<sp/>diagram</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
-<codeline><highlight class="normal">participant<sp/>ROSPLAN</highlight></codeline>
-<codeline><highlight class="normal">participant<sp/>MISSION</highlight></codeline>
-<codeline><highlight class="normal">participant<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>MISSION</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>MOVEMENT</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
 <codeline><highlight class="normal">==<sp/>First<sp/>setup<sp/>(first<sp/>request)<sp/>==</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">MISSION<sp/>-&gt;<sp/>MOVEMENT<sp/>:<sp/>controller<sp/>selection<sp/>request</highlight></codeline>
-<codeline><highlight class="normal">MISSION<sp/>&lt;-<sp/>MOVEMENT<sp/>:<sp/>controller<sp/>ID=1</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>-&gt;<sp/>MOVEMENT<sp/>:<sp/>SET<sp/>controller<sp/>ID=1</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>&lt;-<sp/>MOVEMENT<sp/>:<sp/>success</highlight></codeline>
 <codeline><highlight class="normal">hnote<sp/>over<sp/>MISSION:<sp/>waiting<sp/>for<sp/>markers</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">==<sp/>Movement<sp/>==</highlight></codeline>
@@ -364,34 +364,95 @@
 <codeline><highlight class="normal">&apos;<sp/>footer<sp/>...</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MOVE_TO<sp/>order<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>NAVIGATION_UNIT<sp/>order<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>NAVIGATION_MANAGER<sp/>order<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>NAVIGATION_CONTROLLER<sp/>order<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MOVE_BASE_NAV<sp/>order<sp/>5</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>HEAD_ORIENTATION<sp/>order<sp/>6</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MOVE_BASE<sp/>order<sp/>5</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>request<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">MOVE_TO<sp/>-&gt;<sp/>NAVIGATION_UNIT<sp/>:<sp/>using<sp/>RCL<sp/>ROSPlan<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>NAVIGATION_UNIT<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>waiting<sp/>for<sp/>markers</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_UNIT<sp/>-&gt;<sp/>NAVIGATION_MANAGER<sp/>:<sp/>using<sp/>RCL<sp/>navigation<sp/>req</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>NAVIGATION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>let&apos;s<sp/>assume<sp/>a<sp/>controller<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has<sp/>been<sp/>activated<sp/>before...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>otherwise,<sp/>the<sp/>service<sp/>returns<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>immediately</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_MANAGER<sp/>--&gt;<sp/>NAVIGATION_CONTROLLER<sp/>:<sp/>passing<sp/>request<sp/>(call)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>navigation<sp/>job<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_CONTROLLER<sp/>-&gt;<sp/>MOVE_BASE_NAV<sp/>:<sp/>switch<sp/>ON</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>NAVIGATION_CONTROLLER</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>waiting<sp/>for<sp/>a<sp/>signal<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MOVE_BASE_NAV</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>the<sp/>behaviour<sp/>receives<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>a<sp/>final<sp/>orientation<sp/>to<sp/>achieve</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>and<sp/>a<sp/>target<sp/>to<sp/>reach</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>-&gt;<sp/>MOVE_BASE<sp/>:<sp/>send<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MOVE_BASE_NAV</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reading<sp/>distance<sp/>error<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>-&gt;<sp/>MOVE_BASE<sp/>:<sp/>cancel<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>-&gt;<sp/>HEAD_ORIENTATION<sp/>:<sp/>switch<sp/>ON</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MOVE_BASE_NAV</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reading<sp/>orientation<sp/>error<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">MOVE_BASE_NAV<sp/>-&gt;<sp/>HEAD_ORIENTATION<sp/>:<sp/>switch<sp/>OFF</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_CONTROLLER<sp/>&lt;-<sp/>MOVE_BASE_NAV<sp/>:<sp/>send<sp/>signal</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_CONTROLLER<sp/>-&gt;<sp/>MOVE_BASE_NAV<sp/>:<sp/>switch<sp/>OFF</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>response<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_MANAGER<sp/>&lt;--<sp/>NAVIGATION_CONTROLLER<sp/>:<sp/>return</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_UNIT<sp/>&lt;-<sp/>NAVIGATION_MANAGER<sp/>:<sp/>response<sp/>(RCL<sp/>movement<sp/>controller)</highlight></codeline>
+<codeline><highlight class="normal">MOVE_TO<sp/>&lt;-<sp/>NAVIGATION_UNIT<sp/>:<sp/>response<sp/>(RCL<sp/>ROSPlan)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>navigation<sp/>using<sp/>big_m<sp/>(RCL#2)</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>navigation<sp/>using<sp/>bug_m<sp/>(RCL#2)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>RCL#3<sp/>bug_m<sp/>navigation<sp/>-<sp/>package<sp/>temporal<sp/>diagram</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>MISSION</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>MOVEMENT</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>First<sp/>setup<sp/>(first<sp/>request)<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION<sp/>-&gt;<sp/>MOVEMENT<sp/>:<sp/>SET<sp/>controller<sp/>&lt;b&gt;ID=0&lt;/b&gt;</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>&lt;-<sp/>MOVEMENT<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MISSION:<sp/>waiting<sp/>for<sp/>markers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>Movement<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ROSPLAN<sp/>-&gt;<sp/>MISSION<sp/>:<sp/>request<sp/>from<sp/>ROSPlan<sp/>action</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>-&gt;<sp/>MOVEMENT<sp/>:<sp/>navigation<sp/>request</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MOVEMENT<sp/></highlight></codeline>
+<codeline><highlight class="normal">performing<sp/>navigation<sp/></highlight></codeline>
+<codeline><highlight class="normal">with<sp/>BUG_M<sp/>behaviour</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>&lt;-<sp/>MOVEMENT<sp/>:<sp/>target<sp/>reached</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN<sp/>&lt;-<sp/>MISSION<sp/>:<sp/>navigation<sp/>ended</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
@@ -401,18 +462,92 @@
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>RCL#3<sp/>move_base<sp/>navigation<sp/>-<sp/>node<sp/>temporal<sp/>diagram</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>header<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>footer<sp/>...</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MOVE_TO<sp/>order<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>NAVIGATION_UNIT<sp/>order<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>NAVIGATION_MANAGER<sp/>order<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>NAVIGATION_CONTROLLER<sp/>order<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>BUGM_NAV<sp/>order<sp/>5</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>HEAD_ORIENT<sp/>order<sp/>6</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>GOTO_POINT<sp/>order<sp/>5</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
 <codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>request<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">MOVE_TO<sp/>-&gt;<sp/>NAVIGATION_UNIT<sp/>:<sp/>using<sp/>RCL<sp/>ROSPlan<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>NAVIGATION_UNIT<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>waiting<sp/>for<sp/>markers</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_UNIT<sp/>-&gt;<sp/>NAVIGATION_MANAGER<sp/>:<sp/>using<sp/>RCL<sp/>navigation<sp/>req</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>NAVIGATION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>let&apos;s<sp/>assume<sp/>a<sp/>controller<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>has<sp/>been<sp/>activated<sp/>before...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>otherwise,<sp/>the<sp/>service<sp/>returns<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>immediately</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_MANAGER<sp/>--&gt;<sp/>NAVIGATION_CONTROLLER<sp/>:<sp/>call<sp/>function</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>navigation<sp/>job<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_CONTROLLER<sp/>-&gt;<sp/>BUGM_NAV<sp/>:<sp/>switch<sp/>ON</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>NAVIGATION_CONTROLLER</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>waiting<sp/>for<sp/>a<sp/>signal<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>BUGM_NAV</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>the<sp/>behaviour<sp/>receives<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>a<sp/>final<sp/>orientation<sp/>to<sp/>achieve</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>and<sp/>a<sp/>target<sp/>to<sp/>reach</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>BUGM_NAV</highlight></codeline>
+<codeline><highlight class="normal">here<sp/>the<sp/>BUGM_NAV<sp/>Could<sp/></highlight></codeline>
+<codeline><highlight class="normal">perform<sp/>a<sp/>backwards<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>gaining<sp/>manouver<sp/>space</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">BUGM_NAV<sp/>-&gt;<sp/>GOTO_POINT<sp/>:<sp/>switch<sp/>ON</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>BUGM_NAV</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reading<sp/>position<sp/>error<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>GOTO_POINT</highlight></codeline>
+<codeline><highlight class="normal">turning<sp/></highlight></codeline>
+<codeline><highlight class="normal">towards<sp/>the<sp/>target<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>GOTO_POINT</highlight></codeline>
+<codeline><highlight class="normal">navigating<sp/>straight<sp/></highlight></codeline>
+<codeline><highlight class="normal">to<sp/>the<sp/>target</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">BUGM_NAV<sp/>-&gt;<sp/>GOTO_POINT<sp/>:<sp/>switch<sp/>OFF</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">BUGM_NAV<sp/>-&gt;<sp/>HEAD_ORIENT<sp/>:<sp/>switch<sp/>ON</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>BUGM_NAV</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>reading<sp/>orientation<sp/>error<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>HEAD_ORIENT</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>turning</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">BUGM_NAV<sp/>-&gt;<sp/>HEAD_ORIENT<sp/>:<sp/>switch<sp/>OFF</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">NAVIGATION_CONTROLLER<sp/>&lt;-<sp/>BUGM_NAV<sp/>:<sp/>send<sp/>signal</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_CONTROLLER<sp/>-&gt;<sp/>BUGM_NAV<sp/>:<sp/>switch<sp/>OFF</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>response<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_MANAGER<sp/>&lt;--<sp/>NAVIGATION_CONTROLLER<sp/>:<sp/>return</highlight></codeline>
+<codeline><highlight class="normal">NAVIGATION_UNIT<sp/>&lt;-<sp/>NAVIGATION_MANAGER<sp/>:<sp/>response<sp/>(RCL<sp/>movement<sp/>controller)</highlight></codeline>
+<codeline><highlight class="normal">MOVE_TO<sp/>&lt;-<sp/>NAVIGATION_UNIT<sp/>:<sp/>response<sp/>(RCL<sp/>ROSPlan)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>

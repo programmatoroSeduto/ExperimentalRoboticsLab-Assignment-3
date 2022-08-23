@@ -321,17 +321,17 @@ Here are the temporal diagrams of the project, describing just the essential ste
 title RCL#3 move_base navigation - package temporal diagram
 
 ''' ENTITIES 
-participant ROSPLAN
-participant MISSION
-participant MOVEMENT
+collections ROSPLAN
+collections MISSION
+collections MOVEMENT
 
 ''' SEQUENCE
 ' == section ==
 ' ...
 == First setup (first request) ==
 
-MISSION -> MOVEMENT : controller selection request
-MISSION <- MOVEMENT : controller ID=1
+MISSION -> MOVEMENT : SET controller ID=1
+MISSION <- MOVEMENT : success
 hnote over MISSION: waiting for markers
 
 == Movement ==
@@ -355,34 +355,95 @@ title RCL#3 move_base navigation - node temporal diagram
 ' footer ...
 
 ''' ENTITIES 
-' partecipant "" as ...
-' components  "" as ...
-' ...
+participant MOVE_TO order 0
+participant NAVIGATION_UNIT order 1
+participant NAVIGATION_MANAGER order 2
+participant NAVIGATION_CONTROLLER order 3
+participant MOVE_BASE_NAV order 5
+participant HEAD_ORIENTATION order 6
+participant MOVE_BASE order 5
 
 ''' SEQUENCE
 ' == section ==
 ' ...
+
+== request ==
+MOVE_TO -> NAVIGATION_UNIT : using RCL ROSPlan interface
+hnote over NAVIGATION_UNIT 
+	waiting for markers
+end hnote
+NAVIGATION_UNIT -> NAVIGATION_MANAGER : using RCL navigation req
+note over NAVIGATION_MANAGER
+	let's assume a controller 
+	has been activated before...
+	otherwise, the service returns 
+	immediately
+end note
+NAVIGATION_MANAGER --> NAVIGATION_CONTROLLER : passing request (call)
+
+
+== navigation job ==
+NAVIGATION_CONTROLLER -> MOVE_BASE_NAV : switch ON
+hnote over NAVIGATION_CONTROLLER
+	waiting for a signal ...
+end hnote
+note over MOVE_BASE_NAV
+	the behaviour receives 
+	a final orientation to achieve
+	and a target to reach
+end note
+MOVE_BASE_NAV -> MOVE_BASE : send goal
+hnote over MOVE_BASE_NAV
+	reading distance error ...
+end hnote
+MOVE_BASE_NAV -> MOVE_BASE : cancel goal
+MOVE_BASE_NAV -> HEAD_ORIENTATION : switch ON
+hnote over MOVE_BASE_NAV
+	reading orientation error ...
+end hnote
+MOVE_BASE_NAV -> HEAD_ORIENTATION : switch OFF
+NAVIGATION_CONTROLLER <- MOVE_BASE_NAV : send signal
+NAVIGATION_CONTROLLER -> MOVE_BASE_NAV : switch OFF
+
+== response ==
+NAVIGATION_MANAGER <-- NAVIGATION_CONTROLLER : return
+NAVIGATION_UNIT <- NAVIGATION_MANAGER : response (RCL movement controller)
+MOVE_TO <- NAVIGATION_UNIT : response (RCL ROSPlan)
 
 @enduml
 ```
 
-### navigation using big_m (RCL#2)
+### navigation using bug_m (RCL#2)
 
 ```{uml}
 @startuml
 
-title ...
-header ...
-footer ...
+title RCL#3 bug_m navigation - package temporal diagram
 
 ''' ENTITIES 
-' partecipant "" as ...
-' components  "" as ...
-' ...
+collections ROSPLAN
+collections MISSION
+collections MOVEMENT
 
 ''' SEQUENCE
 ' == section ==
 ' ...
+== First setup (first request) ==
+
+MISSION -> MOVEMENT : SET controller <b>ID=0</b>
+MISSION <- MOVEMENT : <i>success</i>
+hnote over MISSION: waiting for markers
+
+== Movement ==
+
+ROSPLAN -> MISSION : request from ROSPlan action
+MISSION -> MOVEMENT : navigation request
+hnote over MOVEMENT 
+performing navigation 
+with BUG_M behaviour
+end hnote
+MISSION <- MOVEMENT : target reached
+ROSPLAN <- MISSION : navigation ended
 
 @enduml
 ```
@@ -392,18 +453,92 @@ footer ...
 ```{uml}
 @startuml
 
-title ...
-header ...
-footer ...
+title RCL#3 move_base navigation - node temporal diagram
+' header ...
+' footer ...
 
 ''' ENTITIES 
-' partecipant "" as ...
-' components  "" as ...
-' ...
+participant MOVE_TO order 0
+participant NAVIGATION_UNIT order 1
+participant NAVIGATION_MANAGER order 2
+participant NAVIGATION_CONTROLLER order 3
+participant BUGM_NAV order 5
+participant HEAD_ORIENT order 6
+participant GOTO_POINT order 5
 
 ''' SEQUENCE
 ' == section ==
 ' ...
+
+== request ==
+MOVE_TO -> NAVIGATION_UNIT : using RCL ROSPlan interface
+hnote over NAVIGATION_UNIT 
+	waiting for markers
+end hnote
+NAVIGATION_UNIT -> NAVIGATION_MANAGER : using RCL navigation req
+note over NAVIGATION_MANAGER
+	let's assume a controller 
+	has been activated before...
+	otherwise, the service returns 
+	immediately
+end note
+NAVIGATION_MANAGER --> NAVIGATION_CONTROLLER : call function
+
+
+== navigation job ==
+NAVIGATION_CONTROLLER -> BUGM_NAV : switch ON
+hnote over NAVIGATION_CONTROLLER
+	waiting for a signal ...
+end hnote
+note over BUGM_NAV
+	the behaviour receives 
+	a final orientation to achieve
+	and a target to reach
+end note
+
+note over BUGM_NAV
+here the BUGM_NAV Could 
+perform a backwards movement
+for gaining manouver space
+end note
+
+BUGM_NAV -> GOTO_POINT : switch ON
+
+hnote over BUGM_NAV
+	reading position error ...
+end hnote
+
+hnote over GOTO_POINT
+turning 
+towards the target ...
+end hnote
+
+hnote over GOTO_POINT
+navigating straight 
+to the target
+end hnote
+
+BUGM_NAV -> GOTO_POINT : switch OFF
+
+BUGM_NAV -> HEAD_ORIENT : switch ON
+
+hnote over BUGM_NAV
+	reading orientation error ...
+end hnote
+
+hnote over HEAD_ORIENT
+	turning
+end hnote
+
+BUGM_NAV -> HEAD_ORIENT : switch OFF
+
+NAVIGATION_CONTROLLER <- BUGM_NAV : send signal
+NAVIGATION_CONTROLLER -> BUGM_NAV : switch OFF
+
+== response ==
+NAVIGATION_MANAGER <-- NAVIGATION_CONTROLLER : return
+NAVIGATION_UNIT <- NAVIGATION_MANAGER : response (RCL movement controller)
+MOVE_TO <- NAVIGATION_UNIT : response (RCL ROSPlan)
 
 @enduml
 ```

@@ -18,9 +18,9 @@
 </programlisting></para>
 <para><hruler/>
 </para>
-<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md357">
+<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md358">
 <title>headers and Setup</title>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md358">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md359">
 <title>Basic</title>
 <para>The most simple set of headers:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -42,7 +42,7 @@
 <codeline><highlight class="normal">#include<sp/>&lt;moveit_msgs/CollisionObject.h&gt;</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md359">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md360">
 <title>compile with catkin</title>
 <para>just add these dependencies:</para>
 <para><programlisting filename=".cmake"><codeline><highlight class="normal">find_package(catkin<sp/>REQUIRED<sp/>COMPONENTS</highlight></codeline>
@@ -56,7 +56,7 @@
 <codeline><highlight class="normal"><sp/><sp/>)</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md360">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md361">
 <title>Init the node with AsyncSpin</title>
 <para>It is mandatory in order to call the methods for the robo movement.</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -73,7 +73,7 @@
 <para><bold>Remember to use AsyncSpin!</bold></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md361">
+<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md362">
 <title>A MoveIt OOP pattern for ROS1</title>
 <para>?? remember to replace <computeroutput>???</computeroutput> with a name suitable for your implementation!</para>
 <para>Feel free to structure the workflow of the node using this first model, ready to be tailored to the desired functionalities.</para>
@@ -190,10 +190,10 @@
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md362">
+<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md363">
 <title>MoveIt – ROS1 C++ snippets</title>
 <para>Feel free to go deeper into the details of code, and to combine the snippets. Each snippet incude a particular feature, which can be joined with the other ones in order to create the entire application.</para>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md363">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md364">
 <title>Move Group Interface Settings</title>
 <para>?? You can find many other options <ulink url="http://docs.ros.org/en/noetic/api/moveit_ros_planning_interface/html/classmoveit_1_1planning__interface_1_1MoveGroupInterface.html">here</ulink>.</para>
 <para>Here are only the most common properties you maybe want to explicitly set for the move group interface. Inside the above mentioned page you can find also the getters, as well as many other useful options.</para>
@@ -213,7 +213,7 @@
 <codeline><highlight class="normal">group.setGoalOrientationTolerance(0.001);</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md364">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md365">
 <title>Just move that!</title>
 <para>Notice that <computeroutput>.move()</computeroutput> and <computeroutput>.execute(my_plan)</computeroutput> are blocking calls, and the snippets here don&apos;t allow to fix a sequence of movements, hence you should manually create a loop for reaching a sequnce of poses.</para>
 <para>Also notice that the MoveIt code is often executed by a specific module, hence a blocking call is accettable in many cases, without loosing parallelism between planning and movement. In particular, if you want to have a non-blocking interface, a good idea could be to create a service in another node, and every time ask the state of the robot to it.</para>
@@ -235,11 +235,11 @@
 <codeline><highlight class="normal">move_group_interface.move();<sp/>//<sp/>blocking</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md365">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md366">
 <title>Move to a preset pose</title>
 <para>very simple: just use <computeroutput>group.setNamedTarget(&quot;your_pose_name&quot;);</computeroutput> to set the target.</para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md366">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md367">
 <title>Single Waypoint Path – MoveIt with explicit planning</title>
 <para>This snippet doesn&apos;t specify in which space the planner has to work. If you want specifically cartesian planning or joint space planning, go to the other snippets.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>STEP<sp/>1<sp/>--<sp/>...</highlight><highlight class="normal"></highlight></codeline>
@@ -250,14 +250,14 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>default<sp/>is<sp/>5</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.setPlanningTime(10.0);</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>plan</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success<sp/>=<sp/>(</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>=<sp/>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>move_group_interface.plan(my_plan)<sp/>==<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>AND<sp/>FINALLY<sp/>MOVE<sp/>THAT!</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.execute(my_plan);<sp/></highlight><highlight class="comment">//<sp/>blocking</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md367">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md368">
 <title>Single Waypoint Path – Planning in the Joint Space (first way)</title>
 <para>This piece of code allows to move the group in the neighborhood of the current configuration:</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>STEP<sp/>1<sp/>--<sp/>...</highlight><highlight class="normal"></highlight></codeline>
@@ -275,12 +275,12 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>AND<sp/>FINALLY<sp/>MOVE<sp/>THAT!</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(here<sp/>you<sp/>can<sp/>use<sp/>move()<sp/>as<sp/>well)</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">moveit::planning_interface::MoveGroupInterface::Plan<sp/>my_plan;</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success<sp/>=<sp/>(</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>=<sp/>(</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/>move_group_interface.plan(my_plan)<sp/>==<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS);</highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.execute(my_plan);<sp/></highlight><highlight class="comment">//<sp/>blocking</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md368">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md369">
 <title>planning in the joint space (second method)</title>
 <para>This method explicitly involves the Inverse Kinematin in order to plan the path. It&apos;s preferrable when you want to override any unknown MoveIt settings in the system you&apos;re using for your project, i.e. when you don&apos;t know which default planning is set.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>STEP<sp/>1<sp/>--<sp/>set<sp/>the<sp/>starting<sp/>pose<sp/>of<sp/>the<sp/>tip</highlight><highlight class="normal"></highlight></codeline>
@@ -296,7 +296,7 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>STEP<sp/>3a<sp/>--<sp/>setup<sp/>the<sp/>IK</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>moveit::core::JointModelGroup*<sp/>joint_model_group<sp/>=</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move_group_interface.getCurrentState()-&gt;getJointModelGroup(PLANNING_GROUP);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move_group_interface.getCurrentState()-&gt;getJointModelGroup(<ref refid="moveit-snippets_8md_8txt_1aa81aee9fb053c8a50c42f6846805aa2d" kindref="member">PLANNING_GROUP</ref>);</highlight></codeline>
 <codeline><highlight class="normal">moveit::core::RobotStatePtr<sp/>current_joint_state<sp/>=<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*move_group_interface.getCurrentState();</highlight></codeline>
 <codeline><highlight class="normal">moveit::core::RobotState<sp/>start_state(<sp/>current_joint_state<sp/>);</highlight></codeline>
@@ -310,17 +310,17 @@
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>(but<sp/>I<sp/>think<sp/>that<sp/>even<sp/>the<sp/>implicit<sp/>planning<sp/>+<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>should<sp/>work<sp/>well<sp/>here)</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.setPlanningTime(10.0);<sp/></highlight><highlight class="comment">//<sp/>suggested,<sp/>not<sp/>mandatory</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">success<sp/>=<sp/></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>=<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>(move_group_interface.plan(my_plan)<sp/>==<sp/>moveit::planning_interface::MoveItErrorCode::SUCCESS);</highlight></codeline>
-<codeline><highlight class="normal">ROS_INFO(</highlight><highlight class="stringliteral">&quot;plan<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>success<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;FAILED&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">ROS_INFO(</highlight><highlight class="stringliteral">&quot;plan<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="rosplan-kb_8md_8txt_1a7960f9c558f9ee2c3d4a8fdea096fb56" kindref="member">success</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;FAILED&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>AND<sp/>FINALLY<sp/>MOVE<sp/>THAT!</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">move_group_interface.execute(my_plan);</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md369">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md370">
 <title>Multiple Waypoints Path – Motion using Cartesian Paths</title>
-<para>The cartesian path allows to move the robot across many waypoints. Each waypoint is a <emphasis>pose</emphasis> message; to express a path, build a <computeroutput>std::vector&lt;geometry_msgs::Pose&gt;</computeroutput> and <computeroutput>.push_back()</computeroutput> each intermediate waypoint.</para>
+<para>The cartesian path allows to move the robot across many waypoints. Each waypoint is a <emphasis>pose</emphasis> message; to express a path, build a <computeroutput>std::vector&lt;geometry_msgs::Pose&gt;</computeroutput> and <computeroutput>.<ref refid="rosplan-kb_8md_8txt_1a122f6721bedfd0d97dfb71be8cee291e" kindref="member">push_back()</ref></computeroutput> each intermediate waypoint.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>STEP<sp/>1<sp/>--<sp/>waypoints</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">std::vector&lt;geometry_msgs::Pose&gt;<sp/>waypoints;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -345,7 +345,7 @@
 <codeline><highlight class="normal">move_group_interface.execute(trajectory);</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md370">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md371">
 <title>Movement Constraints</title>
 <para>Adding constraints to the robot movement is quite straightforward: just fill in the message <ulink url="http://docs.ros.org/en/api/moveit_msgs/html/msg/Constraints.html"><computeroutput>moveit_msgs/Constraints</computeroutput></ulink> with the constraints you want for the motion, then set the constraints in the proper set with <computeroutput>.push_back( constraint_instance )</computeroutput> and confirm with <computeroutput>move_group_interface.setPathConstraints( constraints_msg )</computeroutput>.</para>
 <para>Here&apos;s a simple example:</para>
@@ -377,7 +377,7 @@
 </para>
 <para>Every time you need a particular constraint, the method is always the same: just scroll the list above, and select the constraints you want.</para>
 </sect2>
-<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md371">
+<sect2 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md372">
 <title>&lt;a href=&quot;https://www.youtube.com/watch?v=LmToQ1-t98o&quot;&gt;Easy&lt;/a&gt; queries</title>
 <para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>current<sp/>planning<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">ROS_INFO(</highlight><highlight class="stringliteral">&quot;Planning<sp/>frame:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>move_group_interface.getPlanningFrame().c_str());</highlight></codeline>
@@ -393,7 +393,7 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md372">
+<sect1 id="md_robocluedo_movement_controller__docs_moveit-snippets_1autotoc_md373">
 <title>Useful Links</title>
 <para><itemizedlist>
 <listitem><para>moveit planning interface reference class <ulink url="http://docs.ros.org/en/jade/api/moveit_ros_planning_interface/html/classmoveit_1_1planning__interface_1_1MoveGroup.html#aeffa9b03640c66c32fdf4fdda8b0dd5b">here</ulink></para>

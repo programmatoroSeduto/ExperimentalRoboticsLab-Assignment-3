@@ -1423,7 +1423,7 @@ title un titolo perfetto per un diagramma perfetto
 ''' entità
 '''    FUNZIONA ANCHE SENZA DICHIARAZIONI 
 '''     ma in caso...
-partecipant "node name" as NODE_NAME
+participant "node name" as NODE_NAME
 collections "package name" as PACKAGE_NAME
 
 ''' collegamenti tra entità
@@ -1504,11 +1504,36 @@ end note
 @enduml
 ```
 
+altro esempio molo stupido:
+
+```{uml}
+@startuml
+
+collections COLL
+
+COLL -> A
+A -> B
+B -> C
+A <- C
+
+@enduml
+```
+
 - **pronti per UML-eggiare**
 	- **navigation with move base**
 	- temporal diagram packages
 	- (manca ancora il node diagram)
 - **COMMIT**: "documentation (writing the readme)"
+
+---
+
+- **navigation with move base**
+	- temporal node diagram
+	- (per i components non sarà il massimo ... ma per i temporal, plantUML è fenomelae, comodissimo, e fa dei diagrammi molto belli)
+- **navigation usando bug_m** (inizio a mettere avanti un po' di lavoro per l'altro progetto)
+	- temporal package diagram
+	- e temporal node
+- **COMMIT**: "documentation (temporal diagrams)"
 
 
 

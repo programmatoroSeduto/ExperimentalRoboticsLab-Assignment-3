@@ -419,23 +419,23 @@ NAV_UNIT -- ROSPLAN_ACTIONS
 <h3>navigation using move_base (RCL#3)<a class="headerlink" href="#navigation-using-move-base-rcl-3" title="Permalink to this heading"></a></h3>
 <p><strong>package temporal diagram</strong>:</p>
 <p class="plantuml">
-<object data="_images/plantuml-37260ce7648d72b086e942d4d517c17440f46263.svg" type="image/svg+xml" style="width:544px;height:456px;background:#FFFFFF;">
-<img src="_images/plantuml-37260ce7648d72b086e942d4d517c17440f46263.png" alt="&#64;startuml
+<object data="_images/plantuml-023565fddd86f1c69c5078ab2811966ed6f56306.svg" type="image/svg+xml" style="width:496px;height:464px;background:#FFFFFF;">
+<img src="_images/plantuml-023565fddd86f1c69c5078ab2811966ed6f56306.png" alt="&#64;startuml
 
 title RCL#3 move_base navigation - package temporal diagram
 
 ''' ENTITIES 
-participant ROSPLAN
-participant MISSION
-participant MOVEMENT
+collections ROSPLAN
+collections MISSION
+collections MOVEMENT
 
 ''' SEQUENCE
 ' == section ==
 ' ...
 == First setup (first request) ==
 
-MISSION -&gt; MOVEMENT : controller selection request
-MISSION &lt;- MOVEMENT : controller ID=1
+MISSION -&gt; MOVEMENT : SET controller ID=1
+MISSION &lt;- MOVEMENT : success
 hnote over MISSION: waiting for markers
 
 == Movement ==
@@ -451,44 +451,105 @@ ROSPLAN &lt;- MISSION : navigation ended
 </object></p>
 <p><strong>node temporal diagram</strong>:</p>
 <p class="plantuml">
-<object data="_images/plantuml-8461834e416ddaec56985cb2765f94dc4a6d66e4.svg" type="image/svg+xml" style="width:458px;height:44px;background:#FFFFFF;">
-<img src="_images/plantuml-8461834e416ddaec56985cb2765f94dc4a6d66e4.png" alt="&#64;startuml
+<object data="_images/plantuml-bcc6dfb5401b4f27c38f9fd9b4fdcaa42d0c0550.svg" type="image/svg+xml" style="width:1234px;height:915px;background:#FFFFFF;">
+<img src="_images/plantuml-bcc6dfb5401b4f27c38f9fd9b4fdcaa42d0c0550.png" alt="&#64;startuml
 
 title RCL#3 move_base navigation - node temporal diagram
 ' header ...
 ' footer ...
 
 ''' ENTITIES 
-' partecipant &quot;&quot; as ...
-' components  &quot;&quot; as ...
-' ...
+participant MOVE_TO order 0
+participant NAVIGATION_UNIT order 1
+participant NAVIGATION_MANAGER order 2
+participant NAVIGATION_CONTROLLER order 3
+participant MOVE_BASE_NAV order 5
+participant HEAD_ORIENTATION order 6
+participant MOVE_BASE order 5
 
 ''' SEQUENCE
 ' == section ==
 ' ...
+
+== request ==
+MOVE_TO -&gt; NAVIGATION_UNIT : using RCL ROSPlan interface
+hnote over NAVIGATION_UNIT 
+	waiting for markers
+end hnote
+NAVIGATION_UNIT -&gt; NAVIGATION_MANAGER : using RCL navigation req
+note over NAVIGATION_MANAGER
+	let's assume a controller 
+	has been activated before...
+	otherwise, the service returns 
+	immediately
+end note
+NAVIGATION_MANAGER --&gt; NAVIGATION_CONTROLLER : passing request (call)
+
+
+== navigation job ==
+NAVIGATION_CONTROLLER -&gt; MOVE_BASE_NAV : switch ON
+hnote over NAVIGATION_CONTROLLER
+	waiting for a signal ...
+end hnote
+note over MOVE_BASE_NAV
+	the behaviour receives 
+	a final orientation to achieve
+	and a target to reach
+end note
+MOVE_BASE_NAV -&gt; MOVE_BASE : send goal
+hnote over MOVE_BASE_NAV
+	reading distance error ...
+end hnote
+MOVE_BASE_NAV -&gt; MOVE_BASE : cancel goal
+MOVE_BASE_NAV -&gt; HEAD_ORIENTATION : switch ON
+hnote over MOVE_BASE_NAV
+	reading orientation error ...
+end hnote
+MOVE_BASE_NAV -&gt; HEAD_ORIENTATION : switch OFF
+NAVIGATION_CONTROLLER &lt;- MOVE_BASE_NAV : send signal
+NAVIGATION_CONTROLLER -&gt; MOVE_BASE_NAV : switch OFF
+
+== response ==
+NAVIGATION_MANAGER &lt;-- NAVIGATION_CONTROLLER : return
+NAVIGATION_UNIT &lt;- NAVIGATION_MANAGER : response (RCL movement controller)
+MOVE_TO &lt;- NAVIGATION_UNIT : response (RCL ROSPlan)
 
 &#64;enduml"/>
 
 </object></p>
 </div>
-<div class="section" id="navigation-using-big-m-rcl-2">
-<h3>navigation using big_m (RCL#2)<a class="headerlink" href="#navigation-using-big-m-rcl-2" title="Permalink to this heading"></a></h3>
+<div class="section" id="navigation-using-bug-m-rcl-2">
+<h3>navigation using bug_m (RCL#2)<a class="headerlink" href="#navigation-using-bug-m-rcl-2" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
-<object data="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.svg" type="image/svg+xml" style="width:43px;height:79px;background:#FFFFFF;">
-<img src="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.png" alt="&#64;startuml
+<object data="_images/plantuml-e1d93a4f8b42a5193f937d04bb470bbb850ad751.svg" type="image/svg+xml" style="width:501px;height:479px;background:#FFFFFF;">
+<img src="_images/plantuml-e1d93a4f8b42a5193f937d04bb470bbb850ad751.png" alt="&#64;startuml
 
-title ...
-header ...
-footer ...
+title RCL#3 bug_m navigation - package temporal diagram
 
 ''' ENTITIES 
-' partecipant &quot;&quot; as ...
-' components  &quot;&quot; as ...
-' ...
+collections ROSPLAN
+collections MISSION
+collections MOVEMENT
 
 ''' SEQUENCE
 ' == section ==
 ' ...
+== First setup (first request) ==
+
+MISSION -&gt; MOVEMENT : SET controller &lt;b&gt;ID=0&lt;/b&gt;
+MISSION &lt;- MOVEMENT : &lt;i&gt;success&lt;/i&gt;
+hnote over MISSION: waiting for markers
+
+== Movement ==
+
+ROSPLAN -&gt; MISSION : request from ROSPlan action
+MISSION -&gt; MOVEMENT : navigation request
+hnote over MOVEMENT 
+performing navigation 
+with BUG_M behaviour
+end hnote
+MISSION &lt;- MOVEMENT : target reached
+ROSPLAN &lt;- MISSION : navigation ended
 
 &#64;enduml"/>
 
@@ -497,21 +558,95 @@ footer ...
 <div class="section" id="manipulation-rcl-2-synchronous-manipulation">
 <h3>manipulation (RCL#2) – synchronous manipulation<a class="headerlink" href="#manipulation-rcl-2-synchronous-manipulation" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
-<object data="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.svg" type="image/svg+xml" style="width:43px;height:79px;background:#FFFFFF;">
-<img src="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.png" alt="&#64;startuml
+<object data="_images/plantuml-4f9ea27dffabc1872c4fdf9ac5eb4e9dd6bcfb74.svg" type="image/svg+xml" style="width:1156px;height:1110px;background:#FFFFFF;">
+<img src="_images/plantuml-4f9ea27dffabc1872c4fdf9ac5eb4e9dd6bcfb74.png" alt="&#64;startuml
 
-title ...
-header ...
-footer ...
+title RCL#3 move_base navigation - node temporal diagram
+' header ...
+' footer ...
 
 ''' ENTITIES 
-' partecipant &quot;&quot; as ...
-' components  &quot;&quot; as ...
-' ...
+participant MOVE_TO order 0
+participant NAVIGATION_UNIT order 1
+participant NAVIGATION_MANAGER order 2
+participant NAVIGATION_CONTROLLER order 3
+participant BUGM_NAV order 5
+participant HEAD_ORIENT order 6
+participant GOTO_POINT order 5
 
 ''' SEQUENCE
 ' == section ==
 ' ...
+
+== request ==
+MOVE_TO -&gt; NAVIGATION_UNIT : using RCL ROSPlan interface
+hnote over NAVIGATION_UNIT 
+	waiting for markers
+end hnote
+NAVIGATION_UNIT -&gt; NAVIGATION_MANAGER : using RCL navigation req
+note over NAVIGATION_MANAGER
+	let's assume a controller 
+	has been activated before...
+	otherwise, the service returns 
+	immediately
+end note
+NAVIGATION_MANAGER --&gt; NAVIGATION_CONTROLLER : call function
+
+
+== navigation job ==
+NAVIGATION_CONTROLLER -&gt; BUGM_NAV : switch ON
+hnote over NAVIGATION_CONTROLLER
+	waiting for a signal ...
+end hnote
+note over BUGM_NAV
+	the behaviour receives 
+	a final orientation to achieve
+	and a target to reach
+end note
+
+note over BUGM_NAV
+here the BUGM_NAV Could 
+perform a backwards movement
+for gaining manouver space
+end note
+
+BUGM_NAV -&gt; GOTO_POINT : switch ON
+
+hnote over BUGM_NAV
+	reading position error ...
+end hnote
+
+hnote over GOTO_POINT
+turning 
+towards the target ...
+end hnote
+
+hnote over GOTO_POINT
+navigating straight 
+to the target
+end hnote
+
+BUGM_NAV -&gt; GOTO_POINT : switch OFF
+
+BUGM_NAV -&gt; HEAD_ORIENT : switch ON
+
+hnote over BUGM_NAV
+	reading orientation error ...
+end hnote
+
+hnote over HEAD_ORIENT
+	turning
+end hnote
+
+BUGM_NAV -&gt; HEAD_ORIENT : switch OFF
+
+NAVIGATION_CONTROLLER &lt;- BUGM_NAV : send signal
+NAVIGATION_CONTROLLER -&gt; BUGM_NAV : switch OFF
+
+== response ==
+NAVIGATION_MANAGER &lt;-- NAVIGATION_CONTROLLER : return
+NAVIGATION_UNIT &lt;- NAVIGATION_MANAGER : response (RCL movement controller)
+MOVE_TO &lt;- NAVIGATION_UNIT : response (RCL ROSPlan)
 
 &#64;enduml"/>
 
