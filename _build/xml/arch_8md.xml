@@ -10,6 +10,19 @@
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>Overall<sp/>Architecture</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">Caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./arch.md</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>A<sp/>simplified<sp/>schema</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
@@ -26,7 +39,7 @@
 <codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;ROSPlan&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">cloud<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>Vision&quot;<sp/>as<sp/>VISION</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>aRMOR<sp/>interface&quot;<sp/>as<sp/>RCL_ARMOR</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>ROSPlan&quot;<sp/>as<sp/>RCL_ROSPLAN</highlight></codeline>
@@ -50,6 +63,120 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>A<sp/>more<sp/>detailed<sp/>schema</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>project<sp/>is<sp/>a<sp/>rich<sp/>composition<sp/>of<sp/>many<sp/>packages,<sp/>resulting<sp/>in<sp/>a<sp/>complex,<sp/>heavy<sp/>centralized<sp/>architecture.<sp/>It<sp/>behaves<sp/>as<sp/>a<sp/>classical<sp/>hyerarchical<sp/>architecture:<sp/>sense,<sp/>then<sp/>plan,<sp/>then<sp/>act.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}</highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>armor{</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>aRMOR<sp/>interface&quot;<sp/>as<sp/>RCL_ARMOR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">RCL_ARMOR<sp/>--<sp/>ARMOR</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>Mission<sp/>Manager&quot;{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>manipulation<sp/>unit&quot;<sp/>as<sp/>MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>navigation<sp/>unit&quot;<sp/>as<sp/>NAV_UNIT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>ROSPlan&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;ROSPlan<sp/>pipeline<sp/>manager&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>kb_tools&quot;<sp/>as<sp/>RCL_KBTOOLS</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;ROSPlan<sp/>knowledge<sp/>base&quot;<sp/>as<sp/>ROSPLANKB</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;ROSPlan<sp/>components&quot;<sp/>as<sp/>ROSPLAN_COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">file<sp/>&quot;PDDL<sp/>RCL<sp/>domain&quot;<sp/>as<sp/>DOMAIN</highlight></codeline>
+<codeline><highlight class="normal">file<sp/>&quot;PDDL<sp/>RCL<sp/>problem&quot;<sp/>as<sp/>PROBLEM</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;feedback<sp/>manager&quot;<sp/>as<sp/>FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>ROSPlan<sp/>Actions&quot;<sp/>as<sp/>ROSPLAN_ACTIONS<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>REPLAN</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>SOLVE</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>COLLECT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN_ACTIONS<sp/>--&gt;<sp/>FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN_COMPONENTS<sp/>--<sp/>ROSPLAN_ACTIONS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ROSPLANKB--<sp/>ROSPLAN_COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">ROSPLANKB<sp/>--<sp/>RCL_KBTOOLS</highlight></codeline>
+<codeline><highlight class="normal">ROSPLANKB<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">RCL_KBTOOLS<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">DOMAIN<sp/>--<sp/>ROSPLANKB</highlight></codeline>
+<codeline><highlight class="normal">PROBLEM<sp/>--<sp/>ROSPLANKB</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN_COMPONENTS<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;erl3&quot;{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;markers<sp/>publisher&quot;<sp/>as<sp/>MARKERS</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>Vision&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>vision<sp/>detection&quot;<sp/>as<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>vision<sp/>decoder&quot;<sp/>as<sp/>VISION_DECODE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION<sp/>--<sp/>VISION_DECODE</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;Simulated<sp/>Environment&quot;<sp/>as<sp/>ENVIRONMENT<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>robot<sp/>&apos;hunter&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;Gazebo&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;RViz&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>moveit<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;navigation<sp/>stack&quot;<sp/>as<sp/>NAVSTACK<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;Move<sp/>Base&quot;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;AMCL&quot;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;SLAM/GMapping&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>Movement<sp/>Controller&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>navigation<sp/>manager&quot;<sp/>as<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>manipulation<sp/>controller&quot;<sp/>as<sp/>MANIPULATION</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>behaviours<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;bug_m&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;move_base_nav&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;head_orientation&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;go_to_point&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>VISION_DECODE</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>--<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">MARKERS<sp/>--<sp/>NAV_UNIT</highlight></codeline>
+<codeline><highlight class="normal">VISION<sp/>--<sp/>ENVIRONMENT</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>--<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>--<sp/>NAVSTACK</highlight></codeline>
+<codeline><highlight class="normal">MOVEIT<sp/>--<sp/>MANIPULATION</highlight></codeline>
+<codeline><highlight class="normal">NAVSTACK<sp/>--<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">MANIP_UNIT<sp/>--<sp/>MANIPULATION</highlight></codeline>
+<codeline><highlight class="normal">NAV_UNIT<sp/>--<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">NAV_UNIT<sp/>--<sp/>ROSPLAN_ACTIONS</highlight></codeline>
+<codeline><highlight class="normal">ORACLE<sp/>--<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
     </programlisting>
     <location file="_uml/arch.md"/>
   </compounddef>

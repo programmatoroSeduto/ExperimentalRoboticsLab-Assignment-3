@@ -2,8 +2,6 @@
 RCL -- the RoboCLuedo Project - part 3
 ========================================
 
-*frutta, caffè, espresso e ammazzacaffè.*
-
 .. image:: _media/cluedologo.jpg
    :class: with-border with-shadow
    :alt: Textual alternative to the image

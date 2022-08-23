@@ -1465,29 +1465,166 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation (ready for the README)&quot;</para>
 </listitem></itemizedlist>
 </para>
+<para><hruler/>
+</para>
+</sect2>
+<sect2 id="md__docs_dev-log_1autotoc_md73">
+<title>23/08/2022 – readme e deployment</title>
+<para>Andiamo subito con la scrittura del readme per il progetto. Fatto questo, lavoro sull&apos;aggiornamento della documentazione per la seconda parte del progetto, e si pubblica.</para>
+<para><itemizedlist>
+<listitem><para>prima impostazione del readme (stavolta però tutte le sezioni riguardanti il setup vanno nella documentazione, così il readme viene un po&apos; più corto)<itemizedlist>
+<listitem><para>seguendo la struttura nelle slides</para>
+</listitem><listitem><para>nonostante le dimensioni dell&apos;attuale documentazione, vorrei che il readme fosse più terso possibile, semplice ed essenziale</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".note"><codeline><highlight class="normal">struttura<sp/>del<sp/>readme:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Brief<sp/>introduction<sp/>(couple<sp/>of<sp/>sentences).</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Software<sp/>architecture,<sp/>temporal<sp/>diagram<sp/>and<sp/>states<sp/>diagrams<sp/>(if<sp/>applicable).<sp/>Each<sp/>diagram<sp/>should<sp/>be<sp/>commented</highlight></codeline>
+<codeline><highlight class="normal">with<sp/>a<sp/>paragraph,<sp/>plus<sp/>a<sp/>list<sp/>describing<sp/>ROS<sp/>messages<sp/>and<sp/>parameters.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Installation<sp/>and<sp/>running<sp/>procedure<sp/>(including<sp/>all<sp/>the<sp/>steps<sp/>to<sp/>display<sp/>the<sp/>robot’s<sp/>behavior).</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>A<sp/>commented<sp/>small<sp/>video,<sp/>a<sp/>GIF<sp/>or<sp/>screenshots<sp/>showing<sp/>the<sp/>relevant<sp/>parts<sp/>of<sp/>the<sp/>running<sp/>code.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Working<sp/>hypothesis<sp/>and<sp/>environment<sp/>(1<sp/>or<sp/>2<sp/>paragraph).</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>System’s<sp/>features<sp/>(1<sp/>or<sp/>2<sp/>paragraph).</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>System’s<sp/>limitations<sp/>(1<sp/>or<sp/>2<sp/>paragraph).</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Possible<sp/>technical<sp/>Improvements<sp/>(1<sp/>or<sp/>2<sp/>paragraph).</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>Authors<sp/>and<sp/>contacts<sp/>(at<sp/>least<sp/>the<sp/>email).</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>scrittura readme</para>
+</listitem><listitem><para>penso ci voglia un diagramma UML globale più ricco che mostri tutti i componenti e tutti i packages del progetto</para>
+</listitem><listitem><para><emphasis>purtroppo c&apos;è davvero molto da scrivere...</emphasis> tento di tenerlo più conciso possibile, ma l&apos;architettura è davvero troppo complessa per poterla spiegare in poche righe. Posso fare affidamento sui diagrammi, ma anche quelli non possono dire proprio tutto.</para>
+</listitem><listitem><para>per il momento meglio fare le cose in sphinx, per poi portare tutto su GitHub</para>
+</listitem><listitem><para><emphasis>è arrivato il tanto temuto momento dei temporal diagrams ...</emphasis></para>
+</listitem><listitem><para>azitutto, ci vuole un elenco dei diagrammi necessari<itemizedlist>
+<listitem><para>navigation usando move_base</para>
+<para>(selezione algoritmo, movimento)</para>
+<para>ROSPlan action move_to navigation unit navigation manager <ndash/> navigation controller move_base <ref refid="namespacemove__base__nav" kindref="compound">move_base_nav</ref> head orientation</para>
+</listitem><listitem><para>navigation usando <ref refid="namespacebug__m" kindref="compound">bug_m</ref></para>
+<para>(selezione algoritmo, movimento)</para>
+<para>ROSPlan action move_to navigation unit navigation manager <ndash/> navigation controller <ref refid="namespacebug__m" kindref="compound">bug_m</ref> <ref refid="namespacebug__m" kindref="compound">bug_m</ref> head orientation go to point</para>
+</listitem><listitem><para>manipulation sincrona (RCL#2)</para>
+<para>ROSPlan action manipulation manipulation unit manipulation controller moveit</para>
+</listitem><listitem><para>manipulation asincrona (RCL#3)</para>
+<para>manipulation unit manipulation controller moveit</para>
+</listitem><listitem><para>esecuzione di un plan col mission manager (in gran parte è identico a quello dell&apos;assignment 2)</para>
+<para>mission manager armor interface pipeline manager <ref refid="classkb__interface" kindref="compound">kb_interface</ref> rosplan kb rosplan dispatch oracolo</para>
+</listitem><listitem><para>(forse per il mission manager è meglio un flow chart...)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>forse sarebbe meglio ricorrere a diagrammi innestati piuttosto che fare diagrammi troppo lunghi:<itemizedlist>
+<listitem><para>i <emphasis>diagrammi temporali generali</emphasis> mostrano solo la comunicazione tra packages, senza menzionare (se non al di sopra delle frecce) i componenti</para>
+</listitem><listitem><para>i <emphasis>diagrammi temporali dei nodi</emphasis> rappresentano invece i doni all&apos;interno di un solo package</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>alcuni rudimenti di sintassi plantText sui diagrammi temporali, nello specifico del progetto:</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>titolo<sp/>e<sp/>tutto<sp/>il<sp/>resto</highlight></codeline>
+<codeline><highlight class="normal">header<sp/>un<sp/>header<sp/>piuttosto<sp/>arguto</highlight></codeline>
+<codeline><highlight class="normal">footer<sp/>un<sp/>footer<sp/>ancora<sp/>più<sp/>arguto</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>un<sp/>titolo<sp/>perfetto<sp/>per<sp/>un<sp/>diagramma<sp/>perfetto</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>entità</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>FUNZIONA<sp/>ANCHE<sp/>SENZA<sp/>DICHIARAZIONI<sp/></highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/><sp/>ma<sp/>in<sp/>caso...</highlight></codeline>
+<codeline><highlight class="normal">partecipant<sp/>&quot;node<sp/>name&quot;<sp/>as<sp/>NODE_NAME</highlight></codeline>
+<codeline><highlight class="normal">collections<sp/>&quot;package<sp/>name&quot;<sp/>as<sp/>PACKAGE_NAME</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>collegamenti<sp/>tra<sp/>entità</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/><sp/>LINEA<sp/>CONTINUA<sp/>-&gt;</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;<sp/><sp/><sp/><sp/><sp/><sp/>LINEA<sp/>DASHED<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;<sp/><sp/><sp/><sp/><sp/><sp/>LINEA<sp/>col<sp/>pallino<sp/>in<sp/>fondo<sp/>-&gt;o</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>-&gt;<sp/>node2<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>&lt;-<sp/>node2<sp/>:<sp/>...<sp/>e<sp/>ritorno</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>sezioni<sp/>di<sp/>diagramma</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>A<sp/>Diagram<sp/>Section<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>annotazioni</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>STILE<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>-&gt;<sp/>node2<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">note<sp/>right:<sp/>una<sp/>nota<sp/>di<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>&lt;-<sp/>node2<sp/>:<sp/>...<sp/>e<sp/>ritorno</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>left:<sp/>una<sp/>nota<sp/>di<sp/>ritorno</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>NOTE<sp/>OVER<sp/>stile<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>across:<sp/>a<sp/>very<sp/>long,<sp/>exaustive,<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">node2<sp/>-&gt;<sp/>node3<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">note<sp/>left:<sp/>una<sp/>nota<sp/>di<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>&lt;-<sp/>node3<sp/>:<sp/>...<sp/>e<sp/>aridanghete</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>right:<sp/>una<sp/>nota<sp/>di<sp/>ritorno</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>STILE<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">node2<sp/>-&gt;<sp/>node3<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">note<sp/>right</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>una<sp/>nota<sp/>di<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>una<sp/>nota<sp/>piuttosto<sp/>lunga</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>NOTE<sp/>OVER<sp/>stile<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>across</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>another<sp/>very<sp/>long,<sp/>exaustive,<sp/>note</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para>esempio di temporal:</para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>annotazioni</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>STILE<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>Style<sp/>1<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>-&gt;<sp/>node2<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">note<sp/>right:<sp/>una<sp/>nota<sp/>di<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>&lt;-<sp/>node2<sp/>:<sp/>...<sp/>e<sp/>ritorno</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>left:<sp/>una<sp/>nota<sp/>di<sp/>ritorno</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>NOTE<sp/>OVER<sp/>stile<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>across:<sp/>a<sp/>very<sp/>long,<sp/>exaustive,<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">node2<sp/>-&gt;<sp/>node3<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">note<sp/>left:<sp/>una<sp/>nota<sp/>di<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal">node1<sp/>&lt;-<sp/>node3<sp/>:<sp/>...<sp/>e<sp/>aridanghete</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>right:<sp/>una<sp/>nota<sp/>di<sp/>ritorno</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>STILE<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>Style<sp/>2<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">node2<sp/>-&gt;<sp/>node3<sp/>:<sp/>andata<sp/>...<sp/></highlight></codeline>
+<codeline><highlight class="normal">note<sp/>right</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>una<sp/>nota<sp/>di<sp/>andata</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>una<sp/>nota<sp/>piuttosto<sp/>lunga</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/><sp/><sp/><sp/>NOTE<sp/>OVER<sp/>stile<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>across</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>another<sp/>very<sp/>long,<sp/>exaustive,<sp/>note</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para><bold>pronti per UML-eggiare</bold><itemizedlist>
+<listitem><para><bold>navigation with move base</bold></para>
+</listitem><listitem><para>temporal diagram packages</para>
+</listitem><listitem><para>(manca ancora il node diagram)</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation (writing the readme)&quot;</para>
+</listitem></itemizedlist>
+</para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">-<sp/>verificare<sp/>che<sp/>tutte<sp/>le<sp/>pagine<sp/>ausiliarie<sp/>abbiano<sp/>la<sp/>loro<sp/>TOCtree<sp/>interna,<sp/>specie<sp/>quando<sp/>sono<sp/>lunghe<sp/>pagine</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>rifare<sp/>la<sp/>homepage<sp/>in<sp/>modo<sp/>che<sp/>le<sp/>parti<sp/>essenziali<sp/>dell&apos;assignment<sp/>risultino<sp/>&quot;a<sp/>vista&quot;</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>rileggere<sp/>la<sp/>documentazione<sp/>del<sp/>codice<sp/>di<sp/>aRMOR</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>descrizione<sp/>nodo<sp/>armor<sp/>interface:<sp/>eliminare<sp/>il<sp/>components<sp/>diagram</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>...<sp/>eliminare<sp/>i<sp/>see<sp/>also<sp/>che<sp/>richiamano<sp/>al<sp/>tipo<sp/>di<sp/>servizio</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>sarà<sp/>il<sp/>caso<sp/>di<sp/>aggiungere<sp/>delle<sp/>sezioni<sp/>sul<sp/>testing<sp/>del<sp/>package<sp/>armor?</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>documentazione<sp/>codice<sp/>del<sp/>pacchetto<sp/>vision</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>creare<sp/>anche<sp/>qualche<sp/>UML<sp/>del<sp/>codice</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(ma<sp/>non<sp/>fare<sp/>un<sp/>lavoro<sp/>*eccessivamente<sp/>dettagliato*)</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>documentazione<sp/>di<sp/>rosplan</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>per<sp/>quanto<sp/>riguarda<sp/>l&apos;attuale<sp/>documentazione<sp/>del<sp/>codice,<sp/>oltre<sp/>a<sp/>non<sp/>esserci<sp/>nulla,<sp/>non<sp/>si<sp/>capisce<sp/>se<sp/>le<sp/>cose<sp/>documentate<sp/>siano<sp/>nodi,<sp/>classi,<sp/>azioni,<sp/>...</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>organizzare<sp/>un<sp/>po&apos;<sp/>meglio<sp/>la<sp/>parte<sp/>della<sp/>code<sp/>reference</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>spostare<sp/>il<sp/>testing<sp/>all&apos;interno<sp/>del<sp/>package</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>documentazione<sp/>del<sp/>codice<sp/>nel<sp/>movement<sp/>controller</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>in<sp/>particolare<sp/>descrivere<sp/>l&apos;idea<sp/>dei<sp/>controllers</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>scrivere<sp/>un<sp/>documento<sp/>che<sp/>dia<sp/>i<sp/>passaggi<sp/>per<sp/>implementare<sp/>un<sp/>nuovo<sp/>controller</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>documentazione<sp/>mission<sp/>manager</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>documentazione<sp/>del<sp/>codice<sp/>(attualmente<sp/>c&apos;è<sp/>solo<sp/>quella<sp/>inline,<sp/>serve<sp/>approfondire)</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>documentazione<sp/>module<sp/>testing</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>distribuire<sp/>i<sp/>test<sp/>nei<sp/>vari<sp/>packages<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(tutti<sp/>i<sp/>test<sp/>tranne<sp/>quelli<sp/>che<sp/>includono<sp/>del<sp/>codice<sp/>specifico<sp/>contenuto<sp/>nel<sp/>package<sp/>module<sp/>testing)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>rifare<sp/>la<sp/>homepage<sp/>in<sp/>modo<sp/>che<sp/>le<sp/>parti<sp/>essenziali<sp/>dell&apos;assignment<sp/>risultino<sp/>&quot;a<sp/>vista&quot;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">**secondo<sp/>assignment:**</highlight></codeline>
 <codeline></codeline>
@@ -1505,11 +1642,12 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>la<sp/>documentazione<sp/>del<sp/>manipulation<sp/>manager<sp/>cambia</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>anche<sp/>quella<sp/>della<sp/>navigation<sp/>unit<sp/>(usa<sp/>un<sp/>algoritmo<sp/>diverso)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>elimina<sp/>le<sp/>cartelle<sp/>inutilizzate<sp/>su<sp/>esempi<sp/>e<sp/>tutto<sp/>il<sp/>resto<sp/>(se<sp/>non<sp/>servono,<sp/>eliminale)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>verificare<sp/>che<sp/>tutte<sp/>le<sp/>pagine<sp/>ausiliarie<sp/>abbiano<sp/>la<sp/>loro<sp/>TOCtree<sp/>interna,<sp/>specie<sp/>quando<sp/>sono<sp/>lunghe<sp/>pagine</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md__docs_dev-log_1autotoc_md72">
+<sect2 id="md__docs_dev-log_1autotoc_md74">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md73">
+<sect3 id="md__docs_dev-log_1autotoc_md75">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1518,7 +1656,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md74">
+<sect3 id="md__docs_dev-log_1autotoc_md76">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

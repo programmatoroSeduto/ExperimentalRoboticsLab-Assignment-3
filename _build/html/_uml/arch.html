@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PKG DOCS – robocluedo armor" href="../robocluedo_armor/index.html" />
-    <link rel="prev" title="README – the RoboCLuedo Project – part 2" href="../README.html" /> 
+    <link rel="prev" title="README – the RoboCLuedo Project – ROUND 3" href="../README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -115,9 +115,13 @@
              
   <div class="section" id="uml-overall-architecture">
 <h1>UML – Overall Architecture<a class="headerlink" href="#uml-overall-architecture" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<hr class="docutils" />
+<div class="section" id="a-simplified-schema">
+<h2>A simplified schema<a class="headerlink" href="#a-simplified-schema" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
-<object data="../_images/plantuml-1dc376936a3ae1ea91443a199d734f53e2aeeae4.svg" type="image/svg+xml" style="width:587px;height:738px;background:#FFFFFF;">
-<img src="../_images/plantuml-1dc376936a3ae1ea91443a199d734f53e2aeeae4.png" alt="&#64;startuml
+<object data="../_images/plantuml-e9b6c6f23368d22dc292d16d0a6c8682d982fdd3.svg" type="image/svg+xml" style="width:583px;height:738px;background:#FFFFFF;">
+<img src="../_images/plantuml-e9b6c6f23368d22dc292d16d0a6c8682d982fdd3.png" alt="&#64;startuml
 
 ''' INFOS
 title Project Architecture
@@ -132,7 +136,7 @@ component &quot;Navigation Stack&quot; as NAVSTACK
 component &quot;erl3 Oracle&quot; as ORACLE
 component &quot;ROSPlan&quot; as ROSPLAN
 
-component &quot;RCL mission manager&quot; as MISSION_MANAGER
+cloud &quot;RCL mission manager&quot; as MISSION_MANAGER
 component &quot;RCL Vision&quot; as VISION
 component &quot;RCL aRMOR interface&quot; as RCL_ARMOR
 component &quot;RCL ROSPlan&quot; as RCL_ROSPLAN
@@ -158,12 +162,127 @@ VISION &lt;--&gt; ORACLE
 
 </object></p>
 </div>
+<div class="section" id="a-more-detailed-schema">
+<h2>A more detailed schema<a class="headerlink" href="#a-more-detailed-schema" title="Permalink to this heading"></a></h2>
+<p>The project is a rich composition of many packages, resulting in a complex, heavy centralized architecture. It behaves as a classical hyerarchical architecture: sense, then plan, then act.</p>
+<p class="plantuml">
+<object data="../_images/plantuml-2cf852aca59fa197cda07a1250f3cbea17ecad72.svg" type="image/svg+xml" style="width:2772px;height:1026px;background:#FFFFFF;">
+<img src="../_images/plantuml-2cf852aca59fa197cda07a1250f3cbea17ecad72.png" alt="&#64;startuml
+
+''' INFOS
+title Project Architecture
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+package armor{
+database &quot;aRMOR&quot; as ARMOR
+component &quot;RCL aRMOR interface&quot; as RCL_ARMOR
+
+RCL_ARMOR -- ARMOR
+}
+
+package &quot;RCL Mission Manager&quot;{
+component &quot;RCL mission manager&quot; as MISSION_MANAGER
+component &quot;RCL manipulation unit&quot; as MANIP_UNIT
+component &quot;RCL navigation unit&quot; as NAV_UNIT
+
+MISSION_MANAGER -- MANIP_UNIT
+}
+
+package &quot;RCL ROSPlan&quot; {
+component &quot;ROSPlan pipeline manager&quot; as ROSPLAN
+component &quot;RCL kb_tools&quot; as RCL_KBTOOLS
+database &quot;ROSPlan knowledge base&quot; as ROSPLANKB
+component &quot;ROSPlan components&quot; as ROSPLAN_COMPONENTS
+file &quot;PDDL RCL domain&quot; as DOMAIN
+file &quot;PDDL RCL problem&quot; as PROBLEM
+node &quot;feedback manager&quot; as FEEDBACK
+package &quot;RCL ROSPlan Actions&quot; as ROSPLAN_ACTIONS {
+node REPLAN
+node SOLVE
+node COLLECT
+}
+FEEDBACK --&gt; ROSPLAN
+ROSPLAN_ACTIONS --&gt; FEEDBACK
+ROSPLAN_COMPONENTS -- ROSPLAN_ACTIONS
+
+ROSPLANKB-- ROSPLAN_COMPONENTS
+ROSPLANKB -- RCL_KBTOOLS
+ROSPLANKB -- ROSPLAN
+RCL_KBTOOLS -- ROSPLAN
+DOMAIN -- ROSPLANKB
+PROBLEM -- ROSPLANKB
+ROSPLAN_COMPONENTS -- ROSPLAN
+}
+
+package &quot;erl3&quot;{
+component &quot;erl3 Oracle&quot; as ORACLE
+component &quot;markers publisher&quot; as MARKERS
+}
+
+package &quot;RCL Vision&quot; {
+component &quot;RCL vision detection&quot; as VISION
+component &quot;RCL vision decoder&quot; as VISION_DECODE
+
+VISION -- VISION_DECODE
+}
+
+package &quot;Simulated Environment&quot; as ENVIRONMENT {
+component &quot;RCL robot 'hunter'&quot;
+node &quot;Gazebo&quot;
+node &quot;RViz&quot;
+}
+
+package moveit {
+component &quot;MoveIt!&quot; as MOVEIT
+}
+
+package &quot;navigation stack&quot; as NAVSTACK {
+component &quot;Move Base&quot;
+component &quot;AMCL&quot;
+component &quot;SLAM/GMapping&quot;
+}
+
+package &quot;RCL Movement Controller&quot; {
+component &quot;RCL navigation manager&quot; as MOVEMENT
+component &quot;RCL manipulation controller&quot; as MANIPULATION
+package behaviours {
+node &quot;bug_m&quot;
+node &quot;move_base_nav&quot;
+node &quot;head_orientation&quot;
+node &quot;go_to_point&quot;
+}
+}
+
+''' CONNECTIONS
+MISSION_MANAGER -- RCL_ARMOR
+MISSION_MANAGER -- VISION_DECODE
+MISSION_MANAGER -- ROSPLAN
+VISION_DECODE -- ORACLE
+MARKERS -- NAV_UNIT
+VISION -- ENVIRONMENT
+ENVIRONMENT -- MOVEIT
+ENVIRONMENT -- NAVSTACK
+MOVEIT -- MANIPULATION
+NAVSTACK -- MOVEMENT
+MANIP_UNIT -- MANIPULATION
+NAV_UNIT -- MOVEMENT
+NAV_UNIT -- ROSPLAN_ACTIONS
+ORACLE -- MISSION_MANAGER
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+</div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../README.html" class="btn btn-neutral float-left" title="README – the RoboCLuedo Project – part 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../README.html" class="btn btn-neutral float-left" title="README – the RoboCLuedo Project – ROUND 3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../robocluedo_armor/index.html" class="btn btn-neutral float-right" title="PKG DOCS – robocluedo armor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

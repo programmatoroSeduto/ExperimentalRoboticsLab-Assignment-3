@@ -2,68 +2,442 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md__r_e_a_d_m_e" kind="page">
     <compoundname>md_README</compoundname>
-    <title>README – the RoboCLuedo Project – part 2</title>
+    <title>README – the RoboCLuedo Project – ROUND 3</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para><emphasis>Francesco Ganci</emphasis> - S4143910 - A.A.2021/2022</para>
+<para><hruler/>
+</para>
+<para><blockquote><para>Compatible With:<itemizedlist>
+<listitem><para>ROS1 noetic</para>
+</listitem></itemizedlist>
+</para>
+<para>Documentation:<itemizedlist>
+<listitem><para>[Official Documentation for ERL3](erl3)</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Project Setup</bold>:<itemizedlist>
+<listitem><para>see the [Official Docs](erl3setup)</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Run the project</bold>:<itemizedlist>
+<listitem><para>see the [Official Documentation](erl3run)</para>
+</listitem></itemizedlist>
+</para>
+<para>Starter kit:<itemizedlist>
+<listitem><para><ulink url="https://github.com/CarmineD8/exp_assignment3/">CarmineD8/exp_assignment3 on GitHub</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para>Previous versions of the RCL project:<itemizedlist>
+<listitem><para><ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2">programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2 (Official Release) on GitHub</ulink></para>
+</listitem><listitem><para><ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git">programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD (old version) on GitHub</ulink></para>
+</listitem><listitem><para><ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1.git">programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1 on GitHub</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para>In a hurry?<itemizedlist>
+<listitem><para>[See it in action!](videoexample)</para>
+</listitem></itemizedlist>
+</para>
+<para></para>
+</blockquote></para>
+<para><hruler/>
+</para>
+<para><image type="html" name="cluedorickmorty.jpg" inline="yes"></image>
+</para>
+<para><hruler/>
+</para>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md137">
+<title>What you can find in this readme</title>
+<para>This readme goes through the design ideas under the project.</para>
 <para><itemizedlist>
-<listitem><para>what is this<itemizedlist>
-<listitem><para>project tree</para>
-</listitem><listitem><para>aims of the project</para>
+<listitem><para>expected behaviour of the project</para>
+</listitem><listitem><para>main design ideas</para>
+</listitem><listitem><para>Software Architecture components overview</para>
+</listitem><listitem><para>Software Architecture communication protocols overview</para>
 </listitem></itemizedlist>
 </para>
-</listitem><listitem><para>how to install the project<itemizedlist>
-<listitem><para>dependencies:<itemizedlist>
-<listitem><para>moveit</para>
-</listitem><listitem><para>ROSPlan</para>
-</listitem><listitem><para>slam gmapping</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>tools:<itemizedlist>
-<listitem><para>docker</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>setup procedure</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>how to run the project<itemizedlist>
-<listitem><para>easy run</para>
-</listitem><listitem><para>manual run with a short project presentation</para>
-</listitem><listitem><para>module testing:<itemizedlist>
-<listitem><para>...</para>
-</listitem></itemizedlist>
-</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>how to use the documentation system<itemizedlist>
-<listitem><para>documentation system setup (usa lo script)</para>
-</listitem><listitem><para>come rigenerare la documentazione</para>
-</listitem><listitem><para>file principali della documentazione</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>TROUBLESHOOTING<itemizedlist>
-<listitem><para>sicuro la roba su tutti i problemi del Docker del corso</para>
-</listitem><listitem><para>...</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>discussione del progetto<itemizedlist>
-<listitem><para>... (sarebbe meglio fare questo lavoro nella documentazione Sphinx?)</para>
-</listitem></itemizedlist>
-</para>
-</listitem><listitem><para>authors and contacts<itemizedlist>
-<listitem><para>(questa è facile...)</para>
-</listitem></itemizedlist>
-</para>
-</listitem></itemizedlist>
-</para>
-<sect1 id="md__r_e_a_d_m_e_1autotoc_md128">
-<title>scopi del progetto</title>
+<para>if you have more practical questions, you can find everything you want, detailed ad libitum, inside the [Official Documentation](officialdocs).</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md138">
+<title>Introduction – RCL#3</title>
+<para>The <ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-3">RCL#3</ulink> project, end of a long journey, wants to implement the architecture of a robot, using its sensors (in this case, cameras and a LIDAR sensor) to solve a <emphasis>Cluedo</emphasis>-style mystery, collecting hints across the environment and reasoning on them for finding the killer. The robot moves in the surroundings, trying to find as many ArUco IDs as possible, adding information to a OWL-based ontology for finding the solution of the case.</para>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md139">
+<title>Technical Goals – RCL#3</title>
+<para>The main technical aim of this project is to <emphasis>extend the architecture roposed in the third part of the project</emphasis> with as the less adaptation work as possible. Indeed this version of the project keeps almost unchancged a lot of components from <ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2">RCL#2</ulink>, ad also something that comes from the <ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1.git">RCL#1</ulink> project.</para>
+<para>Moreover, as in the other assignments, a great care has been given to <emphasis>the metodology of work</emphasis>: not only writing the code, but also using and developing its documentation during the work. A big effort has been made as well, in documenting about the technologies involved in the implementation of this assignment, trying to find a way to make it work which could work also on other platforms as much as possible. Finally, the project comes with a rich <emphasis>module testing</emphasis> allowing to ensure the functioning of each module, either single or in combination with other elements of the architecture. See the official project documentation for further informations.</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md140">
+<title>Differences from RCL#2</title>
+<para>As said above, there are few, but important, technical dfferences between the two versions of the project:</para>
 <para><itemizedlist>
-<listitem><para>implementazione di un&apos;architettura ...</para>
-</listitem><listitem><para>sfruttare maggiormente il formalismo UML per migliorare la progettazione</para>
-</listitem><listitem><para>sfruttare meglio la documentazione (documentazione non solo come parte finale del codice, ma anche come ambiente di lavoro) </para>
+<listitem><para>a new robot model, including 4 cameras and a brand new set of poses</para>
+</listitem><listitem><para>a new navigation system, with a new controller integrating <bold>move_base</bold> and the navigation stack</para>
+</listitem><listitem><para>support for &quot;offline&quot; localisation using <bold>AMCL</bold></para>
+</listitem><listitem><para>a brand new <bold>ArUco</bold> vision system</para>
+</listitem><listitem><para>updates on the manipulation controller, supporting (a very raw) asynchronous manipulation</para>
+</listitem><listitem><para>a brand new system for launching the components of the architecture</para>
+</listitem><listitem><para>minimal adaptation of the ROSPlan package to cope with the cpecificities of ERL#3</para>
 </listitem></itemizedlist>
 </para>
+<para>And other little differences around in the code and in the structure of the project. A big effort have been made in making the project execution <emphasis>as much fast as possible</emphasis>: using such a sensing system, the perfomrance becomes a important topic to deal with.</para>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md141">
+<title>Expected Behaviour – RCL#3</title>
+<para>Here&apos;s how the robot should behave, just as a short overview of how the RCL#3 project works.</para>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md142">
+<title>ERL#3 Environment</title>
+<para>The robot starts in the middle of a small house with a number of hints (arUco markers) spread out in the space (at least 5 per room). The robot can see the markers and detect them. Here&apos;s how the environment appears on Gazebo after the project has been run:</para>
+<para><image type="html" name="erl3-environment.png" inline="yes"></image>
+</para>
+<para>And here how it appears on RViz; the green balls are the positions of the rooms, called <emphasis>waypoints</emphasis>. The center waypoint, not indicated by a green marker, is located at the position where the robot starts the mission.</para>
+<para><image type="html" name="erl3-env-rviz.png" inline="yes"></image>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md143">
+<title>Behaviour</title>
+<para>The robot <bold>moves around looking for markers to detect</bold>. Each marker has a identifier, which, after a request to the Oracle node, enables the system to access a hint to add to the Ontology. The hint will be used for reasoning about the plausible solutions of the case, trying to distinguish between che &quot;COMPLETE&quot; ones and the &quot;INCONSISTENT&quot; ones.</para>
+<para>Starting from a location, the robot navigates to another waypoint, using the cameras to &quot;see&quot; the markers slong the way. Arrived at the waypoint, the robot asks for admissible hypotheses to the Ontology. If at least one hypothesis is found acceptable, the robot navigates to the center and, once arrived there, the system introduces its solution to the Oracle node, which checks if the solution is either right or wrong.</para>
+<para>If the proposal is wrong, the robot continues to explore in search of other hints, after having discarded the proposed hypothesis. Otherwise, the robot ends working.</para>
+<para>The robot keeps going from one waypoint to another one, collecting hints until a plausible solution is available.</para>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md144">
+<title>SW Arch – Components</title>
+<para>The project is a rich composition of many packages, resulting in a complex, heavy centralized architecture. It behaves as a classical hyerarchical architecture: sense, then plan, then act.</para>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md145">
+<title>highlights of the architecture</title>
+<para>Here are the concept I used during each phase of the job:</para>
+<para><itemizedlist>
+<listitem><para><bold>separation</bold> : Great care has been given in <emphasis>guaranteeing the neat separation between components</emphasis></para>
+<para>for instance, the RCL ROSPlan package doesn&apos;t interact directly with the motion controllers: it exposes a client to implement instead, which is called each time a ROSPlan action needs to perform the navigation. It requires a <emphasis>bridge node</emphasis>, that is a delegate between the ROSPlan framework and the real navigation system.</para>
+</listitem><listitem><para><bold>abstraction</bold> : the interfaces provided by each package <emphasis>aims at hiding the implementation details</emphasis>, enhancing a standard, intuitive way to use each package</para>
+<para>in particular, most of them provide a number of <emphasis>directives</emphasis>, i.e. spcecific operations an external node expects to be implemented in a way that the node don&apos;t want to know. The aRMOR package along with this project is a good example of this.</para>
+</listitem><listitem><para><bold>flexibility and adaptability</bold> : the neat separation between packages, alongside with the abstraction, lets the architecture to be more flexible and easily updatable.</para>
+</listitem><listitem><para><bold>module testing</bold> : it is a fundamental concept traversing all the lifecycle of this project since RCL#1</para>
+<para><emphasis>Each time you think about some code, also think to how to test it</emphasis>. The project contains a rich module testing section, allowing the developer to not wasting time in looking for bugs in a very complex, demanding architecture. Each package can be tested independently, and most of the times with just a bash script. Sometimes also some code has been provided in order to test the project.</para>
+<para><emphasis>Developing a rich debug system is a necessity</emphasis> with such a large project. You cannot go on if you can&apos;t be sure at 100% that the components &quot;at the bottom&quot; work as expected. It helped me during the development phase hundreds of times, even revealing bugs whicc was very difficult to spot simply running the proejct.</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md146">
+<title>Components – simplified schema</title>
+<para>It highlights the centralized structure of the architecture. Each component here corresponds to a package used by the project.</para>
+<para>The mission manager contains the bridges above-mentioned (there are bridges for both the navigation and the manipulation), as well as the <emphasis>main node</emphasis> providing a high-layer planning by means of landmarks and aRMOR operations.</para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture</highlight></codeline>
+<codeline><highlight class="normal">skinparam<sp/>Padding<sp/>10</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;Navigation<sp/>Stack&quot;<sp/>as<sp/>NAVSTACK</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;ROSPlan&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>Vision&quot;<sp/>as<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>aRMOR<sp/>interface&quot;<sp/>as<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>ROSPlan&quot;<sp/>as<sp/>RCL_ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>Movement<sp/>Controller&quot;<sp/>as<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>hunter<sp/>environment&quot;<sp/>as<sp/>ENVIRONMENT</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>&lt;--&gt;<sp/>NAVSTACK</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>&lt;--&gt;<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>&lt;--&gt;<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">NAVSTACK<sp/>&lt;--&gt;<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">MOVEIT<sp/>&lt;--&gt;<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">MOVEMENT<sp/>&lt;--&gt;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;--&gt;<sp/>RCL_ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN<sp/>&lt;--&gt;<sp/>RCL_ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;--&gt;<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">ARMOR<sp/>&lt;--&gt;<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;--&gt;<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">VISION<sp/>&lt;--&gt;<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>ORACLE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md148">
+<title>Components – extended schema</title>
+<para><blockquote><para></para>
+<para>Wanna see more? Take a look at the packages documentation inside the Official Documentation.</para>
+<para></para>
+</blockquote></para>
+<para>This schema wants to give an idea of how much the architecture of the project is extended. Inside it there are pointed out many ideas inside RCL#3:</para>
+<para><itemizedlist>
+<listitem><para>the ROSPlan side is a sort of mikrokosmos of components. The system uses the idea of <emphasis>landmarks</emphasis>, implementing the &quot;low level planning system&quot;. See the official documentation, and in particular the design of the PDDL, for further details about such a planning policy.</para>
+<para>The problem solution strategy is divided into three &quot;steps&quot;, called <emphasis>landmakrs</emphasis> in the terminology of the project:<itemizedlist>
+<listitem><para><bold>REPLAN</bold> : tidy the rosplan kb up, maing it ready for a new iteration of the strategy</para>
+</listitem><listitem><para><bold>COLLECT</bold> : move the robot in the environment, <emphasis>using a topological localisation</emphasis> integrated with the ROSPlan PDDL model</para>
+</listitem><listitem><para><bold>SOLVE</bold> : the final step, introduce the &quot;assumed&quot; solution of the case and check it; the robot moves towards the center before introducing the solution</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>the movement controller package implements both the navigation system and the manipulation system.</para>
+<para>the navigation system is divided into many layers (hierarchical architecture inside): the behavioural section, containing<itemizedlist>
+<listitem><para>the <emphasis>elementary behaviours</emphasis> directly influencing the motion of the robot,</para>
+</listitem><listitem><para>combined into <emphasis>composite behaviours</emphasis> which group the elementary behaviours to make more structured motion strategies</para>
+</listitem><listitem><para>and the <emphasis>motion controllers</emphasis>, components of the navigation manager (implemented as classes inside that node) providing a &quot;cozy&quot; abstraction for the navigation system: a external node sees onl a simple interface, without having the need to deal with the details of the implementation of the navigation system.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>the diagram also shows the components of the navigation stack, a novelty of RCL#3</para>
+</listitem></itemizedlist>
+</para>
+<para>Here&apos;s the diagram (I suggest you to open the image in a new tab of the browser... it is quite big)</para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INFOS</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Project<sp/>Architecture</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>skinparam<sp/>Padding<sp/>8</highlight></codeline>
+<codeline><highlight class="normal">allow_mixing</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>armor{</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;aRMOR&quot;<sp/>as<sp/>ARMOR</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>aRMOR<sp/>interface&quot;<sp/>as<sp/>RCL_ARMOR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">RCL_ARMOR<sp/>--<sp/>ARMOR</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>Mission<sp/>Manager&quot;{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>mission<sp/>manager&quot;<sp/>as<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>manipulation<sp/>unit&quot;<sp/>as<sp/>MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>navigation<sp/>unit&quot;<sp/>as<sp/>NAV_UNIT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>ROSPlan&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;ROSPlan<sp/>pipeline<sp/>manager&quot;<sp/>as<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>kb_tools&quot;<sp/>as<sp/>RCL_KBTOOLS</highlight></codeline>
+<codeline><highlight class="normal">database<sp/>&quot;ROSPlan<sp/>knowledge<sp/>base&quot;<sp/>as<sp/>ROSPLANKB</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;ROSPlan<sp/>components&quot;<sp/>as<sp/>ROSPLAN_COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">file<sp/>&quot;PDDL<sp/>RCL<sp/>domain&quot;<sp/>as<sp/>DOMAIN</highlight></codeline>
+<codeline><highlight class="normal">file<sp/>&quot;PDDL<sp/>RCL<sp/>problem&quot;<sp/>as<sp/>PROBLEM</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;feedback<sp/>manager&quot;<sp/>as<sp/>FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>ROSPlan<sp/>Actions&quot;<sp/>as<sp/>ROSPLAN_ACTIONS<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>REPLAN</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>SOLVE</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>COLLECT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">FEEDBACK<sp/>--&gt;<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN_ACTIONS<sp/>--&gt;<sp/>FEEDBACK</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN_COMPONENTS<sp/>--<sp/>ROSPLAN_ACTIONS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ROSPLANKB--<sp/>ROSPLAN_COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">ROSPLANKB<sp/>--<sp/>RCL_KBTOOLS</highlight></codeline>
+<codeline><highlight class="normal">ROSPLANKB<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">RCL_KBTOOLS<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">DOMAIN<sp/>--<sp/>ROSPLANKB</highlight></codeline>
+<codeline><highlight class="normal">PROBLEM<sp/>--<sp/>ROSPLANKB</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN_COMPONENTS<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;erl3&quot;{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;erl3<sp/>Oracle&quot;<sp/>as<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;markers<sp/>publisher&quot;<sp/>as<sp/>MARKERS</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>Vision&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>vision<sp/>detection&quot;<sp/>as<sp/>VISION</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>vision<sp/>decoder&quot;<sp/>as<sp/>VISION_DECODE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION<sp/>--<sp/>VISION_DECODE</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;Simulated<sp/>Environment&quot;<sp/>as<sp/>ENVIRONMENT<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>robot<sp/>&apos;hunter&apos;&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;Gazebo&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;RViz&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>moveit<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;MoveIt!&quot;<sp/>as<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;navigation<sp/>stack&quot;<sp/>as<sp/>NAVSTACK<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;Move<sp/>Base&quot;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;AMCL&quot;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;SLAM/GMapping&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">package<sp/>&quot;RCL<sp/>Movement<sp/>Controller&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>navigation<sp/>manager&quot;<sp/>as<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>&quot;RCL<sp/>manipulation<sp/>controller&quot;<sp/>as<sp/>MANIPULATION</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>behaviours<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;bug_m&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;move_base_nav&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;head_orientation&quot;</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>&quot;go_to_point&quot;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>CONNECTIONS</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>RCL_ARMOR</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>VISION_DECODE</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>--<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>--<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">MARKERS<sp/>--<sp/>NAV_UNIT</highlight></codeline>
+<codeline><highlight class="normal">VISION<sp/>--<sp/>ENVIRONMENT</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>--<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">ENVIRONMENT<sp/>--<sp/>NAVSTACK</highlight></codeline>
+<codeline><highlight class="normal">MOVEIT<sp/>--<sp/>MANIPULATION</highlight></codeline>
+<codeline><highlight class="normal">NAVSTACK<sp/>--<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">MANIP_UNIT<sp/>--<sp/>MANIPULATION</highlight></codeline>
+<codeline><highlight class="normal">NAV_UNIT<sp/>--<sp/>MOVEMENT</highlight></codeline>
+<codeline><highlight class="normal">NAV_UNIT<sp/>--<sp/>ROSPLAN_ACTIONS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md150">
+<title>SW Arch – communication protocols overview</title>
+<para>Here are the temporal diagrams of the project, describing just the essential steps performed in communicating between packages</para>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md151">
+<title>navigation using move_base (RCL#3)</title>
+<para><bold>package temporal diagram</bold>:</para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>RCL#3<sp/>move_base<sp/>navigation<sp/>-<sp/>package<sp/>temporal<sp/>diagram</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>ROSPLAN</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MISSION</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MOVEMENT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>First<sp/>setup<sp/>(first<sp/>request)<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION<sp/>-&gt;<sp/>MOVEMENT<sp/>:<sp/>controller<sp/>selection<sp/>request</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>&lt;-<sp/>MOVEMENT<sp/>:<sp/>controller<sp/>ID=1</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MISSION:<sp/>waiting<sp/>for<sp/>markers</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>Movement<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ROSPLAN<sp/>-&gt;<sp/>MISSION<sp/>:<sp/>request<sp/>from<sp/>ROSPlan<sp/>action</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>-&gt;<sp/>MOVEMENT<sp/>:<sp/>navigation<sp/>request</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MOVEMENT<sp/>:<sp/>performing<sp/>navigation</highlight></codeline>
+<codeline><highlight class="normal">MISSION<sp/>&lt;-<sp/>MOVEMENT<sp/>:<sp/>target<sp/>reached</highlight></codeline>
+<codeline><highlight class="normal">ROSPLAN<sp/>&lt;-<sp/>MISSION<sp/>:<sp/>navigation<sp/>ended</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><bold>node temporal diagram</bold>:</para>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>RCL#3<sp/>move_base<sp/>navigation<sp/>-<sp/>node<sp/>temporal<sp/>diagram</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>header<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>footer<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md152">
+<title>navigation using big_m (RCL#2)</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md153">
+<title>manipulation (RCL#2) – synchronous manipulation</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md154">
+<title>manipulation (RCL#3) – asynchrononus manipulation</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md155">
+<title>Mission manager workflow</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
+<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting> </para>
+</sect2>
 </sect1>
     </detaileddescription>
   </compounddef>

@@ -1328,6 +1328,190 @@ avanti con la documentazione dei packages:
 - anche all'ultimissimo test è sopravvissuto
 - **COMMIT**: "documentation (ready for the README)"
 
+---
+
+## 23/08/2022 -- readme e deployment
+
+Andiamo subito con la scrittura del readme per il progetto. Fatto questo, lavoro sull'aggiornamento della documentazione per la seconda parte del progetto, e si pubblica. 
+
+- prima impostazione del readme (stavolta però tutte le sezioni riguardanti il setup vanno nella documentazione, così il readme viene un po' più corto)
+	- seguendo la struttura nelle slides
+	- nonostante le dimensioni dell'attuale documentazione, vorrei che il readme fosse più terso possibile, semplice ed essenziale
+
+```{note}
+struttura del readme:
+
+1. Brief introduction (couple of sentences).
+2. Software architecture, temporal diagram and states diagrams (if applicable). Each diagram should be commented
+with a paragraph, plus a list describing ROS messages and parameters.
+3. Installation and running procedure (including all the steps to display the robot’s behavior).
+4. A commented small video, a GIF or screenshots showing the relevant parts of the running code.
+5. Working hypothesis and environment (1 or 2 paragraph).
+1. System’s features (1 or 2 paragraph).
+2. System’s limitations (1 or 2 paragraph).
+3. Possible technical Improvements (1 or 2 paragraph).
+6. Authors and contacts (at least the email).
+```
+
+- scrittura readme
+- penso ci voglia un diagramma UML globale più ricco che mostri tutti i componenti e tutti i packages del progetto
+- *purtroppo c'è davvero molto da scrivere...* tento di tenerlo più conciso possibile, ma l'architettura è davvero troppo complessa per poterla spiegare in poche righe. Posso fare affidamento sui diagrammi, ma anche quelli non possono dire proprio tutto. 
+- per il momento meglio fare le cose in sphinx, per poi portare tutto su GitHub
+- *è arrivato il tanto temuto momento dei temporal diagrams ...*
+- azitutto, ci vuole un elenco dei diagrammi necessari
+	- navigation usando move_base 
+		
+		(selezione algoritmo, movimento)
+		
+		ROSPlan action move_to
+		navigation unit
+		navigation manager -- navigation controller move_base
+		move_base_nav
+		head orientation
+		
+	- navigation usando bug_m
+		
+		(selezione algoritmo, movimento)
+		
+		ROSPlan action move_to
+		navigation unit
+		navigation manager -- navigation controller bug_m
+		bug_m
+		head orientation
+		go to point
+		
+	- manipulation sincrona (RCL#2)
+		
+		ROSPlan action manipulation
+		manipulation unit
+		manipulation controller
+		moveit
+		
+	- manipulation asincrona (RCL#3)
+		
+		manipulation unit
+		manipulation controller
+		moveit
+	
+	- esecuzione di un plan col mission manager (in gran parte è identico a quello dell'assignment 2)
+		
+		mission manager
+		armor interface
+		pipeline manager
+		kb_interface
+		rosplan kb
+		rosplan dispatch
+		oracolo
+	
+	- (forse per il mission manager è meglio un flow chart...)
+
+- forse sarebbe meglio ricorrere a diagrammi innestati piuttosto che fare diagrammi troppo lunghi:
+	- i *diagrammi temporali generali* mostrano solo la comunicazione tra packages, senza menzionare (se non al di sopra delle frecce) i componenti
+	- i *diagrammi temporali dei nodi* rappresentano invece i doni all'interno di un solo package
+	
+- alcuni rudimenti di sintassi plantText sui diagrammi temporali, nello specifico del progetto:
+
+```text
+
+@startuml
+
+''' titolo e tutto il resto
+header un header piuttosto arguto
+footer un footer ancora più arguto
+title un titolo perfetto per un diagramma perfetto
+
+''' entità
+'''    FUNZIONA ANCHE SENZA DICHIARAZIONI 
+'''     ma in caso...
+partecipant "node name" as NODE_NAME
+collections "package name" as PACKAGE_NAME
+
+''' collegamenti tra entità
+'''     LINEA CONTINUA ->
+''      LINEA DASHED -->
+''      LINEA col pallino in fondo ->o
+node1 -> node2 : andata ... 
+node1 <- node2 : ... e ritorno
+
+''' sezioni di diagramma
+== A Diagram Section ==
+
+''' annotazioni
+'''    STILE 1
+node1 -> node2 : andata ... 
+note right: una nota di andata
+node1 <- node2 : ... e ritorno
+note left: una nota di ritorno
+
+'''    NOTE OVER stile 1
+note across: a very long, exaustive, note
+
+node2 -> node3 : andata ... 
+note left: una nota di andata
+node1 <- node3 : ... e aridanghete
+note right: una nota di ritorno
+
+'''    STILE 2
+node2 -> node3 : andata ... 
+note right
+    una nota di andata
+    una nota piuttosto lunga
+end note
+
+'''    NOTE OVER stile 2
+note across
+	another very long, exaustive, note
+end note
+
+
+@enduml
+```
+
+esempio di temporal:
+
+```{uml}
+@startuml
+
+''' annotazioni
+'''    STILE 1
+== Style 1 ==
+node1 -> node2 : andata ... 
+note right: una nota di andata
+node1 <- node2 : ... e ritorno
+note left: una nota di ritorno
+
+'''    NOTE OVER stile 1
+note across: a very long, exaustive, note
+
+node2 -> node3 : andata ... 
+note left: una nota di andata
+node1 <- node3 : ... e aridanghete
+note right: una nota di ritorno
+
+'''    STILE 2
+== Style 2 ==
+node2 -> node3 : andata ... 
+note right
+    una nota di andata
+    una nota piuttosto lunga
+end note
+
+'''    NOTE OVER stile 2
+note across
+	another very long, exaustive, note
+end note
+
+@enduml
+```
+
+- **pronti per UML-eggiare**
+	- **navigation with move base**
+	- temporal diagram packages
+	- (manca ancora il node diagram)
+- **COMMIT**: "documentation (writing the readme)"
+
+
+
 
 
 
@@ -1336,27 +1520,10 @@ avanti con la documentazione dei packages:
 ```{todo}
 **terzo assignment:**
 
-- verificare che tutte le pagine ausiliarie abbiano la loro TOCtree interna, specie quando sono lunghe pagine
-- rifare la homepage in modo che le parti essenziali dell'assignment risultino "a vista"
-- rileggere la documentazione del codice di aRMOR
-	- descrizione nodo armor interface: eliminare il components diagram
-	- ... eliminare i see also che richiamano al tipo di servizio
-	- sarà il caso di aggiungere delle sezioni sul testing del package armor?
 - documentazione codice del pacchetto vision
 	- creare anche qualche UML del codice
 	- (ma non fare un lavoro *eccessivamente dettagliato*)
-- documentazione di rosplan
-	- per quanto riguarda l'attuale documentazione del codice, oltre a non esserci nulla, non si capisce se le cose documentate siano nodi, classi, azioni, ...
-	- organizzare un po' meglio la parte della code reference
-	- spostare il testing all'interno del package
-- documentazione del codice nel movement controller
-	- in particolare descrivere l'idea dei controllers
-	- e scrivere un documento che dia i passaggi per implementare un nuovo controller
-- documentazione mission manager
-	- documentazione del codice (attualmente c'è solo quella inline, serve approfondire)
-- documentazione module testing
-	- distribuire i test nei vari packages 
-	- (tutti i test tranne quelli che includono del codice specifico contenuto nel package module testing)
+- rifare la homepage in modo che le parti essenziali dell'assignment risultino "a vista"
 
 **secondo assignment:**
 
@@ -1374,6 +1541,7 @@ avanti con la documentazione dei packages:
 	- la documentazione del manipulation manager cambia
 	- e anche quella della navigation unit (usa un algoritmo diverso)
 - elimina le cartelle inutilizzate su esempi e tutto il resto (se non servono, eliminale)
+- verificare che tutte le pagine ausiliarie abbiano la loro TOCtree interna, specie quando sono lunghe pagine
 
 ```
 
