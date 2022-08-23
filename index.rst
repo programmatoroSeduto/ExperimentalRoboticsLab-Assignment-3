@@ -11,7 +11,7 @@ RCL -- the RoboCLuedo Project - part 3
    :caption: README
    :glob:
    
-   the project main README <./README.md>
+   the project main README <./README-sphinx.md>
    UML overall arch <./_uml/arch.md>
 
 

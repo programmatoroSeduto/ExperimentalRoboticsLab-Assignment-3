@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md_robocluedo_mission_manager__uml_diagrams" kind="page">
+    <compoundname>md_robocluedo_mission_manager__uml_diagrams</compoundname>
+    <title>UML – mission manager interfaces</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><hruler/>
+</para>
+<para><programlisting filename=".toctree"><codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">./diagrams.md</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+</para>
+<para>This document provides a reference of all the interfaces provided by the <computeroutput>robocluedo_mission_manager</computeroutput> package. The most complex node from this point of view is the <computeroutput><ref refid="mission__manager_8cpp" kindref="compound">mission_manager.cpp</ref></computeroutput> which is the &quot;head&quot; of the entire architecture.</para>
+<sect1 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md306">
+<title>The mission manager</title>
+<para>There are many interfaces involving this node. Let&apos;s see it under many points of view.</para>
+<sect2 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md307">
+<title>mission_manager – rosplan communication</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Mission<sp/>Manager<sp/>--<sp/>ROSPlan<sp/>communication</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>PIPELINE<sp/>&lt;&lt;RCL<sp/>ROSPlan&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo/pipeline_manager&quot;<sp/>as<sp/>SRV_PIPELINE</highlight></codeline>
+<codeline><highlight class="normal">PIPELINE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_PIPELINE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/RosplanPipelineManagerService.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">SRV_PIPELINE<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md308">
+<title>mission_manager – continuous manipulation</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Mission<sp/>Manager<sp/>--<sp/>continuous<sp/>manipulation</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MANIPULATION_UNIT<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/tip_pos_auto_switch&quot;<sp/>as<sp/>SRV_MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">MANIPULATION_UNIT<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">SRV_MANIP_UNIT<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md309">
+<title>mission_manager – sensing</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Mission<sp/>Manager<sp/>--<sp/>sensing</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>VISION_DECODE<sp/>&lt;&lt;RCL<sp/>Vision&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oracle_hint&quot;<sp/>as<sp/>TOPIC_ORACLE_HINT</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_ORACLE_HINT</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_ORACLE_HINT<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md310">
+<title>mission_manager – interaction with aRMOR interface</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Mission<sp/>Manager<sp/>--<sp/>interaction<sp/>with<sp/>aRMOR<sp/>interface</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>ARMOR_INTERFACE<sp/>&lt;&lt;RCL<sp/>aRMOR&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">together<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Trigger.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md311">
+<title>mission_manager – communication with the Oracle</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Mission<sp/>Manager<sp/>--<sp/>oracle</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>ORACLE<sp/>&lt;&lt;erl_assignment3&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oralce_solution&quot;<sp/>as<sp/>SRV_ORACLE_SOLUTION</highlight></codeline>
+<codeline><highlight class="normal">ORACLE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ORACLE_SOLUTION</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>erl2/Oracle.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">SRV_ORACLE_SOLUTION<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md312">
+<title>navigation_unit</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Navigation<sp/>Unit</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>NAV_UNIT<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>NAV_MANAGER<sp/>&lt;&lt;RCL<sp/>Movement<sp/>Controller&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MOVE_TO<sp/>&lt;&lt;RCL<sp/>ROSPlan<sp/>Action&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MARKERS_PUBLISHER<sp/>&lt;&lt;erl_assignment3&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo/navigation_command&quot;<sp/>as<sp/>SRV_ROSPLAN_NAV</highlight></codeline>
+<codeline><highlight class="normal">NAV_UNIT<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ROSPLAN_NAV</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_rosplan_msgs/NavigationCommand.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/navigation_manager/navigation&quot;<sp/>as<sp/>SRV_NAV</highlight></codeline>
+<codeline><highlight class="normal">NAV_MANAGER<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_NAV</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_movement_controller_msgs/NavigationService.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/navigation_manager/set_algorithm&quot;<sp/>as<sp/>SRV_ALGO</highlight></codeline>
+<codeline><highlight class="normal">NAV_MANAGER<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ALGO</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_movement_controller_msgs/Algorithm.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/visualization_marker&quot;<sp/>as<sp/>TOPIC_MARKER</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_MARKER<sp/>&lt;-up-<sp/>&quot;pub&quot;<sp/>MARKERS_PUBLISHER</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>visualization_msgs/MarkerArray.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">SRV_ROSPLAN_NAV<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MOVE_TO</highlight></codeline>
+<codeline><highlight class="normal">SRV_NAV<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NAV_UNIT</highlight></codeline>
+<codeline><highlight class="normal">SRV_ALGO<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>NAV_UNIT</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_MARKER<sp/>-down-&gt;<sp/>&quot;sub&quot;<sp/>NAV_UNIT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="md_robocluedo_mission_manager__uml_diagrams_1autotoc_md313">
+<title>manipulation_unit</title>
+<para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Navigation<sp/>Unit</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MANIP_UNIT<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MANIP_CONTROLLER<sp/>&lt;&lt;RCL<sp/>Movement<sp/>Controller&gt;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
+<codeline><highlight class="normal">/&apos;</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/tip_pos&quot;<sp/>as<sp/>SRV_MANIP</highlight></codeline>
+<codeline><highlight class="normal">MANIP_CONTROLLER<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_MANIP</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_movement_controller_msgs/ManipulatorPosition.srv</highlight></codeline>
+<codeline><highlight class="normal">SRV_MANIP<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MANIP_UNIT</highlight></codeline>
+<codeline><highlight class="normal">&apos;/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/tip_pos_auto_switch&quot;<sp/>as<sp/>SRV_MANIP_RANDOM</highlight></codeline>
+<codeline><highlight class="normal">MANIP_UNIT<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_MANIP_RANDOM</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/tip_pos_async&quot;<sp/>as<sp/>TOPIC_MANIP_ASYNC</highlight></codeline>
+<codeline><highlight class="normal">MANIP_UNIT<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_MANIP_ASYNC</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_movement_controller_msgs/ManipulatorPositionAsync.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
+<codeline><highlight class="normal">SRV_MANIP_RANDOM<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_MANIP_ASYNC<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>MANIP_CONTROLLER</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

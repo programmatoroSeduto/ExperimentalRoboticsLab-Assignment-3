@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="diagram_8md" kind="file" language="Markdown">
+    <compoundname>diagram.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>UML<sp/>--<sp/>RoboCLuedo<sp/>Vision<sp/>UML<sp/>diagram</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>diagram<sp/>shows<sp/>the<sp/>vision<sp/>system<sp/>as<sp/>a<sp/>&quot;pipeline&quot;<sp/>starting<sp/>from<sp/>the<sp/>signals<sp/>out<sp/>of<sp/>the<sp/>cameras<sp/>of<sp/>the<sp/>robot,<sp/>and<sp/>passing<sp/>through<sp/>a<sp/>VISION_DETECT<sp/>phase<sp/>and<sp/>a<sp/>VISION_DECODE<sp/>phase.<sp/>The<sp/>system<sp/>publishes<sp/>the<sp/>hints<sp/>observed<sp/>from<sp/>the<sp/>scene.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}</highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>RoboCLuedo<sp/>Vision<sp/>UML<sp/>diagram</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>VISION_DECODE</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">package<sp/>ROBOT<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>CAM_ARM</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>CAM_LEFT</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>CAM_RIGHT</highlight></codeline>
+<codeline><highlight class="normal">node<sp/>CAM_FRONT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">CAM_ARM<sp/>-[hidden]&gt;<sp/>CAM_LEFT</highlight></codeline>
+<codeline><highlight class="normal">CAM_LEFT<sp/>-[hidden]&gt;<sp/>CAM_RIGHT</highlight></codeline>
+<codeline><highlight class="normal">CAM_RIGHT<sp/>-[hidden]&gt;<sp/>CAM_FRONT</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo_robot/camera_arm/image_raw&quot;<sp/>as<sp/>TOPIC_ARM</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo_robot/camera_front/image_raw&quot;<sp/>as<sp/>TOPIC_FRONT</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo_robot/camera_left/image_raw&quot;<sp/>as<sp/>TOPIC_LEFT</highlight></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/robocluedo_robot/camera_right/image_raw&quot;<sp/>as<sp/>TOPIC_RIGHT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">CAM_ARM<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_ARM</highlight></codeline>
+<codeline><highlight class="normal">CAM_LEFT<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_LEFT</highlight></codeline>
+<codeline><highlight class="normal">CAM_RIGHT<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_RIGHT</highlight></codeline>
+<codeline><highlight class="normal">CAM_FRONT<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_FRONT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TOPIC_ARM<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_FRONT<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_LEFT<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">TOPIC_RIGHT<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>VISION_DETECT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/aruco_detected_ids&quot;<sp/>as<sp/>TOPIC_IDS</highlight></codeline>
+<codeline><highlight class="normal">VISION_DETECT<sp/>--&gt;<sp/>TOPIC_IDS<sp/>:<sp/>std_msgs/Int32.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TOPIC_IDS<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>VISION_DECODE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;oracle_hint_original&quot;<sp/>as<sp/>SRV_REAL_ORACLE</highlight></codeline>
+<codeline><highlight class="normal">ORACLE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_REAL_ORACLE<sp/>:<sp/>exp_assignment3/Marker.srv</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SRV_REAL_ORACLE<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>VISION_DECODE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">()<sp/>&quot;/oracle_hint&quot;<sp/>as<sp/>TOPIC_ORACLE</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_ORACLE<sp/>:<sp/>erl2/ErlOracle.msg</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="robocluedo_vision/_uml/diagram.md"/>
+  </compounddef>
+</doxygen>

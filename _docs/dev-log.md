@@ -1684,6 +1684,29 @@ e torniamo al lavoro:
 - workig hypotheses and environment
 - **COMMIT**: "documentaton (working assumptions)"
 
+---
+
+- scrittura delle ultimissime parti del readme ...
+- *sai cosa ti dico? Il readme sta nella documentazione*. Non voglio alcun readme visibile su Git, se non un semplice link che rimanda alla documentazione con la classica mia card che mostra una prima overview dei link. Ho fatto uno sforzo immane per tenere tutto all'interno della documentazione e per renderla completa.
+- scrittura del "readme fantoccio"
+	- mantenendo la documentazione in Sphinx è più semplice aggiornarla e linkare ad altre pagine rilevanti della documentazione, mentre tenendola in un semplice readme di Git devo ogni volta fare il noiosissimo lavoro di rimaneggiare i link ... ho fatto questa esperienza su ben 5 assignment, e non ci tengo a ripeterla la sesta volta. 
+- dovrei aggiungere qualche parola per ogni package, almeno i nodi all'interno
+	- armor interface è già abbastanza documentato
+	- le dipendenze non contengono nodi che non siano stati documentati, ad eccezione di quelli per opencv, *che comunque non sono un problema mio*
+	- mission manager
+	- *mi sono appena accorto che mancano gli UML dei nodi del mission manager!*
+	- (una barba infinita...)
+	- vision
+		- e che fai? del diagramma UML del vision te ne privi?
+	- rosplan direi che èè stato già ampiamente documentato
+	- e così anche il movement controller
+	- un UML del module testing non serve a nulla
+- allineamento verticale in PlantUML ... vedi [la magia](https://forum.plantuml.net/5180/components-alignment-left-to-rigth-vertical) più usa together {...}
+	- anche [questa](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html) guida sul layout è molto utile
+- ho una cosa in testa ... voglio provare a fare un commit da script
+
+
+
 
 
 

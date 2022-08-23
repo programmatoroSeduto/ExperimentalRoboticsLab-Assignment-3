@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UML – mission manager interfaces &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NODE manipulation_unit" href="../_code_reference/manipulation_unit.html" />
+    <link rel="prev" title="HOW TO – the main launch file" href="../_docs/main-launch-file.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_mission_manager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/main-launch-file.html">HOW TO – the main launch file</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UML – mission manager interfaces</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/manipulation_unit.html">NODE manipulation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/mission_manager.html">NODE mission_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/nagivation_unit.html">NODE navigation_unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">LOG – development log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/python-doc-official.html">Python Google Docstring – an official example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">HOW TO Run this Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_mission_manager</a> &raquo;</li>
+      <li>UML – mission manager interfaces</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_mission_manager/_uml/diagrams.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="uml-mission-manager-interfaces">
+<h1>UML – mission manager interfaces<a class="headerlink" href="#uml-mission-manager-interfaces" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UML – mission manager interfaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-mission-manager">The mission manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mission-manager-rosplan-communication">mission_manager – rosplan communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mission-manager-continuous-manipulation">mission_manager – continuous manipulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mission-manager-sensing">mission_manager – sensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mission-manager-interaction-with-armor-interface">mission_manager – interaction with aRMOR interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mission-manager-communication-with-the-oracle">mission_manager – communication with the Oracle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#navigation-unit">navigation_unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manipulation-unit">manipulation_unit</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>This document provides a reference of all the interfaces provided by the <code class="docutils literal notranslate"><span class="pre">robocluedo_mission_manager</span></code> package. The most complex node from this point of view is the <code class="docutils literal notranslate"><span class="pre">mission_manager.cpp</span></code> which is the “head” of the entire architecture.</p>
+<div class="section" id="the-mission-manager">
+<h2>The mission manager<a class="headerlink" href="#the-mission-manager" title="Permalink to this heading"></a></h2>
+<p>There are many interfaces involving this node. Let’s see it under many points of view.</p>
+<div class="section" id="mission-manager-rosplan-communication">
+<h3>mission_manager – rosplan communication<a class="headerlink" href="#mission-manager-rosplan-communication" title="Permalink to this heading"></a></h3>
+<p class="plantuml">
+<object data="../../_images/plantuml-5b87bdbf7d07b83b1e40293c72e301130a06ed76.svg" type="image/svg+xml" style="width:1140px;height:114px;background:#FFFFFF;">
+<img src="../../_images/plantuml-5b87bdbf7d07b83b1e40293c72e301130a06ed76.png" alt="&#64;startuml
+
+title Mission Manager -- ROSPlan communication
+left to right direction
+
+''' COMPONENTS
+component MISSION_MANAGER &lt;&lt;RCL Mission Manager&gt;&gt;
+component PIPELINE &lt;&lt;RCL ROSPlan&gt;&gt;
+
+''' INTERFACES
+() &quot;/robocluedo/pipeline_manager&quot; as SRV_PIPELINE
+PIPELINE &quot;srv&quot; --&gt; SRV_PIPELINE
+note on link: robocluedo_rosplan_msgs/RosplanPipelineManagerService.srv
+
+''' LINKS
+SRV_PIPELINE --&gt; &quot;cl&quot; MISSION_MANAGER
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="mission-manager-continuous-manipulation">
+<h3>mission_manager – continuous manipulation<a class="headerlink" href="#mission-manager-continuous-manipulation" title="Permalink to this heading"></a></h3>
+<p class="plantuml">
+<object data="../../_images/plantuml-8a279bdb1969a39f15d05f8f4b1523b2cb8ffbcb.svg" type="image/svg+xml" style="width:865px;height:114px;background:#FFFFFF;">
+<img src="../../_images/plantuml-8a279bdb1969a39f15d05f8f4b1523b2cb8ffbcb.png" alt="&#64;startuml
+
+title Mission Manager -- continuous manipulation
+left to right direction
+
+''' COMPONENTS
+component MISSION_MANAGER &lt;&lt;RCL Mission Manager&gt;&gt;
+component MANIPULATION_UNIT &lt;&lt;RCL Mission Manager&gt;&gt;
+
+''' INTERFACES
+() &quot;/tip_pos_auto_switch&quot; as SRV_MANIP_UNIT
+MANIPULATION_UNIT &quot;srv&quot; --&gt; SRV_MANIP_UNIT
+note on link: std_srvs/SetBool.srv
+
+''' LINKS
+SRV_MANIP_UNIT --&gt; &quot;cl&quot; MISSION_MANAGER
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="mission-manager-sensing">
+<h3>mission_manager – sensing<a class="headerlink" href="#mission-manager-sensing" title="Permalink to this heading"></a></h3>
+<p class="plantuml">
+<object data="../../_images/plantuml-41775de8c2a5b74ca1a1289020ea00bacbf33bc5.svg" type="image/svg+xml" style="width:749px;height:114px;background:#FFFFFF;">
+<img src="../../_images/plantuml-41775de8c2a5b74ca1a1289020ea00bacbf33bc5.png" alt="&#64;startuml
+
+title Mission Manager -- sensing
+left to right direction
+
+''' COMPONENTS
+component MISSION_MANAGER &lt;&lt;RCL Mission Manager&gt;&gt;
+component VISION_DECODE &lt;&lt;RCL Vision&gt;&gt;
+
+''' INTERFACES
+() &quot;/oracle_hint&quot; as TOPIC_ORACLE_HINT
+VISION_DECODE &quot;pub&quot; --&gt; TOPIC_ORACLE_HINT
+note on link: std_srvs/SetBool.srv
+
+''' LINKS
+TOPIC_ORACLE_HINT --&gt; &quot;sub&quot; MISSION_MANAGER
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="mission-manager-interaction-with-armor-interface">
+<h3>mission_manager – interaction with aRMOR interface<a class="headerlink" href="#mission-manager-interaction-with-armor-interface" title="Permalink to this heading"></a></h3>
+<p class="plantuml">
+<object data="../../_images/plantuml-a75be7986338b49fdbea0cdcee139232dd3ac40c.svg" type="image/svg+xml" style="width:948px;height:446px;background:#FFFFFF;">
+<img src="../../_images/plantuml-a75be7986338b49fdbea0cdcee139232dd3ac40c.png" alt="&#64;startuml
+
+title Mission Manager -- interaction with aRMOR interface
+
+''' COMPONENTS
+component MISSION_MANAGER &lt;&lt;RCL Mission Manager&gt;&gt;
+component ARMOR_INTERFACE &lt;&lt;RCL aRMOR&gt;&gt;
+
+''' INTERFACES
+together {
+left to right direction
+() &quot;/cluedo_armor/add_hint&quot; as SRV_ARMOR_ADD
+() &quot;/cluedo_armor/find_consistent_h&quot; as SRV_ARMOR_FIND
+() &quot;/cluedo_armor/wrong_hypothesis&quot; as SRV_ARMOR_DEL
+() &quot;/cluedo_armor/backup&quot; as SRV_ARMOR_BACKUP
+}
+
+SRV_ARMOR_ADD &lt;-left- &quot;srv&quot; ARMOR_INTERFACE
+note on link: robocluedo_armor_msgs/AddHint.srv
+
+SRV_ARMOR_FIND &lt;-left- &quot;srv&quot; ARMOR_INTERFACE
+note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
+
+
+SRV_ARMOR_DEL &lt;-left- &quot;srv&quot; ARMOR_INTERFACE
+note on link: robocluedo_armor_msgs/DiscardHypothesis.srv
+
+
+SRV_ARMOR_BACKUP &lt;-left- &quot;srv&quot; ARMOR_INTERFACE
+note on link: std_srvs/Trigger.srv
+
+''' LINKS
+SRV_ARMOR_ADD --&gt; &quot;cl&quot; MISSION_MANAGER
+SRV_ARMOR_FIND --&gt; &quot;cl&quot; MISSION_MANAGER
+SRV_ARMOR_DEL --&gt; &quot;cl&quot; MISSION_MANAGER
+SRV_ARMOR_BACKUP --&gt; &quot;cl&quot; MISSION_MANAGER
+
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="mission-manager-communication-with-the-oracle">
+<h3>mission_manager – communication with the Oracle<a class="headerlink" href="#mission-manager-communication-with-the-oracle" title="Permalink to this heading"></a></h3>
+<p class="plantuml">
+<object data="../../_images/plantuml-7698d8fa783621d5628d3d60adc06b9203c3b09b.svg" type="image/svg+xml" style="width:758px;height:114px;background:#FFFFFF;">
+<img src="../../_images/plantuml-7698d8fa783621d5628d3d60adc06b9203c3b09b.png" alt="&#64;startuml
+
+title Mission Manager -- oracle
+left to right direction
+
+''' COMPONENTS
+component MISSION_MANAGER &lt;&lt;RCL Mission Manager&gt;&gt;
+component ORACLE &lt;&lt;erl_assignment3&gt;&gt;
+
+''' INTERFACES
+() &quot;/oralce_solution&quot; as SRV_ORACLE_SOLUTION
+ORACLE &quot;srv&quot; --&gt; SRV_ORACLE_SOLUTION
+note on link: erl2/Oracle.srv
+
+''' LINKS
+SRV_ORACLE_SOLUTION --&gt; &quot;cl&quot; MISSION_MANAGER
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+</div>
+<div class="section" id="navigation-unit">
+<h2>navigation_unit<a class="headerlink" href="#navigation-unit" title="Permalink to this heading"></a></h2>
+<p class="plantuml">
+<object data="../../_images/plantuml-c5454af54cbcd4095ed4da37924f28bb77c72f7e.svg" type="image/svg+xml" style="width:2184px;height:300px;background:#FFFFFF;">
+<img src="../../_images/plantuml-c5454af54cbcd4095ed4da37924f28bb77c72f7e.png" alt="&#64;startuml
+
+title Navigation Unit
+left to right direction
+
+''' COMPONENTS
+component NAV_UNIT &lt;&lt;RCL Mission Manager&gt;&gt;
+component NAV_MANAGER &lt;&lt;RCL Movement Controller&gt;&gt;
+component MOVE_TO &lt;&lt;RCL ROSPlan Action&gt;&gt;
+component MARKERS_PUBLISHER &lt;&lt;erl_assignment3&gt;&gt;
+
+''' INTERFACES
+() &quot;/robocluedo/navigation_command&quot; as SRV_ROSPLAN_NAV
+NAV_UNIT &quot;srv&quot; --&gt; SRV_ROSPLAN_NAV
+note on link: robocluedo_rosplan_msgs/NavigationCommand.srv
+
+() &quot;/navigation_manager/navigation&quot; as SRV_NAV
+NAV_MANAGER &quot;srv&quot; --&gt; SRV_NAV
+note on link: robocluedo_movement_controller_msgs/NavigationService.srv
+
+() &quot;/navigation_manager/set_algorithm&quot; as SRV_ALGO
+NAV_MANAGER &quot;srv&quot; --&gt; SRV_ALGO
+note on link: robocluedo_movement_controller_msgs/Algorithm.srv
+
+() &quot;/visualization_marker&quot; as TOPIC_MARKER
+TOPIC_MARKER &lt;-up- &quot;pub&quot; MARKERS_PUBLISHER
+note on link: visualization_msgs/MarkerArray.msg
+
+''' LINKS
+SRV_ROSPLAN_NAV --&gt; &quot;cl&quot; MOVE_TO
+SRV_NAV --&gt; &quot;cl&quot; NAV_UNIT
+SRV_ALGO --&gt; &quot;cl&quot; NAV_UNIT
+TOPIC_MARKER -down-&gt; &quot;sub&quot; NAV_UNIT
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="manipulation-unit">
+<h2>manipulation_unit<a class="headerlink" href="#manipulation-unit" title="Permalink to this heading"></a></h2>
+<p class="plantuml">
+<object data="../../_images/plantuml-4abc37528d95d37c4557ddb76b471396b4507c6e.svg" type="image/svg+xml" style="width:1210px;height:210px;background:#FFFFFF;">
+<img src="../../_images/plantuml-4abc37528d95d37c4557ddb76b471396b4507c6e.png" alt="&#64;startuml
+
+title Navigation Unit
+left to right direction
+
+''' COMPONENTS
+component MISSION_MANAGER &lt;&lt;RCL Mission Manager&gt;&gt;
+component MANIP_UNIT &lt;&lt;RCL Mission Manager&gt;&gt;
+component MANIP_CONTROLLER &lt;&lt;RCL Movement Controller&gt;&gt;
+
+''' INTERFACES
+/'
+() &quot;/tip_pos&quot; as SRV_MANIP
+MANIP_CONTROLLER &quot;srv&quot; --&gt; SRV_MANIP
+note on link: robocluedo_movement_controller_msgs/ManipulatorPosition.srv
+SRV_MANIP --&gt; &quot;cl&quot; MANIP_UNIT
+'/
+
+() &quot;/tip_pos_auto_switch&quot; as SRV_MANIP_RANDOM
+MANIP_UNIT &quot;srv&quot; --&gt; SRV_MANIP_RANDOM
+note on link: std_srvs/SetBool.srv
+
+() &quot;/tip_pos_async&quot; as TOPIC_MANIP_ASYNC
+MANIP_UNIT &quot;pub&quot; --&gt; TOPIC_MANIP_ASYNC
+note on link: robocluedo_movement_controller_msgs/ManipulatorPositionAsync.srv
+
+''' LINKS
+SRV_MANIP_RANDOM --&gt; &quot;cl&quot; MISSION_MANAGER
+TOPIC_MANIP_ASYNC --&gt; &quot;sub&quot; MANIP_CONTROLLER
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../_docs/main-launch-file.html" class="btn btn-neutral float-left" title="HOW TO – the main launch file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_code_reference/manipulation_unit.html" class="btn btn-neutral float-right" title="NODE manipulation_unit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

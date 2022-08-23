@@ -1,6 +1,10 @@
 
 # Oracle3 -- User Documentation
 
+```{seealso}
+see [*CarmineD8/exp_assignment3* on GitHub](https://github.com/CarmineD8/exp_assignment3.git)
+```
+
 ---
 
 ```{toctree}

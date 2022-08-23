@@ -17,7 +17,7 @@
 <para><hruler/>
 </para>
 <para>This document goes through how to run the project using the main launch file. It can be very helpful in running each part of the architecture, with the possibility to control each component hiding the details of each package.</para>
-<sect1 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md283">
+<sect1 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md289">
 <title>In a hurry? Just run that!</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">Honestly,<sp/>I<sp/>don&apos;t<sp/>recommend<sp/>to<sp/>use<sp/>this<sp/>directly.<sp/></highlight></codeline>
 </programlisting></para>
@@ -31,18 +31,18 @@
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/></highlight></codeline>
 </programlisting></para>
 </sect1>
-<sect1 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md284">
+<sect1 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md290">
 <title>The INIT option – Run component by component</title>
 <para>what about if you want to run just one component? Well, the launch file provides the option <computeroutput>init:=false</computeroutput>. In particular, it&apos;s important to point out that the following does nothing: it just runs the ROS master.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md285">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md291">
 <title>run aRMOR</title>
 <para>Running the aRMOR package is very simple:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_armor:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md286">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md292">
 <title>run the robot environment</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">this<sp/>&apos;run.launch&apos;<sp/>file<sp/>exposes<sp/>the<sp/>most<sp/>important<sp/>parameters<sp/>only<sp/>for<sp/>the<sp/>project.<sp/>If<sp/>you<sp/>need<sp/>more<sp/>options,<sp/>consider<sp/>to<sp/>directly<sp/>use<sp/>the<sp/>launch<sp/>file<sp/>`robocluedo_robot_hunter<sp/>run2.launch`.<sp/>For<sp/>instance,<sp/>maybe<sp/>you<sp/>want<sp/>to<sp/>run<sp/>another<sp/>world<sp/>file<sp/>which<sp/>is<sp/>located<sp/>outside<sp/>the<sp/>`worlds`<sp/>package.<sp/>Another<sp/>case<sp/>is<sp/>if<sp/>you<sp/>want<sp/>to<sp/>run<sp/>the<sp/>robot<sp/>in<sp/>RViz<sp/>only:<sp/>this<sp/>launch<sp/>file<sp/>has<sp/>some<sp/>problem<sp/>in<sp/>this<sp/>case.<sp/></highlight></codeline>
 </programlisting></para>
@@ -72,24 +72,24 @@
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_robot:=true<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>world_name:=assignment3.world</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md287">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md293">
 <title>run rosplan</title>
 <para>you can easily launch the AI of the robot using the option <computeroutput>launch_rosplan:=true</computeroutput>.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_rosplan:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md288">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md294">
 <title>run the movement controller</title>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_motion_controllers:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md289">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md295">
 <title>run the vision module</title>
 <para>the vision module opens a new window shwing what the cameras are seeing.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_aruco:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md290">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md296">
 <title>run the Oracle</title>
 <para>the option <computeroutput>launch_oracle:=true</computeroutput> launches two nodes: the real oracle for the third assignment, and the markers publisher.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>simple<sp/>version</highlight></codeline>
@@ -99,7 +99,7 @@
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_oracle:=true<sp/>publish_markers:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md291">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md297">
 <title>run the mission manager</title>
 <para>for running the mission manager package, there are two main options:</para>
 <para><itemizedlist>
@@ -117,17 +117,17 @@
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager_components:=true<sp/>launch_mission_manager:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md292">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md298">
 <title>combine the launch options</title>
 <para>of course, the init option allows you to combine different options. For example, if you need to run both aRMOR and the robot environment in one call, use this:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_armor:=true<sp/>launch_robot:=true<sp/>robot_nav_type:=amcl</highlight></codeline>
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md293">
+<sect1 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md299">
 <title>HOW TO run the project</title>
 <para>Here are the main commands for running this complex project.</para>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md294">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md300">
 <title>step by step</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">recommended<sp/>for<sp/>testing<sp/>the<sp/>project<sp/>after<sp/>the<sp/>installation.<sp/>In<sp/>case<sp/>of<sp/>problems,<sp/>remember<sp/>that<sp/>almost<sp/>all<sp/>the<sp/>nodes<sp/>in<sp/>the<sp/>project<sp/>(especially<sp/>the<sp/>ones<sp/>implemented<sp/>in<sp/>C++)<sp/>have<sp/>a<sp/>so-called<sp/>`DEVELOP_MODE`<sp/>and<sp/>other<sp/>options<sp/>to<sp/>understand<sp/>what&apos;s<sp/>wrong<sp/>using<sp/>logs<sp/>on<sp/>a<sp/>shell.<sp/></highlight></codeline>
 </programlisting></para>
@@ -157,14 +157,14 @@
 <codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md295">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md301">
 <title>the fastest way to run the project</title>
 <para>this command also contains the most important settings for running the project:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>robot_env_type:=gazeborviz<sp/>robot_nav_type:=gmapping</highlight></codeline>
 </programlisting></para>
 <para>these options allows you to launch the roject using for instance amcl and gazebo only.</para>
 </sect2>
-<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md296">
+<sect2 id="md_robocluedo_mission_manager__docs_main-launch-file_1autotoc_md302">
 <title>the suggested way</title>
 <para>I strongly suggest to launch the project in this way:</para>
 <para><itemizedlist>

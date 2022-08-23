@@ -113,7 +113,7 @@
       <memberdef kind="define" id="navigation__unit_8cpp_1a4c242fea9a3b706e637163f8b0eed95c" prot="public" static="no">
         <name>TLOG</name>
         <param><defname>msg</defname></param>
-        <initializer><ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg )</initializer>
+        <initializer>ROS_INFO_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg )</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -171,7 +171,7 @@
       <memberdef kind="define" id="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" prot="public" static="no">
         <name>WTLOG</name>
         <param><defname>msg</defname></param>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { <ref refid="examples__tools_8md_8txt_1a706b8cd9925dea99a8c064f39110620d" kindref="member">ROS_INFO_STREAM</ref>( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
+        <initializer>{ if( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_INFO_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -183,7 +183,7 @@
       <memberdef kind="define" id="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" prot="public" static="no">
         <name>WTWARN</name>
         <param><defname>msg</defname></param>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
+        <initializer>{ if( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -195,7 +195,7 @@
       <memberdef kind="define" id="navigation__unit_8cpp_1ab54fe75f2d341266c97d92509779e2f7" prot="public" static="no">
         <name>WTERR</name>
         <param><defname>msg</defname></param>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
+        <initializer>{ if( <ref refid="kb__interface_8cpp_1a52a9e1f86b019351f7d764202d2447ea" kindref="member">DEVELOP_PRINT</ref> ) { ROS_WARN_STREAM( <ref refid="kb__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643" kindref="member">OUTLABEL</ref> &lt;&lt; msg ); } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -217,7 +217,7 @@
       </memberdef>
       <memberdef kind="define" id="navigation__unit_8cpp_1a8a9bdfb2d1bf4dd388f35c1bfa853892" prot="public" static="no">
         <name>WAITKEY</name>
-        <initializer>{ <ref refid="rosplan-kb_8md_8txt_1a101e8d4e13051c1d9a3c167da5bfed54" kindref="member">if</ref>( DEVELOP_WAITKEY ) { std::cout &lt;&lt; &quot;press ENTER <ref refid="erl3-oracle-user-manual_8md_8txt_1af02cd2ec07331037df3b999a6221822b" kindref="member">to</ref> continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } }</initializer>
+        <initializer>{ if( DEVELOP_WAITKEY ) { std::cout &lt;&lt; &quot;press ENTER to continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } }</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -274,7 +274,7 @@
       </memberdef>
       <memberdef kind="define" id="navigation__unit_8cpp_1a86668a6e04783029932ae15d276f52a3" prot="public" static="no">
         <name>SERVICE_NAVIGATION</name>
-        <initializer>&quot;/navigation_manager/<ref refid="update-navigation-manager_8md_8txt_1a47efa6955a16927c23af81912e4bc982" kindref="member">navigation</ref>&quot;</initializer>
+        <initializer>&quot;/navigation_manager/navigation&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -369,11 +369,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="robocluedo_mission_manager/src/navigation_unit.cpp" line="322" column="5" bodyfile="robocluedo_mission_manager/src/navigation_unit.cpp" bodystart="322" bodyend="337"/>
-        <references refid="main-launch-file_8md_8txt_1acb5acd5cc43c0b557a25f3a47407448b" compoundref="main-launch-file_8md_8txt" startline="38">init</references>
         <references refid="navigation__unit_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" compoundref="navigation__unit_8cpp" startline="29">NODE_NAME</references>
         <references refid="navigation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" compoundref="navigation__unit_8cpp" startline="315" endline="319">shut_msg</references>
         <references refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" compoundref="navigation__unit_8cpp" startline="40">WTLOG</references>
-        <references refid="_r_e_a_d_m_e_8md_8txt_1a7f3850902ef91c29c8bf5b3a748fb0ec" compoundref="_r_e_a_d_m_e_8md_8txt" startline="89">node</references>
+        <references refid="classnode__navigation__unit_1ac9686d1419e456981420e56bb5ea45b3" compoundref="navigation__unit_8cpp" startline="129" endline="133">node_navigation_unit::spin</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -488,10 +487,10 @@
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment"><sp/><sp/><sp/><sp/>/********************************************/</highlight></codeline>
 <codeline lineno="153" refid="classnode__navigation__unit_1aeb2f63387b054d89dc6a78c434d73441" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classnode__navigation__unit_1aeb2f63387b054d89dc6a78c434d73441" kindref="member">cbk_navigation</ref>(<sp/></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::NavigationCommand::Request&amp;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>,<sp/></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::NavigationCommand::Response&amp;<sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref><sp/>)</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::NavigationCommand::Request&amp;<sp/>req,<sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_rosplan_msgs::NavigationCommand::Response&amp;<sp/>res<sp/>)</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;received<sp/>a<sp/>request<sp/>(wp=)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.waypoint<sp/>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;received<sp/>a<sp/>request<sp/>(wp=)&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>req.waypoint<sp/>);</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!mpl_enabled<sp/>)</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
@@ -506,7 +505,7 @@
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>contact<sp/>the<sp/>service<sp/>to<sp/>enable<sp/>the<sp/>navigation<sp/>algorithm.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -514,7 +513,7 @@
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>activate<sp/>the<sp/>navigation<sp/>controller!<sp/>details:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>algo.response.details<sp/>);</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -524,19 +523,19 @@
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!found_markers<sp/>)</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;waiting<sp/>for<sp/>markers...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Rate<sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>(5);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ros::Rate<sp/>r(5);</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="erl2-oracle-user-manual_8md_8txt_1a060ea53faa9c0b619cd0d5ccec07b0fe" kindref="member">r</ref>.sleep();</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r.sleep();</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<sp/>!found_markers<sp/>);</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;found<sp/>markers!<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>starting,<sp/>check<sp/>if<sp/>the<sp/>marker<sp/>exists</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>waypoints.find(<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.waypoint<sp/>)<sp/>==<sp/>waypoints.end()<sp/>)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>waypoints.find(<sp/>req.waypoint<sp/>)<sp/>==<sp/>waypoints.end()<sp/>)</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;the<sp/>marker<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.waypoint<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exist.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;the<sp/>marker<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>req.waypoint<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>does<sp/>not<sp/>exist.&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -544,14 +543,14 @@
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;sending<sp/>the<sp/>navigation<sp/>command...&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>robocluedo_movement_controller_msgs::NavigationService<sp/>cmd;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd.request.target<sp/>=<sp/>waypoints[<ref refid="examples__tools_8md_8txt_1a3ab222c417f68c76f410be52f2b31aab" kindref="member">req</ref>.waypoint];</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd.request.target<sp/>=<sp/>waypoints[req.waypoint];</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(</highlight><highlight class="stringliteral">&quot;waypoint<sp/>with<sp/>coordinates<sp/>(&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cmd.request.target.x<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cmd.request.target.y<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cmd.request.target.yaw<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>!cl_nav.call(<sp/>cmd<sp/>)<sp/>)</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;unable<sp/>to<sp/>contact<sp/>the<sp/>navigation<sp/>service&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -560,7 +559,7 @@
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2" kindref="member">WTWARN</ref>(<sp/></highlight><highlight class="stringliteral">&quot;navigation<sp/>controlled<sp/>FAILED<sp/>--<sp/>explaination:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>cmd.response.details<sp/>);</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(</highlight><highlight class="stringliteral">&quot;done!&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="examples__tools_8md_8txt_1a73a8bd208b47d12909d34a6961dc4394" kindref="member">res</ref>.success<sp/>=<sp/>cmd.response.success;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res.success<sp/>=<sp/>cmd.response.success;</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -572,7 +571,7 @@
 <codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read<sp/>the<sp/>markers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>float<sp/>max_h<sp/>=<sp/>0.f;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="erl3-oracle-user-manual_8md_8txt_1aa7a01146ac8011dc898a4f74c6ee0c75" kindref="member">visualization_msgs::Marker</ref>&amp;<sp/>mrk<sp/>:<sp/>data-&gt;markers<sp/>)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>visualization_msgs::Marker&amp;<sp/>mrk<sp/>:<sp/>data-&gt;markers<sp/>)</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>marker_name<sp/>=<sp/><ref refid="navigation__unit_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d" kindref="member">SS</ref>(</highlight><highlight class="stringliteral">&quot;wp&quot;</highlight><highlight class="normal">)<sp/>+<sp/><ref refid="navigation__unit_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33" kindref="member">SSS</ref>(i+1);</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
@@ -638,17 +637,17 @@
 <codeline lineno="321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="322" refid="navigation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="navigation__unit_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>argv[]<sp/>)</highlight></codeline>
 <codeline lineno="323"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="main-launch-file_8md_8txt_1acb5acd5cc43c0b557a25f3a47407448b" kindref="member">ros::init</ref>(<sp/>argc,<sp/>argv,<sp/><ref refid="navigation__unit_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::init(<sp/>argc,<sp/>argv,<sp/><ref refid="navigation__unit_8cpp_1a8cc8d559acdd2f74085b20977182d5b7" kindref="member">NODE_NAME</ref>,<sp/>ros::init_options::NoSigintHandler<sp/>);</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>signal(<sp/>SIGINT,<sp/><ref refid="navigation__unit_8cpp_1ac55116ccd10a2e3bfb144277f960d79e" kindref="member">shut_msg</ref><sp/>);</highlight></codeline>
 <codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>ros::AsyncSpinner<sp/>spinner(<sp/>4<sp/>);</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/>spinner.start(<sp/>);</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;starting<sp/>...<sp/>&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__navigation__unit" kindref="compound">node_navigation_unit</ref><sp/><ref refid="_r_e_a_d_m_e_8md_8txt_1a7f3850902ef91c29c8bf5b3a748fb0ec" kindref="member">node</ref>;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classnode__navigation__unit" kindref="compound">node_navigation_unit</ref><sp/>node;</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="navigation__unit_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1" kindref="member">WTLOG</ref>(<sp/></highlight><highlight class="stringliteral">&quot;ready&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_r_e_a_d_m_e_8md_8txt_1a7f3850902ef91c29c8bf5b3a748fb0ec" kindref="member">node</ref>.spin(<sp/>);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>node.<ref refid="classnode__navigation__unit_1ac9686d1419e456981420e56bb5ea45b3" kindref="member">spin</ref>(<sp/>);</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="337"><highlight class="normal">}</highlight></codeline>

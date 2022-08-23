@@ -92,7 +92,7 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>img<sp/>=<sp/>np.random.randint(0,<sp/>255,<sp/>size=(30,<sp/>40))</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>=<sp/>br.cv2_to_imgmsg(img.astype(dtype))</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.assert_(msg.is_bigendian<sp/>==<sp/></highlight><highlight class="keyword">True</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.assert_((br.imgmsg_to_cv2(msg)<sp/>==<sp/>img).<ref refid="erl2-oracle-user-manual_8md_8txt_1a236b1ef97e62e6ad334f9b644c237d28" kindref="member">all</ref>())</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self.assert_((br.imgmsg_to_cv2(msg)<sp/>==<sp/>img).all())</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>__name__<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;__main__&apos;</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>rosunit.unitrun(</highlight><highlight class="stringliteral">&apos;opencv_tests&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&apos;conversions&apos;</highlight><highlight class="normal">,<sp/>TestConversions)</highlight></codeline>

@@ -1,9 +1,17 @@
 
 # Oracle2 -- User Documentation
 
+```{seealso}
+See [*CarmineD8/erl2* on GitHub](https://github.com/CarmineD8/erl2.git)
+```
+
+---
+
 ```{toctree}
 ./erl2-oracle-user-manual.md
 ```
+
+---
 
 purposes of this node are
 
