@@ -1,4 +1,6 @@
 
+.. _pkg-module-testing:
+
 PKG DOCS -- RoboCLuedo Module Testing
 ==========================================
 

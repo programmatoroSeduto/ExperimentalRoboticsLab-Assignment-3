@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
-  <compounddef id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual" kind="page">
-    <compoundname>md_robocluedo_dependencies__docs_erl2-oracle-user-manual</compoundname>
+  <compounddef id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual" kind="page">
+    <compoundname>md_robocluedo_dependencies__docs_NO_erl2-oracle-user-manual</compoundname>
     <title>Oracle2 – User Documentation</title>
     <briefdescription>
     </briefdescription>
@@ -22,7 +22,7 @@
 </listitem><listitem><para>to provide the posision of the hint sources and to visualize them in RViz</para>
 </listitem></itemizedlist>
 </para>
-<sect1 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md221">
+<sect1 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md232">
 <title>SCHEMA – node &lt;em&gt;simulation.cpp&lt;/em&gt;</title>
 <para><programlisting filename=".uml"><codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
@@ -58,7 +58,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md222">
+<sect2 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md233">
 <title>message &lt;em&gt;erl2::ErlOracle&lt;/em&gt;</title>
 <para>this message is sent every time the <bold>cluedo_link</bold> is at a distance up to <emphasis>0.25m</emphasis>.</para>
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">int32<sp/>ID</highlight></codeline>
@@ -73,7 +73,7 @@
 </para>
 <para>so, <emphasis>remember to check the validity of the message</emphasis>.</para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md223">
+<sect2 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md234">
 <title>service &lt;em&gt;erl2::Oracle&lt;/em&gt;</title>
 <para>this service is used to check the validity of a solution in &quot;solve&quot; phase. it returns <emphasis>the winner ID</emphasis> choosed at the beginning of the game by the Oracle.</para>
 <para>the system should check wether the ID of the solution is equal to the one returned by this service. <emphasis>the returned value is never corrupted.</emphasis></para>
@@ -82,7 +82,7 @@
 </programlisting></para>
 <para>note: in the actual implementation, the ID goes from 0 included to 5 included.</para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md224">
+<sect2 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md235">
 <title>message &lt;em&gt;visualization_msgs::MarkerArray&lt;/em&gt;</title>
 <para>each marker represents</para>
 <para><itemizedlist>
@@ -94,7 +94,7 @@
 <para><programlisting filename=".yaml"><codeline><highlight class="normal">Marker[]<sp/>markers</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md225">
+<sect2 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md236">
 <title>message &lt;em&gt;visualization_msgs::Marker&lt;/em&gt;</title>
 <para>how the node creates markers:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -177,17 +177,17 @@
 </programlisting></para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md226">
+<sect1 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md237">
 <title>HOW TO receive a hint</title>
 <para><bold>NOTE: THE URDF MODEL MUST HAVE A LINK LABELED &apos;cluedo_link&apos;; THE ORACLE WILL TAKE ITS POSITION IN ORDER TO UNDERSTAND WHERE TO SEND THE HINT VIA TOPIC.</bold></para>
 <para>place the <emphasis>cluedo_link</emphasis> near to the manipulator. Done that, thenode will receive a message from the topic <computeroutput>/oracle_hint</computeroutput> of type <computeroutput>erl2/ErlOracle.msg</computeroutput>.</para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md227">
+<sect1 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md238">
 <title>HOW TO check the solution</title>
 <para>first of all, the system should <emphasis>infer</emphasis> the solution <emphasis>as integer ID</emphasis>.</para>
 <para>then, send a request to the service <computeroutput>/oracle_solution</computeroutput> of type <computeroutput>erl2/oracle.msg</computeroutput>.</para>
 </sect1>
-<sect1 id="md_robocluedo_dependencies__docs_erl2-oracle-user-manual_1autotoc_md228">
+<sect1 id="md_robocluedo_dependencies__docs__n_o_erl2-oracle-user-manual_1autotoc_md239">
 <title>Development settings</title>
 <para>the source code <computeroutput><ref refid="simulation_8cpp" kindref="compound">simulation.cpp</ref></computeroutput> exposes two important macros:</para>
 <para><itemizedlist>

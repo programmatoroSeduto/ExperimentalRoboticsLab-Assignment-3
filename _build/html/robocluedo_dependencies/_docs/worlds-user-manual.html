@@ -68,7 +68,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="erl2-oracle-user-manual.html">Oracle2 – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">WORLDS – a collection of Gazebo World Files</a><ul class="simple">
@@ -78,12 +77,11 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/cpp-docs-template.html">TEMPLATE – C++ code documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">LOG – development log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">SPHINX – setup doxygen/sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/python-doc-official.html">Python Google Docstring – an official example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">HOW TO Run this Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
@@ -123,6 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#how-to-install-the-package">HOW TO install the package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-square-room-world">file <em>square_room.world</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-indoor-world">file <em>indoor.world</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-assignment3-world">file <em>assignment3.world</em></a></li>
 </ul>
 </li>
 </ul>
@@ -139,16 +138,34 @@
 </div>
 <div class="section" id="file-square-room-world">
 <h2>file <em>square_room.world</em><a class="headerlink" href="#file-square-room-world" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>square_room.world
+</pre></div>
+</div>
 <p>a 6x6 square room. the center of the room is the origin of the world frame.</p>
 <p><img alt="square_room_world" src="../../_images/square_room.png" /></p>
 <p>the environment is quite simple: just one root. the robot is spawned in the origin of the world frame.</p>
 </div>
 <div class="section" id="file-indoor-world">
 <h2>file <em>indoor.world</em><a class="headerlink" href="#file-indoor-world" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>indoor.world
+</pre></div>
+</div>
 <p>an empty indoor environment. here’s how it appears:</p>
 <p><img alt="indoor_world" src="../../_images/indoor_world_1.png" /></p>
 <p>here’s the environment seen from the above:</p>
 <p><img alt="indoor_world_up" src="../../_images/indoor_world_2.png" /></p>
+</div>
+<div class="section" id="file-assignment3-world">
+<h2>file <em>assignment3.world</em><a class="headerlink" href="#file-assignment3-world" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For running this world frame, you have to copy the content of the folder <em>models</em> inside the package into the path <code class="docutils literal notranslate"><span class="pre">/root/.gazebo/models</span></code>.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>assignment3.world
+</pre></div>
+</div>
+<p>This world has the same structure of <em>indoor.world</em> but including the ArUco markers.</p>
+<p><img alt="assignment3" src="../../_images/assignment3.png" /></p>
 </div>
 </div>
 

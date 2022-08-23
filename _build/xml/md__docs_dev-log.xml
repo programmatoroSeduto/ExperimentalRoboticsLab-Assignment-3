@@ -21,7 +21,7 @@
 </listitem><listitem><para><ulink url="https://www.onlinegdb.com/online_c++_compiler">onlineGDB</ulink></para>
 </listitem></itemizedlist>
 </para>
-<sect1 id="md__docs_dev-log_1autotoc_md20">
+<sect1 id="md__docs_dev-log_1autotoc_md3">
 <title>15/08/2022 – setup repository – starter kit</title>
 <para>nuovo assignment, nuova avventura:</para>
 <para><itemizedlist>
@@ -78,7 +78,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md24">
+<sect1 id="md__docs_dev-log_1autotoc_md7">
 <title>16/08/2022 – modello del robot</title>
 <para>cotinuiamo a lavorare sul modello del robot (oggi si fa poco...)</para>
 <para><itemizedlist>
@@ -208,7 +208,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md28">
+<sect1 id="md__docs_dev-log_1autotoc_md11">
 <title>17/08/2022 – move_base navigation</title>
 <para>iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)</para>
 <para><itemizedlist>
@@ -435,7 +435,7 @@
 <para><hruler/>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md33">
+<sect1 id="md__docs_dev-log_1autotoc_md16">
 <title>18/08/2022 – pddl e manipulation unit – aruco</title>
 <para>oggi, manipulation controller</para>
 <para><itemizedlist>
@@ -590,15 +590,15 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md36">
+<sect1 id="md__docs_dev-log_1autotoc_md19">
 <title>shell 1</title>
 <para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md37">
+<sect1 id="md__docs_dev-log_1autotoc_md20">
 <title>shell 2</title>
 <para>roslaunch robocluedo_movement_controller navigation_system.launch &amp; rosrun robocluedo_movement_controller navigation_manager &amp; rosrun exp_assignment3 simulation_marker_publisher &amp; rosrun robocluedo_mission_manager navigation_unit</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md38">
+<sect1 id="md__docs_dev-log_1autotoc_md21">
 <title>shell 3</title>
 <para>rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp1&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp2&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp3&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp4&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp5&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;wp6&apos;&quot; rosservice call /robocluedo/navigation_command &quot;waypoint: &apos;center&apos;&quot;</para>
 <para>```</para>
@@ -625,19 +625,19 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md39">
+<sect1 id="md__docs_dev-log_1autotoc_md22">
 <title>shell 1</title>
 <para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md40">
+<sect1 id="md__docs_dev-log_1autotoc_md23">
 <title>shell 2</title>
 <para>rosrun robocluedo_movement_controller manipulation_controller 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md41">
+<sect1 id="md__docs_dev-log_1autotoc_md24">
 <title>shell 3</title>
 <para>rostopic list | grep tip </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md42">
+<sect1 id="md__docs_dev-log_1autotoc_md25">
 <title>/tip_pos_async</title>
 <para>rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 2
         enabled: true&quot; sleep 15 rostopic pub <ndash/>once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync &quot;command: 4
@@ -654,30 +654,30 @@
 </listitem></itemizedlist>
 </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md43">
+<sect1 id="md__docs_dev-log_1autotoc_md26">
 <title>shell 1</title>
 <para>roslaunch robocluedo_robot_hunter run.launch world_name:=indoor.world 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md44">
+<sect1 id="md__docs_dev-log_1autotoc_md27">
 <title>shell 2</title>
 <para>rosrun robocluedo_movement_controller manipulation_controller 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md45">
+<sect1 id="md__docs_dev-log_1autotoc_md28">
 <title>shell 3</title>
 <para>rosrun robocluedo_mission_manager manipulation_unit</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md46">
+<sect1 id="md__docs_dev-log_1autotoc_md29">
 <title>shell 4</title>
 <para>rosservice list | grep tip </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md47">
+<sect1 id="md__docs_dev-log_1autotoc_md30">
 <title>/tip_pos</title>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md48">
+<sect1 id="md__docs_dev-log_1autotoc_md31">
 <title>/tip_pos_auto_switch</title>
 <para>rosservice call /tip_pos_auto_switch &quot;data: true&quot; </para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md49">
+<sect1 id="md__docs_dev-log_1autotoc_md32">
 <title>6 different poses</title>
 <para>sleep 60 rosservice call /tip_pos_auto_switch &quot;data: false&quot;</para>
 <para>```</para>
@@ -949,7 +949,7 @@
 </para>
 <para><hruler/>
 </para>
-<sect2 id="md__docs_dev-log_1autotoc_md56">
+<sect2 id="md__docs_dev-log_1autotoc_md39">
 <title>21/08/2022 – alleggerimento – documentazione</title>
 <para>il piano di oggi è: alleggerire (per quanto possibile) l&apos;applicazione, partendo dall&apos;eliminare i log inutili, e documentare. Siccome c&apos;è grande somiglianza tra i due progetti, posso partire col documentare il terzo per poi trasferire gran parte della documentazione sul secondo progetto. Per la documentazione del codice ci vorrà un pochino più di lavoro, ma per il resto dovrebbe risparmiarmi un bel po&apos; di fatica. E domani, scrittura dei due readme e via così.</para>
 <para><itemizedlist>
@@ -1079,15 +1079,15 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </para>
 </sect2>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md59">
+<sect1 id="md__docs_dev-log_1autotoc_md42">
 <title>shell 1</title>
 <para>roslaunch robocluedo_mission_manager run_components.launch init:=false launch_robot:=true robot_env_type:=gazeborviz robot_nav_type:=amcl 1&gt;/dev/null 2&gt;/dev/null</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md60">
+<sect1 id="md__docs_dev-log_1autotoc_md43">
 <title>shell 2</title>
 <para>roslaunch robocluedo_mission_manager run_components.launch launch_robot:=false launch_mission_manager:=false</para>
 </sect1>
-<sect1 id="md__docs_dev-log_1autotoc_md61">
+<sect1 id="md__docs_dev-log_1autotoc_md44">
 <title>shell 3</title>
 <para>roslaunch robocluedo_mission_manager run_components.launch init:=false launch_mission_manager:=true</para>
 <para>```</para>
@@ -1244,7 +1244,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </para>
 <para><hruler/>
 </para>
-<sect2 id="md__docs_dev-log_1autotoc_md68">
+<sect2 id="md__docs_dev-log_1autotoc_md51">
 <title>22/08/2022 – documentazione del progetto</title>
 <para>continuiamo con la scrittura della documentazione (per il momento, overview veloce della documentazione; più avanti passiamo a rivedere nel dettaglio gli altri punti)</para>
 <para><itemizedlist>
@@ -1468,7 +1468,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <para><hruler/>
 </para>
 </sect2>
-<sect2 id="md__docs_dev-log_1autotoc_md73">
+<sect2 id="md__docs_dev-log_1autotoc_md56">
 <title>23/08/2022 – readme e deployment</title>
 <para>Andiamo subito con la scrittura del readme per il progetto. Fatto questo, lavoro sull&apos;aggiornamento della documentazione per la seconda parte del progetto, e si pubblica.</para>
 <para><itemizedlist>
@@ -1837,6 +1837,19 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <listitem><para>anche <ulink url="https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html">questa</ulink> guida sul layout è molto utile</para>
 </listitem></itemizedlist>
 </para>
+</listitem><listitem><para>ho una cosa in testa ... voglio provare a fare un commit da script</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;script commit&quot;</para>
+</listitem><listitem><para>giusto un altro giretto nella documentazione per essere sicuro (poi setup e run?)</para>
+</listitem><listitem><para>la documentazione dovrebbe essere pronta</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation (finally, ready for the final setup)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><itemizedlist>
+<listitem><para>nuova pagina per il setup</para>
+</listitem><listitem><para>e proviamola dunque questa installazione!</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;deployment (working on setup)&quot;</para>
 </listitem></itemizedlist>
 </para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
@@ -1865,9 +1878,9 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>verificare<sp/>che<sp/>tutte<sp/>le<sp/>pagine<sp/>ausiliarie<sp/>abbiano<sp/>la<sp/>loro<sp/>TOCtree<sp/>interna,<sp/>specie<sp/>quando<sp/>sono<sp/>lunghe<sp/>pagine</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md__docs_dev-log_1autotoc_md79">
+<sect2 id="md__docs_dev-log_1autotoc_md63">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md80">
+<sect3 id="md__docs_dev-log_1autotoc_md64">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1876,7 +1889,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md81">
+<sect3 id="md__docs_dev-log_1autotoc_md65">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

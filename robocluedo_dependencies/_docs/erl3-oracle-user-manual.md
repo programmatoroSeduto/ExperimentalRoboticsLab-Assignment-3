@@ -2,6 +2,10 @@
 # Oracle3 -- User Documentation
 
 ```{seealso}
+See [*CarmineD8/erl2* on GitHub](https://github.com/CarmineD8/erl2.git)
+```
+
+```{seealso}
 see [*CarmineD8/exp_assignment3* on GitHub](https://github.com/CarmineD8/exp_assignment3.git)
 ```
 

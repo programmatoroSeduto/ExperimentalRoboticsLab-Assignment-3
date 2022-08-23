@@ -2,6 +2,10 @@
 
 # HOW TO -- the main launch file
 
+```{seealso}
+If something don't work, see the testing procedures you can find in the documentation here: {any}`pkg-module-testing`
+```
+
 ---
 
 ```{toctree}

@@ -1704,7 +1704,16 @@ e torniamo al lavoro:
 - allineamento verticale in PlantUML ... vedi [la magia](https://forum.plantuml.net/5180/components-alignment-left-to-rigth-vertical) più usa together {...}
 	- anche [questa](https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html) guida sul layout è molto utile
 - ho una cosa in testa ... voglio provare a fare un commit da script
+- **COMMIT**: "script commit"
+- giusto un altro giretto nella documentazione per essere sicuro (poi setup e run?)
+- la documentazione dovrebbe essere pronta
+- **COMMIT**: "documentation (finally, ready for the final setup)"
 
+---
+
+- nuova pagina per il setup
+- e proviamola dunque questa installazione!
+- **COMMIT**: "deployment (working on setup)"
 
 
 

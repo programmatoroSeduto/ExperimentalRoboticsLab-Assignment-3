@@ -2,20 +2,20 @@
 
 
 
-echo "====="
-echo "====="
-echo "====="
-echo "===== UPDATING THE DOCKER CONTAINER ====="
-echo "===== see https://chrisjean.com/fix-apt-get-update-the-following-signatures-couldnt-be-verified-because-the-public-key-is-not-available/"
-echo "===== see https://answers.ros.org/question/379190/apt-update-signatures-were-invalid-f42ed6fbab17c654/"
-echo "====="
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get update -y
-sudo apt-get upgrade -y
+# echo "====="
+# echo "====="
+# echo "====="
+# echo "===== UPDATING THE DOCKER CONTAINER ====="
+# echo "===== see https://chrisjean.com/fix-apt-get-update-the-following-signatures-couldnt-be-verified-because-the-public-key-is-not-available/"
+# echo "===== see https://answers.ros.org/question/379190/apt-update-signatures-were-invalid-f42ed6fbab17c654/"
+# echo "====="
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
+# curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+# sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+# sudo apt-get update -y
+# sudo apt-get upgrade -y
+# sudo apt-get update -y
+# sudo apt-get upgrade -y
 
 
 

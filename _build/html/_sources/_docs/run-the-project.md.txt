@@ -1,8 +1,12 @@
 
 # HOW TO Run this Project
 
-```{note}
-If something would go south, please consider to run the project step by step; see the package robocluedo_mission_manager for further informations about how to run the project. 
+```{seealso}
+for a deeper guidance on how to run the project, see the user documentation inside {any}`pkg-mission-manager` about the main launch file
+```
+
+```{seealso}
+If something don't work, see the testing procedures you can find in the documentation here: {any}`pkg-module-testing`
 ```
 
 ## suggested way -- AMCL and no logs

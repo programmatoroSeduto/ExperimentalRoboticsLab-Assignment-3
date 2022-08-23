@@ -54,6 +54,9 @@ RCL -- the RoboCLuedo Project - part 3
    :caption: Other Documents
    :glob:
    
+   RUN THE PROJECT <./_docs/run-the-project.md>
+   Development LOG <./_docs/dev-log.md>
+   How to setup Sphinx <./_docs/how-to-setup-doxy-sphinx-ws.md>
    _docs/*
 
 

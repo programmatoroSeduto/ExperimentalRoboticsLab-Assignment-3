@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Setup &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PlantUML – quick reference" href="../_ext/plant-uml-reference.html" />
+    <link rel="prev" title="ReStructured Directives – practical documentation" href="rest-directives.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README-sphinx.html">the project main README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_uml/arch.html">UML overall arch</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Setup</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Project Setup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_docs/project-setup.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="project-setup">
+<h1>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docker-image">Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-the-workspace">Setup the workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-moveit-framework">Install the MoveIt! framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-install-the-documentation-system">(optional) Install the documentation system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-the-repository">Download the repository</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This document describes how to perform the <em>installation of the project</em>.</p>
+<div class="section" id="docker-image">
+<h2>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this heading"></a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><strong>strongly recommended!</strong> This docher image contains all you need to run the simulation.</p>
+</div>
+<p>I strongly suggest you to run the project inside this Docker container. <a class="reference external" href="https://hub.docker.com/r/carms84/exproblab">Here</a> is the official site of the image.</p>
+<p>Run the image using this instruction:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>docker run -it -p 6080:80 -p 5900:5900 -p 8888:8888 --name RCL_project carms84/exproblab
+</pre></div>
+</div>
+<p>You can access the machine typing <em>http://127.0.0.1:6080/</em> on your console, or better using tools such as VNC.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>there could be some problems in running the container for the first time.</p>
+</div>
+<p>It happens each time the container is created for the first time after its creation: xvnc11 gives some problems. To solve the situation, first run a bash inside the machine using the following command:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="nv">docker</span> <span class="k">exec</span> <span class="o">-</span><span class="nv">it</span> <span class="nv">RCL_project</span> <span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">bash</span>
+</pre></div>
+</div>
+<p>and copy and paste this sequence of commands:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/.</span><span class="n">X1</span><span class="o">-</span><span class="n">lock</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">Xvfb</span> <span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">screen</span> <span class="mi">0</span> <span class="mi">1024</span><span class="n">x768x16</span> <span class="o">&amp;</span>
+<span class="k">export</span> <span class="n">DISPLAY</span><span class="o">=</span><span class="s2">&quot;:1&quot;</span>
+<span class="k">export</span> <span class="n">HOME</span><span class="o">=</span><span class="s2">&quot;/root&quot;</span>
+<span class="k">export</span> <span class="n">USER</span><span class="o">=</span><span class="s2">&quot;/root&quot;</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">openbox</span> <span class="o">&amp;</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">lxpanel</span> <span class="o">--</span><span class="n">profile</span> <span class="n">LXDE</span> <span class="o">&amp;</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">pcmanfm</span> <span class="o">--</span><span class="n">desktop</span> <span class="o">--</span><span class="n">profile</span> <span class="n">LXDE</span> <span class="o">&amp;</span>
+<span class="n">x11vnc</span> <span class="o">-</span><span class="n">display</span> <span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">xkb</span> <span class="o">-</span><span class="n">forever</span> <span class="o">-</span><span class="n">shared</span> <span class="o">-</span><span class="n">repeat</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>The docker is a bit old inside. It should be updated before going on, using this sequence of instructions:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+sudo apt-get update -y
+sudo apt-get upgrade -y
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-the-workspace">
+<h2>Setup the workspace<a class="headerlink" href="#setup-the-workspace" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>not needed if you already have Docker with the image suggested above.</p>
+</div>
+<p>You need, first of all, to create a new workspace <strong>which must be called ros_ws</strong>: it is very important, otherwise the setup won’t work. Another important observation to do here is that <a href="#id1"><span class="problematic" id="id2">**</span></a>the workspace must be located in your /root folder.</p>
+<p>You can quickly create a new workspace by running this command inside the <em>/root</em> folder:</p>
+<p>To do this,</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/
+git clone https://github.com/programmatoroSeduto/docker-exproblab-backup.git -b main ros_ws
+</pre></div>
+</div>
+<p>The download is quite large, so it could take some minutes depending on your network.</p>
+<p>After downloaded everything, try to compile the workspace:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/ros_ws/
+catkin_make
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>remember to source the workspace! Put the source insideyour <em>.bashrc</em> file.</p>
+</div>
+</div>
+<div class="section" id="install-the-moveit-framework">
+<h2>Install the MoveIt! framework<a class="headerlink" href="#install-the-moveit-framework" title="Permalink to this heading"></a></h2>
+<p>Use this simple bash script for installing MoveIt. The project requires the version 1.1.5 :</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/ros_ws/src
+sudo apt install -y ros-noetic-moveit
+apt-get remove -y ros-noetic-moveit*
+apt-get remove -y ros-noetic-srdfdom
+git clone https://github.com/ros-planning/moveit.git
+cd moveit
+git checkout 2b881e5e3c4fd900d4d4310f4b12f9c4a63eb5dd
+cd ..
+git clone https://github.com/ros-planning/moveit_resources.git
+cd moveit_resources
+git checkout f6a7d161e224b9909afaaf621822daddf61b6f52
+cd ..
+git clone https://github.com/ros-planning/srdfdom.git
+cd srdfdom
+git checkout b1d67a14e45133928f9793e9ee143998219760fd
+cd ..
+apt-get install -y ros-noetic-rosparam-shortcuts
+cd ..
+catkin_make
+catkin_make
+</pre></div>
+</div>
+<p>this step requires a lot of time…</p>
+</div>
+<div class="section" id="optional-install-the-documentation-system">
+<h2>(optional) Install the documentation system<a class="headerlink" href="#optional-install-the-documentation-system" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do it only if you’re also interested in refreshing the documentation of the project.</p>
+</div>
+<p>This is the script to use for setting up Doxygen plus Sphinx, and some other components such as PlantUML.</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="c1"># doxygen</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">doxygen</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">doxygen</span><span class="o">-</span><span class="n">gui</span>
+
+<span class="c1"># sphinx</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python</span><span class="o">-</span><span class="n">dev</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span>  <span class="o">-</span><span class="n">y</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">==</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">fulltoc</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">rst2pdf</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">needs</span>
+<span class="n">pip3</span> <span class="n">uninstall</span> <span class="n">docutils</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">docutils</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">needs</span>
+
+<span class="c1"># breathe</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">breathe</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">myst</span><span class="o">-</span><span class="n">parser</span>
+
+<span class="c1"># openjdk 13</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">openjdk</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">jre</span>
+
+<span class="c1"># plantUML</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">graphviz</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">plantuml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-the-repository">
+<h2>Download the repository<a class="headerlink" href="#download-the-repository" title="Permalink to this heading"></a></h2>
+<p>It’s time to download and install the project RCL#3 ! You can use this quick bash script for downloading and compiling the project:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/ros_ws/src
+git clone https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-3.git -b main ./erl3
+cd ..
+catkin_make
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rest-directives.html" class="btn btn-neutral float-left" title="ReStructured Directives – practical documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_ext/plant-uml-reference.html" class="btn btn-neutral float-right" title="PlantUML – quick reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

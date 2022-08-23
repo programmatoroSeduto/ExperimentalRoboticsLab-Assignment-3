@@ -1,4 +1,6 @@
 
+.. _pkg-mission-manager:
+
 PKG DOCS -- robocluedo_mission_manager
 ==========================================
 
