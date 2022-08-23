@@ -1532,7 +1532,139 @@ A <- C
 	- (per i components non sarà il massimo ... ma per i temporal, plantUML è fenomelae, comodissimo, e fa dei diagrammi molto belli)
 - **navigation usando bug_m** (inizio a mettere avanti un po' di lavoro per l'altro progetto)
 	- temporal package diagram
-	
+	- e temporal node
+- **COMMIT**: "documentation (temporal diagrams)"
+
+---
+ 
+- **asynchronous manipulation**
+	- in questo caso solo il node diagram, dovrebbe essere già abbastanza chiaro così
+- serve anche un temporal su **robocluedo vision**
+	- package temporal diagram ... non serve 
+	- node diagram
+- e ora, il worflow generale
+	- penso che questa volta userò un grosso diagramma di flusso ... come si fanno i diagrammi di flusso?
+
+e andiamo ad imparare come si fanno i diagrammi di flusso in plantText:
+
+```text
+@startuml
+
+''' inizio del diagramma
+(*) --> A
+
+''' fine del diagramma
+A --> (*)
+
+''' etichette sulle frecce
+(*) -->[this is a label] A
+A -->[this is a label] (*)
+
+''' branches
+(*) --> A
+if "condizione" then
+ -->[true] B
+B --> C
+else
+ -->[false] C
+endif
+C --> (*)
+
+
+@enduml
+```
+
+- ...i fork sono *inguardabili* ...
+- meglio preferire uno state diagram, molto meglio
+
+```text
+@startuml
+
+''' INIT
+[*] --> A
+
+
+''' END
+A --> [*]
+
+
+''' aggiungere cose sotto uno stato
+A : testo stato
+A : altro testo stato
+
+
+''' DICHIARAZIONE ESPLICITA DI STATO usata anche per suddividere il diagramma in sottostati
+state MACROSTATE_A {
+	[*] --> A
+	A --> B
+	B --> C
+	B --> A
+	C --> [*]
+}
+
+state MACROSTATE_B {
+	[*] --> MA
+	MA --> MC
+	MC --> MC
+	MC --> MB
+	MB --> MA
+	MC --> [*]
+}
+
+B --> MB
+A --> MC
+
+
+''' separatore orizzontale
+''     SERVE PER SOTTOLINARe operazioni concorrenti
+state MACROSTATE_B {
+	ME --> MF
+	MF --> ME
+	---
+	MC --> MD
+	MD --> MC
+	---
+	MA --> MB
+	MB --> MA
+}
+
+''' c'e anche il separatore verticale, stesso significato
+state MACROSTATE_B {
+	ME --> MF
+	MF --> ME
+	||
+	MC --> MD
+	MD --> MC
+	||
+	MA --> MB
+	MB --> MA
+}
+
+''' stati fork e join
+[*] --> a
+state my_fork <<fork>>
+a --> my_fork
+my_fork --> b
+my_fork --> c
+my_fork --> d
+state my_join <<join>>
+b --> my_join
+c --> my_join
+d --> my_join
+my_join --> e
+e --> [*]
+e --> a
+e --> c
+
+
+@enduml
+```
+
+anche il diagramma a stati è abbastanza osceno ... ma perlomeno meglio dell'altro
+
+- adesso, il diagramma a stati
+- **COMMIT**: "documentation (temporal diagrams done)"
+
 
 
 

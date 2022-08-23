@@ -548,18 +548,200 @@ MOVE_TO <- NAVIGATION_UNIT : response (RCL ROSPlan)
 ```{uml}
 @startuml
 
-title ...
-header ...
-footer ...
+title Asynchronous Manipuation - RCL#3
 
-''' ENTITIES 
-' partecipant "" as ...
-' components  "" as ...
-' ...
+''' ENTITIES
+participant MISSION_MANAGER
+participant MANIPULATION_UNIT
+participant MANIPULATION_CONTROLLER
+participant MOVEIT
 
-''' SEQUENCE
-' == section ==
-' ...
+== enable automatic manipolation ==
+
+MISSION_MANAGER -> MANIPULATION_UNIT : switch <b>ON</b>
+MISSION_MANAGER <- MANIPULATION_UNIT : <i>success</i>
+
+== automatic manipulation cycle ==
+
+MANIPULATION_UNIT -> MANIPULATION_CONTROLLER : send random pose
+hnote over MANIPULATION_UNIT
+wait tot seconds
+end hnote
+note over MANIPULATION_UNIT
+let's assume the cycle time
+of the MANIPULATION_UNIT is
+large enough to complete the movement
+end note
+
+MANIPULATION_CONTROLLER -> MOVEIT : call move()
+MANIPULATION_CONTROLLER <-- MOVEIT : end of the motion
+
+MANIPULATION_UNIT -> MANIPULATION_CONTROLLER : send random pose
+hnote over MANIPULATION_UNIT
+wait tot seconds
+end hnote
+
+MANIPULATION_CONTROLLER -> MOVEIT : call move()
+MANIPULATION_CONTROLLER <-- MOVEIT : end of the motion
+
+note over MANIPULATION_UNIT, MOVEIT
+. . . and so on . . .
+end note
+
+== disable automatic manipulation ==
+
+note over MISSION_MANAGER
+the MISSION MANAGER can issue the 
+command in any time
+end note
+
+MANIPULATION_CONTROLLER -> MOVEIT : call move()
+MANIPULATION_CONTROLLER <-- MOVEIT : end of the motion
+
+MANIPULATION_UNIT -> MANIPULATION_CONTROLLER : send random pose
+hnote over MANIPULATION_UNIT
+wait tot seconds
+end hnote
+
+MISSION_MANAGER -> MANIPULATION_UNIT : switch <b>OFF</b>
+note over MANIPULATION_UNIT
+there's still a residual movement to perform;
+the unit doesn't block that movement 
+(this could be a problem ... see you in
+the next update)
+end note
+MISSION_MANAGER <- MANIPULATION_UNIT : <i>success</i>
+
+MANIPULATION_CONTROLLER -> MOVEIT : call move()
+MANIPULATION_CONTROLLER <-- MOVEIT : end of the motion
+
+
+@enduml
+```
+
+### Vision system workflow
+
+**node temporal diagram**:
+
+```{uml}
+@startuml
+
+title Aruco vision - RCL#3
+
+''' ENTITIES
+participant ENVIRON
+participant VISION_DETECT
+participant VISION_DECODE
+participant ORACLE
+participant MISSION_MANAGER
+participant ARMOR
+
+== video stream analysis ==
+
+note over ENVIRON
+let's assume a regular stream
+from the four cameras of the robot
+end note
+
+note over VISION_DETECT
+to understand the situation, let's say
+that the decode spend the time of
+4 frames to end the detection
+end note
+
+hnote over VISION_DETECT
+waiting messages
+from cameras streams
+end hnote
+
+ENVIRON -> VISION_DETECT : FRAME from ID=0
+
+hnote over VISION_DETECT
+START detect ID=0
+(dropping the other frames)
+end hnote
+
+ENVIRON -> VISION_DETECT : FRAME from ID=1
+
+note over VISION_DETECT
+only one thread can access 
+the decoder each time. 
+Hence, ID=1 is discarded.
+end note
+
+ENVIRON -> VISION_DETECT : FRAME from ID=0
+ENVIRON -> VISION_DETECT : FRAME from ID=2
+
+hnote over VISION_DETECT
+STOP detect ID=0
+end hnote
+
+ENVIRON -> VISION_DETECT : FRAME from ID=2
+
+hnote over VISION_DETECT
+START detect ID=2
+(dropping the other frames)
+end hnote
+
+ENVIRON -> VISION_DETECT : FRAME from ID=0
+ENVIRON -> VISION_DETECT : FRAME from ID=0
+ENVIRON -> VISION_DETECT : FRAME from ID=3
+
+hnote over VISION_DETECT
+STOP detect ID=2
+end hnote
+
+note over ENVIRON
+sending continuously four
+streams to the detection
+end note
+
+== detected a new ArUco marker ==
+
+hnote over VISION_DETECT
+WORKING CYCLE
+is searching for new hints
+to publish...
+end hnote
+
+note over VISION_DETECT
+FOUND HINTS :
+    ID=33
+    ID=42 
+    ID=1 
+    ID=15
+end note
+
+VISION_DETECT -> VISION_DECODE : ID=33
+VISION_DETECT -> VISION_DECODE : ID=42
+
+VISION_DECODE -> ORACLE : decode ID=33
+VISION_DECODE <- ORACLE : ID=33 decoded (hID, key, value)
+VISION_DECODE -> MISSION_MANAGER : publish ID=33
+MISSION_MANAGER -> ARMOR : ADD HINT
+MISSION_MANAGER <- ARMOR : <i>success</i>
+
+VISION_DETECT -> VISION_DECODE : ID=1
+VISION_DETECT -> VISION_DECODE : ID=15
+
+VISION_DECODE -> ORACLE : decode ID=42
+VISION_DECODE <- ORACLE : ID=42 decoded (hID, key, value)
+VISION_DECODE -> MISSION_MANAGER : publish ID=42
+MISSION_MANAGER -> ARMOR : ADD HINT
+MISSION_MANAGER <- ARMOR : <i>success</i>
+
+VISION_DECODE -> ORACLE : decode ID=1
+VISION_DECODE <- ORACLE : ID=1 decoded (hID, key, value)
+VISION_DECODE -> MISSION_MANAGER : publish ID=1
+MISSION_MANAGER -> ARMOR : ADD HINT
+MISSION_MANAGER <- ARMOR : <i>success</i>
+
+VISION_DECODE -> ORACLE : decode ID=15
+VISION_DECODE <- ORACLE : ID=15 decoded (hID, key, value)
+VISION_DECODE -> MISSION_MANAGER : publish ID=15
+MISSION_MANAGER -> ARMOR : ADD HINT
+MISSION_MANAGER <- ARMOR : <i>success</i>
+
 
 @enduml
 ```
@@ -569,18 +751,35 @@ footer ...
 ```{uml}
 @startuml
 
-title ...
-header ...
-footer ...
+state REPLAN
+REPLAN : clean the kb
 
-''' ENTITIES 
-' partecipant "" as ...
-' components  "" as ...
-' ...
+state COLLECT
+COLLECT : move the robot and \n collect hints around
 
-''' SEQUENCE
-' == section ==
-' ...
+state ASK_ORACLE
+ASK_ORACLE : check if in the ontology \n there are valid hypotheses \n to propose to the Oracle
+
+state SOLVE
+SOLVE : move to the center\n ready to introduce \n a solution
+
+state ASK_ONTOLOGY
+ASK_ONTOLOGY : check the solution\nask to the Oracle
+
+''' state MISSION_STATUS_COUNT_FAULT
+''' MISSION_STATUS_COUNT_FAULT : unexpected situation
+
+[*] --> REPLAN : mission manager begins (like Batman...)
+REPLAN --> COLLECT : still mumbleing
+COLLECT --> ASK_ONTOLOGY : arrived at the waypoint
+ASK_ONTOLOGY --> COLLECT : no bright ideas
+COLLECT --> REPLAN : end of the explorable waypoints!
+ASK_ONTOLOGY --> SOLVE : at least one possible solution found
+SOLVE --> REPLAN : need for updating the paths
+REPLAN --> SOLVE : possible solution ready
+SOLVE --> ASK_ORACLE : at the center
+ASK_ORACLE --> [*] : mystery solved!
+ASK_ORACLE --> REPLAN : solution wrong
 
 @enduml
 ```

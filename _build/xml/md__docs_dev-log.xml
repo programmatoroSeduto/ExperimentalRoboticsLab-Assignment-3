@@ -1641,8 +1641,146 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </para>
 </listitem><listitem><para><bold>navigation usando <ref refid="namespacebug__m" kindref="compound">bug_m</ref></bold> (inizio a mettere avanti un po&apos; di lavoro per l&apos;altro progetto)<itemizedlist>
 <listitem><para>temporal package diagram</para>
+</listitem><listitem><para>e temporal node</para>
 </listitem></itemizedlist>
 </para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation (temporal diagrams)&quot;</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<para><itemizedlist>
+<listitem><para><bold>asynchronous manipulation</bold><itemizedlist>
+<listitem><para>in questo caso solo il node diagram, dovrebbe essere già abbastanza chiaro così</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>serve anche un temporal su <bold>robocluedo vision</bold><itemizedlist>
+<listitem><para>package temporal diagram ... non serve</para>
+</listitem><listitem><para>node diagram</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>e ora, il worflow generale<itemizedlist>
+<listitem><para>penso che questa volta userò un grosso diagramma di flusso ... come si fanno i diagrammi di flusso?</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>e andiamo ad imparare come si fanno i diagrammi di flusso in plantText:</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>inizio<sp/>del<sp/>diagramma</highlight></codeline>
+<codeline><highlight class="normal">(*)<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>fine<sp/>del<sp/>diagramma</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;<sp/>(*)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>etichette<sp/>sulle<sp/>frecce</highlight></codeline>
+<codeline><highlight class="normal">(*)<sp/>--&gt;[this<sp/>is<sp/>a<sp/>label]<sp/>A</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;[this<sp/>is<sp/>a<sp/>label]<sp/>(*)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>branches</highlight></codeline>
+<codeline><highlight class="normal">(*)<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>&quot;condizione&quot;<sp/>then</highlight></codeline>
+<codeline><highlight class="normal"><sp/>--&gt;[true]<sp/>B</highlight></codeline>
+<codeline><highlight class="normal">B<sp/>--&gt;<sp/>C</highlight></codeline>
+<codeline><highlight class="normal">else</highlight></codeline>
+<codeline><highlight class="normal"><sp/>--&gt;[false]<sp/>C</highlight></codeline>
+<codeline><highlight class="normal">endif</highlight></codeline>
+<codeline><highlight class="normal">C<sp/>--&gt;<sp/>(*)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>...i fork sono <emphasis>inguardabili</emphasis> ...</para>
+</listitem><listitem><para>meglio preferire uno state diagram, molto meglio</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INIT</highlight></codeline>
+<codeline><highlight class="normal">[*]<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>END</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>aggiungere<sp/>cose<sp/>sotto<sp/>uno<sp/>stato</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>:<sp/>testo<sp/>stato</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>:<sp/>altro<sp/>testo<sp/>stato</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DICHIARAZIONE<sp/>ESPLICITA<sp/>DI<sp/>STATO<sp/>usata<sp/>anche<sp/>per<sp/>suddividere<sp/>il<sp/>diagramma<sp/>in<sp/>sottostati</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_A<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[*]<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A<sp/>--&gt;<sp/>B</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>C</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>C<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_B<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[*]<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MA<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MB<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">B<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>separatore<sp/>orizzontale</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;<sp/><sp/><sp/><sp/><sp/>SERVE<sp/>PER<sp/>SOTTOLINARe<sp/>operazioni<sp/>concorrenti</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_B<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ME<sp/>--&gt;<sp/>MF</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MF<sp/>--&gt;<sp/>ME</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MD<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MA<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MB<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>c&apos;e<sp/>anche<sp/>il<sp/>separatore<sp/>verticale,<sp/>stesso<sp/>significato</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_B<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ME<sp/>--&gt;<sp/>MF</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MF<sp/>--&gt;<sp/>ME</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MD<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MA<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MB<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>stati<sp/>fork<sp/>e<sp/>join</highlight></codeline>
+<codeline><highlight class="normal">[*]<sp/>--&gt;<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>my_fork<sp/>&lt;&lt;fork&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">a<sp/>--&gt;<sp/>my_fork</highlight></codeline>
+<codeline><highlight class="normal">my_fork<sp/>--&gt;<sp/>b</highlight></codeline>
+<codeline><highlight class="normal">my_fork<sp/>--&gt;<sp/>c</highlight></codeline>
+<codeline><highlight class="normal">my_fork<sp/>--&gt;<sp/>d</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>my_join<sp/>&lt;&lt;join&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">b<sp/>--&gt;<sp/>my_join</highlight></codeline>
+<codeline><highlight class="normal">c<sp/>--&gt;<sp/>my_join</highlight></codeline>
+<codeline><highlight class="normal">d<sp/>--&gt;<sp/>my_join</highlight></codeline>
+<codeline><highlight class="normal">my_join<sp/>--&gt;<sp/>e</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>--&gt;<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>--&gt;<sp/>c</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+</programlisting></para>
+<para>anche il diagramma a stati è abbastanza osceno ... ma perlomeno meglio dell&apos;altro</para>
+<para><itemizedlist>
+<listitem><para>adesso, il diagramma a stati</para>
+</listitem><listitem><para><bold>COMMIT</bold>: &quot;documentation (temporal diagrams done)&quot;</para>
 </listitem></itemizedlist>
 </para>
 <para><programlisting filename=".todo"><codeline><highlight class="normal">**terzo<sp/>assignment:**</highlight></codeline>
@@ -1671,9 +1809,9 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 <codeline><highlight class="normal">-<sp/>verificare<sp/>che<sp/>tutte<sp/>le<sp/>pagine<sp/>ausiliarie<sp/>abbiano<sp/>la<sp/>loro<sp/>TOCtree<sp/>interna,<sp/>specie<sp/>quando<sp/>sono<sp/>lunghe<sp/>pagine</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="md__docs_dev-log_1autotoc_md75">
+<sect2 id="md__docs_dev-log_1autotoc_md76">
 <title>Note</title>
-<sect3 id="md__docs_dev-log_1autotoc_md76">
+<sect3 id="md__docs_dev-log_1autotoc_md77">
 <title>utilizzo di move base</title>
 <para><itemizedlist>
 <listitem><para>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</para>
@@ -1682,7 +1820,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:=gazebo gazebo_paused:=fa
 </listitem></itemizedlist>
 </para>
 </sect3>
-<sect3 id="md__docs_dev-log_1autotoc_md77">
+<sect3 id="md__docs_dev-log_1autotoc_md78">
 <title>strano warning con move_base</title>
 <para><programlisting filename=".text"><codeline><highlight class="normal">Warning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>line<sp/>278<sp/>in<sp/>/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning:<sp/>TF_REPEATED_DATA<sp/>ignoring<sp/>data<sp/>with<sp/>redundant<sp/>timestamp<sp/>for<sp/>frame<sp/>base_link<sp/>at<sp/>time<sp/>942.458000<sp/>according<sp/>to<sp/>authority<sp/>unknown_publisher</highlight></codeline>

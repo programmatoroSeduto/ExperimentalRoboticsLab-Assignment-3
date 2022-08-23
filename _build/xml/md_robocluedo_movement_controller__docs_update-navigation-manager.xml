@@ -16,7 +16,7 @@
 <para><hruler/>
 </para>
 <para>The current navigation manager applies the C++ plymorphism in order to make a flexible and helpful abstraction layer between the nodes requiring the navigation services and how the navigation service is really implemented. After all, each node which wants to use the navigation should just tell the node in charge to manage the navigation the final position and, in case, the final orientation of the robot, and nothing more (at least in a very simple and common scenario).</para>
-<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md393">
+<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md395">
 <title>A description of the navigation Manager Node</title>
 <para>The navigation manager uses the <emphasis>controllers</emphasis>, i.e. modules (objects) using the low-level implementation of the navigation in order to reach the objective provided. In particular, here are some characteristics of this particular system:</para>
 <para><itemizedlist>
@@ -34,7 +34,7 @@
 </para>
 <para>bu for instance I could think on a controller which makes the big part of the trave with move_base, and arrived at a certain distance from the objective, uses the <ref refid="namespacebug__m" kindref="compound">bug_m</ref> to perform the final steps of the navigation. This could be implemented in a controller using almost all the behaviours seen above. This is what this model can do.</para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md394">
+<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md396">
 <title>More techincally speaking</title>
 <para>each controller is implemented as a class. Here is its &quot;blueprint&quot;:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -118,7 +118,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>channels_enabled<sp/>=<sp/>false;</highlight></codeline>
 <codeline><highlight class="normal">};</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md395">
+<sect2 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md397">
 <title>the class Navigation Controller</title>
 <para>as you can noticed in the code above, all the controllers must inherit from a class called <computeroutput><ref refid="classnavigation__controller" kindref="compound">navigation_controller</ref></computeroutput> which is rewritten here for your convenience:</para>
 <para><programlisting><codeline><highlight class="normal"><sp/>{c++}</highlight></codeline>
@@ -189,7 +189,7 @@
 </para>
 </sect2>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md396">
+<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md398">
 <title>register a controller</title>
 <para>Implementing the controller is needed, but not sufficient. In order to make the controller available inside the navigation manager, you need to register it. Here&apos;s a example you can use for this task:</para>
 <para><programlisting filename=".attention"><codeline><highlight class="normal">the<sp/>service<sp/>for<sp/>changin<sp/>the<sp/>algorithm<sp/>assumes<sp/>to<sp/>use<sp/>a<sp/>ID<sp/>for<sp/>selecting<sp/>the<sp/>algorithm.<sp/>The<sp/>function<sp/>`.register_algorithm()`<sp/>assigns<sp/>a<sp/>ID<sp/>to<sp/>the<sp/>algorithm<sp/>*according<sp/>to<sp/>the<sp/>order<sp/>of<sp/>all<sp/>the<sp/>registrations*..<sp/>Hence,<sp/>be<sp/>sure<sp/>that<sp/>the<sp/>ID<sp/>is<sp/>always<sp/>the<sp/>same<sp/>for<sp/>that<sp/>algorithm:<sp/>choose<sp/>the<sp/>ID<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>project,<sp/>and<sp/>keep<sp/>this<sp/>forever<sp/>(unless<sp/>you<sp/>don&apos;t<sp/>want<sp/>to<sp/>modify<sp/>or<sp/>refactor<sp/>your<sp/>code).<sp/></highlight></codeline>
@@ -209,7 +209,7 @@
 </programlisting></para>
 <para>In this example, <computeroutput><ref refid="namespacebug__m" kindref="compound">bug_m</ref></computeroutput> will have ID=0 whereas <computeroutput><ref refid="namespacemove__base__nav" kindref="compound">move_base_nav</ref></computeroutput> will have ID=1 .</para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md397">
+<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md399">
 <title>(in the end) how to create a new component</title>
 <para>here are the steps:</para>
 <para><orderedlist>
@@ -220,7 +220,7 @@
 </para>
 <para>very simple.</para>
 </sect1>
-<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md398">
+<sect1 id="md_robocluedo_movement_controller__docs_update-navigation-manager_1autotoc_md400">
 <title>Observations</title>
 <para><itemizedlist>
 <listitem><para>one controller could always interact with the parameter server, and this enables to overcome the simplicity of the interface for communicating with the controller</para>

@@ -1848,8 +1848,147 @@ A &lt;- C
 <li><p><strong>navigation usando bug_m</strong> (inizio a mettere avanti un po’ di lavoro per l’altro progetto)</p>
 <ul>
 <li><p>temporal package diagram</p></li>
+<li><p>e temporal node</p></li>
 </ul>
 </li>
+<li><p><strong>COMMIT</strong>: “documentation (temporal diagrams)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>asynchronous manipulation</strong></p>
+<ul>
+<li><p>in questo caso solo il node diagram, dovrebbe essere già abbastanza chiaro così</p></li>
+</ul>
+</li>
+<li><p>serve anche un temporal su <strong>robocluedo vision</strong></p>
+<ul>
+<li><p>package temporal diagram … non serve</p></li>
+<li><p>node diagram</p></li>
+</ul>
+</li>
+<li><p>e ora, il worflow generale</p>
+<ul>
+<li><p>penso che questa volta userò un grosso diagramma di flusso … come si fanno i diagrammi di flusso?</p></li>
+</ul>
+</li>
+</ul>
+<p>e andiamo ad imparare come si fanno i diagrammi di flusso in plantText:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@startuml
+
+&#39;&#39;&#39; inizio del diagramma
+(*) --&gt; A
+
+&#39;&#39;&#39; fine del diagramma
+A --&gt; (*)
+
+&#39;&#39;&#39; etichette sulle frecce
+(*) --&gt;[this is a label] A
+A --&gt;[this is a label] (*)
+
+&#39;&#39;&#39; branches
+(*) --&gt; A
+if &quot;condizione&quot; then
+ --&gt;[true] B
+B --&gt; C
+else
+ --&gt;[false] C
+endif
+C --&gt; (*)
+
+
+@enduml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>…i fork sono <em>inguardabili</em> …</p></li>
+<li><p>meglio preferire uno state diagram, molto meglio</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@startuml
+
+&#39;&#39;&#39; INIT
+[*] --&gt; A
+
+
+&#39;&#39;&#39; END
+A --&gt; [*]
+
+
+&#39;&#39;&#39; aggiungere cose sotto uno stato
+A : testo stato
+A : altro testo stato
+
+
+&#39;&#39;&#39; DICHIARAZIONE ESPLICITA DI STATO usata anche per suddividere il diagramma in sottostati
+state MACROSTATE_A {
+	[*] --&gt; A
+	A --&gt; B
+	B --&gt; C
+	B --&gt; A
+	C --&gt; [*]
+}
+
+state MACROSTATE_B {
+	[*] --&gt; MA
+	MA --&gt; MC
+	MC --&gt; MC
+	MC --&gt; MB
+	MB --&gt; MA
+	MC --&gt; [*]
+}
+
+B --&gt; MB
+A --&gt; MC
+
+
+&#39;&#39;&#39; separatore orizzontale
+&#39;&#39;     SERVE PER SOTTOLINARe operazioni concorrenti
+state MACROSTATE_B {
+	ME --&gt; MF
+	MF --&gt; ME
+	---
+	MC --&gt; MD
+	MD --&gt; MC
+	---
+	MA --&gt; MB
+	MB --&gt; MA
+}
+
+&#39;&#39;&#39; c&#39;e anche il separatore verticale, stesso significato
+state MACROSTATE_B {
+	ME --&gt; MF
+	MF --&gt; ME
+	||
+	MC --&gt; MD
+	MD --&gt; MC
+	||
+	MA --&gt; MB
+	MB --&gt; MA
+}
+
+&#39;&#39;&#39; stati fork e join
+[*] --&gt; a
+state my_fork &lt;&lt;fork&gt;&gt;
+a --&gt; my_fork
+my_fork --&gt; b
+my_fork --&gt; c
+my_fork --&gt; d
+state my_join &lt;&lt;join&gt;&gt;
+b --&gt; my_join
+c --&gt; my_join
+d --&gt; my_join
+my_join --&gt; e
+e --&gt; [*]
+e --&gt; a
+e --&gt; c
+
+
+@enduml
+</pre></div>
+</div>
+<p>anche il diagramma a stati è abbastanza osceno … ma perlomeno meglio dell’altro</p>
+<ul class="simple">
+<li><p>adesso, il diagramma a stati</p></li>
+<li><p><strong>COMMIT</strong>: “documentation (temporal diagrams done)”</p></li>
 </ul>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>

@@ -655,21 +655,204 @@ MOVE_TO &lt;- NAVIGATION_UNIT : response (RCL ROSPlan)
 <div class="section" id="manipulation-rcl-3-asynchrononus-manipulation">
 <h3>manipulation (RCL#3) – asynchrononus manipulation<a class="headerlink" href="#manipulation-rcl-3-asynchrononus-manipulation" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
-<object data="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.svg" type="image/svg+xml" style="width:43px;height:79px;background:#FFFFFF;">
-<img src="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.png" alt="&#64;startuml
+<object data="_images/plantuml-211cba3d68eb8fb6771b2f34ef7b8e4aeeeb4217.svg" type="image/svg+xml" style="width:710px;height:1026px;background:#FFFFFF;">
+<img src="_images/plantuml-211cba3d68eb8fb6771b2f34ef7b8e4aeeeb4217.png" alt="&#64;startuml
 
-title ...
-header ...
-footer ...
+title Asynchronous Manipuation - RCL#3
 
-''' ENTITIES 
-' partecipant &quot;&quot; as ...
-' components  &quot;&quot; as ...
-' ...
+''' ENTITIES
+participant MISSION_MANAGER
+participant MANIPULATION_UNIT
+participant MANIPULATION_CONTROLLER
+participant MOVEIT
 
-''' SEQUENCE
-' == section ==
-' ...
+== enable automatic manipolation ==
+
+MISSION_MANAGER -&gt; MANIPULATION_UNIT : switch &lt;b&gt;ON&lt;/b&gt;
+MISSION_MANAGER &lt;- MANIPULATION_UNIT : &lt;i&gt;success&lt;/i&gt;
+
+== automatic manipulation cycle ==
+
+MANIPULATION_UNIT -&gt; MANIPULATION_CONTROLLER : send random pose
+hnote over MANIPULATION_UNIT
+wait tot seconds
+end hnote
+note over MANIPULATION_UNIT
+let's assume the cycle time
+of the MANIPULATION_UNIT is
+large enough to complete the movement
+end note
+
+MANIPULATION_CONTROLLER -&gt; MOVEIT : call move()
+MANIPULATION_CONTROLLER &lt;-- MOVEIT : end of the motion
+
+MANIPULATION_UNIT -&gt; MANIPULATION_CONTROLLER : send random pose
+hnote over MANIPULATION_UNIT
+wait tot seconds
+end hnote
+
+MANIPULATION_CONTROLLER -&gt; MOVEIT : call move()
+MANIPULATION_CONTROLLER &lt;-- MOVEIT : end of the motion
+
+note over MANIPULATION_UNIT, MOVEIT
+. . . and so on . . .
+end note
+
+== disable automatic manipulation ==
+
+note over MISSION_MANAGER
+the MISSION MANAGER can issue the 
+command in any time
+end note
+
+MANIPULATION_CONTROLLER -&gt; MOVEIT : call move()
+MANIPULATION_CONTROLLER &lt;-- MOVEIT : end of the motion
+
+MANIPULATION_UNIT -&gt; MANIPULATION_CONTROLLER : send random pose
+hnote over MANIPULATION_UNIT
+wait tot seconds
+end hnote
+
+MISSION_MANAGER -&gt; MANIPULATION_UNIT : switch &lt;b&gt;OFF&lt;/b&gt;
+note over MANIPULATION_UNIT
+there's still a residual movement to perform;
+the unit doesn't block that movement 
+(this could be a problem ... see you in
+the next update)
+end note
+MISSION_MANAGER &lt;- MANIPULATION_UNIT : &lt;i&gt;success&lt;/i&gt;
+
+MANIPULATION_CONTROLLER -&gt; MOVEIT : call move()
+MANIPULATION_CONTROLLER &lt;-- MOVEIT : end of the motion
+
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="vision-system-workflow">
+<h3>Vision system workflow<a class="headerlink" href="#vision-system-workflow" title="Permalink to this heading"></a></h3>
+<p><strong>node temporal diagram</strong>:</p>
+<p class="plantuml">
+<object data="_images/plantuml-06568ba6e8d09852b4ae3bccc3fae1ece5541558.svg" type="image/svg+xml" style="width:910px;height:1748px;background:#FFFFFF;">
+<img src="_images/plantuml-06568ba6e8d09852b4ae3bccc3fae1ece5541558.png" alt="&#64;startuml
+
+title Aruco vision - RCL#3
+
+''' ENTITIES
+participant ENVIRON
+participant VISION_DETECT
+participant VISION_DECODE
+participant ORACLE
+participant MISSION_MANAGER
+participant ARMOR
+
+== video stream analysis ==
+
+note over ENVIRON
+let's assume a regular stream
+from the four cameras of the robot
+end note
+
+note over VISION_DETECT
+to understand the situation, let's say
+that the decode spend the time of
+4 frames to end the detection
+end note
+
+hnote over VISION_DETECT
+waiting messages
+from cameras streams
+end hnote
+
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=0
+
+hnote over VISION_DETECT
+START detect ID=0
+(dropping the other frames)
+end hnote
+
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=1
+
+note over VISION_DETECT
+only one thread can access 
+the decoder each time. 
+Hence, ID=1 is discarded.
+end note
+
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=0
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=2
+
+hnote over VISION_DETECT
+STOP detect ID=0
+end hnote
+
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=2
+
+hnote over VISION_DETECT
+START detect ID=2
+(dropping the other frames)
+end hnote
+
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=0
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=0
+ENVIRON -&gt; VISION_DETECT : FRAME from ID=3
+
+hnote over VISION_DETECT
+STOP detect ID=2
+end hnote
+
+note over ENVIRON
+sending continuously four
+streams to the detection
+end note
+
+== detected a new ArUco marker ==
+
+hnote over VISION_DETECT
+WORKING CYCLE
+is searching for new hints
+to publish...
+end hnote
+
+note over VISION_DETECT
+FOUND HINTS :
+    ID=33
+    ID=42 
+    ID=1 
+    ID=15
+end note
+
+VISION_DETECT -&gt; VISION_DECODE : ID=33
+VISION_DETECT -&gt; VISION_DECODE : ID=42
+
+VISION_DECODE -&gt; ORACLE : decode ID=33
+VISION_DECODE &lt;- ORACLE : ID=33 decoded (hID, key, value)
+VISION_DECODE -&gt; MISSION_MANAGER : publish ID=33
+MISSION_MANAGER -&gt; ARMOR : ADD HINT
+MISSION_MANAGER &lt;- ARMOR : &lt;i&gt;success&lt;/i&gt;
+
+VISION_DETECT -&gt; VISION_DECODE : ID=1
+VISION_DETECT -&gt; VISION_DECODE : ID=15
+
+VISION_DECODE -&gt; ORACLE : decode ID=42
+VISION_DECODE &lt;- ORACLE : ID=42 decoded (hID, key, value)
+VISION_DECODE -&gt; MISSION_MANAGER : publish ID=42
+MISSION_MANAGER -&gt; ARMOR : ADD HINT
+MISSION_MANAGER &lt;- ARMOR : &lt;i&gt;success&lt;/i&gt;
+
+VISION_DECODE -&gt; ORACLE : decode ID=1
+VISION_DECODE &lt;- ORACLE : ID=1 decoded (hID, key, value)
+VISION_DECODE -&gt; MISSION_MANAGER : publish ID=1
+MISSION_MANAGER -&gt; ARMOR : ADD HINT
+MISSION_MANAGER &lt;- ARMOR : &lt;i&gt;success&lt;/i&gt;
+
+VISION_DECODE -&gt; ORACLE : decode ID=15
+VISION_DECODE &lt;- ORACLE : ID=15 decoded (hID, key, value)
+VISION_DECODE -&gt; MISSION_MANAGER : publish ID=15
+MISSION_MANAGER -&gt; ARMOR : ADD HINT
+MISSION_MANAGER &lt;- ARMOR : &lt;i&gt;success&lt;/i&gt;
+
 
 &#64;enduml"/>
 
@@ -678,21 +861,38 @@ footer ...
 <div class="section" id="mission-manager-workflow">
 <h3>Mission manager workflow<a class="headerlink" href="#mission-manager-workflow" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
-<object data="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.svg" type="image/svg+xml" style="width:43px;height:79px;background:#FFFFFF;">
-<img src="_images/plantuml-d52dcc3ad77f6dc95a63463b17bd2f8292bd95bc.png" alt="&#64;startuml
+<object data="_images/plantuml-efda8d46c90c64546f99a491b0ec79867075f406.svg" type="image/svg+xml" style="width:835px;height:875px;background:#FFFFFF;">
+<img src="_images/plantuml-efda8d46c90c64546f99a491b0ec79867075f406.png" alt="&#64;startuml
 
-title ...
-header ...
-footer ...
+state REPLAN
+REPLAN : clean the kb
 
-''' ENTITIES 
-' partecipant &quot;&quot; as ...
-' components  &quot;&quot; as ...
-' ...
+state COLLECT
+COLLECT : move the robot and \n collect hints around
 
-''' SEQUENCE
-' == section ==
-' ...
+state ASK_ORACLE
+ASK_ORACLE : check if in the ontology \n there are valid hypotheses \n to propose to the Oracle
+
+state SOLVE
+SOLVE : move to the center\n ready to introduce \n a solution
+
+state ASK_ONTOLOGY
+ASK_ONTOLOGY : check the solution\nask to the Oracle
+
+''' state MISSION_STATUS_COUNT_FAULT
+''' MISSION_STATUS_COUNT_FAULT : unexpected situation
+
+[*] --&gt; REPLAN : mission manager begins (like Batman...)
+REPLAN --&gt; COLLECT : still mumbleing
+COLLECT --&gt; ASK_ONTOLOGY : arrived at the waypoint
+ASK_ONTOLOGY --&gt; COLLECT : no bright ideas
+COLLECT --&gt; REPLAN : end of the explorable waypoints!
+ASK_ONTOLOGY --&gt; SOLVE : at least one possible solution found
+SOLVE --&gt; REPLAN : need for updating the paths
+REPLAN --&gt; SOLVE : possible solution ready
+SOLVE --&gt; ASK_ORACLE : at the center
+ASK_ORACLE --&gt; [*] : mystery solved!
+ASK_ORACLE --&gt; REPLAN : solution wrong
 
 &#64;enduml"/>
 

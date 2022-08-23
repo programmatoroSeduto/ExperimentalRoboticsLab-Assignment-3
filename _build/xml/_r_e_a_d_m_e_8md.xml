@@ -557,18 +557,200 @@
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Asynchronous<sp/>Manipuation<sp/>-<sp/>RCL#3</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MANIPULATION_UNIT</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MANIPULATION_CONTROLLER</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MOVEIT</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">==<sp/>enable<sp/>automatic<sp/>manipolation<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>MANIPULATION_UNIT<sp/>:<sp/>switch<sp/>&lt;b&gt;ON&lt;/b&gt;</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>MANIPULATION_UNIT<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>automatic<sp/>manipulation<sp/>cycle<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_UNIT<sp/>-&gt;<sp/>MANIPULATION_CONTROLLER<sp/>:<sp/>send<sp/>random<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MANIPULATION_UNIT</highlight></codeline>
+<codeline><highlight class="normal">wait<sp/>tot<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MANIPULATION_UNIT</highlight></codeline>
+<codeline><highlight class="normal">let&apos;s<sp/>assume<sp/>the<sp/>cycle<sp/>time</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>the<sp/>MANIPULATION_UNIT<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">large<sp/>enough<sp/>to<sp/>complete<sp/>the<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>-&gt;<sp/>MOVEIT<sp/>:<sp/>call<sp/>move()</highlight></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>&lt;--<sp/>MOVEIT<sp/>:<sp/>end<sp/>of<sp/>the<sp/>motion</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_UNIT<sp/>-&gt;<sp/>MANIPULATION_CONTROLLER<sp/>:<sp/>send<sp/>random<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MANIPULATION_UNIT</highlight></codeline>
+<codeline><highlight class="normal">wait<sp/>tot<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>-&gt;<sp/>MOVEIT<sp/>:<sp/>call<sp/>move()</highlight></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>&lt;--<sp/>MOVEIT<sp/>:<sp/>end<sp/>of<sp/>the<sp/>motion</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MANIPULATION_UNIT,<sp/>MOVEIT</highlight></codeline>
+<codeline><highlight class="normal">.<sp/>.<sp/>.<sp/>and<sp/>so<sp/>on<sp/>.<sp/>.<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>disable<sp/>automatic<sp/>manipulation<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>MISSION<sp/>MANAGER<sp/>can<sp/>issue<sp/>the<sp/></highlight></codeline>
+<codeline><highlight class="normal">command<sp/>in<sp/>any<sp/>time</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>-&gt;<sp/>MOVEIT<sp/>:<sp/>call<sp/>move()</highlight></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>&lt;--<sp/>MOVEIT<sp/>:<sp/>end<sp/>of<sp/>the<sp/>motion</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_UNIT<sp/>-&gt;<sp/>MANIPULATION_CONTROLLER<sp/>:<sp/>send<sp/>random<sp/>pose</highlight></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>MANIPULATION_UNIT</highlight></codeline>
+<codeline><highlight class="normal">wait<sp/>tot<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>MANIPULATION_UNIT<sp/>:<sp/>switch<sp/>&lt;b&gt;OFF&lt;/b&gt;</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>MANIPULATION_UNIT</highlight></codeline>
+<codeline><highlight class="normal">there&apos;s<sp/>still<sp/>a<sp/>residual<sp/>movement<sp/>to<sp/>perform;</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>unit<sp/>doesn&apos;t<sp/>block<sp/>that<sp/>movement<sp/></highlight></codeline>
+<codeline><highlight class="normal">(this<sp/>could<sp/>be<sp/>a<sp/>problem<sp/>...<sp/>see<sp/>you<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>next<sp/>update)</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>MANIPULATION_UNIT<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>-&gt;<sp/>MOVEIT<sp/>:<sp/>call<sp/>move()</highlight></codeline>
+<codeline><highlight class="normal">MANIPULATION_CONTROLLER<sp/>&lt;--<sp/>MOVEIT<sp/>:<sp/>end<sp/>of<sp/>the<sp/>motion</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Vision<sp/>system<sp/>workflow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**node<sp/>temporal<sp/>diagram**:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```{uml}</highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">title<sp/>Aruco<sp/>vision<sp/>-<sp/>RCL#3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>ENVIRON</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>VISION_DECODE</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>ORACLE</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>MISSION_MANAGER</highlight></codeline>
+<codeline><highlight class="normal">participant<sp/>ARMOR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>video<sp/>stream<sp/>analysis<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>ENVIRON</highlight></codeline>
+<codeline><highlight class="normal">let&apos;s<sp/>assume<sp/>a<sp/>regular<sp/>stream</highlight></codeline>
+<codeline><highlight class="normal">from<sp/>the<sp/>four<sp/>cameras<sp/>of<sp/>the<sp/>robot</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>understand<sp/>the<sp/>situation,<sp/>let&apos;s<sp/>say</highlight></codeline>
+<codeline><highlight class="normal">that<sp/>the<sp/>decode<sp/>spend<sp/>the<sp/>time<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">4<sp/>frames<sp/>to<sp/>end<sp/>the<sp/>detection</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">waiting<sp/>messages</highlight></codeline>
+<codeline><highlight class="normal">from<sp/>cameras<sp/>streams</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">START<sp/>detect<sp/>ID=0</highlight></codeline>
+<codeline><highlight class="normal">(dropping<sp/>the<sp/>other<sp/>frames)</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">only<sp/>one<sp/>thread<sp/>can<sp/>access<sp/></highlight></codeline>
+<codeline><highlight class="normal">the<sp/>decoder<sp/>each<sp/>time.<sp/></highlight></codeline>
+<codeline><highlight class="normal">Hence,<sp/>ID=1<sp/>is<sp/>discarded.</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=0</highlight></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">STOP<sp/>detect<sp/>ID=0</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">START<sp/>detect<sp/>ID=2</highlight></codeline>
+<codeline><highlight class="normal">(dropping<sp/>the<sp/>other<sp/>frames)</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=0</highlight></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=0</highlight></codeline>
+<codeline><highlight class="normal">ENVIRON<sp/>-&gt;<sp/>VISION_DETECT<sp/>:<sp/>FRAME<sp/>from<sp/>ID=3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">STOP<sp/>detect<sp/>ID=2</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>ENVIRON</highlight></codeline>
+<codeline><highlight class="normal">sending<sp/>continuously<sp/>four</highlight></codeline>
+<codeline><highlight class="normal">streams<sp/>to<sp/>the<sp/>detection</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">==<sp/>detected<sp/>a<sp/>new<sp/>ArUco<sp/>marker<sp/>==</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hnote<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">WORKING<sp/>CYCLE</highlight></codeline>
+<codeline><highlight class="normal">is<sp/>searching<sp/>for<sp/>new<sp/>hints</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>publish...</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>hnote</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">note<sp/>over<sp/>VISION_DETECT</highlight></codeline>
+<codeline><highlight class="normal">FOUND<sp/>HINTS<sp/>:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ID=33</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ID=42<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ID=1<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ID=15</highlight></codeline>
+<codeline><highlight class="normal">end<sp/>note</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION_DETECT<sp/>-&gt;<sp/>VISION_DECODE<sp/>:<sp/>ID=33</highlight></codeline>
+<codeline><highlight class="normal">VISION_DETECT<sp/>-&gt;<sp/>VISION_DECODE<sp/>:<sp/>ID=42</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>ORACLE<sp/>:<sp/>decode<sp/>ID=33</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>&lt;-<sp/>ORACLE<sp/>:<sp/>ID=33<sp/>decoded<sp/>(hID,<sp/>key,<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>MISSION_MANAGER<sp/>:<sp/>publish<sp/>ID=33</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>ARMOR<sp/>:<sp/>ADD<sp/>HINT</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>ARMOR<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION_DETECT<sp/>-&gt;<sp/>VISION_DECODE<sp/>:<sp/>ID=1</highlight></codeline>
+<codeline><highlight class="normal">VISION_DETECT<sp/>-&gt;<sp/>VISION_DECODE<sp/>:<sp/>ID=15</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>ORACLE<sp/>:<sp/>decode<sp/>ID=42</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>&lt;-<sp/>ORACLE<sp/>:<sp/>ID=42<sp/>decoded<sp/>(hID,<sp/>key,<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>MISSION_MANAGER<sp/>:<sp/>publish<sp/>ID=42</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>ARMOR<sp/>:<sp/>ADD<sp/>HINT</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>ARMOR<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>ORACLE<sp/>:<sp/>decode<sp/>ID=1</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>&lt;-<sp/>ORACLE<sp/>:<sp/>ID=1<sp/>decoded<sp/>(hID,<sp/>key,<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>MISSION_MANAGER<sp/>:<sp/>publish<sp/>ID=1</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>ARMOR<sp/>:<sp/>ADD<sp/>HINT</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>ARMOR<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>ORACLE<sp/>:<sp/>decode<sp/>ID=15</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>&lt;-<sp/>ORACLE<sp/>:<sp/>ID=15<sp/>decoded<sp/>(hID,<sp/>key,<sp/>value)</highlight></codeline>
+<codeline><highlight class="normal">VISION_DECODE<sp/>-&gt;<sp/>MISSION_MANAGER<sp/>:<sp/>publish<sp/>ID=15</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>-&gt;<sp/>ARMOR<sp/>:<sp/>ADD<sp/>HINT</highlight></codeline>
+<codeline><highlight class="normal">MISSION_MANAGER<sp/>&lt;-<sp/>ARMOR<sp/>:<sp/>&lt;i&gt;success&lt;/i&gt;</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
@@ -578,18 +760,35 @@
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">header<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">footer<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>REPLAN</highlight></codeline>
+<codeline><highlight class="normal">REPLAN<sp/>:<sp/>clean<sp/>the<sp/>kb</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>ENTITIES<sp/></highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>partecipant<sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>components<sp/><sp/>&quot;&quot;<sp/>as<sp/>...</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>COLLECT</highlight></codeline>
+<codeline><highlight class="normal">COLLECT<sp/>:<sp/>move<sp/>the<sp/>robot<sp/>and<sp/>\n<sp/>collect<sp/>hints<sp/>around</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>SEQUENCE</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>==<sp/>section<sp/>==</highlight></codeline>
-<codeline><highlight class="normal">&apos;<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>ASK_ORACLE</highlight></codeline>
+<codeline><highlight class="normal">ASK_ORACLE<sp/>:<sp/>check<sp/>if<sp/>in<sp/>the<sp/>ontology<sp/>\n<sp/>there<sp/>are<sp/>valid<sp/>hypotheses<sp/>\n<sp/>to<sp/>propose<sp/>to<sp/>the<sp/>Oracle</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">state<sp/>SOLVE</highlight></codeline>
+<codeline><highlight class="normal">SOLVE<sp/>:<sp/>move<sp/>to<sp/>the<sp/>center\n<sp/>ready<sp/>to<sp/>introduce<sp/>\n<sp/>a<sp/>solution</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">state<sp/>ASK_ONTOLOGY</highlight></codeline>
+<codeline><highlight class="normal">ASK_ONTOLOGY<sp/>:<sp/>check<sp/>the<sp/>solution\nask<sp/>to<sp/>the<sp/>Oracle</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>state<sp/>MISSION_STATUS_COUNT_FAULT</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>MISSION_STATUS_COUNT_FAULT<sp/>:<sp/>unexpected<sp/>situation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[*]<sp/>--&gt;<sp/>REPLAN<sp/>:<sp/>mission<sp/>manager<sp/>begins<sp/>(like<sp/>Batman...)</highlight></codeline>
+<codeline><highlight class="normal">REPLAN<sp/>--&gt;<sp/>COLLECT<sp/>:<sp/>still<sp/>mumbleing</highlight></codeline>
+<codeline><highlight class="normal">COLLECT<sp/>--&gt;<sp/>ASK_ONTOLOGY<sp/>:<sp/>arrived<sp/>at<sp/>the<sp/>waypoint</highlight></codeline>
+<codeline><highlight class="normal">ASK_ONTOLOGY<sp/>--&gt;<sp/>COLLECT<sp/>:<sp/>no<sp/>bright<sp/>ideas</highlight></codeline>
+<codeline><highlight class="normal">COLLECT<sp/>--&gt;<sp/>REPLAN<sp/>:<sp/>end<sp/>of<sp/>the<sp/>explorable<sp/>waypoints!</highlight></codeline>
+<codeline><highlight class="normal">ASK_ONTOLOGY<sp/>--&gt;<sp/>SOLVE<sp/>:<sp/>at<sp/>least<sp/>one<sp/>possible<sp/>solution<sp/>found</highlight></codeline>
+<codeline><highlight class="normal">SOLVE<sp/>--&gt;<sp/>REPLAN<sp/>:<sp/>need<sp/>for<sp/>updating<sp/>the<sp/>paths</highlight></codeline>
+<codeline><highlight class="normal">REPLAN<sp/>--&gt;<sp/>SOLVE<sp/>:<sp/>possible<sp/>solution<sp/>ready</highlight></codeline>
+<codeline><highlight class="normal">SOLVE<sp/>--&gt;<sp/>ASK_ORACLE<sp/>:<sp/>at<sp/>the<sp/>center</highlight></codeline>
+<codeline><highlight class="normal">ASK_ORACLE<sp/>--&gt;<sp/>[*]<sp/>:<sp/>mystery<sp/>solved!</highlight></codeline>
+<codeline><highlight class="normal">ASK_ORACLE<sp/>--&gt;<sp/>REPLAN<sp/>:<sp/>solution<sp/>wrong</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>

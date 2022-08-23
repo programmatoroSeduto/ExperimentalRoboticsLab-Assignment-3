@@ -1541,7 +1541,139 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>(per<sp/>i<sp/>components<sp/>non<sp/>sarà<sp/>il<sp/>massimo<sp/>...<sp/>ma<sp/>per<sp/>i<sp/>temporal,<sp/>plantUML<sp/>è<sp/>fenomelae,<sp/>comodissimo,<sp/>e<sp/>fa<sp/>dei<sp/>diagrammi<sp/>molto<sp/>belli)</highlight></codeline>
 <codeline><highlight class="normal">-<sp/>**navigation<sp/>usando<sp/>bug_m**<sp/>(inizio<sp/>a<sp/>mettere<sp/>avanti<sp/>un<sp/>po&apos;<sp/>di<sp/>lavoro<sp/>per<sp/>l&apos;altro<sp/>progetto)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>temporal<sp/>package<sp/>diagram</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>e<sp/>temporal<sp/>node</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;documentation<sp/>(temporal<sp/>diagrams)&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**asynchronous<sp/>manipulation**</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>in<sp/>questo<sp/>caso<sp/>solo<sp/>il<sp/>node<sp/>diagram,<sp/>dovrebbe<sp/>essere<sp/>già<sp/>abbastanza<sp/>chiaro<sp/>così</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>serve<sp/>anche<sp/>un<sp/>temporal<sp/>su<sp/>**robocluedo<sp/>vision**</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>package<sp/>temporal<sp/>diagram<sp/>...<sp/>non<sp/>serve<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>node<sp/>diagram</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>e<sp/>ora,<sp/>il<sp/>worflow<sp/>generale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>penso<sp/>che<sp/>questa<sp/>volta<sp/>userò<sp/>un<sp/>grosso<sp/>diagramma<sp/>di<sp/>flusso<sp/>...<sp/>come<sp/>si<sp/>fanno<sp/>i<sp/>diagrammi<sp/>di<sp/>flusso?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">e<sp/>andiamo<sp/>ad<sp/>imparare<sp/>come<sp/>si<sp/>fanno<sp/>i<sp/>diagrammi<sp/>di<sp/>flusso<sp/>in<sp/>plantText:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>inizio<sp/>del<sp/>diagramma</highlight></codeline>
+<codeline><highlight class="normal">(*)<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>fine<sp/>del<sp/>diagramma</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;<sp/>(*)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>etichette<sp/>sulle<sp/>frecce</highlight></codeline>
+<codeline><highlight class="normal">(*)<sp/>--&gt;[this<sp/>is<sp/>a<sp/>label]<sp/>A</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;[this<sp/>is<sp/>a<sp/>label]<sp/>(*)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>branches</highlight></codeline>
+<codeline><highlight class="normal">(*)<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>&quot;condizione&quot;<sp/>then</highlight></codeline>
+<codeline><highlight class="normal"><sp/>--&gt;[true]<sp/>B</highlight></codeline>
+<codeline><highlight class="normal">B<sp/>--&gt;<sp/>C</highlight></codeline>
+<codeline><highlight class="normal">else</highlight></codeline>
+<codeline><highlight class="normal"><sp/>--&gt;[false]<sp/>C</highlight></codeline>
+<codeline><highlight class="normal">endif</highlight></codeline>
+<codeline><highlight class="normal">C<sp/>--&gt;<sp/>(*)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>...i<sp/>fork<sp/>sono<sp/>*inguardabili*<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>meglio<sp/>preferire<sp/>uno<sp/>state<sp/>diagram,<sp/>molto<sp/>meglio</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">@startuml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INIT</highlight></codeline>
+<codeline><highlight class="normal">[*]<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>END</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>aggiungere<sp/>cose<sp/>sotto<sp/>uno<sp/>stato</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>:<sp/>testo<sp/>stato</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>:<sp/>altro<sp/>testo<sp/>stato</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>DICHIARAZIONE<sp/>ESPLICITA<sp/>DI<sp/>STATO<sp/>usata<sp/>anche<sp/>per<sp/>suddividere<sp/>il<sp/>diagramma<sp/>in<sp/>sottostati</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_A<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[*]<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>A<sp/>--&gt;<sp/>B</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>C</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>B<sp/>--&gt;<sp/>A</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>C<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_B<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>[*]<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MA<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MB<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">B<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal">A<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>separatore<sp/>orizzontale</highlight></codeline>
+<codeline><highlight class="normal">&apos;&apos;<sp/><sp/><sp/><sp/><sp/>SERVE<sp/>PER<sp/>SOTTOLINARe<sp/>operazioni<sp/>concorrenti</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_B<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ME<sp/>--&gt;<sp/>MF</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MF<sp/>--&gt;<sp/>ME</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MD<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>---</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MA<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MB<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>c&apos;e<sp/>anche<sp/>il<sp/>separatore<sp/>verticale,<sp/>stesso<sp/>significato</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>MACROSTATE_B<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ME<sp/>--&gt;<sp/>MF</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MF<sp/>--&gt;<sp/>ME</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MC<sp/>--&gt;<sp/>MD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MD<sp/>--&gt;<sp/>MC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MA<sp/>--&gt;<sp/>MB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MB<sp/>--&gt;<sp/>MA</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>stati<sp/>fork<sp/>e<sp/>join</highlight></codeline>
+<codeline><highlight class="normal">[*]<sp/>--&gt;<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>my_fork<sp/>&lt;&lt;fork&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">a<sp/>--&gt;<sp/>my_fork</highlight></codeline>
+<codeline><highlight class="normal">my_fork<sp/>--&gt;<sp/>b</highlight></codeline>
+<codeline><highlight class="normal">my_fork<sp/>--&gt;<sp/>c</highlight></codeline>
+<codeline><highlight class="normal">my_fork<sp/>--&gt;<sp/>d</highlight></codeline>
+<codeline><highlight class="normal">state<sp/>my_join<sp/>&lt;&lt;join&gt;&gt;</highlight></codeline>
+<codeline><highlight class="normal">b<sp/>--&gt;<sp/>my_join</highlight></codeline>
+<codeline><highlight class="normal">c<sp/>--&gt;<sp/>my_join</highlight></codeline>
+<codeline><highlight class="normal">d<sp/>--&gt;<sp/>my_join</highlight></codeline>
+<codeline><highlight class="normal">my_join<sp/>--&gt;<sp/>e</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>--&gt;<sp/>[*]</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>--&gt;<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">e<sp/>--&gt;<sp/>c</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">@enduml</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">anche<sp/>il<sp/>diagramma<sp/>a<sp/>stati<sp/>è<sp/>abbastanza<sp/>osceno<sp/>...<sp/>ma<sp/>perlomeno<sp/>meglio<sp/>dell&apos;altro</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>adesso,<sp/>il<sp/>diagramma<sp/>a<sp/>stati</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**COMMIT**:<sp/>&quot;documentation<sp/>(temporal<sp/>diagrams<sp/>done)&quot;</highlight></codeline>
+<codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
 <codeline></codeline>
