@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UML – aRMOR Interface design elements &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CLASS armor_cluedo.cpp" href="../_code_reference/armor-cluedo.html" />
+    <link rel="prev" title="DOCS – HOW TO use RoboCLuedo aRMOR interface" href="../_docs/armor-how-to-use.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UML – aRMOR Interface design elements</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CLASS armor_cluedo.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CLASS armor_tools.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">NODE cluedo_armor_interface.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>UML – aRMOR Interface design elements</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_uml/armor-uml.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="uml-armor-interface-design-elements">
+<h1>UML – aRMOR Interface design elements<a class="headerlink" href="#uml-armor-interface-design-elements" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UML – aRMOR Interface design elements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#armor-interface-services">aRMOR interface services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add">ADD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#find">FIND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#del">DEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup">BACKUP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-services">aRMOR services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-interfaces-structure">aRMOR interfaces structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#package-armor">package aRMOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#armor-interface-component">aRMOR interface component</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-complete-schematic">THE COMPLETE SCHEMATIC</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="armor-interface-services">
+<h2>aRMOR interface services<a class="headerlink" href="#armor-interface-services" title="Permalink to this heading"></a></h2>
+<p>here are some textUML diagrams ready to use concerning the interfaces exposed by this package. Remember to replace the symbol <code class="docutils literal notranslate"><span class="pre">???</span></code> with the proper name when required.</p>
+<div class="section" id="add">
+<h3>ADD<a class="headerlink" href="#add" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>@startuml
+
+() &quot;/cluedo_armor/add_hint&quot; as SRV_ARMOR_ADD
+&#39;&#39;&#39; SRV_ARMOR_ADD &lt;-- &quot;srv&quot; NODE_???
+&#39;&#39;&#39; SRV_ARMOR_ADD --&gt; &quot;cl&quot; NODE_???
+note on link: robocluedo_armor_msgs/AddHint.srv
+
+@enduml
+</pre></div>
+</div>
+</div>
+<div class="section" id="find">
+<h3>FIND<a class="headerlink" href="#find" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>@startuml
+
+() &quot;/cluedo_armor/find_consistent_h&quot; as SRV_ARMOR_FIND
+&#39;&#39;&#39; SRV_ARMOR_FIND &lt;-- &quot;srv&quot; NODE_???
+&#39;&#39;&#39; SRV_ARMOR_FIND --&gt; &quot;cl&quot; NODE_???
+note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
+
+@enduml
+</pre></div>
+</div>
+</div>
+<div class="section" id="del">
+<h3>DEL<a class="headerlink" href="#del" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="n">startuml</span><span class="w"></span>
+
+<span class="p">()</span><span class="w"> </span><span class="s">&quot;/cluedo_armor/wrong_hypothesis&quot;</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">SRV_ARMOR_DEL</span><span class="w"></span>
+<span class="n">SRV_ARMOR_DEL</span><span class="w"> </span><span class="o">&lt;--</span><span class="w"> </span><span class="s">&quot;srv&quot;</span><span class="w"> </span><span class="n">NODE_</span><span class="o">???</span><span class="w"></span>
+<span class="n">SRV_ARMOR_DEL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="s">&quot;cl&quot;</span><span class="w"> </span><span class="n">NODE_</span><span class="o">???</span><span class="w"></span>
+<span class="n">note</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="nl">link</span><span class="p">:</span><span class="w"> </span><span class="n">robocluedo_armor_msgs</span><span class="o">/</span><span class="n">DiscardHypothesis</span><span class="p">.</span><span class="n">srv</span><span class="w"></span>
+
+<span class="p">@</span><span class="n">enduml</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="backup">
+<h3>BACKUP<a class="headerlink" href="#backup" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="n">startuml</span><span class="w"></span>
+
+<span class="p">()</span><span class="w"> </span><span class="s">&quot;/cluedo_armor/backup&quot;</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">SRV_ARMOR_BACKUP</span><span class="w"></span>
+<span class="n">SRV_ARMOR_BACKUP</span><span class="w"> </span><span class="o">&lt;--</span><span class="w"> </span><span class="s">&quot;srv&quot;</span><span class="w"> </span><span class="n">NODE_</span><span class="o">???</span><span class="w"></span>
+<span class="n">SRV_ARMOR_BACKUP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="s">&quot;cl&quot;</span><span class="w"> </span><span class="n">NODE_</span><span class="o">???</span><span class="w"></span>
+<span class="n">note</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="nl">link</span><span class="p">:</span><span class="w"> </span><span class="n">std_srvs</span><span class="o">/</span><span class="n">Trigger</span><span class="p">.</span><span class="n">srv</span><span class="w"></span>
+
+<span class="p">@</span><span class="n">enduml</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="armor-services">
+<h2>aRMOR services<a class="headerlink" href="#armor-services" title="Permalink to this heading"></a></h2>
+<p>the package uses only one service from aRMOR.</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>@startuml
+
+() &quot;/armor_interface_srv&quot; as SRV_ARMOR_DIRECTIVE
+&#39;&#39;&#39; SRV_ARMOR_DIRECTIVE &lt;-- &quot;srv&quot; NODE_???
+&#39;&#39;&#39; SRV_ARMOR_DIRECTIVE --&gt; &quot;cl&quot; NODE_???
+note on link: armor_msgs/ArmorDirective.srv
+
+@enduml
+</pre></div>
+</div>
+</div>
+<div class="section" id="armor-interfaces-structure">
+<h2>aRMOR interfaces structure<a class="headerlink" href="#armor-interfaces-structure" title="Permalink to this heading"></a></h2>
+<div class="section" id="package-armor">
+<h3>package aRMOR<a class="headerlink" href="#package-armor" title="Permalink to this heading"></a></h3>
+<p>here’s a simplified representation of the base aRMOR, used by this package.</p>
+<p class="plantuml">
+<object data="../../_images/plantuml-0faec2d024aa4887eca73ffc67a1190d2ad464c7.svg" type="image/svg+xml" style="width:406px;height:284px;background:#FFFFFF;">
+<img src="../../_images/plantuml-0faec2d024aa4887eca73ffc67a1190d2ad464c7.png" alt="&#64;startuml
+
+''' COMPONENTS
+package &quot;aRMOR&quot; as ARMOR {
+	database &quot;knowledge base&quot; &lt;&lt;aRMOR&gt;&gt; as ARMOR.KB
+	component &quot;services&quot; &lt;&lt;aRMOR&gt;&gt; as ARMOR.NODE
+	ARMOR.KB &lt;-- ARMOR.NODE
+	ARMOR.KB --&gt; ARMOR.NODE
+}
+
+''' LINKS
+() &quot;/armor_interface_srv&quot; as SRV_ARMOR_DIRECTIVE
+SRV_ARMOR_DIRECTIVE &lt;-- &quot;srv&quot; ARMOR.NODE
+note on link: armor_msgs/ArmorDirective.srv
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="armor-interface-component">
+<h3>aRMOR interface component<a class="headerlink" href="#armor-interface-component" title="Permalink to this heading"></a></h3>
+<p>here is the component diagram of the two main classes <code class="docutils literal notranslate"><span class="pre">armor_tools</span></code> and <code class="docutils literal notranslate"><span class="pre">armor_cluedo</span></code>.</p>
+<p class="plantuml">
+<object data="../../_images/plantuml-7ef1c642dbf9b709f85d067bf0586dda9d2e28a7.svg" type="image/svg+xml" style="width:1337px;height:786px;background:#FFFFFF;">
+<img src="../../_images/plantuml-7ef1c642dbf9b709f85d067bf0586dda9d2e28a7.png" alt="&#64;startuml
+
+''' COMPONENTS
+component &quot;aRMOR Interface&quot; as NODE_RCL_ARMOR {
+	class &quot;aRMOR Tools&quot; as NODE_RCL_ARMOR.ARMOR_TOOLS {
+		+ bool ConnectAndLoad( ... )
+		+ bool LoadOntology( ... )
+		+ bool Connect( float timeout = ARMOR_DEFAULT_TIMEOUT )
+		+ bool Success( )
+		+ bool LoadedOntology( )
+		+ bool TestInterface( )
+		+ bool SendCommand( ... )
+		+ armor_msgs::ArmorDirective GetRequest( ... )
+		+ bool CallArmor( armor_msgs::ArmorDirective&amp; data )
+		+ bool UpdateOntology( )
+		+ bool SaveOntology( std::string path )
+		+ void SwitchDebugMode( )
+		+ int GetLastErrorCode( )
+		+ std::string GetLastErrorDescription( )
+	}
+	
+	class &quot;aRMOR CLuedo&quot; as NODE_RCL_ARMOR.ARMOR_CLUEDO {
+		+ bool Init( std::string ontologyPath )
+		+ bool AddIndiv( std::string indivname, std::string classname, bool makeDisjoint = true )
+		+ std::vector&lt;std::string&gt; GetClassOfIndiv( std::string indivname, bool deep )
+		+ std::vector&lt;std::string&gt; GetIndivOfClass( std::string classname )
+		+ bool ExistsIndiv( std::string indivname )
+		+ bool SetObjectProperty( std::string prop, std::string Aelem, std::string Belem )
+		+ std::vector&lt;std::string&gt; GetValuedOfIndiv( std::string prop, std::string indivname )
+		+ std::vector&lt;std::string&gt; FindCompleteHypotheses( )
+		+ std::vector&lt;std::string&gt; FindInconsistentHypotheses( )
+		+ bool RemoveHypothesis( std::string hypTag )
+		+ std::string FilterValue( std::string raw )
+		+ std::vector&lt;std::string&gt; FilterVector( std::vector&lt;std::string&gt;&amp; itemlist )
+	}
+	
+	NODE_RCL_ARMOR.ARMOR_TOOLS --|&gt; NODE_RCL_ARMOR.ARMOR_CLUEDO
+}
+
+''' LINKS
+() &quot;/armor_interface_srv&quot; as SRV_ARMOR_DIRECTIVE
+SRV_ARMOR_DIRECTIVE --&gt; &quot;cl&quot; NODE_RCL_ARMOR.ARMOR_CLUEDO
+
+() &quot;/cluedo_armor/add_hint&quot; as SRV_ARMOR_ADD
+SRV_ARMOR_ADD &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/AddHint.srv
+
+() &quot;/cluedo_armor/find_consistent_h&quot; as SRV_ARMOR_FIND
+SRV_ARMOR_FIND &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
+
+() &quot;/cluedo_armor/wrong_hypothesis&quot; as SRV_ARMOR_DEL
+SRV_ARMOR_DEL &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/DiscardHypothesis.srv
+
+() &quot;/cluedo_armor/backup&quot; as SRV_ARMOR_BACKUP
+SRV_ARMOR_BACKUP &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: std_srvs/Trigger.srv
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+</div>
+<div class="section" id="the-complete-schematic">
+<h2>THE COMPLETE SCHEMATIC<a class="headerlink" href="#the-complete-schematic" title="Permalink to this heading"></a></h2>
+<p class="plantuml">
+<object data="../../_images/plantuml-ad4574b98701e2350305a63bec185dcff1fb5710.svg" type="image/svg+xml" style="width:2337px;height:695px;background:#FFFFFF;">
+<img src="../../_images/plantuml-ad4574b98701e2350305a63bec185dcff1fb5710.png" alt="&#64;startuml
+
+allow_mixing
+
+''' COMPONENTS
+package &quot;aRMOR&quot; as ARMOR {
+	database &quot;knowledge base&quot; &lt;&lt;aRMOR&gt;&gt; as ARMOR.KB
+	component &quot;services&quot; &lt;&lt;aRMOR&gt;&gt; as ARMOR.NODE
+	ARMOR.KB &lt;-- ARMOR.NODE
+	ARMOR.KB --&gt; ARMOR.NODE
+}
+
+component &quot;aRMOR Interface&quot; as NODE_RCL_ARMOR {
+	class &quot;aRMOR Tools&quot; as NODE_RCL_ARMOR.ARMOR_TOOLS {
+		+ bool ConnectAndLoad( ... )
+		+ bool LoadOntology( ... )
+		+ bool Connect( float timeout = ARMOR_DEFAULT_TIMEOUT )
+		+ bool Success( )
+		+ bool LoadedOntology( )
+		+ bool TestInterface( )
+		+ bool SendCommand( ... )
+		+ armor_msgs::ArmorDirective GetRequest( ... )
+		+ bool CallArmor( armor_msgs::ArmorDirective&amp; data )
+		+ bool UpdateOntology( )
+		+ bool SaveOntology( std::string path )
+		+ void SwitchDebugMode( )
+		+ int GetLastErrorCode( )
+		+ std::string GetLastErrorDescription( )
+	}
+	
+	class &quot;aRMOR CLuedo&quot; as NODE_RCL_ARMOR.ARMOR_CLUEDO {
+		+ bool Init( std::string ontologyPath )
+		+ bool AddIndiv( std::string indivname, std::string classname, bool makeDisjoint = true )
+		+ std::vector&lt;std::string&gt; GetClassOfIndiv( std::string indivname, bool deep )
+		+ std::vector&lt;std::string&gt; GetIndivOfClass( std::string classname )
+		+ bool ExistsIndiv( std::string indivname )
+		+ bool SetObjectProperty( std::string prop, std::string Aelem, std::string Belem )
+		+ std::vector&lt;std::string&gt; GetValuedOfIndiv( std::string prop, std::string indivname )
+		+ std::vector&lt;std::string&gt; FindCompleteHypotheses( )
+		+ std::vector&lt;std::string&gt; FindInconsistentHypotheses( )
+		+ bool RemoveHypothesis( std::string hypTag )
+		+ std::string FilterValue( std::string raw )
+		+ std::vector&lt;std::string&gt; FilterVector( std::vector&lt;std::string&gt;&amp; itemlist )
+	}
+	
+	NODE_RCL_ARMOR.ARMOR_TOOLS --|&gt; NODE_RCL_ARMOR.ARMOR_CLUEDO
+}
+
+''' LINKS
+() &quot;/armor_interface_srv&quot; as SRV_ARMOR_DIRECTIVE
+SRV_ARMOR_DIRECTIVE --&gt; &quot;cl&quot; NODE_RCL_ARMOR.ARMOR_CLUEDO
+SRV_ARMOR_DIRECTIVE &lt;-- &quot;srv&quot; ARMOR.NODE
+note on link: armor_msgs/ArmorDirective.srv
+
+() &quot;/cluedo_armor/add_hint&quot; as SRV_ARMOR_ADD
+SRV_ARMOR_ADD &lt;-up- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/AddHint.srv
+
+() &quot;/cluedo_armor/find_consistent_h&quot; as SRV_ARMOR_FIND
+SRV_ARMOR_FIND &lt;-up- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
+
+() &quot;/cluedo_armor/wrong_hypothesis&quot; as SRV_ARMOR_DEL
+SRV_ARMOR_DEL &lt;-up- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/DiscardHypothesis.srv
+
+() &quot;/cluedo_armor/backup&quot; as SRV_ARMOR_BACKUP
+SRV_ARMOR_BACKUP &lt;-up- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: std_srvs/Trigger.srv
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../_docs/armor-how-to-use.html" class="btn btn-neutral float-left" title="DOCS – HOW TO use RoboCLuedo aRMOR interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_code_reference/armor-cluedo.html" class="btn btn-neutral float-right" title="CLASS armor_cluedo.cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODE rosplan_pipeline_manager.py &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PKG DOCS – robocluedo_rosplan_msgs" href="../../robocluedo_rosplan_msgs/index.html" />
+    <link rel="prev" title="ROSPlan action replan" href="replan.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/new-robocluedo.html">PDDL Design – the new RoboCLuedo PDDL model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/pddl-and-rosplan.html">DOCS – PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan – in a nutshell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feedback_manager.html">CLASS feedback manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_interface.html">NODE kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_tools.html">CLASS kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to.html">ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to_center.html">ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replan.html">ROSPlan action replan</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE rosplan_pipeline_manager.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
+      <li>NODE rosplan_pipeline_manager.py</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="node-rosplan-pipeline-manager-py">
+<h1>NODE rosplan_pipeline_manager.py<a class="headerlink" href="#node-rosplan-pipeline-manager-py" title="Permalink to this heading"></a></h1>
+<p>This is maybe the most important node of the RoboCLuedo ROSPlan package:
+it allows other nodes to plan and to dispatch the solved plan with a simple
+interface. Moreover, it adds a large set of informations and details
+about how the planning process proceeds, and in particular when something
+wrong occurs, it makes this failure explainable.</p>
+<p>The ROSPlan workflow is always the same: load the problem, try to solve it,
+parse the solved plan, and finally dispatch the solved plan. Each step
+must be “triggered” each time it is required. And each step, when finished
+its job, returns something via topic. In other words, it is a pipeline,
+and this node collects all these triggers in only one place.</p>
+<dl class="simple">
+<dt>Authors:</dt><dd><p>Francesco Ganci (S4143910)</p>
+</dd>
+<dt>Version</dt><dd><p>v1.0.0</p>
+</dd>
+</dl>
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">LANDMARK_COLLECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em></dt>
+<dd><p>landmark corresponding to “COLLECT”</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">LANDMARK_REPLAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em></dt>
+<dd><p>landmark corresponding to “REPLAN”</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">LANDMARK_SOLVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em></dt>
+<dd><p>landmark corresponding to “SOLVE”</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">NODE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'rosplan_pipeline_manager'</span></em></dt>
+<dd><p>nothing to say, node name</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">SRV_TIMEOUT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60</span></em></dt>
+<dd><p>a timeout of 1min used for the client connection</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">action_feedback_msg</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>the pending feedback from the actions</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">action_feedback_received</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em></dt>
+<dd><p>any pending feedback?</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cbk_action_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feedback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#cbk_action_feedback"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>receive a feedback from the ROSPlan action</p>
+<p>The feedback manager can provide an explaination of whatever problem
+it could arise during the dispatch phase. It is used mostly for
+detecting a hardware failure,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>plan</strong> (<em>robocluedo_rosplan_msgs/ActionFeedback</em>) – the feedback from the last executed action</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>the feedback manager does not send a “succes” feedbacl, meaning
+that a feedback is sent only when something goes wrong.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cbk_parsing_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#cbk_parsing_interface"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>this callback receives the output from the parsing interface, if any</p>
+<p>this topic is used for understanding if the planning interface succeeded
+in parsing the plan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>plan</strong> (<em>rosplan_dispatch_msgs/CompletePlan</em>) – the parsed plan</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if something goes wrong, the node publishes nothing!</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cbk_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">req</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#cbk_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>implementation of the service pipeline manager</p>
+<p>This very long function allows to use the ROSPlan framework as a pipeline,
+in a simple way.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>req</strong> (<em>RosplanPipelineManagerServiceRequest</em>) – the pipeline request</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(RosplanPipelineManagerServiceResponse) the response to the caller.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cbk_planning_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#cbk_planning_interface"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>this callback receives the output from the planner, if any</p>
+<p>When the plannning interface ended its work, it publishes on this topic
+the preprocessed problem instance. The pipeline manager uses this topic
+for understanding the outcome of the problem solution phase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>plan</strong> (<em>std_msgs/String</em>) – the solution of the problem</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if something goes wrong, the node publishes nothing!</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cbk_problem_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#cbk_problem_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>this callback received the problem instance from the problem interface</p>
+<p>When the problem interface ended its work, it publishes on this topic
+the preprocessed problem instance. The pipeline manager uses this topic
+for understanding the outcome of this loading phase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>problem</strong> (<em>std_msgs/String</em>) – the problem instance loaded into the knowledge base.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if something goes wrong, the node publishes nothing!</p>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cl_dispatch</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros client handle) plan dispatcher</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cl_parse</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros client handle) plan parser trigger</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cl_plan</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros client handle) planning interface trigger</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cl_problem</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros client handle) problem instance trigger</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">cl_update_goal</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros client handle) set a particular goal into the rosplan knowledge base</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">inspect_planner_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#inspect_planner_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>the function reurns true when the problem has been found unsolvable. Otherwise, it returns false.</p>
+<p>This function is used when there’s something wrong with the planning
+interface, and enables to distinguish the scenario in which the planner
+is not solvable from the simple syntax error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fpath</strong> (<em>String</em>) – the path of the output from the planner.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>this function is good only for popf planner, because when the problem
+is declared unsolvable, it writes a particular thing on the output,
+the one that is searched by this function in order to understand
+if the problem is unsolvable or simply badly formulated. Using other
+planners makes this function to be updated.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">open_cl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cl_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#open_cl"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>handful utility to open a client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cl_name</strong> (<em>string</em>) – name of the client</p></li>
+<li><p><strong>cl_type</strong> – type of message used by the service</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">parsing_interface_array</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em></dt>
+<dd><p>the parsed plan</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">parsing_interface_received</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em></dt>
+<dd><p>if the parsed plan han been sent or not</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">planner_interface_received</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em></dt>
+<dd><p>it becomes false a bit before triggering the planner,
+and true when the planning interface succeeded.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">planner_interface_solution_path</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em></dt>
+<dd><p>the value of the parameter “output_problem_path”</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">planner_interface_text</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em></dt>
+<dd><p>text received from the planning interface</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">problem_instance_received</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em></dt>
+<dd><p>this flag is set true when the subscriber received a problem instance.
+this means that the problem generation worked as expected.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">problem_instance_text</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em></dt>
+<dd><p>the last problem instance received</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">service_dispatch</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_plan_dispatcher/dispatch_plan'</span></em></dt>
+<dd><p>name of the service plan dispatch</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">service_parse</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_parsing_interface/parse_plan'</span></em></dt>
+<dd><p>name of the trigger of the plan parser</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">service_pipeline</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/robocluedo/pipeline_manager'</span></em></dt>
+<dd><p>service for the pipeline command manager</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">service_plan</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_planner_interface/planning_server'</span></em></dt>
+<dd><p>name of the trigger of planning interface</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">service_problem</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_problem_interface/problem_generation_server'</span></em></dt>
+<dd><p>name of the trigger of problem interface</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">service_update_goal</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/update_goal'</span></em></dt>
+<dd><p>used to apply a landmark to the knowledge base</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">shut_msg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/rosplan_pipeline_manager.html#shut_msg"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>called at the shutdown of the node, just a message</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">srv_pipeline</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros service handle) service handle for the pipeline service</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">sub_action_feedback</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros subscriber handle) the feedback subscription</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">sub_parser_interface</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros subscription handle)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">sub_planner_interface</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros subscription handle)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">sub_problem_instance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em></dt>
+<dd><p>(ros subscriber handle)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">topic_action_feedback</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/robocluedo/action_feedback'</span></em></dt>
+<dd><p>the topic for receiving the feedback</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">topic_parser_interface</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_parsing_interface/complete_plan'</span></em></dt>
+<dd><p>used for checking the outcome of the parsing interface</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">topic_planner_interface</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_planner_interface/planner_output'</span></em></dt>
+<dd><p>used for checking if the plan succeeded</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">rosplan_pipeline_manager.</span></span><span class="sig-name descname"><span class="pre">topic_problem_instance</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/rosplan_problem_interface/problem_instance'</span></em></dt>
+<dd><p>topic used to understand if the problem generation succeeded</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="replan.html" class="btn btn-neutral float-left" title="ROSPlan action replan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../robocluedo_rosplan_msgs/index.html" class="btn btn-neutral float-right" title="PKG DOCS – robocluedo_rosplan_msgs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

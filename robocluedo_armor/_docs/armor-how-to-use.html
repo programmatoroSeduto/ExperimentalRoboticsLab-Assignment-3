@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOCS – HOW TO use RoboCLuedo aRMOR interface &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UML – aRMOR Interface design elements" href="../_uml/armor-uml.html" />
+    <link rel="prev" title="DOCS – how to run robocluedo armor" href="armor-how-to-run.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DOCS – HOW TO use RoboCLuedo aRMOR interface</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR Interface design elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CLASS armor_cluedo.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CLASS armor_tools.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">NODE cluedo_armor_interface.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>DOCS – HOW TO use RoboCLuedo aRMOR interface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_docs/armor-how-to-use.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="docs-how-to-use-robocluedo-armor-interface">
+<h1>DOCS – HOW TO use RoboCLuedo aRMOR interface<a class="headerlink" href="#docs-how-to-use-robocluedo-armor-interface" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>the interface provides 4 main directives:</p>
+<ul class="simple">
+<li><p><strong>ADD</strong>  – put a hint into the aRMOR ontology</p></li>
+<li><p><strong>FIND</strong> – find the hypotheses which are CONSISTENT (i.e. COMPLETE but not INCONSISTENT)</p></li>
+<li><p><strong>DEL</strong>  – mark a hypothesis as wrong, i.e. <em>discard it</em></p></li>
+<li><p><strong>BACKUP</strong> – save the ontology on file.</p></li>
+</ul>
+<div class="section" id="services-schematics">
+<h2>services schematics<a class="headerlink" href="#services-schematics" title="Permalink to this heading"></a></h2>
+<p class="plantuml">
+<object data="../../_images/plantuml-fdeb42a8127cf2454601340d8184afdfa6db25fb.svg" type="image/svg+xml" style="width:1567px;height:323px;background:#FFFFFF;">
+<img src="../../_images/plantuml-fdeb42a8127cf2454601340d8184afdfa6db25fb.png" alt="&#64;startuml
+
+''' INFOS
+title package robocluedo_armor
+skinparam Padding 8
+allow_mixing
+
+''' COMPONENTS
+component &quot;aRMOR interface&quot; &lt;&lt;RCL&gt;&gt; as NODE_RCL_ARMOR
+component &quot;aRMOR service&quot; &lt;&lt;aRMOR&gt;&gt; as NODE_ARMOR
+
+''' INTERFACES
+() &quot;/cluedo_armor/add_hint&quot; as SRV_ARMOR_ADD
+SRV_ARMOR_ADD &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/AddHint.srv
+
+() &quot;/cluedo_armor/find_consistent_h&quot; as SRV_ARMOR_FIND
+SRV_ARMOR_FIND &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
+
+() &quot;/cluedo_armor/wrong_hypothesis&quot; as SRV_ARMOR_DEL
+SRV_ARMOR_DEL &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: robocluedo_armor_msgs/DiscardHypothesis.srv
+
+() &quot;/cluedo_armor/backup&quot; as SRV_ARMOR_BACKUP
+SRV_ARMOR_BACKUP &lt;-- &quot;srv&quot; NODE_RCL_ARMOR
+note on link: std_srvs/Trigger.srv
+
+() &quot;/armor_interface_srv&quot; as SRV_ARMOR
+SRV_ARMOR ..&gt; &quot;cl&quot; NODE_RCL_ARMOR
+SRV_ARMOR &lt;.. &quot;srv&quot; NODE_ARMOR
+
+/' 
+service `` of type ``
+'/
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="add-register-a-new-hint-into-the-ontology">
+<h2>ADD – register a new hint into the Ontology<a class="headerlink" href="#add-register-a-new-hint-into-the-ontology" title="Permalink to this heading"></a></h2>
+<p>To add a new hint (from the Oracle?) the node provides the service <code class="docutils literal notranslate"><span class="pre">/cluedo_armor/add_hint</span></code> of type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/AddHint</span></code>.</p>
+<p><strong>Note that</strong> adding the same hint twice <em>doesn’t affect the content of the ontology</em>. The request will retur true even in this case.</p>
+<p>here’s the format of the service:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">## file &#39;AddHint.srv&#39;</span>
+<span class="c1"># it represents a hint of the type -&gt; (Aelem, Belem):property</span>
+
+<span class="c1"># the numeric ID of the hint</span>
+<span class="l l-Scalar l-Scalar-Plain">int32 hypID</span>
+
+<span class="l l-Scalar l-Scalar-Plain"># fields of the property</span>
+<span class="l l-Scalar l-Scalar-Plain">string property</span>
+<span class="l l-Scalar l-Scalar-Plain">string Belem</span>
+
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">bool success</span>
+</pre></div>
+</div>
+<p>fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hypID</span></code> is the integer identifier of the hypothesis ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">property</span></code> indicates the role to define: it corresponds to the ‘key’ element of the hint message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Belem</span></code> is the content of the property: it corresponds to the field <code class="docutils literal notranslate"><span class="pre">value</span></code> from the Oracle</p></li>
+</ul>
+<p>the ontology allows to define three roles: (<code class="docutils literal notranslate"><span class="pre">Aelem</span></code> is always the label of the hypothesis, whereas <code class="docutils literal notranslate"><span class="pre">Belem</span></code> is the value of the property)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(who</span> <span class="pre">&quot;HP&lt;hypID&gt;&quot;</span> <span class="pre">?Belem)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(where</span> <span class="pre">&quot;HP&lt;hypID&gt;&quot;</span> <span class="pre">?Belem)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(what</span> <span class="pre">&quot;HP&lt;hypID&gt;&quot;</span> <span class="pre">?Belem)</span></code></p></li>
+</ul>
+<p><strong>very important: the node allows only these properties!</strong> it will raise an error if the property hasn’t one of the abovementioned keys; remember to check the <code class="docutils literal notranslate"><span class="pre">success</span></code> flag of the message.</p>
+<p><strong>property names must be written in lowercase!</strong></p>
+</div>
+<div class="section" id="find-ask-for-a-consistent-hint">
+<h2>FIND – ask for a consistent hint<a class="headerlink" href="#find-ask-for-a-consistent-hint" title="Permalink to this heading"></a></h2>
+<p>the service <code class="docutils literal notranslate"><span class="pre">/cluedo_armor/find_consistent_h</span></code> of type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/FindConsistentHypotheses</span></code> is what you need to ask the Ontology for a admissible solution.</p>
+<p>here’s the service file employed by the service:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">## file &#39;FindConsistentHypotheses.srv&#39;</span>
+
+<span class="c1"># empty request</span>
+
+<span class="nn">---</span>
+
+<span class="c1"># list of consistent hypotheses from the ontology</span>
+<span class="l l-Scalar l-Scalar-Plain">Hypothesis[] hyp</span>
+</pre></div>
+</div>
+<p>when called, the service returns the entire list of the hypotheses <em>belonging to the COMPLETED set and not belonging to the INCONSISTENT one</em>. Remember that the ontology has the following structure:</p>
+<ul class="simple">
+<li><p>THINGs – <code class="docutils literal notranslate"><span class="pre">owl:thing</span></code></p>
+<ul>
+<li><p>HYPOTHESIS – <code class="docutils literal notranslate"><span class="pre">(what</span> <span class="pre">only</span> <span class="pre">WEAPON)</span> <span class="pre">and</span> <span class="pre">(where</span> <span class="pre">only</span> <span class="pre">PLACE)</span> <span class="pre">and</span> <span class="pre">(who</span> <span class="pre">only</span> <span class="pre">PERSON)</span></code></p>
+<ul>
+<li><p>COMPLETED – <code class="docutils literal notranslate"><span class="pre">(what</span> <span class="pre">min</span> <span class="pre">1</span> <span class="pre">WEAPON)</span> <span class="pre">and</span> <span class="pre">(where</span> <span class="pre">min</span> <span class="pre">1</span> <span class="pre">PLACE)</span> <span class="pre">and</span> <span class="pre">(who</span> <span class="pre">min</span> <span class="pre">1</span> <span class="pre">PERSON)</span></code></p>
+<ul>
+<li><p>INCONSISTENT  – <code class="docutils literal notranslate"><span class="pre">(what</span> <span class="pre">min</span> <span class="pre">2</span> <span class="pre">WEAPON)</span> <span class="pre">or</span> <span class="pre">(where</span> <span class="pre">min</span> <span class="pre">2</span> <span class="pre">PLACE)</span> <span class="pre">or</span> <span class="pre">(who</span> <span class="pre">min</span> <span class="pre">2</span> <span class="pre">PERSON)</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>WHO</p></li>
+<li><p>WHERE</p></li>
+<li><p>WHAT</p></li>
+</ul>
+</li>
+</ul>
+<p>Hence the <em>COMPLETED</em> set will contain not only the complete hypotheses, but also the <em>INCONSISTENT</em> ones. The service performs a set difference <em>COMPLETED - INCONSISTENT</em> which is the set of the admissible solutions, if any.</p>
+<p><strong>don’t forget to check the length of the list!</strong> The method could return a empty list of complete hypotheses.</p>
+<p>here’s the type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/Hypothesis</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">## file &#39;Hypothesis.msg&#39;</span>
+
+<span class="c1"># DEPRECATED</span>
+<span class="l l-Scalar l-Scalar-Plain">string tag</span>
+
+<span class="l l-Scalar l-Scalar-Plain"># the integer identifier of the hypothesis (-1 if the identifier is not standard)</span>
+<span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
+
+<span class="l l-Scalar l-Scalar-Plain"># who killed Dr. Black</span>
+<span class="l l-Scalar l-Scalar-Plain">string who</span>
+<span class="l l-Scalar l-Scalar-Plain"># where the murder happened</span>
+<span class="l l-Scalar l-Scalar-Plain">string where</span>
+<span class="l l-Scalar l-Scalar-Plain"># what is the murder weapon</span>
+<span class="l l-Scalar l-Scalar-Plain">string what</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="del-discard-a-hypothesis">
+<h2>DEL – discard a hypothesis<a class="headerlink" href="#del-discard-a-hypothesis" title="Permalink to this heading"></a></h2>
+<p>use the service <code class="docutils literal notranslate"><span class="pre">/cluedo_armor/wrong_hypothesis</span></code> of type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/DiscardHypothesis</span></code>, whose structure is reported here below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">## file &#39;DiscardHypothesis.srv&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
+
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">bool success</span>
+</pre></div>
+</div>
+<p><strong>the request could fail</strong> due to, for instance, the unexistence of the indicated hypothesis.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="armor-how-to-run.html" class="btn btn-neutral float-left" title="DOCS – how to run robocluedo armor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_uml/armor-uml.html" class="btn btn-neutral float-right" title="UML – aRMOR Interface design elements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

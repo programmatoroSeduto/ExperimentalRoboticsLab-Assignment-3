@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="559px" preserveAspectRatio="none" style="width:343px;height:559px;background:#FFFFFF;" version="1.1" viewBox="0 0 343 559" width="343px" zoomAndPan="magnify"><defs/><g><rect height="42.2969" style="stroke:#00000000;stroke-width:1.0;fill:none;" width="162" x="83.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="136" x="96.5" y="30.9951">entire test model</text><!--MD5=[1c66db8d4ddf4f1f0ddf2cee58876e7b]
+cluster ARMOR--><g id="cluster_ARMOR"><path d="M6,69.2969 C6,59.2969 99,59.2969 99,59.2969 C99,59.2969 192,59.2969 192,69.2969 L192,151.2969 C192,161.2969 99,161.2969 99,161.2969 C99,161.2969 6,161.2969 6,151.2969 L6,69.2969 " style="stroke:#181818;stroke-width:1.0;fill:none;"/><path d="M6,69.2969 C6,79.2969 99,79.2969 99,79.2969 C99,79.2969 192,79.2969 192,69.2969 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="121" x="38.5" y="102.292">armor ontology</text></g><!--MD5=[a43e5df55f3b2b587a24c4f5b940422d]
+cluster TEST_ARMOR--><g id="cluster_TEST_ARMOR"><rect height="118" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;fill:none;" width="184" x="7" y="435.2969"/><rect height="10" style="stroke:#181818;stroke-width:1.0;fill:none;" width="15" x="171" y="440.2969"/><rect height="2" style="stroke:#181818;stroke-width:1.0;fill:none;" width="4" x="169" y="442.2969"/><rect height="2" style="stroke:#181818;stroke-width:1.0;fill:none;" width="4" x="169" y="446.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="119" x="39.5" y="469.292">test_armor.cpp</text></g><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="20" x="89" y="188.292">srv</text><rect fill="#181818" height="12" style="stroke:#F1F1F1;stroke-width:1.5;" width="12" x="93" y="155.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="11" x="93.5" y="405.9951">cl</text><rect fill="#181818" height="12" style="stroke:#F1F1F1;stroke-width:1.5;" width="12" x="93" y="429.2969"/><!--MD5=[4691904d4b5eea778232ffa8a16825f4]
+entity ARMOR_SRV--><g id="elem_ARMOR_SRV"><ellipse cx="99" cy="323.2969" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="29.5" y="361.292">/armor_interface_srv</text></g><!--MD5=[e887e1ba9abad5e312ed66603683b8e1]
+link ARMOR_P1 to ARMOR_SRV--><g id="link_ARMOR_P1_ARMOR_SRV"><path d="M99,167.6169 C99,189.8669 99,275.7769 99,309.0369 " fill="none" id="ARMOR_P1-to-ARMOR_SRV" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="99,314.2569,103,305.2569,99,309.2569,95,305.2569,99,314.2569" style="stroke:#181818;stroke-width:1.0;"/><path d="M104,202.2969 L104,243.2969 L336,243.2969 L336,212.2969 L326,202.2969 L104,202.2969 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M326,202.2969 L326,212.2969 L336,212.2969 L326,202.2969 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="195" x="118" y="227.3638">"armor_msgs::ArmorDirective"</text></g><!--MD5=[4af041407c988a3de2cb2aacb7070733]
+link ARMOR_SRV to TEST_ARMOR_CLIENT--><g id="link_ARMOR_SRV_TEST_ARMOR_CLIENT"><path d="M99,332.5669 C99,352.3769 99,402.5269 99,424.1369 " fill="none" id="ARMOR_SRV-to-TEST_ARMOR_CLIENT" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="99,429.2069,103,420.2069,99,424.2069,95,420.2069,99,429.2069" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ae9846d8228ead3cb3ba8844d0135bd0]
+@startuml
+
+''' DIAGRAM INFOS
+title "entire test model"
+skinparam Padding 8
+
+
+''' DIAGRAM ELEMENTS
+database "armor ontology" as ARMOR {
+        portout "srv" as ARMOR_P1
+}
+
+interface "/armor_interface_srv" as ARMOR_SRV
+
+component "test_armor.cpp" as TEST_ARMOR {
+        portin "cl" as TEST_ARMOR_CLIENT
+}
+
+
+''' DIAGRAM CONNECTIONS
+ARMOR_P1 - -> ARMOR_SRV
+note left on link : "armor_msgs::ArmorDirective"
+ARMOR_SRV - -> TEST_ARMOR_CLIENT
+
+
+@enduml
+
+@startuml
+
+title "entire test model"
+skinparam Padding 8
+
+
+database "armor ontology" as ARMOR {
+        portout "srv" as ARMOR_P1
+}
+
+interface "/armor_interface_srv" as ARMOR_SRV
+
+component "test_armor.cpp" as TEST_ARMOR {
+        portin "cl" as TEST_ARMOR_CLIENT
+}
+
+
+ARMOR_P1 - -> ARMOR_SRV
+note left on link : "armor_msgs::ArmorDirective"
+ARMOR_SRV - -> TEST_ARMOR_CLIENT
+
+
+@enduml
+
+PlantUML version 1.2022.6(Tue Jun 21 17:34:49 UTC 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

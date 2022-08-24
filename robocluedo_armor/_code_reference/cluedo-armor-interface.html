@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODE cluedo_armor_interface.cpp &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals" href="../_examples/examples_cluedo.html" />
+    <link rel="prev" title="CLASS armor_tools.cpp" href="armor-tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR Interface design elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="armor-cluedo.html">CLASS armor_cluedo.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="armor-tools.html">CLASS armor_tools.cpp</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE cluedo_armor_interface.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>NODE cluedo_armor_interface.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_code_reference/cluedo-armor-interface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="node-cluedo-armor-interface-cpp">
+<h1>NODE cluedo_armor_interface.cpp<a class="headerlink" href="#node-cluedo-armor-interface-cpp" title="Permalink to this heading"></a></h1>
+<p>Dedicated RobotCLuedo-aRMOR client. </p>
+<p><strong>ROS Node Name</strong> <ul class="simple">
+<li><p>cluedo_armor_interface</p></li>
+</ul>
+<strong>Description:</strong> <dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci (S4143910) </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+<p>This node implements an inferface which simplifies and abstracts the communication with the aRMOR service, with particular attention to the most common operations performed by RCL during the search of a solution.</p>
+<p><strong>UML components</strong>
+ (See robocluedo_arch the overal architecture, for further informations)<img alt="_build/xml/UML_components_cluedo_armor_interface.png" src="_build/xml/UML_components_cluedo_armor_interface.png" /></p>
+<p><strong>Services:</strong> <ul class="simple">
+<li><p><em>/cluedo_armor/add_hint</em><p>: AddHint.srv</p>
+<p>register a hint in the ontology</p>
+</p></li>
+<li><p><em>/cluedo_armor/find_consistent_h</em><p>: FindConsistentHypotheses.srv</p>
+<p>find all the consistent hypotheses</p>
+</p></li>
+<li><p><em>/cluedo_armor/wrong_hypothesis</em><p>: DiscardHypothesis.srv</p>
+<p>discard an hypothesis, due to a negative response from the oracle</p>
+</p></li>
+<li><p><em>/cluedo_armor/backup</em> : <a class="reference external" href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> 
+ export the ontology to file </p></li>
+</ul>
+</p>
+<p><strong>Hidden services and topics</strong> <ul class="simple">
+<li><p>(from <a class="reference internal" href="armor-tools.html#class_armor_tools"><span class="std std-ref">ArmorTools</span></a> : client) <em>/armor_interface_srv</em> </p></li>
+</ul>
+</p>
+<p><strong>Parameters:</strong> <ul class="simple">
+<li><p>[GET] <em> <a class="reference internal" href="../../robocluedo_module_testing/_code_reference/test_armor_tools.html#test__armor__tools_8cpp_1a1488d09dc82faa87c57e8d9a79bbe1f1"><span class="std std-ref">ONTOLOGY_PARAM</span></a> </em><p>: string</p>
+<p>path of the ontology</p>
+</p></li>
+<li><p>[GET] <em> <a class="reference internal" href="#cluedo__armor__interface_8cpp_1a311d6790cb54f184fa8fa02120ebee44"><span class="std std-ref">PARAM_ONTOLOGY_BACKUP_PATH</span></a> </em><p>: string</p>
+<p>name for the backup ontology file exported</p>
+</p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_INTERFACE_ADD_HINT">
+<span class="target" id="cluedo__armor__interface_8cpp_1a9e68b107365153366ec52986156f2595"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_INTERFACE_ADD_HINT</span></span></span><a class="headerlink" href="#c.SERVICE_INTERFACE_ADD_HINT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_INTERFACE_FIND_CONSISTENT_HYP">
+<span class="target" id="cluedo__armor__interface_8cpp_1a43b5b7d093b3ed913fa91b74684ff821"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_INTERFACE_FIND_CONSISTENT_HYP</span></span></span><a class="headerlink" href="#c.SERVICE_INTERFACE_FIND_CONSISTENT_HYP" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_INTERFACE_WRONG_HYPOTHESIS">
+<span class="target" id="cluedo__armor__interface_8cpp_1a7abfca1c1aab551b07b78ca76440683a"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_INTERFACE_WRONG_HYPOTHESIS</span></span></span><a class="headerlink" href="#c.SERVICE_INTERFACE_WRONG_HYPOTHESIS" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_INTERFACE_SAVE_ONTOLOGY">
+<span class="target" id="cluedo__armor__interface_8cpp_1acc185c28a4bd121102b73f42c59b6939"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_INTERFACE_SAVE_ONTOLOGY</span></span></span><a class="headerlink" href="#c.SERVICE_INTERFACE_SAVE_ONTOLOGY" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ONTOLOGY_PARAM">
+<span class="target" id="cluedo__armor__interface_8cpp_1a1488d09dc82faa87c57e8d9a79bbe1f1"></span><span class="sig-name descname"><span class="n"><span class="pre">ONTOLOGY_PARAM</span></span></span><a class="headerlink" href="#c.ONTOLOGY_PARAM" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PARAM_ONTOLOGY_BACKUP_PATH">
+<span class="target" id="cluedo__armor__interface_8cpp_1a311d6790cb54f184fa8fa02120ebee44"></span><span class="sig-name descname"><span class="n"><span class="pre">PARAM_ONTOLOGY_BACKUP_PATH</span></span></span><a class="headerlink" href="#c.PARAM_ONTOLOGY_BACKUP_PATH" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OUTLABEL">
+<span class="target" id="cluedo__armor__interface_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643"></span><span class="sig-name descname"><span class="n"><span class="pre">OUTLABEL</span></span></span><a class="headerlink" href="#c.OUTLABEL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OUTLOG">
+<span class="target" id="cluedo__armor__interface_8cpp_1a3cebd08e2e9a598e7cd779a51734719e"></span><span class="sig-name descname"><span class="n"><span class="pre">OUTLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.OUTLOG" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOGSQUARE">
+<span class="target" id="cluedo__armor__interface_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0"></span><span class="sig-name descname"><span class="n"><span class="pre">LOGSQUARE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">str</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SS">
+<span class="target" id="cluedo__armor__interface_8cpp_1af4f289b8ad162b609975620166e3d407"></span><span class="sig-name descname"><span class="n"><span class="pre">SS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">this_string</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SSS">
+<span class="target" id="cluedo__armor__interface_8cpp_1a7a571e6f0c662a683b2741f0e4cd4c26"></span><span class="sig-name descname"><span class="n"><span class="pre">SSS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">this_thing</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49fileExistNSt6stringE">
+<span id="_CPPv39fileExistNSt6stringE"></span><span id="_CPPv29fileExistNSt6stringE"></span><span id="fileExist__ss"></span><span class="target" id="cluedo__armor__interface_8cpp_1a425e0b3a1e6c60b7ed0330df24c67e66"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fileExist</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49fileExistNSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>check if a given file exists </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424PerformDifferenceBetweenNSt6vectorINSt6stringEEENSt6vectorINSt6stringEEE">
+<span id="_CPPv324PerformDifferenceBetweenNSt6vectorINSt6stringEEENSt6vectorINSt6stringEEE"></span><span id="_CPPv224PerformDifferenceBetweenNSt6vectorINSt6stringEEENSt6vectorINSt6stringEEE"></span><span id="PerformDifferenceBetween__std::vector:ss:.std::vector:ss:"></span><span class="target" id="cluedo__armor__interface_8cpp_1a30c8d0c07497876eeb7b5845bab11d19"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PerformDifferenceBetween</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">list1</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">list2</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424PerformDifferenceBetweenNSt6vectorINSt6stringEEENSt6vectorINSt6stringEEE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>delete all the occurrences of list2 inside list1 </p>
+<p>The function is employed in order to find the truly COMPLETE hypotheses, excluding the INCONSISTENT ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list1</strong> – the array to be reduced </p></li>
+<li><p><strong>list2</strong> – the occurrences to delete from list1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a copy of list1 without the elements of list2. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414ServiceAddHintRN21robocluedo_armor_msgs7AddHint7RequestERN21robocluedo_armor_msgs7AddHint8ResponseE">
+<span id="_CPPv314ServiceAddHintRN21robocluedo_armor_msgs7AddHint7RequestERN21robocluedo_armor_msgs7AddHint8ResponseE"></span><span id="_CPPv214ServiceAddHintRN21robocluedo_armor_msgs7AddHint7RequestERN21robocluedo_armor_msgs7AddHint8ResponseE"></span><span id="ServiceAddHint__robocluedo_armor_msgs::AddHint::RequestR.robocluedo_armor_msgs::AddHint::ResponseR"></span><span class="target" id="cluedo__armor__interface_8cpp_1a1731b015980e2fcecbe04f00efc6bf88"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ServiceAddHint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_armor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">AddHint</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">hint</span></span>, <span class="n"><span class="pre">robocluedo_armor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">AddHint</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">success</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414ServiceAddHintRN21robocluedo_armor_msgs7AddHint7RequestERN21robocluedo_armor_msgs7AddHint8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>implementation of service <a class="reference internal" href="#cluedo__armor__interface_8cpp_1a9e68b107365153366ec52986156f2595"><span class="std std-ref">SERVICE_INTERFACE_ADD_HINT</span></a> </p>
+<p>The service registers a property with a value referred to a hypothesis given its numeric ID. Here is the followed procedure: <ol class="loweralpha simple">
+<li><p>check if the hypothesis ID exists </p></li>
+<li><p>if it doesn’t exist, create it </p></li>
+<li><p>check if the value exists </p></li>
+<li><p>if the value doesn’t exist, create it </p></li>
+<li><p>set the property </p></li>
+<li><p>update the ontology </p></li>
+</ol>
+</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>AddHint.srv</p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the DISJOINT on hypotheses is not performed; see <a class="reference internal" href="armor-cluedo.html#class_armor_cluedo_1ad29930fec7803aed87b7244e73b98bff"><span class="std std-ref">ArmorCluedo::AddIndiv</span></a> about the parameter ‘makeDisjoint’ </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hint</strong> – the hint to add to the ontology </p></li>
+<li><p><strong>success</strong> – request accomplished or not</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431ServiceFindConsistentHypothesesRN21robocluedo_armor_msgs24FindConsistentHypotheses7RequestERN21robocluedo_armor_msgs24FindConsistentHypotheses8ResponseE">
+<span id="_CPPv331ServiceFindConsistentHypothesesRN21robocluedo_armor_msgs24FindConsistentHypotheses7RequestERN21robocluedo_armor_msgs24FindConsistentHypotheses8ResponseE"></span><span id="_CPPv231ServiceFindConsistentHypothesesRN21robocluedo_armor_msgs24FindConsistentHypotheses7RequestERN21robocluedo_armor_msgs24FindConsistentHypotheses8ResponseE"></span><span id="ServiceFindConsistentHypotheses__robocluedo_armor_msgs::FindConsistentHypotheses::RequestR.robocluedo_armor_msgs::FindConsistentHypotheses::ResponseR"></span><span class="target" id="cluedo__armor__interface_8cpp_1a1baffdd7887e3aee5a33faf7752ed8f7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ServiceFindConsistentHypotheses</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_armor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FindConsistentHypotheses</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">empty</span></span>, <span class="n"><span class="pre">robocluedo_armor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">FindConsistentHypotheses</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">hyplist</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431ServiceFindConsistentHypothesesRN21robocluedo_armor_msgs24FindConsistentHypotheses7RequestERN21robocluedo_armor_msgs24FindConsistentHypotheses8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>implementation of service <a class="reference internal" href="#cluedo__armor__interface_8cpp_1a43b5b7d093b3ed913fa91b74684ff821"><span class="std std-ref">SERVICE_INTERFACE_FIND_CONSISTENT_HYP</span></a> </p>
+<p>The service returns a vector of hypotheses belonging to the class COMPLETE and not to the class INCONSISTENT with an operation of difference.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>FindConsistentHypotheses.srv </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Hypothesis.msg one element of the output vector from the service </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>empty</strong> – empty request </p></li>
+<li><p><strong>hyplist</strong> – a vector of COMPLETE hypotheses</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417DiscardHypothesisRN21robocluedo_armor_msgs17DiscardHypothesis7RequestERN21robocluedo_armor_msgs17DiscardHypothesis8ResponseE">
+<span id="_CPPv317DiscardHypothesisRN21robocluedo_armor_msgs17DiscardHypothesis7RequestERN21robocluedo_armor_msgs17DiscardHypothesis8ResponseE"></span><span id="_CPPv217DiscardHypothesisRN21robocluedo_armor_msgs17DiscardHypothesis7RequestERN21robocluedo_armor_msgs17DiscardHypothesis8ResponseE"></span><span id="DiscardHypothesis__robocluedo_armor_msgs::DiscardHypothesis::RequestR.robocluedo_armor_msgs::DiscardHypothesis::ResponseR"></span><span class="target" id="cluedo__armor__interface_8cpp_1a9da26ecbc92f8ac7288574c3d05195b2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscardHypothesis</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_armor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">DiscardHypothesis</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">tag</span></span>, <span class="n"><span class="pre">robocluedo_armor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">DiscardHypothesis</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">success</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417DiscardHypothesisRN21robocluedo_armor_msgs17DiscardHypothesis7RequestERN21robocluedo_armor_msgs17DiscardHypothesis8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>implementation of service <a class="reference internal" href="#cluedo__armor__interface_8cpp_1a7abfca1c1aab551b07b78ca76440683a"><span class="std std-ref">SERVICE_INTERFACE_WRONG_HYPOTHESIS</span></a> </p>
+<p>Simple call of the methos <a class="reference internal" href="armor-cluedo.html#class_armor_cluedo_1a4ae659375e7a6d9564973718ece248e2"><span class="std std-ref">ArmorCluedo::RemoveHypothesis</span></a>. It is called after a negative answer from the oracle related to a charge.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>DiscardHypothesis.srv </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tag</strong> – of the hypothesis to discard </p></li>
+<li><p><strong>success</strong> – if the request has been accomplished or not</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421ServiceBackupOntologyRN8std_srvs7Trigger7RequestERN8std_srvs7Trigger8ResponseE">
+<span id="_CPPv321ServiceBackupOntologyRN8std_srvs7Trigger7RequestERN8std_srvs7Trigger8ResponseE"></span><span id="_CPPv221ServiceBackupOntologyRN8std_srvs7Trigger7RequestERN8std_srvs7Trigger8ResponseE"></span><span id="ServiceBackupOntology__std_srvs::Trigger::RequestR.std_srvs::Trigger::ResponseR"></span><span class="target" id="cluedo__armor__interface_8cpp_1a66c612700258bd528a8d54035044b4ec"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ServiceBackupOntology</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Trigger</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">emptyrequest</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Trigger</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">success</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ServiceBackupOntologyRN8std_srvs7Trigger7RequestERN8std_srvs7Trigger8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>implementation of service <a class="reference internal" href="#cluedo__armor__interface_8cpp_1acc185c28a4bd121102b73f42c59b6939"><span class="std std-ref">SERVICE_INTERFACE_SAVE_ONTOLOGY</span></a> </p>
+<p>The service exports the actual ontology to file. If the parameter <a class="reference internal" href="#cluedo__armor__interface_8cpp_1a311d6790cb54f184fa8fa02120ebee44"><span class="std std-ref">PARAM_ONTOLOGY_BACKUP_PATH</span></a> is defined in the parameter server, the ontology is exported in that path, otherwise the service returns with error.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="http://docs.ros.org/en/api/std_srvs/html/srv/Trigger.html">std_srvs::Trigger</a> </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>emptyrequest</strong> – empty request </p></li>
+<li><p><strong>success</strong> – if the request has been accomplished or not</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiA_Pc">
+<span id="_CPPv34mainiA_Pc"></span><span id="_CPPv24mainiA_Pc"></span><span id="main__i.cPA"></span><span class="target" id="cluedo__armor__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv44mainiA_Pc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS node main. </p>
+<p>Retrieving of the parameters from the parameter server, connection with aRMOR through C++ interface, opening of the service, and spin. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45armor">
+<span id="_CPPv35armor"></span><span id="_CPPv25armor"></span><span id="armor__ArmorCluedoP"></span><span class="target" id="cluedo__armor__interface_8cpp_1ad59148db06b8c04c8aa6113e572c1654"></span><a class="reference internal" href="armor-cluedo.html#_CPPv411ArmorCluedo" title="ArmorCluedo"><span class="n"><span class="pre">ArmorCluedo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">armor</span></span></span><a class="headerlink" href="#_CPPv45armor" title="Permalink to this definition"></a><br /></dt>
+<dd><p>global connection to aRMOR interface </p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="armor-tools.html" class="btn btn-neutral float-left" title="CLASS armor_tools.cpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../_examples/examples_cluedo.html" class="btn btn-neutral float-right" title="ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

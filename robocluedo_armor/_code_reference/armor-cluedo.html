@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLASS armor_cluedo.cpp &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CLASS armor_tools.cpp" href="armor-tools.html" />
+    <link rel="prev" title="UML – aRMOR Interface design elements" href="../_uml/armor-uml.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR Interface design elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CLASS armor_cluedo.cpp</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="armor-tools.html">CLASS armor_tools.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cluedo-armor-interface.html">NODE cluedo_armor_interface.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_examples/examples_tools.html#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>CLASS armor_cluedo.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_code_reference/armor-cluedo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="class-armor-cluedo-cpp">
+<h1>CLASS armor_cluedo.cpp<a class="headerlink" href="#class-armor-cluedo-cpp" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CLASS armor_cluedo.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-armor-cluedo-header">class aRMOR CLuedo – header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-armor-cluedo-cpp-implementation">class aRMOR CLuedo – cpp implementation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="class-armor-cluedo-header">
+<h2>class aRMOR CLuedo – header<a class="headerlink" href="#class-armor-cluedo-header" title="Permalink to this heading"></a></h2>
+<p>additional aRMOR C++ interface </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#class_armor_cluedo"><span class="std std-ref">ArmorCluedo</span></a> </p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="armor-tools.html#class_armor_tools"><span class="std std-ref">ArmorTools</span></a> </p>
+</div>
+<dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci (S4143910) </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv411ArmorCluedo">
+<span id="_CPPv311ArmorCluedo"></span><span id="_CPPv211ArmorCluedo"></span><span id="ArmorCluedo"></span><span class="target" id="class_armor_cluedo"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArmorCluedo</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="armor-tools.html#_CPPv410ArmorTools" title="ArmorTools"><span class="n"><span class="pre">ArmorTools</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="armor-tools.html#_CPPv410ArmorTools" title="ArmorTools"><span class="n"><span class="pre">ArmorTools</span></span></a><a class="headerlink" href="#_CPPv411ArmorCluedo" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;armor_cluedo.h&gt;</em></div>
+<p>additional utilities for aRMOR </p>
+<p>Whereas the class <a class="reference internal" href="armor-tools.html#class_armor_tools"><span class="std std-ref">ArmorTools</span></a> provides the low-level tools for communicating with aRMOR, the class <a class="reference internal" href="#class_armor_cluedo"><span class="std std-ref">ArmorCluedo</span></a> implements some specific methods for this project, and sme workaround due to some bugs in the actual implementation of aRMOR, in particular for the commands “REMOVE” and “DISJOINT”. </p>
+<p>The class <a class="reference internal" href="#class_armor_cluedo"><span class="std std-ref">ArmorCluedo</span></a> provides methods for doing these operations: <ul class="simple">
+<li><p>add individuals </p></li>
+<li><p>check existence of individuals </p></li>
+<li><p>find the classes of an individual </p></li>
+<li><p>find the content of a class </p></li>
+<li><p>set/get properties </p></li>
+</ul>
+
+In addition, the class implements some useful methods for managing the hypotheses: <ul class="simple">
+<li><p>add hypotheses </p></li>
+<li><p>queries of hypotheses </p></li>
+<li><p>discard hypotheses </p></li>
+</ul>
+</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>maybe the issues with aRMOR are due to a lack in its documentation. The implemented workarounds could reduce the performances of the program. </p>
+</dd></dl>
+
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo11ArmorCluedoEb">
+<span id="_CPPv3N11ArmorCluedo11ArmorCluedoEb"></span><span id="_CPPv2N11ArmorCluedo11ArmorCluedoEb"></span><span id="ArmorCluedo::ArmorCluedo__b"></span><span class="target" id="class_armor_cluedo_1a87fe995ebd26c4618a4b962e47dd3a40"></span><span class="sig-name descname"><span class="n"><span class="pre">ArmorCluedo</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">debugmode</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">ARMOR_DEFAULT_DEBUGMODE</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo11ArmorCluedoEb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor of <a class="reference internal" href="#class_armor_cluedo"><span class="std std-ref">ArmorCluedo</span></a> </p>
+<p>The constrctor simply instanciates the internal data structures and the <a class="reference internal" href="armor-tools.html#class_armor_tools"><span class="std std-ref">ArmorTools</span></a> class, without connection and loading phases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>debugmode</strong> – enable or not debug mode; see <a class="reference internal" href="armor-tools.html#armor__tools_8h_1a15b43f9d816bb354831481b25c069d2e"><span class="std std-ref">ARMOR_DEFAULT_DEBUGMODE</span></a> </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedoD0Ev">
+<span id="_CPPv3N11ArmorCluedoD0Ev"></span><span id="_CPPv2N11ArmorCluedoD0Ev"></span><span id="ArmorCluedo::~ArmorCluedo"></span><span class="target" id="class_armor_cluedo_1a1a6e15d936d2d6e1279d86e5dbaa9c22"></span><span class="sig-name descname"><span class="n"><span class="pre">~ArmorCluedo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedoD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo4InitENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo4InitENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo4InitENSt6stringE"></span><span id="ArmorCluedo::Init__ss"></span><span class="target" id="class_armor_cluedo_1a66ce2d9f5c665ab14761233b32ab1ec6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ontologyPath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo4InitENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>initizalize the interface </p>
+<p>The function performs both the first steps: connection to the aRMOR service, and the load of the file. A default loading phase is executed, with settings: <strong></strong> 
+ No other types of initializations are needed right now by the project.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://github.com/EmaroLab/armor/blob/master/README.MD">the official aRMOR documentation</a> for more informations</p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to initialize the interface in another way, you still can call the methods inside <a class="reference internal" href="armor-tools.html#class_armor_tools"><span class="std std-ref">ArmorTools</span></a> and setup the connection in the proper way. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ontologyPath</strong> – the path of the .owl file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo8AddIndivENSt6stringENSt6stringEb">
+<span id="_CPPv3N11ArmorCluedo8AddIndivENSt6stringENSt6stringEb"></span><span id="_CPPv2N11ArmorCluedo8AddIndivENSt6stringENSt6stringEb"></span><span id="ArmorCluedo::AddIndiv__ss.ss.b"></span><span class="target" id="class_armor_cluedo_1ad29930fec7803aed87b7244e73b98bff"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddIndiv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">indivname</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">classname</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">makeDisjoint</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo8AddIndivENSt6stringENSt6stringEb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>add an individual to the ontology </p>
+<p>In simple words, this function adds the individual to the database. </p>
+<p>Due to the need of the command “DISJOINT” in order to make the reasoner able to classify the hypotheses, and due to an issue with the command “DISJOINT IND CLASS”, this function works in a more complex way. Here is how it works: <ol class="lowerroman simple">
+<li><p>before starting, if the individual has class HYPOTHESIS and was discarded, return false immediately  </p></li>
+<li><p>The individual is <em>tracked</em>, i.e. put into an array which contains all the defined individuals </p></li>
+<li><p>then, the individual is added  </p></li>
+<li><p>call the command “REASON”  </p></li>
+<li><p>if the last argument makeDisjoint is ture, the function also performs “DISJOINT” between the element to add and all the other elements. It is the only <em>working and reliable way</em> to ensure a correct classification by the reasoner right now. </p></li>
+</ol>
+</p>
+<p>Since in RCL, the hypotheses are the only individuals with properties, there’s no need to DISJOINT them. Hence, that last option can be useful to reduce the complexity of the method: if makeDisjoint is set to false, the function doesn’t perform the last step. The element is tracked anyway.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>remember: call upload before any manipolation command! </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indivname</strong> – the individual to add </p></li>
+<li><p><strong>classname</strong> – the class of the individual to add </p></li>
+<li><p><strong>makeDisjoint</strong> – perform disjoint or not?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true if the individual doesn’t appear in the database; false otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo15GetClassOfIndivENSt6stringEb">
+<span id="_CPPv3N11ArmorCluedo15GetClassOfIndivENSt6stringEb"></span><span id="_CPPv2N11ArmorCluedo15GetClassOfIndivENSt6stringEb"></span><span id="ArmorCluedo::GetClassOfIndiv__ss.b"></span><span class="target" id="class_armor_cluedo_1a49216d015f97a9d510406a90e8c1fe30"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetClassOfIndiv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">indivname</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deep</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo15GetClassOfIndivENSt6stringEb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>get the class of a given individual </p>
+<p>The function implements a simple query: find all the classes an individual belongs to. It is performed using only one aRMOR call. </p>
+<p>using the <em>Deep search</em>, the function will return only the deepest subclass among all the classes; it is a functionality provided by aRMOR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indivname</strong> – the individual to be “classified” </p></li>
+<li><p><strong>deep</strong> – use deep search?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a vector of classes (zero if the indiv. doesn’t exist) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo15GetIndivOfClassENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo15GetIndivOfClassENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo15GetIndivOfClassENSt6stringE"></span><span id="ArmorCluedo::GetIndivOfClass__ss"></span><span class="target" id="class_armor_cluedo_1afef8229a755f495f008bfe4630a745fa"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetIndivOfClass</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">classname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo15GetIndivOfClassENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>find the individuals belonging to a class </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The element also returns the discarded hypotheses. <em>Don’t use this method for inspecting the hypotheses! </em> </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>classname</strong> – the class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a vector of individals inside the class (eventually empty)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo11ExistsIndivENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo11ExistsIndivENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo11ExistsIndivENSt6stringE"></span><span id="ArmorCluedo::ExistsIndiv__ss"></span><span class="target" id="class_armor_cluedo_1a2086082362b61607798d6f968c263f9e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExistsIndiv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">indivname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo11ExistsIndivENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>check if an individual exists </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indivname</strong> – the name of the individual</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the individual exists or not; false if the individual is a discarded hypothesis. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo17SetObjectPropertyENSt6stringENSt6stringENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo17SetObjectPropertyENSt6stringENSt6stringENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo17SetObjectPropertyENSt6stringENSt6stringENSt6stringE"></span><span id="ArmorCluedo::SetObjectProperty__ss.ss.ss"></span><span class="target" id="class_armor_cluedo_1ad179234fd676874a09c267abb416d2da"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetObjectProperty</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">prop</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Aelem</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Belem</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo17SetObjectPropertyENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set a property true </p>
+<p>The function sets a property like (Aelem, Belem):prop .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if the prop is not valid, the aRMOR call will fail, hence the method returns false. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prop</strong> – the property to set </p></li>
+<li><p><strong>Aelem</strong> – the domain </p></li>
+<li><p><strong>Belem</strong> – the image</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>false if one between Aelem and Belem doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo16GetValuedOfIndivENSt6stringENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo16GetValuedOfIndivENSt6stringENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo16GetValuedOfIndivENSt6stringENSt6stringE"></span><span id="ArmorCluedo::GetValuedOfIndiv__ss.ss"></span><span class="target" id="class_armor_cluedo_1a580aef3f0bf9dd1affd06c588e731ff5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetValuedOfIndiv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">prop</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">indivname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo16GetValuedOfIndivENSt6stringENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>get the values of a property related to a gven individual </p>
+<p>Given a set of properties like (indivname, value):prop, the method retrieves all the fields ‘value’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prop</strong> – the property </p></li>
+<li><p><strong>indivname</strong> – the name of the individual</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the values of the property for the given individual </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo22FindCompleteHypothesesEv">
+<span id="_CPPv3N11ArmorCluedo22FindCompleteHypothesesEv"></span><span id="_CPPv2N11ArmorCluedo22FindCompleteHypothesesEv"></span><span id="ArmorCluedo::FindCompleteHypotheses"></span><span class="target" id="class_armor_cluedo_1aaf1832ed634a017c48e26c48f58c5f68"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FindCompleteHypotheses</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo22FindCompleteHypothesesEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>find all the complete hypotheses </p>
+<p>The methos finds all the COMPLETE hypotheses, except for the discarded ones.</p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="cluedo-armor-interface.html#cluedo__armor__interface_8cpp_1a1baffdd7887e3aee5a33faf7752ed8f7"><span class="std std-ref">ServiceFindConsistentHypotheses</span></a> an example of usage </p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a vector containing the tags of all the COMPLETE hyp.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo26FindInconsistentHypothesesEv">
+<span id="_CPPv3N11ArmorCluedo26FindInconsistentHypothesesEv"></span><span id="_CPPv2N11ArmorCluedo26FindInconsistentHypothesesEv"></span><span id="ArmorCluedo::FindInconsistentHypotheses"></span><span class="target" id="class_armor_cluedo_1ab278ac3aaffc4c6aceaf3bfb8d5186af"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FindInconsistentHypotheses</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo26FindInconsistentHypothesesEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>find all the inconsistent hypotheses </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="cluedo-armor-interface.html#cluedo__armor__interface_8cpp_1a1baffdd7887e3aee5a33faf7752ed8f7"><span class="std std-ref">ServiceFindConsistentHypotheses</span></a> an example of usage </p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method doesn’t perform any filtering on the tags, so the output is exactly the individuals belonging to INCONSISTENT without deleting the discarded hypotheses. I recommend to not use this method, except for some cases.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a vector containing the tags of all the INCONSISTENT hyp.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo16RemoveHypothesisENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo16RemoveHypothesisENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo16RemoveHypothesisENSt6stringE"></span><span id="ArmorCluedo::RemoveHypothesis__ss"></span><span class="target" id="class_armor_cluedo_1a4ae659375e7a6d9564973718ece248e2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RemoveHypothesis</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hypTag</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo16RemoveHypothesisENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>discard one hypothesis </p>
+<p><p>Due to an issue of the implementation of aRMOR, the command “REMOVE</p>
+<p>IND CLASS” has no effect on the ontology. So, a workaround has been implemented. The class tracks the hypothesis as</p>
+<em>discarded</em>; all the other methods are implemented in a way such that a discarded hypothesis doesn’t appear anymore as <em>complete</em> or <em>existing</em>. the discarded hypothesis is still in the ontology, but will be discarded with a post filtering, or will become inconsistent. </p>
+<p>In RCL there’s no need to reconsider hypotheses, so, in this specific context, this approach works well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hypTag</strong> – the hypothesis tag to discard</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the hypothesis has been discarded or not; false if the hypothesis wasn’t defined before. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo11FilterValueENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo11FilterValueENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo11FilterValueENSt6stringE"></span><span id="ArmorCluedo::FilterValue__ss"></span><span class="target" id="class_armor_cluedo_1a6f824ec2cf4759952145f7f1d11e516c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FilterValue</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">raw</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo11FilterValueENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>rewrite a string like ‘&lt;uri#value&gt;’ into ‘value’ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw</strong> – the string to be filtered</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the value inside the string </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo12FilterVectorERNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N11ArmorCluedo12FilterVectorERNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N11ArmorCluedo12FilterVectorERNSt6vectorINSt6stringEEE"></span><span id="ArmorCluedo::FilterVector__std::vector:ss:R"></span><span class="target" id="class_armor_cluedo_1a76a60417cfc01397a6db462904139873"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FilterVector</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">itemlist</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo12FilterVectorERNSt6vectorINSt6stringEEE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>filter all the strings inside the array </p>
+<p>It simply extends the method <a class="reference internal" href="#class_armor_cluedo_1a6f824ec2cf4759952145f7f1d11e516c"><span class="std std-ref">ArmorCluedo::FilterValue</span></a> to an array of strings to be filtered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>itemList</strong> – the array of strings to be filtered</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the array containing the filtered strings </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo10ExistsItemENSt6stringERKNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N11ArmorCluedo10ExistsItemENSt6stringERKNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N11ArmorCluedo10ExistsItemENSt6stringERKNSt6vectorINSt6stringEEE"></span><span id="ArmorCluedo::ExistsItem__ss.std::vector:ss:CR"></span><span class="target" id="class_armor_cluedo_1ab29b592286c5cb6316212a9e7da1d6bd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExistsItem</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">item</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">container</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo10ExistsItemENSt6stringERKNSt6vectorINSt6stringEEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo10TrackIndivENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo10TrackIndivENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo10TrackIndivENSt6stringE"></span><span id="ArmorCluedo::TrackIndiv__ss"></span><span class="target" id="class_armor_cluedo_1a8390aefea700e6c8089e20efb6bea308"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TrackIndiv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">indivname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo10TrackIndivENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo16DisjointAllIndivENSt6stringE">
+<span id="_CPPv3N11ArmorCluedo16DisjointAllIndivENSt6stringE"></span><span id="_CPPv2N11ArmorCluedo16DisjointAllIndivENSt6stringE"></span><span id="ArmorCluedo::DisjointAllIndiv__ss"></span><span class="target" id="class_armor_cluedo_1acc1b4fc5f49f5886ca26a4a5dba5671c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DisjointAllIndiv</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">from</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo16DisjointAllIndivENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo13GetPositionOfENSt6stringERNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N11ArmorCluedo13GetPositionOfENSt6stringERNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N11ArmorCluedo13GetPositionOfENSt6stringERNSt6vectorINSt6stringEEE"></span><span id="ArmorCluedo::GetPositionOf__ss.std::vector:ss:R"></span><span class="target" id="class_armor_cluedo_1ab7e3630b3542b223b34abcdf18b111fa"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetPositionOf</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tag</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">list</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11ArmorCluedo13GetPositionOfENSt6stringERNSt6vectorINSt6stringEEE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo11individualsE">
+<span id="_CPPv3N11ArmorCluedo11individualsE"></span><span id="_CPPv2N11ArmorCluedo11individualsE"></span><span id="ArmorCluedo::individuals__std::vector:ss:"></span><span class="target" id="class_armor_cluedo_1a5cce2aa304a6bd0ca678f08e7424bf7c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">individuals</span></span></span><a class="headerlink" href="#_CPPv4N11ArmorCluedo11individualsE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11ArmorCluedo17DiscardHypothesesE">
+<span id="_CPPv3N11ArmorCluedo17DiscardHypothesesE"></span><span id="_CPPv2N11ArmorCluedo17DiscardHypothesesE"></span><span id="ArmorCluedo::DiscardHypotheses__std::vector:ss:"></span><span class="target" id="class_armor_cluedo_1a6e7280e76851065a76f4de6a7fc2bc1e"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscardHypotheses</span></span></span><a class="headerlink" href="#_CPPv4N11ArmorCluedo17DiscardHypothesesE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="class-armor-cluedo-cpp-implementation">
+<h2>class aRMOR CLuedo – cpp implementation<a class="headerlink" href="#class-armor-cluedo-cpp-implementation" title="Permalink to this heading"></a></h2>
+<p>implementation of the class <a class="reference internal" href="#class_armor_cluedo"><span class="std std-ref">ArmorCluedo</span></a> </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>armor_cluedo.h </p>
+</div>
+<dl class="simple">
+<dt><strong>Author</strong></dt><dd><p>Francesco Ganci (S4143910) </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../_uml/armor-uml.html" class="btn btn-neutral float-left" title="UML – aRMOR Interface design elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="armor-tools.html" class="btn btn-neutral float-right" title="CLASS armor_tools.cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

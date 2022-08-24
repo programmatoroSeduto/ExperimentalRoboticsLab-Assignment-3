@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDDL Design – the new RoboCLuedo PDDL model &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DOCS – PDDL and ROSPlan" href="pddl-and-rosplan.html" />
+    <link rel="prev" title="PKG DOCS – robocluedo_rosplan" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PDDL Design – the new RoboCLuedo PDDL model</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pddl-and-rosplan.html">DOCS – PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan – in a nutshell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/feedback_manager.html">CLASS feedback manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_interface.html">NODE kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_tools.html">CLASS kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/move_to.html">ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/move_to_center.html">ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/replan.html">ROSPlan action replan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/rosplan_pipeline_manager.html">NODE rosplan_pipeline_manager.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
+      <li>PDDL Design – the new RoboCLuedo PDDL model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_rosplan/_docs/new-robocluedo.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="pddl-design-the-new-robocluedo-pddl-model">
+<span id="pddl-model"></span><h1>PDDL Design – the new RoboCLuedo PDDL model<a class="headerlink" href="#pddl-design-the-new-robocluedo-pddl-model" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This document is very old, and for sure it needs to be updated. You can find the current model in the folder <code class="docutils literal notranslate"><span class="pre">/robocluedo_rosplan/pddl/robocluedo_3</span></code>.</p>
+<p>I leave this document here because it contains the very first design process of the current PDDL, which is changed a lot during the development of the project. Here are the basic principles.</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>a big half of this document is still <em>in italian</em>. Remember to translate it.</p>
+</div>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PDDL Design – the new RoboCLuedo PDDL model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#differences-from-the-previous-version">Differences from the previous version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-list-of-landmarks">A list of Landmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-actions">list of actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#replan">REPLAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collect">COLLECT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solve">SOLVE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="differences-from-the-previous-version">
+<h2>Differences from the previous version<a class="headerlink" href="#differences-from-the-previous-version" title="Permalink to this heading"></a></h2>
+<p>see <a class="reference external" href="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git">the previous version of the RoboCLuedo #2 Project</a></p>
+<ul>
+<li><p>usage of <em>landmarks</em> instead of only one goal</p>
+<p>a landmark is a sort of <em>checkpoint</em>, and in particular it will correspond to a particular phase of the mission. The AI will will work on two levels: the highest one, the <em>mission level</em>, will decide how to combine landmarks in order to let the mission succeed, whereas the lowest one, implemented using rosplan, plans how to carry out the single action depending on the current status of the robot.</p>
+<p>For instance, the mission manager could say “COLLECT A HINT”, leavng the planner the task to decide precisely which sequence of actions the robot has to take in order to fulfill the current mission objective.</p>
+</li>
+<li><p>the PDDL just manages the movements and how the robot works, and not other informations. Clear distinction between the KB os ROSPlan and the aRMOR KB</p>
+<p>in the previous version of the model, the rosplan KB has been used also as a common KB for the reasoning. This requires to declare predicates inside the PDDL domain, and to decide how to combine two sets of informations. It is a very poor design choice, which lets to a overcomplicated implementation. <em>It is simpler to separate the true reasoning from the simple problem solving</em>.</p>
+</li>
+<li><p><em>a simpler, concise model</em>: this increases the flexibility of the model, and in particular it makes quicker any future update of the arch</p></li>
+<li><p>much more like a stata machine than the previous version</p></li>
+<li><p><em>no usage of fluents</em></p>
+<p>in this case, using fluents is not so important. In order to keep as simpler as possible the declaration of the problem, it is better to rely only on the simple predicates.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="a-list-of-landmarks">
+<h2>A list of Landmarks<a class="headerlink" href="#a-list-of-landmarks" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the implementation of the landmarks is a bit more cumbersome, even if the principle is the one outlined here. See <a class="reference internal" href="../_code_reference/kb_interface.html#_CPPv412kb_interface" title="kb_interface"><code class="xref any cpp cpp-class docutils literal notranslate"><span class="pre">kb_interface</span></code></a> for more informations.</p>
+</div>
+<p>Here are the macro-objectives the mission planner could require to the ROSPlan unit:</p>
+<ul>
+<li><p><strong>replan</strong>
+preconditions:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">dirty</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>goal:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>propose a solution – solve</strong>
+preconditions:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>goal:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">dirty</span> <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>collect a new hint – collect</strong>
+preconditions:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>goal:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)</span>
+<span class="p">(</span><span class="nv">hint-collected</span> <span class="nv">?wp</span> <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="list-of-actions">
+<h2>list of actions<a class="headerlink" href="#list-of-actions" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document reports the very first version of the code, <em>which is sometimes not correct</em>. Please refer to the models inside the folder <code class="docutils literal notranslate"><span class="pre">/robocluedo_rosplan/pddl/robocluedo_3</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>document in italian</em> (thinking in english makes everything … annoyingly slower)</p>
+</div>
+<div class="section" id="replan">
+<h3>REPLAN<a class="headerlink" href="#replan" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>(ACTION) replan</strong></p>
+<ul>
+<li><p>c’è un bool <code class="docutils literal notranslate"><span class="pre">(dirty</span> <span class="pre">)</span></code> che indica quando il sistema non è inizializzato</p></li>
+<li><p>questa azione serve solo per “resettare” la KB di rosplan</p></li>
+<li><p>per l’aggiornamento, la action usa il nodo <code class="docutils literal notranslate"><span class="pre">KB</span> <span class="pre">interface</span></code> che si occuperà di lettura e scrittura nella kb di rosplan</p></li>
+</ul>
+</li>
+</ul>
+<p>azione PDDL:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">replan</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="p">)</span>
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span> 
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">dirty</span> <span class="p">))</span>
+	<span class="p">)</span>
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span> 
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">dirty</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>implementazione ROS:</p>
+<p class="plantuml">
+<object data="../../_images/plantuml-62fd138731662723878faa86f5440c9d3895bc4c.svg" type="image/svg+xml" style="width:791px;height:357px;background:#FFFFFF;">
+<img src="../../_images/plantuml-62fd138731662723878faa86f5440c9d3895bc4c.png" alt="&#64;startuml
+
+''' DIAGRAM INFOS
+title &quot;(ACTION) replan&quot;
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+component &quot;replan&quot; &lt;&lt;PDDL ROS action&gt;&gt; as ACT_REPLAN
+
+
+''' LINKS
+() &quot;/replan&quot; as SRV_IKB
+ACT_REPLAN &quot;cl&quot; &lt;-- SRV_IKB
+note on link: std_msgs::Empty
+
+() &quot;action dispatch&quot; as DISPATCH
+ACT_REPLAN &lt;.. DISPATCH
+() &quot;action feedback&quot; as DISP_FEEDBACK 
+ACT_REPLAN ..&gt; DISP_FEEDBACK
+
+() &quot;/robocluedo/action_feedback&quot; as TOPIC_FEEDBACK_MANAGER
+ACT_REPLAN &quot;pub&quot; --&gt; TOPIC_FEEDBACK_MANAGER
+note on link: robocluedo_rosplan_msgs/ActionFeedback
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="collect">
+<h3>COLLECT<a class="headerlink" href="#collect" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>(ACTION) move-to</strong></p>
+<ul>
+<li><p>semplice azione di movimento da un punto ad un altro</p></li>
+<li><p>il sistema è <em>molto simile a quello della vecchia versione</em> se non per qualche predicato di meno</p></li>
+<li><p>le posizioni in cui il robot può andare sono quelle non marcate come <code class="docutils literal notranslate"><span class="pre">(is-center</span> <span class="pre">?wp)</span></code>, ovvero usa il not</p></li>
+<li><p>il robot <em>non può compiere un’azione di movimento verso lo stesso punto in cui si trova</em>: insomma, deve muoversi</p></li>
+<li><p>l’azione si aspetta che qualche altro sistema implementi un servizio a cui l’azione si connette come client per interagire col navigation system</p></li>
+<li><p>tale servizio si occupa anche di associare il nome del waypoint alla posizione del waypoint in termini di coordinate cartesiane</p></li>
+</ul>
+</li>
+</ul>
+<p>azione PDDL:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">move-to</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?from</span> <span class="nv">?to</span> <span class="nb">-</span> <span class="nv">waypoint</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;;status</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">))</span>
+		
+		<span class="c1">;; localization</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?from</span> <span class="p">))</span>
+		
+		<span class="c1">;; passage</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">passage</span> <span class="nv">?from</span> <span class="nv">?to</span> <span class="p">))</span>
+		
+		<span class="c1">;; path tracking</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-explored</span> <span class="nv">?to</span> <span class="p">))</span>
+		
+		<span class="c1">;;center conditions</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-is-center</span> <span class="nv">?to</span> <span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;; localization</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?from</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?to</span> <span class="p">))</span>
+		
+		<span class="c1">;; (in any case)</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">at-center</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">not-at-center</span> <span class="p">))</span>
+		
+		<span class="c1">;; path tracking</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">not-explored</span> <span class="nv">?to</span><span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">explored</span> <span class="nv">?to</span><span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>implementazione ROS:</p>
+<p class="plantuml">
+<object data="../../_images/plantuml-6f225f55e7121adc7ef2d53781364ddea24d4f4c.svg" type="image/svg+xml" style="width:1078px;height:357px;background:#FFFFFF;">
+<img src="../../_images/plantuml-6f225f55e7121adc7ef2d53781364ddea24d4f4c.png" alt="&#64;startuml
+
+''' DIAGRAM INFOS
+title &quot;(ACTION) move_to&quot;
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+component &quot;move-to&quot; &lt;&lt;PDDL action&gt;&gt; as ACT_MOVE_TO
+
+
+''' LINKS
+() &quot;/robocluedo/action_feedback&quot; as TOPIC_FEEDBACK_MANAGER
+ACT_MOVE_TO &quot;pub&quot; --&gt; TOPIC_FEEDBACK_MANAGER
+note on link: robocluedo_rosplan_msgs/ActionFeedback
+
+() &quot;/robocluedo/navigation_command&quot; as SRV_NAV
+ACT_MOVE_TO &quot;srv&quot; --&gt; SRV_NAV
+note on link: robocluedo_rosplan_msgs/NavigationCommand
+
+() &quot;action dispatch&quot; as DISPATCH
+ACT_MOVE_TO &lt;.. DISPATCH
+() &quot;action feedback&quot; as DISP_FEEDBACK 
+ACT_MOVE_TO ..&gt; DISP_FEEDBACK
+
+&#64;enduml"/>
+
+</object></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>(ACTION) signal-collect-hint</strong></p>
+<ul>
+<li><p>il robot si prepara a raccogliere l’hint dal marker</p></li>
+<li><p><strong>implementato come una simulated action</strong></p></li>
+</ul>
+</li>
+</ul>
+<p>azione PDDL:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">signal-collect-hint</span> 
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?wp</span> <span class="nb">-</span> <span class="nv">waypoint</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;; status</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">))</span>
+		
+		<span class="c1">;; localization</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?wp</span> <span class="p">))</span>
+		
+		<span class="c1">;; hint inside</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-hint-collected</span> <span class="nv">?wp</span> <span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">hint-ready</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>(ACTION) collect-hint</strong></p>
+<ul>
+<li><p>l’azione implementa solo il moto del braccio verso il marker: avvicina, rimani fermo, rientra il braccio, e avanti</p></li>
+<li><p><em>in caso si presenterà il bisogno di aggiornare il sistema di raccolta degli hint</em> (ad esempio, detection degli hint tramite una videocamera piuttosto che tramite un sistema di hints) <em>si dovrà cambiare solo questa particolare azione</em> e stop.</p></li>
+<li><p>l’azione si aspetta che un altro nodo implementi il servizio che permette all’architettura di interagire con il manipulation controller</p></li>
+</ul>
+</li>
+</ul>
+<p>azione PDDL:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">collect-hint</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?wp</span> <span class="nb">-</span> <span class="nv">waypoint</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;; status</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">hint-ready</span> <span class="p">))</span>
+		
+		<span class="c1">;; localization</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?wp</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-is-center</span> <span class="nv">?wp</span> <span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;; status</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">hint-ready</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>implementazione ROS:</p>
+<p class="plantuml">
+<object data="../../_images/plantuml-b037a3a0462bcc6ac2e3dce07f89eeff2ea59de3.svg" type="image/svg+xml" style="width:754px;height:357px;background:#FFFFFF;">
+<img src="../../_images/plantuml-b037a3a0462bcc6ac2e3dce07f89eeff2ea59de3.png" alt="&#64;startuml
+
+''' DIAGRAM INFOS
+title &quot;(ACTION) collect-hint&quot;
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+component &quot;collect-hint&quot; &lt;&lt;PDDL action&gt;&gt; as ACT_COLLECT_HINT
+
+
+''' LINKS
+() &quot;/robocluedo/manipulator_command&quot; as SRV_MANIP
+ACT_COLLECT_HINT &quot;cl&quot; &lt;-- SRV_MANIP
+note on link : robocluedo_rosplan_msgs/ManipulationCommand
+
+() &quot;action dispatch&quot; as DISPATCH
+ACT_COLLECT_HINT &lt;.. DISPATCH
+() &quot;action feedback&quot; as DISP_FEEDBACK 
+ACT_COLLECT_HINT ..&gt; DISP_FEEDBACK
+
+&#64;enduml"/>
+
+</object></p>
+</div>
+<div class="section" id="solve">
+<h3>SOLVE<a class="headerlink" href="#solve" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>(ACTION) move-to-center</strong></p>
+<ul>
+<li><p>come precondizione il robot non si trova al centro, quindi la posizione attuale è <code class="docutils literal notranslate"><span class="pre">(not-is-center</span> <span class="pre">?wp)</span></code></p></li>
+<li><p>al termine dell’azione, il robot è in stato <code class="docutils literal notranslate"><span class="pre">(ready-to-solve</span> <span class="pre">)</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>azione PDDL:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">move-to-center</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">?from</span> <span class="nv">?to</span> <span class="nb">-</span> <span class="nv">waypoint</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;;status</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">))</span>
+		
+		<span class="c1">;; localization</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?from</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">is-center</span> <span class="nv">?to</span> <span class="p">))</span>
+		
+		<span class="c1">;; center conditions</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-at-center</span> <span class="p">))</span>
+		
+		<span class="c1">;; passage</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">passage</span> <span class="nv">?from</span> <span class="nv">?to</span> <span class="p">))</span>
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;; localization</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?from</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">at</span> <span class="nv">?to</span> <span class="p">))</span>
+		
+		<span class="c1">;; in center</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">not-at-center</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">at-center</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>implementazione ROS:</p>
+<p class="plantuml">
+<object data="../../_images/plantuml-639a42e0c10e44f80eb2445971357ab944f2ada0.svg" type="image/svg+xml" style="width:1078px;height:357px;background:#FFFFFF;">
+<img src="../../_images/plantuml-639a42e0c10e44f80eb2445971357ab944f2ada0.png" alt="&#64;startuml
+
+''' DIAGRAM INFOS
+title &quot;(ACTION) move-to-center&quot;
+skinparam Padding 8
+allow_mixing
+
+
+''' COMPONENTS
+component &quot;move-to-center&quot; &lt;&lt;PDDL action&gt;&gt; as ACT_MOVE_TO_CENTER
+
+
+''' LINKS
+() &quot;/robocluedo/action_feedback&quot; as TOPIC_FEEDBACK_MANAGER
+ACT_MOVE_TO_CENTER &quot;pub&quot; --&gt; TOPIC_FEEDBACK_MANAGER
+note on link: robocluedo_rosplan_msgs/ActionFeedback
+
+() &quot;/robocluedo/navigation_command&quot; as SRV_NAV
+ACT_MOVE_TO_CENTER &quot;srv&quot; --&gt; SRV_NAV
+note on link: robocluedo_rosplan_msgs/NavigationCommand
+
+() &quot;action dispatch&quot; as DISPATCH
+ACT_MOVE_TO_CENTER &lt;.. DISPATCH
+() &quot;action feedback&quot; as DISP_FEEDBACK 
+ACT_MOVE_TO_CENTER ..&gt; DISP_FEEDBACK
+
+&#64;enduml"/>
+
+</object></p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>(ACTION) solve</strong></p>
+<ul>
+<li><p>l’azione PDDL non fa che settare tutto per fare il replan</p></li>
+<li><p>a differenza della precedente versione, il PDDL non tiene traccia delle ipotesi (per questo c’è aRMOR)</p></li>
+<li><p>arrivato alla solve, il mission manager ricerca e propone la soluzione</p></li>
+<li><p><strong>è implementata come una simulated action</strong></p></li>
+</ul>
+</li>
+</ul>
+<p>azione PDDL:</p>
+<div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">solve</span>
+	<span class="ss">:parameters</span> <span class="p">(</span> <span class="p">)</span>
+	
+	<span class="ss">:duration</span> <span class="p">(</span><span class="nb">=</span> <span class="nv">?duration</span> <span class="mf">0.99</span> <span class="p">)</span>
+	
+	<span class="ss">:condition</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="c1">;;status</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-hint-ready</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">at-center</span> <span class="p">))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">))</span>
+		
+	<span class="p">)</span>
+	
+	<span class="ss">:effect</span> <span class="p">(</span><span class="nb">and</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">start</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nv">not-dirty</span> <span class="p">)))</span>
+		<span class="p">(</span><span class="nv">at</span> <span class="nv">end</span> <span class="p">(</span><span class="nv">dirty</span> <span class="p">))</span>
+	<span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="PKG DOCS – robocluedo_rosplan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pddl-and-rosplan.html" class="btn btn-neutral float-right" title="DOCS – PDDL and ROSPlan" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

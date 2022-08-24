@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>rosplan_pipeline_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Module code</a> &raquo;</li>
+      <li>rosplan_pipeline_manager</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for rosplan_pipeline_manager</h1><div class="highlight"><pre>
+<span></span><span class="ch">#! /usr/bin/env python</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">This is maybe the most important node of the RoboCLuedo ROSPlan package:</span>
+<span class="sd">it allows other nodes to plan and to dispatch the solved plan with a simple</span>
+<span class="sd">interface. Moreover, it adds a large set of informations and details </span>
+<span class="sd">about how the planning process proceeds, and in particular when something </span>
+<span class="sd">wrong occurs, it makes this failure explainable. </span>
+
+<span class="sd">The ROSPlan workflow is always the same: load the problem, try to solve it,</span>
+<span class="sd">parse the solved plan, and finally dispatch the solved plan. Each step</span>
+<span class="sd">must be &quot;triggered&quot; each time it is required. And each step, when finished</span>
+<span class="sd">its job, returns something via topic. In other words, it is a pipeline, </span>
+<span class="sd">and this node collects all these triggers in only one place. </span>
+
+<span class="sd">Authors:</span>
+<span class="sd">	Francesco Ganci (S4143910)</span>
+
+<span class="sd">Version </span>
+<span class="sd">	v1.0.0</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">NODE_NAME</span> <span class="o">=</span> <span class="s2">&quot;rosplan_pipeline_manager&quot;</span>
+<span class="sd">&#39;&#39;&#39; nothing to say, node name</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">std_srvs.srv</span> <span class="kn">import</span> <span class="n">Empty</span><span class="p">,</span> <span class="n">EmptyRequest</span><span class="p">,</span> <span class="n">EmptyResponse</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+<span class="kn">from</span> <span class="nn">rosplan_dispatch_msgs.srv</span> <span class="kn">import</span> <span class="n">DispatchService</span><span class="p">,</span> <span class="n">DispatchServiceRequest</span><span class="p">,</span> <span class="n">DispatchServiceResponse</span>
+<span class="kn">from</span> <span class="nn">robocluedo_rosplan_msgs.msg</span> <span class="kn">import</span> <span class="n">ActionFeedback</span>
+<span class="kn">from</span> <span class="nn">robocluedo_rosplan_msgs.srv</span> <span class="kn">import</span> <span class="n">RosplanPipelineManagerService</span><span class="p">,</span> <span class="n">RosplanPipelineManagerServiceRequest</span><span class="p">,</span> <span class="n">RosplanPipelineManagerServiceResponse</span>
+<span class="kn">from</span> <span class="nn">robocluedo_rosplan_msgs.srv</span> <span class="kn">import</span> <span class="n">UpdateGoal</span><span class="p">,</span> <span class="n">UpdateGoalRequest</span><span class="p">,</span> <span class="n">UpdateGoalResponse</span>
+<span class="kn">from</span> <span class="nn">rosplan_dispatch_msgs.msg</span> <span class="kn">import</span> <span class="n">CompletePlan</span>
+
+<span class="n">SRV_TIMEOUT</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39; a timeout of 1min used for the client connection</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">LANDMARK_REPLAN</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="sd">&#39;&#39;&#39; landmark corresponding to &quot;REPLAN&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">LANDMARK_COLLECT</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="sd">&#39;&#39;&#39; landmark corresponding to &quot;COLLECT&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">LANDMARK_SOLVE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="sd">&#39;&#39;&#39; landmark corresponding to &quot;SOLVE&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">service_problem</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_problem_interface/problem_generation_server&quot;</span>
+<span class="sd">&#39;&#39;&#39; name of the trigger of problem interface</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">cl_problem</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros client handle) problem instance trigger</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">topic_problem_instance</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_problem_interface/problem_instance&quot;</span>
+<span class="sd">&#39;&#39;&#39; topic used to understand if the problem generation succeeded</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">sub_problem_instance</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros subscriber handle) </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">problem_instance_received</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="sd">&#39;&#39;&#39; this flag is set true when the subscriber received a problem instance.</span>
+<span class="sd">	this means that the problem generation worked as expected. </span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">problem_instance_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39; the last problem instance received</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">service_plan</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_planner_interface/planning_server&quot;</span>
+<span class="sd">&#39;&#39;&#39; name of the trigger of planning interface</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">cl_plan</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros client handle) planning interface trigger</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">service_parse</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_parsing_interface/parse_plan&quot;</span>
+<span class="sd">&#39;&#39;&#39; name of the trigger of the plan parser</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">cl_parse</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros client handle) plan parser trigger</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">topic_planner_interface</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_planner_interface/planner_output&quot;</span>
+<span class="sd">&#39;&#39;&#39; used for checking if the plan succeeded</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">sub_planner_interface</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros subscription handle)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">planner_interface_received</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="sd">&#39;&#39;&#39; it becomes false a bit before triggering the planner,</span>
+<span class="sd">	and true when the planning interface succeeded.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">planner_interface_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39; text received from the planning interface</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">planner_interface_solution_path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39; the value of the parameter &quot;output_problem_path&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">topic_parser_interface</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_parsing_interface/complete_plan&quot;</span>
+<span class="sd">&#39;&#39;&#39; used for checking the outcome of the parsing interface</span>
+<span class="sd">&#39;&#39;&#39;</span> 
+
+<span class="n">sub_parser_interface</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros subscription handle)</span>
+<span class="sd">&#39;&#39;&#39;</span> 
+
+<span class="n">parsing_interface_received</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="sd">&#39;&#39;&#39; if the parsed plan han been sent or not</span>
+<span class="sd">&#39;&#39;&#39;</span> 
+
+<span class="n">parsing_interface_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="sd">&#39;&#39;&#39; the parsed plan</span>
+<span class="sd">&#39;&#39;&#39;</span> 
+
+<span class="n">service_dispatch</span> <span class="o">=</span> <span class="s2">&quot;/rosplan_plan_dispatcher/dispatch_plan&quot;</span>
+<span class="sd">&#39;&#39;&#39; name of the service plan dispatch</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">cl_dispatch</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros client handle) plan dispatcher</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">topic_action_feedback</span> <span class="o">=</span> <span class="s2">&quot;/robocluedo/action_feedback&quot;</span>
+<span class="sd">&#39;&#39;&#39; the topic for receiving the feedback</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">sub_action_feedback</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros subscriber handle) the feedback subscription</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">action_feedback_received</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="sd">&#39;&#39;&#39; any pending feedback?</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">action_feedback_msg</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; the pending feedback from the actions</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">service_pipeline</span> <span class="o">=</span> <span class="s2">&quot;/robocluedo/pipeline_manager&quot;</span>
+<span class="sd">&#39;&#39;&#39; service for the pipeline command manager</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">srv_pipeline</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros service handle) service handle for the pipeline service</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">service_update_goal</span> <span class="o">=</span> <span class="s2">&quot;/update_goal&quot;</span>
+<span class="sd">&#39;&#39;&#39; used to apply a landmark to the knowledge base</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">cl_update_goal</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&#39;&#39;&#39; (ros client handle) set a particular goal into the rosplan knowledge base</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="cbk_problem_instance"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_problem_instance">[docs]</a><span class="k">def</span> <span class="nf">cbk_problem_instance</span><span class="p">(</span> <span class="n">problem</span> <span class="p">):</span> <span class="c1"># std_msgs/String</span>
+	<span class="sd">&#39;&#39;&#39; this callback received the problem instance from the problem interface</span>
+<span class="sd">	</span>
+<span class="sd">	When the problem interface ended its work, it publishes on this topic</span>
+<span class="sd">	the preprocessed problem instance. The pipeline manager uses this topic</span>
+<span class="sd">	for understanding the outcome of this loading phase.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		problem (std_msgs/String):</span>
+<span class="sd">			the problem instance loaded into the knowledge base.</span>
+<span class="sd">	</span>
+<span class="sd">	Note:</span>
+<span class="sd">		if something goes wrong, the node publishes nothing! </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">problem_instance_received</span>
+	<span class="k">global</span> <span class="n">problem_instance_text</span>
+	
+	<span class="n">problem_instance_received</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">problem_instance_text</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="cbk_planning_interface"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_planning_interface">[docs]</a><span class="k">def</span> <span class="nf">cbk_planning_interface</span><span class="p">(</span> <span class="n">plan</span> <span class="p">):</span> <span class="c1"># std_msgs/String</span>
+	<span class="sd">&#39;&#39;&#39; this callback receives the output from the planner, if any</span>
+<span class="sd">	</span>
+<span class="sd">	When the plannning interface ended its work, it publishes on this topic</span>
+<span class="sd">	the preprocessed problem instance. The pipeline manager uses this topic</span>
+<span class="sd">	for understanding the outcome of the problem solution phase.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		plan (std_msgs/String):</span>
+<span class="sd">			the solution of the problem</span>
+<span class="sd">	</span>
+<span class="sd">	Note:</span>
+<span class="sd">		if something goes wrong, the node publishes nothing! </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">planner_interface_received</span>
+	<span class="k">global</span> <span class="n">planner_interface_text</span>
+	
+	<span class="n">planner_interface_received</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">planner_interface_text</span> <span class="o">=</span> <span class="n">plan</span><span class="o">.</span><span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="cbk_parsing_interface"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_parsing_interface">[docs]</a><span class="k">def</span> <span class="nf">cbk_parsing_interface</span><span class="p">(</span> <span class="n">plan</span> <span class="p">):</span> <span class="c1"># rosplan_dispatch_msgs/CompletePlan</span>
+	<span class="sd">&#39;&#39;&#39; this callback receives the output from the parsing interface, if any</span>
+<span class="sd">	</span>
+<span class="sd">	this topic is used for understanding if the planning interface succeeded</span>
+<span class="sd">	in parsing the plan.</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		plan (rosplan_dispatch_msgs/CompletePlan):</span>
+<span class="sd">			the parsed plan</span>
+<span class="sd">	</span>
+<span class="sd">	Note:</span>
+<span class="sd">		if something goes wrong, the node publishes nothing! </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">parsing_interface_received</span>
+	<span class="k">global</span> <span class="n">parsing_interface_array</span>
+	
+	<span class="n">parsing_interface_received</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">parsing_interface_array</span> <span class="o">=</span> <span class="n">plan</span></div>
+
+
+<div class="viewcode-block" id="cbk_action_feedback"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_action_feedback">[docs]</a><span class="k">def</span> <span class="nf">cbk_action_feedback</span><span class="p">(</span> <span class="n">feedback</span> <span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39; receive a feedback from the ROSPlan action</span>
+<span class="sd">	</span>
+<span class="sd">	The feedback manager can provide an explaination of whatever problem</span>
+<span class="sd">	it could arise during the dispatch phase. It is used mostly for </span>
+<span class="sd">	detecting a hardware failure, </span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		plan (robocluedo_rosplan_msgs/ActionFeedback):</span>
+<span class="sd">			the feedback from the last executed action</span>
+<span class="sd">	</span>
+<span class="sd">	Attention:</span>
+<span class="sd">		the feedback manager does not send a &quot;succes&quot; feedbacl, meaning</span>
+<span class="sd">		that a feedback is sent only when something goes wrong. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">action_feedback_msg</span>
+	<span class="k">global</span> <span class="n">action_feedback_received</span>
+	
+	<span class="n">action_feedback_msg</span> <span class="o">=</span> <span class="n">feedback</span>
+	<span class="n">action_feedback_received</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="inspect_planner_output"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.inspect_planner_output">[docs]</a><span class="k">def</span> <span class="nf">inspect_planner_output</span><span class="p">(</span> <span class="n">fpath</span> <span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39; the function reurns true when the problem has been found unsolvable. Otherwise, it returns false.</span>
+<span class="sd">	</span>
+<span class="sd">	This function is used when there&#39;s something wrong with the planning</span>
+<span class="sd">	interface, and enables to distinguish the scenario in which the planner</span>
+<span class="sd">	is not solvable from the simple syntax error. </span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		fpath (String):</span>
+<span class="sd">			the path of the output from the planner.</span>
+<span class="sd">	</span>
+<span class="sd">	Attention:</span>
+<span class="sd">		this function is good only for popf planner, because when the problem</span>
+<span class="sd">		is declared unsolvable, it writes a particular thing on the output,</span>
+<span class="sd">		the one that is searched by this function in order to understand</span>
+<span class="sd">		if the problem is unsolvable or simply badly formulated. Using other </span>
+<span class="sd">		planners makes this function to be updated. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span> <span class="n">fpath</span> <span class="p">):</span>
+		<span class="k">return</span> <span class="kc">False</span>
+	
+	<span class="n">fcontent</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+	
+	<span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="n">fpath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span> <span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+		<span class="n">fcontent</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span> <span class="p">)</span>
+	
+	<span class="k">return</span> <span class="p">(</span> <span class="n">fcontent</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;the problem has been deemed unsolvable&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cbk_pipeline"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.cbk_pipeline">[docs]</a><span class="k">def</span> <span class="nf">cbk_pipeline</span><span class="p">(</span> <span class="n">req</span> <span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39; implementation of the service pipeline manager</span>
+<span class="sd">	</span>
+<span class="sd">	This very long function allows to use the ROSPlan framework as a pipeline, </span>
+<span class="sd">	in a simple way. </span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		req (RosplanPipelineManagerServiceRequest):</span>
+<span class="sd">			the pipeline request</span>
+<span class="sd">	</span>
+<span class="sd">	Returns:</span>
+<span class="sd">		(RosplanPipelineManagerServiceResponse) the response to the caller. </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">cl_problem</span>
+	<span class="k">global</span> <span class="n">problem_instance_received</span>
+	<span class="k">global</span> <span class="n">problem_instance_text</span>
+	
+	<span class="k">global</span> <span class="n">cl_update_goal</span>
+	
+	<span class="k">global</span> <span class="n">cl_plan</span>
+	<span class="k">global</span> <span class="n">planner_interface_received</span>
+	<span class="k">global</span> <span class="n">planner_interface_text</span>
+	<span class="k">global</span> <span class="n">planner_interface_solution_path</span>
+	
+	<span class="k">global</span> <span class="n">cl_parse</span>
+	<span class="k">global</span> <span class="n">parsing_interface_received</span>
+	<span class="k">global</span> <span class="n">parsing_interface_array</span>
+	
+	<span class="k">global</span> <span class="n">cl_dispatch</span>
+	<span class="k">global</span> <span class="n">action_feedback_msg</span>
+	<span class="k">global</span> <span class="n">action_feedback_received</span>
+	
+	<span class="n">res</span> <span class="o">=</span> <span class="n">RosplanPipelineManagerServiceResponse</span><span class="p">(</span> <span class="p">)</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">success_load_problem</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">landmark_is_applicable</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">success_solve_problem</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">problem_not_solvable</span> <span class="o">=</span> <span class="kc">False</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">success_parse_plan</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">success_execute_plan</span> <span class="o">=</span> <span class="kc">True</span>
+	<span class="n">res</span><span class="o">.</span><span class="n">feedback_received</span> <span class="o">=</span> <span class="kc">False</span>
+	
+	
+	<span class="c1">## === PROBLEM INTERFACE === ## </span>
+	
+	<span class="k">if</span> <span class="n">req</span><span class="o">.</span><span class="n">load_problem</span><span class="p">:</span>
+		<span class="c1"># needed a landmark!</span>
+		<span class="k">if</span> <span class="n">req</span><span class="o">.</span><span class="n">landmark</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">req</span><span class="o">.</span><span class="n">landmark</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) not a valid landmark: {req.landmark}&quot;)</span>
+			
+			<span class="n">res</span><span class="o">.</span><span class="n">success_load_problem</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="k">return</span> <span class="n">res</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) problem interface -- loading problem ...&quot;)</span>
+			
+			<span class="c1"># set the landmark into the ontology</span>
+			<span class="n">newgoal</span> <span class="o">=</span> <span class="n">UpdateGoalRequest</span><span class="p">(</span> <span class="p">)</span>
+			<span class="n">newgoal</span><span class="o">.</span><span class="n">landmark</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">landmark</span>
+			<span class="c1"># print(type(req.landmark))</span>
+			<span class="n">newgoal_res</span> <span class="o">=</span> <span class="n">cl_update_goal</span><span class="p">(</span> <span class="n">newgoal</span> <span class="p">)</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">newgoal_res</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+				
+				<span class="k">if</span> <span class="n">newgoal_res</span><span class="o">.</span><span class="n">applicable</span><span class="p">:</span>
+					<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) unable to apply the landmark {req.landmark} (reason: UNKNOWN)&quot;)</span>
+					<span class="k">pass</span>
+					
+				<span class="k">else</span><span class="p">:</span>
+					<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) unable to apply the landmark {req.landmark} (reason: landmark not applicable)&quot;)</span>
+					<span class="n">res</span><span class="o">.</span><span class="n">landmark_is_applicable</span> <span class="o">=</span> <span class="kc">False</span>
+				
+				<span class="n">res</span><span class="o">.</span><span class="n">success_load_problem</span> <span class="o">=</span> <span class="kc">False</span>
+				<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+				<span class="k">return</span> <span class="n">res</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) problem interface -- applied landmark {req.landmark}&quot;)</span>
+				<span class="k">pass</span>
+			
+			<span class="n">problem_instance_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+			<span class="n">problem_instance_received</span> <span class="o">=</span> <span class="kc">False</span>
+			
+			<span class="c1"># trigger the problem generation and wait</span>
+			<span class="n">cl_problem</span><span class="p">(</span> <span class="p">)</span>
+			<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+			
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">problem_instance_received</span><span class="p">:</span>
+				<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) something went wrong while generating the problem instance&quot;)</span>
+				
+				<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+				<span class="n">res</span><span class="o">.</span><span class="n">success_load_problem</span> <span class="o">=</span> <span class="kc">False</span>
+				<span class="k">return</span> <span class="n">res</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) problem interface -- problem loading SUCCEEDED with landmark {req.landmark}&quot;)</span>
+				<span class="k">pass</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) problem interface -- skipping problem generation&quot;)</span>
+		<span class="k">pass</span>
+	
+	
+	<span class="c1">## === PLANNER INTERFACE === ## </span>
+	
+	<span class="k">if</span> <span class="n">req</span><span class="o">.</span><span class="n">solve_problem</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) planning interface -- trying to solve ...&quot;)</span>
+		
+		<span class="n">planner_interface_received</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="n">planner_interface_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+		<span class="n">exception_raised</span> <span class="o">=</span> <span class="kc">False</span>
+		
+		<span class="c1"># trigger the planner</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">cl_plan</span><span class="p">(</span> <span class="p">)</span>
+			<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+		<span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span> <span class="k">as</span> <span class="n">serv_exc</span><span class="p">:</span>
+			<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) planning interface -- raised an exception ({serv_exc})&quot;)</span>
+			<span class="n">exception_raised</span> <span class="o">=</span> <span class="kc">True</span>
+		
+		<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">planner_interface_received</span><span class="p">)</span> <span class="ow">or</span> <span class="n">exception_raised</span><span class="p">:</span>
+			<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) something went wrong in solving the problem&quot;)</span>
+			
+			<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success_solve_problem</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">problem_not_solvable</span> <span class="o">=</span> <span class="n">inspect_planner_output</span><span class="p">(</span> <span class="n">planner_interface_solution_path</span> <span class="p">)</span>
+			
+			<span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">problem_not_solvable</span><span class="p">:</span>
+				<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) PROBLEM SEEMS UNSOLVABLE&quot;)</span>
+				<span class="k">pass</span>
+			
+			<span class="k">return</span> <span class="n">res</span>
+			
+		<span class="k">else</span><span class="p">:</span>
+			<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) planning interface -- SOLVED&quot;)</span>
+			<span class="k">pass</span>
+		
+	<span class="k">else</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) planning interface -- skipping problem solution&quot;)</span>
+		<span class="k">pass</span>
+	
+	
+	<span class="c1">## === PLANNER INTERFACE === ## </span>
+	
+	<span class="k">if</span> <span class="n">req</span><span class="o">.</span><span class="n">parse_plan</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) parsing interface -- parsing...&quot;)</span>
+		
+		<span class="n">parsing_interface_received</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="n">parsing_interface_array</span> <span class="o">=</span> <span class="p">[]</span>
+		
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">cl_parse</span><span class="p">(</span> <span class="p">)</span>
+			<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+			
+		<span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceException</span><span class="p">:</span>
+			<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) parsing interface -- something went wrong while parsing the plan&quot;)</span>
+			
+			<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success_parse_plan</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="k">return</span> <span class="n">res</span>
+		
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">parsing_interface_received</span><span class="p">:</span>
+			<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) parsing interface -- something went wrong while parsing the plan&quot;)</span>
+			
+			<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success_parse_plan</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="k">return</span> <span class="n">res</span>
+			
+		<span class="k">else</span><span class="p">:</span>
+			<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) parsing interface -- plan parsing SUCCESS&quot;)</span>
+			<span class="k">pass</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) parsing interface -- skipping plan parsing&quot;)</span>
+		<span class="k">pass</span>
+	
+	
+	<span class="c1">## === DISPATCH === ## </span>
+	
+	<span class="k">if</span> <span class="n">req</span><span class="o">.</span><span class="n">execute_plan</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) dispatch -- dispatching plan&quot;)</span>
+		
+		<span class="n">action_feedback_received</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="n">action_feedback_msg</span> <span class="o">=</span> <span class="kc">None</span>
+		
+		<span class="n">res_disp</span> <span class="o">=</span> <span class="kc">None</span>
+		
+		<span class="c1"># trigger and wait</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">res_disp</span> <span class="o">=</span> <span class="n">cl_dispatch</span><span class="p">()</span>
+			<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+		<span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">serviceException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) dispatch -- ERROR in calling the dispatch service ({e})&quot;)</span>
+			
+			<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success_execute_plan</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">feedback_received</span> <span class="o">=</span> <span class="kc">False</span>
+			
+			<span class="k">return</span> <span class="n">res</span>
+		
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">res_disp</span><span class="o">.</span><span class="n">goal_achieved</span><span class="p">:</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">success_execute_plan</span> <span class="o">=</span> <span class="kc">False</span>
+			
+			<span class="c1"># need to look at the feedback</span>
+			<span class="k">if</span> <span class="n">action_feedback_msg</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="n">res</span><span class="o">.</span><span class="n">feedback_received</span> <span class="o">=</span> <span class="kc">True</span>
+				<span class="n">res</span><span class="o">.</span><span class="n">feedback</span> <span class="o">=</span> <span class="n">action_feedback_msg</span>
+				
+				<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) dispatch -- FAILURE with feedback received&quot;)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="c1"># unable to explain the failure</span>
+				<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) dispatch -- FAILURE with no feedback&quot;)</span>
+				
+				<span class="n">res</span><span class="o">.</span><span class="n">feedback_received</span> <span class="o">=</span> <span class="kc">False</span>
+			
+			<span class="k">return</span> <span class="n">res</span>
+		
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">feedback_received</span> <span class="o">=</span> <span class="kc">True</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">goal_achieved</span> <span class="o">=</span> <span class="kc">True</span>
+			<span class="n">res</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">details</span> <span class="o">=</span> <span class="s2">&quot;goal achieved&quot;</span>
+		
+	<span class="k">else</span><span class="p">:</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) dispatch -- skipping&quot;)</span>
+		<span class="k">pass</span>
+	
+	<span class="k">return</span> <span class="n">res</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="shut_msg"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.shut_msg">[docs]</a><span class="k">def</span> <span class="nf">shut_msg</span><span class="p">(</span> <span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39; called at the shutdown of the node, just a message</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">NODE_NAME</span><span class="si">}</span><span class="s2">) stopping ... &quot;</span> <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="open_cl"><a class="viewcode-back" href="../robocluedo_rosplan/_code_reference/rosplan_pipeline_manager.html#rosplan_pipeline_manager.open_cl">[docs]</a><span class="k">def</span> <span class="nf">open_cl</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">cl_type</span> <span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39; handful utility to open a client</span>
+<span class="sd">	</span>
+<span class="sd">	Arguments:</span>
+<span class="sd">		cl_name (string):</span>
+<span class="sd">			name of the client</span>
+<span class="sd">		cl_type :</span>
+<span class="sd">			type of message used by the service</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
+	<span class="k">global</span> <span class="n">SRV_TIMEOUT</span>
+	<span class="k">global</span> <span class="n">NODE_NAME</span>
+	
+	<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) client: {cl_name} ... &quot;)</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">SRV_TIMEOUT</span> <span class="p">)</span>
+		
+	<span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+		<span class="c1">#rospy.logwarn(f&quot;({NODE_NAME}) client: {cl_name} UNABLE TO CONTACT within the timeout ({SRV_TIMEOUT}s) cause: {e}&quot;)</span>
+		<span class="k">raise</span> <span class="n">e</span>
+		
+	<span class="n">cl_this</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span> <span class="n">cl_name</span><span class="p">,</span> <span class="n">cl_type</span> <span class="p">)</span>
+	<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) OK&quot;)</span>
+	
+	<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+	
+	<span class="k">return</span> <span class="n">cl_this</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span> <span class="n">NODE_NAME</span> <span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">on_shutdown</span><span class="p">(</span> <span class="n">shut_msg</span> <span class="p">)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;{NODE_NAME} starting... &quot;)</span>
+		
+		<span class="n">planner_interface_solution_path</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_param</span><span class="p">(</span> <span class="s2">&quot;/output_problem_path&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">)</span>
+		<span class="k">if</span> <span class="n">planner_interface_solution_path</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="p">:</span>
+			<span class="c1">#rospy.logwarn( f&quot;({NODE_NAME}) plan output path missing! (&#39;/output_problem_path&#39; no defined in the parameter server)&quot; )</span>
+			<span class="k">pass</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) planning output path: {planner_interface_solution_path} (removed before flight)&quot;)</span>
+			<span class="k">try</span><span class="p">:</span>
+				<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span> <span class="n">planner_interface_solution_path</span> <span class="p">)</span>
+			<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+				<span class="k">pass</span>
+		
+		<span class="n">cl_problem</span> <span class="o">=</span> <span class="n">open_cl</span><span class="p">(</span> <span class="n">service_problem</span><span class="p">,</span> <span class="n">Empty</span> <span class="p">)</span>
+		<span class="n">cl_plan</span> <span class="o">=</span> <span class="n">open_cl</span><span class="p">(</span> <span class="n">service_plan</span><span class="p">,</span> <span class="n">Empty</span> <span class="p">)</span>
+		<span class="n">cl_parse</span> <span class="o">=</span> <span class="n">open_cl</span><span class="p">(</span> <span class="n">service_parse</span><span class="p">,</span> <span class="n">Empty</span> <span class="p">)</span>
+		<span class="n">cl_dispatch</span> <span class="o">=</span> <span class="n">open_cl</span><span class="p">(</span> <span class="n">service_dispatch</span><span class="p">,</span> <span class="n">DispatchService</span> <span class="p">)</span>
+		
+		<span class="n">cl_update_goal</span> <span class="o">=</span> <span class="n">open_cl</span><span class="p">(</span> <span class="n">service_update_goal</span><span class="p">,</span> <span class="n">UpdateGoal</span> <span class="p">)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) service: {service_pipeline} ... &quot;)</span>
+		<span class="n">srv_pipeline</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Service</span><span class="p">(</span> <span class="n">service_pipeline</span><span class="p">,</span> <span class="n">RosplanPipelineManagerService</span><span class="p">,</span> <span class="n">cbk_pipeline</span> <span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) OK&quot;)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) subscription: {topic_action_feedback} ... &quot;)</span>
+		<span class="n">sub_action_feedback</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span> <span class="n">topic_action_feedback</span><span class="p">,</span> <span class="n">ActionFeedback</span><span class="p">,</span> <span class="n">cbk_action_feedback</span> <span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) OK&quot;)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) subscription: {topic_problem_instance} ... &quot;)</span>
+		<span class="n">sub_problem_instance</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span> <span class="n">topic_problem_instance</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">cbk_problem_instance</span> <span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) OK&quot;)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) subscription: {topic_planner_interface} ... &quot;)</span>
+		<span class="n">sub_planner_interface</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span> <span class="n">topic_planner_interface</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">cbk_planning_interface</span> <span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) OK&quot;)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) subscription: {topic_parser_interface} ... &quot;)</span>
+		<span class="n">sub_parser_interface</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span> <span class="n">topic_parser_interface</span><span class="p">,</span> <span class="n">CompletePlan</span><span class="p">,</span> <span class="n">cbk_parsing_interface</span> <span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">rospy</span><span class="o">.</span><span class="n">Duration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>
+		<span class="c1">#rospy.loginfo(f&quot;({NODE_NAME}) OK&quot;)</span>
+		
+		<span class="c1">#rospy.loginfo(f&quot;{NODE_NAME} ready&quot;)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+		
+	<span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="s2">&quot;ROS Exception raised!&quot;</span><span class="p">)</span>
+		<span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;exception text: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

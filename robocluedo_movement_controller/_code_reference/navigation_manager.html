@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODE navigation_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PKG DOCS – robocluedo_movement_msgs" href="../../robocluedo_movement_controller_msgs/index.html" />
+    <link rel="prev" title="NODE move_base_nav.py" href="move-base-nav.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/mapping.html">HOW TO perform localization with AMCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NODE navigation_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
+      <li>NODE navigation_manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_movement_controller/_code_reference/navigation_manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="node-navigation-manager">
+<span id="id1"></span><h1>NODE navigation_manager<a class="headerlink" href="#node-navigation-manager" title="Permalink to this heading"></a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>see also the user documentation concerning the navigation manager node. In particular, check HOW TO update the navigation manager node.</p>
+</div>
+<p>interface with the navigation system. </p>
+<p>the project could have may navigation algorihms implemented, in order to make the robot behaviour more adaptable to the current situation. hence, the task of the navigation mannager is to provide an abstraction, hiding the detals of many algorithms and allowing the program to choose one of the algorithms at runtine.</p>
+<p>The node currently implements two controllers so far: ID=0 <a class="reference internal" href="#classnav__bug__m"><span class="std std-ref">nav_bug_m</span></a>, and ID=1 <a class="reference internal" href="#classnav__move__base"><span class="std std-ref">nav_move_base</span></a></p>
+<p><dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v2.0</p>
+</dd>
+</dl>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this implementation supports the developer mode: waitkey, print develop. </p>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NODE_NAME">
+<span class="target" id="navigation__manager_8cpp_1a8cc8d559acdd2f74085b20977182d5b7"></span><span class="sig-name descname"><span class="n"><span class="pre">NODE_NAME</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LOGSQUARE">
+<span class="target" id="navigation__manager_8cpp_1a36b268389a5b36ab752d1e59f1fa63f0"></span><span class="sig-name descname"><span class="n"><span class="pre">LOGSQUARE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">str</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OUTLABEL">
+<span class="target" id="navigation__manager_8cpp_1a83c0c69e3e513938dbd4e22b0dda7643"></span><span class="sig-name descname"><span class="n"><span class="pre">OUTLABEL</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TLOG">
+<span class="target" id="navigation__manager_8cpp_1a4c242fea9a3b706e637163f8b0eed95c"></span><span class="sig-name descname"><span class="n"><span class="pre">TLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TWARN">
+<span class="target" id="navigation__manager_8cpp_1a723a84b8e4828b3ba1ad2ccf3e787643"></span><span class="sig-name descname"><span class="n"><span class="pre">TWARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TERR">
+<span class="target" id="navigation__manager_8cpp_1a59b71c836719259a2e9b1428ec35504c"></span><span class="sig-name descname"><span class="n"><span class="pre">TERR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEVELOP_MODE">
+<span class="target" id="navigation__manager_8cpp_1a3859eaa82e76e40a9907667453999b23"></span><span class="sig-name descname"><span class="n"><span class="pre">DEVELOP_MODE</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEVELOP_PRINT">
+<span class="target" id="navigation__manager_8cpp_1a52a9e1f86b019351f7d764202d2447ea"></span><span class="sig-name descname"><span class="n"><span class="pre">DEVELOP_PRINT</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WTLOG">
+<span class="target" id="navigation__manager_8cpp_1a0c33673244c02e46d7678f7fdd4f80d1"></span><span class="sig-name descname"><span class="n"><span class="pre">WTLOG</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WTWARN">
+<span class="target" id="navigation__manager_8cpp_1a5fcf8eaaa64fe053728bd760a95eabe2"></span><span class="sig-name descname"><span class="n"><span class="pre">WTWARN</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WTERR">
+<span class="target" id="navigation__manager_8cpp_1ab54fe75f2d341266c97d92509779e2f7"></span><span class="sig-name descname"><span class="n"><span class="pre">WTERR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">msg</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.DEVELOP_WAIKEY">
+<span class="target" id="navigation__manager_8cpp_1abb2b72fad0257deea41c7b82c71cb18a"></span><span class="sig-name descname"><span class="n"><span class="pre">DEVELOP_WAIKEY</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WAITKEY">
+<span class="target" id="navigation__manager_8cpp_1a8a9bdfb2d1bf4dd388f35c1bfa853892"></span><span class="sig-name descname"><span class="n"><span class="pre">WAITKEY</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SS">
+<span class="target" id="navigation__manager_8cpp_1a4dd99440d96934e4ab5a21200dc39b8d"></span><span class="sig-name descname"><span class="n"><span class="pre">SS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">chr</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SSS">
+<span class="target" id="navigation__manager_8cpp_1a7e2447c604e41f223a9ea0a6338d6f33"></span><span class="sig-name descname"><span class="n"><span class="pre">SSS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">el</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_SET_ALGORITHM">
+<span class="target" id="navigation__manager_8cpp_1a5160cb2daa1573cc08cd9c0a0400b484"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_SET_ALGORITHM</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_NAVIGATION">
+<span class="target" id="navigation__manager_8cpp_1a86668a6e04783029932ae15d276f52a3"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_NAVIGATION</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_BUGM_SWITCH">
+<span class="target" id="navigation__manager_8cpp_1aab8a8beffaf8d2b1abc6a60acedce3aa"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_BUGM_SWITCH</span></span></span><a class="headerlink" href="#c.SERVICE_BUGM_SWITCH" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_BUGM_SIGNAL">
+<span class="target" id="navigation__manager_8cpp_1aecd8ace0b284efe7853c8bf94f7f2ac4"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_BUGM_SIGNAL</span></span></span><a class="headerlink" href="#c.SERVICE_BUGM_SIGNAL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_MOVE_BASE_SWITCH">
+<span class="target" id="navigation__manager_8cpp_1ae7eca9cdfd7afe60733f966c0661f294"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_MOVE_BASE_SWITCH</span></span></span><a class="headerlink" href="#c.SERVICE_MOVE_BASE_SWITCH" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERVICE_MOVE_BASE_SIGNAL">
+<span class="target" id="navigation__manager_8cpp_1af6b343ec1229375a73bd1eca0475499c"></span><span class="sig-name descname"><span class="n"><span class="pre">SERVICE_MOVE_BASE_SIGNAL</span></span></span><a class="headerlink" href="#c.SERVICE_MOVE_BASE_SIGNAL" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv48shut_msgi">
+<span id="_CPPv38shut_msgi"></span><span id="_CPPv28shut_msgi"></span><span id="shut_msg__i"></span><span class="target" id="navigation__manager_8cpp_1ac55116ccd10a2e3bfb144277f960d79e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shut_msg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sig</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>shudown message </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiA_Pc">
+<span id="_CPPv34mainiA_Pc"></span><span id="_CPPv24mainiA_Pc"></span><span id="main__i.cPA"></span><span class="target" id="navigation__manager_8cpp_1a0ddf1224851353fc92bfbff6f499fa97"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>ROS node main - Navigation Manager. </p>
+<p>Here are instanciated and registered the controllers used for the navigation. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv421navigation_controller">
+<span id="_CPPv321navigation_controller"></span><span id="_CPPv221navigation_controller"></span><span id="navigation_controller"></span><span class="target" id="classnavigation__controller"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">navigation_controller</span></span></span><a class="headerlink" href="#_CPPv421navigation_controller" title="Permalink to this definition"></a><br /></dt>
+<dd><p>virtual interface for a navigation implementation </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this class is also a template for a motion planning algorithm </p>
+</div>
+<p>Subclassed by <a class="reference internal" href="#classnav__bug__m"><span class="std std-ref">nav_bug_m</span></a>, <a class="reference internal" href="#classnav__move__base"><span class="std std-ref">nav_move_base</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller21navigation_controllerENSt6stringEi">
+<span id="_CPPv3N21navigation_controller21navigation_controllerENSt6stringEi"></span><span id="_CPPv2N21navigation_controller21navigation_controllerENSt6stringEi"></span><span id="navigation_controller::navigation_controller__ss.i"></span><span class="target" id="classnavigation__controller_1afa2cb117d7b6c515524a76037552ba15"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">navigation_controller</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">code</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21navigation_controller21navigation_controllerENSt6stringEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controllerD0Ev">
+<span id="_CPPv3N21navigation_controllerD0Ev"></span><span id="_CPPv2N21navigation_controllerD0Ev"></span><span id="navigation_controller::~navigation_controller"></span><span class="target" id="classnavigation__controller_1a86e193708b91d930b20f2341a6a49cbd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~navigation_controller</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21navigation_controllerD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller6enableEv">
+<span id="_CPPv3N21navigation_controller6enableEv"></span><span id="_CPPv2N21navigation_controller6enableEv"></span><span id="navigation_controller::enable"></span><span class="target" id="classnavigation__controller_1aa1ea5e031bbfbbb3982c53dfcec95050"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21navigation_controller6enableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>(virtual) turn on the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
+<span id="_CPPv3N21navigation_controller18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N21navigation_controller18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="navigation_controller::perform_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classnavigation__controller_1a5071b1592ee63758454b16e6f15452e6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perform_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21navigation_controller18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>(virtual) use the algorithm for the 2D navigation </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller7disableEv">
+<span id="_CPPv3N21navigation_controller7disableEv"></span><span id="_CPPv2N21navigation_controller7disableEv"></span><span id="navigation_controller::disable"></span><span class="target" id="classnavigation__controller_1a04cc1e88a2e1b7be5d3798451054d5f1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">disable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21navigation_controller7disableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>(virtual) turn off the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller10is_enabledEv">
+<span id="_CPPv3N21navigation_controller10is_enabledEv"></span><span id="_CPPv2N21navigation_controller10is_enabledEv"></span><span id="navigation_controller::is_enabled"></span><span class="target" id="classnavigation__controller_1a2a92e3cfb66a690adcefa0cbdfa117f2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_enabled</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21navigation_controller10is_enabledEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>check wether the algorithm is enabled or not </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller8nav_codeE">
+<span id="_CPPv3N21navigation_controller8nav_codeE"></span><span id="_CPPv2N21navigation_controller8nav_codeE"></span><span id="navigation_controller::nav_code__i"></span><span class="target" id="classnavigation__controller_1a88fcab5cae4bf6e40f450425346d3c55"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_code</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#_CPPv4N21navigation_controller8nav_codeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>navigation identfier </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller8nav_nameE">
+<span id="_CPPv3N21navigation_controller8nav_nameE"></span><span id="_CPPv2N21navigation_controller8nav_nameE"></span><span id="navigation_controller::nav_name__ss"></span><span class="target" id="classnavigation__controller_1a6a65eb782c690ed66b6d1a4ab838262d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_name</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><a class="headerlink" href="#_CPPv4N21navigation_controller8nav_nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>navigation algorithm name </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-attributes">Protected Attributes</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller2nhE">
+<span id="_CPPv3N21navigation_controller2nhE"></span><span id="_CPPv2N21navigation_controller2nhE"></span><span id="navigation_controller::nh__ros::NodeHandle"></span><span class="target" id="classnavigation__controller_1ad0a334231255d14a61a8b59866b0213c"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N21navigation_controller2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS Node handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21navigation_controller7enabledE">
+<span id="_CPPv3N21navigation_controller7enabledE"></span><span id="_CPPv2N21navigation_controller7enabledE"></span><span id="navigation_controller::enabled__b"></span><span class="target" id="classnavigation__controller_1aff646a04914e37974d31adc17c5d539a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enabled</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N21navigation_controller7enabledE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>activity state of the algorithm </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv49nav_bug_m">
+<span id="_CPPv39nav_bug_m"></span><span id="_CPPv29nav_bug_m"></span><span id="nav_bug_m"></span><span class="target" id="classnav__bug__m"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_bug_m</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><a class="headerlink" href="#_CPPv49nav_bug_m" title="Permalink to this definition"></a><br /></dt>
+<dd><p>nav service for the low level bug_m algorithm </p>
+<p>This controller uses the bug_m implementation to navigate to the target and achieve whatever final orientation pose.</p>
+<p>This low level is a bit limited in many aspects:<ul class="simple">
+<li><p>it cannot check if the target is reachable</p></li>
+<li><p>the algorithm doesn’t work in complex environments with obstacles</p></li>
+</ul>
+</p>
+<p>The implementation turns on the channels at the first enable call, and leaves them active for the entire lifecycle of the navigation manager. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m9nav_bug_mENSt6stringEi">
+<span id="_CPPv3N9nav_bug_m9nav_bug_mENSt6stringEi"></span><span id="_CPPv2N9nav_bug_m9nav_bug_mENSt6stringEi"></span><span id="nav_bug_m::nav_bug_m__ss.i"></span><span class="target" id="classnav__bug__m_1af118bdcefa91234f5fbf2fb637a39d74"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_bug_m</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">code</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m9nav_bug_mENSt6stringEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_mD0Ev">
+<span id="_CPPv3N9nav_bug_mD0Ev"></span><span id="_CPPv2N9nav_bug_mD0Ev"></span><span id="nav_bug_m::~nav_bug_m"></span><span class="target" id="classnav__bug__m_1a4056816b6cb5727db24ef0a19aca8ba2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~nav_bug_m</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_mD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m6enableEv">
+<span id="_CPPv3N9nav_bug_m6enableEv"></span><span id="_CPPv2N9nav_bug_m6enableEv"></span><span id="nav_bug_m::enable"></span><span class="target" id="classnav__bug__m_1a72fcaab42b312f96c702421356e9b061"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m6enableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>turn on the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
+<span id="_CPPv3N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="nav_bug_m::perform_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classnav__bug__m_1a9d40a065e7d0271add1afa94fee6fade"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perform_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>use the algorithm for the 2D navigation </p>
+<p>The controller first sends the target to the low level using the parameter server as required by bug_m; then , it waits for the ending signal from the low level.</p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>The waiting is endless if a way to reach the final target doesn’t exist. There’s not a timeout. </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the objective </p></li>
+<li><p><strong>response</strong> – the result of the navigation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>false if the navigation fails or the node is not enabled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m7disableEv">
+<span id="_CPPv3N9nav_bug_m7disableEv"></span><span id="_CPPv2N9nav_bug_m7disableEv"></span><span id="nav_bug_m::disable"></span><span class="target" id="classnav__bug__m_1a6e56c0acf4d26ebaf231c45287368ae2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">disable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m7disableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>turn off the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE">
+<span id="_CPPv3N9nav_bug_m14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="_CPPv2N9nav_bug_m14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="nav_bug_m::cbk_bug_signal__std_srvs::Empty::RequestR.std_srvs::Empty::ResponseR"></span><span class="target" id="classnav__bug__m_1a004b3e02ebdb1f0ae25ad3dfc128a6b7"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_bug_signal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>service for the signal from the bug_m node </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE">
+<span id="_CPPv3N9nav_bug_m20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE"></span><span id="_CPPv2N9nav_bug_m20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE"></span><span id="nav_bug_m::set_parameter_server__robocluedo_movement_controller_msgs::NavigationService::RequestR"></span><span class="target" id="classnav__bug__m_1aac2f5c6f372bf0a666c99953647c017f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_parameter_server</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set the target into the parameter server </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m15wait_for_signalEv">
+<span id="_CPPv3N9nav_bug_m15wait_for_signalEv"></span><span id="_CPPv2N9nav_bug_m15wait_for_signalEv"></span><span id="nav_bug_m::wait_for_signal"></span><span class="target" id="classnav__bug__m_1a9d8db178f66e36be8e6011693fe13aee"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">wait_for_signal</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9nav_bug_m15wait_for_signalEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>wait for the signal </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m16channels_enabledE">
+<span id="_CPPv3N9nav_bug_m16channels_enabledE"></span><span id="_CPPv2N9nav_bug_m16channels_enabledE"></span><span id="nav_bug_m::channels_enabled__b"></span><span class="target" id="classnav__bug__m_1a7795041a3a024bff8c26def1c2f25a11"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channels_enabled</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N9nav_bug_m16channels_enabledE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>channels opened? </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m13cl_bug_switchE">
+<span id="_CPPv3N9nav_bug_m13cl_bug_switchE"></span><span id="_CPPv2N9nav_bug_m13cl_bug_switchE"></span><span id="nav_bug_m::cl_bug_switch__ros::ServiceClient"></span><span class="target" id="classnav__bug__m_1ad8c60cec72a0a4fdb5cf208f6b5db806"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_bug_switch</span></span></span><a class="headerlink" href="#_CPPv4N9nav_bug_m13cl_bug_switchE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client /bug_switch : std_srvs/SetBool </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m13cl_bug_signalE">
+<span id="_CPPv3N9nav_bug_m13cl_bug_signalE"></span><span id="_CPPv2N9nav_bug_m13cl_bug_signalE"></span><span id="nav_bug_m::cl_bug_signal__ros::ServiceServer"></span><span class="target" id="classnav__bug__m_1a0d3b581699ccefbd023cb979ade84127"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_bug_signal</span></span></span><a class="headerlink" href="#_CPPv4N9nav_bug_m13cl_bug_signalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>service /bug_m_signal : std_srvs/Empty </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N9nav_bug_m6signalE">
+<span id="_CPPv3N9nav_bug_m6signalE"></span><span id="_CPPv2N9nav_bug_m6signalE"></span><span id="nav_bug_m::signal__b"></span><span class="target" id="classnav__bug__m_1ac507bb1ff3c8a3f3f7e1e1763a1fb06b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">signal</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N9nav_bug_m6signalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>received a signal from the node </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv413nav_move_base">
+<span id="_CPPv313nav_move_base"></span><span id="_CPPv213nav_move_base"></span><span id="nav_move_base"></span><span class="target" id="classnav__move__base"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_move_base</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><a class="headerlink" href="#_CPPv413nav_move_base" title="Permalink to this definition"></a><br /></dt>
+<dd><p>move_base navigation </p>
+<p>this class implements the workflow with the navigation algorithm implemented in the node ‘move_base_nav.py’. The way it works is quite similar to the one of ‘bug_m’ except for the different navigation system.</p>
+<p>The implementation turns on the channels at the first enable call, and leaves them active for the entire lifecycle of the navigation manager.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this kind of navigation is particularly indicated for indoor environments. </p>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base13nav_move_baseENSt6stringEi">
+<span id="_CPPv3N13nav_move_base13nav_move_baseENSt6stringEi"></span><span id="_CPPv2N13nav_move_base13nav_move_baseENSt6stringEi"></span><span id="nav_move_base::nav_move_base__ss.i"></span><span class="target" id="classnav__move__base_1a2421bd06d30a66b8061fc8dca60d9a5c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nav_move_base</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">code</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base13nav_move_baseENSt6stringEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_baseD0Ev">
+<span id="_CPPv3N13nav_move_baseD0Ev"></span><span id="_CPPv2N13nav_move_baseD0Ev"></span><span id="nav_move_base::~nav_move_base"></span><span class="target" id="classnav__move__base_1a4477133fa75efafe3944cbf61e2760c1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~nav_move_base</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_baseD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base6enableEv">
+<span id="_CPPv3N13nav_move_base6enableEv"></span><span id="_CPPv2N13nav_move_base6enableEv"></span><span id="nav_move_base::enable"></span><span class="target" id="classnav__move__base_1a9bd4457ef31977269081d1dc79c78e67"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base6enableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>turn on the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
+<span id="_CPPv3N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="nav_move_base::perform_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classnav__move__base_1af6a2463054b7b7452e4eb95c4a211c46"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">perform_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base18perform_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>use the algorithm for the 2D navigation </p>
+<p>The controller first sends the target to the low level using the parameter server as required by move_base_nav; then , it waits for the ending signal from the low level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the objective </p></li>
+<li><p><strong>response</strong> – the result of the navigation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>false if the navigation fails or the node is not enabled </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base7disableEv">
+<span id="_CPPv3N13nav_move_base7disableEv"></span><span id="_CPPv2N13nav_move_base7disableEv"></span><span id="nav_move_base::disable"></span><span class="target" id="classnav__move__base_1ac5ae3e32abd2ea2453787df7ae908fb0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">disable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base7disableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>turn off the algorithm </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE">
+<span id="_CPPv3N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="_CPPv2N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE"></span><span id="nav_move_base::cbk_bug_signal__std_srvs::Empty::RequestR.std_srvs::Empty::ResponseR"></span><span class="target" id="classnav__move__base_1a9258664c43806e343e08c8569f464fe0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_bug_signal</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">std_srvs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Empty</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base14cbk_bug_signalERN8std_srvs5Empty7RequestERN8std_srvs5Empty8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>service for the signal from the move_base_nav node </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE">
+<span id="_CPPv3N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE"></span><span id="_CPPv2N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE"></span><span id="nav_move_base::set_parameter_server__robocluedo_movement_controller_msgs::NavigationService::RequestR"></span><span class="target" id="classnav__move__base_1a6fe2e1e1c556353993ac4a5181f0d788"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_parameter_server</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base20set_parameter_serverERN35robocluedo_movement_controller_msgs17NavigationService7RequestE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set the target into the parameter server </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base15wait_for_signalEv">
+<span id="_CPPv3N13nav_move_base15wait_for_signalEv"></span><span id="_CPPv2N13nav_move_base15wait_for_signalEv"></span><span id="nav_move_base::wait_for_signal"></span><span class="target" id="classnav__move__base_1a6d8f8ce74e3a7c2dc5a418f58d6b2b92"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">wait_for_signal</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13nav_move_base15wait_for_signalEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>wait for the signal </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base16channels_enabledE">
+<span id="_CPPv3N13nav_move_base16channels_enabledE"></span><span id="_CPPv2N13nav_move_base16channels_enabledE"></span><span id="nav_move_base::channels_enabled__b"></span><span class="target" id="classnav__move__base_1ac8e439f3894397818a2b48747f0826cf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channels_enabled</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N13nav_move_base16channels_enabledE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>channels opened? </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base19cl_move_base_switchE">
+<span id="_CPPv3N13nav_move_base19cl_move_base_switchE"></span><span id="_CPPv2N13nav_move_base19cl_move_base_switchE"></span><span id="nav_move_base::cl_move_base_switch__ros::ServiceClient"></span><span class="target" id="classnav__move__base_1a44492fecfd32da344d5d7625181ea6e2"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cl_move_base_switch</span></span></span><a class="headerlink" href="#_CPPv4N13nav_move_base19cl_move_base_switchE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>client /nav_stack_switch : std_srvs/SetBool </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base20srv_move_base_signalE">
+<span id="_CPPv3N13nav_move_base20srv_move_base_signalE"></span><span id="_CPPv2N13nav_move_base20srv_move_base_signalE"></span><span id="nav_move_base::srv_move_base_signal__ros::ServiceServer"></span><span class="target" id="classnav__move__base_1a5ebf89f8c2b42ce5415cbc9cfb646f62"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_move_base_signal</span></span></span><a class="headerlink" href="#_CPPv4N13nav_move_base20srv_move_base_signalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>service /nav_stack_signal : std_srvs/Empty </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13nav_move_base6signalE">
+<span id="_CPPv3N13nav_move_base6signalE"></span><span id="_CPPv2N13nav_move_base6signalE"></span><span id="nav_move_base::signal__b"></span><span class="target" id="classnav__move__base_1a6359fd818aef356e4e3c8a5547ac5b74"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">signal</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N13nav_move_base6signalE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>received a signal from the node </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv424class_navigation_manager">
+<span id="_CPPv324class_navigation_manager"></span><span id="_CPPv224class_navigation_manager"></span><span id="class_navigation_manager"></span><span class="target" id="classclass__navigation__manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">class_navigation_manager</span></span></span><a class="headerlink" href="#_CPPv424class_navigation_manager" title="Permalink to this definition"></a><br /></dt>
+<dd><p>implementation of the node as class </p>
+<p>The navigation manager uses the <em>controllers</em>, i.e. modules (objects) using the low-level implementation of the navigation in order to reach the objective provided. In particular, here are some characteristics of this particular system:</p>
+<p><ul class="simple">
+<li><p>the navigation manager is a <em>list of controllers</em> with one controller active set apart from the array</p></li>
+<li><p>each controller can be enabled or disabled</p></li>
+<li><p>all the services and topics needed to make the low level work are hidden in the controller, whereas the navigation manager sees alway the same interface</p></li>
+<li><p>a controller can be replaced <em>at runtime</em> depending on the situation, if needed, which means that the robot can use many combinations of the low level behaviours in order to carry out the objective</p></li>
+</ul>
+</p>
+<p>see the documentationof the package for further informations. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager24class_navigation_managerEv">
+<span id="_CPPv3N24class_navigation_manager24class_navigation_managerEv"></span><span id="_CPPv2N24class_navigation_manager24class_navigation_managerEv"></span><span id="class_navigation_manager::class_navigation_manager"></span><span class="target" id="classclass__navigation__manager_1ae271731df0d61f4553a403b62567e7a6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">class_navigation_manager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager24class_navigation_managerEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+<p>The cnode class constructor opens only two services: the first one used for selecting the algorithm among the ones registered; and the second one, for performing the navigation in a synchronous way. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_managerD0Ev">
+<span id="_CPPv3N24class_navigation_managerD0Ev"></span><span id="_CPPv2N24class_navigation_managerD0Ev"></span><span id="class_navigation_manager::~class_navigation_manager"></span><span class="target" id="classclass__navigation__manager_1a8d4bcb8a98dae6df481e4daa1e8a3f63"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~class_navigation_manager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_managerD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager18register_algorithmEP21navigation_controller">
+<span id="_CPPv3N24class_navigation_manager18register_algorithmEP21navigation_controller"></span><span id="_CPPv2N24class_navigation_manager18register_algorithmEP21navigation_controller"></span><span id="class_navigation_manager::register_algorithm__navigation_controllerP"></span><span class="target" id="classclass__navigation__manager_1a8908d9ea148da8215a0cdc189f2546e9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">register_algorithm</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">algo</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager18register_algorithmEP21navigation_controller" title="Permalink to this definition"></a><br /></dt>
+<dd><p>register one navigation algorithm</p>
+<p>The function first of all disables the algorithm provided, then it allocates its address inside an array of controllers.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>check for the null value as argument! Otherwise the function will try to call disable() on a null, causing a segmentation fault error. </p>
+</dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the function will disable the algorithm before registering it</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>algo</strong> – (navigation controller &amp;) the implementation of one algorithm</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the index associated with the algorithm</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager17switch_controllerEi">
+<span id="_CPPv3N24class_navigation_manager17switch_controllerEi"></span><span id="_CPPv2N24class_navigation_manager17switch_controllerEi"></span><span id="class_navigation_manager::switch_controller__i"></span><span class="target" id="classclass__navigation__manager_1a0e3da10f29486044c2c9e723d1784a69"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">switch_controller</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">controller_code</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager17switch_controllerEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>activate one controller</p>
+<p>the function disables the currently enabled controller, and replaces that with the selected one, only if feasible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>controller_code</strong> – the index of the controller</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the operation succeeded or not </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager10set_statusEb">
+<span id="_CPPv3N24class_navigation_manager10set_statusEb"></span><span id="_CPPv2N24class_navigation_manager10set_statusEb"></span><span id="class_navigation_manager::set_status__b"></span><span class="target" id="classclass__navigation__manager_1ac0a8dd3af206c82fa5fcd45bec8b84b4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_status</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">new_status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager10set_statusEb" title="Permalink to this definition"></a><br /></dt>
+<dd><p>switch the status of the current controller </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager10is_enabledEv">
+<span id="_CPPv3N24class_navigation_manager10is_enabledEv"></span><span id="_CPPv2N24class_navigation_manager10is_enabledEv"></span><span id="class_navigation_manager::is_enabled"></span><span class="target" id="classclass__navigation__manager_1ab611833b473ff61e0c9174b7dec8e453"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_enabled</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager10is_enabledEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>check wether the currently acivated algorithm is enabled or not </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE">
+<span id="_CPPv3N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE"></span><span id="_CPPv2N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE"></span><span id="class_navigation_manager::cbk_set_algorithm__robocluedo_movement_controller_msgs::Algorithm::RequestR.robocluedo_movement_controller_msgs::Algorithm::ResponseR"></span><span class="target" id="classclass__navigation__manager_1a67db56090eef62327094b8e8e04cd987"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_set_algorithm</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Algorithm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Algorithm</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager17cbk_set_algorithmERN35robocluedo_movement_controller_msgs9Algorithm7RequestERN35robocluedo_movement_controller_msgs9Algorithm8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set one algorithm among the available ones and activate it </p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>you cannot call the navigation until you haven’t selected an algorithm with this service! </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the algorithm to activate (see the details of the message) </p></li>
+<li><p><strong>response</strong> – the result of the operation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE">
+<span id="_CPPv3N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="_CPPv2N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE"></span><span id="class_navigation_manager::cbk_navigation__robocluedo_movement_controller_msgs::NavigationService::RequestR.robocluedo_movement_controller_msgs::NavigationService::ResponseR"></span><span class="target" id="classclass__navigation__manager_1a257df23d80f741f8681bc27cfb63b523"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_navigation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NavigationService</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N24class_navigation_manager14cbk_navigationERN35robocluedo_movement_controller_msgs17NavigationService7RequestERN35robocluedo_movement_controller_msgs17NavigationService8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>use the currently running algorithm for the 2D navigation (blocking) </p>
+<p>the method just tries to pass the calling to the currently active controller, if any.</p>
+<p><dl class="simple">
+<dt><strong>Attention</strong></dt><dd><p>there must be a controller selected before calling this function! See the algorithm selection service. </p>
+</dd>
+</dl>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – the navigation objective </p></li>
+<li><p><strong>response</strong> – the result of the operation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager2nhE">
+<span id="_CPPv3N24class_navigation_manager2nhE"></span><span id="_CPPv2N24class_navigation_manager2nhE"></span><span id="class_navigation_manager::nh__ros::NodeHandle"></span><span class="target" id="classclass__navigation__manager_1ad642f013976d12920f9df5065ff725d2"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N24class_navigation_manager2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS Node handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager11controllersE">
+<span id="_CPPv3N24class_navigation_manager11controllersE"></span><span id="_CPPv2N24class_navigation_manager11controllersE"></span><span id="class_navigation_manager::controllers__std::vector:navigation_controllerP:"></span><span class="target" id="classclass__navigation__manager_1a3c4a636d8b5209456d6c103062b04b8a"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">controllers</span></span></span><a class="headerlink" href="#_CPPv4N24class_navigation_manager11controllersE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>list of navigation algorithms </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager18running_controllerE">
+<span id="_CPPv3N24class_navigation_manager18running_controllerE"></span><span id="_CPPv2N24class_navigation_manager18running_controllerE"></span><span id="class_navigation_manager::running_controller__navigation_controllerP"></span><span class="target" id="classclass__navigation__manager_1ad6b0ba4f9e7c07ccb7930fc7a98e6856"></span><a class="reference internal" href="#_CPPv421navigation_controller" title="navigation_controller"><span class="n"><span class="pre">navigation_controller</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">running_controller</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N24class_navigation_manager18running_controllerE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the currently active controller, if any </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager18last_error_explainE">
+<span id="_CPPv3N24class_navigation_manager18last_error_explainE"></span><span id="_CPPv2N24class_navigation_manager18last_error_explainE"></span><span id="class_navigation_manager::last_error_explain__ss"></span><span class="target" id="classclass__navigation__manager_1a661d9a990505367816b256c79643c79d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">last_error_explain</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><a class="headerlink" href="#_CPPv4N24class_navigation_manager18last_error_explainE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>explaination of the last error </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager17srv_set_algorithmE">
+<span id="_CPPv3N24class_navigation_manager17srv_set_algorithmE"></span><span id="_CPPv2N24class_navigation_manager17srv_set_algorithmE"></span><span id="class_navigation_manager::srv_set_algorithm__ros::ServiceServer"></span><span class="target" id="classclass__navigation__manager_1ab03c573f772dfc0f3582938d97ed4bb8"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_set_algorithm</span></span></span><a class="headerlink" href="#_CPPv4N24class_navigation_manager17srv_set_algorithmE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>algorithm selection service handle </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24class_navigation_manager14srv_navigationE">
+<span id="_CPPv3N24class_navigation_manager14srv_navigationE"></span><span id="_CPPv2N24class_navigation_manager14srv_navigationE"></span><span id="class_navigation_manager::srv_navigation__ros::ServiceServer"></span><span class="target" id="classclass__navigation__manager_1a3ef41bef2f65679a63a636f9c3359d80"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_navigation</span></span></span><a class="headerlink" href="#_CPPv4N24class_navigation_manager14srv_navigationE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>navigation service handle </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="move-base-nav.html" class="btn btn-neutral float-left" title="NODE move_base_nav.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../robocluedo_movement_controller_msgs/index.html" class="btn btn-neutral float-right" title="PKG DOCS – robocluedo_movement_msgs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

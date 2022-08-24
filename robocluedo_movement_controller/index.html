@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PKG DOCS – robocluedo_movement_controller &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HOW TO – navigation stack CRASH COURSE" href="_docs/how-to-nav-stack.html" />
+    <link rel="prev" title="PKG DOCS – robocluedo_rosplan_msgs" href="../robocluedo_rosplan_msgs/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PKG DOCS – robocluedo_movement_controller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/mapping.html">HOW TO perform localization with AMCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/moveit-snippets.html">HOW TO – moveit snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_docs/update-navigation-manager.html">HOW TO update the navigation manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/bug-m.html">UML – bug_m PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/go-to-point.html">UML – go to point PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/head-orient.html">UML – head orientation PY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/move-base-nav.html">UML – move_base_nav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/navigation_manager.html">NODE navigation_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>PKG DOCS – robocluedo_movement_controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/robocluedo_movement_controller/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="pkg-docs-robocluedo-movement-controller">
+<span id="pkg-robocluedo-movement-controller"></span><h1>PKG DOCS – robocluedo_movement_controller<a class="headerlink" href="#pkg-docs-robocluedo-movement-controller" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this version of the movement controller has a lot of differences with the previous version:</p>
+<ul class="simple">
+<li><p>integration with MoveBase and the navigation stack</p></li>
+<li><p>improved launch files for running the project</p></li>
+</ul>
+</div>
+<p>this package enables the robot to move the manipulator and to navigate into the environment, usign different methods.</p>
+<p>here’s a brief list of the nodes inside the package:</p>
+<ul>
+<li><p><strong>bug_m.py</strong> (composite behaviour) : the node performs a very simplified navigation point to point combining the two elementary behaviours <em>go_to_point</em> and <em>head_orientation</em>.</p>
+<blockquote>
+<div><p>The node also implements strategie to gain manouver space before pointing the head in the direction of the target.</p>
+</div></blockquote>
+</li>
+<li><p><strong>nav_move_base.py</strong> (composite behaviour) : another node performing the navigation point to point, using  <em>move_base</em> and the navigation stack with the elementary behaviour <em>head_orientation</em> for the final orientation.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(RCL#3) the node is compatible with RoboCLuedo “hunter”</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>go_to_point_service_m.py</strong> (elementary behaviour) : the node aligns the head in the direction of the target and moves along a straight line to the objective position</p>
+<blockquote>
+<div><p>the node is used to implement a very simplified navigation algorithm with no obstacles between the current position and the target one. It is switchable.</p>
+</div></blockquote>
+</li>
+<li><p><strong>head_orientation.py</strong> (elementary behaviour) : orient the head with a given angle wrt the world frame</p>
+<blockquote>
+<div><p>the robot keeps turning around its vertical axis until the orientation isn’t equal to the target one.</p>
+</div></blockquote>
+</li>
+<li><p><strong>navigation_manager.cpp</strong> : a high-level navigation service based on the concept of the controllers</p>
+<blockquote>
+<div><p>the node has two main objectives:</p>
+<ul class="simple">
+<li><p>to provide a handy <em>abstraction</em> between the real implementation of tbe navigation system …</p></li>
+<li><p>… and the service which is simply interested in reaching a (x,y,th) target</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(<em>RCL#3</em>) the project implements two controllers: ID=0 for nav_bug_m, and ID=1 for nav_move_base</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>manipulation_controller.cpp</strong> : a (too much) simple implementation of a moveit-based manipulation controller capable of moving te arm to a given <em>preset pose</em>.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(RCL#3) the node is compatible with RoboCLuedo “hunter”</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_docs/how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/mapping.html">HOW TO perform localization with AMCL</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/moveit-snippets.html">HOW TO – moveit snippets</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/odometry-and-navigation.html">Messages – Navigation and Odometry</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_docs/update-navigation-manager.html">HOW TO update the navigation manager</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">UML diagrams</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_uml/bug-m.html">UML – bug_m PY node</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_uml/bug-m.html#schema">SCHEMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/bug-m.html#how-to-use-the-node-basic-way">HOW TO use the node – basic way</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/bug-m.html#how-to-use-the-node-user-interface">HOW TO use the node – user interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_uml/go-to-point.html">UML – go to point PY node</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_uml/go-to-point.html#schema">SCHEMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/go-to-point.html#how-it-works">HOW it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/go-to-point.html#how-to-use-the-node-basic-way">HOW TO use the node – basic way</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_uml/head-orient.html">UML – head orientation PY</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_uml/head-orient.html#schema">SCHEMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_uml/head-orient.html#how-to-use-the-node-basic-way">HOW TO use the node – basic way</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_uml/move-base-nav.html">UML – move_base_nav</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_uml/move-base-nav.html#schema">SCHEMA</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">code reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/navigation_manager.html">NODE navigation_manager</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../robocluedo_rosplan_msgs/index.html" class="btn btn-neutral float-left" title="PKG DOCS – robocluedo_rosplan_msgs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="_docs/how-to-nav-stack.html" class="btn btn-neutral float-right" title="HOW TO – navigation stack CRASH COURSE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOW TO – navigation stack CRASH COURSE &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HOW TO perform localization with AMCL" href="mapping.html" />
+    <link rel="prev" title="PKG DOCS – robocluedo_movement_controller" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HOW TO – navigation stack CRASH COURSE</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mapping.html">HOW TO perform localization with AMCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moveit-snippets.html">HOW TO – moveit snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update-navigation-manager.html">HOW TO update the navigation manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/navigation_manager.html">NODE navigation_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
+      <li>HOW TO – navigation stack CRASH COURSE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_movement_controller/_docs/how-to-nav-stack.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="how-to-navigation-stack-crash-course">
+<h1>HOW TO – navigation stack CRASH COURSE<a class="headerlink" href="#how-to-navigation-stack-crash-course" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">concents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO – navigation stack CRASH COURSE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-navigation-stack">install the Navigation Stack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#slam-gmapping">Slam - GMapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#movebase">MoveBase</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#a-quick-example-with-gazebo-and-rviz">A quick example with Gazebo and RViz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#names-and-types-of-the-interfaces-of-movebase">Names and Types of the Interfaces of MoveBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-action-movebase">the action movebase</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-note-about-the-action-names">A note about the action names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-base-msgs-movebasegoal">move_base_msgs/MoveBaseGoal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-base-msgs-movebasefeedback">move_base_msgs/MoveBaseFeedback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#move-base-msgs-movebaseresult">move_base_msgs/MoveBaseResult</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-interfaces">other interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-posestamped">geometry_msgs/PoseStamped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-pose">geometry_msgs/Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-quaternion">geometry_msgs/Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-msgs-point">geometry_msgs/Point</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#movebase-action-calls-in-c">MoveBase action calls in C++</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c-headers">C++ – headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-main-with-async-spinner">C++ – main with async spinner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-open-the-action-client">C++ – open the action client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-use-the-client-callback-based-approach">C++ – use the client – callback based approach</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#slam-and-gmapping-navigation-stack-structure">SLAM and GMapping – navigation stack structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hokuyo-laser-range-finder">Hokuyo laser range finder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usare-movebase-senza-ricorrere-alla-actionlib">Usare MoveBase senza ricorrere alla actionlib</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#richiesta-di-cancellazione">richiesta di cancellazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#richiesta-di-movimento-verso-un-target">richiesta di movimento verso un target</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>here are some quick informations about how to set up and use the <strong>ROS Navigation Stack</strong>.</p>
+<div class="section" id="install-the-navigation-stack">
+<h2>install the Navigation Stack<a class="headerlink" href="#install-the-navigation-stack" title="Permalink to this heading"></a></h2>
+<div class="section" id="slam-gmapping">
+<h3>Slam - GMapping<a class="headerlink" href="#slam-gmapping" title="Permalink to this heading"></a></h3>
+<p>In order to run the project, you need the two packages you can find <a class="reference external" href="https://github.com/CarmineD8/slam_gmapping.git">here</a>. SLAM and GMapping are tools for managing the movement of a robot with noisy odometry: their purpose is to correct odometry in a way that the robot can get its position as precisely as possible.</p>
+<p>Copy the packages into the workspace you prefer. <strong>use branch : <em>noetic</em></strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/CarmineD8/slam_gmapping.git -b noetic
+</pre></div>
+</div>
+<p>Also these packages are required. Please install them.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ros-noetic-openslam-gmapping
+sudo apt-get install ros-noetic-navigation
+</pre></div>
+</div>
+</div>
+<div class="section" id="movebase">
+<h3>MoveBase<a class="headerlink" href="#movebase" title="Permalink to this heading"></a></h3>
+<p>MoveBase is a motion planner: given a goal, it can retrieve a path from the actual position to the desired one, recomputing the path depending on the informations gathered by sensors in conjunction with Slam-GMapping.</p>
+<p>Simply install it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ros-noetic-move-base
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-quick-example-with-gazebo-and-rviz">
+<h2>A quick example with Gazebo and RViz<a class="headerlink" href="#a-quick-example-with-gazebo-and-rviz" title="Permalink to this heading"></a></h2>
+<p>see <a class="reference external" href="https://github.com/programmatoroSeduto/RT1_assignment_2">this project on GitHub</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/programmatoroSeduto/RT1_assignment_2.git -b main ./test_nav_stack
+</pre></div>
+</div>
+<p>in particular see <a class="reference external" href="https://github.com/programmatoroSeduto/RT1_assignment_2#how-to-set-up-the-project">how to setup the project</a></p>
+<p>and see <a class="reference external" href="https://github.com/programmatoroSeduto/RT1_assignment_2#build-the-project">how to build the project</a></p>
+</div>
+<div class="section" id="names-and-types-of-the-interfaces-of-movebase">
+<h2>Names and Types of the Interfaces of MoveBase<a class="headerlink" href="#names-and-types-of-the-interfaces-of-movebase" title="Permalink to this heading"></a></h2>
+<p><strong>services</strong>:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>/move_base/NavfnROS/make_plan
+/move_base/TrajectoryPlannerROS/set_parameters
+/move_base/clear_costmaps
+/move_base/global_costmap/inflation_layer/set_parameters
+/move_base/global_costmap/obstacle_layer/set_parameters
+/move_base/global_costmap/set_parameters
+/move_base/global_costmap/static_layer/set_parameters
+/move_base/local_costmap/inflation_layer/set_parameters
+/move_base/local_costmap/obstacle_layer/set_parameters
+/move_base/local_costmap/set_parameters
+/move_base/make_plan
+/move_base/set_parameters
+</pre></div>
+</div>
+<p><strong>topics:</strong></p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>/move_base/NavfnROS/plan
+/move_base/TrajectoryPlannerROS/cost_cloud
+/move_base/TrajectoryPlannerROS/global_plan
+/move_base/TrajectoryPlannerROS/local_plan
+/move_base/TrajectoryPlannerROS/parameter_descriptions
+/move_base/TrajectoryPlannerROS/parameter_updates
+/move_base/cancel
+/move_base/current_goal
+/move_base/feedback
+/move_base/global_costmap/costmap
+/move_base/global_costmap/costmap_updates
+/move_base/global_costmap/footprint
+/move_base/global_costmap/inflation_layer/parameter_descriptions
+/move_base/global_costmap/inflation_layer/parameter_updates
+/move_base/global_costmap/obstacle_layer/clearing_endpoints
+/move_base/global_costmap/obstacle_layer/parameter_descriptions
+/move_base/global_costmap/obstacle_layer/parameter_updates
+/move_base/global_costmap/parameter_descriptions
+/move_base/global_costmap/parameter_updates
+/move_base/global_costmap/static_layer/parameter_descriptions
+/move_base/global_costmap/static_layer/parameter_updates
+/move_base/goal
+/move_base/local_costmap/costmap
+/move_base/local_costmap/costmap_updates
+/move_base/local_costmap/footprint
+/move_base/local_costmap/inflation_layer/parameter_descriptions
+/move_base/local_costmap/inflation_layer/parameter_updates
+/move_base/local_costmap/obstacle_layer/clearing_endpoints
+/move_base/local_costmap/obstacle_layer/parameter_descriptions
+/move_base/local_costmap/obstacle_layer/parameter_updates
+/move_base/local_costmap/parameter_descriptions
+/move_base/local_costmap/parameter_updates
+/move_base/parameter_descriptions
+/move_base/parameter_updates
+/move_base/result
+/move_base/status
+/move_base_simple/goal
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-action-movebase">
+<h2>the action movebase<a class="headerlink" href="#the-action-movebase" title="Permalink to this heading"></a></h2>
+<p>movebase is meant to behave as an action:</p>
+<ul class="simple">
+<li><p>you can send a 2D position to reach, topic <code class="docutils literal notranslate"><span class="pre">/move_base/goal</span></code> of type <code class="docutils literal notranslate"><span class="pre">move_base_msgs/MoveBaseAction</span></code></p></li>
+<li><p>the fullfillment of the goal could require a lot of time</p></li>
+<li><p>finally, the move-base node will send a result message with the success flag set</p></li>
+</ul>
+<p>for the complete list of interfaces opened by move-base, see <a class="reference external" href="http://docs.ros.org/en/fuerte/api/move_base_msgs/html/index-msg.html">move_base_msgs package</a></p>
+<p>also <a class="reference external" href="http://wiki.ros.org/move_base">the official wiki</a> is a good reference (very seldom, sometimes it happens…)</p>
+<div class="section" id="a-note-about-the-action-names">
+<h3>A note about the action names<a class="headerlink" href="#a-note-about-the-action-names" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><em>MoveBase.action</em> – the name of the action, file with 3 fields</p></li>
+</ul>
+<p>this message is split into 3 different messages:</p>
+<ul class="simple">
+<li><p><em>MoveBaseActionGoal</em></p></li>
+<li><p><em>MoveBaseActionResult</em></p></li>
+<li><p><em>MoveBaseActionFeedback</em></p></li>
+</ul>
+<p>but <em>what you need are these names:</em></p>
+<ul class="simple">
+<li><p><em>MoveBaseGoal</em></p></li>
+<li><p><em>MoveBaseResult</em></p></li>
+<li><p><em>MoveBaseFeedback</em></p></li>
+</ul>
+<p>note that in C++ you can refer to them in this way:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// include of the action</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;move_base_msgs/MoveBaseAction.h&quot;</span><span class="cp"></span>
+<span class="c1">// referring to the file MoveBase.action</span>
+
+<span class="c1">// the goal will be</span>
+<span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseGoal</span><span class="w"> </span><span class="n">goal</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// the feedback will be</span>
+<span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseFeedback</span><span class="w"> </span><span class="n">feedback</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// and finally, the result will be</span>
+<span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseResult</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="move-base-msgs-movebasegoal">
+<h3>move_base_msgs/MoveBaseGoal<a class="headerlink" href="#move-base-msgs-movebasegoal" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>geometry_msgs/PoseStamped target_pose
+</pre></div>
+</div>
+</div>
+<div class="section" id="move-base-msgs-movebasefeedback">
+<h3>move_base_msgs/MoveBaseFeedback<a class="headerlink" href="#move-base-msgs-movebasefeedback" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>geometry_msgs/PoseStamped base_position
+</pre></div>
+</div>
+</div>
+<div class="section" id="move-base-msgs-movebaseresult">
+<h3>move_base_msgs/MoveBaseResult<a class="headerlink" href="#move-base-msgs-movebaseresult" title="Permalink to this heading"></a></h3>
+<p><strong>empty means that</strong> the framework will sendo only a simple signal.</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># ... empty
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="other-interfaces">
+<h2>other interfaces<a class="headerlink" href="#other-interfaces" title="Permalink to this heading"></a></h2>
+<div class="section" id="geometry-msgs-posestamped">
+<h3>geometry_msgs/PoseStamped<a class="headerlink" href="#geometry-msgs-posestamped" title="Permalink to this heading"></a></h3>
+<p>a pose with the recording time and <em>the frame</em></p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># A Pose with reference coordinate frame and timestamp
+Header header
+Pose pose
+</pre></div>
+</div>
+<p><strong>remember to give a frame for the pose!</strong> if you don’t know what to take as pose frame, use this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s2">&quot;map&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geometry-msgs-pose">
+<h3>geometry_msgs/Pose<a class="headerlink" href="#geometry-msgs-pose" title="Permalink to this heading"></a></h3>
+<p>a pose is made up of</p>
+<ul class="simple">
+<li><p>a position</p></li>
+<li><p>and a orientation <em>as quaternion</em></p></li>
+</ul>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># A representation of pose in free space, composed of postion and orientation. 
+Point position
+Quaternion orientation
+</pre></div>
+</div>
+<p><strong>Gazebo spatial convention</strong></p>
+<ul class="simple">
+<li><p>horizontal plane : <strong>x</strong> (red) and <strong>y</strong> (green)</p></li>
+<li><p>vertical axis : <strong>z</strong> (blue)</p></li>
+</ul>
+<p><strong>Rotation ROS convention</strong></p>
+<p>see the answer under <a class="reference external" href="https://answers.ros.org/question/58863/incorrect-rollpitch-yaw-values-using-getrpy/">this post</a></p>
+<ul class="simple">
+<li><p><em>x</em> – roll</p></li>
+<li><p><em>y</em> – pitch</p></li>
+<li><p><em>z</em> – yaw</p></li>
+</ul>
+</div>
+<div class="section" id="geometry-msgs-quaternion">
+<h3>geometry_msgs/Quaternion<a class="headerlink" href="#geometry-msgs-quaternion" title="Permalink to this heading"></a></h3>
+<p>representation of a rotation using 4 parameters.</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># This represents an orientation in free space in quaternion form.
+
+float64 x
+float64 y
+float64 z
+float64 w
+</pre></div>
+</div>
+<p><strong>C++ how to convert quaternion to roll-pitch-yaw</strong></p>
+<p>see <a class="reference external" href="https://gist.github.com/marcoarruda/f931232fe3490b7fa20dbb38da1195ac">this simple example on GitHub Gist</a></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// tf contains some tool to deal with the most common geonetry for the Geometrical Unit</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tf/tf.h&gt;</span><span class="cp"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">yaw</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">tf</span><span class="o">::</span><span class="n">Quaternion</span><span class="w"> </span><span class="nf">q</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="n">tf</span><span class="o">::</span><span class="n">Matrix3x3</span><span class="w"> </span><span class="n">m</span><span class="p">(</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="n">m</span><span class="p">.</span><span class="n">getRPY</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">yaw</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geometry-msgs-point">
+<h3>geometry_msgs/Point<a class="headerlink" href="#geometry-msgs-point" title="Permalink to this heading"></a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># This contains the position of a point in free space
+float64 x
+float64 y
+float64 z
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="movebase-action-calls-in-c">
+<h2>MoveBase action calls in C++<a class="headerlink" href="#movebase-action-calls-in-c" title="Permalink to this heading"></a></h2>
+<p>here are some templates if you wnat (like me) to put the hands on without bothering too much with technical details (geeky geeky).</p>
+<div class="section" id="c-headers">
+<h3>C++ – headers<a class="headerlink" href="#c-headers" title="Permalink to this heading"></a></h3>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;actionlib/client/simple_action_client.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;actionlib/client/terminal_state.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tf/tf.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/PoseStamped.h&quot;</span><span class="cp"></span>
+<span class="cm">/*</span>
+<span class="cm">std_msgs/Header header</span>
+<span class="cm">geometry_msgs/Pose pose</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/Pose.h&quot;</span><span class="cp"></span>
+<span class="cm">/*</span>
+<span class="cm">Point position</span>
+<span class="cm">Quaternion orientation</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/Quaternion.h&quot;</span><span class="cp"></span>
+<span class="cm">/*</span>
+<span class="cm">float64 x, y, z, w</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;geometry_msgs/Point.h&quot;</span><span class="cp"></span>
+<span class="cm">/*</span>
+<span class="cm">float x, y, z</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;move_base_msgs/MoveBaseAction.h&quot;</span><span class="cp"></span>
+<span class="c1">// move_base_msgs::MoveBaseGoal</span>
+<span class="cm">/*</span>
+<span class="cm">geometry_msgs/PoseStamped target_pose</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="c1">// move_base_msgs::MoveBaseFeedback</span>
+<span class="cm">/*</span>
+<span class="cm">geometry_msgs/PoseStamped base_position</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="c1">// move_base_msgs::MoveBaseResult</span>
+<span class="w">	</span><span class="c1">// empty</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="c-main-with-async-spinner">
+<h3>C++ – main with async spinner<a class="headerlink" href="#c-main-with-async-spinner" title="Permalink to this heading"></a></h3>
+<p><strong>use async-spinner</strong> for your node, in this way:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>int main( int argc, char* argv[] )
+{
+	// ...
+	
+	ros::AsyncSpinner spinner( 2 );
+	spinner.start( );
+	
+	// ...
+	
+	ros::waitForShutdown( ); // same as ros::spin( );
+	
+	return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="c-open-the-action-client">
+<h3>C++ – open the action client<a class="headerlink" href="#c-open-the-action-client" title="Permalink to this heading"></a></h3>
+<p><strong>declaration of the macros and pointers</strong>: declare globally</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// move_base action client</span>
+<span class="cp">#define ACTION_MOVE_BASE &quot;move_base&quot;</span>
+<span class="cp">#define TIMEOUT_MOVE_BASE 5</span>
+<span class="n">actionlib</span><span class="o">::</span><span class="n">SimpleActionClient</span><span class="o">&lt;</span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseAction</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">actcl_move_base</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>open the interface</strong> in the main function, assuming the client global for the node,</p>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="n">TLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;opening action client &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ... &quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">actionlib</span><span class="o">::</span><span class="n">SimpleActionClient</span><span class="o">&lt;</span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tactcl_move_base</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">tactcl_act</span><span class="p">.</span><span class="n">waitForServer</span><span class="p">(</span><span class="w"> </span><span class="n">ros</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="w"> </span><span class="n">TIMEOUT_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">TERR</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;unable to connect to the action server (timeout &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">TIMEOUT_MOVE_BASE</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;s) &quot;</span><span class="w"> </span>
+<span class="w">		</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;-- action &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MovE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">		</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s"> &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">tactcl_move_base</span><span class="p">.</span><span class="n">isServerConnected</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; it seems not online &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; service online &quot;</span><span class="p">)</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">		</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;STATUS: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">tactcl_move_base</span><span class="p">.</span><span class="n">getState</span><span class="p">(</span><span class="w"> </span><span class="p">).</span><span class="n">toString</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="n">actcl_move_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tactcl_move_base</span><span class="p">;</span><span class="w"></span>
+<span class="n">TLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;opening action client &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ... OK!&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>now the simple action client should be online.</p>
+</div>
+<div class="section" id="c-use-the-client-callback-based-approach">
+<h3>C++ – use the client – callback based approach<a class="headerlink" href="#c-use-the-client-callback-based-approach" title="Permalink to this heading"></a></h3>
+<p>see <a class="reference external" href="https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#a94b5a38fae6917f83331560b81eea341">waitForResult</a></p>
+<p>see also <a class="reference external" href="https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#ae6a2e6904495e7c20c59e96af0d86801">sendGoal</a></p>
+<p>very useful <a class="reference external" href="http://wiki.ros.org/actionlib_tutorials/Tutorials/Writing%20a%20Callback%20Based%20Simple%20Action%20Client">this wiki page</a></p>
+<p><strong>sequential style pattern</strong> if you just want to try something simple.</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Called</span> <span class="n">once</span> <span class="n">when</span> <span class="n">the</span> <span class="n">goal</span> <span class="n">becomes</span> <span class="n">active</span>
+<span class="n">void</span> <span class="n">cbk_active_move_base</span><span class="p">(</span> <span class="p">)</span>
+<span class="p">{</span>
+	<span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">feedback</span> <span class="n">subscription</span>
+<span class="n">void</span> <span class="n">cbk_feedback_move_base</span><span class="p">(</span>
+	<span class="k">const</span> <span class="n">move_base_msgs</span><span class="p">::</span><span class="n">MoveBaseFeedback</span><span class="p">::</span><span class="n">ConstPtr</span><span class="o">&amp;</span> <span class="n">feedback</span> <span class="p">)</span>
+<span class="p">{</span>
+	<span class="o">//</span> <span class="o">...</span> <span class="n">access</span> <span class="n">the</span> <span class="n">feedback</span> <span class="n">using</span> <span class="o">-&gt;</span> <span class="n">operator</span>
+	
+	<span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Called</span> <span class="n">once</span> <span class="n">when</span> <span class="n">the</span> <span class="n">goal</span> <span class="n">completes</span>
+<span class="n">void</span> <span class="n">cbk_done_move_base</span><span class="p">(</span>
+	<span class="k">const</span> <span class="n">actionlib</span><span class="p">::</span><span class="n">SimpleClientGoalState</span><span class="o">&amp;</span> <span class="n">state</span><span class="p">,</span>
+	<span class="k">const</span> <span class="n">move_base_msgs</span><span class="p">::</span><span class="n">MoveBaseResult</span><span class="o">&amp;</span> <span class="n">res</span> <span class="p">)</span>
+<span class="p">{</span>
+	<span class="o">/*</span>
+	<span class="n">ROS_INFO</span><span class="p">(</span> <span class="s2">&quot;Finished in state [</span><span class="si">%s</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="n">state</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span> <span class="p">)</span><span class="o">.</span><span class="n">c_str</span><span class="p">(</span> <span class="p">)</span> <span class="p">)</span> <span class="p">;</span>
+	<span class="o">*/</span>
+	
+	<span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="nb nb-Type">int</span> <span class="n">send_goal_pos</span><span class="p">(</span> <span class="nb nb-Type">float</span> <span class="n">x</span><span class="p">,</span> <span class="nb nb-Type">float</span> <span class="n">y</span><span class="p">,</span> <span class="nb nb-Type">float</span> <span class="n">z</span> <span class="p">)</span>
+<span class="p">{</span>
+	<span class="o">//</span> <span class="o">...</span>
+	
+	<span class="n">move_base_msgs</span><span class="p">::</span><span class="n">MoveBaseGoal</span> <span class="n">goal</span><span class="p">;</span>
+	
+	<span class="o">//</span> <span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="p">{</span><span class="n">position</span><span class="o">.</span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">},</span> <span class="n">orientation</span><span class="o">.</span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">w</span><span class="p">}}</span>
+	
+	<span class="n">actcl_move_base</span><span class="o">-&gt;</span><span class="n">sendGoal</span><span class="p">(</span> <span class="n">goal</span><span class="p">,</span> 
+		<span class="o">&amp;</span><span class="n">cbk_done_move_base</span><span class="p">,</span> 
+		<span class="o">&amp;</span><span class="n">cbk_active_move_base</span><span class="p">,</span> 
+		<span class="o">&amp;</span><span class="n">cbk_feedback_move_base</span> <span class="p">);</span>
+	
+	<span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>…but I don’t want to use 3 callback, I use only 2/1 of them</strong>. well, ActionLib defined three “placeholders”:</p>
+<p>see <a class="reference external" href="https://docs.ros.org/en/diamondback/api/actionlib/html/simple__action__client_8h_source.html#l00076">the code</a></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// for the &quot;done&quot; callback</span>
+<span class="n">Client</span><span class="o">::</span><span class="n">SimpleDoneCallback</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+
+<span class="c1">// for the &quot;active&quot; callback</span>
+<span class="n">Client</span><span class="o">::</span><span class="n">SimpleActiveCallback</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+
+<span class="c1">// for the callback subscribing to the feedback topic</span>
+<span class="c1">//    (if you don&#39;t need feedbacks)</span>
+<span class="n">Client</span><span class="o">::</span><span class="n">SimpleFeedbackCallback</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+
+
+<span class="c1">// EXAMPLE: I don&#39;t need the done and the active</span>
+<span class="n">ac</span><span class="p">.</span><span class="n">sendGoal</span><span class="p">(</span><span class="w"> </span><span class="n">goal</span><span class="p">,</span><span class="w"> </span>
+<span class="w">	</span><span class="n">Client</span><span class="o">::</span><span class="n">SimpleDoneCallback</span><span class="p">(</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">	</span><span class="n">Client</span><span class="o">::</span><span class="n">SimpleActiveCallback</span><span class="p">(</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">	</span><span class="o">&amp;</span><span class="n">my_beautiful_feedback_callback</span><span class="w"></span>
+<span class="w">	</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>methods inside a class?</strong> no problem: <em>use boost</em> as follows:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// the function</span>
+<span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">MyClass</span><span class="o">::</span><span class="n">cbk_quello_che_vuoi</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">MyClass</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">,</span><span class="w"> </span><span class="n">_2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>note that sometimes this call could return a very strange and unintelligible error: an example is contained <a class="reference external" href="https://answers.ros.org/question/195723/actionlib-callback-based-simpleactionclient-bind-error/">in this post</a>, which was a simple type. <em>but in my case</em> (my usual luck, nothing special) the error was due to the use of <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">move_base_msgs::MoveBaseResult::ConstPtr&amp;</span> <span class="pre">res</span></code> instead of the correct form <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">move_base_msgs::MoveBaseResultConstPtr&amp;</span> <span class="pre">res</span></code>.</p>
+<p><strong>class implementation</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">move_base_interface</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">move_base_interface</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span>
+<span class="w">		</span><span class="n">actcl_move_base</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;move_base&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">		</span><span class="n">running</span><span class="p">(</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">idle</span><span class="p">(</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="n">TLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;opening action client &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ... &quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">waitForServer</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">actcl_act</span><span class="p">.</span><span class="n">waitForServer</span><span class="p">(</span><span class="w"> </span><span class="n">ros</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="w"> </span><span class="n">TIMEOUT_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="n">TERR</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;unable to connect to the action server (timeout &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">TIMEOUT_MOVE_BASE</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;s) &quot;</span><span class="w"> </span>
+<span class="w">				</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;-- action &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">				</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s"> &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">isServerConnected</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; it seems not online &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; service online &quot;</span><span class="p">)</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">				</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;STATUS: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">getState</span><span class="p">(</span><span class="w"> </span><span class="p">).</span><span class="n">toString</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">			</span>
+<span class="w">			</span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="n">TLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;opening action client &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ... OK!&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// call the service</span>
+<span class="w">	</span><span class="kt">bool</span><span class="w"> </span><span class="n">send_goal</span><span class="p">(</span><span class="w"> </span>
+<span class="w">		</span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseGoal</span><span class="w"> </span><span class="n">goal</span><span class="p">,</span><span class="w"> </span>
+<span class="w">		</span><span class="kt">bool</span><span class="w"> </span><span class="n">wait</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span>
+<span class="w">		</span><span class="n">ros</span><span class="o">::</span><span class="n">Duration</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ros</span><span class="o">::</span><span class="n">Duration</span><span class="p">(</span><span class="w"> </span><span class="n">TIMEOUT_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// ...</span>
+<span class="w">		</span>
+<span class="w">		</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">last_goal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">goal</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">sendGoal</span><span class="p">(</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">last_goal</span><span class="p">,</span><span class="w"> </span>
+<span class="w">			</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">move_base_interface</span><span class="o">::</span><span class="n">cbk_done_move_base</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="p">,</span><span class="w"> </span><span class="n">_2</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">			</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">move_base_interface</span><span class="o">::</span><span class="n">cbk_active_move_base</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">			</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">move_base_interface</span><span class="o">::</span><span class="n">cbk_feedback_move_base</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">_1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">			</span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// ...</span>
+<span class="w">		</span>
+<span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">wait</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">wait_for_results</span><span class="p">(</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">			</span><span class="p">{</span><span class="w"></span>
+<span class="w">				</span><span class="n">TERR</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;action client for &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">ACTION_MOVE_BASE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;TIMEOUT EXPIRED &quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">				</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">cancelAllGoals</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">				</span>
+<span class="w">				</span><span class="c1">// ...</span>
+<span class="w">				</span>
+<span class="w">				</span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">			</span><span class="p">}</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// ...</span>
+<span class="w">		</span>
+<span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// Called once when the goal becomes active</span>
+<span class="w">	</span><span class="kt">void</span><span class="w"> </span><span class="n">cbk_active_move_base</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">running</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// ...</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+
+<span class="w">	</span><span class="c1">// feedback subscription</span>
+<span class="w">	</span><span class="kt">void</span><span class="w"> </span><span class="n">cbk_feedback_move_base</span><span class="p">(</span><span class="w"></span>
+<span class="w">		</span><span class="k">const</span><span class="w"> </span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseFeedback</span><span class="o">::</span><span class="n">ConstPtr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">feedback</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w">	</span>
+<span class="w">		</span><span class="c1">// ... access the feedback using -&gt; operator</span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// ...</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+
+<span class="w">	</span><span class="c1">// Called once when the goal completes</span>
+<span class="w">	</span><span class="kt">void</span><span class="w"> </span><span class="n">cbk_done_move_base</span><span class="p">(</span><span class="w"></span>
+<span class="w">		</span><span class="k">const</span><span class="w"> </span><span class="n">actionlib</span><span class="o">::</span><span class="n">SimpleClientGoalState</span><span class="o">&amp;</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"></span>
+<span class="w">		</span><span class="k">const</span><span class="w"> </span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseResult</span><span class="o">&amp;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">running</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="cm">/*</span>
+<span class="cm">		ROS_INFO( &quot;Finished in state [%s]&quot;, state.toString( ).c_str( ) );</span>
+<span class="cm">		*/</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// ...</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// cancel the last request</span>
+<span class="w">	</span><span class="kt">bool</span><span class="w"> </span><span class="n">cancel</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">running</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">cancelAllGoals</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">			</span>
+<span class="w">			</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">			</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">running</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">			</span>
+<span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+<span class="w">		</span>
+<span class="w">		</span><span class="c1">// idle! nothing to cancel</span>
+<span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// check activity flag</span>
+<span class="w">	</span><span class="kt">bool</span><span class="w"> </span><span class="n">is_running</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">running</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// check activity flag</span>
+<span class="w">	</span><span class="kt">bool</span><span class="w"> </span><span class="n">is_idle</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idle</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// action client status from the handle</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">get_state</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">actcl_move_base</span><span class="p">.</span><span class="n">getState</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// the action client</span>
+<span class="w">	</span><span class="n">actionlib</span><span class="o">::</span><span class="n">SimpleActionClient</span><span class="o">&lt;</span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">actcl_move_base</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// the current goal</span>
+<span class="w">	</span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseGoal</span><span class="w"> </span><span class="n">last_goal</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// activity flag</span>
+<span class="w">	</span><span class="kt">bool</span><span class="w"> </span><span class="n">running</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">/// idle flag</span>
+<span class="w">	</span><span class="kt">bool</span><span class="w"> </span><span class="n">idle</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="slam-and-gmapping-navigation-stack-structure">
+<h2>SLAM and GMapping – navigation stack structure<a class="headerlink" href="#slam-and-gmapping-navigation-stack-structure" title="Permalink to this heading"></a></h2>
+<p>infos about <a class="reference external" href="http://wiki.ros.org/gmapping">GMapping</a></p>
+<p>see <a class="reference external" href="https://github.com/ros-perception/slam_gmapping">sma_gmapping on GitHub</a></p>
+<p>see also the <a class="reference external" href="http://wiki.ros.org/tf">tf package on ROS Wiki</a></p>
+<p>see also the <a class="reference external" href="http://wiki.ros.org/navigation">nav stack official page</a></p>
+<p><a class="reference external" href="https://openslam-org.github.io/gmapping.html">openSLAM official page</a></p>
+<p><a class="reference external" href="https://classic.gazebosim.org/tutorials?tut=ros_gzplugins">Gazebo Plugins</a></p>
+<p><em>laser-based simultaneous localization and mapping</em></p>
+<div class="section" id="hokuyo-laser-range-finder">
+<h3>Hokuyo laser range finder<a class="headerlink" href="#hokuyo-laser-range-finder" title="Permalink to this heading"></a></h3>
+<p>ROS documentation about <a class="reference external" href="https://wiki.ros.org/hokuyo_node">hoyuko laser range finder</a></p>
+<p><strong>publishers</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/scan</span></code> : sensor_msgs/LaserScan</p></li>
+</ul>
+<p><strong>Gazebo</strong> simulation of this range sensor finder: RIMPIAZZA <code class="docutils literal notranslate"><span class="pre">hokuyo_link</span></code> nel codice col link che rappresenta il sensore nel file URDF.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- NON-GPU VERSION --&gt;</span>
+
+<span class="nt">&lt;gazebo</span> <span class="na">reference=</span><span class="s">&quot;hokuyo_link&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;sensor</span> <span class="na">type=</span><span class="s">&quot;ray&quot;</span> <span class="na">name=</span><span class="s">&quot;head_hokuyo_sensor&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;pose&gt;</span>0 0 0 0 0 0<span class="nt">&lt;/pose&gt;</span>
+		<span class="nt">&lt;visualize&gt;</span>false<span class="nt">&lt;/visualize&gt;</span>
+		<span class="nt">&lt;update_rate&gt;</span>40<span class="nt">&lt;/update_rate&gt;</span>
+		
+		<span class="nt">&lt;ray&gt;</span>
+		<span class="nt">&lt;scan&gt;</span>
+			<span class="nt">&lt;horizontal&gt;</span>
+				<span class="nt">&lt;samples&gt;</span>720<span class="nt">&lt;/samples&gt;</span>
+				<span class="nt">&lt;resolution&gt;</span>1<span class="nt">&lt;/resolution&gt;</span>
+				<span class="nt">&lt;min_angle&gt;</span>-1.570796<span class="nt">&lt;/min_angle&gt;</span>
+				<span class="nt">&lt;max_angle&gt;</span>1.570796<span class="nt">&lt;/max_angle&gt;</span>
+			<span class="nt">&lt;/horizontal&gt;</span>
+		<span class="nt">&lt;/scan&gt;</span>
+		
+		<span class="nt">&lt;range&gt;</span>
+			<span class="nt">&lt;min&gt;</span>0.10<span class="nt">&lt;/min&gt;</span>
+			<span class="nt">&lt;max&gt;</span>30.0<span class="nt">&lt;/max&gt;</span>
+			<span class="nt">&lt;resolution&gt;</span>0.01<span class="nt">&lt;/resolution&gt;</span>
+		<span class="nt">&lt;/range&gt;</span>
+		
+		<span class="nt">&lt;noise&gt;</span>
+		<span class="nt">&lt;type&gt;</span>gaussian<span class="nt">&lt;/type&gt;</span>
+			<span class="c">&lt;!-- Noise parameters based on published spec for Hokuyo laser</span>
+<span class="c">			achieving &quot;+-30mm&quot; accuracy at range &lt; 10m.  A mean of 0.0m and</span>
+<span class="c">			stddev of 0.01m will put 99.7% of samples within 0.03m of the </span>
+<span class="c">			true reading. --&gt;</span>
+			<span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+			<span class="nt">&lt;stddev&gt;</span>0.01<span class="nt">&lt;/stddev&gt;</span>
+			<span class="nt">&lt;/noise&gt;</span>
+		<span class="nt">&lt;/ray&gt;</span>
+		
+		<span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;gazebo_ros_head_hokuyo_controller&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_laser.so&quot;</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;topicName&gt;</span>/scan<span class="nt">&lt;/topicName&gt;</span>
+			<span class="nt">&lt;frameName&gt;</span>hokuyo_link<span class="nt">&lt;/frameName&gt;</span>
+		<span class="nt">&lt;/plugin&gt;</span>
+	<span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span>
+
+<span class="c">&lt;!-- GPU VERSION --&gt;</span>
+<span class="nt">&lt;gazebo</span> <span class="na">reference=</span><span class="s">&quot;hokuyo_link&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;sensor</span> <span class="na">type=</span><span class="s">&quot;gpu_ray&quot;</span> <span class="na">name=</span><span class="s">&quot;head_hokuyo_sensor&quot;</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;pose&gt;</span>0 0 0 0 0 0<span class="nt">&lt;/pose&gt;</span>
+		<span class="nt">&lt;visualize&gt;</span>false<span class="nt">&lt;/visualize&gt;</span>
+		<span class="nt">&lt;update_rate&gt;</span>40<span class="nt">&lt;/update_rate&gt;</span>
+		
+		<span class="nt">&lt;ray&gt;</span>
+		<span class="nt">&lt;scan&gt;</span>
+			<span class="nt">&lt;horizontal&gt;</span>
+				<span class="nt">&lt;samples&gt;</span>720<span class="nt">&lt;/samples&gt;</span>
+				<span class="nt">&lt;resolution&gt;</span>1<span class="nt">&lt;/resolution&gt;</span>
+				<span class="nt">&lt;min_angle&gt;</span>-1.570796<span class="nt">&lt;/min_angle&gt;</span>
+				<span class="nt">&lt;max_angle&gt;</span>1.570796<span class="nt">&lt;/max_angle&gt;</span>
+			<span class="nt">&lt;/horizontal&gt;</span>
+		<span class="nt">&lt;/scan&gt;</span>
+		
+		<span class="nt">&lt;range&gt;</span>
+			<span class="nt">&lt;min&gt;</span>0.10<span class="nt">&lt;/min&gt;</span>
+			<span class="nt">&lt;max&gt;</span>30.0<span class="nt">&lt;/max&gt;</span>
+			<span class="nt">&lt;resolution&gt;</span>0.01<span class="nt">&lt;/resolution&gt;</span>
+		<span class="nt">&lt;/range&gt;</span>
+		
+		<span class="nt">&lt;noise&gt;</span>
+		<span class="nt">&lt;type&gt;</span>gaussian<span class="nt">&lt;/type&gt;</span>
+			<span class="c">&lt;!-- Noise parameters based on published spec for Hokuyo laser</span>
+<span class="c">			achieving &quot;+-30mm&quot; accuracy at range &lt; 10m.  A mean of 0.0m and</span>
+<span class="c">			stddev of 0.01m will put 99.7% of samples within 0.03m of the </span>
+<span class="c">			true reading. --&gt;</span>
+			<span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+			<span class="nt">&lt;stddev&gt;</span>0.01<span class="nt">&lt;/stddev&gt;</span>
+			<span class="nt">&lt;/noise&gt;</span>
+		<span class="nt">&lt;/ray&gt;</span>
+		
+		<span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;gazebo_ros_head_hokuyo_controller&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_gpu_laser.so&quot;</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;topicName&gt;</span>/scan<span class="nt">&lt;/topicName&gt;</span>
+			<span class="nt">&lt;frameName&gt;</span>hokuyo_link<span class="nt">&lt;/frameName&gt;</span>
+		<span class="nt">&lt;/plugin&gt;</span>
+	<span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span>
+</pre></div>
+</div>
+<p>NOta bene: dev’esserci un link di riferimento nel robot, quello dov’è piazzato il sensore.</p>
+<ul class="simple">
+<li><p>il plugin pubblicherà la scansione sul topic <code class="docutils literal notranslate"><span class="pre">&lt;topicName&gt;/scan&lt;/topicName&gt;</span></code></p></li>
+<li><p>il link usato come origine del sensore è <code class="docutils literal notranslate"><span class="pre">&lt;frameName&gt;hokuyo_link&lt;/frameName&gt;</span></code>, da cambiare a piacimento</p></li>
+<li><p>occhio anche al campo <code class="docutils literal notranslate"><span class="pre">&lt;gazebo</span> <span class="pre">reference=&quot;hokuyo_link&quot;&gt;</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="usare-movebase-senza-ricorrere-alla-actionlib">
+<h2>Usare MoveBase senza ricorrere alla actionlib<a class="headerlink" href="#usare-movebase-senza-ricorrere-alla-actionlib" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>per inviare il goal, usa <code class="docutils literal notranslate"><span class="pre">di</span> <span class="pre">tipo</span></code></p></li>
+<li><p>per cancellare la richiesta, basta inviare un messaggio, <em>anche vuoto</em>, sul topic <code class="docutils literal notranslate"><span class="pre">di</span> <span class="pre">tipo</span></code></p></li>
+</ul>
+<div class="section" id="richiesta-di-cancellazione">
+<h3>richiesta di cancellazione<a class="headerlink" href="#richiesta-di-cancellazione" title="Permalink to this heading"></a></h3>
+<p>basta pubblicare un messaggio di tipo <code class="docutils literal notranslate"><span class="pre">actionlib_msgs/GoalID.msg</span></code> sul topic <code class="docutils literal notranslate"><span class="pre">/move_base/cancel</span></code>, anche vuoto, per annullare l’ultima richiesta.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rostopic info /move_base/cancel 
+Type: actionlib_msgs/GoalID
+
+Publishers: None
+
+Subscribers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+
+# rosmsg show actionlib_msgs/GoalID
+time stamp
+string id
+</pre></div>
+</div>
+</div>
+<div class="section" id="richiesta-di-movimento-verso-un-target">
+<h3>richiesta di movimento verso un target<a class="headerlink" href="#richiesta-di-movimento-verso-un-target" title="Permalink to this heading"></a></h3>
+<p>pubblica la richiesta sul topic <code class="docutils literal notranslate"><span class="pre">/move_base/goal</span></code> di tipo <code class="docutils literal notranslate"><span class="pre">move_base_msgs/MoveBaseActionGoal</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rostopic info /move_base/goal 
+Type: move_base_msgs/MoveBaseActionGoal
+
+Publishers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+Subscribers: 
+ * /move_base (http://3b17871017fd:39227/)
+
+
+# rosmsg show move_base_msgs/MoveBaseActionGoal
+
+std_msgs/Header header
+  uint32 seq
+  time stamp
+  string frame_id
+actionlib_msgs/GoalID goal_id
+  time stamp
+  string id
+move_base_msgs/MoveBaseGoal goal
+  geometry_msgs/PoseStamped target_pose
+    std_msgs/Header header
+      uint32 seq
+      time stamp
+      string frame_id
+    geometry_msgs/Pose pose
+      geometry_msgs/Point position
+        float64 x
+        float64 y
+        float64 z
+      geometry_msgs/Quaternion orientation
+        float64 x
+        float64 y
+        float64 z
+        float64 w
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>non basta semplicemente dire dove andare purtroppo. Move base sempluicemente non accetta il comando nel caso del semplice target.</p>
+<p>affinchè move_base accetti il target, bisogna anche fornire il frame rispetto a cui il target è dato.</p>
+</div>
+<p>vedi questo esempio di invio di richiesta a move_base (in c++, ma il concetto è lo stesso):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseActionGoal</span><span class="w"> </span><span class="n">goal</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="c1">// === VERY VERY VERY IMPORTANT === //</span>
+
+<span class="w">	</span><span class="n">goal</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;map&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;map&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// === VERY VERY VERY IMPORTANT === //</span>
+
+
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="PKG DOCS – robocluedo_movement_controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mapping.html" class="btn btn-neutral float-right" title="HOW TO perform localization with AMCL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

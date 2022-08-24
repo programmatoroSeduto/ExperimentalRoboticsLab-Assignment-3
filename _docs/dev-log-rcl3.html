@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RCL#3 LOG – development log &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/assets/jsonview.bundle.js"></script>
+        <script src="../_static/assets/jsonview_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SPHINX – setup doxygen/sphinx" href="how-to-setup-doxy-sphinx-ws.html" />
+    <link rel="prev" title="HOW TO Run RCL#3 Project" href="run-the-project.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development LOG</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>RCL#3 LOG – development log</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/_docs/dev-log-rcl3.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="rcl-3-log-development-log">
+<h1>RCL#3 LOG – development log<a class="headerlink" href="#rcl-3-log-development-log" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Indice</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RCL#3 LOG – development log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup-repository-starter-kit">15/08/2022 – setup repository – starter kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modello-del-robot">16/08/2022 – modello del robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#move-base-navigation">17/08/2022 – move_base navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pddl-e-manipulation-unit-aruco">18/08/2022 – pddl e manipulation unit – aruco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alleggerimento-documentazione">21/08/2022 – alleggerimento – documentazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentazione-del-progetto">22/08/2022 – documentazione del progetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readme-e-deployment">23/08/2022 – readme e deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#revisione-documentazione">24/08/2022 – revisione documentazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#note">Note</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilizzo-di-move-base">utilizzo di move base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strano-warning-con-move-base">strano warning con move_base</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.plantuml.com/plantuml/uml/VLNlQkGs4F-kfvWB77NWuetthd-Q3-NI59h0fLt8XdufB8eqNelOaf7acAKK-XfzlJv9PoHxDybo-M2FD7z-C_ERyUxd4AMFGzSAyKvZRIo22t952cXYxCF5Ok7bM6vDR8Q78Q1NpaQqiLIkMrnv6HhKdR5wiMgbZVUtNyvSZpQW6ho9E-bLOoAgE7XSdXcA3OjEXeXUl3DMjOFUfrjSkQvpjkpfV6oyfymBsRPVCLzBhqVfyGsNMnFK6-Oxz4zlfhWpyHcy-AQ4M-btO098-0MViAM-FHWBiK5OUQS75I6Yx4gu8qqZsV4FOigD0QfpM5s1j9eUkBJQEwEXRvp5af5_TWyP-5PQkJt0NYhb1Xl3X7kTOCb9pL1cjSUuUU9xOEtD6hR33iR6GUlS8-dgY3uXXjHs2HonRd07D2ABNBbBTejnTFuHQFWVKf8d8q52RJoEHCRiTcC9a7nBGSm03ok8wBP8DWz_2U9mmxkpsNf4kz4pNGLJ-05EM9oGV4uRt_Uydfo-nc2jZCRPK72dvCo2WwZRzHIVXmgNlA774BJEnc88cowpN13j54HlZdt1DIkcMH3EtzmarMOK7hMfCJn6rnUzef3gnsLPVVT3MPNLEKCSnf-wlPfgQcNF8Pry5RFCQTKiidUUSM5w5apIpihEABXPiL-sGbNn9PrVXicyR4Tnqn9IQQy3yueKMRngAZdVFn1F0qnaBy_Byq_mPNrt642cZ3ZxBM-Jc9XY0ZUZyTZo5BmR8kKPJMqkLo_pCDGKEnL5-rZGG_hVwvfWW2xiTKqYUymhMim7idvRbH-_BvUVgFAFnvYgTOCkqfjiyqg_z1CYVVLdPpz1houWkC5JSkKq7WmJnMnLHhRGeJPI2DghPEua1TR6IfkinjPkRyj3lO0aG57LWLBoPYTpdi45VwIrsGxv0n0YHoMFp9wOIdYkoe8rp9KG6Mj_fwhsv_vm58BUwJRJACHyIkf45-cSYuJslZOjqbfXSGeUhKQFcWg83Sn_3q190rKDxwT3SVgdNJS8roQgfZ6FwF_xvzy0lmv68qIt3nIV2I_zz0hnFm00">plantUML online</a></p></li>
+<li><p><a class="reference external" href="https://www.planttext.com/">un altro editor motlo carino per PlantText</a></p></li>
+<li><p><a class="reference external" href="https://www.onlinegdb.com/online_c++_compiler">onlineGDB</a></p></li>
+</ul>
+<div class="section" id="setup-repository-starter-kit">
+<h2>15/08/2022 – setup repository – starter kit<a class="headerlink" href="#setup-repository-starter-kit" title="Permalink to this heading"></a></h2>
+<p>nuovo assignment, nuova avventura:</p>
+<ul class="simple">
+<li><p>primo setup della repository</p></li>
+<li><p><strong>COMMIT</strong>: “simil-fork from erl2”</p></li>
+<li><p>creazione di un nuovo log pulito (serve a me per riflettere e annotare cose che non so dove metterei altrimenti)</p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=mfRFLlQvDkE">il progetto per il perfezionamento della RAI è iniziato.</a></p></li>
+<li><p>customizzazione della documentazione (… il 2 diventa un 3?)</p></li>
+<li><p><strong>COMMIT</strong>: “setup (docs)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>importazione materiale del prof per il terzo assignment</p></li>
+<li><p><a class="reference external" href="https://github.com/CarmineD8/exp_assignment3/">link starter kit per l’assignment</a></p></li>
+<li><p>modalità di sviluppo al nuovo giocattolo</p>
+<ul>
+<li><p>ANZI, per il momento niente modalità di sviluppo</p></li>
+<li><p>più avanti semmai ne inserirò una</p></li>
+</ul>
+</li>
+<li><p>compila? compila (perfetto)</p></li>
+<li><p>e senza perdere tempo, voglio una documentazione per il nuovo nodo</p>
+<ul>
+<li><p>uml</p></li>
+<li><p>aggiungo anche una minima copde reference</p></li>
+</ul>
+</li>
+<li><p><strong>potrei avere qualche problema col nome dei services più avanti</strong> perchè purtroppo adesso <em>/oracle_hint</em> è un servizio, e non più un topic. servirà un remapping … o forse posso semplicemente cambiare nome del servizio nel mission manager, o fare un remapping da launch file</p></li>
+<li><p><strong>COMMIT</strong>: “setup (starter kit with oracle documentation)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>prima di tutto serve avere funzionante il modello del robot. La cosa più ragionevole in questo momento è partire dall’installazione di MoveBasepassando per il modello del robot. Questo terzo assignment utilizzerà una versioneleggermente diversa del robot, equipaggiata con 3 telecamere e con MoveBase integrato. <em>partiamo dal modello e passiamo da move_base</em>; alle telecamere ci pensiamo dopo.</p>
+<ul class="simple">
+<li><p>creazione del nuovo modello URDF</p></li>
+<li><p>e creazione del nuovo maledettissimo pacchetto MoveIt (sperando di non combinare casini stavolta)</p></li>
+<li><p>la nuova versione del robot avrà come soprannome “hunter”</p></li>
+<li><p>adesso tutti i noiosissimi setup (pensa se il setup assistant funzionasse davvero … sarebbe un mondo magnifico no? e invece siamo qui)</p>
+<ul>
+<li><p>fix del world file</p></li>
+<li><p>“run”  launch file (altro fix da segnare)</p></li>
+<li><p>non avevo fixato RViz … dovrò farlo prima o poi</p></li>
+</ul>
+</li>
+<li><p>direi che il pacchetto è pronto!</p></li>
+<li><p>…hmmm però aspetta: e che dire del <em>mastino di Baskerville?</em> che in inglese è <em>the HOUD of baskerville?</em> chiamarlo Hunter sarebbe … un’occasione mancata</p>
+<ul>
+<li><p>e quindi, cambiamo tutti i nomi? <em>certo che no.</em></p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “working on robot model (robocluedo HUNTER)”</p></li>
+<li><p><em>e ci si rivede domani</em></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="modello-del-robot">
+<h2>16/08/2022 – modello del robot<a class="headerlink" href="#modello-del-robot" title="Permalink to this heading"></a></h2>
+<p>cotinuiamo a lavorare sul modello del robot (oggi si fa poco…)</p>
+<ul class="simple">
+<li><p>il mio robot avrà ben 4 telecamere (giusto per complicare un po’ la situazione, ecco)</p>
+<ul>
+<li><p>una frontale <em>bassa</em></p></li>
+<li><p>una sul cluedo link</p></li>
+<li><p>un’altra a destra del robot</p></li>
+<li><p>e un’altra a sinistra, un po’ come Spot</p></li>
+</ul>
+</li>
+<li><p>prima il codice per applicare le videocamere</p></li>
+</ul>
+<p>parte Gazebo URDF:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- camera --&gt;</span>
+<span class="nt">&lt;gazebo</span> <span class="na">reference=</span><span class="s">&quot;camera_link&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;sensor</span> <span class="na">type=</span><span class="s">&quot;camera&quot;</span> <span class="na">name=</span><span class="s">&quot;camera1&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;update_rate&gt;</span>30.0<span class="nt">&lt;/update_rate&gt;</span>
+  <span class="nt">&lt;camera</span> <span class="na">name=</span><span class="s">&quot;head&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;horizontal_fov&gt;</span>1.3962634<span class="nt">&lt;/horizontal_fov&gt;</span>
+	<span class="nt">&lt;image&gt;</span>
+	  <span class="nt">&lt;width&gt;</span>800<span class="nt">&lt;/width&gt;</span>
+	  <span class="nt">&lt;height&gt;</span>800<span class="nt">&lt;/height&gt;</span>
+	  <span class="nt">&lt;format&gt;</span>R8G8B8<span class="nt">&lt;/format&gt;</span>
+	<span class="nt">&lt;/image&gt;</span>
+	<span class="nt">&lt;clip&gt;</span>
+	  <span class="nt">&lt;near&gt;</span>0.02<span class="nt">&lt;/near&gt;</span>
+	  <span class="nt">&lt;far&gt;</span>300<span class="nt">&lt;/far&gt;</span>
+	<span class="nt">&lt;/clip&gt;</span>
+	<span class="nt">&lt;noise&gt;</span>
+	  <span class="nt">&lt;type&gt;</span>gaussian<span class="nt">&lt;/type&gt;</span>
+	  <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+	  <span class="nt">&lt;stddev&gt;</span>0.007<span class="nt">&lt;/stddev&gt;</span>
+	<span class="nt">&lt;/noise&gt;</span>
+  <span class="nt">&lt;/camera&gt;</span>
+  <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">&quot;camera_controller&quot;</span> <span class="na">filename=</span><span class="s">&quot;libgazebo_ros_camera.so&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;alwaysOn&gt;</span>true<span class="nt">&lt;/alwaysOn&gt;</span>
+	<span class="nt">&lt;updateRate&gt;</span>0.0<span class="nt">&lt;/updateRate&gt;</span>
+	<span class="nt">&lt;cameraName&gt;</span>robot/camera1<span class="nt">&lt;/cameraName&gt;</span>
+	<span class="nt">&lt;imageTopicName&gt;</span>image_raw<span class="nt">&lt;/imageTopicName&gt;</span>
+	<span class="nt">&lt;cameraInfoTopicName&gt;</span>camera_info<span class="nt">&lt;/cameraInfoTopicName&gt;</span>
+	<span class="nt">&lt;frameName&gt;</span>camera_link<span class="nt">&lt;/frameName&gt;</span>
+	<span class="nt">&lt;hackBaseline&gt;</span>0.07<span class="nt">&lt;/hackBaseline&gt;</span>
+	<span class="nt">&lt;distortionK1&gt;</span>0.0<span class="nt">&lt;/distortionK1&gt;</span>
+	<span class="nt">&lt;distortionK2&gt;</span>0.0<span class="nt">&lt;/distortionK2&gt;</span>
+	<span class="nt">&lt;distortionK3&gt;</span>0.0<span class="nt">&lt;/distortionK3&gt;</span>
+	<span class="nt">&lt;distortionT1&gt;</span>0.0<span class="nt">&lt;/distortionT1&gt;</span>
+	<span class="nt">&lt;distortionT2&gt;</span>0.0<span class="nt">&lt;/distortionT2&gt;</span>
+  <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/sensor&gt;</span>
+<span class="nt">&lt;/gazebo&gt;</span> 
+</pre></div>
+</div>
+<p>Dovrò aggiungere dei link per farci stare le videocamere…</p>
+<ul class="simple">
+<li><p>e andiamo a modificare il modello del robot</p></li>
+<li><p>la camera davanti bassa</p>
+<ul>
+<li><p>creazione dei link nel modello URDF</p></li>
+<li><p>compila? compila</p></li>
+<li><p>e creazione della videocamera montata sul link</p></li>
+<li><p>e ora vediamo se funge … e pare che funga</p></li>
+</ul>
+</li>
+<li><p>voglio rivedere meglio la questione dei topic della videocamera</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robot/camera_front_low/camera_info
+/robot/camera_front_low/image_raw
+/robot/camera_front_low/image_raw/compressed
+/robot/camera_front_low/image_raw/compressed/parameter_descriptions
+/robot/camera_front_low/image_raw/compressed/parameter_updates
+/robot/camera_front_low/image_raw/compressedDepth
+/robot/camera_front_low/image_raw/compressedDepth/parameter_descriptions
+/robot/camera_front_low/image_raw/compressedDepth/parameter_updates
+/robot/camera_front_low/image_raw/theora
+/robot/camera_front_low/image_raw/theora/parameter_descriptions
+/robot/camera_front_low/image_raw/theora/parameter_updates
+/robot/camera_front_low/parameter_descriptions
+/robot/camera_front_low/parameter_updates
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>il sistema funziona! Ora aggiungiamo quella sul braccio</p>
+<ul>
+<li><p>compilare compila</p></li>
+<li><p>e prova con rviz gazebo … ruotata nel verso sbagliat! … e ok</p></li>
+<li><p>telecamera laterale 1 … ok</p></li>
+<li><p>e telecamera laterale 2 … ok</p></li>
+<li><p>genera? genera</p></li>
+<li><p>e in RViz pare funzioni tutto come dovrebbe</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “working on robot model (added cameras)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e adesso, installazione di ArUco e openCV</p>
+<ul class="simple">
+<li><p>prima di tutto, voglio avere delle versioni mie di OpenCV installate sulla macchina, quella effettivamente data per l’assignment (sarà un errore? in caso ho il backup della ws intera)</p></li>
+<li><p>installazione di openCV per ROS</p>
+<ul>
+<li><p>compila? compila.</p></li>
+</ul>
+</li>
+<li><p>meglio scriversi un piccolo documento dove spiego come installare queste cose</p></li>
+<li><p>importazione dei modelli arUco</p></li>
+<li><p>compilazione … compila</p></li>
+<li><p>e adesso proviamo se i markers funzionano</p>
+<ul>
+<li><p><strong>funge!</strong></p></li>
+<li><p>meglio copiare tutt i markers anche nel package worlds</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “setting up openCV and ArUco”</p></li>
+</ul>
+<hr class="docutils" />
+<p>adesso che ArUco c’è, possiamo iniziare il lavoro serio</p>
+<ul class="simple">
+<li><p>questo nuovo progetto richiede … un <strong>NUOVO PACKAGE</strong></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>catkin_create_pkg robocluedo_vision roscpp rospy std_msgs geometry_msgs nav_msgs sensor_msgs erl2 exp_assignment3 aruco aruco_msgs dynamic_reconfigure cv_bridge image_transport 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>eeee documentazione, subito</p></li>
+<li><p><strong>COMMIT</strong>: “working on vision (setup package)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="move-base-navigation">
+<h2>17/08/2022 – move_base navigation<a class="headerlink" href="#move-base-navigation" title="Permalink to this heading"></a></h2>
+<p>iniziamo subito da move_base, per passare poi al navigation system per il nuovo assignment. ci sarà da rivedere anche il manipulation system, dato che le postures del robot sono cambiate. (magari documentare le postures?)</p>
+<ul class="simple">
+<li><p>installazione di move_base (dalla vecchia versione di erl2)</p></li>
+<li><p>devo anche fare una modifica a come viene lanciato RViz in modo da poter scegliere il file di configurazione</p></li>
+<li><p>ora dovrebbe esserci tutto: posso provare il navigation stack … <em>e funziona a primo colpo signori</em></p></li>
+<li><p>meglio annotarsi due cose nella documentazione del robot riguardo il navigation stack</p>
+<ul>
+<li><p>(mi ringrazierò in futuro, quando dovrò installare di nuovo move_base su un altro robot)</p></li>
+</ul>
+</li>
+<li><p>ultima prova, giusto per capire se è tutto a posto</p></li>
+<li><p><strong>COMMIT</strong>: “working on robot model (setup move base)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>ora, il navigation controller del robot</p>
+<ul class="simple">
+<li><p>anzitutto, il nodo che deve eseguire la navigation: penso avrà lo stesso meccanismo dei nodi di bug_m : trigger, e wait del segnale, e struttura come macchina a stati</p></li>
+<li><p><strong>nuovo nodo</strong> : move_base_nav.py</p>
+<ul>
+<li><p>prima struttura del nodo</p></li>
+<li><p>(c’è voluto un po’ più del previsto…)</p></li>
+</ul>
+</li>
+<li><p>prima di andare avanti, voglio vedere se il nodo si avvia e non crasha</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosrun robocluedo_movement_controller move_base_nav.py
+
+<span class="c1"># shell 3</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e ora torniamo ad implementare questo bellissimo nodo</p></li>
+<li><p><strong>COMMIT</strong>: “workign on nvigation (implementation of the new navigation service)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e torniamo al lavoro sul navigation system</p>
+<ul>
+<li><p>occorre aggiungere la “action” move_base…</p>
+<ul class="simple">
+<li><p>…che tratterò come un topic per il momento, <em>perchè sono pigro</em></p></li>
+<li><p>recupero la documentazione su move_base dal vecchiop assignment</p></li>
+<li><p>… e ovviamnete manca la parte su come inviare la richiesta di cancellazione tramite topic, dannato me</p></li>
+</ul>
+</li>
+<li><p><strong>ALT FERMI TUTTI</strong> c’è un grosso problema con move_base … al solito</p>
+<ul>
+<li><p>il robot continua ad indietreggiare quando move_base è attivo</p></li>
+<li><p>la traiettoria calcolata parte <em>dal retro del robot</em> … eppure go to point ha sempre funzionato, quindi perchè move_base da il comando invertito? <em>forse un problema col modello urdf?</em></p></li>
+<li><p>che genere di twist viene inviato da move_base?</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>linear: 
+  x: -0.1
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0
+</pre></div>
+</div>
+</li>
+<li><p>non è un problema del modello: è esattamente identico a quello del precedente assignment (erl2 quello vecchio), funzionava, deve continuare a funzionare</p></li>
+<li><p>… se provassi a cambiare il controller?</p></li>
+<li><p>potrebbe esserci un problema col local planner</p></li>
+<li><p>credo che il problema possa essere più stupido di quel che sembra: il robot non riesce a curvare per via delle ruote dietro … l’altro nodo ignorava questo aspetto dinamico, <em>ma a quanto pare a move_base non sfugge proprio nulla.</em> ci fosse un modo per diminuire l’attrito delle ruote dietro e renderle così indifferenti alla rotazione…</p></li>
+</ul>
+</li>
+<li><p>il problema è più fastidioso di quel che sembra: nemmeno annullando l’attrito si riesce. il local planner nella visualizzazione RViz mostra un buco nero davanti al robot, segno che ha individuato un ostacolo, perciò indietreggia… il problema è che non c’è alcun ostacolo!</p>
+<ul class="simple">
+<li><p>il problema potrebbe essere nel laucnher? ha senso?</p>
+<ul>
+<li><p>l’unica cosa regolabile da launch è GMapping, quindi no</p></li>
+</ul>
+</li>
+<li><p>allora il problema è in qualche configuration file…</p></li>
+<li><p>prima però voglio provare a muovere il robot inviando direttamente un comando su cmd_vel e vedere che succede…</p>
+<ul>
+<li><p>muoversi si muove…</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>… e mi viene un altro dubbio:</p>
+<ul class="simple">
+<li><p>i sensori laser vanno ad incidere sulle ruote di fianco … questo in effetti potrebbe portare MoveBase a vedere degli ostacoli attorno al robot, e preferire così un certo tipo di movimento per evitare l’ostacolo</p></li>
+<li><p>la soluzione potrebbe quindi essere spostare il sensore laser in avanti…</p></li>
+<li><p>provo …</p></li>
+<li><p>ora che ho modificato il modello, passo a provare con move base … <strong>E PROBLEMA RISOLTO SIGNORI</strong>: ora va dove voglio io!</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “working on robot model (move_base laser issue)”</p></li>
+<li><p>e andiamo avanti con lo sviluppo del nodo</p>
+<ul class="simple">
+<li><p>quindi … questa cancellazione?</p></li>
+<li><p>e torniamo ad implementare</p></li>
+<li><p>(oggi sto facendo una fatica incredibile…)</p></li>
+</ul>
+</li>
+<li><p>è arrivata la parte migliore: <em>testare…</em></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosrun robocluedo_movement_controller head_orientation.py
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_movement_controller move_base_nav.py
+
+<span class="c1"># shell 4</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y -1.5
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>le cose ora iniziano a funzionare… ultimo test:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosrun robocluedo_movement_controller head_orientation.py <span class="p">&amp;</span>
+rosrun robocluedo_movement_controller move_base_nav.py
+
+<span class="c1"># shell 3</span>
+rosparam <span class="nb">set</span> des_pos_x <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y -1.5
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">2</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+
+rosparam <span class="nb">set</span> des_pos_x -2.0
+rosparam <span class="nb">set</span> des_pos_y <span class="m">0</span>.0
+rosparam <span class="nb">set</span> des_yaw <span class="m">0</span>.0
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: true&quot;</span> 
+sleep <span class="m">30</span>
+rosservice call /nav_stack_go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>e funge.</em></p></li>
+<li><p><strong>COMMIT</strong>: “working on navigation (move_base navigation node tested, ready to use)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e ora il controller, altro dolore:</p>
+<ul class="simple">
+<li><p>implementazione del controller (molto simile a quello di bug_m)</p></li>
+<li><p>compila? alla prima senza errori, sono un campione</p></li>
+<li><p>e ora, prova pratica</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_movement_controller navigation_system.launch
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_movement_controller navigation_manager
+
+<span class="c1"># shell 4</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 1</span>
+<span class="s2">enabled: false&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: 1.5</span>
+<span class="s2">  y: 2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: false&quot;</span> 
+
+<span class="c1"># this sequence moves the robot</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 1</span>
+<span class="s2">enabled: true&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: -1.5</span>
+<span class="s2">  y: 2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: false&quot;</span> 
+
+<span class="c1"># this sequence moves the robot EVEN IF the component has been turned off</span>
+rosservice call /navigation_manager/set_algorithm <span class="s2">&quot;algorithm: 1</span>
+<span class="s2">enabled: false&quot;</span>
+
+rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</span>
+<span class="s2">  x: 1.5</span>
+<span class="s2">  y: -2.0</span>
+<span class="s2">  yaw: 1.0</span>
+<span class="s2">force_enable: true&quot;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>FUNZIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p></li>
+<li><p><strong>COMMIT</strong>: “working on navigation (controller implemented and tested, ready to use)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="pddl-e-manipulation-unit-aruco">
+<h2>18/08/2022 – pddl e manipulation unit – aruco<a class="headerlink" href="#pddl-e-manipulation-unit-aruco" title="Permalink to this heading"></a></h2>
+<p>oggi, manipulation controller</p>
+<ul class="simple">
+<li><p>anzitutto, documentazione riguardo le poses del robot</p></li>
+<li><p>nel manipulation controller bisogna solo cambiare i codici e i nomi delle postures, tutto qui</p>
+<ul>
+<li><p>già solo cambiando i nomi delle costanti il lavoro è finito</p></li>
+<li><p>compila? e compila</p></li>
+</ul>
+</li>
+</ul>
+<p>giusto un  piccolo test per capire se ho scritto bene i nomi delle costanti (impossibile escludere qualche errore stupido)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 3</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 0&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 1&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 2&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 3&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 4&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 5&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 6&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 7&quot;</span> 
+sleep <span class="m">2</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 8&quot;</span> 
+sleep <span class="m">2</span>
+
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: 9&quot;</span> 
+sleep <span class="m">2</span>
+
+<span class="c1"># UNKNOWN POSE</span>
+rosservice call /tip_pos <span class="s2">&quot;command: -1&quot;</span> 
+sleep <span class="m">2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>funzionare funziona</p></li>
+<li><p><strong>COMMIT</strong>: “working on manipulation (new postures)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>… ma devo ammettere che non mi piace molto come il robot fa il planning, e non mi convince il fatto di non riuscire a fare il planning cartesiano, non mi convince proprio</p></li>
+<li><p>vorrei provare a fare una modifica dell’attuale nodo (in caso, backup e si ritorna a quello funzionante)</p>
+<ul>
+<li><p>anzitutto, backup</p></li>
+<li><p>e importazione dell’attuale documentazione MoveIt in questo spazio di lavoro</p></li>
+<li><p>voglio provare con una configurazione più precisa di moveit</p></li>
+<li><p>iniziamo dal definire un end effector</p></li>
+<li><p>compila? compila</p></li>
+<li><p>… ma la definizione dell’end effector non funziona: penso che il lavoro vada fatto da moveit setup assistant, proviamo</p></li>
+<li><p>ho provato ad aggiungere l’end effector da setup assistant, vediamo che fa …</p></li>
+<li><p><em>sembra acer accettato l’end effector!</em></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>per creare l’end effector nel setup assistant</strong>:
+- crea un group che contiene solo un link (usa le advanced options), <em>cluedo_link</em>, chiamalo <em>ee</em>, solite impostazioni per i groups
+- definisci un end effector di nome <em>cluedo_ee</em> con group <em>ee</em> parent link <em>arm_group</em> e parent link <em>arm_link_03</em>
+- aggiorna il package (non serve aggiornare i gazebo, demo e demo_gazebo, dovrai riaggiornare solo i controllers yaml)</p>
+<p>e ora vediamo se funge…</p>
+<ul class="simple">
+<li><p>aggiungo al messaggio il target dell’end effector</p></li>
+<li><p>e aggiungo anche il planning cartesiano</p>
+<ul>
+<li><p>per ora, facile così</p></li>
+<li><p>compila?</p></li>
+</ul>
+</li>
+</ul>
+<p>fastidiosissimo:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="nv">The</span> <span class="nv">dependencies</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">message</span><span class="o">/</span><span class="nv">service</span> <span class="s1">&#39;</span><span class="s">robocluedo_movement_controller_msgs/ManipulatorPosition</span><span class="s1">&#39;</span> <span class="nv">have</span> <span class="nv">changed</span>. <span class="nv">Please</span> <span class="nv">rerun</span> <span class="nv">cmake</span>.
+<span class="nv">make</span>[<span class="mi">2</span>]: <span class="o">***</span> [<span class="nv">erl3</span><span class="o">/</span><span class="nv">robocluedo_movement_controller_msgs</span><span class="o">/</span><span class="nv">CMakeFiles</span><span class="o">/</span><span class="nv">_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition</span>.<span class="nv">dir</span><span class="o">/</span><span class="nv">build</span>.<span class="nv">make</span>:<span class="mi">57</span>: <span class="nv">erl3</span><span class="o">/</span><span class="nv">robocluedo_movement_controller_msgs</span><span class="o">/</span><span class="nv">CMakeFiles</span><span class="o">/</span><span class="nv">_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition</span>] <span class="nv">Error</span> <span class="mi">1</span>
+<span class="nv">make</span>[<span class="mi">1</span>]: <span class="o">***</span> [<span class="nv">CMakeFiles</span><span class="o">/</span><span class="nv">Makefile2</span>:<span class="mi">24138</span>: <span class="nv">erl3</span><span class="o">/</span><span class="nv">robocluedo_movement_controller_msgs</span><span class="o">/</span><span class="nv">CMakeFiles</span><span class="o">/</span><span class="nv">_robocluedo_movement_controller_msgs_generate_messages_check_deps_ManipulatorPosition</span>.<span class="nv">dir</span><span class="o">/</span><span class="nv">all</span>] <span class="nv">Error</span> <span class="mi">2</span>
+<span class="nv">make</span>[<span class="mi">1</span>]: <span class="o">***</span> <span class="nv">Waiting</span> <span class="k">for</span> <span class="nv">unfinished</span> <span class="nv">jobs</span>....
+</pre></div>
+</div>
+<p>e la soluzione ancora meglio… <a class="reference external" href="https://stackoverflow.com/questions/56769404/following-error-occured-when-compiling-custom-message-in-ros">qui</a></p>
+<p>per risolvere questa roba improbabile è bastato ritoccare il cmake (ma veramente, invertire due dipendenze! e nient’altro) per far scattare la parte della compilazione che lui non faceva perchè … motivo ignoto. ma si può? cazz</p>
+<ul class="simple">
+<li><p>comunque, ora compila</p></li>
+<li><p>e test … niente, il planner non riesce a trovare la traiettoria</p></li>
+<li><p>direi di tornare alla versione precedente.</p></li>
+<li><p><strong>COMMIT</strong>: “working on manipulation (trying something more … but not working)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>ora la parte noiosa: il package ROSPlan</p>
+<ul>
+<li><p>aggiornamento della topologia nel pddl</p>
+<ul>
+<li><p>la topologia del terzo assignmento comprende 6 waypoint (più un centro, è sottinteso)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Room1: (-4,-3)
+Room2: (-4,2)
+Room3: (-4,7)
+Room4: (5,-7)
+Room5: (5,-3)
+Room6: (5,1)
+</pre></div>
+</div>
+</li>
+<li><p>modifica al problem pddl</p></li>
+<li><p>risolve? direi proprio di sì. <em>fatto</em>.</p></li>
+</ul>
+</li>
+<li><p>aggiornamento della kb interface per tenere conto dei 6 waypoints</p>
+<ul class="simple">
+<li><p>aggiornamento</p></li>
+<li><p>e si compila</p></li>
+</ul>
+</li>
+<li><p>l’oracolo dovrebbe pubblicare i markers anche qui (aggiungere la pubblicazione dei marker)</p>
+<ul class="simple">
+<li><p>solito meccanismo, prendi dall’assignment 2 … o forse sarebbe meglio fare un nodo ausiliario che pubblichi i markers?</p></li>
+<li><p><em>ecco sì, sarebbe meglio</em>: non voglio modificare il nodo del professore, il gioco è anche un po’ quello, no?</p></li>
+<li><p>e quind, <strong>nuovo nodo</strong>: marker_publisher (c++, per motivi di profonda … pigrizia)</p></li>
+<li><p>implementazione</p></li>
+<li><p>compila? compila.</p></li>
+<li><p>e adesso proviamolo un po’</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>indoor.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun exp_assignment3 simulation_marker_publisher
+</pre></div>
+</div>
+<ul>
+<li><p>direi che funge!</p></li>
+<li><p>aggiornamento della topologia anche nel mission manager (navigation unit)</p>
+<ul class="simple">
+<li><p>se non ricordo male il nodo leggeva i waypoints direttamente dal canale dei markers…</p></li>
+<li><p>come pensavo, quindi modifiche da fare non ce ne sono</p></li>
+<li><p>toglierei tutto il codice per distinguere le altezze, dato che tutti i markers sono “alla stessa altezza”</p>
+<ul>
+<li><p>sia dalla nav unit …</p></li>
+<li><p>… che dalla manip unit (ho altro in servo per lei) <strong>NO</strong>: qui serve un lavoro più dettagliato</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>aggiornamento della selezione del controller nella navigation unit</p>
+<ul>
+<li><p>c’era solo da cambiare uno 0 con un 1 …</p></li>
+<li><p>proviamo se funziona ancora, giusto per</p></li>
+<li><p><strong>e infatti NON funziona</strong> … fortuna che faccio i test ogni volta che modifico</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>indoor.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_movement_controller navigation_system.launch <span class="p">&amp;</span>
+rosrun robocluedo_movement_controller navigation_manager <span class="p">&amp;</span>
+rosrun exp_assignment3 simulation_marker_publisher <span class="p">&amp;</span>
+rosrun robocluedo_mission_manager navigation_unit
+
+<span class="c1"># shell 3</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;wp1&#39;&quot;</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;wp2&#39;&quot;</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;wp3&#39;&quot;</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;wp4&#39;&quot;</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;wp5&#39;&quot;</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;wp6&#39;&quot;</span>
+rosservice call /robocluedo/navigation_command  <span class="s2">&quot;waypoint: &#39;center&#39;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><em>ora funziona.</em></p></li>
+</ul>
+</li>
+<li><p>l’azione <em>collect hint</em> diventa una simulated action in questa versione del progetto</p>
+<ul class="simple">
+<li><p>cambiare i percorsi del PDDL nei launcher del plan</p></li>
+</ul>
+</li>
+<li><p>ora, come ultima cosa, la modifica della manipulation unit, dopodichè dovrei essere pronto per iniziare l’implementazione di arUco</p>
+<ul>
+<li><p>essendo ora la <em>collect-hint</em> una simulated action, non dovrebbe più servire il servizio per la manipulation</p></li>
+<li><p>e non serve nemmeno ricevere dei markers</p></li>
+<li><p>voglio aprire un topic sul controller per far compiere al braccio movimenti asincroni (voglio che il braccio si muova tra le postures a disposizione mentr eil robot si muove, senza rimanere bloccato in un servizio)</p>
+<ul class="simple">
+<li><p>per fare questo ovviamente devo creare un nuovo messaggio…</p></li>
+<li><p>implementazione</p></li>
+<li><p>compila? compila</p></li>
+<li><p>(che fatica…)</p></li>
+</ul>
+</li>
+<li><p>e proviamo</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>indoor.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 3</span>
+rostopic list <span class="p">|</span> grep tip
+<span class="c1"># /tip_pos_async</span>
+
+rostopic pub --once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync <span class="s2">&quot;command: 2</span>
+<span class="s2">enabled: true&quot;</span> 
+sleep <span class="m">15</span>
+rostopic pub --once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync <span class="s2">&quot;command: 4</span>
+<span class="s2">enabled: true&quot;</span> 
+sleep <span class="m">15</span>
+rostopic pub --once /tip_pos_async robocluedo_movement_controller_msgs/ManipulatorPositionAsync <span class="s2">&quot;command: 6</span>
+<span class="s2">enabled: true&quot;</span> 
+sleep <span class="m">15</span>
+</pre></div>
+</div>
+</li>
+<li><p><em>e funziona</em></p></li>
+<li><p>ultima cosa: topic aperto come publisher dalla manipulation unit</p></li>
+<li><p>e implementazione del publisher: una psoe a casotra le 9 disponibili ogni 10 secondi</p></li>
+<li><p>siccome potrebbe darmi fastidio che questo pubblichi una pose nuova senza dirmi nulla, voglio anche uno switch per questo nodo, basta una set bool</p></li>
+<li><p>compila? compila.</p></li>
+<li><p>e si prova:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>indoor.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_movement_controller manipulation_controller <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 3</span>
+rosrun robocluedo_mission_manager manipulation_unit
+
+<span class="c1"># shell 4</span>
+rosservice list <span class="p">|</span> grep tip
+<span class="c1"># /tip_pos</span>
+<span class="c1"># /tip_pos_auto_switch</span>
+
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: true&quot;</span>
+<span class="c1"># 6 different poses</span>
+sleep <span class="m">60</span> 
+rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>funziona.</p></li>
+<li><p>adesso, la domanda <em>spigolosa</em>: dove mettere le richieste per la automanipulation? dipende dal landmark</p>
+<ul class="simple">
+<li><p>dirty e solve non richiedono questo movimento automatico</p></li>
+<li><p>mentre collect lo richiede</p></li>
+</ul>
+</li>
+<li><p>e la modifica va fatta in …</p>
+<ul class="simple">
+<li><p>posso farla nel mission manager direttamente</p></li>
+</ul>
+</li>
+<li><p>quindi, modifiche</p></li>
+<li><p>(non posso provare il mission manager ora, ma se compila è tutto a posto per il tipo di modifiche che ho fatto)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “changing PDDL topology, RViz markers, auto manipulation”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e iniziamo a lavorare su aruco:</p>
+<ul class="simple">
+<li><p>anzitutto, la simulazione funziona? funziona.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>assignment3.world <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>nuovo nodo</strong>: aruco_detection.cpp</p>
+<ul>
+<li><p>iniziamo con la struttura del nod</p></li>
+<li><p>e implementazione</p></li>
+<li><p>compila? … no</p></li>
+<li><p>ero convintissimo di aver già installato open cv nel package vision … mi sbagliavo</p></li>
+<li><p><em>ora compila</em></p></li>
+</ul>
+</li>
+<li><p>e facciamo subito un test molto veloce (basta solo che la finestra funzioni come si deve e che si vedano le immagini dalle videocamere)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>assignment3.world <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_vision aruco_detection
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AAAAAAA LA VIDEOCAMERA CAMBIA IN CONTINUAZIONE! ok, meglio correggere questa cosa prima che mi venga una crisi epilettica</p>
+<ul>
+<li><p>ros::Time non sembra funzionare bene, per qualche strana ragione: la comparison è sempre vera, quindi la videocamera cambia sempre</p></li>
+<li><p>… dovrò farmi un metodo a manina per comparare due tempi …
+<strong>e ora funziona</strong></p></li>
+</ul>
+</li>
+<li><p>ora però c’è un altro problema: <em>è lentissimo</em>.</p>
+<ul>
+<li><p>posso limitare la frequenza dei topic con una rate.sleep( ) nei subscriber (non un’ottima idea ma potrebbe funzionare)</p></li>
+<li><p>provo anche a diminuire il rate delle immagini dalle videocamere</p>
+<ul>
+<li><p>12fps possono bastare, spero</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ti ricordi quando dicevamo che funzionava bene lo switch? <strong>SCHERZONE</strong>: è tornato a switchare come un pazzo … motivo sconosciuto (ho tolto un log!)</p>
+<ul>
+<li><p>temo che dovrò usare wallTime invece che il time normale</p></li>
+<li><p><strong>ora funziona sul serio</strong></p></li>
+</ul>
+</li>
+<li><p>rimane comunque molto pesante…</p>
+<ul>
+<li><p>per ridurre ancora, posso droppare qualche richiesta usando il mutex con trylock piuttosto che lock, e quandoil thread non riesce a bloccare il myutex, ritorna immediatamente</p></li>
+</ul>
+</li>
+<li><p>per il momento son soddisfatto così.</p></li>
+<li><p><strong>COMMIT</strong>: “working on vision (aruco detection node)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>possiamo passare ora all’ultimissimo nodo della vision: il decode</p>
+<ul>
+<li><p><strong>nuovo nodo</strong>: aruco_decode</p>
+<ul>
+<li><p>(il nodo rimane in ascolto degli ID dal nodo aruco_detection; quando ne arriva uno, chiede all’oracolo che significa e ne ritorna il messaggio al mission manager)</p></li>
+<li><p>anzitutto, bisogna rimappare il topic dell’oracolo affinchè non ci siano conflitti</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+
+<span class="nt">&lt;launch&gt;</span>
+
+<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;exp_assignment3&quot;</span> <span class="na">name=</span><span class="s">&quot;final_oracle&quot;</span> <span class="na">type=</span><span class="s">&quot;final_oracle&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">output=</span><span class="s">&quot;screen&quot;</span> <span class="nt">&gt;</span>
+	<span class="nt">&lt;remap</span> <span class="na">from=</span><span class="s">&quot;/oracle_hint&quot;</span> <span class="na">to=</span><span class="s">&quot;/original_oracle_hint&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/node&gt;</span>
+<span class="c">&lt;!-- &lt;node pkg=&quot;exp_assignment3&quot; name=&quot;simulation_marker_publisher&quot; type=&quot;simulation_marker_publisher&quot; required=&quot;true&quot; output=&quot;screen&quot; /&gt; --&gt;</span>
+
+<span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>adesso,</p>
+<ul class="simple">
+<li><p>struttura di aruco_decode</p></li>
+<li><p>e implementazione</p></li>
+<li><p>e proviamolo un po’</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch exp_assignment3 run.launch
+
+<span class="c1"># shell 2</span>
+rosrun robocluedo_vision aruco_decode.py
+
+<span class="c1"># shell 3</span>
+rostopic <span class="nb">echo</span> /oracle_hint
+
+<span class="c1"># shell 4</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 0&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 1&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 2&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 3&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 4&quot;</span>
+rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 5&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>…no comment… ma prchè c’è quel diavolo di -11 nell’oracolo ??????</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// oracle_hint</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">oracleCallback</span><span class="p">(</span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Request</span><span class="w"> </span><span class="o">&amp;</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">res</span><span class="p">.</span><span class="n">oracle_hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oracle_msgs</span><span class="p">[</span><span class="n">req</span><span class="p">.</span><span class="n">markerId</span><span class="mi">-11</span><span class="p">];</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e anche questa è andata</p></li>
+<li><p><strong>COMMIT</strong>: “aruco decoder ready”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e pronti per il testing completo!</p>
+<ul class="simple">
+<li><p>anzitutto, ho un documento per il module testing, che vorrei rivedere per questo caso specifico</p>
+<ul>
+<li><p>il piano è sempre lo stesso: pezzo per pezzo fino al progetto completo</p></li>
+</ul>
+</li>
+<li><p>… direi che i test con aRMOR li possiamo anche skippare</p></li>
+<li><p>aggiungo subito i test appena fatti con ArUco</p></li>
+<li><p>testing di rosplan</p></li>
+<li><p>la parte del testing del robot va aggiornata</p></li>
+<li><p>i test della parte di navigation vanno aggiornati tutti (anche se però sarebbe bello avere a disposizione veramente due tipi di navigation…)</p>
+<ul>
+<li><p>sai cosa? faccio la modifica</p></li>
+<li><p>ora ci sono 3 launch file (più due giusto per non dover rifare tutti i nomi in qualunque script io abbia scritto finora)</p></li>
+<li><p>a questo punto facciamo i test sulla navigation come se dovessero esserci tutti e due i sistemi operativi sullo stesso robot</p></li>
+<li><p>eliminerei il test del wall follow … a dirla tutta, devo proprio eliminare il nodo</p></li>
+<li><p>il test sul manipulation controller è cambiato, ce ne sono di più adesso</p></li>
+</ul>
+</li>
+<li><p>e siamo arrivati quasi ai test finali (il momento della verità si avvicina…)</p>
+<ul>
+<li><p><em>tutti i componenti del precedente assignment vanno benone</em></p></li>
+<li><p>ho anche fatto un po’ di aggiornamento</p></li>
+</ul>
+</li>
+<li><p>gli output dei test sono perfettamente inutili, eliminare</p></li>
+<li><p>ora, tutto tranne il mission manager</p>
+<ul>
+<li><p>per questo serviranno dei test che non ho ancora scritto (faccio subito)</p></li>
+</ul>
+</li>
+<li><p>va <em>quasi</em> tutto bene. aruco_detection non invia i marker sul topic</p></li>
+<li><p>(intanto un checkpoint nel dubbio…)</p></li>
+<li><p><strong>COMMIT</strong>: “testing (problems with aruco_detection not publishing the ids)”</p></li>
+<li><p>il mio piano geniale avrebbe anche funzionato … se non fosse che le dimensioni dei vettori non fossero misurate in size_t piuttosto che come int …</p></li>
+</ul>
+<p>per capirci, <code class="docutils literal notranslate"><span class="pre">vector.size()</span> <span class="pre">-</span> <span class="pre">1</span></code> ritorna questo orrore senza Dio:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660844701.851857500, 951.527000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.040326800, 951.626000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.292802100, 951.729000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.493988200, 951.831000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.703035300, 951.926000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844702.888891100, 952.026000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[INFO] [1660844702.891754, 952.028000]: (aruco_decode ) ready
+[ INFO] [1660844703.047278100, 952.127000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.309153800, 952.226000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.534099100, 952.326000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.534168700, 952.326000000]: (aruco_detection ) switching to camera with ID=2
+[ INFO] [1660844703.744395000, 952.426000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844703.981569700, 952.527000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844704.258705100, 952.629000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+[ INFO] [1660844704.427318800, 952.726000000]: (aruco_detection ) size-1=18446744073709551615 -- idx=-1
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e come si risolve la faccenda?</p></li>
+<li><p>se scrivo questo <code class="docutils literal notranslate"><span class="pre">((int)ids_to_publish.size(</span> <span class="pre">))</span> <span class="pre">-</span> <span class="pre">1</span></code> il problema sembra risolto, mentre se scrivo <code class="docutils literal notranslate"><span class="pre">ids_to_publish.size(</span> <span class="pre">)</span> <span class="pre">-</span> <span class="pre">1</span></code> viene fuori quella roba là sopra</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[ INFO] [1660844957.321987100, 957.825000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844957.521214800, 957.925000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844957.792062300, 958.025000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844957.993540900, 958.125000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.220654500, 958.225000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.471494800, 958.325000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.720852300, 958.425000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844958.984896700, 958.525000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844959.329034600, 958.625000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844959.619499500, 958.725000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844959.789824700, 958.826000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844960.082557000, 958.935000000]: (aruco_detection ) size-1=-1 -- idx=-1
+[ INFO] [1660844960.082637800, 958.935000000]: (aruco_detection ) switching to camera with ID=3
+[ INFO] [1660844960.283390600, 959.028000000]: (aruco_detection ) size-1=-1 -- idx=-1
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>proviamo anche la condizione così scritta: … eandiamo!</p></li>
+<li><p>ho notato inoltre che certe volte il decode non riesce a contattare l’oracolo (quando il sistema inizia ad essere piuttosto saturo di cose da fare, che accada qualche problema sulle chiamate a servizio c’è da aspettarselo … purtroppo)</p>
+<ul>
+<li><p>meglio aggiungere qualche strategia di recupero al decode</p></li>
+</ul>
+</li>
+<li><p><strong>ISSUE</strong> ho fatto girare un po’ il programma … e dopo 5min buoni ha crashato a seguito di una ricezione di un ID pari a 174…</p>
+<ul>
+<li><p>… e ricordo che nel precedente assignment, ogni tanto l’oracolo crashava prchè l’ID era troppo alto, non definito (aridanghete)</p></li>
+<li><p>sensato?</p></li>
+</ul>
+</li>
+</ul>
+<p>direi proprio confermato:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">markerID</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w"> </span>
+<span class="n">erl2</span><span class="o">::</span><span class="n">ErlOracle</span><span class="w"> </span><span class="n">oracle_msgs</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w"></span>
+
+<span class="c1">// oracle_hint</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">oracleCallback</span><span class="p">(</span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Request</span><span class="w"> </span><span class="o">&amp;</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">exp_assignment3</span><span class="o">::</span><span class="n">Marker</span><span class="o">::</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">res</span><span class="p">.</span><span class="n">oracle_hint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oracle_msgs</span><span class="p">[</span><span class="n">req</span><span class="p">.</span><span class="n">markerId</span><span class="p">];</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>per risolvere il problema, il decoder dovrebbe usare l’operatore di modulo (le specifiche non trattano di preciso questo caso … perciò mi reputo autorizzato a fare quello che voglio qui)</p>
+<ul>
+<li><p>piccola modifica al decoder</p></li>
+<li><p>e ora funziona tutto a meraviglia</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “testing (aruco_detection publisher, oracle crash solved)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>siamo moooolto vicini al momento della verità: questa sera gli dsi da il colpo di grazia a questo progetto! poi sotto con la documentazione, e si consegna.</p>
+<ul class="simple">
+<li><p>anzitutto, piccola modifica al decode in modo da supportare l’invio in un secondo momento dell’hint</p>
+<ul>
+<li><p>(il principio: non riesco ad inviarlo ora? bene: me lo metto da parte, e lo invio in seguito)</p></li>
+<li><p>pare che funzioni</p></li>
+</ul>
+</li>
+<li><p>il tempo di replanning del nodo di move base è veramente troppo poco: solo 15s è niente, e rende il path piuttosto instabile</p>
+<ul>
+<li><p>alzarlo a 30s mi pare la cosa migliore</p></li>
+</ul>
+</li>
+<li><p>ora un test con i movimenti “a caso” del braccio</p>
+<ul>
+<li><p>riesce a prendere ancora più hint adesso! che bello</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “final testing (ready to test the whole system)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e andiamo con l’ultimo test: <em>il mission manager</em></p>
+<ul class="simple">
+<li><p>anzitutto, script del test</p></li>
+<li><p>e voglio attivare la modalità di sviluppo nel mission manager, giusto per</p></li>
+<li><p>essiamoprontiperprovare</p></li>
+</ul>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=8FWUnyGlTOY">congratulazioni.</a></p>
+<ul class="simple">
+<li><p><strong>COMMIT</strong>: “happy commit!”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="alleggerimento-documentazione">
+<h2>21/08/2022 – alleggerimento – documentazione<a class="headerlink" href="#alleggerimento-documentazione" title="Permalink to this heading"></a></h2>
+<p>il piano di oggi è: alleggerire (per quanto possibile) l’applicazione, partendo dall’eliminare i log inutili, e documentare. Siccome c’è grande somiglianza tra i due progetti, posso partire col documentare il terzo per poi trasferire gran parte della documentazione sul secondo progetto. Per la documentazione del codice ci vorrà un pochino più di lavoro, ma per il resto dovrebbe risparmiarmi un bel po’ di fatica. E domani, scrittura dei due readme e via così.</p>
+<ul class="simple">
+<li><p>(iniziamo dal lavoro di alleggerimento)</p></li>
+<li><p>fattori che riducono notevolmente le prestazioni:</p>
+<ul>
+<li><p>(OK) essendo RViz solo uno strumento di visualizzazione, si potrebbe magari usare solo Gazebo per visualizzare la simulazione</p>
+<ul>
+<li><p>quindi l’attuale launcher per eseguire il progetto dovrebbe permettere di scegliere se lanciare solo Gazebo oppure entrambi</p></li>
+</ul>
+</li>
+<li><p>(OK) gmapping continuamente in esecuzione; sarebbe meglio usare amcl</p>
+<ul>
+<li><p><a class="reference external" href="http://wiki.ros.org/amcl">link wiki ufficiale AMCL</a></p></li>
+<li><p>bisognerà creare una mappa con teleop</p></li>
+<li><p>… oppure posso fare uno script che mappa l’area in automatico? è possibile?</p></li>
+<li><p><strong>fare uno script che crei una mappa in automatico dell’area</strong> usando l’attuale nav system e tutto il resto</p></li>
+</ul>
+</li>
+<li><p>logging dai programmi, che dovrebbero essere mostrati solo in caso di modalità di sviluppo</p>
+<ul>
+<li><p>tutte le applicazioni fanno logging inutile</p></li>
+<li><p>sarebbe meglio poter attivare la modalità di sviluppo a tempo di compilazione…</p></li>
+<li><p>… o ancora meglio, da parameter server (ma potrebbe risultare un po’ scomodo)</p></li>
+<li><p><strong>quindi, attivare le modalità di sviluppo a tempo di compilazione</strong></p></li>
+<li><p>quindi usando un approccio identico a quello impiegato nel mission manager</p></li>
+</ul>
+</li>
+<li><p>il nodo wall-follow non viene usato, perciò sarebbe meglio eliminarlo</p>
+<ul>
+<li><p>fare la modifica in modo tale che la stessa cosa funzioni anche nel secondo assignment</p></li>
+<li><p>bisognerà modificare i launcher</p></li>
+<li><p>e anche bug_m</p></li>
+<li><p>e anche il controller</p></li>
+<li><p><em>una modifica al controller</em>: impossibile attivare un controller quando uno dei canali necessari non risponde</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>e quindi, iniziamo da RViz e da AMCL:</p>
+<ul>
+<li><p>simulazione solo con Gazebo piuttosto che con Gazebo/RViz</p>
+<ul>
+<li><p>l’attuale inizializzazione è un po’ lunga per quanto riguarda missio manager / run.launch … introduco un parametro init</p>
+<ul class="simple">
+<li><p>init false -&gt; tutti i parametri vengono inizializzati a false</p></li>
+</ul>
+</li>
+<li><p>nuovo parametro <em>with_rviz</em> per decidere se lanciare o no anche RViz</p></li>
+<li><p>questo richiede una modifica del launcher del robot…</p>
+<ul class="simple">
+<li><p>c’è un modo di fare operazioni logiche negli if dei launch file?</p></li>
+<li><p><a class="reference external" href="https://answers.ros.org/question/12756/roslaunch-if-condition/">vedi questo post ufficiale</a></p></li>
+<li><p>quindi non con l’if, però c’è un replacement che si chiama “eval” e che esegue operazioni sui parametri</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval arg(&#39;debug&#39;) ==0)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;xxx&quot;</span> <span class="na">type=</span><span class="s">&quot;yyy&quot;</span> <span class="na">name=</span><span class="s">&quot;yyy&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>altro esempio, sempre nello stesso post:</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;team&quot;</span> <span class="na">default=</span><span class="s">&quot;Red&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;type&quot;</span> <span class="na">default=</span><span class="s">&quot;painter&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval team == &#39;Red&#39;)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;painter&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/red/paintbot_red.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;attacker&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/red/attackbot_red.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+
+<span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval team == &#39;Blue&#39;)&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;painter&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/blue/paintbot_blue.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+  <span class="nt">&lt;group</span> <span class="na">if=</span><span class="s">&quot;$(eval type == &#39;attacker&#39;)&quot;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;robot_description&quot;</span> 
+	  <span class="na">command=</span><span class="s">&quot;$(find xacro)/xacro $(find robopaint)/urdf/blue/attackbot_blue.urdf.xacro&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>mi ero anche dimenticato dell’esistenza dei raggruppamenti…</p></li>
+<li><p><em>devo ristrutturare il run</em></p></li>
+<li><p>meglio creare un <em>run2.launch</em> piuttosto di fare strane modifiche a roba che già funziona</p></li>
+<li><p>aggiungo già un parametro e una zona del launch per lanciare AMCL</p></li>
+<li><p>qualche test sul launch del robot, giusto per verificare di non aver scritto cose stupide …</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazebo gazebo_paused:<span class="o">=</span><span class="nb">false</span>
+roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>rviz rviz_config_file:<span class="o">=</span>moveit.rviz launch_nav_stack:<span class="o">=</span><span class="nb">false</span>
+roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e ora torniamo sul launch generale</p></li>
+<li><p>e si prova</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>rviz 
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazeborviz <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> world_name:<span class="o">=</span>assignment3.world
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_config:<span class="o">=</span>gmapping 
+</pre></div>
+</div>
+</li>
+<li><p>funziona tutto.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>è il momento di AMCL</p>
+<ul>
+<li><p>anzitutto, documentazione</p></li>
+<li><p>e modifica ai launch files</p></li>
+<li><p>e test … funziona!</p>
+<ul class="simple">
+<li><p>la localizzazione è un po’ più instabile su RViz, però sembra andare abbastanza bene.</p></li>
+</ul>
+</li>
+<li><p>ora bisognerebbe provare il launch generale: come reagisce con tutta la simulazione attiva usando AMCL?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> 
+
+<span class="c1"># shell 3</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>e funge!</strong> il comportamento del robot è leggermente più instabile, ma pare che sia riuscito a ridurre di qualche secondo le tempistiche di esecuzione</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “improving localization performances with AMCL”</p></li>
+</ul>
+<hr class="docutils" />
+<p>passiamo alla questione dei logs</p>
+<ul>
+<li><p>per quanto riguarda i nodi C++, l’idea sarebbe quella di creare un sistema simile a quello del mission manager</p></li>
+<li><p>ci vuole un piccolo template, da adattare a seconda del caso.</p></li>
+<li><p>per i nodi C++,</p>
+<p>globale:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DEVELOP_MODE false</span>
+
+<span class="cp">#define DEVELOP_PRINT false</span>
+<span class="cp">#define WTLOG( msg )  { if( DEVELOP_PRINT ) { ROS_INFO_STREAM( OUTLABEL &lt;&lt; msg ); } }</span>
+<span class="cp">#define WTWARN( msg ) { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL &lt;&lt; msg ); } }</span>
+<span class="cp">#define WTERR( msg )  { if( DEVELOP_PRINT ) { ROS_WARN_STREAM( OUTLABEL &lt;&lt; msg ); } }</span>
+
+<span class="cp">#define DEVELOP_WAIKEY false</span>
+<span class="cp">#define WAITKEY { if( WAITKEY_ENABLED ) { std::cout &lt;&lt; &quot;press ENTER to continue ... &quot; ; std::cin.get( ) ; std::cout &lt;&lt; &quot;go!&quot; &lt;&lt; std::endl ; } }</span>
+</pre></div>
+</div>
+</li>
+<li><p>per i nodi py la questione al solito non è così semplice… ci pensiamo poi</p></li>
+<li><p>provo la nuova macro sulla manipulation unit … pare funzionare</p></li>
+<li><p>e vai con le sostituzioni</p>
+<ul class="simple">
+<li><p>completare la manipulation unit</p></li>
+</ul>
+</li>
+</ul>
+<p>con cose del genere…</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation ENABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="k">else</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation DISABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>il compilatore ritorna un errore stranissimo:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/root/ros_ws/src/erl3/robocluedo_mission_manager/src/manipulation_unit.cpp:146:3: error: ‘else’ without a previous ‘if’
+  146 |   else
+</pre></div>
+</div>
+<p>rendendo esplicito il contesto, il problema se ne va:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">		</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation ENABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+<span class="w">		</span><span class="k">else</span><span class="w"></span>
+<span class="w">		</span><span class="p">{</span><span class="w"></span>
+<span class="w">			</span><span class="n">WTLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;auto manipulation DISABLED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e ora, navigation unit … liscio liscio</p></li>
+<li><p>in armor ce ne sono davvero pochi … però quelli della ontology non mi vanno proprio benissimo</p>
+<ul>
+<li><p>penso che metterò l’output della ontology su log</p></li>
+<li><p>quelli della armor interface direi che non si toccano… almeno per il momento</p></li>
+</ul>
+</li>
+<li><p>e ora il movement controller</p>
+<ul>
+<li><p>manipulation controller</p></li>
+<li><p>navigation manager</p></li>
+</ul>
+</li>
+<li><p>e per quanto riguarda i nodi py?</p>
+<ul>
+<li><p>preferisco una soluzione più … elementare: meglio commentare direttamente</p></li>
+<li><p>quindi bug_m</p></li>
+<li><p>go to point</p></li>
+<li><p>head orientation</p></li>
+<li><p>move base nav</p></li>
+<li><p>wall f… tanto devo eliminarlo</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>e si continua:</p>
+<ul class="simple">
+<li><p>andamo con rosplan</p>
+<ul>
+<li><p>il pipeline manager</p></li>
+<li><p>kb interface (c++)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “deleting comments from the code (develop mode)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e andiamo ad eliminare il nodo wall follow</p>
+<ul class="simple">
+<li><p>anzitutto, eliminazione da bug_m</p></li>
+<li><p>test (giusto per capire se funziona … ancora) …</p>
+<ul>
+<li><p>avevo introdotto qualche bug nei file python</p></li>
+<li><p>ora è tutto risolto</p></li>
+</ul>
+</li>
+<li><p>modifica dei lauch files</p>
+<ul>
+<li><p>(che fatica)</p></li>
+<li><p>il run.launch va … leggermente ristrutturato</p></li>
+</ul>
+</li>
+</ul>
+<p>lo si prova un po’ questo nuovo launch file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>bugm
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>navstack
+roslaunch robocluedo_movement_controller run.launch nav_type:<span class="o">=</span>all
+
+<span class="c1"># for each of them,</span>
+rosnode list
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>funziona tutto (a parte per qualche errore di expected indentation)</p></li>
+<li><p>wall follow eliminato!</p></li>
+<li><p><strong>COMMIT</strong>: “wall follow deleted”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e ora si parte col lavoro di documentazione vera, sempre con la solita filosofia: inizia a lavorare sull’assignment 3, e riporta la documentazione nel 2 per quanto possibile.</p>
+<ul class="simple">
+<li><p><strong>robocluedo_armor</strong></p>
+<ul>
+<li><p>pulizia dei documenti già presenti</p></li>
+<li><p>gli schematic vecchi li posso togliere</p></li>
+<li><p>(tutto quel che c’è da fare l’ho segnato nel todo)</p></li>
+</ul>
+</li>
+<li><p><strong>robocluedo_vision</strong></p>
+<ul>
+<li><p>mancano le code reference…</p>
+<ul>
+<li><p>le posso aggiungere subito senza problemi</p></li>
+</ul>
+</li>
+<li><p>il resto mi toccherè aggiungerlo in seguito</p></li>
+</ul>
+</li>
+<li><p><strong>robocluedo rosplan</strong></p>
+<ul>
+<li><p>…</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “documentation review”</p></li>
+</ul>
+<hr class="docutils" />
+<p>avanti con la documentazione:</p>
+<ul class="simple">
+<li><p><strong>robocluedo rosplan</strong></p>
+<ul>
+<li><p>pddl and rosplan</p></li>
+<li><p>gli UML per ROSPlan non mi convincono molto…ma quelli più estesi sono veramente difficili da tracciare: ci sono un sacco di connessioni, sono tutti ingarbugliati, e anche guardandoli non se ne capirebbe il senso. quindi, meglio tenersi sul semplice.</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “writing documentation”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="documentazione-del-progetto">
+<h2>22/08/2022 – documentazione del progetto<a class="headerlink" href="#documentazione-del-progetto" title="Permalink to this heading"></a></h2>
+<p>continuiamo con la scrittura della documentazione (per il momento, overview veloce della documentazione; più avanti passiamo a rivedere nel dettaglio gli altri punti)</p>
+<ul class="simple">
+<li><p><strong>robocluedo rosplan</strong></p>
+<ul>
+<li><p>documento sulla rosplan pipeline</p></li>
+<li><p>metodi nel feedback manager</p></li>
+</ul>
+</li>
+<li><p><strong>robocluedo dependencies</strong></p>
+<ul>
+<li><p>anche vision cv ha la sua documentazione</p></li>
+<li><p>provo ad importarla… ok</p></li>
+<li><p>aggiorno la documentazione sul modello del robot …</p></li>
+<li><p>manca la parte su amcl</p></li>
+<li><p>e revisione di tutto il codice riportato nel documento (c’è voluto un bel po’)</p></li>
+</ul>
+</li>
+<li><p><strong>robocluedo movement controller</strong></p>
+<ul>
+<li><p>la documentazione su AMCL meglio spostarla qui dentro…</p></li>
+<li><p>gli UML del movement controller vanni aggiornati</p></li>
+<li><p>va documentato move_base_nav</p></li>
+</ul>
+</li>
+<li><p>giusto un’occhiata al resto della documentazione</p>
+<ul>
+<li><p>se non è essenziale per la comprensione del progetto, direi di nasconderla</p></li>
+</ul>
+</li>
+<li><p>una nota su come avviare il progetto (ottima occasione per fare un’ultimo test prima della consegna)</p>
+<ul>
+<li><p>mi sono accorto che manca un documento su come lanciare l’intero progetto col launcher! cazz</p></li>
+<li><p>lo scrivo subito</p></li>
+</ul>
+</li>
+<li><p>e test …</p>
+<ul>
+<li><p>… poteva mai andare tutto bene? <em>certo che no</em>.</p></li>
+<li><p>c’è un problema con l’unità del mission manager che gestisce la manipulation…</p></li>
+<li><p>(devo aver fatto qualche stupida modifica al codice)</p></li>
+</ul>
+</li>
+</ul>
+<p>un piccolo test (proviamo a capire dove sta l’errore):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 3</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 4</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>noto che non viene avviato il manipulation controller … ci sarà qualcosa di sbagliato nel launch file del motion controller</p></li>
+<li><p><em>e in effetti nel launch file manca!</em> fortuna che stavolta è stato semplice risovlere questo problema: stavo iniziando a pensare al peggio (fortuna che testo sempre…)</p></li>
+<li><p>e proviamo ancora … e ovviamente ci sono degli errori sul launch file…</p></li>
+<li><p>il launch file globale crasha, ma i singoli componenti no</p>
+<ul>
+<li><p>sono costretto a fare una esecuzione step by step per capire dove sta il problema…</p></li>
+</ul>
+</li>
+<li><p>potrebbe anche essere successo che sia scattato qualche timeout, dato che il servizio sulla manipulation non era stato attivato: non vedendo il servizio pubblicato, qualche nodo si è chiuso, determinando così la chiusura dell’intero programma</p></li>
+<li><p>e altro errore, ovviamente! sempre dal manipulation.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>process[manipulation_controller-7]: started with pid [2768]
+[ERROR] [1661161333.204855700]: Robot semantic description not found. Did you forget to define or remap &#39;/robot_description_semantic&#39;?
+[ INFO] [1661161333.206055300]: Loading robot model &#39;robocluedo_robot&#39;...
+[ INFO] [1661161333.206203300]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[FATAL] [1661161333.344392200]: Group &#39;arm_group&#39; was not found.
+terminate called after throwing an instance of &#39;std::runtime_error&#39;
+  what():  Group &#39;arm_group&#39; was not found.
+================================================================================REQUIRED process [manipulation_controller-7] has died!
+process has died [pid 2768, exit code -6, cmd /root/ros_ws/devel/lib/robocluedo_movement_controller/manipulation_controller __name:=manipulation_controller __log:=/root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7.log].
+log file: /root/.ros/log/a12e59a4-21fe-11ed-a404-0242ac110002/manipulation_controller-7*.log
+Initiating shutdown!
+================================================================================
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>e se provassi ad avviare anche RViz?</p>
+<ul>
+<li><p><strong>con anche RVIZ sembra che vada</strong> …</p></li>
+<li><p>… ma ieri andava anche senza RViz … cos’è cambiato?</p></li>
+</ul>
+</li>
+<li><p>quindi … senza RViz stavolta, MoveIt non va</p>
+<ul>
+<li><p>ieri ha funzionato anche senza … oggi niente, boh</p></li>
+<li><p>può essere un problema nel run2 del robot</p></li>
+</ul>
+</li>
+<li><p>potrei aver capito dove sta il problema… proviamo così: ho creato un gazebo2.launch che è come demo_gazebo.launch ma senza lanciare RViz … se ho intuito bene, questo dovrebbe lanciare sia gazebo che il modello del robot, cioè quello che serve per non far crashare quel launch file</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_robot_hunter gazebo2.launch
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 3</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># shell 4</span>
+rosnode list
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>problema risolto</strong>! La mia intuizione era corretta: il file di base generato dal setup assistant per lanciare solo Gazebo non esegue anche tutti gli strumenti che serve avviare per usare il framework moveit. Creando questo secondo launch file sono riuscito ad eseguire con successo anche la parte di manipolazione usando solo Gazebo</p></li>
+<li><p><em>adesso ho da aggiungere un 2 a qualunque cosa nel codice …</em></p>
+<ul>
+<li><p>nel launch generale non servono modifiche</p></li>
+<li><p>modifica nel run2</p></li>
+<li><p>(non è stato così tragico…)</p></li>
+<li><p>vado a segnalare la issue nella documentazione del modello URDF</p></li>
+</ul>
+</li>
+<li><p>e riproviamo a lanciare il progetto, <em>stavolta senza RViz</em> …</p></li>
+<li><p>(pensandoci bene, <em>ieri non ho testato fino in fondo questa feature…</em> comunque oggi l’ho fatto, bene che c’ho pensato)</p></li>
+<li><p><strong>E FUNZIONA!</strong></p></li>
+<li><p><strong>COMMIT</strong>: “documentation, ISSUE Gazebo-only SOLVED, improving launch files”</p></li>
+</ul>
+<hr class="docutils" />
+<p>già che ci sono, voglio testare un minimo le performances confrontando due casi:</p>
+<ul class="simple">
+<li><p><strong>SLAM/Gmapping e RViz+Gazebo</strong> : il real time factor non scende sotto 0.30, si mantiene in media su 0.39</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>gmapping <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>AMCL e solo Gazebo</strong> : il real time factor si mantiene sui 0.42 più freqentemente, e non scende sotto 0.38 (quindi sì, il lavoro tra ieri e oggi ha funzionato!)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
+roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># shell 2</span>
+roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>COMMIT</strong>: “playing a bit with the complete project, refreshing docs”</p></li>
+</ul>
+<hr class="docutils" />
+<p>direi che adesso possiamo iniziare a fare il lavoro che mi sto segnando tra ieri e oggi, tra un bug e l’altro:</p>
+<ul class="simple">
+<li><p>(andiamo con la documentazione <em>seria</em> del codice)</p></li>
+<li><p><strong>robocluedo vision</strong></p>
+<ul>
+<li><p>aruco detecton c++</p></li>
+<li><p>(c’è voluta un bel po’ di attenzione…)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “code documentation (aruco_detection)”</p></li>
+<li><p><strong>robocluedo vision</strong></p>
+<ul>
+<li><p>aruco decode</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “code documentation (aruco decode)”</p></li>
+<li><p><strong>robocluedo rosplan</strong></p>
+<ul>
+<li><p>(tentiamo di seguire una logica…)</p></li>
+<li><p>action replan</p></li>
+<li><p>move-to</p></li>
+<li><p>move to center</p></li>
+<li><p>(tutte le altre servivano per il secondo progetto, per questo non servono)</p></li>
+<li><p>kb_interface</p></li>
+<li><p>kb tools</p></li>
+<li><p>feedback manager … già documentato (me ne sto)</p></li>
+<li><p>pipeline manager</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “code documentation (robocluedo rosplan)”</p></li>
+<li><p>(è il momento di soffrire per davvero) <strong>robocluedo movement controller</strong></p>
+<ul>
+<li><p>(anzitutto, una minima occhiata in giro…)</p></li>
+<li><p>bug_m</p></li>
+<li><p>go to point</p></li>
+<li><p>head orientation</p></li>
+<li><p>move base nav</p></li>
+<li><p>meglio scrivere ora il documento su come aggiornare il navigation manager…</p></li>
+<li><p>navigation manager</p></li>
+<li><p>manipulation controller</p></li>
+</ul>
+</li>
+<li><p>(mi sono totalmente dimenticato dei launch files in giro per il progetto)</p></li>
+<li><p>launch files:</p>
+<ul>
+<li><p>movement controller</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “code documentation (…endless…)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>avanti con la documentazione dei packages:</p>
+<ul class="simple">
+<li><p>launch files:</p>
+<ul>
+<li><p>movement controller (pronto)</p></li>
+<li><p>vision</p></li>
+<li><p>rosplan</p></li>
+<li><p>armor … <em>già fatto?</em> sono efficientissimo</p></li>
+</ul>
+</li>
+<li><p>(e stop, il mission manager l’ho documentato stamattina, quindi tutto ok)</p></li>
+<li><p>e riprendiamo con la documentazione del codice (ormai ne manca poco, per fortuna)</p>
+<ul>
+<li><p>minimo lavoro di revisione, giusto per capire se è tutto a posto…</p></li>
+</ul>
+</li>
+<li><p>ancora documentazione del codice (ultimo round) <strong>mission manager</strong></p>
+<ul>
+<li><p>navigation unit</p></li>
+<li><p>manipulation unit</p></li>
+<li><p>mission manager</p></li>
+</ul>
+</li>
+<li><p>ancora un giro nella documentazione per capire se c’è altro che posso fare (dovrei aver terminato il lavoro sul codice)</p></li>
+<li><p>UML generale del progetto (stavolta molto semplice … inutile stressare troppo plantUML: rimane comunque uno strumento abbastanza limitato, per quanto utile)</p></li>
+<li><p>anche all’ultimissimo test è sopravvissuto</p></li>
+<li><p><strong>COMMIT</strong>: “documentation (ready for the README)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="readme-e-deployment">
+<h2>23/08/2022 – readme e deployment<a class="headerlink" href="#readme-e-deployment" title="Permalink to this heading"></a></h2>
+<p>Andiamo subito con la scrittura del readme per il progetto. Fatto questo, lavoro sull’aggiornamento della documentazione per la seconda parte del progetto, e si pubblica.</p>
+<ul class="simple">
+<li><p>prima impostazione del readme (stavolta però tutte le sezioni riguardanti il setup vanno nella documentazione, così il readme viene un po’ più corto)</p>
+<ul>
+<li><p>seguendo la struttura nelle slides</p></li>
+<li><p>nonostante le dimensioni dell’attuale documentazione, vorrei che il readme fosse più terso possibile, semplice ed essenziale</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>struttura del readme:</p>
+<ol class="arabic simple">
+<li><p>Brief introduction (couple of sentences).</p></li>
+<li><p>Software architecture, temporal diagram and states diagrams (if applicable). Each diagram should be commented
+with a paragraph, plus a list describing ROS messages and parameters.</p></li>
+<li><p>Installation and running procedure (including all the steps to display the robot’s behavior).</p></li>
+<li><p>A commented small video, a GIF or screenshots showing the relevant parts of the running code.</p></li>
+<li><p>Working hypothesis and environment (1 or 2 paragraph).</p></li>
+<li><p>System’s features (1 or 2 paragraph).</p></li>
+<li><p>System’s limitations (1 or 2 paragraph).</p></li>
+<li><p>Possible technical Improvements (1 or 2 paragraph).</p></li>
+<li><p>Authors and contacts (at least the email).</p></li>
+</ol>
+</div>
+<ul>
+<li><p>scrittura readme</p></li>
+<li><p>penso ci voglia un diagramma UML globale più ricco che mostri tutti i componenti e tutti i packages del progetto</p></li>
+<li><p><em>purtroppo c’è davvero molto da scrivere…</em> tento di tenerlo più conciso possibile, ma l’architettura è davvero troppo complessa per poterla spiegare in poche righe. Posso fare affidamento sui diagrammi, ma anche quelli non possono dire proprio tutto.</p></li>
+<li><p>per il momento meglio fare le cose in sphinx, per poi portare tutto su GitHub</p></li>
+<li><p><em>è arrivato il tanto temuto momento dei temporal diagrams …</em></p></li>
+<li><p>azitutto, ci vuole un elenco dei diagrammi necessari</p>
+<ul>
+<li><p>navigation usando move_base</p>
+<p>(selezione algoritmo, movimento)</p>
+<p>ROSPlan action move_to
+navigation unit
+navigation manager – navigation controller move_base
+move_base_nav
+head orientation</p>
+</li>
+<li><p>navigation usando bug_m</p>
+<p>(selezione algoritmo, movimento)</p>
+<p>ROSPlan action move_to
+navigation unit
+navigation manager – navigation controller bug_m
+bug_m
+head orientation
+go to point</p>
+</li>
+<li><p>manipulation sincrona (RCL#2)</p>
+<p>ROSPlan action manipulation
+manipulation unit
+manipulation controller
+moveit</p>
+</li>
+<li><p>manipulation asincrona (RCL#3)</p>
+<p>manipulation unit
+manipulation controller
+moveit</p>
+</li>
+<li><p>esecuzione di un plan col mission manager (in gran parte è identico a quello dell’assignment 2)</p>
+<p>mission manager
+armor interface
+pipeline manager
+kb_interface
+rosplan kb
+rosplan dispatch
+oracolo</p>
+</li>
+<li><p>(forse per il mission manager è meglio un flow chart…)</p></li>
+</ul>
+</li>
+<li><p>forse sarebbe meglio ricorrere a diagrammi innestati piuttosto che fare diagrammi troppo lunghi:</p>
+<ul class="simple">
+<li><p>i <em>diagrammi temporali generali</em> mostrano solo la comunicazione tra packages, senza menzionare (se non al di sopra delle frecce) i componenti</p></li>
+<li><p>i <em>diagrammi temporali dei nodi</em> rappresentano invece i doni all’interno di un solo package</p></li>
+</ul>
+</li>
+<li><p>alcuni rudimenti di sintassi plantText sui diagrammi temporali, nello specifico del progetto:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@startuml
+
+&#39;&#39;&#39; titolo e tutto il resto
+header un header piuttosto arguto
+footer un footer ancora più arguto
+title un titolo perfetto per un diagramma perfetto
+
+&#39;&#39;&#39; entità
+&#39;&#39;&#39;    FUNZIONA ANCHE SENZA DICHIARAZIONI 
+&#39;&#39;&#39;     ma in caso...
+participant &quot;node name&quot; as NODE_NAME
+collections &quot;package name&quot; as PACKAGE_NAME
+
+&#39;&#39;&#39; collegamenti tra entità
+&#39;&#39;&#39;     LINEA CONTINUA -&gt;
+&#39;&#39;      LINEA DASHED --&gt;
+&#39;&#39;      LINEA col pallino in fondo -&gt;o
+node1 -&gt; node2 : andata ... 
+node1 &lt;- node2 : ... e ritorno
+
+&#39;&#39;&#39; sezioni di diagramma
+== A Diagram Section ==
+
+&#39;&#39;&#39; annotazioni
+&#39;&#39;&#39;    STILE 1
+node1 -&gt; node2 : andata ... 
+note right: una nota di andata
+node1 &lt;- node2 : ... e ritorno
+note left: una nota di ritorno
+
+&#39;&#39;&#39;    NOTE OVER stile 1
+note across: a very long, exaustive, note
+
+node2 -&gt; node3 : andata ... 
+note left: una nota di andata
+node1 &lt;- node3 : ... e aridanghete
+note right: una nota di ritorno
+
+&#39;&#39;&#39;    STILE 2
+node2 -&gt; node3 : andata ... 
+note right
+    una nota di andata
+    una nota piuttosto lunga
+end note
+
+&#39;&#39;&#39;    NOTE OVER stile 2
+note across
+	another very long, exaustive, note
+end note
+
+
+@enduml
+</pre></div>
+</div>
+<p>esempio di temporal:</p>
+<p class="plantuml">
+<object data="../_images/plantuml-6db17faeb5c5fac685a13d0d61a981488c64c9a5.svg" type="image/svg+xml" style="width:527px;height:438px;background:#FFFFFF;">
+<img src="../_images/plantuml-6db17faeb5c5fac685a13d0d61a981488c64c9a5.png" alt="&#64;startuml
+
+''' annotazioni
+'''    STILE 1
+== Style 1 ==
+node1 -&gt; node2 : andata ... 
+note right: una nota di andata
+node1 &lt;- node2 : ... e ritorno
+note left: una nota di ritorno
+
+'''    NOTE OVER stile 1
+note across: a very long, exaustive, note
+
+node2 -&gt; node3 : andata ... 
+note left: una nota di andata
+node1 &lt;- node3 : ... e aridanghete
+note right: una nota di ritorno
+
+'''    STILE 2
+== Style 2 ==
+node2 -&gt; node3 : andata ... 
+note right
+    una nota di andata
+    una nota piuttosto lunga
+end note
+
+'''    NOTE OVER stile 2
+note across
+	another very long, exaustive, note
+end note
+
+&#64;enduml"/>
+
+</object></p>
+<p>altro esempio molo stupido:</p>
+<p class="plantuml">
+<object data="../_images/plantuml-5d9d45df92636f09043b2cffcc3471de3af2e190.svg" type="image/svg+xml" style="width:165px;height:155px;background:#FFFFFF;">
+<img src="../_images/plantuml-5d9d45df92636f09043b2cffcc3471de3af2e190.png" alt="&#64;startuml
+
+collections COLL
+
+COLL -&gt; A
+A -&gt; B
+B -&gt; C
+A &lt;- C
+
+&#64;enduml"/>
+
+</object></p>
+<ul class="simple">
+<li><p><strong>pronti per UML-eggiare</strong></p>
+<ul>
+<li><p><strong>navigation with move base</strong></p></li>
+<li><p>temporal diagram packages</p></li>
+<li><p>(manca ancora il node diagram)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “documentation (writing the readme)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>navigation with move base</strong></p>
+<ul>
+<li><p>temporal node diagram</p></li>
+<li><p>(per i components non sarà il massimo … ma per i temporal, plantUML è fenomelae, comodissimo, e fa dei diagrammi molto belli)</p></li>
+</ul>
+</li>
+<li><p><strong>navigation usando bug_m</strong> (inizio a mettere avanti un po’ di lavoro per l’altro progetto)</p>
+<ul>
+<li><p>temporal package diagram</p></li>
+<li><p>e temporal node</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “documentation (temporal diagrams)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>asynchronous manipulation</strong></p>
+<ul>
+<li><p>in questo caso solo il node diagram, dovrebbe essere già abbastanza chiaro così</p></li>
+</ul>
+</li>
+<li><p>serve anche un temporal su <strong>robocluedo vision</strong></p>
+<ul>
+<li><p>package temporal diagram … non serve</p></li>
+<li><p>node diagram</p></li>
+</ul>
+</li>
+<li><p>e ora, il worflow generale</p>
+<ul>
+<li><p>penso che questa volta userò un grosso diagramma di flusso … come si fanno i diagrammi di flusso?</p></li>
+</ul>
+</li>
+</ul>
+<p>e andiamo ad imparare come si fanno i diagrammi di flusso in plantText:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@startuml
+
+&#39;&#39;&#39; inizio del diagramma
+(*) --&gt; A
+
+&#39;&#39;&#39; fine del diagramma
+A --&gt; (*)
+
+&#39;&#39;&#39; etichette sulle frecce
+(*) --&gt;[this is a label] A
+A --&gt;[this is a label] (*)
+
+&#39;&#39;&#39; branches
+(*) --&gt; A
+if &quot;condizione&quot; then
+ --&gt;[true] B
+B --&gt; C
+else
+ --&gt;[false] C
+endif
+C --&gt; (*)
+
+
+@enduml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>…i fork sono <em>inguardabili</em> …</p></li>
+<li><p>meglio preferire uno state diagram, molto meglio</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@startuml
+
+&#39;&#39;&#39; INIT
+[*] --&gt; A
+
+
+&#39;&#39;&#39; END
+A --&gt; [*]
+
+
+&#39;&#39;&#39; aggiungere cose sotto uno stato
+A : testo stato
+A : altro testo stato
+
+
+&#39;&#39;&#39; DICHIARAZIONE ESPLICITA DI STATO usata anche per suddividere il diagramma in sottostati
+state MACROSTATE_A {
+	[*] --&gt; A
+	A --&gt; B
+	B --&gt; C
+	B --&gt; A
+	C --&gt; [*]
+}
+
+state MACROSTATE_B {
+	[*] --&gt; MA
+	MA --&gt; MC
+	MC --&gt; MC
+	MC --&gt; MB
+	MB --&gt; MA
+	MC --&gt; [*]
+}
+
+B --&gt; MB
+A --&gt; MC
+
+
+&#39;&#39;&#39; separatore orizzontale
+&#39;&#39;     SERVE PER SOTTOLINARe operazioni concorrenti
+state MACROSTATE_B {
+	ME --&gt; MF
+	MF --&gt; ME
+	---
+	MC --&gt; MD
+	MD --&gt; MC
+	---
+	MA --&gt; MB
+	MB --&gt; MA
+}
+
+&#39;&#39;&#39; c&#39;e anche il separatore verticale, stesso significato
+state MACROSTATE_B {
+	ME --&gt; MF
+	MF --&gt; ME
+	||
+	MC --&gt; MD
+	MD --&gt; MC
+	||
+	MA --&gt; MB
+	MB --&gt; MA
+}
+
+&#39;&#39;&#39; stati fork e join
+[*] --&gt; a
+state my_fork &lt;&lt;fork&gt;&gt;
+a --&gt; my_fork
+my_fork --&gt; b
+my_fork --&gt; c
+my_fork --&gt; d
+state my_join &lt;&lt;join&gt;&gt;
+b --&gt; my_join
+c --&gt; my_join
+d --&gt; my_join
+my_join --&gt; e
+e --&gt; [*]
+e --&gt; a
+e --&gt; c
+
+
+@enduml
+</pre></div>
+</div>
+<p>anche il diagramma a stati è abbastanza osceno … ma perlomeno meglio dell’altro</p>
+<ul class="simple">
+<li><p>adesso, il diagramma a stati</p></li>
+<li><p><strong>COMMIT</strong>: “documentation (temporal diagrams done)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>qualche commento ai diagrammi nel readme (ma gusto pochissimi)</p></li>
+<li><p><em>diagrammi mancanti</em></p>
+<ul>
+<li><p>pianificazione di un landmark con il pipeline manager</p></li>
+</ul>
+</li>
+<li><p>direi di fare un plan per ogni landmark:</p>
+<ul>
+<li><p>REPLAN</p></li>
+<li><p>… e gli altri sono identici</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “documentation (landmarks execution diagram)”</p></li>
+</ul>
+<hr class="docutils" />
+<p>e torniamo al lavoro:</p>
+<ul class="simple">
+<li><p>(per l’installazione ci penso più tardi)</p></li>
+<li><p>(la runnin procedure è ampiamente spiegata con dovizia di particolari nella documentazione del progetto)</p></li>
+<li><p>workig hypotheses and environment</p></li>
+<li><p><strong>COMMIT</strong>: “documentaton (working assumptions)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>scrittura delle ultimissime parti del readme …</p></li>
+<li><p><em>sai cosa ti dico? Il readme sta nella documentazione</em>. Non voglio alcun readme visibile su Git, se non un semplice link che rimanda alla documentazione con la classica mia card che mostra una prima overview dei link. Ho fatto uno sforzo immane per tenere tutto all’interno della documentazione e per renderla completa.</p></li>
+<li><p>scrittura del “readme fantoccio”</p>
+<ul>
+<li><p>mantenendo la documentazione in Sphinx è più semplice aggiornarla e linkare ad altre pagine rilevanti della documentazione, mentre tenendola in un semplice readme di Git devo ogni volta fare il noiosissimo lavoro di rimaneggiare i link … ho fatto questa esperienza su ben 5 assignment, e non ci tengo a ripeterla la sesta volta.</p></li>
+</ul>
+</li>
+<li><p>dovrei aggiungere qualche parola per ogni package, almeno i nodi all’interno</p>
+<ul>
+<li><p>armor interface è già abbastanza documentato</p></li>
+<li><p>le dipendenze non contengono nodi che non siano stati documentati, ad eccezione di quelli per opencv, <em>che comunque non sono un problema mio</em></p></li>
+<li><p>mission manager</p></li>
+<li><p><em>mi sono appena accorto che mancano gli UML dei nodi del mission manager!</em></p></li>
+<li><p>(una barba infinita…)</p></li>
+<li><p>vision</p>
+<ul>
+<li><p>e che fai? del diagramma UML del vision te ne privi?</p></li>
+</ul>
+</li>
+<li><p>rosplan direi che èè stato già ampiamente documentato</p></li>
+<li><p>e così anche il movement controller</p></li>
+<li><p>un UML del module testing non serve a nulla</p></li>
+</ul>
+</li>
+<li><p>allineamento verticale in PlantUML … vedi <a class="reference external" href="https://forum.plantuml.net/5180/components-alignment-left-to-rigth-vertical">la magia</a> più usa together {…}</p>
+<ul>
+<li><p>anche <a class="reference external" href="https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html">questa</a> guida sul layout è molto utile</p></li>
+</ul>
+</li>
+<li><p>ho una cosa in testa … voglio provare a fare un commit da script</p></li>
+<li><p><strong>COMMIT</strong>: “script commit”</p></li>
+<li><p>giusto un altro giretto nella documentazione per essere sicuro (poi setup e run?)</p></li>
+<li><p>la documentazione dovrebbe essere pronta</p></li>
+<li><p><strong>COMMIT</strong>: “documentation (finally, ready for the final setup)”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>nuova pagina per il setup</p></li>
+<li><p>e proviamola dunque questa installazione!</p></li>
+<li><p><strong>COMMIT</strong>: “deployment (working on setup)”</p></li>
+<li><p>nuovo docker pulito…</p>
+<ul>
+<li><p><strong>E FUNZIONAAAAAAAA</strong> – fine dei giochi (almeno per quanto riguarda il terzo assignment)</p></li>
+</ul>
+</li>
+<li><p><strong>COMMIT</strong>: “deployment (the end … maybe?)”</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="revisione-documentazione">
+<h2>24/08/2022 – revisione documentazione<a class="headerlink" href="#revisione-documentazione" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>revisione generale della documentazione (giusto capire se c’è qualcosa di migliorabile nell’aspetto grafico dei diagrammi o nella chiarezza degli scritti)</p></li>
+<li><p><strong>COMMIT</strong>: “docs review and refresh”</p></li>
+</ul>
+</div>
+<div class="section" id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this heading"></a></h2>
+<div class="section" id="utilizzo-di-move-base">
+<h3>utilizzo di move base<a class="headerlink" href="#utilizzo-di-move-base" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>il nodo che si occupa di fare la navigation aggiorna il plan parecchie volte, perchè sulle lunghe tratte move_base tende a far andare il robot in percorsi che non hanno molto senso</p></li>
+<li><p>rifacendo il panning ogni tot si assicura una certa sitabilità sul path prescelto</p></li>
+<li><p>unico difetto: il robot si ferma spesso per fare replanning, causando delle oscillazioni in avanti un po’ brusche</p></li>
+</ul>
+</div>
+<div class="section" id="strano-warning-con-move-base">
+<h3>strano warning con move_base<a class="headerlink" href="#strano-warning-con-move-base" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.458000 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.458000 according to authority unknown_publisher
+
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.459500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.459500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.460500 according to authority unknown_publisher
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.460500 according to authority unknown_publisher
+         at line          at line 278278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+ in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.461500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.461500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.462500 according to authority unknown_publisherTF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.462500 according to authority unknown_publisher
+
+         at line 278         at line  in 278/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp in 
+/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.463500 according to authority unknown_publisherWarning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.463500 according to authority unknown_publisher
+         at line 
+278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.464500 according to authority unknown_publisher
+TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.464500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp         at line 278
+ in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.465500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.465500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.466500 according to authority unknown_publisher
+         at line 278TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.466500 according to authority unknown_publisher in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.467500 according to authority unknown_publisher
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.467500 according to authority unknown_publisher
+         at line          at line 278 in 278/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp in 
+/tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.467000 according to authority unknown_publisher
+Warning:          at line TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.467000 according to authority unknown_publisher278 in 
+         at line /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp278
+ in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.468500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.468500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.469500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.469500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.470500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning: 
+TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.470500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.471500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.471500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.472500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.473500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.472500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.473500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.474500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.474500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.475500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.475500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.476500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.476500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.477500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.477500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.478500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cppWarning: 
+TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.478500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.479500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.479500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.479000 according to authority unknown_publisherTF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.479000 according to authority unknown_publisher
+
+         at line 278         at line  in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.480500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.480500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.481500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.481500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.482500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.482500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.483500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.483500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.484500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.484500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.483000 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame base_link at time 942.483000 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.485500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.485500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.487500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.487500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.488500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.488500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.489500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.489500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.490500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.490500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.491500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.491500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.492500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.492500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.493500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.493500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.496500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.496500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.497500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.497500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.498500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.498500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.499500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.499500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.500500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.500500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.501500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.501500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.502500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+Warning: TF_REPEATED_DATA ignoring data with redundant timestamp for frame odom at time 942.502500 according to authority unknown_publisher
+         at line 278 in /tmp/binarydeb/ros-noetic-tf2-0.7.5/src/buffer_core.cpp
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="run-the-project.html" class="btn btn-neutral float-left" title="HOW TO Run RCL#3 Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how-to-setup-doxy-sphinx-ws.html" class="btn btn-neutral float-right" title="SPHINX – setup doxygen/sphinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

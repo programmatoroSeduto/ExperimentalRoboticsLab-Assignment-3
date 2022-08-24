@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLASS feedback manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NODE kb_interface" href="kb_interface.html" />
+    <link rel="prev" title="UML – ROSPlann Knowledge base – formal ROS description" href="../_uml/rosplan-kb.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_rosplan</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/new-robocluedo.html">PDDL Design – the new RoboCLuedo PDDL model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/pddl-and-rosplan.html">DOCS – PDDL and ROSPlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-arch.html">UML – robocluedo rosplan – in a nutshell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CLASS feedback manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_interface.html">NODE kb_interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kb_tools.html">CLASS kb_tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to.html">ROSPlan action move_to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_to_center.html">ROSPlan action move_to_center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="replan.html">ROSPlan action replan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosplan_pipeline_manager.html">NODE rosplan_pipeline_manager.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_rosplan</a> &raquo;</li>
+      <li>CLASS feedback manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_rosplan/_code_reference/feedback_manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="class-feedback-manager">
+<h1>CLASS feedback manager<a class="headerlink" href="#class-feedback-manager" title="Permalink to this heading"></a></h1>
+<div class="section" id="header">
+<h2>Header<a class="headerlink" href="#header" title="Permalink to this heading"></a></h2>
+<p>additional informations from the PDDL action implementations as topic </p>
+<p><dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0 </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ACTION_NAME_UNKNOWN">
+<span class="target" id="feedback__manager_8h_1a7fde9014c619ef02f705989a9032a8a5"></span><span class="sig-name descname"><span class="n"><span class="pre">ACTION_NAME_UNKNOWN</span></span></span><a class="headerlink" href="#c.ACTION_NAME_UNKNOWN" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TOPIC_ACTION_FEEDBACK">
+<span class="target" id="feedback__manager_8h_1a56390d2d0f99e7a63ae2e7ea05a9b53e"></span><span class="sig-name descname"><span class="n"><span class="pre">TOPIC_ACTION_FEEDBACK</span></span></span><a class="headerlink" href="#c.TOPIC_ACTION_FEEDBACK" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv423action_feedback_manager">
+<span id="_CPPv323action_feedback_manager"></span><span id="_CPPv223action_feedback_manager"></span><span id="action_feedback_manager"></span><span class="target" id="classaction__feedback__manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action_feedback_manager</span></span></span><a class="headerlink" href="#_CPPv423action_feedback_manager" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;feedback_manager.h&gt;</em></div>
+<p>utilities for sending further infos to the pipeline manager. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager23action_feedback_managerENSt6stringE">
+<span id="_CPPv3N23action_feedback_manager23action_feedback_managerENSt6stringE"></span><span id="_CPPv2N23action_feedback_manager23action_feedback_managerENSt6stringE"></span><span id="action_feedback_manager::action_feedback_manager__ss"></span><span class="target" id="classaction__feedback__manager_1a1e39f6b9fbe49dd45d48010c48968a66"></span><span class="sig-name descname"><span class="n"><span class="pre">action_feedback_manager</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">act_name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">ACTION_NAME_UNKNOWN</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager23action_feedback_managerENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>constructor of <a class="reference internal" href="#classaction__feedback__manager"><span class="std std-ref">action_feedback_manager</span></a> </p>
+<p>this function opens the publisher and performs some other intialization. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_managerD0Ev">
+<span id="_CPPv3N23action_feedback_managerD0Ev"></span><span id="_CPPv2N23action_feedback_managerD0Ev"></span><span id="action_feedback_manager::~action_feedback_manager"></span><span class="target" id="classaction__feedback__manager_1a03578c1ddea3134821802d1a9f751db4"></span><span class="sig-name descname"><span class="n"><span class="pre">~action_feedback_manager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_managerD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class destructor </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager10fb_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE">
+<span id="_CPPv3N23action_feedback_manager10fb_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="_CPPv2N23action_feedback_manager10fb_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="action_feedback_manager::fb_failure__std::vector:diagnostic_msgs::KeyValue:.ss"></span><span class="target" id="classaction__feedback__manager_1a8c9c45679421da4398b37b87eab9fe67"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fb_failure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">diagnostic_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">KeyValue</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parameters</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">details</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager10fb_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>other failures</p>
+<p>forinstance, can’t reach a given service. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager13fb_hw_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE">
+<span id="_CPPv3N23action_feedback_manager13fb_hw_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="_CPPv2N23action_feedback_manager13fb_hw_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="action_feedback_manager::fb_hw_failure__std::vector:diagnostic_msgs::KeyValue:.ss"></span><span class="target" id="classaction__feedback__manager_1a0aa1a67b824bf3f1ada4e2dd28262415"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fb_hw_failure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">diagnostic_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">KeyValue</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parameters</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">details</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager13fb_hw_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>unspecified hardware failure </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager26fb_hw_manipulation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE">
+<span id="_CPPv3N23action_feedback_manager26fb_hw_manipulation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="_CPPv2N23action_feedback_manager26fb_hw_manipulation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="action_feedback_manager::fb_hw_manipulation_failure__std::vector:diagnostic_msgs::KeyValue:.ss"></span><span class="target" id="classaction__feedback__manager_1a41faa38f3cea2f4c19fd2694368d4ff5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fb_hw_manipulation_failure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">diagnostic_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">KeyValue</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parameters</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">details</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager26fb_hw_manipulation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>hardware manipulation failure </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager24fb_hw_navigation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE">
+<span id="_CPPv3N23action_feedback_manager24fb_hw_navigation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="_CPPv2N23action_feedback_manager24fb_hw_navigation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE"></span><span id="action_feedback_manager::fb_hw_navigation_failure__std::vector:diagnostic_msgs::KeyValue:.ss"></span><span class="target" id="classaction__feedback__manager_1accdda1a95b8e6c1545e49f3c38c386f6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fb_hw_navigation_failure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">diagnostic_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">KeyValue</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parameters</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">details</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager24fb_hw_navigation_failureENSt6vectorIN15diagnostic_msgs8KeyValueEEENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>hardware navigation failure </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager11action_nameE">
+<span id="_CPPv3N23action_feedback_manager11action_nameE"></span><span id="_CPPv2N23action_feedback_manager11action_nameE"></span><span id="action_feedback_manager::action_name__ss"></span><span class="target" id="classaction__feedback__manager_1a4052c9aaecc90f62b37d2b790a74f2bf"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action_name</span></span></span><a class="headerlink" href="#_CPPv4N23action_feedback_manager11action_nameE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the name of the action </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager9build_msgENSt6vectorIN15diagnostic_msgs8KeyValueEEEbbbbbNSt6stringE">
+<span id="_CPPv3N23action_feedback_manager9build_msgENSt6vectorIN15diagnostic_msgs8KeyValueEEEbbbbbNSt6stringE"></span><span id="_CPPv2N23action_feedback_manager9build_msgENSt6vectorIN15diagnostic_msgs8KeyValueEEEbbbbbNSt6stringE"></span><span id="action_feedback_manager::build_msg__std::vector:diagnostic_msgs::KeyValue:.b.b.b.b.b.ss"></span><span class="target" id="classaction__feedback__manager_1a79e5419924ad7cf1bf1d4d82c915eeb6"></span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ActionFeedback</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">build_msg</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">diagnostic_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">KeyValue</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parameters</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">goal_achieved</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">failure</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hw_failure</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">failure_nav_system</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">failure_manipulation</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">details</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager9build_msgENSt6vectorIN15diagnostic_msgs8KeyValueEEEbbbbbNSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>build a action feedback message </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parameters</strong> – directly from the propertied of the action</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the feedback message ready to be sent </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager3pubERN23robocluedo_rosplan_msgs14ActionFeedbackE">
+<span id="_CPPv3N23action_feedback_manager3pubERN23robocluedo_rosplan_msgs14ActionFeedbackE"></span><span id="_CPPv2N23action_feedback_manager3pubERN23robocluedo_rosplan_msgs14ActionFeedbackE"></span><span id="action_feedback_manager::pub__robocluedo_rosplan_msgs::ActionFeedbackR"></span><span class="target" id="classaction__feedback__manager_1a3e2f0b870a772f6420235f076b8fa4f5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pub</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_rosplan_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ActionFeedback</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N23action_feedback_manager3pubERN23robocluedo_rosplan_msgs14ActionFeedbackE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>publish the feedback </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager2nhE">
+<span id="_CPPv3N23action_feedback_manager2nhE"></span><span id="_CPPv2N23action_feedback_manager2nhE"></span><span id="action_feedback_manager::nh__ros::NodeHandle"></span><span class="target" id="classaction__feedback__manager_1afd0e88e5b7403e536bdfb98f4ac7fcc0"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N23action_feedback_manager2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS node handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23action_feedback_manager19pub_action_feedbackE">
+<span id="_CPPv3N23action_feedback_manager19pub_action_feedbackE"></span><span id="_CPPv2N23action_feedback_manager19pub_action_feedbackE"></span><span id="action_feedback_manager::pub_action_feedback__ros::Publisher"></span><span class="target" id="classaction__feedback__manager_1a1d4d567f99749d30031a0ef36056b740"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Publisher</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pub_action_feedback</span></span></span><a class="headerlink" href="#_CPPv4N23action_feedback_manager19pub_action_feedbackE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the publisher handle </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
+<p>additional informations from the PDDL action implementations as topic </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>feedback_manager.h </p>
+</div>
+<dl class="simple">
+<dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>v1.0</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../_uml/rosplan-kb.html" class="btn btn-neutral float-left" title="UML – ROSPlann Knowledge base – formal ROS description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kb_interface.html" class="btn btn-neutral float-right" title="NODE kb_interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

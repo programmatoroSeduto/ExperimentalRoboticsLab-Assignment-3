@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOW TO perform localization with AMCL &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HOW TO – moveit snippets" href="moveit-snippets.html" />
+    <link rel="prev" title="HOW TO – navigation stack CRASH COURSE" href="how-to-nav-stack.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor/index.html">PKG DOCS – robocluedo armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo_movement_controller</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how-to-nav-stack.html">HOW TO – navigation stack CRASH COURSE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HOW TO perform localization with AMCL</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="moveit-snippets.html">HOW TO – moveit snippets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odometry-and-navigation.html">Messages – Navigation and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run-the-package.html">HOW TO run the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twist-keyboard.html">HOW TO – twist keyboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update-navigation-manager.html">HOW TO update the navigation manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/bug-m.html">UML – bug_m PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/go-to-point.html">UML – go to point PY node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/head-orient.html">UML – head orientation PY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/move-base-nav.html">UML – move_base_nav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/bug_m.html">NODE bug_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/go_to_point.html">NODE go_to_point_service_m</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/head_orientation.html">NODE head_orientation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/manipulation_controller.html">NODE manipulation controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/move-base-nav.html">NODE move_base_nav.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/navigation_manager.html">NODE navigation_manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo_movement_controller</a> &raquo;</li>
+      <li>HOW TO perform localization with AMCL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_movement_controller/_docs/mapping.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="how-to-perform-localization-with-amcl">
+<h1>HOW TO perform localization with AMCL<a class="headerlink" href="#how-to-perform-localization-with-amcl" title="Permalink to this heading"></a></h1>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO perform localization with AMCL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#save-the-map">Save the map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-map-with-amcl">Load the map with AMCL</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the package <code class="docutils literal notranslate"><span class="pre">worlds</span></code> already contains the map file created during this HOW TO.</p>
+</div>
+<div class="section" id="save-the-map">
+<h2>Save the map<a class="headerlink" href="#save-the-map" title="Permalink to this heading"></a></h2>
+<p>the exploration performed with GMapping can be saved using <code class="docutils literal notranslate"><span class="pre">map_server</span> <span class="pre">map_saver</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># enable the robot environment</span>
+roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># do some exloration</span>
+rosrun teleop_keyboard teleop_twist_keyboard.py
+
+<span class="c1"># save the map</span>
+rosrun map_server map_saver -f /root/ros_ws/src/erl3/robocluedo_dependencies/worlds/data/assignment3_map
+</pre></div>
+</div>
+<p>the output from the map_saver should be like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>root@3b17871017fd:~/ros_ws/src/erl3/_docs# rosrun map_server map_saver -f /root/ros_ws/src/erl3/robocluedo_movement_controller/data/map
+[ INFO] [1661074988.866398200]: Waiting for the map
+[ INFO] [1661074989.080666300, 1172.635000000]: Received a 1984 X 1984 map @ 0.050 m/pix
+[ INFO] [1661074989.080824600, 1172.636000000]: Writing map occupancy data to /root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.pgm
+[ INFO] [1661074989.166739700, 1172.691000000]: Writing map occupancy data to /root/ros_ws/src/erl3/robocluedo_movement_controller/data/map.yaml
+[ INFO] [1661074989.166996800, 1172.691000000]: Done
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-map-with-amcl">
+<h2>Load the map with AMCL<a class="headerlink" href="#load-the-map-with-amcl" title="Permalink to this heading"></a></h2>
+<p>here’s how to run AMCL via launch file:</p>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+
+<span class="nt">&lt;launch&gt;</span>
+
+<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;map_server&quot;</span> <span class="na">name=</span><span class="s">&quot;map_server&quot;</span> <span class="na">type=</span><span class="s">&quot;map_server&quot;</span> <span class="na">arg=</span><span class="s">&quot;$(find worlds)/data/assignment3_map.yaml&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;use_sim_time&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;node</span> <span class="na">pkg=</span><span class="s">&quot;amcl&quot;</span> <span class="na">type=</span><span class="s">&quot;amcl&quot;</span> <span class="na">name=</span><span class="s">&quot;amcl&quot;</span> <span class="na">output=</span><span class="s">&quot;screen&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;base_frame_id&quot;</span> <span class="na">value=</span><span class="s">&quot;base_link&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;min_particles&quot;</span> <span class="na">value=</span><span class="s">&quot;1000&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;max_particles&quot;</span> <span class="na">value=</span><span class="s">&quot;5000&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;odom_alpha1&quot;</span> <span class="na">value=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">&quot;odom_alpha2&quot;</span> <span class="na">value=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/node&gt;</span>
+
+<span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+</div>
+<p>here’s the command to try the AMCL map of the environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz launch_nav_stack:<span class="o">=</span><span class="nb">false</span> launch_amcl:<span class="o">=</span><span class="nb">true</span> <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="how-to-nav-stack.html" class="btn btn-neutral float-left" title="HOW TO – navigation stack CRASH COURSE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="moveit-snippets.html" class="btn btn-neutral float-right" title="HOW TO – moveit snippets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools &mdash; RoboCLuedo #3 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/assets/jsonview.bundle.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/libs/html/datatables.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/common.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/modern.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/layouts.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx-needs/styles.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/assets/jsonview.bundle.js"></script>
+        <script src="../../_static/assets/jsonview_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables.min.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js"></script>
+        <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PKG DOCS – robocluedo_armor_msgs" href="../../robocluedo_armor_msgs/index.html" />
+    <link rel="prev" title="ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals" href="examples_cluedo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> RoboCLuedo #3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">README</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PKG DOCS – robocluedo armor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-commands.html">aRMOR commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-run.html">DOCS – how to run robocluedo armor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_docs/armor-how-to-use.html">DOCS – HOW TO use RoboCLuedo aRMOR interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_uml/armor-uml.html">UML – aRMOR Interface design elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-cluedo.html">CLASS armor_cluedo.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/armor-tools.html">CLASS armor_tools.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../_code_reference/cluedo-armor-interface.html">NODE cluedo_armor_interface.cpp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_cluedo.html">ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_cluedo.html#armor-cluedo-examples-2-working-with-properties">ARMOR CLUEDO EXAMPLES – 2 – Working with properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_cluedo.html#armor-tools-examples-3-reasoning-workflow">ARMOR TOOLS EXAMPLES – 3 – Reasoning Workflow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#armor-tools-examples-2-the-quickest-way-to-use-armortools">ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_armor_msgs/index.html">PKG DOCS – robocluedo_armor_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_vision/index.html">PKG DOCS – robocluedo_vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan/index.html">PKG DOCS – robocluedo_rosplan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_rosplan_msgs/index.html">PKG DOCS – robocluedo_rosplan_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller/index.html">PKG DOCS – robocluedo_movement_controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_movement_controller_msgs/index.html">PKG DOCS – robocluedo_movement_msgs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_mission_manager/index.html">PKG DOCS – robocluedo_mission_manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_module_testing/index.html">PKG DOCS – RoboCLuedo Module Testing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/erl3-oracle-user-manual.html">Oracle3 – User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/robocluedo-hunter-user-manual.html">the RoboCLuedo “hunter” URDF model – User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/_docs/worlds-user-manual.html">WORLDS – a collection of Gazebo World Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robocluedo_dependencies/vision_opencv/cv_bridge/doc/index.html">cv_bridge</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensions and other references</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_ext/plant-uml-reference.html">PlantUML quick reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboCLuedo #3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PKG DOCS – robocluedo armor</a> &raquo;</li>
+      <li>ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/robocluedo_armor/_examples/examples_tools.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="armor-tools-examples-1-essential-usage-of-armortools">
+<h1>ARMOR TOOLS EXAMPLES – 1 – Essential usage of ArmorTools<a class="headerlink" href="#armor-tools-examples-1-essential-usage-of-armortools" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this code was written only for your understanding. Probably it won’t compile.</p>
+</div>
+<div class="section" id="essential-usage-of-armortools">
+<h2>Essential usage of ArmorTools<a class="headerlink" href="#essential-usage-of-armortools" title="Permalink to this heading"></a></h2>
+<p>In this little example I want to show you which are the main features of the class ArmorTools. It can speed up really the usage of aRMOR, making easier the coding phase.</p>
+<p>The proposed workflow is always the same:</p>
+<ol class="arabic simple">
+<li><p>Constructor, setting the user infos</p></li>
+<li><p>Connection to the service</p></li>
+<li><p>Loading the ontology</p></li>
+<li><p>(optional) check the calidity of the connection</p></li>
+</ol>
+<p>Done this, using armor is simple: just call a function!</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools/armor_tools.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirective.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveReq.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveRes.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example_armor_tools_1&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span><span class="w"> </span><span class="n">nh</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// STEP 0 === CONSTRUCTOR</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// constructor with no arguments: </span>
+<span class="w">	</span><span class="c1">//    set default client name and reference name</span>
+<span class="w">	</span><span class="c1">//    debug mode is off </span>
+<span class="w">	</span><span class="c1">// infos are stored for later in the load step</span>
+<span class="w">	</span><span class="n">ArmorTools</span><span class="w"> </span><span class="n">armor</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// another way: set your client name and reference</span>
+<span class="w">	</span><span class="n">ArmorTools</span><span class="w"> </span><span class="n">armor2</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;my_client&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_reference&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// only debug mode, with default infos</span>
+<span class="w">	</span><span class="n">ArmorTools</span><span class="w"> </span><span class="n">armorDBmode</span><span class="p">(</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// you can toggle the debug mode in any time using</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SwitchDebugMode</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// STEP 1 === CONNECTION</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// the connection to the server is stored inside the class</span>
+<span class="w">	</span><span class="c1">//    using the default timeout</span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">armor</span><span class="p">.</span><span class="n">Connect</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;connection error!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// if you want to set another timeout, use this:</span>
+<span class="w">	</span><span class="c1">//    armor.Connect( ros::Duration( 36 ) );</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// STEP 2 === LOAD ONTOLOGY FROM FILE</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// straightforward: use the dedicated function</span>
+<span class="w">	</span><span class="c1">// alternatively, you can load manually the ontology; there are several ways</span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">armor</span><span class="p">.</span><span class="n">LoadOntology</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/root/ontology/my_pizza_ontology.owl&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="c1">// something went wrong...</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// see ArmorTools::LoadOntology() for more details</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// check the calidity of the interface</span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">armor</span><span class="p">.</span><span class="n">TestInterface</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="c1">// something went wrong...</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// STEP 3 === REQUEST &amp; CALLS</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// quickest way to call aRMOR</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Giampiero&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// manual aRMOR call</span>
+<span class="w">	</span><span class="n">armor_msgs</span><span class="o">::</span><span class="n">ArmorDirective</span><span class="w"> </span><span class="n">srvmsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetRequest</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Susanna&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">CallArmor</span><span class="p">(</span><span class="w"> </span><span class="n">srvmsg</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// get the success flag</span>
+<span class="w">	</span><span class="c1">//    WARNING: sometimes it doesn&#39;t indicate a failure, but a </span>
+<span class="w">	</span><span class="c1">//      common response of the aRMOR service (i.e. testing existence</span>
+<span class="w">	</span><span class="c1">//      of an individual which doesn&#39;t exist makes the success flag false.)</span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">armor</span><span class="p">.</span><span class="n">Success</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// REMEMBER TO UPDATE after the callings!</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// STEP 4 === RESPONSE</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// check the last request</span>
+<span class="w">	</span><span class="n">armor_msgs</span><span class="o">::</span><span class="n">ArmorDirectiveReq</span><span class="o">&amp;</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetLastReq</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor_msgs</span><span class="o">::</span><span class="n">ArmorDirectiveRes</span><span class="o">&amp;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetLastRes</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// print one of the sections of the last service message</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">PrintLastReq</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">PrintLastRes</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// generic prints</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">PrintRequest</span><span class="p">(</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">PrintResponse</span><span class="p">(</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// error checking</span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">last_err_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetLastErrorCode</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">// 0:success</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">error_description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">armor</span><span class="p">.</span><span class="n">GetLastErrorDescription</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;&quot;:success ... or strange error</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-more-advanced-example">
+<h2>a more advanced example<a class="headerlink" href="#a-more-advanced-example" title="Permalink to this heading"></a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ontology_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/where/is/your/owl/file.owl&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">ArmorTools</span><span class="w"> </span><span class="nf">armor</span><span class="p">(</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">armor</span><span class="p">.</span><span class="n">ConnectAndLoad</span><span class="p">(</span><span class="w"> </span><span class="n">ontology_file_path</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">ROS_WARN_STREAM</span><span class="p">(</span><span class="w"> </span><span class="n">OUTLABEL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;ERROR: unable to ConnectAndLoad() aRMOR tools&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;DISJOINT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;DISJOINT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;DISJOINT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jim&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OBJECTPROP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;who&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HP3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jim&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gun&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OBJECTPROP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;what&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HP3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gun&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PLACE&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OBJECTPROP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HP3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Stadium&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;QUERY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COMPLETED&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">ROS_INFO_STREAM</span><span class="p">(</span><span class="w"> </span><span class="n">OUTLABEL</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(1) completed hypotheses:&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">armor</span><span class="p">.</span><span class="n">PrintLastRes</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="armor-tools-examples-2-the-quickest-way-to-use-armortools">
+<h1>ARMOR TOOLS EXAMPLES – 2 – The quickest way to use ArmorTools<a class="headerlink" href="#armor-tools-examples-2-the-quickest-way-to-use-armortools" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this code was written only for your understanding. Probably it won’t compile.</p>
+</div>
+<div class="section" id="the-quickest-way-to-use-armortools">
+<h2>The quickest way to use ArmorTools<a class="headerlink" href="#the-quickest-way-to-use-armortools" title="Permalink to this heading"></a></h2>
+<p>This class is a very powerful tool, as I want to show you here. Instead of writing hundreds of lines of code, you can interact with aRMOR in few function calls. The most of times you’ll use this interface in this way.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_tools/armor_tools.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirective.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveReq.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;armor_msgs/ArmorDirectiveRes.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[]</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example_armor_tools_2&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span><span class="w"> </span><span class="n">nh</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// preparing the client</span>
+<span class="w">	</span><span class="n">ArmorTools</span><span class="w"> </span><span class="n">armor</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">armor</span><span class="p">.</span><span class="n">ConnectAndLoad</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/root/ontologies/civetta_ontology.owl&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">	</span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="c1">// something went wrong...</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// call aRMOR</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;ADD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IND&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pizza&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WEAPON&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="c1">// REMEMBER TO UPDATE after the callings!</span>
+<span class="w">	</span><span class="n">armor</span><span class="p">.</span><span class="n">UpdateOntology</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="examples_cluedo.html" class="btn btn-neutral float-left" title="ARMOR CLUEDO EXAMPLES – 1 – Working on Individuals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../robocluedo_armor_msgs/index.html" class="btn btn-neutral float-right" title="PKG DOCS – robocluedo_armor_msgs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Francesco Ganci.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
