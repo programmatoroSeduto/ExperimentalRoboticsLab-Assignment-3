@@ -66,6 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="_uml/rosplan-arch.html">UML – robocluedo rosplan – in a nutshell</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_uml/rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/collect.html">ROSPlan action collect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_code_reference/feedback_manager.html">CLASS feedback manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_code_reference/kb_interface.html">NODE kb_interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_code_reference/kb_tools.html">CLASS kb_tools</a></li>
@@ -135,6 +136,28 @@
 <li><p>services to control the planning and the execution of the plan</p></li>
 </ul>
 <p>it is designed as a <em>standalone module</em>: when a functionality is required, the system opens a service client and assumes that something else han implemented it.</p>
+<p>Here’s a list of nodes inside this package, with a little of explaination about their functions.</p>
+<div class="section" id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>knowledge_base_tools/feedback_manager.h</strong> implements a simple feedback system used for providing further informations to the pipeline manager in case of failure in applying one ROSPlan action.</p></li>
+<li><p><strong>knowledge_base_tools/kb_interface.h</strong> implements some basic service calls the nodes can be used to alter the ROSPlan knowledge base</p></li>
+</ul>
+</div>
+<div class="section" id="rosplan-actions">
+<h2>ROSPlan Actions<a class="headerlink" href="#rosplan-actions" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>(UNUSED) <strong>collect_node.cpp</strong> implements the PDDL action <code class="docutils literal notranslate"><span class="pre">(collect</span> <span class="pre">?wp</span> <span class="pre">)</span></code> which first moves the manipulator inside the marker, and then moves back it to its home position</p></li>
+<li><p><strong>move_to_node.cpp</strong> and <strong>move_to_center_node.cpp</strong> are implementations respectively of the PDDL actions <code class="docutils literal notranslate"><span class="pre">(move-to</span> <span class="pre">?from</span> <span class="pre">?to</span> <span class="pre">)</span></code> and <code class="docutils literal notranslate"><span class="pre">(move-to-center</span> <span class="pre">?from</span> <span class="pre">)</span></code>, that make use of the navigation system to move the robot from one waypoint to another one.</p></li>
+<li><p><strong>replan_node.cpp</strong> implements <code class="docutils literal notranslate"><span class="pre">(replan</span> <span class="pre">)</span></code> whose the only purpose is to clear the knowledge base before starting. The action is called at the beginning of the plan if the robot is in state <code class="docutils literal notranslate"><span class="pre">(dirty</span> <span class="pre">)</span></code> (see <a class="reference internal" href="_docs/new-robocluedo.html#pddl-model"><span class="std std-ref">PDDL Design – the new RoboCLuedo PDDL model</span></a> for further informations about how the PDDL model works)</p></li>
+</ul>
+</div>
+<div class="section" id="nodes">
+<h2>Nodes<a class="headerlink" href="#nodes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>rosplan_pipeline_manager.py</strong> is meant to be a sort of <em>main node</em> for the package: it provides services for managing all the steps of the ROSPlan planning approach, starting from the problem loading to the dispatch phase where the solution is put into practice. The node also provides functionalities for explaining any unexpected situation it could happen during the planning process, taking into account the particular behaviours of the planning system in use and using the feedback messages from the actions.</p></li>
+<li><p><strong>kb_interface.cpp</strong> implements a set of basic services to handle the state of the ROSPlan knowledge base, especially before starting a new problem instance. The node is made to hide the technical particularities of the PDDL model, trying to provide a handy, “standard” interface to the other nodes.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
 <ul>
@@ -213,6 +236,12 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">code reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="_code_reference/collect.html">ROSPlan action collect</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/collect.html#action-header">Action Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/collect.html#action-implementation">Action Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_code_reference/collect.html#node-implementation">Node implementation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="_code_reference/feedback_manager.html">CLASS feedback manager</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="_code_reference/feedback_manager.html#header">Header</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_code_reference/feedback_manager.html#implementation">Implementation</a></li>
@@ -248,6 +277,7 @@
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 

@@ -1,5 +1,5 @@
 
-RCL -- the RoboCLuedo Project - part 3
+RCL#3 -- the RoboCLuedo Project
 ========================================
 
 .. image:: _media/cluedologo.jpg

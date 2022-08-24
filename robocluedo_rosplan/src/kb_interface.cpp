@@ -254,7 +254,6 @@ public:
 		return true;
 	}
 	
-	/// update goal service
 	/********************************************//**
 	 *  
 	 * \brief implementation of service for updating goals

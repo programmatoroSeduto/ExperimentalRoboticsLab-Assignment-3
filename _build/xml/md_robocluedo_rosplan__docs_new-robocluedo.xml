@@ -2,10 +2,13 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_robocluedo_rosplan__docs_new-robocluedo" kind="page">
     <compoundname>md_robocluedo_rosplan__docs_new-robocluedo</compoundname>
-    <title>PDDL Design – the new RoboCLuedo PDDL model</title>
+    <title>new-robocluedo</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para>(pddl-model)=</para>
+<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md456">
+<title>PDDL Design – the new RoboCLuedo PDDL model</title>
 <para><programlisting filename=".warning"><codeline><highlight class="normal">This<sp/>document<sp/>is<sp/>very<sp/>old,<sp/>and<sp/>for<sp/>sure<sp/>it<sp/>needs<sp/>to<sp/>be<sp/>updated.<sp/>You<sp/>can<sp/>find<sp/>the<sp/>current<sp/>model<sp/>in<sp/>the<sp/>folder<sp/>`/robocluedo_rosplan/pddl/robocluedo_3`.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">I<sp/>leave<sp/>this<sp/>document<sp/>here<sp/>because<sp/>it<sp/>contains<sp/>the<sp/>very<sp/>first<sp/>design<sp/>process<sp/>of<sp/>the<sp/>current<sp/>PDDL,<sp/>which<sp/>is<sp/>changed<sp/>a<sp/>lot<sp/>during<sp/>the<sp/>development<sp/>of<sp/>the<sp/>project.<sp/>Here<sp/>are<sp/>the<sp/>basic<sp/>principles.<sp/></highlight></codeline>
@@ -22,7 +25,7 @@
 </programlisting></para>
 <para><hruler/>
 </para>
-<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md459">
+<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md459">
 <title>Differences from the previous version</title>
 <para>see <ulink url="https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git">the previous version of the RoboCLuedo #2 Project</ulink></para>
 <para><itemizedlist>
@@ -37,8 +40,8 @@
 <para>in this case, using fluents is not so important. In order to keep as simpler as possible the declaration of the problem, it is better to rely only on the simple predicates.</para>
 </listitem></itemizedlist>
 </para>
-</sect1>
-<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md460">
+</sect2>
+<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md460">
 <title>A list of Landmarks</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">the<sp/>implementation<sp/>of<sp/>the<sp/>landmarks<sp/>is<sp/>a<sp/>bit<sp/>more<sp/>cumbersome,<sp/>even<sp/>if<sp/>the<sp/>principle<sp/>is<sp/>the<sp/>one<sp/>outlined<sp/>here.<sp/>See<sp/>{any}`kb_interface`<sp/>for<sp/>more<sp/>informations.<sp/></highlight></codeline>
 </programlisting></para>
@@ -49,14 +52,14 @@
 </listitem><listitem><para><bold>collect a new hint <ndash/> collect</bold> preconditions: ```lisp (not-dirty ) ``` goal: ```lisp (not-dirty ) (hint-collected ?wp ) ```</para>
 </listitem></itemizedlist>
 </para>
-</sect1>
-<sect1 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md461">
+</sect2>
+<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md461">
 <title>list of actions</title>
 <para><programlisting filename=".note"><codeline><highlight class="normal">This<sp/>document<sp/>reports<sp/>the<sp/>very<sp/>first<sp/>version<sp/>of<sp/>the<sp/>code,<sp/>*which<sp/>is<sp/>sometimes<sp/>not<sp/>correct*.<sp/>Please<sp/>refer<sp/>to<sp/>the<sp/>models<sp/>inside<sp/>the<sp/>folder<sp/>`/robocluedo_rosplan/pddl/robocluedo_3`.</highlight></codeline>
 </programlisting></para>
 <para><programlisting filename=".note"><codeline><highlight class="normal">*document<sp/>in<sp/>italian*<sp/>(thinking<sp/>in<sp/>english<sp/>makes<sp/>everything<sp/>...<sp/>annoyingly<sp/>slower)</highlight></codeline>
 </programlisting></para>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md462">
+<sect3 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md462">
 <title>REPLAN</title>
 <para><itemizedlist>
 <listitem><para>**(ACTION) replan**<itemizedlist>
@@ -109,8 +112,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
-</sect2>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md463">
+</sect3>
+<sect3 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md463">
 <title>COLLECT</title>
 <para><itemizedlist>
 <listitem><para>**(ACTION) move-to**<itemizedlist>
@@ -284,8 +287,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">@enduml</highlight></codeline>
 </programlisting></para>
-</sect2>
-<sect2 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md466">
+</sect3>
+<sect3 id="md_robocluedo_rosplan__docs_new-robocluedo_1autotoc_md466">
 <title>SOLVE</title>
 <para><itemizedlist>
 <listitem><para>**(ACTION) move-to-center**<itemizedlist>
@@ -389,6 +392,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
 <codeline><highlight class="normal">)</highlight></codeline>
 </programlisting> </para>
+</sect3>
 </sect2>
 </sect1>
     </detaileddescription>

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="377" column="21" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="377" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="376" column="21" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="376" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classkb__interface_1a85b42761439f2b71ce47b2aeafad4f6f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref> &gt;</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="380" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="380" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="379" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="379" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classkb__interface_1a0261ae63bd1007b57d9699ee1462378b" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classpredicate__instance" kindref="compound">predicate_instance</ref> &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="383" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="383" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="382" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="382" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classkb__interface_1abc04eeb94129f16f32702dcb81013d6f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="386" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="386" bodyend="-1"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="385" column="13" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="385" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -123,7 +123,7 @@
         <location file="robocluedo_rosplan/src/kb_interface.cpp" line="204" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="204" bodyend="255"/>
         <references refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" compoundref="kb__tools_8cpp" startline="109" endline="141">kb_tools::set_predicate</references>
         <references refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" compoundref="kb__tools_8cpp" startline="69" endline="101">kb_tools::get_predicate</references>
-        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="397" endline="422">main</referencedby>
+        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="396" endline="421">main</referencedby>
       </memberdef>
       <memberdef kind="function" id="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -139,10 +139,9 @@
           <declname>res</declname>
         </param>
         <briefdescription>
-<para>update goal service </para>
+<para>implementation of service for updating goals </para>
         </briefdescription>
         <detaileddescription>
-<para>implementation of service for updating goals</para>
 <para>Purpose of this service is to create the proper conditions in order to apply one of the three available landmarks: REPLAN, COLLECT and SOLVE.</para>
 <para>&quot;REPLAN&quot; simply sets the &quot;dirty&quot; flags in a way such that the plan, when found, is going to start with the (replan ) PDDL action. The localisation is not affected, or at least not by this node.</para>
 <para>&quot;COLLECT&quot; causes the node to look for a still unexplored waypoint. if all the waypoints have been explored, the node refuses the request, otherwise it sets the first available waypoint. The command doesn&apos;t allow to decide which waypoint the robot can explore: the waypoint is choosen automatically by this node.</para>
@@ -172,14 +171,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="291" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="291" bodyend="372"/>
+        <location file="robocluedo_rosplan/src/kb_interface.cpp" line="290" column="6" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="290" bodyend="371"/>
         <references refid="classkb__tools_1a7fb58239d1af820464b79c37ed7baa54" compoundref="kb__tools_8cpp" startline="145" endline="176">kb_tools::set_goal</references>
         <references refid="kb__interface_8cpp_1a5e91c75d46d09daa821765dd8ff29fc8" compoundref="kb__interface_8cpp" startline="54">LANDMARK_REPLAN</references>
         <references refid="classkb__tools_1a28db234bb29bece4e83b7a27201fa013" compoundref="kb__tools_8cpp" startline="109" endline="141">kb_tools::set_predicate</references>
         <references refid="kb__interface_8cpp_1a24358e49160550a847f87e20cbae2755" compoundref="kb__interface_8cpp" startline="55">LANDMARK_COLLECT</references>
         <references refid="classkb__tools_1afcdd633b556099168c1c97df9923e33d" compoundref="kb__tools_8cpp" startline="69" endline="101">kb_tools::get_predicate</references>
         <references refid="kb__interface_8cpp_1aeba69fa9266c50170be8cd6c57e4f2ef" compoundref="kb__interface_8cpp" startline="56">LANDMARK_SOLVE</references>
-        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="397" endline="422">main</referencedby>
+        <referencedby refid="kb__interface_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="kb__interface_8cpp" startline="396" endline="421">main</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -216,7 +215,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="robocluedo_rosplan/src/kb_interface.cpp" line="115" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="114" bodyend="387"/>
+    <location file="robocluedo_rosplan/src/kb_interface.cpp" line="115" column="1" bodyfile="robocluedo_rosplan/src/kb_interface.cpp" bodystart="114" bodyend="386"/>
     <listofallmembers>
       <member refid="classkb__interface_1a339f9f7ba3d53f3f8e1143d6dbb6148b" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>cbk_replan</name></member>
       <member refid="classkb__interface_1a974022d8c24dc668a7a4563ec9dfdc18" prot="public" virt="non-virtual"><scope>kb_interface</scope><name>cbk_update_goal</name></member>

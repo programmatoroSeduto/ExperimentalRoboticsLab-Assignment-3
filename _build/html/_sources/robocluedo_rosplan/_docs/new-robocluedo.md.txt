@@ -1,4 +1,6 @@
 
+(pddl-model)=
+
 # PDDL Design -- the new RoboCLuedo PDDL model
 
 ```{warning}
