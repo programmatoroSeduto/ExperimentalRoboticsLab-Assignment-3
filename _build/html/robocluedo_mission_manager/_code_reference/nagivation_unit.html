@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NODE navigation_unit &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -85,7 +84,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -120,7 +119,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="node-navigation-unit">
+  <div class="section" id="node-navigation-unit">
 <h1>NODE navigation_unit<a class="headerlink" href="#node-navigation-unit" title="Permalink to this heading"></a></h1>
 <p>mission manager bridge between the robocluedo ROSPlan framework and the navigation controller </p>
 <p>This node is a bridge between the ROSPlan framework, which assumes some other node implemented the service for the navigation from rosplan, and the navigation system: a service call into a service call.</p>
@@ -136,6 +135,10 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This implementation supports the develop mode: waitey, debug print</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the node requires the move_base controller</p>
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
@@ -306,7 +309,11 @@
 <p>The callback stores the markers, then turns off the subscription to not waste computational resources in a continuous updating of the markers.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>we’re assuming here that the markers don’t change during the simulation. If the markers are able to move though, the subscription should keep opened. </p>
+<p>we’re assuming here that the markers don’t change during the simulation. If the markers are able to move though, the subscription should keep opened.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>currently, the function assumes that the index of a marker inside the array is its ID as well. for instance, data-&gt;markers[2] is called “wp3” by the function. </p>
 </div>
 </dd></dl>
 
@@ -364,7 +371,7 @@
 </div>
 </dd></dl>
 
-</section>
+</div>
 
 
            </div>

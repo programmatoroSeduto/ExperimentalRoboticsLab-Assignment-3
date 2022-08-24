@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>the RoboCLuedo “hunter” URDF model – User Manual &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -80,7 +79,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -114,7 +113,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="the-robocluedo-hunter-urdf-model-user-manual">
+  <div class="section" id="the-robocluedo-hunter-urdf-model-user-manual">
 <h1>the RoboCLuedo “hunter” URDF model – User Manual<a class="headerlink" href="#the-robocluedo-hunter-urdf-model-user-manual" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -167,7 +166,7 @@
 </ul>
 </div>
 <hr class="docutils" />
-<section id="model-file-structure">
+<div class="section" id="model-file-structure">
 <h2>Model file structure<a class="headerlink" href="#model-file-structure" title="Permalink to this heading"></a></h2>
 <p>inside the folder <code class="docutils literal notranslate"><span class="pre">robocluedo_dependencies/robocluedo_hunter_urdf_model/robot/</span></code> there are these files:</p>
 <ul class="simple">
@@ -185,9 +184,9 @@
 </ul>
 </li>
 </ul>
-</section>
+</div>
 <hr class="docutils" />
-<section id="how-to-generate-the-model">
+<div class="section" id="how-to-generate-the-model">
 <h2>HOW TO generate the model<a class="headerlink" href="#how-to-generate-the-model" title="Permalink to this heading"></a></h2>
 <p>execute the file <code class="docutils literal notranslate"><span class="pre">generate_model.sh</span></code>; the URDF and its schematic will be located into the folder <code class="docutils literal notranslate"><span class="pre">model/</span></code> with names</p>
 <ul class="simple">
@@ -216,9 +215,9 @@ Created file robocluedo_robot.gv
 Created file robocluedo_robot.pdf
 </pre></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="how-to-generate-the-package-with-moveit">
+<div class="section" id="how-to-generate-the-package-with-moveit">
 <h2>HOW TO generate the package with Moveit<a class="headerlink" href="#how-to-generate-the-package-with-moveit" title="Permalink to this heading"></a></h2>
 <p>first of all, use the setup assistant to generate the package. Inside the project, <code class="docutils literal notranslate"><span class="pre">robocluedo_robot_hunter</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch moveit_setup_assistant setup.assistant.launch
@@ -237,7 +236,7 @@ Created file robocluedo_robot.pdf
 <li><p>(optional) install AMCL</p></li>
 <li><p>(optional) create the <em>run.launch</em> file</p></li>
 </ul>
-<section id="file-ros-controllers-yaml">
+<div class="section" id="file-ros-controllers-yaml">
 <h3>file ros_controllers.yaml<a class="headerlink" href="#file-ros-controllers-yaml" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulation settings for using moveit_sim_controllers</span>
 <span class="nt">moveit_sim_hw_interface</span><span class="p">:</span>
@@ -304,8 +303,8 @@ Created file robocluedo_robot.pdf
       <span class="nt">i_clamp</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
-</section>
-<section id="file-joint-limits-yaml">
+</div>
+<div class="section" id="file-joint-limits-yaml">
 <h3>file joint_limits.yaml<a class="headerlink" href="#file-joint-limits-yaml" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed</span>
 
@@ -339,8 +338,8 @@ Created file robocluedo_robot.pdf
     <span class="nt">max_acceleration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
-</section>
-<section id="gazebo-world-files-fix">
+</div>
+<div class="section" id="gazebo-world-files-fix">
 <h3>Gazebo world files fix<a class="headerlink" href="#gazebo-world-files-fix" title="Permalink to this heading"></a></h3>
 <p>apply this code into the file <strong>gazebo.launch</strong> :</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!-- world file --&gt;</span>
@@ -373,8 +372,8 @@ Created file robocluedo_robot.pdf
 <span class="nt">&lt;/include&gt;</span>
 </pre></div>
 </div>
-</section>
-<section id="second-launch-file-for-gazebo">
+</div>
+<div class="section" id="second-launch-file-for-gazebo">
 <h3>Second launch file for Gazebo<a class="headerlink" href="#second-launch-file-for-gazebo" title="Permalink to this heading"></a></h3>
 <p>in order to make the Moveit work in “headless mode” (i.e. without RViz), a second launch file is required. Create the file <strong>gazebo2.launch</strong> and paste this code inside:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;0.1&quot;?&gt;</span>
@@ -467,8 +466,8 @@ Created file robocluedo_robot.pdf
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-</section>
-<section id="rviz-config-file-fix">
+</div>
+<div class="section" id="rviz-config-file-fix">
 <h3>RViz config file fix<a class="headerlink" href="#rviz-config-file-fix" title="Permalink to this heading"></a></h3>
 <p><strong>demo.launch</strong> : replace the RViz calling with this:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;arg</span> <span class="na">name=</span><span class="s">&quot;rviz_config_file&quot;</span> <span class="na">default=</span><span class="s">&quot;moveit_2.rviz&quot;</span> <span class="nt">/&gt;</span>
@@ -492,10 +491,10 @@ Created file robocluedo_robot.pdf
 <span class="nt">&lt;/include&gt;</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="how-to-test-the-model-with-gazebo">
+<div class="section" id="how-to-test-the-model-with-gazebo">
 <h2>HOW TO test the model with Gazebo<a class="headerlink" href="#how-to-test-the-model-with-gazebo" title="Permalink to this heading"></a></h2>
 <p>launch this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter gazebo.launch
@@ -504,15 +503,15 @@ Created file robocluedo_robot.pdf
 <p>it should appear the robot, similar to this:</p>
 <p><img alt="robot" src="../../_images/robot_gazebo.png" /></p>
 <p><img alt="robot" src="../../_images/robot_rviz.png" /></p>
-<section id="how-to-launch-the-simulation-with-other-worlds-file">
+<div class="section" id="how-to-launch-the-simulation-with-other-worlds-file">
 <h3>HOW TO Launch the simulation with other worlds file<a class="headerlink" href="#how-to-launch-the-simulation-with-other-worlds-file" title="Permalink to this heading"></a></h3>
 <p>the package takes the world files from the package <em>worlds</em> located into the <em>robocluedo_depedencied</em> folder. The default world file is <em>assignment3.world</em>.</p>
 <p>here’s the syntax of the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter gazebo.launch world_name:<span class="o">=</span>indoor.world
 </pre></div>
 </div>
-</section>
-<section id="how-to-launch-a-world-outside-the-package-worlds">
+</div>
+<div class="section" id="how-to-launch-a-world-outside-the-package-worlds">
 <h3>HOW TO launch a world <em>outside the package worlds</em><a class="headerlink" href="#how-to-launch-a-world-outside-the-package-worlds" title="Permalink to this heading"></a></h3>
 <p>in case the world file is not included in the <em>worlds</em> package, you have two possibilities.</p>
 <p>the first one is to specify both path and name in this way:</p>
@@ -523,10 +522,10 @@ Created file robocluedo_robot.pdf
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter demo_gazebo.launch world_file_path:<span class="o">=</span>/root/ros_ws/src/erl2-new/robocluedo_dependencies/worlds/indoor.world
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="how-to-install-the-navigation-stack">
+<div class="section" id="how-to-install-the-navigation-stack">
 <h2>HOW TO install the navigation stack<a class="headerlink" href="#how-to-install-the-navigation-stack" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -539,7 +538,7 @@ Created file robocluedo_robot.pdf
 <li><p>create a new launch file for running the navigation stack</p></li>
 <li><p>(optional) launch the navigation stack from the <em>run.launch</em> file</p></li>
 </ul>
-<section id="param-base-local-planner-params-yaml">
+<div class="section" id="param-base-local-planner-params-yaml">
 <h3>param – base_local_planner_params.yaml<a class="headerlink" href="#param-base-local-planner-params-yaml" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">TrajectoryPlannerROS</span><span class="p">:</span>
 
@@ -583,8 +582,8 @@ Created file robocluedo_robot.pdf
   <span class="nt">vy_samples</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
-</section>
-<section id="param-costmap-common-params-yaml">
+</div>
+<div class="section" id="param-costmap-common-params-yaml">
 <h3>param – costmap_common_params.yaml<a class="headerlink" href="#param-costmap-common-params-yaml" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.60</span>  
 <span class="nt">obstacle_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
@@ -603,8 +602,8 @@ Created file robocluedo_robot.pdf
 <span class="nt">scan</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt">data_type</span><span class="p">:</span> <span class="nv">LaserScan</span><span class="p p-Indicator">,</span><span class="nt"> topic</span><span class="p">:</span> <span class="nv">scan</span><span class="p p-Indicator">,</span><span class="nt"> marking</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> clearing</span><span class="p">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> min_obstacle_height</span><span class="p">:</span> <span class="nv">0.05</span><span class="p p-Indicator">,</span><span class="nt"> max_obstacle_height</span><span class="p">:</span> <span class="nv">0.6</span><span class="p p-Indicator">}</span>
 </pre></div>
 </div>
-</section>
-<section id="param-global-costmap-params-yaml">
+</div>
+<div class="section" id="param-global-costmap-params-yaml">
 <h3>param – global_costmap_params.yaml<a class="headerlink" href="#param-global-costmap-params-yaml" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">global_costmap</span><span class="p">:</span>
    <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
@@ -618,8 +617,8 @@ Created file robocluedo_robot.pdf
         <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
 </pre></div>
 </div>
-</section>
-<section id="param-local-costmap-params-yaml">
+</div>
+<div class="section" id="param-local-costmap-params-yaml">
 <h3>param – local_costmap_params.yaml<a class="headerlink" href="#param-local-costmap-params-yaml" title="Permalink to this heading"></a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">local_costmap</span><span class="p">:</span>
    <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
@@ -637,8 +636,8 @@ Created file robocluedo_robot.pdf
         <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
 </pre></div>
 </div>
-</section>
-<section id="param-move-base-params-yaml">
+</div>
+<div class="section" id="param-move-base-params-yaml">
 <h3>param – move_base_params.yaml<a class="headerlink" href="#param-move-base-params-yaml" title="Permalink to this heading"></a></h3>
 <p>see also <a class="reference external" href="http://www.ros.org/wiki/move_base">move_base official wiki</a></p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">shutdown_costmaps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -653,8 +652,8 @@ Created file robocluedo_robot.pdf
 <span class="nt">oscillation_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
 </pre></div>
 </div>
-</section>
-<section id="launch-file-nav-stack-launch">
+</div>
+<div class="section" id="launch-file-nav-stack-launch">
 <h3>launch file <em>nav_stack.launch</em><a class="headerlink" href="#launch-file-nav-stack-launch" title="Permalink to this heading"></a></h3>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 
@@ -709,10 +708,10 @@ Created file robocluedo_robot.pdf
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="use-amcl-for-the-localization">
+<div class="section" id="use-amcl-for-the-localization">
 <h2>use AMCL for the localization<a class="headerlink" href="#use-amcl-for-the-localization" title="Permalink to this heading"></a></h2>
 <p>The package <code class="docutils literal notranslate"><span class="pre">worlds</span></code> contains a offline map of the world file <code class="docutils literal notranslate"><span class="pre">assignment3.launch</span></code>, which can be used for speeding up a bit the execution of the project. To use it, create a launch file <em>amcl.launch</em> and paste the following:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
@@ -744,9 +743,9 @@ Created file robocluedo_robot.pdf
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="launch-file-run-launch">
+<div class="section" id="launch-file-run-launch">
 <h2>Launch file <em>run.launch</em><a class="headerlink" href="#launch-file-run-launch" title="Permalink to this heading"></a></h2>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -833,7 +832,7 @@ Created file robocluedo_robot.pdf
 <span class="nt">&lt;/launch&gt;</span>
 </pre></div>
 </div>
-<section id="run-gazebo-only">
+<div class="section" id="run-gazebo-only">
 <h3>Run Gazebo only<a class="headerlink" href="#run-gazebo-only" title="Permalink to this heading"></a></h3>
 <p>The parameter <code class="docutils literal notranslate"><span class="pre">sim_type:=gazebo</span></code> allows to launch the environment with Gazebo only.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple run</span>
@@ -846,8 +845,8 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazebo launch_nav_stack:<span class="o">=</span><span class="nb">false</span> launch_amcl:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</section>
-<section id="run-rviz-only">
+</div>
+<div class="section" id="run-rviz-only">
 <h3>Run RViz only<a class="headerlink" href="#run-rviz-only" title="Permalink to this heading"></a></h3>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -864,8 +863,8 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>r
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaucnh robocluedo_robot_hunter demo.launch
 </pre></div>
 </div>
-</section>
-<section id="run-both-the-tools">
+</div>
+<div class="section" id="run-both-the-tools">
 <h3>Run both the tools<a class="headerlink" href="#run-both-the-tools" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple run with move_base</span>
 roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz 
@@ -877,8 +876,8 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
 </pre></div>
 </div>
-</section>
-<section id="nav-stack-and-amcl">
+</div>
+<div class="section" id="nav-stack-and-amcl">
 <h3>nav stack and amcl<a class="headerlink" href="#nav-stack-and-amcl" title="Permalink to this heading"></a></h3>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -914,10 +913,10 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz launch_nav_stack:<span class="o">=</span><span class="nb">false</span> launch_amcl:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section id="robocluedo-hunter-sensors">
+<div class="section" id="robocluedo-hunter-sensors">
 <h2>RoboCLuedo Hunter sensors<a class="headerlink" href="#robocluedo-hunter-sensors" title="Permalink to this heading"></a></h2>
 <p>the RoboCLuedo Hunter is endowed with four cameras:</p>
 <ul class="simple">
@@ -926,7 +925,7 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 <li><p>one camera at the top of the arm, attached to the <em>cluedo_link</em> link of the robot</p></li>
 </ul>
 <p>plus a laser sensor.</p>
-<section id="camera-arm">
+<div class="section" id="camera-arm">
 <h3>camera arm<a class="headerlink" href="#camera-arm" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_arm/camera_info
 /robocluedo_robot/camera_arm/image_raw
@@ -943,8 +942,8 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 /robocluedo_robot/camera_arm/parameter_updates
 </pre></div>
 </div>
-</section>
-<section id="camera-front-low">
+</div>
+<div class="section" id="camera-front-low">
 <h3>camera front low<a class="headerlink" href="#camera-front-low" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_front_low/camera_info
 /robocluedo_robot/camera_front_low/image_raw
@@ -961,8 +960,8 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 /robocluedo_robot/camera_front_low/parameter_updates
 </pre></div>
 </div>
-</section>
-<section id="camera-left">
+</div>
+<div class="section" id="camera-left">
 <h3>camera left<a class="headerlink" href="#camera-left" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_left/camera_info
 /robocluedo_robot/camera_left/image_raw
@@ -979,8 +978,8 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 /robocluedo_robot/camera_left/parameter_updates
 </pre></div>
 </div>
-</section>
-<section id="camera-right">
+</div>
+<div class="section" id="camera-right">
 <h3>camera right<a class="headerlink" href="#camera-right" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/robocluedo_robot/camera_right/camera_info
 /robocluedo_robot/camera_right/image_raw
@@ -997,18 +996,18 @@ roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>g
 /robocluedo_robot/camera_right/parameter_updates
 </pre></div>
 </div>
-</section>
-<section id="topc-laser-sensor">
+</div>
+<div class="section" id="topc-laser-sensor">
 <h3>topc Laser sensor<a class="headerlink" href="#topc-laser-sensor" title="Permalink to this heading"></a></h3>
 <p>The robot publishes the measurements from the laser sensor through the topic <code class="docutils literal notranslate"><span class="pre">/scan</span></code>.</p>
-</section>
-</section>
-<section id="poses">
+</div>
+</div>
+<div class="section" id="poses">
 <h2>Poses<a class="headerlink" href="#poses" title="Permalink to this heading"></a></h2>
 <p>here’s a list of poses of the robot defined in the MoveIt package.</p>
 <p><img alt="robot_hunter_poses.png" src="../../_images/robot_hunter_poses.png" /></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

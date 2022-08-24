@@ -7,6 +7,10 @@
     <includes refid="test_8h" local="no">boost/predef/detail/test.h</includes>
     <includedby refid="endian_8h" local="no">robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/predef/other/endian.h</includedby>
     <incdepgraph>
+      <node id="4">
+        <label>boost/predef/detail/test.h</label>
+        <link refid="test_8h"/>
+      </node>
       <node id="3">
         <label>boost/predef/make.h</label>
         <link refid="make_8h"/>
@@ -27,37 +31,17 @@
         <label>boost/predef/version_number.h</label>
         <link refid="version__number_8h"/>
       </node>
-      <node id="4">
-        <label>boost/predef/detail/test.h</label>
-        <link refid="test_8h"/>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5">
-        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/cv_bridge.cpp</label>
-        <link refid="cv__bridge_8cpp"/>
-      </node>
       <node id="3">
         <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/predef/detail/endian_compat.h</label>
         <link refid="endian__compat_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>robocluedo_dependencies/vision_opencv/cv_bridge/test/test_endian.cpp</label>
-        <link refid="test__endian_8cpp"/>
-      </node>
-      <node id="2">
-        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/predef/other/endian.h</label>
-        <link refid="endian_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/predef/os/android.h</label>
-        <link refid="android_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+      <node id="5">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/cv_bridge.cpp</label>
+        <link refid="cv__bridge_8cpp"/>
       </node>
       <node id="4">
         <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/endian/conversion.hpp</label>
@@ -66,6 +50,22 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+      </node>
+      <node id="1">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/predef/os/android.h</label>
+        <link refid="android_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/src/boost/predef/other/endian.h</label>
+        <link refid="endian_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>robocluedo_dependencies/vision_opencv/cv_bridge/test/test_endian.cpp</label>
+        <link refid="test__endian_8cpp"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">

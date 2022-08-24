@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO setup ArUco and OpenCV &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -87,7 +86,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -122,7 +121,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-setup-aruco-and-opencv">
+  <div class="section" id="how-to-setup-aruco-and-opencv">
 <h1>HOW TO setup ArUco and OpenCV<a class="headerlink" href="#how-to-setup-aruco-and-opencv" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -144,29 +143,29 @@
 </ul>
 </div>
 <hr class="docutils" />
-<section id="opencv-for-ros">
+<div class="section" id="opencv-for-ros">
 <h2>OpenCV for ROS<a class="headerlink" href="#opencv-for-ros" title="Permalink to this heading"></a></h2>
 <p>download in the workspace this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/ros-perception/vision_opencv.git
 </pre></div>
 </div>
-<section id="opencv-examples">
+<div class="section" id="opencv-examples">
 <h3>OpenCV Examples<a class="headerlink" href="#opencv-examples" title="Permalink to this heading"></a></h3>
 <p>download this package:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/CarmineD8/bridge_example.git
 </pre></div>
 </div>
-</section>
-</section>
-<section id="aruco">
+</div>
+</div>
+<div class="section" id="aruco">
 <h2>ArUco<a class="headerlink" href="#aruco" title="Permalink to this heading"></a></h2>
 <p>first of all, download this package:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/CarmineD8/aruco_ros.git -b main
 </pre></div>
 </div>
 <p>the package contains the images to import as markers, in the folder <code class="docutils literal notranslate"><span class="pre">/aruco_ros/aruco_ros/models</span></code>. you should copy all the content of this folder inside your Gazebo environment <code class="docutils literal notranslate"><span class="pre">/root/.gazebo/models</span></code>.</p>
-</section>
-<section id="importing-opencv-and-aruco">
+</div>
+<div class="section" id="importing-opencv-and-aruco">
 <h2>Importing OpenCV and ArUco<a class="headerlink" href="#importing-opencv-and-aruco" title="Permalink to this heading"></a></h2>
 <p>here’s the content to apply to your CMakeLists.txt file:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">OpenCV</span> <span class="s">REQUIRED</span><span class="p">)</span>
@@ -202,8 +201,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO setup the project &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -80,7 +79,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -114,7 +113,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-setup-the-project">
+  <div class="section" id="how-to-setup-the-project">
 <span id="setup-the-project"></span><h1>HOW TO setup the project<a class="headerlink" href="#how-to-setup-the-project" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
@@ -133,7 +132,7 @@
 </ul>
 </div>
 <p>This document describes how to perform the <em>installation of the project</em>.</p>
-<section id="docker-image">
+<div class="section" id="docker-image">
 <h2>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this heading"></a></h2>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -173,8 +172,8 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 </pre></div>
 </div>
-</section>
-<section id="setup-the-workspace">
+</div>
+<div class="section" id="setup-the-workspace">
 <h2>Setup the workspace<a class="headerlink" href="#setup-the-workspace" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -197,8 +196,8 @@ catkin_make
 <p class="admonition-title">Note</p>
 <p>remember to source the workspace! Put the source insideyour <em>.bashrc</em> file.</p>
 </div>
-</section>
-<section id="build-the-armor-ontology">
+</div>
+<div class="section" id="build-the-armor-ontology">
 <h2>build the aRMOR ontology<a class="headerlink" href="#build-the-armor-ontology" title="Permalink to this heading"></a></h2>
 <p>The project requires aRMOR as one of its essential component. Use this instructions to compile it:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/ros_ws/src/armor/armor
@@ -208,8 +207,8 @@ cd /root/ros_ws
 catkin_make
 </pre></div>
 </div>
-</section>
-<section id="install-the-moveit-framework">
+</div>
+<div class="section" id="install-the-moveit-framework">
 <h2>Install the MoveIt! framework<a class="headerlink" href="#install-the-moveit-framework" title="Permalink to this heading"></a></h2>
 <p>Use this simple bash script for installing MoveIt. The project requires the version 1.1.5 :</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/ros_ws/src
@@ -239,8 +238,8 @@ catkin_make
 <p class="admonition-title">Note</p>
 <p>the fact that there is the same <em>catkin_make</em> twice at the end of the code is not a mistake: it could happen that the compiler crashes due to a lack of free memory. To continue the compilation, just call <em>catkin_make</em> again.</p>
 </div>
-</section>
-<section id="optional-install-the-documentation-system">
+</div>
+<div class="section" id="optional-install-the-documentation-system">
 <h2>(optional) Install the documentation system<a class="headerlink" href="#optional-install-the-documentation-system" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -274,8 +273,8 @@ catkin_make
 <span class="n">pip3</span> <span class="n">install</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">plantuml</span>
 </pre></div>
 </div>
-</section>
-<section id="download-the-repository">
+</div>
+<div class="section" id="download-the-repository">
 <h2>Download the repository<a class="headerlink" href="#download-the-repository" title="Permalink to this heading"></a></h2>
 <p>It’s time to download and install the project RCL#3 ! You can use this quick bash script for downloading and compiling the project:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cd /root/ros_ws/src
@@ -284,23 +283,23 @@ cd ..
 catkin_make
 </pre></div>
 </div>
-</section>
-<section id="install-the-simulation-environment">
+</div>
+<div class="section" id="install-the-simulation-environment">
 <h2>Install the simulation environment<a class="headerlink" href="#install-the-simulation-environment" title="Permalink to this heading"></a></h2>
 <p>The simulation environment requires the ArUco markers available in your Gazebo installation. You can quickly do that using this bash command:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>cp -r /root/ros_ws/src/erl3/robocluedo_dependencies/worlds/models/* /root/.gazebo/models
 </pre></div>
 </div>
-</section>
-<section id="test-out-the-project">
+</div>
+<div class="section" id="test-out-the-project">
 <h2>Test out the project!<a class="headerlink" href="#test-out-the-project" title="Permalink to this heading"></a></h2>
 <p>The project has been compiled. You’re ready to try it! See how to run the project for further informations about how to run the architecture.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>see also <a class="reference internal" href="run-the-project.html#run-the-project"><span class="std std-ref">HOW TO Run RCL#3 Project</span></a></p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

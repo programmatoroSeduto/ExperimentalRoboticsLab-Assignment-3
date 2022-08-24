@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes about Catkin &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -76,7 +75,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -110,17 +109,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="notes-about-catkin">
+  <div class="section" id="notes-about-catkin">
 <h1>Notes about Catkin<a class="headerlink" href="#notes-about-catkin" title="Permalink to this heading"></a></h1>
-<section id="compile-c-packages">
+<div class="section" id="compile-c-packages">
 <h2>Compile C++ packages<a class="headerlink" href="#compile-c-packages" title="Permalink to this heading"></a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span> <span class="s">???</span> <span class="s">src/???.cpp</span> <span class="p">)</span>
 <span class="nb">add_dependencies</span><span class="p">(</span> <span class="s">???</span> <span class="o">${</span><span class="nv">${PROJECT_NAME</span><span class="o">}</span><span class="s">_EXPORTED_TARGETS}</span> <span class="o">${</span><span class="nv">catkin_EXPORTED_TARGETS</span><span class="o">}</span> <span class="p">)</span>
 <span class="nb">target_link_libraries</span><span class="p">(</span> <span class="s">???</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span> <span class="s">???</span> <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="compile-a-library">
+</div>
+<div class="section" id="compile-a-library">
 <h2>compile a library<a class="headerlink" href="#compile-a-library" title="Permalink to this heading"></a></h2>
 <p><strong>section CATKIN SPECIFIC CONFIGURATION</strong> declare the libraries:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">catkin_package</span><span class="p">(</span>
@@ -147,8 +146,8 @@
 <span class="nb">target_link_libraries</span><span class="p">(</span> <span class="s">???</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span> <span class="s">???</span> <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="generate-messages-services-and-actions">
+</div>
+<div class="section" id="generate-messages-services-and-actions">
 <h2>generate messages, services and actions<a class="headerlink" href="#generate-messages-services-and-actions" title="Permalink to this heading"></a></h2>
 <p>required component:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span>
@@ -183,8 +182,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

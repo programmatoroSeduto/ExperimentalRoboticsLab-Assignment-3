@@ -7,6 +7,15 @@ See [*CarmineD8/erl2* on GitHub](https://github.com/CarmineD8/erl2.git)
 
 ```{seealso}
 see [*CarmineD8/exp_assignment3* on GitHub](https://github.com/CarmineD8/exp_assignment3.git)
+
+Pay attention to some issues inside this code:
+- simulation.cpp (line 41) there's a unexplainable `res.oracle_hint = oracle_msgs[req.markerId-11];` causing the node to crash. 
+	
+	*Delete the '-11'* in the array indexing. 
+	
+- simulation.cpp (line 39, `bool oracleCallback()` and line 29, `erl2::ErlOracle oracle_msgs[30];`) the oracle generates a array of 30 hints ... but in the environment there are also numbers greater than 30! 
+	
+	The array access is not protected, and there's no modulus operator or other systems to prevent the access to a unexisting memory location. In the RCL#3 project I preferred to deal with this problem from the outside, applying a modulus 30 to the index from the ArUco markers the robot can find in the environment (the workaround is in the vision_decoding.py node)
 ```
 
 ---
@@ -15,7 +24,7 @@ see [*CarmineD8/exp_assignment3* on GitHub](https://github.com/CarmineD8/exp_ass
 ---
 caption: Contents
 ---
-./erl2-oracle-user-manual.md
+./erl3-oracle-user-manual.md
 ```
 
 ---

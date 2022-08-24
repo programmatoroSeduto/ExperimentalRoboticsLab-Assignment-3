@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UML – ROSPlann Knowledge base – formal ROS description &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -95,7 +94,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -130,7 +129,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="uml-rosplann-knowledge-base-formal-ros-description">
+  <div class="section" id="uml-rosplann-knowledge-base-formal-ros-description">
 <h1>UML – ROSPlann Knowledge base – formal ROS description<a class="headerlink" href="#uml-rosplann-knowledge-base-formal-ros-description" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -162,7 +161,7 @@
 </div>
 <hr class="docutils" />
 <p>This document has been written in order to support the develop of the package, as well as both the coding and the testing phases.</p>
-<section id="schema-knowledge-base">
+<div class="section" id="schema-knowledge-base">
 <h2>schema – knowledge base<a class="headerlink" href="#schema-knowledge-base" title="Permalink to this heading"></a></h2>
 <p>here are the main services exposed by the ROSPlan knowledge base. The graph shows the ones used by this project.</p>
 <p class="plantuml">
@@ -209,8 +208,8 @@ note on link: rosplan_knowledge_msgs/KnowledgeQueryService
 &#64;enduml"/>
 
 </object></p>
-</section>
-<section id="schema-class-kb-tools">
+</div>
+<div class="section" id="schema-class-kb-tools">
 <h2>schema – CLASS kb_tools<a class="headerlink" href="#schema-class-kb-tools" title="Permalink to this heading"></a></h2>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
@@ -263,14 +262,14 @@ SRV_QUERY --&gt; &quot;cl&quot; TOOLS
 &#64;enduml"/>
 
 </object></p>
-</section>
+</div>
 <hr class="docutils" />
-<section id="from-here-the-long-list-of-how-tos">
+<div class="section" id="from-here-the-long-list-of-how-tos">
 <h2>(from here) The long list of HOW TOs<a class="headerlink" href="#from-here-the-long-list-of-how-tos" title="Permalink to this heading"></a></h2>
 <p>here’s a short summary about how to deal with the Knowledge Base. Mostly of the snippets introduced here are written in C++ without loss of generality.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section id="how-to-read-a-predicate">
+<div class="section" id="how-to-read-a-predicate">
 <h2>HOW TO read a predicate<a class="headerlink" href="#how-to-read-a-predicate" title="Permalink to this heading"></a></h2>
 <p>libraries to import:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;diagnostic_msgs/KeyValue.h&quot;</span><span class="cp"></span>
@@ -301,7 +300,7 @@ SRV_QUERY --&gt; &quot;cl&quot; TOOLS
 <span class="n">TLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Opening client &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">SERVICE_QUERY</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;... OK&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<section id="message-rosplan-knowledge-msgs-knowledgequeryservice">
+<div class="section" id="message-rosplan-knowledge-msgs-knowledgequeryservice">
 <h3>message <strong>rosplan_knowledge_msgs/KnowledgeQueryService</strong><a class="headerlink" href="#message-rosplan-knowledge-msgs-knowledgequeryservice" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>rosplan_knowledge_msgs/KnowledgeItem[] knowledge
 ---
@@ -310,8 +309,8 @@ bool[] results
 rosplan_knowledge_msgs/KnowledgeItem[] false_knowledge
 </pre></div>
 </div>
-</section>
-<section id="message-rosplan-knowledge-msgs-knowledgeitem">
+</div>
+<div class="section" id="message-rosplan-knowledge-msgs-knowledgeitem">
 <h3>message <strong>rosplan_knowledge_msgs/KnowledgeItem</strong><a class="headerlink" href="#message-rosplan-knowledge-msgs-knowledgeitem" title="Permalink to this heading"></a></h3>
 <p>(needed to perform the request)</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span># A knowledge item used to represent a piece of the state in ROSPlan
@@ -367,8 +366,8 @@ rosplan_knowledge_msgs/ExprComposite expr
 rosplan_knowledge_msgs/DomainInequality ineq
 </pre></div>
 </div>
-</section>
-<section id="message-diagnostic-msgs-keyvalue">
+</div>
+<div class="section" id="message-diagnostic-msgs-keyvalue">
 <h3>message <strong>diagnostic_msgs/KeyValue</strong><a class="headerlink" href="#message-diagnostic-msgs-keyvalue" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span># what to label this value when viewing
 string key
@@ -376,8 +375,8 @@ string key
 string value
 </pre></div>
 </div>
-</section>
-<section id="how-to-perform-the-reading">
+</div>
+<div class="section" id="how-to-perform-the-reading">
 <h3>how to perform the reading<a class="headerlink" href="#how-to-perform-the-reading" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>reading predicates : if you’re sure that the predicate you’re asking for is unique, use the field response.all_true; or also .response.results[] showing each truth value.</p>
@@ -431,8 +430,8 @@ string value
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="how-to-perform-the-reading-using-kb-tools">
+</div>
+<div class="section" id="how-to-perform-the-reading-using-kb-tools">
 <h3>how to perform the reading using KB tools<a class="headerlink" href="#how-to-perform-the-reading-using-kb-tools" title="Permalink to this heading"></a></h3>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// just one predicate!</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pname</span><span class="w"></span>
@@ -445,9 +444,9 @@ string value
 <span class="w">	</span><span class="n">ROS_ERR</span><span class="p">(</span><span class="s">&quot;kb tools get predicate&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="how-to-modify-a-predicate">
+</div>
+</div>
+<div class="section" id="how-to-modify-a-predicate">
 <h2>HOW TO modify a predicate<a class="headerlink" href="#how-to-modify-a-predicate" title="Permalink to this heading"></a></h2>
 <p>libraries:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;diagnostic_msgs/KeyValue.h&quot;</span><span class="cp"></span>
@@ -484,7 +483,7 @@ string value
 <span class="n">TLOG</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Opening client &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">LOGSQUARE</span><span class="p">(</span><span class="w"> </span><span class="n">SERVICE_KB_UPDATE</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;... OK&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<section id="service-rosplan-knowledge-msgs-knowledgeupdateservice">
+<div class="section" id="service-rosplan-knowledge-msgs-knowledgeupdateservice">
 <h3>service <strong>rosplan_knowledge_msgs::KnowledgeUpdateService</strong><a class="headerlink" href="#service-rosplan-knowledge-msgs-knowledgeupdateservice" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>uint8 update_type
 rosplan_knowledge_msgs/KnowledgeItem knowledge
@@ -494,8 +493,8 @@ bool success
 </div>
 <p>message <strong>rosplan_knowledge_msgs/KnowledgeItem</strong> (see above)</p>
 <p>message <strong>diagnostic_msgs/KeyValue</strong> (see above)</p>
-</section>
-<section id="how-to-perform-the-update">
+</div>
+<div class="section" id="how-to-perform-the-update">
 <h3>how to perform the update<a class="headerlink" href="#how-to-perform-the-update" title="Permalink to this heading"></a></h3>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pname</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="w"></span>
@@ -529,8 +528,8 @@ bool success
 <span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kbm</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">success</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="how-to-perform-the-update-with-kb-tools">
+</div>
+<div class="section" id="how-to-perform-the-update-with-kb-tools">
 <h3>how to perform the update with kb_tools:<a class="headerlink" href="#how-to-perform-the-update-with-kb-tools" title="Permalink to this heading"></a></h3>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pname</span><span class="w"></span>
 <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="w"></span>
@@ -543,9 +542,9 @@ bool success
 <span class="w">	</span><span class="n">ROS_ERR</span><span class="p">(</span><span class="s">&quot;kb tools set predicate&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="dealing-with-goals">
+</div>
+</div>
+<div class="section" id="dealing-with-goals">
 <h2>dealing with goals<a class="headerlink" href="#dealing-with-goals" title="Permalink to this heading"></a></h2>
 <p>libraries:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;diagnostic_msgs/KeyValue.h&quot;</span><span class="cp"></span>
@@ -602,9 +601,9 @@ bool success
 <span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kbm</span><span class="p">.</span><span class="n">response</span><span class="p">.</span><span class="n">success</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="schema-node-kb-interface">
+<div class="section" id="schema-node-kb-interface">
 <h2>schema – NODE kb_interface<a class="headerlink" href="#schema-node-kb-interface" title="Permalink to this heading"></a></h2>
 <p>this ROS node provides functionalities for replanning and for altering/reading the knowledge base in a convenient, general way, not constraining the other nodes to take into account the peculiarities of the current PDDL. This makes the system more flexible and adaptable to other types of PDDL problems.</p>
 <p>The node takes advantage of the class <em>kb_tools</em> which is applied to handle the data inside the kb.</p>
@@ -664,8 +663,8 @@ note on link: rosplan_knowledge_msgs/KnowledgeQueryService
 &#64;enduml"/>
 
 </object></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

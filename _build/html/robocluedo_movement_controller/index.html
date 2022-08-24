@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PKG DOCS – robocluedo_movement_controller &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -97,7 +96,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -131,9 +130,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pkg-docs-robocluedo-movement-controller">
+  <div class="section" id="pkg-docs-robocluedo-movement-controller">
 <span id="pkg-robocluedo-movement-controller"></span><h1>PKG DOCS – robocluedo_movement_controller<a class="headerlink" href="#pkg-docs-robocluedo-movement-controller" title="Permalink to this heading"></a></h1>
-<p>this package enables the robot to move the manipulator and to navigate into the environment, usign different methods.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this version of the movement controller has a lot of differences with the previous version:</p>
@@ -142,6 +140,54 @@
 <li><p>improved launch files for running the project</p></li>
 </ul>
 </div>
+<p>this package enables the robot to move the manipulator and to navigate into the environment, usign different methods.</p>
+<p>here’s a brief list of the nodes inside the package:</p>
+<ul>
+<li><p><strong>bug_m.py</strong> (composite behaviour) : the node performs a very simplified navigation point to point combining the two elementary behaviours <em>go_to_point</em> and <em>head_orientation</em>.</p>
+<blockquote>
+<div><p>The node also implements strategie to gain manouver space before pointing the head in the direction of the target.</p>
+</div></blockquote>
+</li>
+<li><p><strong>nav_move_base.py</strong> (composite behaviour) : another node performing the navigation point to point, using  <em>move_base</em> and the navigation stack with the elementary behaviour <em>head_orientation</em> for the final orientation.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(RCL#3) the node is compatible with RoboCLuedo “hunter”</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>go_to_point_service_m.py</strong> (elementary behaviour) : the node aligns the head in the direction of the target and moves along a straight line to the objective position</p>
+<blockquote>
+<div><p>the node is used to implement a very simplified navigation algorithm with no obstacles between the current position and the target one. It is switchable.</p>
+</div></blockquote>
+</li>
+<li><p><strong>head_orientation.py</strong> (elementary behaviour) : orient the head with a given angle wrt the world frame</p>
+<blockquote>
+<div><p>the robot keeps turning around its vertical axis until the orientation isn’t equal to the target one.</p>
+</div></blockquote>
+</li>
+<li><p><strong>navigation_manager.cpp</strong> : a high-level navigation service based on the concept of the controllers</p>
+<blockquote>
+<div><p>the node has two main objectives:</p>
+<ul class="simple">
+<li><p>to provide a handy <em>abstraction</em> between the real implementation of tbe navigation system …</p></li>
+<li><p>… and the service which is simply interested in reaching a (x,y,th) target</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(<em>RCL#3</em>) the project implements two controllers: ID=0 for nav_bug_m, and ID=1 for nav_move_base</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>manipulation_controller.cpp</strong> : a (too much) simple implementation of a moveit-based manipulation controller capable of moving te arm to a given <em>preset pose</em>.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>(RCL#3) the node is compatible with RoboCLuedo “hunter”</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
 <ul>
@@ -205,7 +251,7 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</section>
+</div>
 
 
            </div>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO Run RCL#3 Project &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,7 +30,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LOG – development log" href="dev-log.html" />
+    <link rel="next" title="LOG – development log" href="dev-log-rcl3.html" />
     <link rel="prev" title="HOW TO setup the project" href="project-setup.html" /> 
 </head>
 
@@ -78,7 +77,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -112,7 +111,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-run-rcl-3-project">
+  <div class="section" id="how-to-run-rcl-3-project">
 <span id="run-the-project"></span><h1>HOW TO Run RCL#3 Project<a class="headerlink" href="#how-to-run-rcl-3-project" title="Permalink to this heading"></a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -122,7 +121,7 @@
 <p class="admonition-title">See also</p>
 <p>If something don’t work, see the testing procedures you can find in the documentation here: <a class="reference internal" href="../robocluedo_module_testing/index.html#pkg-module-testing"><span class="std std-ref">PKG DOCS – RoboCLuedo Module Testing</span></a></p>
 </div>
-<section id="suggested-way-amcl-and-no-logs">
+<div class="section" id="suggested-way-amcl-and-no-logs">
 <h2>suggested way – AMCL and no logs<a class="headerlink" href="#suggested-way-amcl-and-no-logs" title="Permalink to this heading"></a></h2>
 <p>The project is very heavy to run on a machine, reason for why I suggest to launch the project using these options:</p>
 <ul class="simple">
@@ -131,29 +130,29 @@
 <li><p>use Gazebo only, don’t run RViz</p></li>
 <li><p>suppress every kind of output in the first shell using <code class="docutils literal notranslate"><span class="pre">1&gt;/dev/null</span> <span class="pre">2&gt;/dev/null</span></code></p></li>
 </ul>
-<section id="shell-1">
+<div class="section" id="shell-1">
 <h3>Shell 1<a class="headerlink" href="#shell-1" title="Permalink to this heading"></a></h3>
 <p>all the components, without the <code class="docutils literal notranslate"><span class="pre">mission</span> <span class="pre">manager</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch launch_mission_manager:<span class="o">=</span><span class="nb">false</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
 </pre></div>
 </div>
-</section>
-<section id="shell-2">
+</div>
+<div class="section" id="shell-2">
 <h3>Shell 2<a class="headerlink" href="#shell-2" title="Permalink to this heading"></a></h3>
 <p>the shell will show the output from the mission manager, to show hot the investigation is proceeding.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="project-setup.html" class="btn btn-neutral float-left" title="HOW TO setup the project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dev-log.html" class="btn btn-neutral float-right" title="LOG – development log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dev-log-rcl3.html" class="btn btn-neutral float-right" title="LOG – development log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

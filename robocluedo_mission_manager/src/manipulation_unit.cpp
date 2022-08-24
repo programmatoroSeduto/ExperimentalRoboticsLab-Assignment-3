@@ -3,13 +3,22 @@
 *  
 * @file manipulation_unit.cpp
 * 
-* @brief mission manager bridge between the robocluedo ROSPlan framework 
-* 	and the manipulation controller.
+* @brief manipulator high-level motion planning
 * 
-* since this ROSPlan part of this third project doesn't require the manipulation,
-* this version of the mission manager plays a role that is a little different
-* than before: it has the task to make the manipulator assuming randomly 
-* one pose from the set of allowed codes. 
+* This is node has been ment, in the RCL#2 project, to act as a communication
+* mean between the ROSPlan framework and the real manipulation controller, 
+* but since the RCL#3 project doesn't require (so far) a explicit manipulation
+* capability from ROSPlan, the node has here another function: managing the 
+* movement of the arm *during the exploration of the environment*.
+* 
+* To be more precise, this new version of the manipulation uit, when 
+* turned on, makes the robotic manipulator to assume a pose randomly
+* choosen while the robot is moving. This enables the robot to get also
+* hints that, with a more deterministic movement of the camera, could be
+* missed since the robot acts always in the same way. There are some
+* unluky cases, but most of times it seems to work fine. 
+* 
+* @note This implementation supports the develop mode: waitey, debug print
 * 
 * @authors Francesco Ganci
 * @version v1.0 

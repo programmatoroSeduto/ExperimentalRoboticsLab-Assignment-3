@@ -79,7 +79,7 @@ component VISION_DECODE <<RCL Vision>>
 ''' INTERFACES
 () "/oracle_hint" as TOPIC_ORACLE_HINT
 VISION_DECODE "pub" --> TOPIC_ORACLE_HINT
-note on link: std_srvs/SetBool.srv
+note on link: erl2/ErlOracle.msg
 
 ''' LINKS
 TOPIC_ORACLE_HINT --> "sub" MISSION_MANAGER
@@ -93,35 +93,25 @@ TOPIC_ORACLE_HINT --> "sub" MISSION_MANAGER
 @startuml
 
 title Mission Manager -- interaction with aRMOR interface
+left to right direction
 
 ''' COMPONENTS
-component MISSION_MANAGER <<RCL Mission Manager>>
 component ARMOR_INTERFACE <<RCL aRMOR>>
 
-''' INTERFACES
 together {
-left to right direction
 () "/cluedo_armor/add_hint" as SRV_ARMOR_ADD
 () "/cluedo_armor/find_consistent_h" as SRV_ARMOR_FIND
 () "/cluedo_armor/wrong_hypothesis" as SRV_ARMOR_DEL
 () "/cluedo_armor/backup" as SRV_ARMOR_BACKUP
 }
 
-SRV_ARMOR_ADD <-left- "srv" ARMOR_INTERFACE
-note on link: robocluedo_armor_msgs/AddHint.srv
+ARMOR_INTERFACE "srv" --> SRV_ARMOR_ADD : robocluedo_armor_msgs/AddHint.srv
+ARMOR_INTERFACE "srv" --> SRV_ARMOR_FIND : robocluedo_armor_msgs/FindConsistentHypotheses.srv
+ARMOR_INTERFACE "srv" --> SRV_ARMOR_DEL : robocluedo_armor_msgs/DiscardHypothesis.srv
+ARMOR_INTERFACE "srv" --> SRV_ARMOR_BACKUP : std_srvs/Trigger.srv
 
-SRV_ARMOR_FIND <-left- "srv" ARMOR_INTERFACE
-note on link: robocluedo_armor_msgs/FindConsistentHypotheses.srv
+component MISSION_MANAGER <<RCL Mission Manager>>
 
-
-SRV_ARMOR_DEL <-left- "srv" ARMOR_INTERFACE
-note on link: robocluedo_armor_msgs/DiscardHypothesis.srv
-
-
-SRV_ARMOR_BACKUP <-left- "srv" ARMOR_INTERFACE
-note on link: std_srvs/Trigger.srv
-
-''' LINKS
 SRV_ARMOR_ADD --> "cl" MISSION_MANAGER
 SRV_ARMOR_FIND --> "cl" MISSION_MANAGER
 SRV_ARMOR_DEL --> "cl" MISSION_MANAGER
@@ -199,7 +189,7 @@ TOPIC_MARKER -down-> "sub" NAV_UNIT
 ```{uml}
 @startuml
 
-title Navigation Unit
+title Manipulation unit - RCL#3 version
 left to right direction
 
 ''' COMPONENTS

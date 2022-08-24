@@ -225,6 +225,8 @@ public:
 	 * always collect at least one other hint before the other solution
 	 * proposal. 
 	 * 
+	 * @note exactly the same working cycle of the RCL#2 project.
+	 * 
 	 ***********************************************/
 	void spin( )
 	{

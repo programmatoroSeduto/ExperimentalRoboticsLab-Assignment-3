@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOCS – HOW TO use RoboCLuedo aRMOR interface &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -94,7 +93,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -129,7 +128,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="docs-how-to-use-robocluedo-armor-interface">
+  <div class="section" id="docs-how-to-use-robocluedo-armor-interface">
 <h1>DOCS – HOW TO use RoboCLuedo aRMOR interface<a class="headerlink" href="#docs-how-to-use-robocluedo-armor-interface" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
@@ -140,7 +139,7 @@
 <li><p><strong>DEL</strong>  – mark a hypothesis as wrong, i.e. <em>discard it</em></p></li>
 <li><p><strong>BACKUP</strong> – save the ontology on file.</p></li>
 </ul>
-<section id="services-schematics">
+<div class="section" id="services-schematics">
 <h2>services schematics<a class="headerlink" href="#services-schematics" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
 <object data="../../_images/plantuml-fdeb42a8127cf2454601340d8184afdfa6db25fb.svg" type="image/svg+xml" style="width:1567px;height:323px;background:#FFFFFF;">
@@ -183,8 +182,8 @@ service `` of type ``
 &#64;enduml"/>
 
 </object></p>
-</section>
-<section id="add-register-a-new-hint-into-the-ontology">
+</div>
+<div class="section" id="add-register-a-new-hint-into-the-ontology">
 <h2>ADD – register a new hint into the Ontology<a class="headerlink" href="#add-register-a-new-hint-into-the-ontology" title="Permalink to this heading"></a></h2>
 <p>To add a new hint (from the Oracle?) the node provides the service <code class="docutils literal notranslate"><span class="pre">/cluedo_armor/add_hint</span></code> of type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/AddHint</span></code>.</p>
 <p><strong>Note that</strong> adding the same hint twice <em>doesn’t affect the content of the ontology</em>. The request will retur true even in this case.</p>
@@ -218,8 +217,8 @@ service `` of type ``
 </ul>
 <p><strong>very important: the node allows only these properties!</strong> it will raise an error if the property hasn’t one of the abovementioned keys; remember to check the <code class="docutils literal notranslate"><span class="pre">success</span></code> flag of the message.</p>
 <p><strong>property names must be written in lowercase!</strong></p>
-</section>
-<section id="find-ask-for-a-consistent-hint">
+</div>
+<div class="section" id="find-ask-for-a-consistent-hint">
 <h2>FIND – ask for a consistent hint<a class="headerlink" href="#find-ask-for-a-consistent-hint" title="Permalink to this heading"></a></h2>
 <p>the service <code class="docutils literal notranslate"><span class="pre">/cluedo_armor/find_consistent_h</span></code> of type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/FindConsistentHypotheses</span></code> is what you need to ask the Ontology for a admissible solution.</p>
 <p>here’s the service file employed by the service:</p>
@@ -271,8 +270,8 @@ service `` of type ``
 <span class="l l-Scalar l-Scalar-Plain">string what</span>
 </pre></div>
 </div>
-</section>
-<section id="del-discard-a-hypothesis">
+</div>
+<div class="section" id="del-discard-a-hypothesis">
 <h2>DEL – discard a hypothesis<a class="headerlink" href="#del-discard-a-hypothesis" title="Permalink to this heading"></a></h2>
 <p>use the service <code class="docutils literal notranslate"><span class="pre">/cluedo_armor/wrong_hypothesis</span></code> of type <code class="docutils literal notranslate"><span class="pre">robocluedo_armor_msgs/DiscardHypothesis</span></code>, whose structure is reported here below:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">## file &#39;DiscardHypothesis.srv&#39;</span>
@@ -285,8 +284,8 @@ service `` of type ``
 </pre></div>
 </div>
 <p><strong>the request could fail</strong> due to, for instance, the unexistence of the indicated hypothesis.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

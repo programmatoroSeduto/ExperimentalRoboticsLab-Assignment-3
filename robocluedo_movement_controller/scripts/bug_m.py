@@ -1,4 +1,4 @@
-#! /usr/bin/env pythonù
+#! /usr/bin/env python
 
 ''' 
 This node orchestrates the combination of two different behaviours of the

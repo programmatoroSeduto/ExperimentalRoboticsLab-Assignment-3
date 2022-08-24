@@ -12,6 +12,9 @@
 * hiding the detals of many algorithms and allowing the program to choose
 * one of the algorithms at runtine. 
 * 
+* The node currently implements two controllers so far: ID=0 nav_bug_m, 
+* and ID=1 nav_move_base
+* 
 * @authors Francesco Ganci
 * @version v2.0
 * 
@@ -666,7 +669,6 @@ public:
 	 * 	function! See the algorithm selection service. 
 	 * 
 	 ***********************************************/
-	
 	bool cbk_navigation( 
 		robocluedo_movement_controller_msgs::NavigationService::Request& req,
 		robocluedo_movement_controller_msgs::NavigationService::Response& res )

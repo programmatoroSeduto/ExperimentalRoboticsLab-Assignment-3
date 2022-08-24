@@ -16,6 +16,15 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```{seealso}</highlight></codeline>
 <codeline><highlight class="normal">see<sp/>[*CarmineD8/exp_assignment3*<sp/>on<sp/>GitHub](https://github.com/CarmineD8/exp_assignment3.git)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Pay<sp/>attention<sp/>to<sp/>some<sp/>issues<sp/>inside<sp/>this<sp/>code:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>simulation.cpp<sp/>(line<sp/>41)<sp/>there&apos;s<sp/>a<sp/>unexplainable<sp/>`res.oracle_hint<sp/>=<sp/>oracle_msgs[req.markerId-11];`<sp/>causing<sp/>the<sp/>node<sp/>to<sp/>crash.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*Delete<sp/>the<sp/>&apos;-11&apos;*<sp/>in<sp/>the<sp/>array<sp/>indexing.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>simulation.cpp<sp/>(line<sp/>39,<sp/>`bool<sp/>oracleCallback()`<sp/>and<sp/>line<sp/>29,<sp/>`erl2::ErlOracle<sp/>oracle_msgs[30];`)<sp/>the<sp/>oracle<sp/>generates<sp/>a<sp/>array<sp/>of<sp/>30<sp/>hints<sp/>...<sp/>but<sp/>in<sp/>the<sp/>environment<sp/>there<sp/>are<sp/>also<sp/>numbers<sp/>greater<sp/>than<sp/>30!<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>The<sp/>array<sp/>access<sp/>is<sp/>not<sp/>protected,<sp/>and<sp/>there&apos;s<sp/>no<sp/>modulus<sp/>operator<sp/>or<sp/>other<sp/>systems<sp/>to<sp/>prevent<sp/>the<sp/>access<sp/>to<sp/>a<sp/>unexisting<sp/>memory<sp/>location.<sp/>In<sp/>the<sp/>RCL#3<sp/>project<sp/>I<sp/>preferred<sp/>to<sp/>deal<sp/>with<sp/>this<sp/>problem<sp/>from<sp/>the<sp/>outside,<sp/>applying<sp/>a<sp/>modulus<sp/>30<sp/>to<sp/>the<sp/>index<sp/>from<sp/>the<sp/>ArUco<sp/>markers<sp/>the<sp/>robot<sp/>can<sp/>find<sp/>in<sp/>the<sp/>environment<sp/>(the<sp/>workaround<sp/>is<sp/>in<sp/>the<sp/>vision_decoding.py<sp/>node)</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
@@ -24,7 +33,7 @@
 <codeline><highlight class="normal">---</highlight></codeline>
 <codeline><highlight class="normal">caption:<sp/>Contents</highlight></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
-<codeline><highlight class="normal">./erl2-oracle-user-manual.md</highlight></codeline>
+<codeline><highlight class="normal">./erl3-oracle-user-manual.md</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO – navigation stack CRASH COURSE &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -99,7 +98,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -134,7 +133,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-navigation-stack-crash-course">
+  <div class="section" id="how-to-navigation-stack-crash-course">
 <h1>HOW TO – navigation stack CRASH COURSE<a class="headerlink" href="#how-to-navigation-stack-crash-course" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -184,9 +183,9 @@
 </div>
 <hr class="docutils" />
 <p>here are some quick informations about how to set up and use the <strong>ROS Navigation Stack</strong>.</p>
-<section id="install-the-navigation-stack">
+<div class="section" id="install-the-navigation-stack">
 <h2>install the Navigation Stack<a class="headerlink" href="#install-the-navigation-stack" title="Permalink to this heading"></a></h2>
-<section id="slam-gmapping">
+<div class="section" id="slam-gmapping">
 <h3>Slam - GMapping<a class="headerlink" href="#slam-gmapping" title="Permalink to this heading"></a></h3>
 <p>In order to run the project, you need the two packages you can find <a class="reference external" href="https://github.com/CarmineD8/slam_gmapping.git">here</a>. SLAM and GMapping are tools for managing the movement of a robot with noisy odometry: their purpose is to correct odometry in a way that the robot can get its position as precisely as possible.</p>
 <p>Copy the packages into the workspace you prefer. <strong>use branch : <em>noetic</em></strong></p>
@@ -198,17 +197,17 @@
 sudo apt-get install ros-noetic-navigation
 </pre></div>
 </div>
-</section>
-<section id="movebase">
+</div>
+<div class="section" id="movebase">
 <h3>MoveBase<a class="headerlink" href="#movebase" title="Permalink to this heading"></a></h3>
 <p>MoveBase is a motion planner: given a goal, it can retrieve a path from the actual position to the desired one, recomputing the path depending on the informations gathered by sensors in conjunction with Slam-GMapping.</p>
 <p>Simply install it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ros-noetic-move-base
 </pre></div>
 </div>
-</section>
-</section>
-<section id="a-quick-example-with-gazebo-and-rviz">
+</div>
+</div>
+<div class="section" id="a-quick-example-with-gazebo-and-rviz">
 <h2>A quick example with Gazebo and RViz<a class="headerlink" href="#a-quick-example-with-gazebo-and-rviz" title="Permalink to this heading"></a></h2>
 <p>see <a class="reference external" href="https://github.com/programmatoroSeduto/RT1_assignment_2">this project on GitHub</a></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/programmatoroSeduto/RT1_assignment_2.git -b main ./test_nav_stack
@@ -216,8 +215,8 @@ sudo apt-get install ros-noetic-navigation
 </div>
 <p>in particular see <a class="reference external" href="https://github.com/programmatoroSeduto/RT1_assignment_2#how-to-set-up-the-project">how to setup the project</a></p>
 <p>and see <a class="reference external" href="https://github.com/programmatoroSeduto/RT1_assignment_2#build-the-project">how to build the project</a></p>
-</section>
-<section id="names-and-types-of-the-interfaces-of-movebase">
+</div>
+<div class="section" id="names-and-types-of-the-interfaces-of-movebase">
 <h2>Names and Types of the Interfaces of MoveBase<a class="headerlink" href="#names-and-types-of-the-interfaces-of-movebase" title="Permalink to this heading"></a></h2>
 <p><strong>services</strong>:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>/move_base/NavfnROS/make_plan
@@ -274,8 +273,8 @@ sudo apt-get install ros-noetic-navigation
 /move_base_simple/goal
 </pre></div>
 </div>
-</section>
-<section id="the-action-movebase">
+</div>
+<div class="section" id="the-action-movebase">
 <h2>the action movebase<a class="headerlink" href="#the-action-movebase" title="Permalink to this heading"></a></h2>
 <p>movebase is meant to behave as an action:</p>
 <ul class="simple">
@@ -285,7 +284,7 @@ sudo apt-get install ros-noetic-navigation
 </ul>
 <p>for the complete list of interfaces opened by move-base, see <a class="reference external" href="http://docs.ros.org/en/fuerte/api/move_base_msgs/html/index-msg.html">move_base_msgs package</a></p>
 <p>also <a class="reference external" href="http://wiki.ros.org/move_base">the official wiki</a> is a good reference (very seldom, sometimes it happens…)</p>
-<section id="a-note-about-the-action-names">
+<div class="section" id="a-note-about-the-action-names">
 <h3>A note about the action names<a class="headerlink" href="#a-note-about-the-action-names" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><em>MoveBase.action</em> – the name of the action, file with 3 fields</p></li>
@@ -317,30 +316,30 @@ sudo apt-get install ros-noetic-navigation
 <span class="n">move_base_msgs</span><span class="o">::</span><span class="n">MoveBaseResult</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="move-base-msgs-movebasegoal">
+</div>
+<div class="section" id="move-base-msgs-movebasegoal">
 <h3>move_base_msgs/MoveBaseGoal<a class="headerlink" href="#move-base-msgs-movebasegoal" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>geometry_msgs/PoseStamped target_pose
 </pre></div>
 </div>
-</section>
-<section id="move-base-msgs-movebasefeedback">
+</div>
+<div class="section" id="move-base-msgs-movebasefeedback">
 <h3>move_base_msgs/MoveBaseFeedback<a class="headerlink" href="#move-base-msgs-movebasefeedback" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>geometry_msgs/PoseStamped base_position
 </pre></div>
 </div>
-</section>
-<section id="move-base-msgs-movebaseresult">
+</div>
+<div class="section" id="move-base-msgs-movebaseresult">
 <h3>move_base_msgs/MoveBaseResult<a class="headerlink" href="#move-base-msgs-movebaseresult" title="Permalink to this heading"></a></h3>
 <p><strong>empty means that</strong> the framework will sendo only a simple signal.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># ... empty
 </pre></div>
 </div>
-</section>
-</section>
-<section id="other-interfaces">
+</div>
+</div>
+<div class="section" id="other-interfaces">
 <h2>other interfaces<a class="headerlink" href="#other-interfaces" title="Permalink to this heading"></a></h2>
-<section id="geometry-msgs-posestamped">
+<div class="section" id="geometry-msgs-posestamped">
 <h3>geometry_msgs/PoseStamped<a class="headerlink" href="#geometry-msgs-posestamped" title="Permalink to this heading"></a></h3>
 <p>a pose with the recording time and <em>the frame</em></p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># A Pose with reference coordinate frame and timestamp
@@ -352,8 +351,8 @@ Pose pose
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span><span class="o">.</span><span class="n">goal</span><span class="o">.</span><span class="n">target_pose</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s2">&quot;map&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="geometry-msgs-pose">
+</div>
+<div class="section" id="geometry-msgs-pose">
 <h3>geometry_msgs/Pose<a class="headerlink" href="#geometry-msgs-pose" title="Permalink to this heading"></a></h3>
 <p>a pose is made up of</p>
 <ul class="simple">
@@ -377,8 +376,8 @@ Quaternion orientation
 <li><p><em>y</em> – pitch</p></li>
 <li><p><em>z</em> – yaw</p></li>
 </ul>
-</section>
-<section id="geometry-msgs-quaternion">
+</div>
+<div class="section" id="geometry-msgs-quaternion">
 <h3>geometry_msgs/Quaternion<a class="headerlink" href="#geometry-msgs-quaternion" title="Permalink to this heading"></a></h3>
 <p>representation of a rotation using 4 parameters.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># This represents an orientation in free space in quaternion form.
@@ -401,8 +400,8 @@ float64 w
 <span class="n">m</span><span class="p">.</span><span class="n">getRPY</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">yaw</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-<section id="geometry-msgs-point">
+</div>
+<div class="section" id="geometry-msgs-point">
 <h3>geometry_msgs/Point<a class="headerlink" href="#geometry-msgs-point" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span># This contains the position of a point in free space
 float64 x
@@ -410,12 +409,12 @@ float64 y
 float64 z
 </pre></div>
 </div>
-</section>
-</section>
-<section id="movebase-action-calls-in-c">
+</div>
+</div>
+<div class="section" id="movebase-action-calls-in-c">
 <h2>MoveBase action calls in C++<a class="headerlink" href="#movebase-action-calls-in-c" title="Permalink to this heading"></a></h2>
 <p>here are some templates if you wnat (like me) to put the hands on without bothering too much with technical details (geeky geeky).</p>
-<section id="c-headers">
+<div class="section" id="c-headers">
 <h3>C++ – headers<a class="headerlink" href="#c-headers" title="Permalink to this heading"></a></h3>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;actionlib/client/simple_action_client.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;actionlib/client/terminal_state.h&quot;</span><span class="cp"></span>
@@ -458,8 +457,8 @@ float64 z
 <span class="w">	</span><span class="c1">// empty</span>
 </pre></div>
 </div>
-</section>
-<section id="c-main-with-async-spinner">
+</div>
+<div class="section" id="c-main-with-async-spinner">
 <h3>C++ – main with async spinner<a class="headerlink" href="#c-main-with-async-spinner" title="Permalink to this heading"></a></h3>
 <p><strong>use async-spinner</strong> for your node, in this way:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>int main( int argc, char* argv[] )
@@ -477,8 +476,8 @@ float64 z
 }
 </pre></div>
 </div>
-</section>
-<section id="c-open-the-action-client">
+</div>
+<div class="section" id="c-open-the-action-client">
 <h3>C++ – open the action client<a class="headerlink" href="#c-open-the-action-client" title="Permalink to this heading"></a></h3>
 <p><strong>declaration of the macros and pointers</strong>: declare globally</p>
 <div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// move_base action client</span>
@@ -503,8 +502,8 @@ float64 z
 </pre></div>
 </div>
 <p>now the simple action client should be online.</p>
-</section>
-<section id="c-use-the-client-callback-based-approach">
+</div>
+<div class="section" id="c-use-the-client-callback-based-approach">
 <h3>C++ – use the client – callback based approach<a class="headerlink" href="#c-use-the-client-callback-based-approach" title="Permalink to this heading"></a></h3>
 <p>see <a class="reference external" href="https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#a94b5a38fae6917f83331560b81eea341">waitForResult</a></p>
 <p>see also <a class="reference external" href="https://docs.ros.org/en/diamondback/api/actionlib/html/classactionlib_1_1SimpleActionClient.html#ae6a2e6904495e7c20c59e96af0d86801">sendGoal</a></p>
@@ -717,9 +716,9 @@ float64 z
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="slam-and-gmapping-navigation-stack-structure">
+</div>
+</div>
+<div class="section" id="slam-and-gmapping-navigation-stack-structure">
 <h2>SLAM and GMapping – navigation stack structure<a class="headerlink" href="#slam-and-gmapping-navigation-stack-structure" title="Permalink to this heading"></a></h2>
 <p>infos about <a class="reference external" href="http://wiki.ros.org/gmapping">GMapping</a></p>
 <p>see <a class="reference external" href="https://github.com/ros-perception/slam_gmapping">sma_gmapping on GitHub</a></p>
@@ -728,7 +727,7 @@ float64 z
 <p><a class="reference external" href="https://openslam-org.github.io/gmapping.html">openSLAM official page</a></p>
 <p><a class="reference external" href="https://classic.gazebosim.org/tutorials?tut=ros_gzplugins">Gazebo Plugins</a></p>
 <p><em>laser-based simultaneous localization and mapping</em></p>
-<section id="hokuyo-laser-range-finder">
+<div class="section" id="hokuyo-laser-range-finder">
 <h3>Hokuyo laser range finder<a class="headerlink" href="#hokuyo-laser-range-finder" title="Permalink to this heading"></a></h3>
 <p>ROS documentation about <a class="reference external" href="https://wiki.ros.org/hokuyo_node">hoyuko laser range finder</a></p>
 <p><strong>publishers</strong>:</p>
@@ -826,15 +825,15 @@ float64 z
 <li><p>il link usato come origine del sensore è <code class="docutils literal notranslate"><span class="pre">&lt;frameName&gt;hokuyo_link&lt;/frameName&gt;</span></code>, da cambiare a piacimento</p></li>
 <li><p>occhio anche al campo <code class="docutils literal notranslate"><span class="pre">&lt;gazebo</span> <span class="pre">reference=&quot;hokuyo_link&quot;&gt;</span></code></p></li>
 </ul>
-</section>
-</section>
-<section id="usare-movebase-senza-ricorrere-alla-actionlib">
+</div>
+</div>
+<div class="section" id="usare-movebase-senza-ricorrere-alla-actionlib">
 <h2>Usare MoveBase senza ricorrere alla actionlib<a class="headerlink" href="#usare-movebase-senza-ricorrere-alla-actionlib" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>per inviare il goal, usa <code class="docutils literal notranslate"><span class="pre">di</span> <span class="pre">tipo</span></code></p></li>
 <li><p>per cancellare la richiesta, basta inviare un messaggio, <em>anche vuoto</em>, sul topic <code class="docutils literal notranslate"><span class="pre">di</span> <span class="pre">tipo</span></code></p></li>
 </ul>
-<section id="richiesta-di-cancellazione">
+<div class="section" id="richiesta-di-cancellazione">
 <h3>richiesta di cancellazione<a class="headerlink" href="#richiesta-di-cancellazione" title="Permalink to this heading"></a></h3>
 <p>basta pubblicare un messaggio di tipo <code class="docutils literal notranslate"><span class="pre">actionlib_msgs/GoalID.msg</span></code> sul topic <code class="docutils literal notranslate"><span class="pre">/move_base/cancel</span></code>, anche vuoto, per annullare l’ultima richiesta.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rostopic info /move_base/cancel 
@@ -851,8 +850,8 @@ time stamp
 string id
 </pre></div>
 </div>
-</section>
-<section id="richiesta-di-movimento-verso-un-target">
+</div>
+<div class="section" id="richiesta-di-movimento-verso-un-target">
 <h3>richiesta di movimento verso un target<a class="headerlink" href="#richiesta-di-movimento-verso-un-target" title="Permalink to this heading"></a></h3>
 <p>pubblica la richiesta sul topic <code class="docutils literal notranslate"><span class="pre">/move_base/goal</span></code> di tipo <code class="docutils literal notranslate"><span class="pre">move_base_msgs/MoveBaseActionGoal</span></code>.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span># rostopic info /move_base/goal 
@@ -918,9 +917,9 @@ move_base_msgs/MoveBaseGoal goal
 <span class="n">goal</span><span class="p">.</span><span class="n">goal</span><span class="p">.</span><span class="n">target_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orientation</span><span class="p">.</span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

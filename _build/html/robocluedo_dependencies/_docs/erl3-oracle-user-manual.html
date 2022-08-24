@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oracle3 – User Documentation &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -80,7 +79,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -114,7 +113,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="oracle3-user-documentation">
+  <div class="section" id="oracle3-user-documentation">
 <h1>Oracle3 – User Documentation<a class="headerlink" href="#oracle3-user-documentation" title="Permalink to this heading"></a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -123,9 +122,33 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>see <a class="reference external" href="https://github.com/CarmineD8/exp_assignment3.git"><em>CarmineD8/exp_assignment3</em> on GitHub</a></p>
+<p>Pay attention to some issues inside this code:</p>
+<ul>
+<li><p>simulation.cpp (line 41) there’s a unexplainable <code class="docutils literal notranslate"><span class="pre">res.oracle_hint</span> <span class="pre">=</span> <span class="pre">oracle_msgs[req.markerId-11];</span></code> causing the node to crash.</p>
+<p><em>Delete the ‘-11’</em> in the array indexing.</p>
+</li>
+<li><p>simulation.cpp (line 39, <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">oracleCallback()</span></code> and line 29, <code class="docutils literal notranslate"><span class="pre">erl2::ErlOracle</span> <span class="pre">oracle_msgs[30];</span></code>) the oracle generates a array of 30 hints … but in the environment there are also numbers greater than 30!</p>
+<p>The array access is not protected, and there’s no modulus operator or other systems to prevent the access to a unexisting memory location. In the RCL#3 project I preferred to deal with this problem from the outside, applying a modulus 30 to the index from the ArUco markers the robot can find in the environment (the workaround is in the vision_decoding.py node)</p>
+</li>
+</ul>
 </div>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Oracle3 – User Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#observations">Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-node-simulation-cpp">SCHEMA – node <em>simulation.cpp</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#service-erl2-oracle">service <em>erl2::Oracle</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-erl2-erloracle">message <em>erl2::ErlOracle</em></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-receive-a-hint">HOW TO receive a hint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-check-the-solution">HOW TO check the solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-reference">Code Reference</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <hr class="docutils" />
 <p>differently from the oracle of for the second part of the project, this is nothing more than <em>a service</em> aware of the solution and capable to provide hints (also corrupted hints as before).</p>
@@ -134,7 +157,7 @@
 <p class="admonition-title">Warning</p>
 <p>The third Oracle provides the name <em>/oracle_hint</em> as a service, and no longer as a topic as in the second version of the Oracle. It could be required a remapping.</p>
 </div>
-<section id="observations">
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>the node contains up to 30 precomputed hints</strong>, see in the code: <code class="docutils literal notranslate"><span class="pre">erl3::ErlOracle</span> <span class="pre">oracle_msgs[30];</span></code>
@@ -144,8 +167,8 @@ sometimes in the space, the robot could find a ID greater than 30: <em>it must b
 <li><p>there are two types of ID: there’s the one in the message <em>Marker</em> which is an index of the array of hints; and there’s the ID of the other message <em>ErlOracle</em> that is an identifier of a hypothesis of the case.</p></li>
 <li><p>each hypothesis identifier goes from 0 up to 5</p></li>
 </ul>
-</section>
-<section id="schema-node-simulation-cpp">
+</div>
+<div class="section" id="schema-node-simulation-cpp">
 <h2>SCHEMA – node <em>simulation.cpp</em><a class="headerlink" href="#schema-node-simulation-cpp" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -181,7 +204,7 @@ note on link: exp_assignment3/Marker.srv
 &#64;enduml"/>
 
 </object></p>
-<section id="service-erl2-oracle">
+<div class="section" id="service-erl2-oracle">
 <h3>service <em>erl2::Oracle</em><a class="headerlink" href="#service-erl2-oracle" title="Permalink to this heading"></a></h3>
 <p>this service is used to check the validity of a solution in “solve” phase. it returns <em>the winner ID</em> choosed at the beginning of the game by the Oracle.</p>
 <p>the system should check wether the ID of the solution is equal to the one returned by this service. <em>the returned value is never corrupted</em> concerning this particular type of message.</p>
@@ -190,8 +213,8 @@ note on link: exp_assignment3/Marker.srv
 </pre></div>
 </div>
 <p>note: in the actual implementation, the ID goes from 0 included to 5 included.</p>
-</section>
-<section id="message-erl2-erloracle">
+</div>
+<div class="section" id="message-erl2-erloracle">
 <h3>message <em>erl2::ErlOracle</em><a class="headerlink" href="#message-erl2-erloracle" title="Permalink to this heading"></a></h3>
 <p>this message is sent every time the <strong>cluedo_link</strong> is at a distance up to <em>0.25m</em>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
@@ -206,9 +229,9 @@ note on link: exp_assignment3/Marker.srv
 <li><p>the field “key” could contain a string different from the allowed ones: who, where, and what</p></li>
 </ul>
 <p>so, <em>remember to check the validity of the message</em>.</p>
-</section>
-</section>
-<section id="how-to-receive-a-hint">
+</div>
+</div>
+<div class="section" id="how-to-receive-a-hint">
 <h2>HOW TO receive a hint<a class="headerlink" href="#how-to-receive-a-hint" title="Permalink to this heading"></a></h2>
 <p>the robot goes around in search of a ArUco code containing the ID of the hint. When it finds one hint, it makes a service request to the Oracle through <code class="docutils literal notranslate"><span class="pre">/oracle_hint</span></code> service,  declaring the found hint. This request is of type <code class="docutils literal notranslate"><span class="pre">exp_assignment3/Marker</span></code>, made as follows:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int32 markerId</span>
@@ -224,16 +247,16 @@ note on link: exp_assignment3/Marker.srv
 <span class="l l-Scalar l-Scalar-Plain">string value</span>
 </pre></div>
 </div>
-</section>
-<section id="how-to-check-the-solution">
+</div>
+<div class="section" id="how-to-check-the-solution">
 <h2>HOW TO check the solution<a class="headerlink" href="#how-to-check-the-solution" title="Permalink to this heading"></a></h2>
 <p>to check whether a specific ID is the solution of the mystery, call the service <code class="docutils literal notranslate"><span class="pre">/oracle_solution</span></code> of type <code class="docutils literal notranslate"><span class="pre">erl2/Oracle</span></code>. Here’s the prototype of the service:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
 </pre></div>
 </div>
-</section>
-<section id="code-reference">
+</div>
+<div class="section" id="code-reference">
 <h2>Code Reference<a class="headerlink" href="#code-reference" title="Permalink to this heading"></a></h2>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -326,8 +349,8 @@ note on link: exp_assignment3/Marker.srv
 <dd></dd></dl>
 
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

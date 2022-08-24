@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NODE mission_manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -85,7 +84,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -120,7 +119,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="node-mission-manager">
+  <div class="section" id="node-mission-manager">
 <h1>NODE mission_manager<a class="headerlink" href="#node-mission-manager" title="Permalink to this heading"></a></h1>
 <p>the main node of the architecture, launched at last, and combining the ROSPlan flow with the aRMOR ontology. </p>
 <p>During the coding phase, the objective was to not modify this node since the version v1.0.0 … and we did it! With a very little adding.</p>
@@ -352,7 +351,11 @@
 <p>the state MISSION_STATUS_COUNT_FAULT decrements a “fault counter”, which is initialised according to the macro MAX_FAULT_COUNT . The next status is decided according to the mission status which has generated the error. If the counter becomes zero, the machine breaks in status MISSION_STATUS_FAULT, meaning that too many errors have occurred. This strategy is motivated by the fast that sometimes, during the tests, it has been observed that when the workload of the system becomes significant, some service call could fail unexpectedly.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>if there are more than one hypothesis, the robot will ask for only one of them, then, if the solution is wrong, the robot will always collect at least one other hint before the other solution proposal. </p>
+<p>if there are more than one hypothesis, the robot will ask for only one of them, then, if the solution is wrong, the robot will always collect at least one other hint before the other solution proposal.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>exactly the same working cycle of the RCL#2 project. </p>
 </div>
 </dd></dl>
 
@@ -486,7 +489,7 @@
 </div>
 </dd></dl>
 
-</section>
+</div>
 
 
            </div>

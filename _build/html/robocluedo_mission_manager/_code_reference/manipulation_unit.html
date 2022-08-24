@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NODE manipulation_unit &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -85,7 +84,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -120,10 +119,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="node-manipulation-unit">
+  <div class="section" id="node-manipulation-unit">
 <h1>NODE manipulation_unit<a class="headerlink" href="#node-manipulation-unit" title="Permalink to this heading"></a></h1>
-<p>mission manager bridge between the robocluedo ROSPlan framework and the manipulation controller. </p>
-<p>since this ROSPlan part of this third project doesn’t require the manipulation, this version of the mission manager plays a role that is a little different than before: it has the task to make the manipulator assuming randomly one pose from the set of allowed codes.</p>
+<p>manipulator high-level motion planning </p>
+<p>This is node has been ment, in the RCL#2 project, to act as a communication mean between the ROSPlan framework and the real manipulation controller, but since the RCL#3 project doesn’t require (so far) a explicit manipulation capability from ROSPlan, the node has here another function: managing the movement of the arm <em>during the exploration of the environment</em>.</p>
+<p>To be more precise, this new version of the manipulation uit, when turned on, makes the robotic manipulator to assume a pose randomly choosen while the robot is moving. This enables the robot to get also hints that, with a more deterministic movement of the camera, could be missed since the robot acts always in the same way. There are some unluky cases, but most of times it seems to work fine.</p>
 <p><dl class="simple">
 <dt><strong>Authors</strong></dt><dd><p>Francesco Ganci </p>
 </dd>
@@ -131,6 +131,10 @@
 </dd>
 </dl>
 </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This implementation supports the develop mode: waitey, debug print</p>
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -357,7 +361,7 @@
 </div>
 </dd></dl>
 
-</section>
+</div>
 
 
            </div>

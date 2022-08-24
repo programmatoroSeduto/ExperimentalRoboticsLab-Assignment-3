@@ -88,7 +88,7 @@
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/oracle_hint&quot;<sp/>as<sp/>TOPIC_ORACLE_HINT</highlight></codeline>
 <codeline><highlight class="normal">VISION_DECODE<sp/>&quot;pub&quot;<sp/>--&gt;<sp/>TOPIC_ORACLE_HINT</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/SetBool.srv</highlight></codeline>
+<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>erl2/ErlOracle.msg</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
 <codeline><highlight class="normal">TOPIC_ORACLE_HINT<sp/>--&gt;<sp/>&quot;sub&quot;<sp/>MISSION_MANAGER</highlight></codeline>
@@ -102,35 +102,25 @@
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">title<sp/>Mission<sp/>Manager<sp/>--<sp/>interaction<sp/>with<sp/>aRMOR<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>
-<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
 <codeline><highlight class="normal">component<sp/>ARMOR_INTERFACE<sp/>&lt;&lt;RCL<sp/>aRMOR&gt;&gt;</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>INTERFACES</highlight></codeline>
 <codeline><highlight class="normal">together<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/add_hint&quot;<sp/>as<sp/>SRV_ARMOR_ADD</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/find_consistent_h&quot;<sp/>as<sp/>SRV_ARMOR_FIND</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/wrong_hypothesis&quot;<sp/>as<sp/>SRV_ARMOR_DEL</highlight></codeline>
 <codeline><highlight class="normal">()<sp/>&quot;/cluedo_armor/backup&quot;<sp/>as<sp/>SRV_ARMOR_BACKUP</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline><highlight class="normal">ARMOR_INTERFACE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ARMOR_ADD<sp/>:<sp/>robocluedo_armor_msgs/AddHint.srv</highlight></codeline>
+<codeline><highlight class="normal">ARMOR_INTERFACE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ARMOR_FIND<sp/>:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline><highlight class="normal">ARMOR_INTERFACE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ARMOR_DEL<sp/>:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
+<codeline><highlight class="normal">ARMOR_INTERFACE<sp/>&quot;srv&quot;<sp/>--&gt;<sp/>SRV_ARMOR_BACKUP<sp/>:<sp/>std_srvs/Trigger.srv</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/FindConsistentHypotheses.srv</highlight></codeline>
+<codeline><highlight class="normal">component<sp/>MISSION_MANAGER<sp/>&lt;&lt;RCL<sp/>Mission<sp/>Manager&gt;&gt;</highlight></codeline>
 <codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>robocluedo_armor_msgs/DiscardHypothesis.srv</highlight></codeline>
-<codeline></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">SRV_ARMOR_BACKUP<sp/>&lt;-left-<sp/>&quot;srv&quot;<sp/>ARMOR_INTERFACE</highlight></codeline>
-<codeline><highlight class="normal">note<sp/>on<sp/>link:<sp/>std_srvs/Trigger.srv</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">&apos;&apos;&apos;<sp/>LINKS</highlight></codeline>
 <codeline><highlight class="normal">SRV_ARMOR_ADD<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
 <codeline><highlight class="normal">SRV_ARMOR_FIND<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
 <codeline><highlight class="normal">SRV_ARMOR_DEL<sp/>--&gt;<sp/>&quot;cl&quot;<sp/>MISSION_MANAGER</highlight></codeline>
@@ -208,7 +198,7 @@
 <codeline><highlight class="normal">```{uml}</highlight></codeline>
 <codeline><highlight class="normal">@startuml</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">title<sp/>Navigation<sp/>Unit</highlight></codeline>
+<codeline><highlight class="normal">title<sp/>Manipulation<sp/>unit<sp/>-<sp/>RCL#3<sp/>version</highlight></codeline>
 <codeline><highlight class="normal">left<sp/>to<sp/>right<sp/>direction</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&apos;&apos;&apos;<sp/>COMPONENTS</highlight></codeline>

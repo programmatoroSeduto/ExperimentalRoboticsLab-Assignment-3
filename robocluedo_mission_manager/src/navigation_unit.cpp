@@ -21,6 +21,8 @@
 * 
 * @note This implementation supports the develop mode: waitey, debug print
 * 
+* @note the node requires the move_base controller
+* 
 * @authors Francesco Ganci
 * @version v1.1
 * 
@@ -238,6 +240,10 @@ public:
 	 * @note we're assuming here that the markers don't change during
 	 * the simulation. If the markers are able to move though, the 
 	 * subscription should keep opened. 
+	 * 
+	 * @note currently, the function assumes that the index of a marker
+	 * 	inside the array is its ID as well. for instance, data->markers[2]
+	 * 	is called "wp3"  by the function. 
 	 * 
 	 ***********************************************/
 	void cbk_markers( const visualization_msgs::MarkerArray::ConstPtr& data )

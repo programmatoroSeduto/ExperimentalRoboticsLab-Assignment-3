@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NODE manipulation controller &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -97,7 +96,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
@@ -132,7 +131,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="node-manipulation-controller">
+  <div class="section" id="node-manipulation-controller">
 <h1>NODE manipulation controller<a class="headerlink" href="#node-manipulation-controller" title="Permalink to this heading"></a></h1>
 <p>controller for performig the manipulation </p>
 <p>In a nutshell, this node implements a very simple service able to communicate with moveit in order to perform a manipulation with the RoboCLuedo hunter manipulator. The robot comes with a set of predefined poses, that the controller can call under request.</p>
@@ -372,9 +371,110 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv428node_manipulation_controller">
 <span id="_CPPv328node_manipulation_controller"></span><span id="_CPPv228node_manipulation_controller"></span><span id="node_manipulation_controller"></span><span class="target" id="classnode__manipulation__controller"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_manipulation_controller</span></span></span><a class="headerlink" href="#_CPPv428node_manipulation_controller" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>implementation of the node </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller28node_manipulation_controllerEv">
+<span id="_CPPv3N28node_manipulation_controller28node_manipulation_controllerEv"></span><span id="_CPPv2N28node_manipulation_controller28node_manipulation_controllerEv"></span><span id="node_manipulation_controller::node_manipulation_controller"></span><span class="target" id="classnode__manipulation__controller_1a5488d5eba7daa0ef240cb19b5c2b3a39"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_manipulation_controller</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller28node_manipulation_controllerEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>class constructor </p>
+<p>the class constructor performs the initialisation of the move group interface, then sets up some parameters, and finally mves the arm in the home position.</p>
+<p>When launched, the node first of all puts the robotic manipulator in a known state, which is the home position. </p>
+</dd></dl>
 
-</section>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller4spinEv">
+<span id="_CPPv3N28node_manipulation_controller4spinEv"></span><span id="_CPPv2N28node_manipulation_controller4spinEv"></span><span id="node_manipulation_controller::spin"></span><span class="target" id="classnode__manipulation__controller_1a0085010f7824d1b9fd528b516413d9b6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller4spinEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>simple spin (wait for shutdown) </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE">
+<span id="_CPPv3N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE"></span><span id="_CPPv2N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE"></span><span id="node_manipulation_controller::cbk_manip__robocluedo_movement_controller_msgs::ManipulatorPosition::RequestR.robocluedo_movement_controller_msgs::ManipulatorPosition::ResponseR"></span><span class="target" id="classnode__manipulation__controller_1a034c08e17c4eb53c99ab50159bbeec2b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_manip</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ManipulatorPosition</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ManipulatorPosition</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller9cbk_manipERN35robocluedo_movement_controller_msgs19ManipulatorPosition7RequestERN35robocluedo_movement_controller_msgs19ManipulatorPosition8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>sybchronous manipulation </p>
+<p>given a poture, the service sets it and moves the robotic manipulator until it hasn’t achieved that.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>req</strong> – the posture to be set </p></li>
+<li><p><strong>res</strong> – if the motion planning succeeded or not </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller15cbk_manip_asyncERKN35robocluedo_movement_controller_msgs24ManipulatorPositionAsync8ConstPtrE">
+<span id="_CPPv3N28node_manipulation_controller15cbk_manip_asyncERKN35robocluedo_movement_controller_msgs24ManipulatorPositionAsync8ConstPtrE"></span><span id="_CPPv2N28node_manipulation_controller15cbk_manip_asyncERKN35robocluedo_movement_controller_msgs24ManipulatorPositionAsync8ConstPtrE"></span><span id="node_manipulation_controller::cbk_manip_async__robocluedo_movement_controller_msgs::ManipulatorPositionAsync::ConstPtrCR"></span><span class="target" id="classnode__manipulation__controller_1af0ee4123a988f34f6010e0dc0939e4a2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cbk_manip_async</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">robocluedo_movement_controller_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ManipulatorPositionAsync</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller15cbk_manip_asyncERKN35robocluedo_movement_controller_msgs24ManipulatorPositionAsync8ConstPtrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>async manpulation command (from topic) </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Todo:</span></em></dt>
+<dd><p>implement a progress checking</p>
+</dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>once activated, there’s no way to stop the motion!</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller2nhE">
+<span id="_CPPv3N28node_manipulation_controller2nhE"></span><span id="_CPPv2N28node_manipulation_controller2nhE"></span><span id="node_manipulation_controller::nh__ros::NodeHandle"></span><span class="target" id="classnode__manipulation__controller_1a88fe3c1a8e2c9c533b50526bf2aab127"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller2nhE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS node handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller14planning_groupE">
+<span id="_CPPv3N28node_manipulation_controller14planning_groupE"></span><span id="_CPPv2N28node_manipulation_controller14planning_groupE"></span><span id="node_manipulation_controller::planning_group__ss"></span><span class="target" id="classnode__manipulation__controller_1af8a203283645588bc3278c17c4f437af"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">planning_group</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller14planning_groupE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>moveIt group name </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller3mgiE">
+<span id="_CPPv3N28node_manipulation_controller3mgiE"></span><span id="_CPPv2N28node_manipulation_controller3mgiE"></span><span id="node_manipulation_controller::mgi__moveit::planning_interface::MoveGroupInterface"></span><span class="target" id="classnode__manipulation__controller_1adaa9cdcaf929964b801a0620062eb736"></span><span class="n"><span class="pre">moveit</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">planning_interface</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MoveGroupInterface</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mgi</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller3mgiE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>planning interface </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller4planE">
+<span id="_CPPv3N28node_manipulation_controller4planE"></span><span id="_CPPv2N28node_manipulation_controller4planE"></span><span id="node_manipulation_controller::plan__moveit::planning_interface::MoveGroupInterface::Plan"></span><span class="target" id="classnode__manipulation__controller_1a97f72659165b7939674e08c4b3297b02"></span><span class="n"><span class="pre">moveit</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">planning_interface</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MoveGroupInterface</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Plan</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">plan</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller4planE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>previously generated plan </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller9srv_manipE">
+<span id="_CPPv3N28node_manipulation_controller9srv_manipE"></span><span id="_CPPv2N28node_manipulation_controller9srv_manipE"></span><span id="node_manipulation_controller::srv_manip__ros::ServiceServer"></span><span class="target" id="classnode__manipulation__controller_1a36d5d558f4937c26b2aab842b79cd19a"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceServer</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_manip</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller9srv_manipE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>moveit service </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller16sub_moveit_asyncE">
+<span id="_CPPv3N28node_manipulation_controller16sub_moveit_asyncE"></span><span id="_CPPv2N28node_manipulation_controller16sub_moveit_asyncE"></span><span id="node_manipulation_controller::sub_moveit_async__ros::Subscriber"></span><span class="target" id="classnode__manipulation__controller_1aa18b52cd99cba3636bb1ecfd77d1922c"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Subscriber</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sub_moveit_async</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller16sub_moveit_asyncE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>subscriber moveit async </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller22movement_async_enabledE">
+<span id="_CPPv3N28node_manipulation_controller22movement_async_enabledE"></span><span id="_CPPv2N28node_manipulation_controller22movement_async_enabledE"></span><span id="node_manipulation_controller::movement_async_enabled__b"></span><span class="target" id="classnode__manipulation__controller_1a0afedf7078d4427414b71e9a7cf7e434"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">movement_async_enabled</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller22movement_async_enabledE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>movement async enabled </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28node_manipulation_controller3mtxE">
+<span id="_CPPv3N28node_manipulation_controller3mtxE"></span><span id="_CPPv2N28node_manipulation_controller3mtxE"></span><span id="node_manipulation_controller::mtx__std::mutex"></span><span class="target" id="classnode__manipulation__controller_1afdcc27acbe1c9911436184428da1b685"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">mutex</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mtx</span></span></span><a class="headerlink" href="#_CPPv4N28node_manipulation_controller3mtxE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>a mutex for controlling the service calling and the async motion request </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
 
 
            </div>
