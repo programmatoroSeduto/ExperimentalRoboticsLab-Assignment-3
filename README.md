@@ -5,17 +5,24 @@
 
 ---
 
+**See the README of the project inside the [Official Documentation](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-3/README-sphinx.html)**
+
+---
+
+> Video Demo
+> - [**VIDEO DEMO**](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-3/blob/video-demo/rcl3-demo.mp4)
+>
 > Compatible With:
 > - ROS1 noetic
 > 
 > Documentation:
-> - [Official Documentation for RCL#3](erl3)
+> - [Official Documentation for RCL#3](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-3/index.html)
 > 
 > **Project Setup**:
-> - see the [Official Docs](erl3setup)
+> - see the [Official Docs](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-3/_docs/project-setup.html#setup-the-project)
 > 
 > **Run the project**:
-> - see the [Official Docs](erl3run)
+> - see the [Official Docs](https://programmatoroseduto.github.io/ExperimentalRoboticsLab-Assignment-3/_docs/run-the-project.html)
 > 
 > Starter kit:
 > - [CarmineD8/erl2 on GitHub](https://github.com/CarmineD8/erl2/)
@@ -26,10 +33,5 @@
 > - [programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD (old version) on GitHub](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2-OLD.git)
 > - [programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1 on GitHub](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1.git)
 > 
-> In a hurry?
-> - [See it in action!](videoexample)
-> 
 
 ---
-
-See the README of the project inside the [Official Documentation]()
