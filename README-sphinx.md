@@ -37,7 +37,7 @@ The [RCL#3](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assig
 
 The main technical aim of this project is to *extend the architecture roposed in the third part of the project* with as the less adaptation work as possible. Indeed this version of the project keeps almost unchancged a lot of components from [RCL#2](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-2), ad also something that comes from the [RCL#1](https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-1.git) project. 
 
-Moreover, as in the other assignments, a great care has been given to *the metodology of work*: not only writing the code, but also using and developing its documentation during the work. A big effort has been made as well, in documenting about the technologies involved in the implementation of this assignment, trying to find a way to make it work which could work also on other platforms as much as possible. Finally, the project comes with a rich *module testing* allowing to ensure the functioning of each module, either single or in combination with other elements of the architecture. See the official project documentation for further informations. 
+Moreover, as in the other projects, a great care has been given to *the metodology of work*: not only writing the code, but also using and developing its documentation during the work. A big effort has been made as well, in documenting about the technologies involved in the implementation of this project, trying to find a way to make it work which could work also on other platforms as much as possible. Finally, the project comes with a rich *module testing* allowing to ensure the functioning of each module, either single or in combination with other elements of the architecture. See the official project documentation for further informations. 
 
 ### Differences from RCL#2
 
@@ -849,7 +849,7 @@ PIPELINE <- PARSE
 hnote over PIPELINE: waiting 'parse' output
 PIPELINE <- PARSE : 'parse'
 
-PIPELINE -> DISPATCH : parse plan
+PIPELINE -> DISPATCH : dispatch plan
 note over MISSION_MANAGER, DISPATCH : it requires a lot of time: the system is running the RCL ROSPlan actions
 PIPELINE <- DISPATCH : end execution
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UML – mission manager interfaces &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -84,10 +85,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -121,7 +122,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="uml-mission-manager-interfaces">
+  <section id="uml-mission-manager-interfaces">
 <h1>UML – mission manager interfaces<a class="headerlink" href="#uml-mission-manager-interfaces" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -144,10 +145,10 @@
 </div>
 <hr class="docutils" />
 <p>This document provides a reference of all the interfaces provided by the <code class="docutils literal notranslate"><span class="pre">robocluedo_mission_manager</span></code> package. The most complex node from this point of view is the <code class="docutils literal notranslate"><span class="pre">mission_manager.cpp</span></code> which is the “head” of the entire architecture.</p>
-<div class="section" id="the-mission-manager">
+<section id="the-mission-manager">
 <h2>The mission manager<a class="headerlink" href="#the-mission-manager" title="Permalink to this heading"></a></h2>
 <p>There are many interfaces involving this node. Let’s see it under many points of view.</p>
-<div class="section" id="mission-manager-rosplan-communication">
+<section id="mission-manager-rosplan-communication">
 <h3>mission_manager – rosplan communication<a class="headerlink" href="#mission-manager-rosplan-communication" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
 <object data="../../_images/plantuml-5b87bdbf7d07b83b1e40293c72e301130a06ed76.svg" type="image/svg+xml" style="width:1140px;height:114px;background:#FFFFFF;">
@@ -171,8 +172,8 @@ SRV_PIPELINE --&gt; &quot;cl&quot; MISSION_MANAGER
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="mission-manager-continuous-manipulation">
+</section>
+<section id="mission-manager-continuous-manipulation">
 <h3>mission_manager – continuous manipulation<a class="headerlink" href="#mission-manager-continuous-manipulation" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
 <object data="../../_images/plantuml-8a279bdb1969a39f15d05f8f4b1523b2cb8ffbcb.svg" type="image/svg+xml" style="width:865px;height:114px;background:#FFFFFF;">
@@ -196,8 +197,8 @@ SRV_MANIP_UNIT --&gt; &quot;cl&quot; MISSION_MANAGER
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="mission-manager-sensing">
+</section>
+<section id="mission-manager-sensing">
 <h3>mission_manager – sensing<a class="headerlink" href="#mission-manager-sensing" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
 <object data="../../_images/plantuml-41775de8c2a5b74ca1a1289020ea00bacbf33bc5.svg" type="image/svg+xml" style="width:749px;height:114px;background:#FFFFFF;">
@@ -221,8 +222,8 @@ TOPIC_ORACLE_HINT --&gt; &quot;sub&quot; MISSION_MANAGER
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="mission-manager-interaction-with-armor-interface">
+</section>
+<section id="mission-manager-interaction-with-armor-interface">
 <h3>mission_manager – interaction with aRMOR interface<a class="headerlink" href="#mission-manager-interaction-with-armor-interface" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
 <object data="../../_images/plantuml-a75be7986338b49fdbea0cdcee139232dd3ac40c.svg" type="image/svg+xml" style="width:948px;height:446px;background:#FFFFFF;">
@@ -267,8 +268,8 @@ SRV_ARMOR_BACKUP --&gt; &quot;cl&quot; MISSION_MANAGER
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="mission-manager-communication-with-the-oracle">
+</section>
+<section id="mission-manager-communication-with-the-oracle">
 <h3>mission_manager – communication with the Oracle<a class="headerlink" href="#mission-manager-communication-with-the-oracle" title="Permalink to this heading"></a></h3>
 <p class="plantuml">
 <object data="../../_images/plantuml-7698d8fa783621d5628d3d60adc06b9203c3b09b.svg" type="image/svg+xml" style="width:758px;height:114px;background:#FFFFFF;">
@@ -292,9 +293,9 @@ SRV_ORACLE_SOLUTION --&gt; &quot;cl&quot; MISSION_MANAGER
 &#64;enduml"/>
 
 </object></p>
-</div>
-</div>
-<div class="section" id="navigation-unit">
+</section>
+</section>
+<section id="navigation-unit">
 <h2>navigation_unit<a class="headerlink" href="#navigation-unit" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
 <object data="../../_images/plantuml-c5454af54cbcd4095ed4da37924f28bb77c72f7e.svg" type="image/svg+xml" style="width:2184px;height:300px;background:#FFFFFF;">
@@ -335,8 +336,8 @@ TOPIC_MARKER -down-&gt; &quot;sub&quot; NAV_UNIT
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="manipulation-unit">
+</section>
+<section id="manipulation-unit">
 <h2>manipulation_unit<a class="headerlink" href="#manipulation-unit" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
 <object data="../../_images/plantuml-4abc37528d95d37c4557ddb76b471396b4507c6e.svg" type="image/svg+xml" style="width:1210px;height:210px;background:#FFFFFF;">
@@ -373,8 +374,8 @@ TOPIC_MANIP_ASYNC --&gt; &quot;sub&quot; MANIP_CONTROLLER
 &#64;enduml"/>
 
 </object></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

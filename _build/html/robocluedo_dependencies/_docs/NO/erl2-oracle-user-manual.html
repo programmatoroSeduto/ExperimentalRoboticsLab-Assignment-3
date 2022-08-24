@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oracle2 – User Documentation &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -73,10 +74,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -109,7 +110,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="oracle2-user-documentation">
+  <section id="oracle2-user-documentation">
 <h1>Oracle2 – User Documentation<a class="headerlink" href="#oracle2-user-documentation" title="Permalink to this heading"></a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -141,7 +142,7 @@
 <li><p>to check the solution, as a sort of arbiter of the game</p></li>
 <li><p>to provide the posision of the hint sources and to visualize them in RViz</p></li>
 </ul>
-<div class="section" id="schema-node-simulation-cpp">
+<section id="schema-node-simulation-cpp">
 <h2>SCHEMA – node <em>simulation.cpp</em><a class="headerlink" href="#schema-node-simulation-cpp" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
 <object data="../../../_images/plantuml-8208c246c17a40bbb035bb3aed94012048b5310a.svg" type="image/svg+xml" style="width:1282px;height:433px;background:#FFFFFF;">
@@ -180,7 +181,7 @@ note on link: erl2/ErlOracle.msg
 &#64;enduml"/>
 
 </object></p>
-<div class="section" id="message-erl2-erloracle">
+<section id="message-erl2-erloracle">
 <h3>message <em>erl2::ErlOracle</em><a class="headerlink" href="#message-erl2-erloracle" title="Permalink to this heading"></a></h3>
 <p>this message is sent every time the <strong>cluedo_link</strong> is at a distance up to <em>0.25m</em>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int32 ID</span>
@@ -194,8 +195,8 @@ note on link: erl2/ErlOracle.msg
 <li><p>one or more fields could be “-1”</p></li>
 </ul>
 <p>so, <em>remember to check the validity of the message</em>.</p>
-</div>
-<div class="section" id="service-erl2-oracle">
+</section>
+<section id="service-erl2-oracle">
 <h3>service <em>erl2::Oracle</em><a class="headerlink" href="#service-erl2-oracle" title="Permalink to this heading"></a></h3>
 <p>this service is used to check the validity of a solution in “solve” phase. it returns <em>the winner ID</em> choosed at the beginning of the game by the Oracle.</p>
 <p>the system should check wether the ID of the solution is equal to the one returned by this service. <em>the returned value is never corrupted.</em></p>
@@ -204,8 +205,8 @@ note on link: erl2/ErlOracle.msg
 </pre></div>
 </div>
 <p>note: in the actual implementation, the ID goes from 0 included to 5 included.</p>
-</div>
-<div class="section" id="message-visualization-msgs-markerarray">
+</section>
+<section id="message-visualization-msgs-markerarray">
 <h3>message <em>visualization_msgs::MarkerArray</em><a class="headerlink" href="#message-visualization-msgs-markerarray" title="Permalink to this heading"></a></h3>
 <p>each marker represents</p>
 <ul class="simple">
@@ -216,8 +217,8 @@ note on link: erl2/ErlOracle.msg
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span> <span class="l l-Scalar l-Scalar-Plain">Marker[] markers</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="message-visualization-msgs-marker">
+</section>
+<section id="message-visualization-msgs-marker">
 <h3>message <em>visualization_msgs::Marker</em><a class="headerlink" href="#message-visualization-msgs-marker" title="Permalink to this heading"></a></h3>
 <p>how the node creates markers:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// visualization_msgs::Marker marker;</span>
@@ -299,19 +300,19 @@ note on link: erl2/ErlOracle.msg
 <span class="l l-Scalar l-Scalar-Plain">bool mesh_use_embedded_materials</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="how-to-receive-a-hint">
+</section>
+</section>
+<section id="how-to-receive-a-hint">
 <h2>HOW TO receive a hint<a class="headerlink" href="#how-to-receive-a-hint" title="Permalink to this heading"></a></h2>
 <p><strong>NOTE: THE URDF MODEL MUST HAVE A LINK LABELED ‘cluedo_link’; THE ORACLE WILL TAKE ITS POSITION IN ORDER TO UNDERSTAND WHERE TO SEND THE HINT VIA TOPIC.</strong></p>
 <p>place the <em>cluedo_link</em> near to the manipulator. Done that, thenode will receive a message from the topic <code class="docutils literal notranslate"><span class="pre">/oracle_hint</span></code> of type <code class="docutils literal notranslate"><span class="pre">erl2/ErlOracle.msg</span></code>.</p>
-</div>
-<div class="section" id="how-to-check-the-solution">
+</section>
+<section id="how-to-check-the-solution">
 <h2>HOW TO check the solution<a class="headerlink" href="#how-to-check-the-solution" title="Permalink to this heading"></a></h2>
 <p>first of all, the system should <em>infer</em> the solution <em>as integer ID</em>.</p>
 <p>then, send a request to the service <code class="docutils literal notranslate"><span class="pre">/oracle_solution</span></code> of type <code class="docutils literal notranslate"><span class="pre">erl2/oracle.msg</span></code>.</p>
-</div>
-<div class="section" id="development-settings">
+</section>
+<section id="development-settings">
 <h2>Development settings<a class="headerlink" href="#development-settings" title="Permalink to this heading"></a></h2>
 <p>the source code <code class="docutils literal notranslate"><span class="pre">simulation.cpp</span></code> exposes two important macros:</p>
 <ul>
@@ -324,8 +325,8 @@ note on link: erl2/ErlOracle.msg
 <p>by increasing it, it’s possible to receive a hint remaining a bit far from the marker, and over 0.35, to receive hints also when the robot simply passes in front of if</p>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

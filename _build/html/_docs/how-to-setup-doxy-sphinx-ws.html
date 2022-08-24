@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SPHINX – setup doxygen/sphinx &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -75,14 +76,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev-log.html">Development LOG</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to setup Sphinx</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -115,7 +116,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="sphinx-setup-doxygen-sphinx">
+  <section id="sphinx-setup-doxygen-sphinx">
 <h1>SPHINX – setup doxygen/sphinx<a class="headerlink" href="#sphinx-setup-doxygen-sphinx" title="Permalink to this heading"></a></h1>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
@@ -181,15 +182,15 @@
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="setup-sphinx">
+<section id="setup-sphinx">
 <h2>1 – setup Sphinx<a class="headerlink" href="#setup-sphinx" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> without separating the documentation and the code</p></li>
 <li><p>configuration file (see the specific section about it)</p></li>
 <li><p>…</p></li>
 </ol>
-</div>
-<div class="section" id="setup-doxygen">
+</section>
+<section id="setup-doxygen">
 <h2>2 – setup Doxygen<a class="headerlink" href="#setup-doxygen" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>create a configuration file inside the root folder of the project using <code class="docutils literal notranslate"><span class="pre">doxywizard</span></code></p></li>
@@ -197,8 +198,8 @@
 <li><p>(optional) output as HTML file in the folder <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> inside the root</p></li>
 <li><p><em>… other config options?</em></p></li>
 </ol>
-</div>
-<div class="section" id="sphinx-essential-conf-py-file-configuration">
+</section>
+<section id="sphinx-essential-conf-py-file-configuration">
 <h2>Sphinx – Essential <em>conf.py</em> file configuration<a class="headerlink" href="#sphinx-essential-conf-py-file-configuration" title="Permalink to this heading"></a></h2>
 <p>Here’s the procedure I followed to configure this workspace.</p>
 <p>First lines, section <code class="docutils literal notranslate"><span class="pre">path</span> <span class="pre">setup</span></code>, copy and paste this:</p>
@@ -219,7 +220,7 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="section" id="extensions">
+<section id="extensions">
 <h3>Extensions<a class="headerlink" href="#extensions" title="Permalink to this heading"></a></h3>
 <p>section <code class="docutils literal notranslate"><span class="pre">general</span> <span class="pre">configuration</span></code>: copy and paste this. Here are the most significant plugins:</p>
 <ul class="simple">
@@ -261,8 +262,8 @@
 <span class="n">exclude_patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_build&#39;</span><span class="p">,</span> <span class="s1">&#39;Thumbs.db&#39;</span><span class="p">,</span> <span class="s1">&#39;.DS_Store&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="html-output-settings-and-syntax-hilighting">
+</section>
+<section id="html-output-settings-and-syntax-hilighting">
 <h3>HTML output settings and syntax hilighting<a class="headerlink" href="#html-output-settings-and-syntax-hilighting" title="Permalink to this heading"></a></h3>
 <p>Section <code class="docutils literal notranslate"><span class="pre">Options</span> <span class="pre">for</span> <span class="pre">HTML</span> <span class="pre">output</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for HTML output -------------------------------------------------</span>
@@ -295,8 +296,8 @@
 <span class="n">highlight_language</span> <span class="o">=</span> <span class="s1">&#39;guess&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="todo">
+</section>
+<section id="todo">
 <h3>todo<a class="headerlink" href="#todo" title="Permalink to this heading"></a></h3>
 <p>Add a new section for the todo list plugin:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for todo extension ----------------------------------------------</span>
@@ -305,8 +306,8 @@
 <span class="n">todo_include_todos</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="breathe-options">
+</section>
+<section id="breathe-options">
 <h3><strong>Breathe Options</strong><a class="headerlink" href="#breathe-options" title="Permalink to this heading"></a></h3>
 <p>add it to the config file (remember to replace <strong>???</strong> with the name of the project you gave in Doxygen)</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for breathe -----------------------------------------------------</span>
@@ -324,11 +325,11 @@
 <span class="n">breathe_default_members</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;members&#39;</span><span class="p">,</span> <span class="s1">&#39;undoc-members&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="other-tools">
+</section>
+</section>
+<section id="other-tools">
 <h2>Other tools<a class="headerlink" href="#other-tools" title="Permalink to this heading"></a></h2>
-<div class="section" id="plantuml">
+<section id="plantuml">
 <h3><strong>PlantUML</strong><a class="headerlink" href="#plantuml" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -353,9 +354,9 @@
 
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UML – go to point PY node &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -96,10 +97,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -133,7 +134,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="uml-go-to-point-py-node">
+  <section id="uml-go-to-point-py-node">
 <h1>UML – go to point PY node<a class="headerlink" href="#uml-go-to-point-py-node" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul class="current">
@@ -145,7 +146,7 @@
 </li>
 </ul>
 </div>
-<div class="section" id="schema">
+<section id="schema">
 <h2>SCHEMA<a class="headerlink" href="#schema" title="Permalink to this heading"></a></h2>
 <p class="plantuml">
 <object data="../../_images/plantuml-47bf1e4d6bf2030a3e57da3f2aa7f924d635d0b1.svg" type="image/svg+xml" style="width:961px;height:513px;background:#FFFFFF;">
@@ -186,16 +187,16 @@ note on link: std_srvs/SetBool.srv
 &#64;enduml"/>
 
 </object></p>
-</div>
-<div class="section" id="how-it-works">
+</section>
+<section id="how-it-works">
 <h2>HOW it works<a class="headerlink" href="#how-it-works" title="Permalink to this heading"></a></h2>
 <p>the node can be used only when <em>there’s no obstacle between the robot and the target to reach</em>. here’s how it works:</p>
 <ul class="simple">
 <li><p>turn the head of the robot and orient it towards the target</p></li>
 <li><p><em>go straight</em> until the target hasn’t been reached</p></li>
 </ul>
-</div>
-<div class="section" id="how-to-use-the-node-basic-way">
+</section>
+<section id="how-to-use-the-node-basic-way">
 <h2>HOW TO use the node – basic way<a class="headerlink" href="#how-to-use-the-node-basic-way" title="Permalink to this heading"></a></h2>
 <p>it requires another node listening for the odom channel and checking when to deactivate the service</p>
 <ul class="simple">
@@ -204,8 +205,8 @@ note on link: std_srvs/SetBool.srv
 <li><p>… wait until the robot is near enough to the point</p></li>
 <li><p>turn off the node (flag <code class="docutils literal notranslate"><span class="pre">SetBool.Request.data=False</span></code>)</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

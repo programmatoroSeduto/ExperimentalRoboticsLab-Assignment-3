@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReStructured Directives – practical documentation &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,7 +31,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Project Setup" href="project-setup.html" />
+    <link rel="next" title="PlantUML – quick reference" href="../_ext/plant-uml-reference.html" />
     <link rel="prev" title="Sphinx for Py – modules mocking" href="sphinx-mock.html" /> 
 </head>
 
@@ -75,10 +76,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -112,19 +113,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="restructured-directives-practical-documentation">
+  <section id="restructured-directives-practical-documentation">
 <h1>ReStructured Directives – practical documentation<a class="headerlink" href="#restructured-directives-practical-documentation" title="Permalink to this heading"></a></h1>
 <p>:link: more about the reST syntax <a class="reference external" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/Index.html">here</a></p>
 <p>:link: <a class="reference external" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/CheatSheet.html">a quick reference</a> about reST</p>
 <p>:link: a excellent reference about reST and sphinx <a class="reference external" href="https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/index.html">here</a></p>
-<div class="section" id="include-a-file-into-another-file">
+<section id="include-a-file-into-another-file">
 <h2>Include a file into another file<a class="headerlink" href="#include-a-file-into-another-file" title="Permalink to this heading"></a></h2>
 <p>:warning: NOt working for .md files! :warning:</p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">include</span><span class="p">::</span> <span class="nt">&lt;yourfile.format&gt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="markdown-vs-restructured">
+</section>
+<section id="markdown-vs-restructured">
 <h2>MarkDown Vs. reStructured<a class="headerlink" href="#markdown-vs-restructured" title="Permalink to this heading"></a></h2>
 <p>sintassi reST:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">directivename</span><span class="p">::</span> arguments
@@ -146,8 +147,8 @@ directive content
 \```
 </pre></div>
 </div>
-</div>
-<div class="section" id="toctree-directive">
+</section>
+<section id="toctree-directive">
 <h2>TocTree directive<a class="headerlink" href="#toctree-directive" title="Permalink to this heading"></a></h2>
 <p>:point_up: a reST file can contain more than one <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> directive.</p>
 <p>general syntax:</p>
@@ -166,7 +167,7 @@ directive content
 <li><p><code class="docutils literal notranslate"><span class="pre">path/of/the/file.tp</span></code> prints the title of the page and the link</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">page</span> <span class="pre">&lt;path/of/the/file.tp&gt;</span></code> print <em>this page</em> with the link to the page</p></li>
 </ul>
-<div class="section" id="toc-tree-in-markdown">
+<section id="toc-tree-in-markdown">
 <h3>ToC tree in markdown<a class="headerlink" href="#toc-tree-in-markdown" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>\```{toctree} 
 ---
@@ -182,9 +183,9 @@ link name &lt;/link/path&gt;
 \```
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="index-template">
+</section>
+</section>
+<section id="index-template">
 <h2>Index Template<a class="headerlink" href="#index-template" title="Permalink to this heading"></a></h2>
 <p>:point_up: reSt is truly horrible. Use the reST only for indexing the documentation. And nothing else.</p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_your-tag:</span>
@@ -205,10 +206,10 @@ link name &lt;/link/path&gt;
 </pre></div>
 </div>
 <p>the page can be referred using both <code class="docutils literal notranslate"><span class="pre">:ref:&lt;your-tag&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">:any:&lt;your-tag&gt;</span></code>. <strong>WITH BACKTICKS!</strong></p>
-</div>
-<div class="section" id="add-some-code">
+</section>
+<section id="add-some-code">
 <h2>Add some code<a class="headerlink" href="#add-some-code" title="Permalink to this heading"></a></h2>
-<div class="section" id="from-python">
+<section id="from-python">
 <h3>from Python<a class="headerlink" href="#from-python" title="Permalink to this heading"></a></h3>
 <p>This directive inserts the entire documentation related to the py file you’re referring to. Just one instructor for generating the documentation.</p>
 <p>:point_up: in Sphinx, you say where to generate the documentation, pointing the page with this directive. In Doxygen instead, the file system is fixed.</p>
@@ -217,25 +218,25 @@ link name &lt;/link/path&gt;
     <span class="nc">:noindex:</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="from-doxygen-breathe">
+</section>
+<section id="from-doxygen-breathe">
 <h3>from Doxygen/Breathe<a class="headerlink" href="#from-doxygen-breathe" title="Permalink to this heading"></a></h3>
 <p>same observations as before for what concerns the cpp files.</p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">doxygenfile</span><span class="p">::</span> your-cpp-file.cpp
     <span class="nc">:project:</span> your-project-name
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="images">
+</section>
+</section>
+<section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this heading"></a></h2>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">image</span><span class="p">::</span> someimage.png
    <span class="nc">:class:</span> with-border with-shadow
    <span class="nc">:alt:</span> Textual alternative to the image
 </pre></div>
 </div>
-</div>
-<div class="section" id="tabs">
+</section>
+<section id="tabs">
 <h2>tabs<a class="headerlink" href="#tabs" title="Permalink to this heading"></a></h2>
 <p>:link: see <a class="reference external" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingReST/CheatSheet.html#tabs">tabs in reST</a></p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">tabs</span><span class="p">::</span>
@@ -253,18 +254,18 @@ link name &lt;/link/path&gt;
          echo $null &gt;&gt; public/FIRST_INSTALL
 </pre></div>
 </div>
-</div>
-<div class="section" id="uml-diagrams">
+</section>
+<section id="uml-diagrams">
 <h2>UML diagrams<a class="headerlink" href="#uml-diagrams" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagramsInSphinx.html">here</a></p>
-<div class="section" id="graphs-with-graphiz">
+<section id="graphs-with-graphiz">
 <h3>Graphs with graphiz<a class="headerlink" href="#graphs-with-graphiz" title="Permalink to this heading"></a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinx.ext.graphviz&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>see the example on the Internet.</p>
-</div>
-<div class="section" id="graphs-with-plantuml">
+</section>
+<section id="graphs-with-plantuml">
 <h3>Graphs with plantUML<a class="headerlink" href="#graphs-with-plantuml" title="Permalink to this heading"></a></h3>
 <p>see in particular <a class="reference external" href="https://github.com/sphinx-contrib/plantuml">plantUML on gitHub</a></p>
 <p>install the extension:</p>
@@ -275,8 +276,8 @@ link name &lt;/link/path&gt;
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sphinxcontrib.plantuml&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="plantuml-and-markdown">
+</section>
+<section id="plantuml-and-markdown">
 <h3>plantUML and markdown<a class="headerlink" href="#plantuml-and-markdown" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>\```{uml} 
 @startuml
@@ -285,22 +286,22 @@ link name &lt;/link/path&gt;
 \```
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="links">
+</section>
+</section>
+<section id="links">
 <h2>Links<a class="headerlink" href="#links" title="Permalink to this heading"></a></h2>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">`anchor text </span><span class="si">&lt;URL&gt;</span><span class="s">`__</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="sphinx-mock.html" class="btn btn-neutral float-left" title="Sphinx for Py – modules mocking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="project-setup.html" class="btn btn-neutral float-right" title="Project Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../_ext/plant-uml-reference.html" class="btn btn-neutral float-right" title="PlantUML – quick reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

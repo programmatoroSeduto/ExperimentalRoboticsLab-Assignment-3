@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testing the project – RoboCLuedo no.3 &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -84,10 +85,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -121,7 +122,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="testing-the-project-robocluedo-no-3">
+  <section id="testing-the-project-robocluedo-no-3">
 <h1>Testing the project – RoboCLuedo no.3<a class="headerlink" href="#testing-the-project-robocluedo-no-3" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -185,15 +186,15 @@
 <hr class="docutils" />
 <p>this document provides useful informations for testing the components of the architecture before running it entirely.</p>
 <p><em>this document also contains the expected outputs from the programs</em>, or at least the outputs not too much long.</p>
-<div class="section" id="before-proceeding">
+<section id="before-proceeding">
 <h2>before proceeding<a class="headerlink" href="#before-proceeding" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>be sure that <em>the entire project has been compiled entirely without errors</em>, see the instructions</p></li>
 </ul>
-</div>
-<div class="section" id="testing-pkg-robocluedo-armor">
+</section>
+<section id="testing-pkg-robocluedo-armor">
 <h2>TESTING PKG robocluedo_armor<a class="headerlink" href="#testing-pkg-robocluedo-armor" title="Permalink to this heading"></a></h2>
-<div class="section" id="pure-test-on-armor">
+<section id="pure-test-on-armor">
 <h3>pure test on aRMOR<a class="headerlink" href="#pure-test-on-armor" title="Permalink to this heading"></a></h3>
 <p>this test lets to understand if aRMOR is doing its work in the correct way.</p>
 <p>in the package <code class="docutils literal notranslate"><span class="pre">robocluedo_module_Testing</span></code> there’s a node called <code class="docutils literal notranslate"><span class="pre">test_armor.cpp</span></code> whose job is just to perform the most basic operations on aRMOR. <em>If even this simple script doesn’t work, there’s a problem with your installation of aRMOR</em>.</p>
@@ -206,8 +207,8 @@ rosrun robocluedo_module_testing test_armor
 </pre></div>
 </div>
 <p><strong>NOTE</strong> : this simple test will also create a owl file into the desktop.</p>
-</div>
-<div class="section" id="tesing-armor-tools">
+</section>
+<section id="tesing-armor-tools">
 <h3>tesing aRMOR tools<a class="headerlink" href="#tesing-armor-tools" title="Permalink to this heading"></a></h3>
 <p>the class <code class="docutils literal notranslate"><span class="pre">armor_tools</span></code> is the low-level set of services used by the armor interface to work. It provides very simple services, then made more detailed by its child class <code class="docutils literal notranslate"><span class="pre">armor_cluedo</span></code>.</p>
 <p><strong>how to run the test:</strong></p>
@@ -218,8 +219,8 @@ roslaunch robocluedo_module_testing test_armor.launch
 rosrun robocluedo_module_testing test_armor_tools
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing-armor-cluedo">
+</section>
+<section id="testing-armor-cluedo">
 <h3>Testing aRMOR cluedo<a class="headerlink" href="#testing-armor-cluedo" title="Permalink to this heading"></a></h3>
 <p>the class <code class="docutils literal notranslate"><span class="pre">armor_cluedo</span></code> takes into account the specific characteristics of the problem, making the interaction between the system and the ontology even easier.</p>
 <p><strong>how to run the test:</strong></p>
@@ -230,12 +231,12 @@ roslaunch robocluedo_module_testing test_armor.launch
 rosrun robocluedo_module_testing test_armor_cluedo
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="testing-pkg-robocluedo-rosplan">
+</section>
+</section>
+<section id="testing-pkg-robocluedo-rosplan">
 <h2>TESTING PKG robocluedo_rosplan<a class="headerlink" href="#testing-pkg-robocluedo-rosplan" title="Permalink to this heading"></a></h2>
 <p>most of the packages here can be tested using simple scripts from a console. no special node is needed.</p>
-<div class="section" id="pddl-model">
+<section id="pddl-model">
 <h3>PDDL model<a class="headerlink" href="#pddl-model" title="Permalink to this heading"></a></h3>
 <p>the model should work well, but to be sure, there’s a simple way to test out it:</p>
 <ul>
@@ -253,8 +254,8 @@ rosrun robocluedo_module_testing test_armor_cluedo
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="simple-rosplan-pipeline">
+</section>
+<section id="simple-rosplan-pipeline">
 <h3>simple ROSPlan pipeline<a class="headerlink" href="#simple-rosplan-pipeline" title="Permalink to this heading"></a></h3>
 <p>this test aims at testing how the architecture of ROSPlan works without running the pipeline manager nor the other components attached with the ontology. Just to be sure that ROSPlan is working well.</p>
 <p>in this test, we’re going to use the <em>RoboCLuedo PDDL model with the Simulated Actions</em>. Use the bash commands here below:</p>
@@ -271,8 +272,8 @@ rostopic <span class="nb">echo</span> /rosplan_parsing_interface/complete_plan -
 rosservice call /rosplan_plan_dispatcher/dispatch_plan <span class="s2">&quot;{}&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="rosplan-replanning-and-knowledge-base-update">
+</section>
+<section id="rosplan-replanning-and-knowledge-base-update">
 <h3>ROSPlan replanning and knowledge base update<a class="headerlink" href="#rosplan-replanning-and-knowledge-base-update" title="Permalink to this heading"></a></h3>
 <p>the package robocluedo_rosplan has a fundamental node called <code class="docutils literal notranslate"><span class="pre">kb_interface</span></code> updating the knowledge according to the landmark. It provdes a fundamental funcitonality for performing the replanning, and its architecture is heavily specialized for working with this PDDL.</p>
 <p><strong>Notice that</strong> the main node to interact with when using ROSPlan is the pipeline manager, and not this node, <em>which should be hidden in the package</em>.</p>
@@ -320,8 +321,8 @@ rosservice call /rosplan_plan_dispatcher/dispatch_plan <span class="s2">&quot;{}
 </pre></div>
 </div>
 <p>consider that, each time all the waypoints have been explored, the robot must call the service <code class="docutils literal notranslate"><span class="pre">/replan</span></code> to reset its status.</p>
-</div>
-<div class="section" id="rosplan-pipeline-manager-with-simulated-actions">
+</section>
+<section id="rosplan-pipeline-manager-with-simulated-actions">
 <h3>ROSPlan pipeline manager with simulated actions<a class="headerlink" href="#rosplan-pipeline-manager-with-simulated-actions" title="Permalink to this heading"></a></h3>
 <p>the main component controlling the ROSPlan architecture is the so called <code class="docutils literal notranslate"><span class="pre">rosplan_pipeline_manager</span></code>. It provides functionalities for doing many things:</p>
 <ul class="simple">
@@ -369,8 +370,8 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 1}&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="rosplan-pipeline-manager-with-simulated-actions-no-launch-file">
+</section>
+<section id="rosplan-pipeline-manager-with-simulated-actions-no-launch-file">
 <h3>ROSPlan pipeline manager with simulated actions – NO LAUNCH FILE<a class="headerlink" href="#rosplan-pipeline-manager-with-simulated-actions-no-launch-file" title="Permalink to this heading"></a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span># shell 1
 roslaunch robocluedo_rosplan load_rosplan.launch
@@ -399,8 +400,8 @@ rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_pr
 rosservice call /robocluedo/pipeline_manager &quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-same-test-with-launch-file">
+</section>
+<section id="the-same-test-with-launch-file">
 <h3>the same test with launch file<a class="headerlink" href="#the-same-test-with-launch-file" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
 roslaunch robocluedo_rosplan run.launch
@@ -428,19 +429,19 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="testing-pkg-robocluedo-robot-hunter">
+</section>
+</section>
+<section id="testing-pkg-robocluedo-robot-hunter">
 <h2>TESTING PKG robocluedo_robot_hunter<a class="headerlink" href="#testing-pkg-robocluedo-robot-hunter" title="Permalink to this heading"></a></h2>
-<div class="section" id="before-the-tests">
+<section id="before-the-tests">
 <h3>BEFORE THE TESTS…<a class="headerlink" href="#before-the-tests" title="Permalink to this heading"></a></h3>
 <p>make sure to have the updated version of the model.</p>
 <ul class="simple">
 <li><p>shell: <code class="docutils literal notranslate"><span class="pre">roscd</span> <span class="pre">robocluedo_urdf_model</span></code> and <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">robot</span></code></p></li>
 <li><p>run the script <code class="docutils literal notranslate"><span class="pre">./generate_mode.sh</span></code> : the model should appear as console output</p></li>
 </ul>
-</div>
-<div class="section" id="the-most-simple-test">
+</section>
+<section id="the-most-simple-test">
 <h3>the most simple test!<a class="headerlink" href="#the-most-simple-test" title="Permalink to this heading"></a></h3>
 <p><em>try and guess?</em> let’s try to … execute the main launch file. You should not see something strange … or, worse, errors or crashes.</p>
 <p><strong>first test:</strong> Gazebo only</p>
@@ -459,15 +460,15 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter demo_gazebo.launch rviz_config_file:<span class="o">=</span>moveit_2.rviz <span class="m">2</span>&gt;/dev/null
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="testing-pkg-robocluedo-vision">
+</section>
+</section>
+<section id="testing-pkg-robocluedo-vision">
 <h2>TESTING PKG robocluedo_vision<a class="headerlink" href="#testing-pkg-robocluedo-vision" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>here are only the basic tests. to see if ArUco is detecting the markers, it is needed to run the entire architecture. see later in this document.</p>
 </div>
-<div class="section" id="running-aruco-detection">
+<section id="running-aruco-detection">
 <h3>running aruco detection<a class="headerlink" href="#running-aruco-detection" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
 roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>assignment3.world <span class="m">2</span>&gt;/dev/null
@@ -476,8 +477,8 @@ roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>
 rosrun robocluedo_vision aruco_detection
 </pre></div>
 </div>
-</div>
-<div class="section" id="aruco-decoder">
+</section>
+<section id="aruco-decoder">
 <h3>aruco decoder<a class="headerlink" href="#aruco-decoder" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
 roslaunch exp_assignment3 run.launch
@@ -497,12 +498,12 @@ rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;da
 rostopic pub --once /aruco_detected_ids std_msgs/Int32 <span class="s2">&quot;data: 5&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="testing-pkg-robocluedo-movement-controller">
+</section>
+</section>
+<section id="testing-pkg-robocluedo-movement-controller">
 <h2>TESTING PKG robocluedo_movement_controller<a class="headerlink" href="#testing-pkg-robocluedo-movement-controller" title="Permalink to this heading"></a></h2>
 <p>the package contains nodes for performing the navigation and the manipulation.</p>
-<div class="section" id="go-to-point">
+<section id="go-to-point">
 <h3>go to point<a class="headerlink" href="#go-to-point" title="Permalink to this heading"></a></h3>
 <p>this py node performs a simple navigation between two points in a path without obstacles.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -545,8 +546,8 @@ sleep <span class="m">20</span>
 rosservice call /go_to_point_switch <span class="s2">&quot;data: false&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="head-orientation">
+</section>
+<section id="head-orientation">
 <h3>head orientation<a class="headerlink" href="#head-orientation" title="Permalink to this heading"></a></h3>
 <p>this node simply rotates the robot of a certain value of radiants.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -579,8 +580,8 @@ rosservice call /head_orient_switch <span class="s2">&quot;data: true&quot;</spa
 sleep <span class="m">15</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="wall-follow-behaviour">
+</section>
+<section id="wall-follow-behaviour">
 <h3>wall follow behaviour<a class="headerlink" href="#wall-follow-behaviour" title="Permalink to this heading"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -598,8 +599,8 @@ sleep <span class="m">30</span>
 rosservice call /wall_follower_switch <span class="s2">&quot;data: false&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-bug-m-module">
+</section>
+<section id="the-bug-m-module">
 <h3>the bug_m module<a class="headerlink" href="#the-bug-m-module" title="Permalink to this heading"></a></h3>
 <p>the so called bug_m is a navigation controller made up of four nodes:</p>
 <ul class="simple">
@@ -649,8 +650,8 @@ sleep <span class="m">15</span>
 rosservice call /bug_switch <span class="s2">&quot;data: false&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing-navigation-manager-bug-m-controller">
+</section>
+<section id="testing-navigation-manager-bug-m-controller">
 <h3>testing navigation manager – bug_m controller<a class="headerlink" href="#testing-navigation-manager-bug-m-controller" title="Permalink to this heading"></a></h3>
 <p>the so called node <em>navigation manager</em> allows</p>
 <ul class="simple">
@@ -700,8 +701,8 @@ rosservice call /navigation_manager/navigation <span class="s2">&quot;target:</s
 <span class="s2">force_enable: true&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="manipulation-controller">
+</section>
+<section id="manipulation-controller">
 <h3>manipulation controller<a class="headerlink" href="#manipulation-controller" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
 roslaunch robocluedo_robot_hunter run.launch world_name:<span class="o">=</span>square_room.world <span class="m">2</span>&gt;/dev/null
@@ -738,8 +739,8 @@ rosservice call /tip_pos <span class="s2">&quot;command: -1&quot;</span>
 sleep <span class="m">2</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="manipulation-controller-async-mode">
+</section>
+<section id="manipulation-controller-async-mode">
 <h3>manipulation controller – async mode<a class="headerlink" href="#manipulation-controller-async-mode" title="Permalink to this heading"></a></h3>
 <p>thye manipulation controller can work also in the so called “async mode”: simply the node asking for a certain pose, publishes a message to the manipulation controller, which applies the command. the node sending the request shall not wait for the new posture.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -798,9 +799,9 @@ sleep <span class="m">60</span>
 rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="testing-rosplan-plus-real-motion-controller">
+</section>
+</section>
+<section id="testing-rosplan-plus-real-motion-controller">
 <h2>TESTING rosplan plus real motion controller<a class="headerlink" href="#testing-rosplan-plus-real-motion-controller" title="Permalink to this heading"></a></h2>
 <p>it is the same last test of robocluedo ROSPlan, but this time using the real movement controller. the package robocluedo_mission_manager has a GIANT launch file which allows to select which component of the architecture to run each time. you can use this launch multimple times in order to run the same architecture in two or more terminals.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -826,10 +827,10 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing-ai-motion-and-aruco">
+</section>
+<section id="testing-ai-motion-and-aruco">
 <h2>TESTING AI, motion and ArUco<a class="headerlink" href="#testing-ai-motion-and-aruco" title="Permalink to this heading"></a></h2>
-<div class="section" id="rcl2-components-and-aruco-no-armor">
+<section id="rcl2-components-and-aruco-no-armor">
 <h3>RCL2 components and ArUco (no armor)<a class="headerlink" href="#rcl2-components-and-aruco-no-armor" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
 roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">true</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
@@ -840,8 +841,8 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="aruco-unit-separated">
+</section>
+<section id="aruco-unit-separated">
 <h3>ARUCO unit separated<a class="headerlink" href="#aruco-unit-separated" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
 roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">true</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">false</span> <span class="m">2</span>&gt;/dev/null
@@ -862,8 +863,8 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="hints-detection">
+</section>
+<section id="hints-detection">
 <h3>hints detection<a class="headerlink" href="#hints-detection" title="Permalink to this heading"></a></h3>
 <p>a variant of the abovementioned test which allows to see the hints from the unit <code class="docutils literal notranslate"><span class="pre">aruco_decode.py</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -882,8 +883,8 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="hints-detection-and-movements-of-the-arm">
+</section>
+<section id="hints-detection-and-movements-of-the-arm">
 <h3>hints detection and movements of the arm<a class="headerlink" href="#hints-detection-and-movements-of-the-arm" title="Permalink to this heading"></a></h3>
 <p>let’s add the authomatic movements of the arm during the exploration of the environment. The content of the test is very similar to the task executed by the mission manager.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -917,9 +918,9 @@ rosservice call /tip_pos_auto_switch <span class="s2">&quot;data: false&quot;</s
 rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_problem: true, solve_problem: true, parse_plan: true, execute_plan: true, landmark: 2}&quot;</span> 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="final-tests">
+</section>
+</section>
+<section id="final-tests">
 <h2>Final Tests<a class="headerlink" href="#final-tests" title="Permalink to this heading"></a></h2>
 <p><strong>before running these tests</strong> :</p>
 <ul>
@@ -930,7 +931,7 @@ rosservice call /robocluedo/pipeline_manager <span class="s2">&quot;{load_proble
 <p>this option says the Oracle to send just the elements of th winner message and not all the other items. keys are selected randomly from the fields of the winner ID.</p>
 </li>
 </ul>
-<div class="section" id="checking-armor">
+<section id="checking-armor">
 <h3>checking aRMOR<a class="headerlink" href="#checking-armor" title="Permalink to this heading"></a></h3>
 <p>this test allows to see the output from aRMOR.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell 1</span>
@@ -945,8 +946,8 @@ roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span cl
 roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="checking-rosplan">
+</section>
+<section id="checking-rosplan">
 <h3>checking rosplan<a class="headerlink" href="#checking-rosplan" title="Permalink to this heading"></a></h3>
 <p>this test is used for checking the behaviour of ROSPlan, and in particular of the pipeline manager (which is written in Python unfortunately).</p>
 <p><em>this test corresponds to how to run the project.</em></p>
@@ -961,9 +962,9 @@ roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span cl
 roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span> 
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="the-trust-me-i-m-an-engineer-phase">
+</section>
+</section>
+<section id="the-trust-me-i-m-an-engineer-phase">
 <h2>The “trust me, I’m an engineer” phase<a class="headerlink" href="#the-trust-me-i-m-an-engineer-phase" title="Permalink to this heading"></a></h2>
 <p>the project now works! it’s time to launch <em>everything</em>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># shell tab 1</span>
@@ -973,8 +974,8 @@ roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span cl
 roslaunch robocluedo_mission_manager run_components.launch launch_robot:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span> 
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

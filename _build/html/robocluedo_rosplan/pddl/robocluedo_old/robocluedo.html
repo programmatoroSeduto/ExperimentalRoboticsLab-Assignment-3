@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>robocluedo – notes about the PDDL &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -73,10 +74,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -109,9 +110,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="robocluedo-notes-about-the-pddl">
+  <section id="robocluedo-notes-about-the-pddl">
 <h1>robocluedo – notes about the PDDL<a class="headerlink" href="#robocluedo-notes-about-the-pddl" title="Permalink to this heading"></a></h1>
-<div class="section" id="osservazioni-iniziali">
+<section id="osservazioni-iniziali">
 <h2>osservazioni iniziali<a class="headerlink" href="#osservazioni-iniziali" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>il planner risolve il problema fino alla fine come se non ci fosse nessun problema</p></li>
@@ -120,8 +121,8 @@
 <li><p>date le funzionalità della knowledge base, contare via query è davvero una pessima idea: il PDDL dovrà portare con se tutta una serie di metadati da aggiornare ogni volta che viene ricevuto un nuovo hint dall’oracolo. questa operazione permette inoltre di usare la knowledge base come una shared memory tra le varie actions</p></li>
 <li><p>ogni nodo ha la sua particolare istanza di <code class="docutils literal notranslate"><span class="pre">robocluedo_kb_tools</span></code>, per giunta su processi diversi, dunque l’unica vera memoria condivisa è la knowledge base: inutile tenere dei conteggi nella classe senza aggiornare la knowledge base: dei fluents di conteggio devono esserci sempre nel problema.</p></li>
 </ul>
-</div>
-<div class="section" id="system-inizialization">
+</section>
+<section id="system-inizialization">
 <h2>system inizialization<a class="headerlink" href="#system-inizialization" title="Permalink to this heading"></a></h2>
 <p>the system shall be initialized, which means to allocate the hints and to update the ontology before starting.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(init-planning-system )
@@ -134,7 +135,7 @@
 	(*) applica l&#39;effetto dell&#39;azione
 </pre></div>
 </div>
-<div class="section" id="check-hint-status">
+<section id="check-hint-status">
 <h3>check hint status<a class="headerlink" href="#check-hint-status" title="Permalink to this heading"></a></h3>
 <p><strong>assunzione</strong> : dopo un tentativo di esecuzione di soluzione fallito, la knowledge base conserva ancora i dati derivati dall’ultima esecuzione.</p>
 <p>classificazione degli ID:</p>
@@ -149,9 +150,9 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <p><strong>il problema è risolvibile quando</strong> esiste almeno un’opzione ancora attiva</p>
 <p><strong>il problema è risolto per esclusione</strong> quando esiste un’unica opzione valida o anche completa</p>
 <p><strong>il problema non è risolvibile</strong> quando tutte le opzioni sono state escluse</p>
-</div>
-</div>
-<div class="section" id="movimento">
+</section>
+</section>
+<section id="movimento">
 <h2>movimento<a class="headerlink" href="#movimento" title="Permalink to this heading"></a></h2>
 <p>caratteristiche generali:</p>
 <ul class="simple">
@@ -174,8 +175,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) applica l&#39;effetto dell&#39;azione
 </pre></div>
 </div>
-</div>
-<div class="section" id="segnale-di-acquisizione">
+</section>
+<section id="segnale-di-acquisizione">
 <h2>segnale di acquisizione<a class="headerlink" href="#segnale-di-acquisizione" title="Permalink to this heading"></a></h2>
 <p>il robot può continuare a muoversi nello spazio come vuole. Al momento però in cui bisogna fare l’acquisizione di un hint, il robot deve <em>segnalare</em> la sua volontà di acquisire il suggerimento.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(signal-info-acquisition ?wp)
@@ -184,8 +185,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 </pre></div>
 </div>
 <p>anche una semplice azione standard è sufficiente per questa operazione.</p>
-</div>
-<div class="section" id="avvicinamento-manipolatore">
+</section>
+<section id="avvicinamento-manipolatore">
 <h2>avvicinamento manipolatore<a class="headerlink" href="#avvicinamento-manipolatore" title="Permalink to this heading"></a></h2>
 <p><strong>quando il robot avvicina il manipolatore, l’oracolo pubblica un messaggio con l’hint</strong></p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(manipulator-near-marker ?wp )
@@ -197,8 +198,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) fine dell&#39;azione, aggiorna la knowledge base
 </pre></div>
 </div>
-</div>
-<div class="section" id="cattura-dell-indizio">
+</section>
+<section id="cattura-dell-indizio">
 <h2>cattura dell’indizio<a class="headerlink" href="#cattura-dell-indizio" title="Permalink to this heading"></a></h2>
 <p>qui il robot “legge” l’indizio, vale a dire il sistema interpreta l’indizio proveniente dall’oracolo (precedentemente allocato)</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(acquire-hint ?wp)
@@ -211,8 +212,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) INFINE applica il nuovo stato alla KB
 </pre></div>
 </div>
-</div>
-<div class="section" id="riprotare-il-manipolatore-alla-posizione-iniziale">
+</section>
+<section id="riprotare-il-manipolatore-alla-posizione-iniziale">
 <h2>riprotare il manipolatore alla posizione iniziale<a class="headerlink" href="#riprotare-il-manipolatore-alla-posizione-iniziale" title="Permalink to this heading"></a></h2>
 <p>a questo punto il robot ha già acquisito l’indizio.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(manipulator-far-marker ?wp )
@@ -222,8 +223,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) aggiorna la KB
 </pre></div>
 </div>
-</div>
-<div class="section" id="valutazione-dello-stato-del-problema">
+</section>
+<section id="valutazione-dello-stato-del-problema">
 <h2>valutazione dello stato del problema<a class="headerlink" href="#valutazione-dello-stato-del-problema" title="Permalink to this heading"></a></h2>
 <p>questa azione viene eseguita subito dopo aver ritratto il manipolatore dopo l’acquisizione dell’hint, e consiste nella valutazione di risolubilità del problema in base allo stato attuale e al numero di mosse rimanenti.</p>
 <p>Non conviene fare questa mossa quando il manipolatore è ancora vicino al marker.</p>
@@ -240,8 +241,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) nel caso tutto sia andato bene, aggiorna la KB e vai avanti
 </pre></div>
 </div>
-</div>
-<div class="section" id="preparazione-alla-soluzione-finale">
+</section>
+<section id="preparazione-alla-soluzione-finale">
 <h2>preparazione alla soluzione finale<a class="headerlink" href="#preparazione-alla-soluzione-finale" title="Permalink to this heading"></a></h2>
 <p>l’idea di base: il robot può proporre la sua soluzione solo una volta raggiunto il centro dell’arena.</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>(bright-bulb-over-head ?wp )
@@ -249,8 +250,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) aggiorna la KB e vai avanti
 </pre></div>
 </div>
-</div>
-<div class="section" id="la-soluzione-del-caso">
+</section>
+<section id="la-soluzione-del-caso">
 <h2>la soluzione del caso<a class="headerlink" href="#la-soluzione-del-caso" title="Permalink to this heading"></a></h2>
 <p>il planner, dato che funziona offline, non può ricevere alcun dato sui vari ID delle ipotesi: purchè un’ipotesi sia classificata valida, il planner può sempre sceglierla. Sempre nello stesso spirito: <em>per il planner, tutto va a liscio liscio</em>. E’ il sistema esterno che deve giudicare la soluzione proposta, evitando decisioni “eccessivamente irrazionali” da parte del planner, che comunque attua una scelta al termine dell’investigazione, anche se non dettata da un effettivo ragionamento deduttivo.</p>
 <p>il planner può scegliere tra le opzioni attive, ed escluderà solo quelle risapute non valide <em>a priori</em>, quindi quelle escluse dal problem file prima di fare la ricerca della soluzione.</p>
@@ -275,22 +276,22 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 	(*) infine, REPLAN e il ciclo ricomincia
 </pre></div>
 </div>
-<div class="section" id="movimento-verso-il-centro">
+<section id="movimento-verso-il-centro">
 <h3>movimento verso il centro<a class="headerlink" href="#movimento-verso-il-centro" title="Permalink to this heading"></a></h3>
 <p>il robot si muove verso il centro dell’arena per proporre la soluzione.</p>
-</div>
-</div>
-<div class="section" id="landmarks">
+</section>
+</section>
+<section id="landmarks">
 <h2>Landmarks<a class="headerlink" href="#landmarks" title="Permalink to this heading"></a></h2>
 <p>riporto qui i landmarks che ho usato per debuggare e testare il codice PDDL, tutti a partire dallo stesso stato iniziale.</p>
-<div class="section" id="solo-init-del-sistema">
+<section id="solo-init-del-sistema">
 <h3>solo init del sistema<a class="headerlink" href="#solo-init-del-sistema" title="Permalink to this heading"></a></h3>
 <p>il sistema parte da stato <code class="docutils literal notranslate"><span class="pre">(pre-init</span> <span class="pre">)</span></code>. Nota che, di tutti questi stati, ce n’è ad ogni azione solo uno acceso, come una sorta di segnalatore di stato.</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nv">investigating</span> <span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="init-e-movimento-a-w2">
+</section>
+<section id="init-e-movimento-a-w2">
 <h3>init e movimento a w2<a class="headerlink" href="#init-e-movimento-a-w2" title="Permalink to this heading"></a></h3>
 <p>il robot parte dal centro e arriva in w2</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">investigating</span> <span class="p">)</span> <span class="p">(</span><span class="nv">robot-position</span> <span class="nv">w2</span><span class="p">)))</span>
@@ -300,8 +301,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nv">robot-position</span> <span class="nv">w2</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="in-w2-e-braccio-verso-il-marker">
+</section>
+<section id="in-w2-e-braccio-verso-il-marker">
 <h3>in w2 e braccio verso il marker<a class="headerlink" href="#in-w2-e-braccio-verso-il-marker" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">robot-position</span> <span class="nv">w2</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquiring</span> <span class="p">)</span> <span class="p">(</span><span class="nv">manipulator-on</span> <span class="p">)))</span>
 </pre></div>
@@ -310,8 +311,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">robot-position</span> <span class="nv">w2</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquiring</span> <span class="p">)</span> <span class="p">(</span><span class="nv">manipulator-on</span> <span class="p">)))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="cattura-il-marker-w2-col-braccio-vicino-al-marker">
+</section>
+<section id="cattura-il-marker-w2-col-braccio-vicino-al-marker">
 <h3>cattura il marker w2 col braccio vicino al marker<a class="headerlink" href="#cattura-il-marker-w2-col-braccio-vicino-al-marker" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">robot-position</span> <span class="nv">w2</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquired</span> <span class="p">)</span> <span class="p">(</span><span class="nv">manipulator-on</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquired-hint</span> <span class="nv">w2</span><span class="p">)))</span>
 </pre></div>
@@ -320,14 +321,14 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nv">acquired-hint</span> <span class="nv">w2</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="wp2-acquisito-e-manipolatore-non-attivo">
+</section>
+<section id="wp2-acquisito-e-manipolatore-non-attivo">
 <h3>wp2 acquisito e manipolatore non attivo<a class="headerlink" href="#wp2-acquisito-e-manipolatore-non-attivo" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">manipulator-off</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquired-hint</span> <span class="nv">w2</span><span class="p">)))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="wp2-e-wp3-in-due-mosse">
+</section>
+<section id="wp2-e-wp3-in-due-mosse">
 <h3>wp2 e wp3 in due mosse<a class="headerlink" href="#wp2-e-wp3-in-due-mosse" title="Permalink to this heading"></a></h3>
 <p>il fluent <code class="docutils literal notranslate"><span class="pre">(remaining-moves</span> <span class="pre">)</span></code> viene inizializzato a 3 prima di far partire il problema.</p>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> <span class="p">(</span><span class="nv">manipulator-off</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquired-hint</span> <span class="nv">w2</span> <span class="p">)</span> <span class="p">(</span><span class="nv">acquired-hint</span> <span class="nv">w3</span> <span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="p">(</span><span class="nv">remaining-moves</span> <span class="p">)</span> <span class="mi">1</span><span class="p">)))</span>
@@ -339,8 +340,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <span class="p">(</span><span class="ss">:metric</span> <span class="nv">maximize</span> <span class="p">(</span><span class="nv">remaining-moves</span> <span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="wp1-wp2-wp3-poi-in-mezzo">
+</section>
+<section id="wp1-wp2-wp3-poi-in-mezzo">
 <h3>wp1 wp2 wp3 poi in mezzo<a class="headerlink" href="#wp1-wp2-wp3-poi-in-mezzo" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span> 
 	<span class="p">(</span><span class="nv">acquired-hint</span> <span class="nv">w1</span> <span class="p">)</span>
@@ -350,33 +351,33 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="ciclo-completo-di-indagine-prima-della-soluzione">
+</section>
+<section id="ciclo-completo-di-indagine-prima-della-soluzione">
 <h3>ciclo completo di indagine prima della soluzione<a class="headerlink" href="#ciclo-completo-di-indagine-prima-della-soluzione" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nv">wanna-solve</span> <span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="in-centro-per-proporre-la-soluzione">
+</section>
+<section id="in-centro-per-proporre-la-soluzione">
 <h3>in centro per proporre la soluzione<a class="headerlink" href="#in-centro-per-proporre-la-soluzione" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nb">and</span>
 	<span class="p">(</span><span class="nv">wanna-solve</span> <span class="p">)</span> <span class="p">(</span><span class="nv">robot-position</span> <span class="nv">center</span><span class="p">)</span>
 <span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="il-ciclo-di-lavoro-completo">
+</section>
+<section id="il-ciclo-di-lavoro-completo">
 <h3>il ciclo di lavoro completo<a class="headerlink" href="#il-ciclo-di-lavoro-completo" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:goal</span> <span class="p">(</span><span class="nv">elementary-whatson</span> <span class="p">))</span>
 
 <span class="p">(</span><span class="ss">:metric</span> <span class="nv">maximize</span> <span class="p">(</span><span class="nv">solution-quality</span> <span class="p">))</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="checkpoints">
+</section>
+</section>
+<section id="checkpoints">
 <h2>Checkpoints<a class="headerlink" href="#checkpoints" title="Permalink to this heading"></a></h2>
-<div class="section" id="domain">
+<section id="domain">
 <h3>domain<a class="headerlink" href="#domain" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">domain</span> <span class="nv">robocluedo</span><span class="p">)</span>
 
@@ -765,8 +766,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="problem">
+</section>
+<section id="problem">
 <h3>problem<a class="headerlink" href="#problem" title="Permalink to this heading"></a></h3>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nv">problem</span> <span class="nv">task</span><span class="p">)</span>
 
@@ -848,8 +849,8 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="ultimo-log">
+</section>
+<section id="ultimo-log">
 <h3>ultimo log<a class="headerlink" href="#ultimo-log" title="Permalink to this heading"></a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">literals</span><span class="p">:</span> <span class="mi">27</span>
 <span class="n">Constructing</span> <span class="n">lookup</span> <span class="n">tables</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">20</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">30</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">40</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">50</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">60</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">70</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">80</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">90</span><span class="o">%</span><span class="p">]</span> <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span>
@@ -890,9 +891,9 @@ questo è gestito dall’esterno: è il sistema esterno al PDDL che individua le
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

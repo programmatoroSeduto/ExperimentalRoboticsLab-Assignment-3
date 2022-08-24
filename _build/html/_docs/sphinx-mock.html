@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sphinx for Py – modules mocking &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -75,10 +76,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -112,7 +113,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="sphinx-for-py-modules-mocking">
+  <section id="sphinx-for-py-modules-mocking">
 <h1>Sphinx for Py – modules mocking<a class="headerlink" href="#sphinx-for-py-modules-mocking" title="Permalink to this heading"></a></h1>
 <p>sphinx, when it finds a statement <em>import something</em> … tries to import, and complains if it doesn’t exists. This is a problem sometimes.</p>
 <p>for avoidig such a situation, there’s an extension which <em>emualtes</em> a library which doesn’t exist.</p>
@@ -120,7 +121,7 @@
 <p class="admonition-title">Note</p>
 <p>see this page <a class="reference external" href="https://stackoverflow.com/questions/15889621/sphinx-how-to-exclude-imports-in-automodule">here</a></p>
 </div>
-<div class="section" id="sphinx-configuration">
+<section id="sphinx-configuration">
 <h2>sphinx configuration<a class="headerlink" href="#sphinx-configuration" title="Permalink to this heading"></a></h2>
 <p>just add this section:</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Options for autodoc -----------------------------------------------------</span>
@@ -129,8 +130,8 @@
 <span class="n">autodoc_mock_imports</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rospy&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

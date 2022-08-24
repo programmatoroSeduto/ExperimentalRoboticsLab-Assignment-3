@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOCS – PDDL and ROSPlan &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -92,10 +93,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -129,7 +130,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="docs-pddl-and-rosplan">
+  <section id="docs-pddl-and-rosplan">
 <h1>DOCS – PDDL and ROSPlan<a class="headerlink" href="#docs-pddl-and-rosplan" title="Permalink to this heading"></a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -157,14 +158,14 @@
 </div>
 <hr class="docutils" />
 <p>Unfortunately, the ROS Plan knowledge base is able only to parse a very particular, limited version of the PDDL. And worse, this doesn’t seem to appear in any documentation about ROS Plan!</p>
-<div class="section" id="validation-with-parser">
+<section id="validation-with-parser">
 <h2>validation with Parser<a class="headerlink" href="#validation-with-parser" title="Permalink to this heading"></a></h2>
 <p>from inside the folder <code class="docutils literal notranslate"><span class="pre">(package</span> <span class="pre">robocluedo_rosplan_interface)/pddl/</span></code> run the command</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./parser &lt;domain file&gt; &lt;<span class="o">(</span>opt<span class="o">)</span> problem file&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="solution-with-popf">
+</section>
+<section id="solution-with-popf">
 <h2>solution with popf<a class="headerlink" href="#solution-with-popf" title="Permalink to this heading"></a></h2>
 <p>the repository contains a already compiled version of the planner popf. In case is doesn’t work, you can find another executable in the folder <code class="docutils literal notranslate"><span class="pre">&lt;tour</span> <span class="pre">workspace&gt;/src/ROSPlan/rosplan_planning_system/common/bin/</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;path&gt;/popf DOMAIN PROBLEM
@@ -178,8 +179,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">-b</span></code> disable best-first-search; often it couldn’t solve the plan with this method</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-T</span></code> in the case of the robocluedo project, it helped me to speed up the planning process</p></li>
 </ul>
-</div>
-<div class="section" id="specific-rules-for-the-pddl-in-ros-plan">
+</section>
+<section id="specific-rules-for-the-pddl-in-ros-plan">
 <h2>Specific rules for the PDDL in ROS Plan<a class="headerlink" href="#specific-rules-for-the-pddl-in-ros-plan" title="Permalink to this heading"></a></h2>
 <p>you can set the planner in a suitable way for your application by the <code class="docutils literal notranslate"><span class="pre">planner_command</span></code> parameter in the planner interface. BUT the knowledge base node is able to interpret a non-standard particular version of PDDL, otherwise it closes unexpectedly.</p>
 <ul>
@@ -247,8 +248,8 @@
 <p>whatever query fails with this return! beautiful ROSPlan …</p>
 </li>
 </ul>
-</div>
-<div class="section" id="durative-actions-the-right-syntax">
+</section>
+<section id="durative-actions-the-right-syntax">
 <h2>Durative Actions - the right syntax<a class="headerlink" href="#durative-actions-the-right-syntax" title="Permalink to this heading"></a></h2>
 <div class="highlight-lisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ss">:durative-action</span> <span class="nv">???</span>
 	<span class="ss">:parameters</span> <span class="p">(</span> <span class="nv">???</span> <span class="p">)</span>
@@ -263,8 +264,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="issue-in-the-problem-preprocessing">
+</section>
+<section id="issue-in-the-problem-preprocessing">
 <h2>Issue in the problem preprocessing<a class="headerlink" href="#issue-in-the-problem-preprocessing" title="Permalink to this heading"></a></h2>
 <p>even with a perfect PDDL code, the planner, after the preprocessing phase, could complain a mysterious syntax error…</p>
 <p>maybe you wrote this in the original problem:</p>
@@ -277,8 +278,8 @@
 </div>
 <p><em>that is syntactically wrong!</em> It explains the strange message.</p>
 <p><strong>but notice that</strong> this is just a warning, therefore you can skip it.</p>
-</div>
-<div class="section" id="adl-support">
+</section>
+<section id="adl-support">
 <h2>ADL support<a class="headerlink" href="#adl-support" title="Permalink to this heading"></a></h2>
 <p><strong>ROSPlan doesn’t have a complete support for ADL</strong>, which is definitely a bad news. Classical planning isn’t supported, in particular the common actions. When you set the requirement <em>ADL</em>, the message is this:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>A problem has been encountered, and the planner has to terminate.
@@ -299,14 +300,14 @@ extend the planner to meet your needs.
 </pre></div>
 </div>
 <p>the funny thing is that <em>the POPF planners support ADL, but tge ROSPlan KB does not!</em> And, since KB parses the problem, there’s no way to parse things like classical planning, unless you don’t want to throw away most of the ROS Plan framework.</p>
-</div>
-<div class="section" id="available-planners">
+</section>
+<section id="available-planners">
 <h2>Available Planners<a class="headerlink" href="#available-planners" title="Permalink to this heading"></a></h2>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>It is recommended to use the POPF planner, as suggested by the official tutorials as well.</p>
 </div>
-<div class="section" id="popf-help">
+<section id="popf-help">
 <h3>POPF help<a class="headerlink" href="#popf-help" title="Permalink to this heading"></a></h3>
 <p>see <a class="reference external" href="https://planning.wiki/ref/planners/popf">popf characteristics</a>.</p>
 <p><strong>temporal planner (supporting durative actions only)</strong>. Supported requirements:</p>
@@ -359,8 +360,8 @@ Options are:
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;popf_path&gt;/popf -n -v2 DOMAIN PROBLEM &gt; plan.pddl
 </pre></div>
 </div>
-</div>
-<div class="section" id="metric-ff-help">
+</section>
+<section id="metric-ff-help">
 <h3>Metric-ff help<a class="headerlink" href="#metric-ff-help" title="Permalink to this heading"></a></h3>
 <p>see <a class="reference external" href="https://planning.wiki/ref/planners/metricff">Metric-FF on planning.wiki</a></p>
 <p>see also the <a class="reference external" href="https://fai.cs.uni-saarland.de/hoffmann/metric-ff.html">official page of Metric-FF</a></p>
@@ -413,9 +414,9 @@ OPTIONS   DESCRIPTIONS
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>timeout <span class="m">10</span> &lt;metric-ff_path&gt;/Metric-FF -o DOMAIN -p PROBLEM 
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

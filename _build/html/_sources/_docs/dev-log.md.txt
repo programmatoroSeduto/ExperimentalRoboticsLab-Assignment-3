@@ -1714,6 +1714,9 @@ e torniamo al lavoro:
 - nuova pagina per il setup
 - e proviamola dunque questa installazione!
 - **COMMIT**: "deployment (working on setup)"
+- nuovo docker pulito...
+	- **E FUNZIONAAAAAAAA** -- fine dei giochi (almeno per quanto riguarda il terzo assignment)
+- **COMMIT**: "deployment (the end ... maybe?)"
 
 
 

@@ -2,14 +2,17 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md__docs_run-the-project" kind="page">
     <compoundname>md__docs_run-the-project</compoundname>
-    <title>HOW TO Run this Project</title>
+    <title>run-the-project</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para>(run-the-project)=</para>
+<sect1 id="md__docs_run-the-project_1autotoc_md121">
+<title>HOW TO Run RCL#3 Project</title>
 <para><programlisting filename=".seealso"><codeline><highlight class="normal">for<sp/>a<sp/>deeper<sp/>guidance<sp/>on<sp/>how<sp/>to<sp/>run<sp/>the<sp/>project,<sp/>see<sp/>the<sp/>user<sp/>documentation<sp/>inside<sp/>{any}`pkg-mission-manager`<sp/>about<sp/>the<sp/>main<sp/>launch<sp/>file</highlight></codeline>
 </programlisting></para>
 <para>``<computeroutput>{seealso} If something don&apos;t work, see the testing procedures you can find in the documentation here: {any}</computeroutput>pkg-module-testing<computeroutput> </computeroutput>``</para>
-<sect1 id="md__docs_run-the-project_1autotoc_md122">
+<sect2 id="md__docs_run-the-project_1autotoc_md122">
 <title>suggested way – AMCL and no logs</title>
 <para>The project is very heavy to run on a machine, reason for why I suggest to launch the project using these options:</para>
 <para><itemizedlist>
@@ -19,17 +22,18 @@
 </listitem><listitem><para>suppress every kind of output in the first shell using <computeroutput>1&gt;/dev/null 2&gt;/dev/null</computeroutput></para>
 </listitem></itemizedlist>
 </para>
-<sect2 id="md__docs_run-the-project_1autotoc_md123">
+<sect3 id="md__docs_run-the-project_1autotoc_md123">
 <title>Shell 1</title>
 <para>all the components, without the <computeroutput>mission manager</computeroutput></para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>launch_mission_manager:=false<sp/>robot_env_type:=gazebo<sp/>robot_nav_type:=amcl<sp/>1&gt;/dev/null<sp/>2&gt;/dev/null</highlight></codeline>
 </programlisting></para>
-</sect2>
-<sect2 id="md__docs_run-the-project_1autotoc_md124">
+</sect3>
+<sect3 id="md__docs_run-the-project_1autotoc_md124">
 <title>Shell 2</title>
 <para>the shell will show the output from the mission manager, to show hot the investigation is proceeding.</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">roslaunch<sp/>robocluedo_mission_manager<sp/>run_components.launch<sp/>init:=false<sp/>launch_mission_manager:=true</highlight></codeline>
 </programlisting> </para>
+</sect3>
 </sect2>
 </sect1>
     </detaileddescription>

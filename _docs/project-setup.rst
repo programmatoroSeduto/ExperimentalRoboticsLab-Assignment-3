@@ -1,6 +1,8 @@
 
-Project Setup
-================
+.. _setup-the-project:
+
+HOW TO setup the project
+================================
 
 .. toctree::
 	:caption: Contents
@@ -93,6 +95,23 @@ After downloaded everything, try to compile the workspace:
 
 
 
+build the aRMOR ontology
+--------------------------
+
+The project requires aRMOR as one of its essential component. Use this instructions to compile it:
+
+.. code-block::
+	
+	cd /root/ros_ws/src/armor/armor
+	chmod +x ./gradlew
+	./gradlew deployApp
+	cd /root/ros_ws
+	catkin_make
+	
+
+
+
+
 Install the MoveIt! framework
 ---------------------------------------
 
@@ -122,6 +141,9 @@ Use this simple bash script for installing MoveIt. The project requires the vers
 	catkin_make
 
 this step requires a lot of time...
+
+.. note::
+	the fact that there is the same *catkin_make* twice at the end of the code is not a mistake: it could happen that the compiler crashes due to a lack of free memory. To continue the compilation, just call *catkin_make* again. 
 
 
 
@@ -176,3 +198,27 @@ It's time to download and install the project RCL#3 ! You can use this quick bas
 	git clone https://github.com/programmatoroSeduto/ExperimentalRoboticsLab-Assignment-3.git -b main ./erl3
 	cd ..
 	catkin_make
+
+
+
+
+Install the simulation environment
+--------------------------------------
+
+The simulation environment requires the ArUco markers available in your Gazebo installation. You can quickly do that using this bash command:
+
+.. code-block::
+	
+	cp -r /root/ros_ws/src/erl3/robocluedo_dependencies/worlds/models/* /root/.gazebo/models
+
+
+
+
+
+Test out the project!
+---------------------
+
+The project has been compiled. You're ready to try it! See how to run the project for further informations about how to run the architecture. 
+
+.. seealso::
+	see also :ref:`run-the-project`

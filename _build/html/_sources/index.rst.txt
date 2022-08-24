@@ -6,6 +6,12 @@ RCL -- the RoboCLuedo Project - part 3
    :class: with-border with-shadow
    :alt: Textual alternative to the image
 
+.. seealso::
+	Here you can find instructions on :ref:`setup-the-project`
+
+.. seealso::
+	Here you can find instructions on :ref:`run-the-project`
+
 .. toctree::
    :titlesonly:
    :caption: README
@@ -54,7 +60,8 @@ RCL -- the RoboCLuedo Project - part 3
    :caption: Other Documents
    :glob:
    
-   RUN THE PROJECT <./_docs/run-the-project.md>
+   RCL3 SETUP <./_docs/project-setup.rst>
+   RCL3 RUN <./_docs/run-the-project.md>
    Development LOG <./_docs/dev-log.md>
    How to setup Sphinx <./_docs/how-to-setup-doxy-sphinx-ws.md>
    _docs/*

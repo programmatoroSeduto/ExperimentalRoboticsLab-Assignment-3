@@ -1,5 +1,7 @@
 
-# HOW TO Run this Project
+(run-the-project)=
+
+# HOW TO Run RCL#3 Project
 
 ```{seealso}
 for a deeper guidance on how to run the project, see the user documentation inside {any}`pkg-mission-manager` about the main launch file

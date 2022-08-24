@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO – the main launch file &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -84,10 +85,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -121,7 +122,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="how-to-the-main-launch-file">
+  <section id="how-to-the-main-launch-file">
 <h1>HOW TO – the main launch file<a class="headerlink" href="#how-to-the-main-launch-file" title="Permalink to this heading"></a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
@@ -156,7 +157,7 @@
 </div>
 <hr class="docutils" />
 <p>This document goes through how to run the project using the main launch file. It can be very helpful in running each part of the architecture, with the possibility to control each component hiding the details of each package.</p>
-<div class="section" id="in-a-hurry-just-run-that">
+<section id="in-a-hurry-just-run-that">
 <h2>In a hurry? Just run that!<a class="headerlink" href="#in-a-hurry-just-run-that" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -171,21 +172,21 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch 
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-init-option-run-component-by-component">
+</section>
+<section id="the-init-option-run-component-by-component">
 <h2>The INIT option – Run component by component<a class="headerlink" href="#the-init-option-run-component-by-component" title="Permalink to this heading"></a></h2>
 <p>what about if you want to run just one component? Well, the launch file provides the option <code class="docutils literal notranslate"><span class="pre">init:=false</span></code>. In particular, it’s important to point out that the following does nothing: it just runs the ROS master.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span>
 </pre></div>
 </div>
-<div class="section" id="run-armor">
+<section id="run-armor">
 <h3>run aRMOR<a class="headerlink" href="#run-armor" title="Permalink to this heading"></a></h3>
 <p>Running the aRMOR package is very simple:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-the-robot-environment">
+</section>
+<section id="run-the-robot-environment">
 <h3>run the robot environment<a class="headerlink" href="#run-the-robot-environment" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -218,28 +219,28 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_env_type:<span class="o">=</span>gazebo robot_nav_type:<span class="o">=</span>amcl world_name:<span class="o">=</span>assignment3.world
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-rosplan">
+</section>
+<section id="run-rosplan">
 <h3>run rosplan<a class="headerlink" href="#run-rosplan" title="Permalink to this heading"></a></h3>
 <p>you can easily launch the AI of the robot using the option <code class="docutils literal notranslate"><span class="pre">launch_rosplan:=true</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_rosplan:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-the-movement-controller">
+</section>
+<section id="run-the-movement-controller">
 <h3>run the movement controller<a class="headerlink" href="#run-the-movement-controller" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_motion_controllers:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-the-vision-module">
+</section>
+<section id="run-the-vision-module">
 <h3>run the vision module<a class="headerlink" href="#run-the-vision-module" title="Permalink to this heading"></a></h3>
 <p>the vision module opens a new window shwing what the cameras are seeing.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_aruco:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-the-oracle">
+</section>
+<section id="run-the-oracle">
 <h3>run the Oracle<a class="headerlink" href="#run-the-oracle" title="Permalink to this heading"></a></h3>
 <p>the option <code class="docutils literal notranslate"><span class="pre">launch_oracle:=true</span></code> launches two nodes: the real oracle for the third assignment, and the markers publisher.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple version</span>
@@ -249,8 +250,8 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_oracle:<span class="o">=</span><span class="nb">true</span> publish_markers:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-the-mission-manager">
+</section>
+<section id="run-the-mission-manager">
 <h3>run the mission manager<a class="headerlink" href="#run-the-mission-manager" title="Permalink to this heading"></a></h3>
 <p>for running the mission manager package, there are two main options:</p>
 <ul class="simple">
@@ -267,19 +268,19 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager_components:<span class="o">=</span><span class="nb">true</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="combine-the-launch-options">
+</section>
+<section id="combine-the-launch-options">
 <h3>combine the launch options<a class="headerlink" href="#combine-the-launch-options" title="Permalink to this heading"></a></h3>
 <p>of course, the init option allows you to combine different options. For example, if you need to run both aRMOR and the robot environment in one call, use this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_armor:<span class="o">=</span><span class="nb">true</span> launch_robot:<span class="o">=</span><span class="nb">true</span> robot_nav_type:<span class="o">=</span>amcl
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="how-to-run-the-project">
+</section>
+</section>
+<section id="how-to-run-the-project">
 <h2>HOW TO run the project<a class="headerlink" href="#how-to-run-the-project" title="Permalink to this heading"></a></h2>
 <p>Here are the main commands for running this complex project.</p>
-<div class="section" id="step-by-step">
+<section id="step-by-step">
 <h3>step by step<a class="headerlink" href="#step-by-step" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -311,16 +312,16 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-fastest-way-to-run-the-project">
+</section>
+<section id="the-fastest-way-to-run-the-project">
 <h3>the fastest way to run the project<a class="headerlink" href="#the-fastest-way-to-run-the-project" title="Permalink to this heading"></a></h3>
 <p>this command also contains the most important settings for running the project:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch robot_env_type:<span class="o">=</span>gazeborviz robot_nav_type:<span class="o">=</span>gmapping
 </pre></div>
 </div>
 <p>these options allows you to launch the roject using for instance amcl and gazebo only.</p>
-</div>
-<div class="section" id="the-suggested-way">
+</section>
+<section id="the-suggested-way">
 <h3>the suggested way<a class="headerlink" href="#the-suggested-way" title="Permalink to this heading"></a></h3>
 <p>I strongly suggest to launch the project in this way:</p>
 <ul class="simple">
@@ -346,9 +347,9 @@ roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_mission_manager run_components.launch init:<span class="o">=</span><span class="nb">false</span> launch_mission_manager:<span class="o">=</span><span class="nb">true</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

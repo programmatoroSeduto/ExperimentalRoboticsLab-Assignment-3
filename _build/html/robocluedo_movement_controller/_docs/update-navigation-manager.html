@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO update the navigation manager &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -96,10 +97,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -133,7 +134,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="how-to-update-the-navigation-manager">
+  <section id="how-to-update-the-navigation-manager">
 <h1>HOW TO update the navigation manager<a class="headerlink" href="#how-to-update-the-navigation-manager" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -154,7 +155,7 @@
 </div>
 <hr class="docutils" />
 <p>The current navigation manager applies the C++ plymorphism in order to make a flexible and helpful abstraction layer between the nodes requiring the navigation services and how the navigation service is really implemented. After all, each node which wants to use the navigation should just tell the node in charge to manage the navigation the final position and, in case, the final orientation of the robot, and nothing more (at least in a very simple and common scenario).</p>
-<div class="section" id="a-description-of-the-navigation-manager-node">
+<section id="a-description-of-the-navigation-manager-node">
 <h2>A description of the navigation Manager Node<a class="headerlink" href="#a-description-of-the-navigation-manager-node" title="Permalink to this heading"></a></h2>
 <p>The navigation manager uses the <em>controllers</em>, i.e. modules (objects) using the low-level implementation of the navigation in order to reach the objective provided. In particular, here are some characteristics of this particular system:</p>
 <ul class="simple">
@@ -169,8 +170,8 @@
 <li><p>the controller with ID=1 controls move_base and indirectly head_orientation</p></li>
 </ul>
 <p>bu for instance I could think on a controller which makes the big part of the trave with move_base, and arrived at a certain distance from the objective, uses the bug_m to perform the final steps of the navigation. This could be implemented in a controller using almost all the behaviours seen above. This is what this model can do.</p>
-</div>
-<div class="section" id="more-techincally-speaking">
+</section>
+<section id="more-techincally-speaking">
 <h2>More techincally speaking<a class="headerlink" href="#more-techincally-speaking" title="Permalink to this heading"></a></h2>
 <p>each controller is implemented as a class. Here is its “blueprint”:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">nav_</span><span class="o">???</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">navigation_controller</span><span class="w"></span>
@@ -254,7 +255,7 @@
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="section" id="the-class-navigation-controller">
+<section id="the-class-navigation-controller">
 <h3>the class Navigation Controller<a class="headerlink" href="#the-class-navigation-controller" title="Permalink to this heading"></a></h3>
 <p>as you can noticed in the code above, all the controllers must inherit from a class called <code class="docutils literal notranslate"><span class="pre">navigation_controller</span></code> which is rewritten here for your convenience:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">navigation_controller</span><span class="w"></span>
@@ -325,9 +326,9 @@
 <p>see the comment under the <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">enable(</span> <span class="pre">)</span></code> call.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="register-a-controller">
+</section>
+</section>
+<section id="register-a-controller">
 <h2>register a controller<a class="headerlink" href="#register-a-controller" title="Permalink to this heading"></a></h2>
 <p>Implementing the controller is needed, but not sufficient. In order to make the controller available inside the navigation manager, you need to register it. Here’s a example you can use for this task:</p>
 <div class="admonition attention">
@@ -348,8 +349,8 @@
 </pre></div>
 </div>
 <p>In this example, <code class="docutils literal notranslate"><span class="pre">bug_m</span></code> will have ID=0 whereas <code class="docutils literal notranslate"><span class="pre">move_base_nav</span></code> will have ID=1 .</p>
-</div>
-<div class="section" id="in-the-end-how-to-create-a-new-component">
+</section>
+<section id="in-the-end-how-to-create-a-new-component">
 <h2>(in the end) how to create a new component<a class="headerlink" href="#in-the-end-how-to-create-a-new-component" title="Permalink to this heading"></a></h2>
 <p>here are the steps:</p>
 <ol class="arabic simple">
@@ -358,15 +359,15 @@
 <li><p>register the controller in the main function</p></li>
 </ol>
 <p>very simple.</p>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>one controller could always interact with the parameter server, and this enables to overcome the simplicity of the interface for communicating with the controller</p></li>
 <li><p>the naigation manager could implement many versions of the same controller, even using the inheritance if it is a good idea, in order to make a more detailed control</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

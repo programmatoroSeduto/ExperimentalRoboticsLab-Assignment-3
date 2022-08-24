@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOW TO perform localization with AMCL &mdash; RoboCLuedo #3 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -96,10 +97,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RUN THE PROJECT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">Project Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/sphinx-mock.html">Sphinx for Py – modules mocking</a></li>
 </ul>
@@ -133,7 +134,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="how-to-perform-localization-with-amcl">
+  <section id="how-to-perform-localization-with-amcl">
 <h1>HOW TO perform localization with AMCL<a class="headerlink" href="#how-to-perform-localization-with-amcl" title="Permalink to this heading"></a></h1>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -151,7 +152,7 @@
 <p class="admonition-title">Note</p>
 <p>the package <code class="docutils literal notranslate"><span class="pre">worlds</span></code> already contains the map file created during this HOW TO.</p>
 </div>
-<div class="section" id="save-the-map">
+<section id="save-the-map">
 <h2>Save the map<a class="headerlink" href="#save-the-map" title="Permalink to this heading"></a></h2>
 <p>the exploration performed with GMapping can be saved using <code class="docutils literal notranslate"><span class="pre">map_server</span> <span class="pre">map_saver</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># enable the robot environment</span>
@@ -173,8 +174,8 @@ rosrun map_server map_saver -f /root/ros_ws/src/erl3/robocluedo_dependencies/wor
 [ INFO] [1661074989.166996800, 1172.691000000]: Done
 </pre></div>
 </div>
-</div>
-<div class="section" id="load-the-map-with-amcl">
+</section>
+<section id="load-the-map-with-amcl">
 <h2>Load the map with AMCL<a class="headerlink" href="#load-the-map-with-amcl" title="Permalink to this heading"></a></h2>
 <p>here’s how to run AMCL via launch file:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
@@ -199,8 +200,8 @@ rosrun map_server map_saver -f /root/ros_ws/src/erl3/robocluedo_dependencies/wor
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch robocluedo_robot_hunter run2.launch sim_type:<span class="o">=</span>gazeborviz launch_nav_stack:<span class="o">=</span><span class="nb">false</span> launch_amcl:<span class="o">=</span><span class="nb">true</span> <span class="m">1</span>&gt;/dev/null <span class="m">2</span>&gt;/dev/null
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
