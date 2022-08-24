@@ -9,15 +9,16 @@
 > - ROS1 noetic
 > 
 > Documentation:
-> - [Official Documentation for ERL3](erl3)
+> - [Official Documentation for RCL#3](erl3)
 > 
 > **Project Setup**:
 > - see the [Official Docs](erl3setup)
 > 
 > **Run the project**:
-> - see the [Official Documentation](erl3run)
+> - see the [Official Docs](erl3run)
 > 
 > Starter kit:
+> - [CarmineD8/erl2 on GitHub](https://github.com/CarmineD8/erl2/)
 > - [CarmineD8/exp_assignment3 on GitHub](https://github.com/CarmineD8/exp_assignment3/)
 > 
 > Previous versions of the RCL project:

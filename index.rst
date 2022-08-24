@@ -60,8 +60,8 @@ RCL#3 -- the RoboCLuedo Project
    :caption: Other Documents
    :glob:
    
-   RCL3 SETUP <./_docs/project-setup.rst>
-   RCL3 RUN <./_docs/run-the-project.md>
+   RCL#3 SETUP <./_docs/project-setup.rst>
+   RCL#3 RUN <./_docs/run-the-project.md>
    Development LOG <./_docs/dev-log-rcl3.md>
    How to setup Sphinx <./_docs/how-to-setup-doxy-sphinx-ws.md>
    _docs/*

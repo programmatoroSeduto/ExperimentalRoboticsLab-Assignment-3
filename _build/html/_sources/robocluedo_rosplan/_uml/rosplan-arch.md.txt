@@ -34,10 +34,12 @@ here's a essential representation of the package plus the ROSPlan system, contro
 
 ```{uml} 
 @startuml
+scale 0.7
 
 ''' DIAGRAM INFOS
 title "robocluedo rosplan"
 skinparam Padding 8
+left to right direction
 
 
 ''' DIAGRAM ELEMENTS
@@ -53,42 +55,42 @@ package "ROSplan" {
 	[parsing interface] <<ROSPlan>> as PARSE
 	[plan dispatcher] <<ROSPlan>> as DISPATCH
 
-	KB -right-- PROBLEM
-	PROBLEM -down-- PLAN
-	PLAN -down-- PARSE
-	KB -right- PARSE
-	PARSE -down-- DISPATCH
-	KB -left- DISPATCH
+	KB -- PROBLEM
+	PROBLEM -- PLAN
+	PLAN -- PARSE
+	' KB -- PARSE
+	PARSE -- DISPATCH
+	' KB -- DISPATCH
 }
 
-package "actions dispatch" {
-	[action] as ACTION
+package "actions dispatch" as ACTION {
+	node actions
 }
 
 [feedback\nmanager] as FEEDBACK
 [ROSPlan\npipeline manager] <<node>> as MANAGER
 [KB interface] <<node>> as IKB
-ACTION --- IKB
 
-DISPATCH -right-- ACTION
-PDDL_DOM --- KB
-PDDL_PROB --- KB
-IKB --- KB
+DISPATCH -- ACTION
+PDDL_DOM -- KB
+PDDL_PROB -- KB
+IKB -- KB
 
-ACTION --- FEEDBACK
+ACTION -- FEEDBACK
+FEEDBACK -- MANAGER
 
-PROBLEM -right-- MANAGER
-PLAN -right-- MANAGER
-PARSE -right-- MANAGER
-DISPATCH -right-- MANAGER
+PROBLEM -right- MANAGER
+PLAN -right- MANAGER
+PARSE -right- MANAGER
+DISPATCH -right- MANAGER
 }
 
-() "feedback topic" as TOPIC_FEEDBACK
-FEEDBACK --> TOPIC_FEEDBACK
 () "service pipeline manager" as SRV_MANAGER
 MANAGER --> SRV_MANAGER
 () "KB interface service" as SRV_IKB
 IKB --> SRV_IKB
+
+IKB <--> MANAGER
 @enduml
 ```
 

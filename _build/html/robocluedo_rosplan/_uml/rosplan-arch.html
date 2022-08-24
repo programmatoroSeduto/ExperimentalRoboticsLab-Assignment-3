@@ -52,7 +52,6 @@
               <p class="caption" role="heading"><span class="caption-text">README</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../README-sphinx.html">the project main README</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_uml/arch.html">UML overall arch</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Packages Documentation</span></p>
 <ul class="current">
@@ -67,8 +66,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="rosplan-kb.html">UML – ROSPlann Knowledge base – formal ROS description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rosplan-pipeline.html">UML – ROSPlan pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../_code_reference/collect.html">ROSPlan action collect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/feedback_manager.html">CLASS feedback manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_interface.html">NODE kb_interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../_code_reference/kb_tools.html">CLASS kb_tools</a></li>
@@ -93,8 +90,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other Documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL3 SETUP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL3 RUN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/project-setup.html">RCL#3 SETUP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_docs/run-the-project.html">RCL#3 RUN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/dev-log-rcl3.html">Development LOG</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/how-to-setup-doxy-sphinx-ws.html">How to setup Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_docs/rest-directives.html">ReStructured Directives – practical documentation</a></li>
@@ -168,12 +165,14 @@
 <h2>UML – Architecture (simplified)<a class="headerlink" href="#uml-architecture-simplified" title="Permalink to this heading"></a></h2>
 <p>here’s a essential representation of the package plus the ROSPlan system, controlled by this package:</p>
 <p class="plantuml">
-<object data="../../_images/plantuml-6ce6a5ed608d277b9d3c8a6b94ac2cddc9265f7a.svg" type="image/svg+xml" style="width:1027px;height:1621px;background:#FFFFFF;">
-<img src="../../_images/plantuml-6ce6a5ed608d277b9d3c8a6b94ac2cddc9265f7a.png" alt="&#64;startuml
+<object data="../../_images/plantuml-fa7a8c83be4fbf9a8a38ee3e2ce265c5f1928d7f.svg" type="image/svg+xml" style="width:1554px;height:396px;background:#FFFFFF;">
+<img src="../../_images/plantuml-fa7a8c83be4fbf9a8a38ee3e2ce265c5f1928d7f.png" alt="&#64;startuml
+scale 0.7
 
 ''' DIAGRAM INFOS
 title &quot;robocluedo rosplan&quot;
 skinparam Padding 8
+left to right direction
 
 
 ''' DIAGRAM ELEMENTS
@@ -189,42 +188,42 @@ package &quot;ROSplan&quot; {
 	[parsing interface] &lt;&lt;ROSPlan&gt;&gt; as PARSE
 	[plan dispatcher] &lt;&lt;ROSPlan&gt;&gt; as DISPATCH
 
-	KB -right-- PROBLEM
-	PROBLEM -down-- PLAN
-	PLAN -down-- PARSE
-	KB -right- PARSE
-	PARSE -down-- DISPATCH
-	KB -left- DISPATCH
+	KB -- PROBLEM
+	PROBLEM -- PLAN
+	PLAN -- PARSE
+	' KB -- PARSE
+	PARSE -- DISPATCH
+	' KB -- DISPATCH
 }
 
-package &quot;actions dispatch&quot; {
-	[action] as ACTION
+package &quot;actions dispatch&quot; as ACTION {
+	node actions
 }
 
 [feedback\nmanager] as FEEDBACK
 [ROSPlan\npipeline manager] &lt;&lt;node&gt;&gt; as MANAGER
 [KB interface] &lt;&lt;node&gt;&gt; as IKB
-ACTION --- IKB
 
-DISPATCH -right-- ACTION
-PDDL_DOM --- KB
-PDDL_PROB --- KB
-IKB --- KB
+DISPATCH -- ACTION
+PDDL_DOM -- KB
+PDDL_PROB -- KB
+IKB -- KB
 
-ACTION --- FEEDBACK
+ACTION -- FEEDBACK
+FEEDBACK -- MANAGER
 
-PROBLEM -right-- MANAGER
-PLAN -right-- MANAGER
-PARSE -right-- MANAGER
-DISPATCH -right-- MANAGER
+PROBLEM -right- MANAGER
+PLAN -right- MANAGER
+PARSE -right- MANAGER
+DISPATCH -right- MANAGER
 }
 
-() &quot;feedback topic&quot; as TOPIC_FEEDBACK
-FEEDBACK --&gt; TOPIC_FEEDBACK
 () &quot;service pipeline manager&quot; as SRV_MANAGER
 MANAGER --&gt; SRV_MANAGER
 () &quot;KB interface service&quot; as SRV_IKB
 IKB --&gt; SRV_IKB
+
+IKB &lt;--&gt; MANAGER
 &#64;enduml"/>
 
 </object></p>

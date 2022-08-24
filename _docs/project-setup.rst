@@ -16,7 +16,7 @@ Docker Image
 -----------------------------
 
 .. attention::
-	**strongly recommended!** This docher image contains all you need to run the simulation. 
+	**strongly recommended!** This docker image contains all you need to run the simulation. 
 
 I strongly suggest you to run the project inside this Docker container. `Here <https://hub.docker.com/r/carms84/exproblab>`_ is the official site of the image.
 
